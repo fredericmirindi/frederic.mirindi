@@ -4,27 +4,97 @@
     <meta charset="UTF-8">
     <title>Frédéric Mirindi - Personal Website</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        /* Add custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            padding: 2em 0;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 2em;
+            margin: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add styles for your 3D graphic */
+        .graphic {
+            width: 200px;
+            height: 200px;
+            background-color: #3498db;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 200px;
+            color: #fff;
+            font-size: 24px;
+            transform: rotate(45deg);
+            position: relative;
+            top: -100px;
+            left: 50%;
+            margin-left: -100px;
+        }
+
+        /* Additional styling for sections */
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .date {
+            font-weight: bold;
+        }
+
+        .achievement {
+            font-style: italic;
+        }
+    </style>
     <script src="script.js"></script>
 </head>
 <body>
     <header>
         <h1>Frédéric Mirindi</h1>
-        <p>Economist | Researcher | Educator</p>
+        <p>Economist | Researcher | Data Scientist</p>
     </header>
     
     <section id="contact">
         <h2>Contact Information</h2>
-        <address>
-            <p>Address: 1407-610 Portage Ave, Winnipeg MB R3C 0G5, Canada</p>
-            <p>Telephone: +1 (204) 298-4337</p>
-            <p>Email: <a href="mailto:mirindifrederic@gmail.com">mirindifrederic@gmail.com</a> | <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-        </address>
+        <ul>
+            <li>Address: 1407-610 Portage Ave, Winnipeg MB R3C 0G5, Canada</li>
+            <li>Telephone Number: +1 (204) 298-4337</li>
+            <li>Email: <a href="mailto:mirindifrederic@gmail.com">mirindifrederic@gmail.com</a></li>
+        </ul>
     </section>
 
     <section id="personal-info">
         <h2>Personal Information</h2>
         <ul>
-            <li>Date of Birth: January 8, 1994</li>
+            <li>Birthdate: January 8, 1994</li>
             <li>Birthplace: Democratic Republic of Congo - Canada Permanent Resident</li>
         </ul>
     </section>
@@ -32,46 +102,40 @@
     <section id="education">
         <h2>Education</h2>
         <ul>
-            <li>University of Manitoba (Canada)</li>
-            <ul>
-                <li>Ph.D. in Economics, Summer 2023 – present</li>
-            </ul>
-            <li>Charles University, CERGE-EI (Czech Republic)</li>
-            <ul>
-                <li>Coursework: Ph.D. in Economics, 2019-2021</li>
-            </ul>
-            <li>University of Antwerp (Belgium)</li>
-            <ul>
-                <li>M.Sc. in Development Evaluation, 2019 (Distinction)</li>
-            </ul>
-            <li>Catholic University of Bukavu (Democratic Republic of Congo)</li>
-            <ul>
-                <li>M.Sc. in Economics, 2016 (Distinction)</li>
-                <li>B.Sc. in Economics, 2014 (Magna Cum Laude, 1st ranked)</li>
-            </ul>
+            <li>University of Manitoba (Canada)<br>
+                <span class="date">Ph.D. in Economics, Summer 2023 – present</span>
+            </li>
+            <li>Charles University, CERGE-EI (Czech Republic)<br>
+                <span class="date">Coursework: Ph.D. in Economics, 2019-2021</span>
+            </li>
+            <li>University of Antwerp (Belgium)<br>
+                <span class="date">M.Sc. in Development Evaluation, 2019 (Distinction)</span>
+            </li>
+            <li>Catholic University of Bukavu (Democratic Republic of Congo)<br>
+                <span class="date">M.Sc. in Economics, 2016 (Distinction)</span><br>
+                <span class="achievement">B.Sc. in Economics, 2014 (Magna Cum Laude, 1st ranked)</span>
+            </li>
         </ul>
     </section>
 
     <section id="teaching-experience">
         <h2>Teaching Experience</h2>
         <ul>
-            <li>Teaching Assistant</li>
-            <ul>
-                <li>Fall 2016 - 2017</li>
-                <li>Mathematics, Statistics, and Microeconomics</li>
-                <li>Catholic University of Bukavu</li>
-            </ul>
-            <li>Research Assistant</li>
-            <ul>
-                <li>Fall 2020, 2021</li>
-                <li>Project: Quasi-natural experiments on regional economic growth</li>
-                <li>Supervisor: Professor Christian Ochsner, CERGE-EI</li>
-            </ul>
-            <ul>
-                <li>Fall 2015</li>
-                <li>Project: Qualitative study on the political economy of ethnic entrepreneurship in Goma</li>
-                <li>Supervisor: Professor Martin Doevenspeck, University of Bayreuth</li>
-            </ul>
+            <li>Teaching Assistant<br>
+                <span class="date">Fall 2016 - 2017</span><br>
+                <span class="achievement">Mathematics, Statistics, and Microeconomics</span><br>
+                <span class="achievement">Catholic University of Bukavu</span>
+            </li>
+            <li>Research Assistant<br>
+                <span class="date">Fall 2020, 2021</span><br>
+                <span class="achievement">Project: Quasi-natural experiments on regional economic growth</span><br>
+                <span class="achievement">Supervisor: Professor Christian Ochsner, CERGE-EI</span>
+            </li>
+            <li>Research Assistant<br>
+                <span class="date">Fall 2015</span><br>
+                <span class="achievement">Project: Qualitative study on the political economy of ethnic entrepreneurship in Goma</span><br>
+                <span class="achievement">Supervisor: Professor Martin Doevenspeck, University of Bayreuth</span>
+            </li>
         </ul>
     </section>
 
@@ -86,14 +150,18 @@
     <section id="honors-scholarships">
         <h2>Honors and Scholarships</h2>
         <ul>
-            <li>Summer 2019</li>
-            <li>Charles University, Ph.D. scholarship, Czech Republic</li>
-            <li>Winter 2018</li>
-            <li>M.Sc. Vlir-Uos Scholarship, Belgium</li>
-            <li>Summer 2017</li>
-            <li>African Economic Research Consortium, MA/PhD, Fellowship</li>
-            <li>Fall 2011-16</li>
-            <li>AUCAM Scholarship, Donors Catholic University of Louvain</li>
+            <li>Summer 2019<br>
+                <span class="achievement">Charles University, Ph.D. scholarship, Czech Republic</span>
+            </li>
+            <li>Winter 2018<br>
+                <span class="achievement">M.Sc. Vlir-Uos Scholarship, Belgium</span>
+            </li>
+            <li>Summer 2017<br>
+                <span class="achievement">African Economic Research Consortium, MA/PhD, Fellowship</span>
+            </li>
+            <li>Fall 2011-16<br>
+                <span class="achievement">AUCAM Scholarship, Donors Catholic University of Louvain</span>
+            </li>
         </ul>
     </section>
 
@@ -101,20 +169,22 @@
         <h2>Skills</h2>
         <ul>
             <li>Computer Applications: Julia, Stata, R, Excel, Python</li>
-            <li>Experience with survey and statistical data, including nightlight data, Word Development Indicators, and DHS data</li>
-            <li>Languages:</li>
-            <ul>
-                <li>English: Overall Band Score - IELTS: 7/9 (Good User, C1)</li>
-                <li>French: Native - Overall Score - TEF: C2</li>
-            </ul>
+            <li>Experience with survey and statistical data, including nightlight data, World Development Indicators, and DHS data</li>
+            <li>Languages:<br>
+                <ul>
+                    <li>English: Overall Band Score - IELTS: 7/9 (Good User, C1)</li>
+                    <li>French: Native - Overall Score - TEF: C2</li>
+                </ul>
+            </li>
         </ul>
     </section>
 
     <section id="work-experience">
         <h2>Work Experience</h2>
         <ul>
-            <li>2022, 2023</li>
-            <li>Claims Specialist, Canada Life, Canada</li>
+            <li>2022, 2023<br>
+                <span class="achievement">Claims Specialist, Canada Life, Canada</span>
+            </li>
         </ul>
     </section>
 
@@ -136,27 +206,24 @@
     <section id="conferences-seminars">
         <h2>Conferences and Seminars</h2>
         <ul>
-            <li>Note: Conferences where I make a presentation are in bold</li>
-            <li>2019</li>
-            <ul>
-                <li>Dissertation Proposal, University of Antwerp</li>
-                <li>Assessment of the HIPIC Program in the DRC</li>
-            </ul>
-            <li>2017</li>
-            <ul>
-                <li>African Economic Research Consortium (AERC), Nairobi, Kenya</li>
-                <li>JFE Seminar Series: Debt Servicing and Macroeconomic Performance in Kenya</li>
-            </ul>
-            <li>2015</li>
-            <ul>
-                <li>University of Bayreuth Summer School, Bayreuth, Germany</li>
-                <li>Entrepreneurship and Ethnicity in Goma, DRC</li>
-            </ul>
+            <li>2019<br>
+                <span class="achievement">Dissertation Proposal, University of Antwerp</span><br>
+                <span class="achievement">Assessment of the HIPIC Program in the DRC</span>
+            </li>
+            <li>2017<br>
+                <span class="achievement">African Economic Research Consortium (AERC), Naïrobi, Kenya</span><br>
+                <span class="achievement">JFE Seminar Series: Debt Servicing and Macroeconomic Performance in Kenya</span>
+            </li>
+            <li>2015<br>
+                <span class="achievement">University of Bayreuth Summer School, Bayreuth, Germany</span><br>
+                <span class="achievement">Entrepreneurship and Ethnicity in Goma, DRC</span>
+            </li>
         </ul>
     </section>
 
-    <!-- You can add more sections for your research, publications, or any other relevant information -->
+    <div class="graphic">3D</div>
 
-    <button id="monBouton">Cliquez-moi</button>
+    <!-- You can add more sections for your research, publications, or any other relevant information -->
+    
 </body>
 </html>
