@@ -1527,25 +1527,11 @@ body.dark-theme {
   }
 }
 
-
-.return-to-main {
-    text-align: center;
-    margin: 20px 0;
+.return-to-main .button {
+    background-color: /* same background color as the "Contact Me" button */;
+    color: /* same text color as the "Contact Me" button */;
+    padding: /* same padding as the "Contact Me" button */;
+    border-radius: /* same border-radius as the "Contact Me" button */;
+    /* ... any other styles to match the "Contact Me" button ... */
 }
 
-.return-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;  /* Change to your theme color */
-    color: #fff;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-
-    /* Add any additional styling or hover effects as per your theme */
-}
-
-.return-button:hover {
-    background-color: #555;  /* Slightly lighter shade for hover */
-}
