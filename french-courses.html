@@ -2,91 +2,160 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+      <!--=============== FAVICON ===============-->
+      <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
 
-    <!--=============== REMIXICONS ===============-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
+      <!--=============== REMIXICONS ===============-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
 
-    <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+      <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="assets/css/styles.css">
 
-    <title>French Courses | fredericmirindi</title>
+      <title>fredericmirindi</title>
 </head>
 
 <body>
-    <!--==================== HEADER ====================-->
-    <header class="header" id="header">
-        <nav class="nav container">
-            <a href="index.html" class="nav__logo">
-                <span class="nav__logo-circle">F</span>
-                <span class="nav__logo-name">Frédéric Mirindi.</span>
+     <!--==================== HEADER ====================-->
+      <header class="header" id="header">
+         <nav class="nav container">
+            <a href="#" class="nav__logo">
+               <span class="nav__logo-circle">F</span>
+
+               <span class="nav__logo-name">Frédéric Mirindi.</span>
             </a>
 
             <div class="nav__menu" id="nav-menu">
-                <span class="nav__title">Menu</span>
-                <h3 class="nav__name">Frédéric</h3>
+               <span class="nav__title">Menu</span>
 
-                <ul class="nav__list">
-                    <li class="nav__item">
-                        <a href="#beginner" class="nav__link">Beginner</a>
-                    </li>
+               <h3 class="nav__name">Frédéric</h3>
 
-                    <li class="nav__item">
-                        <a href="#intermediate" class="nav__link">Intermediate</a>
-                    </li>
+              <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="#microeconomics" class="nav__link">Microeconomics</a>
+                </li>
 
-                    <li class="nav__item">
-                        <a href="#advanced" class="nav__link">Advanced</a>
-                    </li>
+                <li class="nav__item">
+                    <a href="#macroeconomics" class="nav__link">Macroeconomics</a>
+                </li>
 
-                    <li class="nav__item">
-                        <a href="#contact" class="nav__link nav__link-button">Contact Me</a>
-                    </li>
-                </ul>
-
-                <!-- Close button -->
-                <div class="nav__close" id="nav-close">
-                    <i class="ri-close-line"></i>
-                </div>
+                <li class="nav__item">
+                    <a href="#econometrics" class="nav__link">Econometrics</a>
+                </li>
+            </ul>
+                  
+               <!-- Close button -->
+               <div class="nav__close" id="nav-close">
+                  <i class="ri-close-line"></i>
+               </div>
             </div>
 
-            <div class="nav__buttons">
-                <!-- Theme button -->
-                <i class="ri-moon-line change-theme" id="theme-button"></i>
+               <div class="nav__buttons">
+               <!-- Theme button -->
+               <i class="ri-moon-line change-theme" id="theme-button"></i>
 
-                <!-- Toggle button -->
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class="ri-menu-4-line"></i>
-                </div>
+               <!-- Toggle button -->
+               <div class="nav__toggle" id="nav-toggle">
+                  <i class="ri-menu-4-line"></i>
+               </div>
             </div>
-        </nav>
-    </header>
-
-    <!--==================== FRENCH COURSES ====================-->
-    <section class="french-courses section" id="french-courses">
+         </nav>
+      </header>
+    <!--==================== ECONOMIC DATA ANALYSIS ====================-->
+    <section class="projects section" id="economic-data-analysis">
         <h2 class="section__title-1">
-            <span>French Courses.</span>
+            <span>Economic Data Analysis.</span>
         </h2>
 
-        <div class="french-courses__container container grid">
-            <div class="french-courses__content">
-                <h3 class="french-courses__subtitle">Learn French with Frédéric</h3>
-                <p class="french-courses__description">
-                    Dive into the beautiful French language with tailored courses designed for all levels. Whether you're a beginner looking to start your journey or an advanced learner aiming to perfect your fluency, I'm here to guide you every step of the way.
-                </p>
-                <a href="#contact" class="button">Contact for Details</a>
+        <div class="projects__container container grid">
+            <!-- Microeconomics -->
+            <article class="projects__card">
+                <div class="projects__image">
+                    <img src="assets/img/project-6.jpg" alt="Microeconomics" class="projects__img">
+                </div>
+
+                <div class="projects__content">
+                    <h3 class="projects__subtitle">Microeconomics</h3>
+                    <h2 class="projects__title">Consumer Theory, Producer Theory, and Market Equilibrium</h2>
+
+                    <p class="projects__description">
+                        Detailed analysis and insights into the behavior of individual agents, such as consumers and firms, and their interactions in the market.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Macroeconomics -->
+            <article class="projects__card">
+                <div class="projects__image">
+                    <img src="assets/img/project-8.jpg" alt="Macroeconomics" class="projects__img">
+                </div>
+
+                <div class="projects__content">
+                    <h3 class="projects__subtitle">Macroeconomics</h3>
+                    <h2 class="projects__title">Analysis of the Economy as a Whole</h2>
+
+                    <p class="projects__description">
+                        Comprehensive study of the aggregate economy, examining factors such as growth, inflation, and unemployment.
+                    </p>
+                </div>
+            </article>
+
+            <!-- Introduction to Econometrics -->
+            <article class="projects__card">
+                <div class="projects__image">
+                    <img src="assets/img/project-3.jpg" alt="Econometrics" class="projects__img">
+                </div>
+
+                <div class="projects__content">
+                    <h3 class="projects__subtitle">Econometrics</h3>
+                    <h2 class="projects__title">Introduction to Econometrics</h2>
+
+                    <p class="projects__description">
+                        An introduction to the application of statistical methods to economic data, enabling empirical examination of economic theories.
+                    </p>
+                </div>
+            </article>
+<!--==================== INTERNATIONAL FINANCE ====================-->
+        <article class="projects__card">
+            <div class="projects__image">
+                <img src="assets/img/project-4.jpg" alt="International Finance" class="projects__img">
             </div>
 
-            <div class="french-courses__image">
-                <img src="assets/img/french-course.jpg" alt="French Course" class="french-courses__img">
+            <div class="projects__content">
+                <h3 class="projects__subtitle">International Finance</h3>
+                <h2 class="projects__title">Currency Exchange, Risk Management, and Financial Markets</h2>
+
+                <p class="projects__description">
+                    Dive into the dynamics of financial markets across the globe, understand currency exchange mechanisms, and learn strategies to manage international financial risks.
+                </p>
             </div>
+             </article>
+              <!--==================== INTERNATIONAL TRADE ====================-->
+
+        <article class="projects__card">
+            <div class="projects__image">
+                <img src="assets/img/project-5.jpg" alt="International Trade" class="projects__img">
+            </div>
+
+            <div class="projects__content">
+                <h3 class="projects__subtitle">International Trade</h3>
+                <h2 class="projects__title">Trade Theories, Policies, and Global Supply Chain</h2>
+
+                <p class="projects__description">
+                    Explore the foundational theories of trade, understand the implications of trade policies, and delve into the complexities of the global supply chain.
+                </p>
+            </div>
+        </article>
         </div>
     </section>
-     <!--==================== CONTACT ====================-->
+
+    <!-- ... (Footer and other sections can be the same or you can remove them) -->
+
+    <!-- ... (Scripts and other resources) -->
+
+<!--==================== CONTACT ====================-->
          <section class="contact section" id="contact">
             <div class="contact__container grid">
                <div class="contact__data">
@@ -172,51 +241,51 @@
             </div>
          </section>
       </main>
-    <!--========== RETURN TO MAIN MENU ==========-->
-    <div class="return-to-main">
-        <a href="index.html" class="button">
-            <i class="ri-arrow-left-line"></i> Return to Main Menu
-        </a>
-    </div>
 
-    <!--==================== FOOTER ====================-->
-    <footer class="footer">
-        <div class="footer__container container grid">
+<!--========== RETURN TO MAIN MENU ==========-->
+<div class="return-to-main">
+    <a href="index.html" class="button">
+        <i class="ri-arrow-left-line"></i> Return to Main Menu
+    </a>
+</div>
+      
+      <!--==================== FOOTER ====================-->
+      <footer class="footer">
+         <div class="footer__container container grid">
             <ul class="footer__links">
-                <li>
-                    <a href="index.html" class="footer__link">Home</a>
-                </li>
+               <li>
+                  <a href="#home" class="footer__link">Home</a>
+               </li>
 
-                <li>
-                    <a href="#french-courses" class="footer__link">Courses</a>
-                </li>
+               <li>
+                  <a href="#about" class="footer__link">About</a>
+               </li>
 
-                <li>
-                    <a href="#contact" class="footer__link">Contact</a>
-                </li>
+               <li>
+                  <a href="#projects" class="footer__link">Projects</a>
+               </li>
             </ul>
 
             <span class="footer__copy">
-                &#169; All Rights Reserved By
-                <a href="#">fredericmirindi.</a>
+               &#169; All Rights Reserved By 
+               <a href="#">fredericmirindi.</a>
             </span>
-        </div>
-    </footer>
+         </div>
+      </footer>
 
-    <!--========== SCROLL UP ==========-->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="ri-arrow-up-s-line"></i>
-    </a>
+      <!--========== SCROLL UP ==========-->
+      <a href="#" class="scrollup" id="scroll-up">
+         <i class="ri-arrow-up-s-line"></i>
+      </a>
 
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
+      <!--=============== SCROLLREVEAL ===============-->
+      <script src="assets/js/scrollreveal.min.js"></script>
+      
+      <!--=============== EMAIL JS ===============-->
+      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
-    <!--=============== EMAIL JS ===============-->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
+      <!--=============== MAIN JS ===============-->
+      <script src="assets/js/main.js"></script>
+      
+   </body>
 </html>
