@@ -1534,3 +1534,10 @@ body.dark-theme {
     border-radius: /* same border-radius as the "Contact Me" button */;
     /* ... any other styles to match the "Contact Me" button ... */
 }
+
+/* Add this CSS to your existing styles or create a new CSS file */
+
+/* Center-align text in the .centered-text class */
+.centered-text {
+    text-align: center;
+}
