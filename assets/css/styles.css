@@ -1567,7 +1567,7 @@ body.dark-theme {
 }
 
 /*=============== Testimonials ===============*/
-testimonials {
+.testimonials {
   background-color: var(--container-color);
   transition: background-color .4s; /* for dark mode */
 }
