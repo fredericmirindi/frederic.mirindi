@@ -1571,3 +1571,45 @@ body.dark-theme {
   background-color: var(--container-color);
   transition: background-color .4s; /* for dark mode */
 }
+
+/* Curriculum Section Styles */
+.curriculum {
+    background-color: var(--container-color);
+    padding: 4rem 0;
+}
+
+.curriculum-content {
+    text-align: left;
+}
+
+.curriculum-subtitle {
+    font-size: var(--h2-font-size);
+    margin-bottom: 1.5rem;
+}
+
+.curriculum-description {
+    color: var(--title-color);
+    margin-bottom: 2rem;
+}
+
+.curriculum-list {
+    list-style: none;
+    padding: 0;
+}
+
+.curriculum-list li {
+    margin-bottom: 1.5rem;
+}
+
+.curriculum-topic {
+    color: var(--first-color);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.curriculum-description {
+    color: var(--title-color);
+}
+
+/* Add more styling as needed */
