@@ -18,54 +18,52 @@
    <body>
       <!--==================== HEADER ====================-->
       <header class="header" id="header">
-         <nav class="nav container">
-            <a href="#" class="nav__logo">
-               <span class="nav__logo-circle">M</span>
-
-               <span class="nav__logo-name">Malaïka.</span>
-            </a>
-
-            <div class="nav__menu" id="nav-menu">
-               <span class="nav__title">Menu</span>
-
-               <h3 class="nav__name">Frédéric</h3>
-
-               <ul class="nav__list">
-                  <li class="nav__item">
-                     <a href="#about" class="nav__link">About Me</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="#services" class="nav__link">Services</a>
-                  </li>   
-                  
-                  <li class="nav__item">
-                     <a href="#projects" class="nav__link">Projects</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="#contact" class="nav__link nav__link-button">Contact Me</a>
-                  </li>
-               </ul>
-
-               <!-- Close button -->
-               <div class="nav__close" id="nav-close">
-                  <i class="ri-close-line"></i>
-               </div>
-            </div>
-
-            <div class="nav__buttons">
-               <!-- Theme button -->
-               <i class="ri-moon-line change-theme" id="theme-button"></i>
-
-               <!-- Toggle button -->
-               <div class="nav__toggle" id="nav-toggle">
-                  <i class="ri-menu-4-line"></i>
-               </div>
-            </div>
-         </nav>
-      </header>
-
+   <nav class="nav container">
+      <a href="#" class="nav__logo">
+         <span class="nav__logo-circle">M</span>
+         <span class="nav__logo-name">Malaïka.</span>
+      </a>
+      <div class="nav__menu" id="nav-menu">
+         <span class="nav__title">Menu</span>
+         <h3 class="nav__name">Frédéric</h3>
+         <ul class="nav__list">
+            <li class="nav__item">
+               <a href="#learn-french" class="nav__link">Learn French</a>
+            </li>
+            <li class="nav__item">
+               <a href="#schedule" class="nav__link">Schedule</a>
+            </li>
+            <li class="nav__item">
+               <a href="#our-partners" class="nav__link">Our Partners</a>
+            </li>
+            <li class="nav__item">
+               <a href="#language-resources" class="nav__link">Resources</a>
+            </li>
+            <li class="nav__item">
+               <a href="#language-test" class="nav__link">Tests</a>
+            </li>
+            <li class="nav__item">
+               <a href="#events" class="nav__link">Events</a>
+            </li>
+            <li class="nav__item">
+               <a href="#testimonials" class="nav__link">Testimonials</a>
+            </li>
+         </ul>
+         <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+         </div>
+      </div>
+      <div class="nav__buttons">
+         <!-- Theme button -->
+         <i class="ri-moon-line change-theme" id="theme-button"></i>
+         <!-- Toggle button -->
+         <div class="nav__toggle" id="nav-toggle">
+            <i class="ri-menu-4-line"></i>
+         </div>
+      </div>
+   </nav>
+</header>
+      
       <!--==================== MAIN ====================-->
       <main class="main">
 
@@ -209,7 +207,7 @@
 </section>
 
  <!--========== Language Resources ==========-->
-<section class="language-resources section">
+<section class="language-resources section" id="resources">
     <h2 class="section__title-2">
         <span>Language Learning Resources</span>
     </h2>
@@ -223,7 +221,7 @@
 </section>
     
 <!--========== Language Level Test ==========-->
-<section class="language-test section">
+<section class="language-test section" id="tests">
     <h2 class="section__title-2">
         <span>Test Your French Level</span>
     </h2>
@@ -237,7 +235,7 @@
 </section>
 
          <!-- Interactive Quizzes -->
-<section class="quizzes section" id="quizzes">
+<section class="quizzes section">
    <h2 class="section__title-1">
       <span>Interactive Quizzes</span>
    </h2>
@@ -249,7 +247,7 @@
 </section>
 
       <!--========== Events or Workshops ==========-->
-<section class="events section">
+<section class="events section" id="events">
     <h2 class="section__title-2">
         <span>Upcoming Events</span>
     </h2>
@@ -402,28 +400,36 @@
 </div>
       
       <!--==================== FOOTER ====================-->
-      <footer class="footer">
-         <div class="footer__container container grid">
-            <ul class="footer__links">
-               <li>
-                  <a href="#about" class="footer__link">About Me</a>
-               </li>
-
-               <li>
-                  <a href="#services" class="footer__link">Services</a>
-               </li>
-
-               <li>
-                  <a href="#projects" class="footer__link">Projects</a>
-               </li>
-            </ul>
-
-            <span class="footer__copy">
-               &#169; All Rights Reserved By 
-               <a href="#">fredericmirindi.</a>
-            </span>
-         </div>
-      </footer>
+     <footer class="footer">
+   <div class="footer__container container grid">
+      <ul class="footer__links">
+         <li>
+            <a href="#learn-french" class="footer__link">Learn French</a>
+         </li>
+         <li>
+            <a href="#schedule" class "footer__link">Schedule</a>
+         </li>
+         <li>
+            <a href="#our-partners" class="footer__link">Our Partners</a>
+         </li>
+         <li>
+            <a href="#language-resources" class="footer__link">Resources</a>
+         </li>
+         <li>
+            <a href="#language-test" class="footer__link">Tests</a>
+         </li>
+         <li>
+            <a href="#events" class="footer__link">Events</a>
+         </li>
+         <li>
+            <a href="#testimonials" class="footer__link">Testimonials</a>
+         </li>
+      </ul>
+      <span class="footer__copy">
+         &#169; All Rights Reserved By <a href="#">fredericmirindi.</a>
+      </span>
+   </div>
+</footer>
 
       <!--========== SCROLL UP ==========-->
       <a href="#" class="scrollup" id="scroll-up">
