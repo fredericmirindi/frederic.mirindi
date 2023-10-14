@@ -141,18 +141,3 @@ const sr = ScrollReveal({
             .about__container .section__title-1, .about__info, 
             .contact__social, .contact__data`, {origin: 'left'})
  sr.reveal(`.services__card, .projects__card`, {interval: 100})
-
-// Function to toggle event descriptions
-function toggleDescription(button) {
-  const description = button.nextElementSibling;
-  description.classList.toggle("hidden");
-}
-
-// Function to handle form submission
-function submitForm(event) {
-  event.preventDefault();
-  const form = event.target;
-  // Add code to handle form submission, e.g., sending data to a server
-}
-
-// Add more JavaScript functions as needed
