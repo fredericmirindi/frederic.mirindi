@@ -1613,3 +1613,6 @@ body.dark-theme {
 }
 
 /* Add more styling as needed */
+.resource-link__text {
+    color: red; /* Change this to your desired text color */
+}
