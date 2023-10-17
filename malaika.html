@@ -193,46 +193,24 @@
     <button type="submit" class="schedule-registration__button button">Subscribe</button>
 </form>
 
-<!-- Registration Form 2-->
-       <head>
-    <title>Subscribe to Classes</title>
-</head>
-<body>
-    <h3>Subscribe to Classes</h3>
-    <form id="registration-form">
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" required placeholder="Full Name">
-        <br>
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" required placeholder="Email Address">
-        <br>
-        <button type="submit">Subscribe</button>
+<!-- Your HTML content before the form -->
+<div class="your-section">
+    <h3 class="schedule-registration__title">Subscribe to Classes</h3>
+    <form class="schedule-registration__form" action="https://script.google.com/macros/s/AKfycbz571fAv7RF653KI5hWDUsYI_sko53fjryed5o7j0uz8j8aiGP6K8rwAWjUgdBbooubHw/exec" method="POST" id="registration-form">
+        <div class="schedule-registration__group">
+            <label for="name" class="schedule-registration__label">Full Name</label>
+            <input type="text" name="full_name" class="schedule-registration__input" id="name" required placeholder="Full Name">
+        </div>
+
+        <div class="schedule-registration__group">
+            <label for="email" class="schedule-registration__label">Email Address</label>
+            <input type="email" name="email" class="schedule-registration__input" id="email" required placeholder="Email Address">
+        </div>
+
+        <button type="submit" class="schedule-registration__button button">Subscribe</button>
     </form>
-
-    <script>
-        document.getElementById("registration-form").addEventListener("submit", function (event) {
-            event.preventDefault();
-            var formData = {
-                full_name: document.getElementById("name").value,
-                email: document.getElementById("email").value
-            };
-
-            var jsonData = JSON.stringify(formData);
-
-            fetch("https://script.google.com/macros/s/AKfycbz571fAv7RF653KI5hWDUsYI_sko53fjryed5o7j0uz8j8aiGP6K8rwAWjUgdBbooubHw/exec", {
-                method: "POST",
-                body: jsonData,
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.error(error);
-            });
-        });
-    </script>
-</body>
+</div>
+<!-- Your HTML content after the form -->
 
 <!-- Partners SECTION -->
 <section class="financing section" id="our-partners">
