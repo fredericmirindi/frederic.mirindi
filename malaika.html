@@ -212,6 +212,30 @@
 </div>
 <!-- Your HTML content after the form -->
 
+<script>
+    document.getElementById("registration-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        var formData = {
+            full_name: document.getElementById("name").value,
+            email: document.getElementById("email").value
+        };
+
+        var jsonData = JSON.stringify(formData);
+
+        fetch("https://script.google.com/macros/s/AKfycbz571fAv7RF653KI5hWDUsYI_sko53fjryed5o7j0uz8j8aiGP6K8rwAWjUgdBbooubHw/exec", {
+            method: "POST",
+            body: jsonData,
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.error(error);
+        });
+    });
+</script>
+
 <!-- Partners SECTION -->
 <section class="financing section" id="our-partners">
     <div class="container grid">
