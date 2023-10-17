@@ -215,19 +215,14 @@
 <script>
     document.getElementById("registration-form").addEventListener("submit", function (event) {
         event.preventDefault();
-        var formData = {
-            full_name: document.getElementById("name").value,
-            email: document.getElementById("email").value
-        };
 
-        var jsonData = JSON.stringify(formData);
+        var formData = new FormData(); // Create a FormData object
+        formData.append("full_name", document.getElementById("name").value);
+        formData.append("email", document.getElementById("email").value);
 
         fetch("https://script.google.com/macros/s/AKfycbz571fAv7RF653KI5hWDUsYI_sko53fjryed5o7j0uz8j8aiGP6K8rwAWjUgdBbooubHw/exec", {
             method: "POST",
-            body: jsonData,
-            headers: {
-                "Content-Type": "application/json"
-            }
+            body: formData, // Send the FormData object
         }).then(function (response) {
             console.log(response);
         }).catch(function (error) {
