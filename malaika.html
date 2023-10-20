@@ -212,10 +212,10 @@
     });
 </script>
 
-         <!-- Registration Form -->
+       <!-- Registration Form -->
 <div class="schedule-registration">
    <h3 class="schedule-registration__title">Subscribe to Classes</h3>
-   <form class="schedule-registration__form" action="your-server-script.php" method="POST" id="registration-form" onsubmit="submitForm(event)">
+   <form class="schedule-registration__form" action="" method="POST" id="registration-form">
        <div class="schedule-registration__group">
            <input type="text" name="user_name" class="schedule-registration__input" id="name" required placeholder="Full Name">
            <label for="name" class="schedule-registration__label">Full Name</label>
@@ -229,6 +229,27 @@
        <button type="submit" class="schedule-registration__button button">Subscribe</button>
    </form>
 </div>
+
+<!-- JavaScript for Form Submission -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const registrationForm = document.getElementById("registration-form");
+        const contactMessage = document.createElement("p");
+
+        registrationForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // You can add your code to handle the subscribe form submission here.
+            // Send a request to your server to process the subscription.
+
+            // Replace the following line with your handling logic.
+            // Display a success message (you can customize this message)
+            contactMessage.textContent = "Thank you for subscribing!";
+            document.querySelector(".schedule-registration").appendChild(contactMessage);
+        });
+    });
+</script>
+
 
 <!-- Our Partners Section -->
 <section class="partners section" id="our-partners">
