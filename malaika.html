@@ -214,22 +214,20 @@
 </div>
    </section>
 
-         <!-- SCHEDULE SECTION -->
+        <!-- SCHEDULE SECTION -->
 <section class="schedule section" id="contact">
-    <div class="schedule-description">
-        <div class="contact__container grid">
-            <h2 class="section__title-2">
-                <span>Schedule.</span>
-            </h2>
-            <p class="schedule-description__text">
-                Join us for interactive online classes offered every day via Zoom. Whether you're a morning person or a night owl, our flexible schedule has you covered.
-            </p>
-            <p class="schedule-description__text">
-                Our classes run from 1:00 PM to 10:00 PM Winnipeg time. To get started, simply fill out the registration form below.
-            </p>
+    <div class="contact__container grid">
+        <h2 class="section__title-2">
+            <span>Schedule.</span>
+        </h2>
 
-            <form action="" class="contact__form" id="contact-form">
-                <div class="contact__group">
+        <div class="schedule-description">
+            <div class="contact__mail">
+                <h2 class="contact__title">
+                    Subscribe to Classes
+                </h2>
+
+                <form action="" class="contact__form" id="contact-form">
                     <div class="contact__box">
                         <input type="text" name="user_name" class="contact__input" id="name" required placeholder="Full Name">
                         <label for="name" class="contact__label">Full Name</label>
@@ -239,37 +237,43 @@
                         <input type="email" name="user_email" class="contact__input" id="email" name="user_email" required placeholder="Email Address">
                         <label for="email" class="contact__label">Email Address</label>
                     </div>
-                </div>
 
+                    <button type="submit" class="contact__button button" id="subscribe-button">
+                        <i class="ri-send-plane-line"></i> Subscribe
+                    </button>
+                </form>
                 <p class="contact__message" id="contact-message"></p>
+            </div>
 
-                <button type="submit" class="contact__button button">
-                    <i class="ri-send-plane-line"></i> Subscribe
-                </button>
-            </form>
-            
-            <!-- JavaScript code for the subscribe button -->
-            <script>
-                document.addEventListener("DOMContentLoaded", function () {
-                    const contactForm = document.getElementById("contact-form");
-                    const contactMessage = document.getElementById("contact-message");
+            <div class="schedule-description__text">
+                Join us for interactive online classes offered every day via Zoom. Whether you're a morning person or a night owl, our flexible schedule has you covered.
+            </div>
 
-                    contactForm.addEventListener("submit", function (e) {
-                        e.preventDefault();
-
-                        // You can add your code to handle the subscribe form submission here.
-                        // You may want to send a request to your server to process the subscription.
-
-                        // Display a success message (you can customize this message)
-                        contactMessage.textContent = "Thank you for subscribing!";
-                    });
-                });
-            </script>
+            <div class="schedule-description__text">
+                Our classes run from 1:00 PM to 10:00 PM Winnipeg time. To get started, simply fill out the registration form above.
+            </div>
         </div>
     </div>
 </section>
 
+<!-- JavaScript code for the subscribe button -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+        const subscribeButton = document.getElementById("subscribe-button");
+        const contactMessage = document.getElementById("contact-message");
 
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // You can add your code to handle the subscribe form submission here.
+            // You may want to send a request to your server to process the subscription.
+
+            // Display a success message (you can customize this message)
+            contactMessage.textContent = "Thank you for subscribing!";
+        });
+    });
+</script>
 
 <!-- Our Partners Section -->
 <section class="partners section" id="our-partners">
