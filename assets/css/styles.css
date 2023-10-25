@@ -1618,20 +1618,17 @@ body.dark-theme {
 }
 
 
-/* Par défaut, les leçons sont affichées horizontalement */
-.subpage__lesson {
-    flex: 1;
-    margin: 5px; /* Ajustez la marge à votre préférence */
-    width: calc(25% - 10px); /* 25% pour chaque élément avec une marge de 5px de chaque côté */
+/* Pour les écrans de bureau */
+.subpage__lessons-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes égales */
+    grid-gap: 10px; /* Espace entre les colonnes */
 }
 
-/* Pour les écrans mobiles, les leçons sont affichées verticalement */
+/* Pour les écrans mobiles */
 @media (max-width: 768px) {
-    .subpage__lesson {
-        width: 100%; /* Les leçons occupent toute la largeur de l'écran */
-        margin: 5px 0; /* Ajustez la marge à votre préférence */
+    .subpage__lessons-container {
+        grid-template-columns: 1fr; /* Une colonne pour les petits écrans */
     }
 }
-
-
 
