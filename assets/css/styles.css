@@ -1628,15 +1628,20 @@ body.dark-theme {
     justify-content: space-between;
 }
 
-/* Default styles */
+/* Styles pour les ordinateurs */
 .subpage__lesson {
     flex: 1;
-    margin: 250px; /* Adjust the margin for desktop */
+    margin: 5px; /* Ajustez la marge à votre préférence */
 }
 
-/* Media query for mobile */
+/* Styles pour les mobiles (largeur inférieure à 768px, mais vous pouvez ajuster cette valeur) */
 @media (max-width: 768px) {
+    .subpage__lessons-container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .subpage__lesson {
-        margin: 200px; /* Adjust the margin for mobile devices */
+        margin: 5px; /* Ajustez la marge pour les mobiles à votre préférence */
     }
 }
