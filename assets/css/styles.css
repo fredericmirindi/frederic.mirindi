@@ -1631,12 +1631,12 @@ body.dark-theme {
 /* Default styles */
 .subpage__lesson {
     flex: 1;
-    margin: 10px; /* Adjust the margin for desktop */
+    margin: 250px; /* Adjust the margin for desktop */
 }
 
 /* Media query for mobile */
 @media (max-width: 768px) {
     .subpage__lesson {
-        margin: 5px; /* Adjust the margin for mobile devices */
+        margin: 200px; /* Adjust the margin for mobile devices */
     }
 }
