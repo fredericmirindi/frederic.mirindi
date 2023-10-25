@@ -1622,3 +1622,13 @@ body.dark-theme {
     max-width: 200px;
     height: auto;
 }
+/* Dans votre fichier styles.css */
+.subpage__lessons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.subpage__lesson {
+    flex: 1;
+    margin: 10px; /* Ajustez la marge selon vos préférences */
+}
