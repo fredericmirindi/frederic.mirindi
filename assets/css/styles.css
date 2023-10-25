@@ -1652,3 +1652,9 @@ body.dark-theme {
     margin-bottom: 20px; /* Vous pouvez ajuster la valeur selon l'espace souhaité entre les leçons */
 }
 
+.subpage__lesson-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
