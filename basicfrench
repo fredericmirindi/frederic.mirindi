@@ -1,0 +1,76 @@
+<!-- ... (your existing content) ... -->
+
+<!-- Subpage for Basic French -->
+<section class="subpage" id="basic-french">
+    <h2 class="section__title-1">
+        <span>Basic French</span>
+    </h2>
+    <p class="subpage__intro">
+        Welcome to the Basic French section, where you can start your journey to learn the beautiful French language. These lessons cover the fundamentals of French, from the alphabet to basic greetings and numbers.
+    </p>
+    
+    <!-- Table of Contents -->
+    <div class="subpage__table-of-contents">
+        <h3>Table of Contents</h3>
+        <ul>
+            <li><a href="#lesson-a1-a">Lesson A1 - A</a></li>
+            <li><a href="#lesson-a1-b">Lesson A1 - B</a></li>
+            <li><a href="#lesson-a1-c">Lesson A1 - C</a></li>
+            <li><a href="#lesson-a1-e">Lesson A1 - E</a></li>
+        </ul>
+    </div>
+    
+    <!-- Lesson A1 - A -->
+    <div class="subpage__lesson" id="lesson-a1-a">
+        <h3 class="subpage__lesson-title">Lesson A1 - A: L’alphabet Français (The French Alphabet)</h3>
+        <a href="Lesson_A1-A_October_2023_protected.pdf" class="subpage__lesson-link" download>Download PDF</a>
+    </div>
+    
+    <!-- Lesson A1 - B -->
+    <div class="subpage__lesson" id="lesson-a1-b">
+        <h3 class="subpage__lesson-title">Lesson A1 - B: Lesson 1: Greetings and Introductions</h3>
+        <a href="Lesson_A1-B_October_2023_protected.pdf" class="subpage__lesson-link" download>Download PDF</a>
+    </div>
+    
+    <!-- Lesson A1 - C -->
+    <div class="subpage__lesson" id="lesson-a1-c">
+        <h3 class="subpage__lesson-title">Lesson A1 - C: Les Chiffres en Français (French Numbers)</h3>
+        <a href="Lesson_A1-C_October_2023_protected.pdf" class="subpage__lesson-link" download>Download PDF</a>
+    </div>
+    
+    <!-- Lesson A1 - E -->
+    <div class="subpage__lesson" id="lesson-a1-e">
+        <h3 class="subpage__lesson-title">Lesson A1 - E: La Pratique de l’Heure en Français</h3>
+        <a href="Lesson_A1-E_October_2023_protected.pdf" class="subpage__lesson-link" download>Download PDF</a>
+    </div>
+    
+    <!-- Additional Resources -->
+    <div class="subpage__resources">
+        <h3>Additional Resources</h3>
+        <ul>
+            <li><a href="https://www.duolingo.com" target="_blank">Duolingo</a></li>
+            <li><a href="https://www.wordreference.com/" target="_blank">WordReference</a></li>
+            <!-- Add more resource links here -->
+        </ul>
+    </div>
+    
+    <!-- Language Level Test -->
+    <div class="subpage__language-tests">
+        <h3>Language Level Tests</h3>
+        <p>Not sure about your French proficiency? Take one of these tests to assess your skills:</p>
+        <ul>
+            <li><a href="https://www.duolingo.com/courses/learn-french" target="_blank">Duolingo French Test</a> - A comprehensive test to evaluate your language skills.</li>
+            <li><a href="https://www.alliancefrancaise.org/" target="_blank">Alliance Française Language Tests</a> - Official tests offered by Alliance Française.</li>
+            <!-- Add more test links and descriptions here -->
+        </ul>
+    </div>
+    
+    <!-- Return to Main Menu Link -->
+    <div class="subpage__return">
+        <a href="index.html" class="button">
+            <i class="ri-arrow-left-line"></i> Return to Main Menu
+        </a>
+    </div>
+</section>
+
+<!-- ... (your existing content) ... -->
