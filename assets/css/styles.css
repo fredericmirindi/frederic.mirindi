@@ -1636,3 +1636,19 @@ body.dark-theme {
     margin-bottom: 20px; /* Vous pouvez ajuster la valeur selon l'espace souhaité */
 }
 
+/* Centre le contenu des leçons */
+.subpage__lesson-content {
+    text-align: center;
+}
+
+/* Réduire la taille des images */
+.subpage__lesson-img {
+    max-width: 200px; /* Vous pouvez ajuster la largeur maximale selon vos besoins */
+    height: auto;
+}
+
+/* Espacement entre les leçons */
+.subpage__lesson {
+    margin-bottom: 20px; /* Vous pouvez ajuster la valeur selon l'espace souhaité entre les leçons */
+}
+
