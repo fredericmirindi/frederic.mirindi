@@ -1618,22 +1618,7 @@ body.dark-theme {
 }
 
 
-.vertical-section {
-    padding: 4em 0; /* Adjust padding as needed */
+.subpage__lesson-img {
+    max-width: 200px;
+    height: auto;
 }
-
-.vertical-card {
-    display: flex;
-    flex-direction: column;
-}
-
-.vertical-content {
-    text-align: center;
-}
-
-.vertical-content .projects__subtitle,
-.vertical-content .projects__title,
-.vertical-content .projects__description {
-    margin: 10px 0;
-}
-
