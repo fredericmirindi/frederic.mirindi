@@ -1616,3 +1616,24 @@ body.dark-theme {
     max-height: 200px; /* Adjust the height as needed */
     /* You can set either max-width or max-height to control the image size while maintaining the aspect ratio */
 }
+
+
+.vertical-section {
+    padding: 4em 0; /* Adjust padding as needed */
+}
+
+.vertical-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.vertical-content {
+    text-align: center;
+}
+
+.vertical-content .projects__subtitle,
+.vertical-content .projects__title,
+.vertical-content .projects__description {
+    margin: 10px 0;
+}
+
