@@ -1632,3 +1632,7 @@ body.dark-theme {
     }
 }
 
+.intro-basic-french__container {
+    margin-bottom: 20px; /* Vous pouvez ajuster la valeur selon l'espace souhaité */
+}
+
