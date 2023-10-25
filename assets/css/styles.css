@@ -1628,7 +1628,15 @@ body.dark-theme {
     justify-content: space-between;
 }
 
+/* Default styles */
 .subpage__lesson {
     flex: 1;
-    margin: 250px; /* Réduire la marge */
+    margin: 10px; /* Adjust the margin for desktop */
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+    .subpage__lesson {
+        margin: 5px; /* Adjust the margin for mobile devices */
+    }
 }
