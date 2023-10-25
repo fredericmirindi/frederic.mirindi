@@ -1632,3 +1632,11 @@ body.dark-theme {
     flex: 1;
     margin: 2px; /* Ajustez la marge selon vos préférences */
 }
+<style>
+
+.subpage {
+        max-width: 1200px; /* Réduire la largeur de la section parente */
+        margin: 0 auto; /* Centrer la section sur la page */
+    }
+</style>
+
