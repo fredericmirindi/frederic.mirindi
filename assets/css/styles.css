@@ -1630,5 +1630,5 @@ body.dark-theme {
 
 .subpage__lesson {
     flex: 1;
-    margin: 20px; /* Réduire la marge */
+    margin: 50px; /* Réduire la marge */
 }
