@@ -1618,30 +1618,20 @@ body.dark-theme {
 }
 
 
-.subpage__lesson-img {
-    max-width: 200px;
-    height: auto;
-}
-/* Dans votre fichier styles.css */
-.subpage__lessons-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Styles pour les ordinateurs */
+/* Par défaut, les leçons sont affichées horizontalement */
 .subpage__lesson {
     flex: 1;
     margin: 5px; /* Ajustez la marge à votre préférence */
+    width: calc(25% - 10px); /* 25% pour chaque élément avec une marge de 5px de chaque côté */
 }
 
-/* Styles pour les mobiles (largeur inférieure à 768px, mais vous pouvez ajuster cette valeur) */
+/* Pour les écrans mobiles, les leçons sont affichées verticalement */
 @media (max-width: 768px) {
-    .subpage__lessons-container {
-        display: flex;
-        flex-direction: column;
-    }
-
     .subpage__lesson {
-        margin: 5px; /* Ajustez la marge pour les mobiles à votre préférence */
+        width: 100%; /* Les leçons occupent toute la largeur de l'écran */
+        margin: 5px 0; /* Ajustez la marge à votre préférence */
     }
 }
+
+
+
