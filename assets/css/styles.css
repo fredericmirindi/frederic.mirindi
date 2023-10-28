@@ -1686,3 +1686,15 @@ body.dark-theme {
     align-items: center;
 }
 
+/* Ajouter un espacement sous la description sur les écrans étroits */
+@media (max-width: 767px) {
+    .projects__description {
+        margin-bottom: 20px; /* Ajustez la valeur selon vos préférences */
+    }
+
+    .projects__button {
+        margin-top: 10px; /* Ajustez la valeur selon vos préférences */
+    }
+}
+
+
