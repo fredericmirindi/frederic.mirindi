@@ -1620,12 +1620,12 @@ body.dark-theme {
 
 
 /*=============== PROJECTS ===============*/
-.projects__ma {
+.projects {
   background-color: var(--container-color);
   transition: background-color .4s; /* for dark mode */
 }
 
-.projects__container__ma {
+.projects__container {
   row-gap: 2rem;
 }
 
