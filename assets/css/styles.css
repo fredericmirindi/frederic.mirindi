@@ -1611,6 +1611,34 @@ body.dark-theme {
 .curriculum-description {
     color: var(--title-color);
 }
+
+.projects__card {
+    position: relative;
+    overflow: hidden;
+}
+
+.projects__button {
+    position: absolute;
+    bottom: 20px; /* Ajustez la position verticale selon vos préférences */
+    right: 20px; /* Ajustez la position horizontale selon vos préférences */
+    background: #fff; /* Couleur de fond du bouton */
+    color: #000; /* Couleur du texte du bouton */
+    padding: 10px 20px; /* Ajustez la taille du bouton selon vos préférences */
+    border-radius: 4px; /* Ajustez le rayon de bordure selon vos préférences */
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+.projects__button:hover {
+    background: #000; /* Couleur de fond du bouton au survol */
+    color: #fff; /* Couleur du texte du bouton au survol */
+}
+
+@media (max-width: 768px) {
+    /* Styles pour les écrans de largeur maximale de 768 pixels (ex. téléphones mobiles) */
+    /* Ajoutez ici vos styles spécifiques pour les mobiles */
+}
+
 .events .event__image {
     max-width: 200px; /* Adjust the width as needed */
     max-height: 200px; /* Adjust the height as needed */
