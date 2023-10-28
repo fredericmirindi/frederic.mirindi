@@ -1686,23 +1686,90 @@ body.dark-theme {
     align-items: center;
 }
 
-/* Styles pour les boutons "Learn More" */
-.projects__button__ma {
-    position: absolute;
-    right: 1rem;
-    bottom: -1.5rem;
-    padding: 1rem;
+
+
+
+
+
+
+/*=============== PROJECTS ===============*/
+.projects__ma {
+  background-color: var(--container-color);
+  transition: background-color .4s; /* for dark mode */
 }
 
-/* Ajouter un espacement sous la description sur les écrans étroits */
-@media (max-width: 767px) {
-    .projects__description {
-        margin-bottom: 20px; /* Ajustez la valeur selon vos préférences */
-    }
+.projects__container__ma {
+  row-gap: 2rem;
+}
 
-    .projects__button__ma {
-        margin-top: 10px; /* Ajustez la valeur selon vos préférences */
-    }
+.projects__card__ma {
+  padding: 1rem 1rem 2rem;
+  transition: background-color .4s;
+}
+
+.projects__image__ma {
+  position: relative;
+  margin-bottom: .75rem;
+}
+
+.projects__content__ma {
+  margin-bottom: 1.25rem;
+}
+
+.projects__subtitle__ma {
+  position: relative;
+  display: inline-block;
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  color: var(--text-color);
+  margin-bottom: .75rem;
+  padding-left: 1.75rem;
+}
+
+.projects__subtitle__ma::after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background-color: var(--text-color);
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.projects__title__ma {
+  font-size: var(--h3-font-size);
+  margin-bottom: .75rem;
+}
+
+.projects__buttons__ma {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+}
+
+.projects__link__ma {
+  display: flex;
+  align-items: center;
+  column-gap: .25rem;
+  color: var(--text-color);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  transition: color .4s;
+}
+
+.projects__link__ma i {
+  font-size: 1rem;
+  color: var(--title-color);
+  transition: color .4s;
+}
+
+.projects__link__ma:hover, 
+.projects__link__ma:hover i {
+  color: var(--first-color);
+}
+
+.projects__card__ma:hover {
+  background-color: var(--white-color);
 }
 
 
