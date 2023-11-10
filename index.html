@@ -190,7 +190,52 @@
         </div>
     </div>
 </section>
- 
+
+<!--==================== Research Outputs ====================-->
+<section class="research-outputs section" id="research-outputs">
+    <h2 class="section__title-2">
+        <span>Research Outputs.</span>
+    </h2>
+
+    <div class="research-outputs__container container grid">
+        <div>
+            <h2>Research Outputs</h2>
+            <ul>
+                <li id="paper-1">- Frédéric Mirindi (2023): <i>Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms</i>, Working Paper <a href="path_to_pdf" target="_blank" onclick="showAbstract('abstract-1')"><i class="fa fa-file-pdf-o"></i></a></li>
+                <!-- Add more papers as needed -->
+            </ul>
+        </div>
+
+        <!-- Abstract container -->
+        <div id="abstract-container">
+            <div id="abstract-1" class="abstract">
+                <h3>Abstract</h3>
+                <p>The economic literature suggests that family size is a driver of child outcomes...</p>
+                <p>Keywords: family size, human capital, quantity-quality tradeoff, dilution effect, spillover effect, social norms, Sub-Saharan Africa</p>
+            </div>
+            <!-- Add more abstracts as needed -->
+        </div>
+    </div>
+</section>
+
+<script>
+    function showAbstract(abstractId) {
+        // Hide all abstracts
+        document.querySelectorAll('.abstract').forEach(function (el) {
+            el.style.display = 'none';
+        });
+
+        // Show the selected abstract
+        document.getElementById(abstractId).style.display = 'block';
+    }
+</script>
+
+
+
+         
+
+
+         
          <!--==================== SERVICES ====================-->
          <section class="services section" id="services">
             <h2 class="section__title-2">
