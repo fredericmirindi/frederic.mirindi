@@ -141,3 +141,16 @@ const sr = ScrollReveal({
             .about__container .section__title-1, .about__info, 
             .contact__social, .contact__data`, {origin: 'left'})
  sr.reveal(`.services__card, .projects__card`, {interval: 100})
+
+
+<script>
+    function showAbstract(abstractId) {
+        // Hide all abstracts
+        document.querySelectorAll('.abstract').forEach(function (el) {
+            el.style.display = 'none';
+        });
+
+        // Show the selected abstract
+        document.getElementById(abstractId).style.display = 'block';
+    }
+</script>
