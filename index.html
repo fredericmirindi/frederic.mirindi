@@ -11,22 +11,64 @@
             font-family: 'EB Garamond', serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             background-color: #e8f1f2;
             color: #333;
         }
 
-        .centered-content {
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 10px 0;
             text-align: center;
+            font-size: 1.5em;
+        }
+
+        nav {
+            background-color: #004080;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background-color: #003366;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 90vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .centered-content {
             background: #fff;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 90%;
-            margin: 10px;
+            max-width: 800px;
+            width: 100%;
         }
 
         .centered-content h1 {
@@ -61,7 +103,7 @@
         }
 
         .highlight {
-            background-color: #f9f6e5;
+            background-color: #fff9e5;
             border: 2px solid #003366;
             padding: 10px;
             margin-top: 20px;
@@ -111,6 +153,15 @@
         }
 
         @media (max-width: 600px) {
+            header {
+                font-size: 1.2em;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
             .centered-content h1 {
                 font-size: 2em;
             }
@@ -130,31 +181,65 @@
     </style>
 </head>
 <body>
-    <div class="centered-content">
-        <h1>Frédéric Mirindi</h1>
-        <p>Data Analyst, PhD Student</p>
-        <p>Economics and Econometrics</p>
-        <p>University of Manitoba</p>
-        <hr>
-        <p>Email: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-        <p>Website under construction. Please check back soon!</p>
-        <div class="highlight">
-            <h2>Current Research Projects</h2>
-            <p><strong>Beyond Homo Economicus:</strong> Rethinking Economic Rationality in African Contexts</p>
-            <p><strong>The Resurgence of the M23 Rebel Group:</strong> The Complexities of Conflict Resolution in the Eastern Democratic Republic of the Congo</p>
-        </div>
-        <div class="academic-info">
-            <h3>About Me</h3>
-            <p>I am a dedicated economist with a strong focus on data analysis, econometrics, and economic research. My academic journey and professional experience have equipped me with the skills to tackle complex economic issues and contribute valuable insights to the field.</p>
-            <h3>Key Areas of Expertise</h3>
-            <ul>
-                <li>Microeconometrics and econometric modeling</li>
-                <li>Data analysis and visualization</li>
-                <li>Labor economics and experimental economics</li>
-                <li>Conflict resolution and economic development</li>
-            </ul>
-            <h3>Professional Affiliations</h3>
-            <p>Member of the Canadian Economics Association and the American Economic Association.</p>
+    <header>
+        Frédéric Mirindi - Portfolio
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#formulas">Formulas</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="centered-content">
+            <h1>Frédéric Mirindi</h1>
+            <p>Data Analyst, PhD Student</p>
+            <p>Economics and Econometrics</p>
+            <p>University of Manitoba</p>
+            <hr>
+            <p id="contact">Email: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+            <p>Website under construction. Please check back soon!</p>
+            <div class="highlight">
+                <h2 id="projects">Current Research Projects</h2>
+                <p><strong>Beyond Homo Economicus:</strong> Rethinking Economic Rationality in African Contexts</p>
+                <p><strong>The Resurgence of the M23 Rebel Group:</strong> The Complexities of Conflict Resolution in the Eastern Democratic Republic of the Congo</p>
+            </div>
+            <div class="academic-info" id="about">
+                <h3>About Me</h3>
+                <p>I am a dedicated economist with a strong focus on data analysis, econometrics, and economic research. My academic journey and professional experience have equipped me with the skills to tackle complex economic issues and contribute valuable insights to the field.</p>
+                <h3>Key Areas of Expertise</h3>
+                <ul>
+                    <li>Microeconometrics and econometric modeling</li>
+                    <li>Data analysis and visualization</li>
+                    <li>Labor economics and experimental economics</li>
+                    <li>Conflict resolution and economic development</li>
+                </ul>
+                <h3>Professional Affiliations</h3>
+                <p>Member of the Canadian Economics Association and the American Economic Association.</p>
+            </div>
+            <div class="academic-info" id="formulas">
+                <h3>Important Formulas</h3>
+                <h4>Microeconomics</h4>
+                <ul>
+                    <li><strong>Demand Function:</strong> \( Q_d = a - bP \)</li>
+                    <li><strong>Supply Function:</strong> \( Q_s = c + dP \)</li>
+                    <li><strong>Elasticity:</strong> \( E = \frac{\% \Delta Q}{\% \Delta P} \)</li>
+                </ul>
+                <h4>Macroeconomics</h4>
+                <ul>
+                    <li><strong>GDP:</strong> \( GDP = C + I + G + (X - M) \)</li>
+                    <li><strong>Unemployment Rate:</strong> \( U = \frac{\text{Number of Unemployed}}{\text{Labor Force}} \times 100 \)</li>
+                    <li><strong>Inflation Rate:</strong> \( \pi = \frac{P_{t} - P_{t-1}}{P_{t-1}} \times 100 \)</li>
+                </ul>
+                <h4>Econometrics</h4>
+                <ul>
+                    <li><strong>Ordinary Least Squares (OLS):</strong> \( \beta = (X'X)^{-1}X'Y \)</li>
+                    <li><strong>R-squared:</strong> \( R^2 = 1 - \frac{SSR}{SST} \)</li>
+                    <li><strong>Logit Model:</strong> \( \text{logit}(p) = \ln\left(\frac{p}{1 - p}\right) \)</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
