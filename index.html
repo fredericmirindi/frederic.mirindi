@@ -2,37 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,  initial-scale=1.0">
     <title>Frédéric Mirindi - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #e8f1f2;
+            background-color: #f5f5f5;
             color: #333;
         }
 
         header {
-            background-color: #003366;
+            background-color: #0056d2;
             color: white;
-            padding: 10px 0;
+            padding: 15px 0;
             text-align: center;
-            font-size: 1.5em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
 
         nav {
-            background-color: #004080;
-            overflow: hidden;
+            background-color: #003b93;
+            padding: 10px 0;
+            text-align: center;
         }
 
         nav ul {
             list-style-type: none;
-            margin: 0;
             padding: 0;
-            text-align: center;
+            margin: 0;
         }
 
         nav ul li {
@@ -44,45 +49,36 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 14px 20px;
-            display: inline-block;
         }
 
         nav ul li a:hover {
-            background-color: #003366;
+            text-decoration: underline;
         }
 
         .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 90vh;
-            text-align: center;
             padding: 20px;
         }
 
         .centered-content {
-            background: #fff;
-            padding: 20px;
+            text-align: center;
+            background: white;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            width: 100%;
+            margin: 20px auto;
         }
 
         .centered-content h1 {
-            font-size: 2.5em;
+            font-size: 2.2em;
             margin-bottom: 10px;
-            color: #003366;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            color: #0056d2;
         }
 
         .centered-content p {
             font-size: 1.2em;
             margin: 5px 0;
-            color: #003366;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            color: #333;
         }
 
         .centered-content hr {
@@ -93,7 +89,7 @@
         }
 
         .centered-content a {
-            color: #003366;
+            color: #0056d2;
             text-decoration: none;
             font-weight: bold;
         }
@@ -103,18 +99,17 @@
         }
 
         .highlight {
-            background-color: #fff9e5;
-            border: 2px solid #003366;
+            background-color: #e6f2ff;
+            border: 2px solid #0056d2;
             padding: 10px;
             margin-top: 20px;
             border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         }
 
         .highlight h2 {
             margin-top: 0;
             font-size: 1.5em;
-            color: #003366;
+            color: #0056d2;
         }
 
         .highlight p {
@@ -130,8 +125,7 @@
         .academic-info h3 {
             margin-top: 0;
             font-size: 1.3em;
-            color: #003366;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            color: #0056d2;
         }
 
         .academic-info p {
@@ -153,17 +147,12 @@
         }
 
         @media (max-width: 600px) {
-            header {
-                font-size: 1.2em;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 10px 0;
+            header h1 {
+                font-size: 1.8em;
             }
 
             .centered-content h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
 
             .centered-content p {
@@ -182,16 +171,16 @@
 </head>
 <body>
     <header>
-        Frédéric Mirindi - Portfolio
+        <h1>Frédéric Mirindi</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research Projects</a></li>
+                <li><a href="#formulas">Important Formulas</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#formulas">Formulas</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
     <div class="container">
         <div class="centered-content">
             <h1>Frédéric Mirindi</h1>
@@ -201,8 +190,8 @@
             <hr>
             <p id="contact">Email: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
             <p>Website under construction. Please check back soon!</p>
-            <div class="highlight">
-                <h2 id="projects">Current Research Projects</h2>
+            <div class="highlight" id="research">
+                <h2>Current Research Projects</h2>
                 <p><strong>Beyond Homo Economicus:</strong> Rethinking Economic Rationality in African Contexts</p>
                 <p><strong>The Resurgence of the M23 Rebel Group:</strong> The Complexities of Conflict Resolution in the Eastern Democratic Republic of the Congo</p>
             </div>
@@ -220,24 +209,21 @@
                 <p>Member of the Canadian Economics Association and the American Economic Association.</p>
             </div>
             <div class="academic-info" id="formulas">
-                <h3>Important Formulas</h3>
+                <h3>Important Formulas in Economics</h3>
                 <h4>Microeconomics</h4>
                 <ul>
-                    <li><strong>Demand Function:</strong> \( Q_d = a - bP \)</li>
-                    <li><strong>Supply Function:</strong> \( Q_s = c + dP \)</li>
-                    <li><strong>Elasticity:</strong> \( E = \frac{\% \Delta Q}{\% \Delta P} \)</li>
+                    <li>Price Elasticity of Demand: \(E_d = \frac{\% \Delta Q_d}{\% \Delta P}\)</li>
+                    <li>Marginal Cost: \(MC = \frac{\Delta TC}{\Delta Q}\)</li>
                 </ul>
                 <h4>Macroeconomics</h4>
                 <ul>
-                    <li><strong>GDP:</strong> \( GDP = C + I + G + (X - M) \)</li>
-                    <li><strong>Unemployment Rate:</strong> \( U = \frac{\text{Number of Unemployed}}{\text{Labor Force}} \times 100 \)</li>
-                    <li><strong>Inflation Rate:</strong> \( \pi = \frac{P_{t} - P_{t-1}}{P_{t-1}} \times 100 \)</li>
+                    <li>GDP: \(GDP = C + I + G + (X - M)\)</li>
+                    <li>Unemployment Rate: \(UR = \frac{\text{Number of Unemployed}}{\text{Labor Force}} \times 100\)</li>
                 </ul>
                 <h4>Econometrics</h4>
                 <ul>
-                    <li><strong>Ordinary Least Squares (OLS):</strong> \( \beta = (X'X)^{-1}X'Y \)</li>
-                    <li><strong>R-squared:</strong> \( R^2 = 1 - \frac{SSR}{SST} \)</li>
-                    <li><strong>Logit Model:</strong> \( \text{logit}(p) = \ln\left(\frac{p}{1 - p}\right) \)</li>
+                    <li>Ordinary Least Squares (OLS): \(\beta = (X'X)^{-1}X'Y\)</li>
+                    <li>R-squared: \(R^2 = 1 - \frac{SSR}{SST}\)</li>
                 </ul>
             </div>
         </div>
