@@ -4,42 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frédéric Mirindi - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'EB Garamond', serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #e8f1f2;
             color: #333;
         }
 
         .centered-content {
             text-align: center;
             background: #fff;
-            padding: 40px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
+            max-width: 90%;
+            margin: 10px;
         }
 
         .centered-content h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            color: #2c3e50;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            color: #003366;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .centered-content p {
             font-size: 1.2em;
             margin: 5px 0;
-            color: #2c3e50;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #003366;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .centered-content hr {
@@ -50,7 +51,7 @@
         }
 
         .centered-content a {
-            color: #2c3e50;
+            color: #003366;
             text-decoration: none;
             font-weight: bold;
         }
@@ -60,8 +61,8 @@
         }
 
         .highlight {
-            background-color: #ffffe0;
-            border: 2px solid #2c3e50;
+            background-color: #f9f6e5;
+            border: 2px solid #003366;
             padding: 10px;
             margin-top: 20px;
             border-radius: 5px;
@@ -71,7 +72,7 @@
         .highlight h2 {
             margin-top: 0;
             font-size: 1.5em;
-            color: #2c3e50;
+            color: #003366;
         }
 
         .highlight p {
@@ -87,8 +88,8 @@
         .academic-info h3 {
             margin-top: 0;
             font-size: 1.3em;
-            color: #2c3e50;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #003366;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         .academic-info p {
@@ -108,6 +109,24 @@
             margin-bottom: 5px;
             font-size: 1.1em;
         }
+
+        @media (max-width: 600px) {
+            .centered-content h1 {
+                font-size: 2em;
+            }
+
+            .centered-content p {
+                font-size: 1em;
+            }
+
+            .highlight h2, .academic-info h3 {
+                font-size: 1.2em;
+            }
+
+            .highlight p, .academic-info p, .academic-info ul li {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -118,7 +137,7 @@
         <p>University of Manitoba</p>
         <hr>
         <p>Email: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-        <p>Website in construction</p>
+        <p>Website under construction. Please check back soon!</p>
         <div class="highlight">
             <h2>Current Research Projects</h2>
             <p><strong>Beyond Homo Economicus:</strong> Rethinking Economic Rationality in African Contexts</p>
