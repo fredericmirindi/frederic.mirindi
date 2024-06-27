@@ -156,6 +156,47 @@
             font-size: 1.1em;
         }
 
+        .contact-form {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .contact-form h3 {
+            margin-top: 0;
+            font-size: 1.3em;
+            color: #0056d2;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .contact-form button {
+            background-color: #0056d2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .contact-form button:hover {
+            background-color: #003b93;
+        }
+
         footer {
             background-color: #0056d2;
             color: white;
@@ -182,7 +223,8 @@
             }
 
             .highlight h2,
-            .academic-info h3 {
+            .academic-info h3,
+            .contact-form h3 {
                 font-size: 1.2em;
             }
 
@@ -230,6 +272,18 @@
                     <li>Labor economics and experimental economics</li>
                     <li>Conflict resolution and economic development</li>
                 </ul>
+            </div>
+            <div class="contact-form" id="contact-form">
+                <h3>Contact Me</h3>
+                <form action="https://formspree.io/f/your-form-id" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
             </div>
         </div>
     </div>
