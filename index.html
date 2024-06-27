@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,9 @@
             padding: 0;
             background-color: #f5f5f5;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -38,25 +42,29 @@
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            margin: 0;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            text-decoration: underline;
+            color: #e6f2ff;
         }
 
         .container {
             padding: 20px;
+            flex: 1;
         }
 
         .centered-content {
@@ -92,18 +100,20 @@
             color: #0056d2;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
 
         .centered-content a:hover {
-            text-decoration: underline;
+            color: #003b93;
         }
 
         .highlight {
             background-color: #e6f2ff;
             border: 2px solid #0056d2;
-            padding: 10px;
+            padding: 20px;
             margin-top: 20px;
             border-radius: 5px;
+            text-align: left;
         }
 
         .highlight h2 {
@@ -113,13 +123,14 @@
         }
 
         .highlight p {
-            margin: 5px 0;
+            margin: 10px 0;
             font-size: 1.1em;
             color: #333;
         }
 
         .academic-info {
             margin-top: 20px;
+            text-align: left;
         }
 
         .academic-info h3 {
@@ -137,13 +148,24 @@
         .academic-info ul {
             list-style-type: disc;
             padding-left: 20px;
-            text-align: left;
             color: #333;
         }
 
         .academic-info ul li {
             margin-bottom: 5px;
             font-size: 1.1em;
+        }
+
+        footer {
+            background-color: #0056d2;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
         }
 
         @media (max-width: 600px) {
@@ -159,16 +181,20 @@
                 font-size: 1em;
             }
 
-            .highlight h2, .academic-info h3 {
+            .highlight h2,
+            .academic-info h3 {
                 font-size: 1.2em;
             }
 
-            .highlight p, .academic-info p, .academic-info ul li {
+            .highlight p,
+            .academic-info p,
+            .academic-info ul li {
                 font-size: 1em;
             }
         }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Frédéric Mirindi</h1>
@@ -207,5 +233,9 @@
             </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2024 Frédéric Mirindi. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
