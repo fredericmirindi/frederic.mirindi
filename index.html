@@ -21,16 +21,70 @@
         
         <section class="bg-white p-6 mb-8 rounded shadow">
             <h2 class="text-xl font-bold mb-4">Advanced Microeconomics</h2>
+            
+            <h3 class="text-lg font-semibold mt-4">Consumer Theory</h3>
             <p>Utility Maximization Problem:</p>
             $$\max_{x_1, x_2} U(x_1, x_2) \text{ s.t. } p_1x_1 + p_2x_2 \leq m$$
             <p>where \(U(x_1, x_2)\) is the utility function, \(p_1\) and \(p_2\) are prices, and \(m\) is income.</p>
+
+            <h3 class="text-lg font-semibold mt-4">Producer Theory</h3>  
+            <p>Profit Maximization Problem:</p>
+            $$\max_{q} \pi(q) = pq - c(q)$$
+            <p>where \(\pi(q)\) is the profit function, \(p\) is the price, \(q\) is the quantity produced, and \(c(q)\) is the cost function.</p>
+
+            <h3 class="text-lg font-semibold mt-4">Market Equilibrium</h3>
+            <p>Market Clearing Condition:</p>  
+            $$Q_d(p) = Q_s(p)$$
+            <p>where \(Q_d(p)\) is the demand function and \(Q_s(p)\) is the supply function.</p>
+
+            <h3 class="text-lg font-semibold mt-4">Game Theory</h3>
+            <p>Nash Equilibrium:</p>
+            $$u_i(s_i^*, s_{-i}^*) \geq u_i(s_i, s_{-i}^*) \text{ for all } s_i \in S_i \text{ and for all } i$$  
+            <p>where \(u_i\) is the utility function of player \(i\), \(s_i\) is the strategy of player \(i\), and \(S_i\) is the strategy set of player \(i\).</p>
+        </section>
+
+        <section class="bg-white p-6 mb-8 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Advanced Macroeconomics</h2>
+            
+            <h3 class="text-lg font-semibold mt-4">Solow Growth Model</h3>
+            <p>Steady State Capital per Worker:</p>
+            $$k^* = \left(\frac{s}{n + g + \delta}\right)^{\frac{1}{1-\alpha}}$$
+            <p>where \(k^*\) is the steady state capital per worker, \(s\) is the saving rate, \(n\) is the population growth rate, \(g\) is the technological progress rate, \(\delta\) is the depreciation rate, and \(\alpha\) is the output elasticity of capital.</p>
+
+            <h3 class="text-lg font-semibold mt-4">IS-LM Model</h3>
+            <p>IS Curve:</p>
+            $$Y = C(Y - T) + I(r) + G$$
+            <p>where \(Y\) is output, \(C\) is consumption, \(T\) is taxes, \(I\) is investment, \(r\) is the interest rate, and \(G\) is government spending.</p>
+
+            <p>LM Curve:</p>
+            $$\frac{M}{P} = L(r, Y)$$  
+            <p>where \(\frac{M}{P}\) is real money supply, \(L\) is money demand, \(r\) is the interest rate, and \(Y\) is output.</p>
         </section>
 
         <section class="bg-white p-6 mb-8 rounded shadow">  
             <h2 class="text-xl font-bold mb-4">Econometrics</h2>
-            <p>Linear Regression Model:</p>
-            $$Y_i = \beta_0 + \beta_1X_i + \varepsilon_i$$
-            <p>where \(Y_i\) is the dependent variable, \(X_i\) is the independent variable, \(\beta_0\) and \(\beta_1\) are coefficients, and \(\varepsilon_i\) is the error term.</p>
+            
+            <h3 class="text-lg font-semibold mt-4">Multiple Regression</h3>
+            <p>Multiple Regression Model:</p>
+            $$Y_i = \beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + \ldots + \beta_kX_{ki} + \varepsilon_i$$
+            <p>where \(Y_i\) is the dependent variable, \(X_{1i}, X_{2i}, \ldots, X_{ki}\) are the independent variables, \(\beta_0, \beta_1, \ldots, \beta_k\) are coefficients, and \(\varepsilon_i\) is the error term.</p>
+
+            <h3 class="text-lg font-semibold mt-4">Difference-in-Differences (DiD)</h3>
+            <p>DiD Estimator:</p>  
+            $$\hat{\beta}_{DiD} = (\bar{Y}_{T,1} - \bar{Y}_{T,0}) - (\bar{Y}_{C,1} - \bar{Y}_{C,0})$$
+            <p>where \(\hat{\beta}_{DiD}\) is the DiD estimator, \(\bar{Y}_{T,1}\) and \(\bar{Y}_{T,0}\) are the average outcomes for the treatment group before and after the intervention, and \(\bar{Y}_{C,1}\) and \(\bar{Y}_{C,0}\) are the average outcomes for the control group before and after the intervention.</p>
+
+            <h3 class="text-lg font-semibold mt-4">Regression Discontinuity (RD)</h3>
+            <p>RD Estimator:</p>
+            $$\hat{\beta}_{RD} = \lim_{x \downarrow c} \mathbb{E}[Y_i | X_i = x] - \lim_{x \uparrow c} \mathbb{E}[Y_i | X_i = x]$$
+            <p>where \(\hat{\beta}_{RD}\) is the RD estimator, \(c\) is the cutoff point, \(Y_i\) is the outcome variable, and \(X_i\) is the running variable.</p>
+        </section>
+
+        <section class="bg-white p-6 mb-8 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Publications</h2>
+            <p><a href="https://conferences.lib.unb.ca/index.php/tcrc/article/view/1992" target="_blank" class="text-blue-600">BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability</a></p>
+            <p>Derrick Mirindi, Frederic Mirindi</p>
+            <p><em>Keywords:</em> Building Information Modeling, Efficiency, Sustainability, Offsite construction, Artificial Intelligence</p>
         </section>
     </main>
     <footer class="bg-gray-800 text-white text-center py-4 mt-8">
