@@ -4,56 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frédéric Mirindi - Econometrician & PhD Student</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        window.onload = function() {
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('header').appendChild(renderer.domElement);
+            
+            const loader = new THREE.GLTFLoader();
+            loader.load('path/to/your/3d/model.gltf', function(gltf) {
+                scene.add(gltf.scene);
+            });
+            
+            camera.position.z = 5;
+            
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+            }
+            animate();
         }
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-        }
-        h1 {
-            margin: 0;
-        }
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        section {
-            background-color: #fff;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-    </style>
+    </script>
 </head>
-<body>
-    <header>
-        <h1>Frédéric Mirindi, Econometrician</h1>
+<body class="bg-gray-100">
+    <header id="header" class="bg-gray-800 text-white text-center py-4">
+        <h1 class="text-2xl font-bold">Frédéric Mirindi, Econometrician</h1>
     </header>
-    <main>
-        <section>
-            <p>PhD Student, University of Manitoba</p>
-            <p>Economics and Econometrics</p>
-            <p>Contact: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+    <main class="max-w-3xl mx-auto py-8">
+        <section class="bg-white p-6 mb-8 rounded shadow">
+            <p class="mb-2">PhD Student, University of Manitoba</p>
+            <p class="mb-2">Economics and Econometrics</p>
+            <p>Contact: <a href="mailto:mirindif@myumanitoba.ca" class="text-blue-600">mirindif@myumanitoba.ca</a></p>
         </section>
     </main>
-    <footer>
+    <footer class="bg-gray-800 text-white text-center py-4 mt-8">
         <p>&copy; 2024 Frédéric Mirindi. All rights reserved.</p>
     </footer>
 </body>
