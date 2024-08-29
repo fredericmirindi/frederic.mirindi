@@ -1,295 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frédéric Mirindi - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Frédéric Mirindi - Econometrician & PhD Student</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            background-color: #f4f4f4;
         }
-
         header {
-            background-color: #0056d2;
-            color: white;
-            padding: 15px 0;
+            background-color: #333;
+            color: #fff;
             text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
-        nav {
-            background-color: #003b93;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        nav ul li {
+        h1 {
             margin: 0;
         }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #e6f2ff;
-        }
-
-        .container {
-            padding: 20px;
-            flex: 1;
-        }
-
-        .centered-content {
-            text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        main {
+            padding: 2rem;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 0 auto;
         }
-
-        .centered-content h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            color: #0056d2;
-        }
-
-        .centered-content p {
-            font-size: 1.2em;
-            margin: 5px 0;
-            color: #333;
-        }
-
-        .centered-content hr {
-            width: 50%;
-            margin: 20px auto;
-            border: 0;
-            border-top: 1px solid #ccc;
-        }
-
-        .centered-content a {
-            color: #0056d2;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        .centered-content a:hover {
-            color: #003b93;
-        }
-
-        .highlight {
-            background-color: #e6f2ff;
-            border: 2px solid #0056d2;
-            padding: 20px;
-            margin-top: 20px;
+        section {
+            background-color: #fff;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
             border-radius: 5px;
-            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        .highlight h2 {
-            margin-top: 0;
-            font-size: 1.5em;
-            color: #0056d2;
-        }
-
-        .highlight p {
-            margin: 10px 0;
-            font-size: 1.1em;
-            color: #333;
-        }
-
-        .academic-info {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .academic-info h3 {
-            margin-top: 0;
-            font-size: 1.3em;
-            color: #0056d2;
-        }
-
-        .academic-info p {
-            margin: 5px 0;
-            font-size: 1.1em;
-            color: #333;
-        }
-
-        .academic-info ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            color: #333;
-        }
-
-        .academic-info ul li {
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-
-        .contact-form {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .contact-form h3 {
-            margin-top: 0;
-            font-size: 1.3em;
-            color: #0056d2;
-        }
-
-        .contact-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .contact-form button {
-            background-color: #0056d2;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-
-        .contact-form button:hover {
-            background-color: #003b93;
-        }
-
         footer {
-            background-color: #0056d2;
-            color: white;
+            background-color: #333;
+            color: #fff;
             text-align: center;
-            padding: 10px 0;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 1em;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            .centered-content h1 {
-                font-size: 1.8em;
-            }
-
-            .centered-content p {
-                font-size: 1em;
-            }
-
-            .highlight h2,
-            .academic-info h3,
-            .contact-form h3 {
-                font-size: 1.2em;
-            }
-
-            .highlight p,
-            .academic-info p,
-            .academic-info ul li {
-                font-size: 1em;
-            }
+            padding: 1rem;
+            margin-top: 2rem;
         }
     </style>
 </head>
-
 <body>
     <header>
-        <h1>Frédéric Mirindi</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Research Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Frédéric Mirindi, Econometrician</h1>
     </header>
-    <div class="container">
-        <div class="centered-content">
-            <h1>Frédéric Mirindi</h1>
-            <p>Data Analyst, PhD Student</p>
+    <main>
+        <section>
+            <p>PhD Student, University of Manitoba</p>
             <p>Economics and Econometrics</p>
-            <p>University of Manitoba</p>
-            <hr>
-            <p id="contact">Email: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p>Website under construction. Please check back soon!</p>
-            <div class="highlight" id="research">
-                <h2>Current Research Projects</h2>
-                <p><strong>Beyond Homo Economicus:</strong> Rethinking Economic Rationality in African Contexts</p>
-                <p><strong>The Resurgence of the M23 Rebel Group:</strong> The Complexities of Conflict Resolution in the Eastern Democratic Republic of the Congo</p>
-            </div>
-            <div class="academic-info" id="about">
-                <h3>About Me</h3>
-                <p>I am a dedicated economist with a strong focus on data analysis, econometrics, and economic research. My academic journey and professional experience have equipped me with the skills to tackle complex economic issues and contribute valuable insights to the field.</p>
-                <h3>Key Areas of Expertise</h3>
-                <ul>
-                    <li>Microeconometrics and econometric modeling</li>
-                    <li>Data analysis and visualization</li>
-                    <li>Labor economics and experimental economics</li>
-                    <li>Conflict resolution and economic development</li>
-                </ul>
-            </div>
-            <div class="contact-form" id="contact-form">
-                <h3>Contact Me</h3>
-                <form action="https://formspree.io/f/mdknnrol" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </div>
+            <p>Contact: <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+        </section>
+    </main>
     <footer>
         <p>&copy; 2024 Frédéric Mirindi. All rights reserved.</p>
     </footer>
 </body>
-
 </html>
