@@ -5,33 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frédéric Mirindi - Econometrician & PhD Student</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.137.5/examples/js/loaders/GLTFLoader.js"></script>
-    <script>
-        window.onload = function() {
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            document.getElementById('header').appendChild(renderer.domElement);
-            
-            const loader = new THREE.GLTFLoader();
-            loader.load('path/to/your/3d/model.gltf', function(gltf) {
-                scene.add(gltf.scene);
-            });
-            
-            camera.position.z = 5;
-            
-            function animate() {
-                requestAnimationFrame(animate);
-                renderer.render(scene, camera);
-            }
-            animate();
-        }
-    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body class="bg-gray-100">
-    <header id="header" class="bg-gray-800 text-white text-center py-4">
+    <header class="bg-gray-800 text-white text-center py-4">
         <h1 class="text-2xl font-bold">Frédéric Mirindi, Econometrician</h1>
     </header>
     <main class="max-w-3xl mx-auto py-8">
@@ -39,6 +17,20 @@
             <p class="mb-2">PhD Student, University of Manitoba</p>
             <p class="mb-2">Economics and Econometrics</p>
             <p>Contact: <a href="mailto:mirindif@myumanitoba.ca" class="text-blue-600">mirindif@myumanitoba.ca</a></p>
+        </section>
+        
+        <section class="bg-white p-6 mb-8 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Advanced Microeconomics</h2>
+            <p>Utility Maximization Problem:</p>
+            $$\max_{x_1, x_2} U(x_1, x_2) \text{ s.t. } p_1x_1 + p_2x_2 \leq m$$
+            <p>where \(U(x_1, x_2)\) is the utility function, \(p_1\) and \(p_2\) are prices, and \(m\) is income.</p>
+        </section>
+
+        <section class="bg-white p-6 mb-8 rounded shadow">  
+            <h2 class="text-xl font-bold mb-4">Econometrics</h2>
+            <p>Linear Regression Model:</p>
+            $$Y_i = \beta_0 + \beta_1X_i + \varepsilon_i$$
+            <p>where \(Y_i\) is the dependent variable, \(X_i\) is the independent variable, \(\beta_0\) and \(\beta_1\) are coefficients, and \(\varepsilon_i\) is the error term.</p>
         </section>
     </main>
     <footer class="bg-gray-800 text-white text-center py-4 mt-8">
