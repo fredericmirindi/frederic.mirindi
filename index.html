@@ -9,7 +9,7 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body class="bg-gray-100">
-    <header class="bg-gray-800 text-white text-center py-4">
+    <header class="bg-blue-800 text-white text-center py-4">
         <h1 class="text-2xl font-bold">Frédéric Mirindi</h1>
     </header>
     <main class="max-w-3xl mx-auto py-8">
@@ -26,6 +26,35 @@
             <p>Utility Maximization Problem:</p>
             $$\max_{x_1, x_2} U(x_1, x_2) \text{ s.t. } p_1x_1 + p_2x_2 \leq m$$
             <p>where \(U(x_1, x_2)\) is the utility function, \(p_1\) and \(p_2\) are prices, and \(m\) is income.</p>
+
+            <h4 class="text-lg font-semibold mt-4 text-blue-600">Max Utility Function</h4>
+            <p>Problem Formulation:</p>
+            $$\max_{x,y} U(x,y) = \max_{x,y} \{\max\{5x,4y\}\} \text{ s.t. } p_x x + p_y y = m$$
+            <p>Solution Approach:</p>
+            <ol class="list-decimal pl-6">
+                <li>If \(5x > 4y\), then \(U(x,y) = 5x\). The optimal solution is \(x^* = m/p_x\), \(y^* = 0\), and \(U^* = 5m/p_x\).</li>
+                <li>If \(5x < 4y\), then \(U(x,y) = 4y\). The optimal solution is \(x^* = 0\), \(y^* = m/p_y\), and \(U^* = 4m/p_y\).</li>
+                <li>If \(5x = 4y\), any combination of \(x\) and \(y\) satisfying \(p_x x + p_y y = m\) and \(5x = 4y\) is optimal, with \(U^* = 5m/p_x = 4m/p_y\).</li>
+            </ol>
+
+            <h4 class="text-lg font-semibold mt-4 text-green-600">Min Utility Function</h4>
+            <p>Problem Formulation:</p>
+            $$\max_{x,y} U(x,y) = \max_{x,y} \{\min\{5x,4y\}\} \text{ s.t. } p_x x + p_y y = m$$
+            <p>Solution Approach:</p>
+            <ol class="list-decimal pl-6">
+                <li>Set \(5x = 4y\) to find the optimal ratio of \(x\) to \(y\): \(x/y = 4/5\).</li>
+                <li>Substitute this ratio into the budget constraint to solve for \(x\) and \(y\):
+                    \begin{align*}
+                    p_x x + p_y (5x/4) &= m \\
+                    (4p_x + 5p_y)x/4 &= m \\
+                    x^* &= 4m / (4p_x + 5p_y) \\
+                    y^* &= 5m / (4p_x + 5p_y)
+                    \end{align*}
+                </li>
+                <li>The maximum utility achieved is:
+                    $$U^* = \min\{5x^*, 4y^*\} = 5x^* = 4y^* = 20m / (4p_x + 5p_y)$$
+                </li>
+            </ol>
 
             <h3 class="text-lg font-semibold mt-4">Producer Theory</h3>  
             <p>Profit Maximization Problem:</p>
@@ -88,7 +117,7 @@
         </section>
         
     </main>
-    <footer class="bg-gray-800 text-white text-center py-4 mt-8">
+    <footer class="bg-blue-800 text-white text-center py-4 mt-8">
         <p>&copy; 2024 Frédéric Mirindi. All rights reserved.</p>
     </footer>
 </body>
