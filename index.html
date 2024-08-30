@@ -110,6 +110,45 @@
         </section>
 
         <section class="bg-white p-6 mb-8 rounded shadow">
+            <h2 class="text-xl font-bold mb-4">Machine Learning in Economics</h2>
+            
+            <h3 class="text-lg font-semibold mt-4">Bond Market Predictions</h3>
+            <p>Machine learning techniques, such as auto-regressive integrated moving average (ARIMA), linear regression, and deep recurrent neural network-long short-term memory (DLSTM) models, have been used to predict bond yields and returns in future bond markets. DLSTM models have shown the most accurate predictions over both short and long horizons compared to ARIMA and linear regression.[1]</p>
+            <p>The ARIMA model can be represented as:</p>
+            $$ARIMA(p,d,q): (1-\sum_{i=1}^p \phi_i L^i)(1-L)^d X_t = (1+\sum_{i=1}^q \theta_i L^i)\varepsilon_t$$
+            <p>where \(p\) is the order of the autoregressive term, \(d\) is the degree of differencing, and \(q\) is the order of the moving-average term.</p>
+            <p>For more information on ARIMA models, see: <a href="https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average" target="_blank" class="text-blue-600">https://en.wikipedia.org/wiki/Autoregressive_integrated_moving_average</a></p>
+
+            <h3 class="text-lg font-semibold mt-4">Stock Market Forecasting</h3>
+            <p>Linear regression and random forest models have been employed to predict the future closing prices and probabilities of rise and fall for stocks like Uber. These methods, along with more advanced techniques such as radio frequency technology and neural networks, can be used for stock forecasting.[2]</p>
+            <p>A simple linear regression model can be expressed as:</p>
+            $$y = \beta_0 + \beta_1 x + \varepsilon$$
+            <p>where \(y\) is the dependent variable (e.g., stock price), \(x\) is the independent variable (e.g., time), \(\beta_0\) is the intercept, \(\beta_1\) is the slope, and \(\varepsilon\) is the error term.</p>
+            <p>For more information on linear regression, see: <a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank" class="text-blue-600">https://en.wikipedia.org/wiki/Linear_regression</a></p>
+
+            <h3 class="text-lg font-semibold mt-4">Credit Card Fraud Detection</h3>
+            <p>Machine learning algorithms, including Logistic Regression, Decision Tree, Random Forest, and XG Boost, have been used to detect credit card fraud. The combination of imbalanced classification methods, such as Synthetic Minority Random Oversampling Technique (SMOTE) and Under-sampling, can help balance the dataset and improve the performance of these algorithms.[3]</p>
+            <p>Logistic regression is a popular method for binary classification problems, such as fraud detection. The logistic function can be written as:</p>
+            $$P(Y=1|X) = \frac{1}{1+e^{-(\beta_0+\beta_1 X)}}$$
+            <p>where \(P(Y=1|X)\) is the probability of the positive class (e.g., fraud) given the input features \(X\), and \(\beta_0\) and \(\beta_1\) are the model parameters.</p>
+            <p>For more information on logistic regression, see: <a href="https://en.wikipedia.org/wiki/Logistic_regression" target="_blank" class="text-blue-600">https://en.wikipedia.org/wiki/Logistic_regression</a></p>
+
+            <h3 class="text-lg font-semibold mt-4">Tax Collection Optimization</h3>
+            <p>Machine learning techniques have been explored to enhance the efficiency of tax debt collection. By using machine learning for taxpayer segmentation, local tax authorities can accurately identify high-risk debtors and optimize revenue collection while minimizing resource waste.[4]</p>
+            <p>One approach for taxpayer segmentation is k-means clustering, which aims to partition n observations into k clusters, minimizing the within-cluster sum of squares:</p>
+            $$\min \sum_{i=1}^k \sum_{x \in S_i} ||x - \mu_i||^2$$
+            <p>where \(S_i\) is the set of points in the i-th cluster, and \(\mu_i\) is the centroid (mean) of the points in \(S_i\).</p>
+            <p>For more information on k-means clustering, see: <a href="https://en.wikipedia.org/wiki/K-means_clustering" target="_blank" class="text-blue-600">https://en.wikipedia.org/wiki/K-means_clustering</a></p>
+
+            <h3 class="text-lg font-semibold mt-4">Anomaly Detection in Stock Prices</h3>
+            <p>Autoencoder and Light Gradient Boosting Machine have been compared for their performance in predicting anomalies in stock prices. A statistical approach is used to pre-test the data for normality and assign labels. Detecting strange turning trends in stock prices can help investors avoid losses and potentially gain profits.[6]</p>
+            <p>An autoencoder is a type of neural network that learns to compress and reconstruct input data. It consists of an encoder and a decoder, and the objective is to minimize the reconstruction error:</p>
+            $$\min ||X - \hat{X}||^2$$
+            <p>where \(X\) is the input data, and \(\hat{X}\) is the reconstructed data.</p>
+            <p>For more information on autoencoders, see: <a href="https://en.wikipedia.org/wiki/Autoencoder" target="_blank" class="text-blue-600">https://en.wikipedia.org/wiki/Autoencoder</a></p>
+        </section>
+
+        <section class="bg-white p-6 mb-8 rounded shadow">
             <h2 class="text-xl font-bold mb-4">Publications</h2>
             <p><a href="https://conferences.lib.unb.ca/index.php/tcrc/article/view/1992" target="_blank" class="text-blue-600">BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability</a></p>
             <p>Derrick Mirindi, Frederic Mirindi</p>
