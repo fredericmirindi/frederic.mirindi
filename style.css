@@ -2,18 +2,22 @@ body {
     font-family: Arial, sans-serif;
     background-color: #fff;
     color: #000;
+    line-height: 1.5; /* Improve readability with a better line height */
+    padding: 20px; /* Add some padding to the body for better spacing */
 }
 
 h1, h2, h3 {
     color: #000;
+    font-weight: bold; /* Make headings bold for emphasis */
+    margin-bottom: 10px; /* Add some spacing between headings and content */
 }
 
 .publication {
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #333; /* Use a darker gray for the border */
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #f9f9f9; /* Use a light gray background for contrast */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -24,4 +28,14 @@ a {
 
 a:hover {
     color: #666;
+    text-decoration: underline; /* Add an underline on hover for better usability */
+}
+
+/* Add some styles for links within publications */
+.publication a {
+    color: #00698f; /* Use a dark blue for links within publications */
+}
+
+.publication a:hover {
+    color: #008000; /* Use a green for hovered links within publications */
 }
