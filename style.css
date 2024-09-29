@@ -4,20 +4,8 @@ body {
     color: #000;
 }
 
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #000;
-    color: #fff;
-}
-
-section {
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+h1, h2, h3 {
+    color: #000;
 }
 
 .publication {
@@ -27,10 +15,6 @@ section {
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2, h3 {
-    color: #000;
 }
 
 a {
