@@ -2,11 +2,12 @@
     --primary-color: #003366;
     --accent-color: #0066cc;
     --text-color: #333;
-    --background-color: #f4f4f4;
+    --background-color: #ffffff;
+    --header-bg-color: #0066cc;
 }
 
 body {
-    font-family: 'Helvetica', Arial, sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
@@ -15,15 +16,16 @@ body {
 }
 
 header {
-    background-color: var(--primary-color);
+    background-color: var(--header-bg-color);
     color: white;
     text-align: center;
-    padding: 2rem 0;
+    padding: 2.5rem 0;
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin: 0;
+    font-weight: bold;
 }
 
 main {
@@ -40,6 +42,8 @@ h2 {
     color: var(--primary-color);
     border-bottom: 2px solid var(--accent-color);
     padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
 }
 
 a {
@@ -61,6 +65,16 @@ ul {
 
 .education-item h3 {
     margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.section-content {
+    margin-left: 1rem;
+}
+
+.icon {
+    color: var(--accent-color);
+    margin-right: 0.5rem;
 }
 
 footer {
@@ -68,4 +82,34 @@ footer {
     padding: 1rem;
     background-color: var(--primary-color);
     color: white;
+}
+
+.personal-info {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.personal-info p {
+    margin: 0.5rem 0;
+}
+
+.publication-item, .conference-item {
+    margin-bottom: 1rem;
+}
+
+.publication-item h3, .conference-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skills-list li {
+    background-color: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
 }
