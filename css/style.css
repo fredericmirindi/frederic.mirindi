@@ -83,6 +83,17 @@ ul {
 ul li {
      margin-bottom: 0.5rem;
 }
+/* Keep specific list styles for certain sections */
+.publication-list li, .presentation-list li, .teaching-role ul, .award-list li, .media-list li {
+    margin-bottom: 1.5rem; /* Adjust spacing as needed */
+}
+.award-list i.fa-award { /* Style for award icons */
+     margin-right: 8px;
+     color: var(--accent-color);
+     width: 1.1em; /* Align icons better */
+     text-align: center;
+}
+
 
 img {
     max-width: 100%;
@@ -205,27 +216,17 @@ img {
     text-align: center;
 }
 
-/* === Updated Hero Image Rule === */
+/* Portrait Rectangle Image Style */
 .hero-image img {
-    /* Adjust these values to control the size and aspect ratio */
-    max-width: 250px;   /* Set a maximum width */
-    max-height: 350px;  /* Set a maximum height (taller than width) */
-    width: 100%;      /* Allow it to shrink within the container */
-    height: auto;     /* Maintain aspect ratio initially */
-
-    /* Use object-fit to prevent distortion if the original image ratio doesn't match */
+    max-width: 250px;
+    max-height: 350px;
+    width: 100%;
+    height: auto;
     object-fit: cover;
-    /* If you want it contained without cropping, use: object-fit: contain; */
-
-    /* Change border-radius from 50% to match theme or 0 for sharp corners */
-    border-radius: var(--border-radius); /* Use theme's border radius */
-    /* Or use border-radius: 0; for sharp corners */
-
-    border: 6px solid var(--light-text-color); /* Slightly adjusted border */
+    border-radius: var(--border-radius);
+    border: 6px solid var(--light-text-color);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-/* === End of Updated Hero Image Rule === */
-
 
 /* --- Content Sections --- */
 .content-section {
@@ -348,40 +349,41 @@ img {
 }
 
 /* --- Research & Teaching Page Styles --- */
-.publication-list li, .presentation-list li, .teaching-role {
+.publication-list li, .presentation-list li, .teaching-role, .media-list li {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--secondary-color);
 }
-.publication-list li:last-child, .presentation-list li:last-child, .teaching-role:last-child {
+.publication-list li:last-child, .presentation-list li:last-child, .teaching-role:last-child, .media-list li:last-child {
     border-bottom: none;
 }
 
-.publication-list h3 { /* Title of paper/course */
+.publication-list h3, .media-list h3 { /* Title of paper/article */
     font-size: 1.3rem;
     margin-bottom: 0.5rem;
     font-family: var(--font-body);
     font-weight: 600;
 }
-.publication-details, .course-details, .institution-dates {
+.publication-details, .course-details, .institution-dates, .media-details {
     font-size: 0.95rem;
     color: #555;
     margin-bottom: 0.7rem;
     font-style: italic;
 }
-.publication-links a, .course-links a {
+.publication-links a, .course-links a, .media-links a, .award-link {
     margin-right: 15px;
     font-weight: 600;
     font-size: 0.9rem;
 }
-.publication-links i, .course-links i {
+.publication-links i, .course-links i, .media-links i, .award-link i {
     margin-right: 5px;
 }
 
-.presentation-list p {
+.presentation-list p, .award-list p { /* Use paragraphs for structure */
     margin-bottom: 0.5rem;
+    line-height: 1.6; /* Ensure readability */
 }
-.presentation-list em { /* Italicize venue/date */
+.presentation-list em, .award-list em { /* Italicize venue/date/details */
      display: block;
      font-size: 0.9rem;
      color: #666;
@@ -406,6 +408,25 @@ img {
 }
 .course-list li {
      margin-bottom: 0.8rem;
+     list-style-type: circle; /* Example list style */
+     margin-left: 20px;
+}
+.course-list strong {
+     font-weight: 600;
+}
+
+.award-list li {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--secondary-color); /* Dashed border for awards */
+}
+.award-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.award-list strong {
+     font-weight: 700;
 }
 
 /* --- CV Page Styles --- */
@@ -455,10 +476,18 @@ img {
 }
 .footer-links {
     text-align: right;
+    display: flex; /* Align items in footer links */
+    align-items: center;
+    gap: 15px; /* Spacing between icons and text */
+}
+.footer-links p {
+    margin-bottom: 0; /* Remove bottom margin from copyright */
 }
 .footer-links a {
-    margin-left: 15px; /* Spacing for social links */
+     font-size: 1.2rem; /* Make icons slightly larger */
+     line-height: 1; /* Adjust line height for icons */
 }
+
 
 /* --- Animation --- */
 .fade-in {
@@ -478,10 +507,80 @@ img {
     }
 }
 /* Apply staggered delay for sections (optional) */
+#research-interests { animation-delay: 0.1s;}
+#publications { animation-delay: 0.2s; }
+#presentations { animation-delay: 0.3s; }
+#online-media { animation-delay: 0.4s; }
+#awards { animation-delay: 0.5s; }
+/* Adjust delays for homepage sections if needed */
 #about { animation-delay: 0.2s; }
 #research-highlights { animation-delay: 0.4s; }
 #skills-snapshot { animation-delay: 0.6s; }
-/* Add delays for elements on other pages as needed */
+
+
+/* === Stlyes for Filter Controls === */
+
+.filter-controls {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--secondary-color); /* Light background for controls */
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    color: var(--heading-color);
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover, .filter-btn:focus {
+    background-color: #eee;
+    border-color: #bbb;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border-color: var(--primary-color);
+    font-weight: 600;
+}
+
+#keyword-search {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    min-width: 200px; /* Adjust as needed */
+}
+
+/* Style for hidden items (JS will add/remove this class) */
+.publication-list li.hidden {
+    display: none;
+}
+
+/* === END Styles for Filter Controls === */
 
 
 /* --- Responsiveness --- */
@@ -507,26 +606,26 @@ img {
      }
 
     .main-nav {
-        display: none;
+        display: none; /* Hide nav by default on mobile */
         width: 100%;
         background-color: var(--secondary-color); /* Match light bg */
         box-shadow: none;
         margin-top: 10px;
     }
 
-    .main-nav.active {
+    .main-nav.active { /* Class added by JS to show nav */
          display: block;
     }
 
     .main-nav ul {
-        flex-direction: column;
+        flex-direction: column; /* Stack nav items vertically */
         gap: 0;
         padding: 5px 0;
         border-top: 1px solid #ddd;
     }
 
      .main-nav a {
-        display: block;
+        display: block; /* Make links take full width */
         padding: 12px 20px;
         border-radius: 0;
         border-bottom: 1px solid #ddd;
@@ -542,14 +641,14 @@ img {
      }
 
     .mobile-nav-toggle {
-        display: block;
+        display: block; /* Show hamburger icon */
         position: absolute; /* Position relative to header */
         top: 15px; /* Adjust positioning */
         right: 20px;
     }
 
     .hero-section {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse; /* Stack text above image */
         text-align: center;
         padding-top: 30px;
          padding-bottom: 30px;
@@ -577,8 +676,34 @@ img {
      }
      .footer-links {
          text-align: center;
+         justify-content: center; /* Center footer icons on mobile */
      }
      .footer-links a {
          margin: 0 8px; /* Adjust spacing */
+     }
+
+     /* Adjust filter controls for mobile */
+     .filter-controls {
+        flex-direction: column;
+        align-items: stretch; /* Make groups take full width */
+        gap: 1rem;
+    }
+    .filter-group {
+        justify-content: center; /* Center buttons within group */
+    }
+    #keyword-search {
+        width: 100%; /* Make search bar full width */
+        min-width: unset;
+    }
+
+}
+
+@media (max-width: 480px) {
+     /* Further adjustments for very small screens if needed */
+     .footer-links {
+         gap: 10px; /* Reduce gap for very small screens */
+     }
+     .footer-links a {
+         font-size: 1.1rem; /* Slightly smaller icons */
      }
 }
