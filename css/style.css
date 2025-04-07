@@ -205,12 +205,27 @@ img {
     text-align: center;
 }
 
+/* === Updated Hero Image Rule === */
 .hero-image img {
-    max-width: 300px; /* Adjust size */
-    border-radius: 50%;
-    border: 8px solid var(--light-text-color);
+    /* Adjust these values to control the size and aspect ratio */
+    max-width: 250px;   /* Set a maximum width */
+    max-height: 350px;  /* Set a maximum height (taller than width) */
+    width: 100%;      /* Allow it to shrink within the container */
+    height: auto;     /* Maintain aspect ratio initially */
+
+    /* Use object-fit to prevent distortion if the original image ratio doesn't match */
+    object-fit: cover;
+    /* If you want it contained without cropping, use: object-fit: contain; */
+
+    /* Change border-radius from 50% to match theme or 0 for sharp corners */
+    border-radius: var(--border-radius); /* Use theme's border radius */
+    /* Or use border-radius: 0; for sharp corners */
+
+    border: 6px solid var(--light-text-color); /* Slightly adjusted border */
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
+/* === End of Updated Hero Image Rule === */
+
 
 /* --- Content Sections --- */
 .content-section {
@@ -543,9 +558,13 @@ img {
     .hero-text {
          margin-top: 30px;
     }
+    /* Adjustments for portrait hero image on mobile */
     .hero-image img {
-        max-width: 200px; /* Smaller image on mobile */
+        max-width: 70%; /* Allow image to take more width on mobile */
+        max-height: 300px; /* Adjust max height for mobile */
+        margin: 0 auto; /* Center the image block */
     }
+
 
     .skills-grid {
         grid-template-columns: 1fr; /* Single column on small screens */
