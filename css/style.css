@@ -1,0 +1,323 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #003366; /* Dark Blue */
+    --secondary-color: #e6f0ff; /* Light Blue */
+    --accent-color: #f2a900; /* Gold/Yellow Accent */
+    --text-color: #333;
+    --light-text-color: #fff;
+    --background-color: #ffffff;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Lato', sans-serif;
+    --container-width: 960px;
+    --header-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth; /* Smooth scroll for anchor links */
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer sticks to bottom */
+}
+
+main {
+    flex-grow: 1; /* Allow main content to fill available space */
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px; /* Add padding for smaller screens */
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0; /* Remove default padding */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Prevent extra space below image */
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 0 20px;
+    position: sticky; /* Keep header fixed at top */
+    top: 0;
+    z-index: 1000;
+    height: var(--header-height);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.site-header h1 a {
+    color: var(--light-text-color);
+    font-size: 1.8rem;
+    text-decoration: none;
+}
+.site-header h1 a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 20px; /* Spacing between nav items */
+}
+
+.main-nav a {
+    color: var(--light-text-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.main-nav a:hover, .main-nav a:focus, .main-nav a.active {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.mobile-nav-toggle { /* Style for the hamburger icon */
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: var(--secondary-color); /* Light background for contrast */
+    min-height: calc(80vh - var(--header-height)); /* Example height */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.hero-text {
+    flex: 2; /* Take more space */
+}
+
+.hero-image {
+    flex: 1; /* Take less space */
+    text-align: center;
+}
+
+.hero-image img {
+    border-radius: 50%; /* Circular image */
+    max-width: 250px; /* Adjust size as needed */
+    border: 5px solid var(--primary-color);
+}
+
+/* --- Content Sections --- */
+.content-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* --- Call to Action (CTA) Buttons --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px; /* Spacing between buttons */
+    margin-bottom: 10px; /* Spacing if they wrap */
+}
+
+.cta-button:hover, .cta-button:focus {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.cta-button.secondary {
+    background-color: #eee;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+.cta-button.secondary:hover, .cta-button.secondary:focus {
+    background-color: var(--secondary-color);
+     color: var(--primary-color);
+}
+
+.quick-link-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 15px;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #f8f9fa; /* Light grey background */
+    color: #6c757d; /* Muted text color */
+    padding: 20px 0;
+    text-align: center;
+    margin-top: auto; /* Push footer to bottom */
+    border-top: 1px solid #dee2e6;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+
+    .header-content {
+        position: relative; /* Needed for absolute positioning of nav */
+    }
+
+    .main-nav {
+        display: none; /* Hide nav by default on mobile */
+        position: absolute;
+        top: var(--header-height); /* Position below header */
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .main-nav.active { /* Class added by JS to show nav */
+         display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+        padding: 10px 0;
+        gap: 0;
+    }
+
+    .main-nav li {
+        text-align: center;
+    }
+
+     .main-nav a {
+        display: block; /* Make links take full width */
+        padding: 10px 20px;
+        border-radius: 0;
+    }
+    .main-nav a:hover, .main-nav a:focus, .main-nav a.active {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+    .hero-section {
+        flex-direction: column-reverse; /* Stack text above image */
+        text-align: center;
+    }
+
+    .hero-text {
+        margin-top: 20px;
+    }
+
+    .quick-link-buttons {
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center;
+    }
+     .cta-button {
+        width: 80%; /* Make buttons wider on mobile */
+        text-align: center;
+    }
+}
+
+/* --- Styles for Other Pages (Placeholders) --- */
+.page-header { /* Optional header for subpages */
+    background-color: var(--secondary-color);
+    padding: 30px 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.page-header h1 {
+    margin-bottom: 0;
+}
+
+.publication-list li, .teaching-list li {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+.publication-list li:last-child, .teaching-list li:last-child {
+    border-bottom: none;
+}
+
+.publication-list h3, .teaching-list h3 { /* Title of paper/course */
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.publication-details, .course-details {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+.publication-links a, .course-links a {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.cv-download-link {
+    display: inline-block; /* Similar styling to buttons */
+    margin-top: 20px;
+}
