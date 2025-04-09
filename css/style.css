@@ -1,3 +1,5 @@
+/* === Full Updated style.css === */
+
 /* --- Global Styles & Variables --- */
 :root {
     --primary-color: #2c3e50; /* Dark Slate Blue */
@@ -27,7 +29,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    line-height: 1.7; /* Base line height */
+    line-height: 1.7; /* Slightly increased line height */
     color: var(--text-color);
     background-color: var(--background-color);
     display: flex;
@@ -605,7 +607,7 @@ img {
 #skills-snapshot { animation-delay: 0.6s; }
 
 
-/* === Stlyes for Filter Controls === */
+/* === Styles for Filter Controls === */
 
 .filter-controls {
     margin: 2rem 0;
@@ -670,78 +672,72 @@ img {
 /* === END Styles for Filter Controls === */
 
 
-/* === Styles for Enhanced Blog Page Content === */
+/* === Styles for Blog Page Content === */
 
-.blog-post {
+.blog-post { /* Applies to both index and full post page */
     margin-bottom: 3rem;
     padding-bottom: 2rem;
 }
-/* Remove bottom border from last post */
 .blog-post:last-of-type {
      border-bottom: none;
      margin-bottom: 0;
      padding-bottom: 0;
 }
 
-
-.blog-post-header {
+.blog-post-header { /* Applies to both index and full post page */
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--secondary-color);
 }
 
-.blog-post-title {
-    font-size: 2rem; /* Slightly smaller than page title */
+.blog-post-title { /* Applies to both index and full post page */
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     color: var(--primary-color);
 }
 
-.blog-post-meta {
+.blog-post-meta { /* Applies to both index and full post page */
     font-size: 0.85rem;
     color: #777;
     font-style: italic;
 }
-.blog-post-meta time {
-    /* Style date if needed */
-}
+.blog-post-meta time { /* Style date if needed */ }
 
-
-.blog-post-content h3 {
+/* Styles ONLY for full blog post content pages */
+.blog-post-full .blog-post-content h3 {
     font-size: 1.4rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
     font-weight: 600;
 }
-
-.blog-post-content ul {
+.blog-post-full .blog-post-content ul {
     list-style: disc;
     margin-left: 25px; /* Indent list */
     margin-bottom: 1.5rem;
 }
-.blog-post-content ul li {
+.blog-post-full .blog-post-content ul li {
     margin-bottom: 0.8rem;
     line-height: 1.7;
 }
-.blog-post-content ul ul { /* Nested lists */
+.blog-post-full .blog-post-content ul ul { /* Nested lists */
     margin-top: 0.5rem;
     list-style: circle;
 }
-
-.blog-post-content code { /* Style for inline code/math representations */
+.blog-post-full .blog-post-content code { /* Style for inline code */
     background-color: #f0f0f0;
     padding: 0.2em 0.4em;
     border-radius: 3px;
     font-family: monospace;
     font-size: 0.9em;
-    color: #c7254e; /* Example color */
+    color: #c7254e;
     border: 1px solid #e8e8e8;
 }
 
-.blog-divider {
+.blog-divider { /* Separator on index page */
     border: 0;
     height: 1px;
-    background-color: #ddd; /* Make divider more visible */
+    background-color: #ddd;
     margin: 3rem 0;
 }
 
@@ -750,11 +746,10 @@ img {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     padding: 1rem 1.5rem;
-    background-color: #f8f9fa; /* Light background to offset proof */
-    border-left: 4px solid var(--accent-color); /* Accent border */
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--accent-color);
     border-radius: var(--border-radius);
 }
-
 .proof-section h4 {
     font-size: 1.2rem;
     color: var(--primary-color);
@@ -762,25 +757,14 @@ img {
     margin-bottom: 0.8rem;
     font-weight: 700;
 }
-
-/* Style for ordered list used in proofs */
 .proof-steps {
-    list-style-type: decimal; /* Use numbers for steps */
+    list-style-type: decimal;
     margin-left: 25px;
     margin-top: 1rem;
 }
-.proof-steps li {
-    margin-bottom: 1rem;
-}
-.proof-steps > li > strong { /* Make Case titles bold */
-    font-weight: 700;
-}
-.proof-steps ul { /* Nested lists within proof steps */
-    list-style-type: disc; /* Use bullets for sub-points */
-    margin-top: 0.5rem;
-}
-
-/* Style for concluding remarks of a proof */
+.proof-steps li { margin-bottom: 1rem; }
+.proof-steps > li > strong { font-weight: 700; }
+.proof-steps ul { list-style-type: disc; margin-top: 0.5rem; }
 .proof-conclusion {
     font-weight: 600;
     margin-top: 1rem;
@@ -789,7 +773,7 @@ img {
 
 /* Styling for equation display boxes */
 .equation-box {
-    background-color: #fdfdfd; /* Slightly off-white */
+    background-color: #fdfdfd;
     border: 1px solid var(--secondary-color);
     padding: 1rem 1.5rem;
     margin: 1.5rem 0;
@@ -799,51 +783,13 @@ img {
 .equation-box p {
     font-size: 0.95rem;
     color: var(--text-color);
-    margin-bottom: 0.5rem; /* Less space between description and formula */
+    margin-bottom: 0.5rem;
 }
-.equation-box p:last-child {
-    margin-bottom: 0;
-}
-
-/* === Refined MathJax CSS Rules === */
-
-/* Styling for DISPLAY MathJax elements (e.g., $$...$$) */
-mjx-container[display="true"] { /* Target only display math */
-    display: block; /* Ensure it takes block space */
-    margin: 1.5rem 0 !important; /* Vertical spacing ONLY for display math */
-    overflow-x: auto; /* Allow scrolling for wide equations */
-    overflow-y: hidden;
-    text-align: center; /* Center display equations */
-    font-size: 1.05em; /* Slightly larger math font if needed */
-}
-
-/* Styling for INLINE MathJax elements (e.g., $...$) */
-mjx-container[display="false"] { /* Target only inline math */
-    display: inline-block; /* Allow it to sit within text flow */
-    margin: 0 0.15em !important; /* Minimal horizontal spacing */
-    padding: 0 !important;
-    line-height: 1; /* Prevent it from stretching the text line height excessively */
-    font-size: 1em; /* Match surrounding text size */
-    text-align: left;
-    vertical-align: baseline; /* Align with text baseline */
-}
-/* === End Refined MathJax Rules === */
-
-/* Optional: Style for the timeline placeholder */
-#research-timeline-section {
-    background-color: #f8f9fa;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-#timeline-embed {
-    border: 1px solid #ddd;
-    margin-top: 1.5rem;
-    background-color: #fff; /* White background for timeline embed area */
-}
+.equation-box p:last-child { margin-bottom: 0; }
 
 /* Styles for definition box in blog */
 .definition-box {
-    background-color: #eaf7f4; /* Light teal/green background */
+    background-color: #eaf7f4;
     border-left: 5px solid var(--primary-color);
     padding: 1rem 1.5rem;
     margin: 1.5rem 0;
@@ -859,8 +805,8 @@ mjx-container[display="false"] { /* Target only inline math */
 /* Styles for test steps in blog */
 .test-steps {
     margin-top: 1.5rem;
-    background-color: #f8f9fa; /* Similar to proof section */
-    padding: 1rem 1.5rem 1.5rem 1.5rem; /* Add bottom padding */
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
     border: 1px solid #eee;
     border-radius: var(--border-radius);
 }
@@ -872,202 +818,113 @@ mjx-container[display="false"] { /* Target only inline math */
     padding-bottom: 0.5rem;
     border-bottom: 1px solid #ddd;
 }
-.test-steps ol {
-    list-style-type: decimal;
-    margin-left: 20px; /* Indent steps */
-}
-.test-steps li {
-    margin-bottom: 1.2rem; /* Space between steps */
-}
-.test-steps li p {
-    margin-bottom: 0.5rem; /* Less space within step */
-}
+.test-steps ol { list-style-type: decimal; margin-left: 20px; }
+.test-steps li { margin-bottom: 1.2rem; }
+.test-steps li p { margin-bottom: 0.5rem; }
 .test-conclusion {
     font-weight: 600;
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px dashed #ccc; /* Separator for conclusion */
+    border-top: 1px dashed #ccc;
     color: var(--heading-color);
 }
 
-/* Styles for Read More Functionality */
-.collapsible-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-out;
+/* Styles for Blog Index Page Excerpts */
+.blog-post-excerpt p:last-of-type {
+    margin-bottom: 0.5rem;
 }
-.collapsible-content.expanded {
-    max-height: 5000px; /* Adjust if needed */
-    transition: max-height 0.7s ease-in;
-}
-.read-more-btn {
+.read-full-post-link {
     display: inline-block;
-    margin-top: 1rem;
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    margin-top: 0.5rem;
     font-weight: 600;
     color: var(--primary-color);
-    background-color: transparent;
-    border: 1px solid var(--primary-color);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
-.read-more-btn:hover,
-.read-more-btn:focus {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-    outline: none;
-}
-.read-more-btn i {
-    margin-left: 5px;
+.read-full-post-link:hover,
+.read-full-post-link:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
 }
 
-/* === END Styles for Enhanced Blog Content & Read More === */
+/* Styles specific to full blog post pages */
+.blog-post-full .blog-post-content { /* Target only content on full page */
+    /* Add specific styles if needed */
+}
+.back-to-blog {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--secondary-color);
+}
+.back-to-blog a {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.back-to-blog a:hover {
+    color: var(--accent-color);
+}
+
+/* === Styles for MathJax === */
+mjx-container[display="true"] { /* Target only display math */
+    display: block;
+    margin: 1.5rem 0 !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+    font-size: 1.05em;
+}
+mjx-container[display="false"] { /* Target only inline math */
+    display: inline-block;
+    margin: 0 0.15em !important;
+    padding: 0 !important;
+    line-height: 1;
+    font-size: 1em;
+    text-align: left;
+    vertical-align: baseline;
+}
+
+/* === Styles for Timeline Placeholder === */
+#research-timeline-section { /* ... */ }
+#timeline-embed { /* ... */ }
+
+/* === END Styles for Blog Page Content === */
 
 
 /* --- Responsiveness --- */
 @media (max-width: 768px) {
-    html { font-size: 15px; } /* Slightly smaller base font */
+    html { font-size: 15px; }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
 
-    main {
-        padding-top: 0; /* Remove padding-top as header is no longer fixed */
-    }
-    .site-header {
-        position: relative; /* Make header static on mobile */
-        height: auto; /* Allow header height to adjust */
-        padding: 10px 0;
-    }
-     .header-content {
-        flex-direction: column;
-        align-items: flex-start;
-     }
-      .site-header h1 a {
-         margin-bottom: 10px;
-     }
-
-    .main-nav {
-        display: none; /* Hide nav by default on mobile */
-        width: 100%;
-        background-color: var(--secondary-color); /* Match light bg */
-        box-shadow: none;
-        margin-top: 10px;
-    }
-
-    .main-nav.active { /* Class added by JS to show nav */
-         display: block;
-    }
-
-    .main-nav ul {
-        flex-direction: column; /* Stack nav items vertically */
-        gap: 0;
-        padding: 5px 0;
-        border-top: 1px solid #ddd;
-    }
-
-     .main-nav a {
-        display: block; /* Make links take full width */
-        padding: 12px 20px;
-        border-radius: 0;
-        border-bottom: 1px solid #ddd;
-        color: var(--primary-color); /* Adjust color for light bg */
-        font-weight: normal;
-    }
-     .main-nav a:hover, .main-nav a:focus, .main-nav a.active {
-        background-color: var(--accent-color);
-        color: var(--light-text-color);
-    }
-     .main-nav a::after { /* Remove underline effect on mobile */
-         display: none;
-     }
-
-    .mobile-nav-toggle {
-        display: block; /* Show hamburger icon */
-        position: absolute; /* Position relative to header */
-        top: 15px; /* Adjust positioning */
-        right: 20px;
-    }
-
-    .hero-section {
-        flex-direction: column-reverse; /* Stack text above image */
-        text-align: center;
-        padding-top: 30px;
-         padding-bottom: 30px;
-         min-height: auto; /* Reset min-height */
-    }
-    .hero-text {
-         margin-top: 30px;
-    }
-    /* Adjustments for portrait hero image on mobile */
-    .hero-image img {
-        max-width: 70%; /* Allow image to take more width on mobile */
-        max-height: 300px; /* Adjust max height for mobile */
-        margin: 0 auto; /* Center the image block */
-    }
-
-
-    .skills-grid {
-        grid-template-columns: 1fr; /* Single column on small screens */
-    }
-
-     .footer-content {
-         flex-direction: column;
-         text-align: center;
-         gap: 30px;
-     }
-     .footer-links {
-         text-align: center;
-         justify-content: center; /* Center footer icons on mobile */
-     }
-     .footer-links a {
-         margin: 0 8px; /* Adjust spacing */
-     }
-
-     /* Adjust filter controls for mobile */
-     .filter-controls {
-        flex-direction: column;
-        align-items: stretch; /* Make groups take full width */
-        gap: 1rem;
-    }
-    .filter-group {
-        justify-content: center; /* Center buttons within group */
-    }
-    #keyword-search {
-        width: 100%; /* Make search bar full width */
-        min-width: unset;
-    }
-
-    /* Blog adjustments for mobile */
-    .blog-post-title {
-        font-size: 1.7rem;
-    }
-    .blog-post-content h3 {
-        font-size: 1.25rem;
-    }
-     .proof-section, .equation-box, .definition-box, .test-steps {
-        padding: 0.8rem 1rem; /* Reduce padding */
-    }
-
-    /* Teaching page adjustments for mobile */
-     .teaching-role.card-style {
-         padding: 1rem 1.2rem;
-     }
-
-
+    main { padding-top: 0; }
+    .site-header { position: relative; height: auto; padding: 10px 0; }
+    .header-content { flex-direction: column; align-items: flex-start; }
+    .site-header h1 a { margin-bottom: 10px; }
+    .main-nav { display: none; width: 100%; background-color: var(--secondary-color); box-shadow: none; margin-top: 10px; }
+    .main-nav.active { display: block; }
+    .main-nav ul { flex-direction: column; gap: 0; padding: 5px 0; border-top: 1px solid #ddd; }
+    .main-nav a { display: block; padding: 12px 20px; border-radius: 0; border-bottom: 1px solid #ddd; color: var(--primary-color); font-weight: normal; }
+    .main-nav a:hover, .main-nav a:focus, .main-nav a.active { background-color: var(--accent-color); color: var(--light-text-color); }
+    .main-nav a::after { display: none; }
+    .mobile-nav-toggle { display: block; position: absolute; top: 15px; right: 20px; }
+    .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 30px; padding-bottom: 30px; min-height: auto; }
+    .hero-text { margin-top: 30px; }
+    .hero-image img { max-width: 70%; max-height: 300px; margin: 0 auto; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .footer-content { flex-direction: column; text-align: center; gap: 30px; }
+    .footer-links { text-align: center; justify-content: center; }
+    .footer-links a { margin: 0 8px; }
+    .filter-controls { flex-direction: column; align-items: stretch; gap: 1rem; }
+    .filter-group { justify-content: center; }
+    #keyword-search { width: 100%; min-width: unset; }
+    .blog-post-title { font-size: 1.7rem; }
+    .blog-post-content h3 { font-size: 1.25rem; }
+    .proof-section, .equation-box, .definition-box, .test-steps { padding: 0.8rem 1rem; }
+    .teaching-role.card-style { padding: 1rem 1.2rem; }
 }
 
 @media (max-width: 480px) {
-     /* Further adjustments for very small screens if needed */
-     .footer-links {
-         gap: 10px; /* Reduce gap for very small screens */
-     }
-     .footer-links a {
-         font-size: 1.1rem; /* Slightly smaller icons */
-     }
-
-     .cta-button { /* Make buttons slightly smaller padding */
-        padding: 10px 20px;
-     }
+    .footer-links { gap: 10px; }
+    .footer-links a { font-size: 1.1rem; }
+    .cta-button { padding: 10px 20px; }
 }
