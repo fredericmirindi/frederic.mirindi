@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discussion on first-price and second-price sealed-bid auction mechanisms by Frédéric Mirindi.">
+    <title>Frédéric Mirindi - Blog | Auction Mechanisms</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+
+    <script>
+        MathJax = {
+          tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+          svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <nav class="main-nav">
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li> </ul>
+            </nav>
+             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+         <div class="container content-section">
+             <article class="blog-post blog-post-full fade-in"> <header class="blog-post-header">
+                    <h2 class="blog-post-title">Understanding Auction Mechanisms: First-Price vs. Second-Price Sealed Bids</h2>
+                    <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Microeconomics, Game Theory</p>
+                 </header>
+
+                 <div class="blog-post-content">
+                    <p>Auctions are common mechanisms for allocating goods. In sealed-bid auctions, participants submit bids simultaneously. Let's analyze bidder strategy in two key types, assuming independent private values where each bidder $i$ knows their own value $v_i$ but only the distribution of others' values.</p>
+
+                    <h3>1. First-Price Sealed-Bid Auction</h3>
+                    <p>The highest bidder wins and pays their own bid amount, $b_i$.</p>
+                    <div class="proof-section">
+                        <h4>Strategic Considerations</h4>
+                        <p>Bidding your true value ($b_i = v_i$) is generally not optimal. If you win, your payoff is $v_i - b_i = v_i - v_i = 0$. Bidding lower ($b_i < v_i$) creates a potential positive payoff but reduces the probability of winning.</p>
+                        <h4>Equilibrium Bidding (Example)</h4>
+                        <p>Assume $n$ bidders with values $v_i$ independently drawn from $U[0, 1]$. In a symmetric Bayesian Nash Equilibrium, a bidder with value $v_i$ submits the optimal bid $b_i^*(v_i)$:</p>
+                        $$ b_i^*(v_i) = \frac{n-1}{n} v_i $$
+                        <p>This involves "shading" the bid below the true value. Deriving this involves maximizing expected payoff $E[\text{Payoff}] = (v_i - b_i) \times P(\text{Win} | b_i)$.</p>
+                    </div>
+
+                     <h3>2. Second-Price Sealed-Bid Auction (Vickrey Auction)</h3>
+                    <p>The highest bidder wins but pays the amount of the *second-highest* bid.</p>
+                    <div class="proof-section">
+                        <h4>Dominant Strategy: Truthful Bidding</h4>
+                        <p>Bidding your true value ($b_i = v_i$) is a weakly dominant strategy. This means $b_i = v_i$ yields an expected payoff at least as high as any other bid $b_i'$, regardless of other players' bids.</p>
+                        <h4>Proof Outline (Why $b_i = v_i$ is optimal)</h4>
+                        <p>Let $v_i$ be your value and $B_{-i} = \max_{j \neq i} \{b_j\}$ be the highest bid among others. Consider bidding $b_i$.</p>
+                        <ol class="proof-steps">
+                            <li><strong>Case 1: Consider bidding $b_i' > v_i$ (Overbidding).</strong>
+                                <ul>
+                                    <li>If $B_{-i} \ge b_i'$, you lose. Payoff = 0. (Same as bidding $v_i$).</li>
+                                    <li>If $v_i \le B_{-i} < b_i'$, you win and pay $B_{-i}$. Payoff is $v_i - B_{-i} \le 0$. Bidding $v_i$ means losing, Payoff = 0. Overbidding is worse or equal.</li>
+                                    <li>If $B_{-i} < v_i$, you win and pay $B_{-i}$. Payoff is $v_i - B_{-i} > 0$. Bidding $v_i$ also wins and pays $B_{-i}$. Same payoff.</li>
+                                </ul>
+                                $\implies$ Never better, sometimes worse than bidding $v_i$.
+                            </li>
+                            <li><strong>Case 2: Consider bidding $b_i' < v_i$ (Underbidding).</strong>
+                                <ul>
+                                   <li>If $B_{-i} \ge v_i$, you lose. Payoff = 0. (Same as bidding $v_i$).</li>
+                                   <li>If $b_i' \le B_{-i} < v_i$, you lose. Payoff = 0. Bidding $v_i$ means winning, Payoff = $v_i - B_{-i} > 0$. Underbidding is worse.</li>
+                                   <li>If $B_{-i} < b_i'$, you win and pay $B_{-i}$. Payoff is $v_i - B_{-i} > 0$. Bidding $v_i$ also wins and pays $B_{-i}$. Same payoff.</li>
+                                </ul>
+                                $\implies$ Never better, sometimes worse than bidding $v_i$.
+                            </li>
+                        </ol>
+                        <p class="proof-conclusion">Since bidding $b_i = v_i$ is weakly dominant, rational bidders will bid their true value.</p>
+                    </div>
+                    <p>This truth-telling property makes the second-price auction theoretically appealing, although first-price auctions are more common in practice.</p>
+                 </div>
+                 <div class="back-to-blog">
+                     <a href="blog.html">&larr; Back to Blog Index</a>
+                 </div>
+             </article>
+             </div> </main>
+
+     <footer class="site-footer">
+        <div class="container footer-content"> </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    </body>
+</html>
