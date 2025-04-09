@@ -607,7 +607,7 @@ img {
 #skills-snapshot { animation-delay: 0.6s; }
 
 
-/* === Styles for Filter Controls === */
+/* === Stlyes for Filter Controls === */
 
 .filter-controls {
     margin: 2rem 0;
@@ -674,34 +674,69 @@ img {
 
 /* === Styles for Blog Page Content === */
 
-.blog-post { /* Applies to both index and full post page */
+.blog-post { /* Common styles for posts on index and full pages */
     margin-bottom: 3rem;
     padding-bottom: 2rem;
 }
-.blog-post:last-of-type {
+.blog-post:last-of-type { /* Remove bottom spacing/border on last post */
      border-bottom: none;
      margin-bottom: 0;
      padding-bottom: 0;
 }
 
-.blog-post-header { /* Applies to both index and full post page */
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+/* Card style for blog excerpts on the index page */
+.blog-excerpt-card {
+    background-color: #fdfdfd;
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid var(--secondary-color);
+    transition: box-shadow 0.3s ease;
+    border-bottom: none; /* Remove the default blog-post border */
+    margin-bottom: 2rem; /* Space between cards */
+}
+.blog-excerpt-card:last-of-type {
+    margin-bottom: 0;
+}
+.blog-excerpt-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.blog-post-header { /* Header style common to index and full page */
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
     border-bottom: 1px solid var(--secondary-color);
 }
 
-.blog-post-title { /* Applies to both index and full post page */
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+.blog-post-title { /* Title style common to index and full page */
+    font-size: 1.8rem; /* Slightly adjusted size */
+    margin-bottom: 0.3rem;
     color: var(--primary-color);
 }
 
-.blog-post-meta { /* Applies to both index and full post page */
+.blog-post-meta { /* Meta style common to index and full page */
     font-size: 0.85rem;
     color: #777;
     font-style: italic;
 }
-.blog-post-meta time { /* Style date if needed */ }
+
+.blog-post-excerpt p:last-of-type { /* Spacing below excerpt text */
+    margin-bottom: 0.5rem;
+}
+.read-full-post-link { /* Link on index page */
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.read-full-post-link:hover,
+.read-full-post-link:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
 
 /* Styles ONLY for full blog post content pages */
 .blog-post-full .blog-post-content h3 {
@@ -738,7 +773,7 @@ img {
     border: 0;
     height: 1px;
     background-color: #ddd;
-    margin: 3rem 0;
+    margin: 2rem 0; /* Adjusted margin */
 }
 
 /* Style for proof/explanation sections within blog posts */
@@ -829,29 +864,11 @@ img {
     color: var(--heading-color);
 }
 
-/* Styles for Blog Index Page Excerpts */
-.blog-post-excerpt p:last-of-type {
-    margin-bottom: 0.5rem;
-}
-.read-full-post-link {
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.read-full-post-link:hover,
-.read-full-post-link:focus {
-    color: var(--accent-color);
-    text-decoration: underline;
-}
-
 /* Styles specific to full blog post pages */
 .blog-post-full .blog-post-content { /* Target only content on full page */
     /* Add specific styles if needed */
 }
-.back-to-blog {
+.back-to-blog { /* Link at bottom of full post page */
     margin-top: 2.5rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--secondary-color);
@@ -864,8 +881,51 @@ img {
     color: var(--accent-color);
 }
 
-/* === Styles for MathJax === */
-mjx-container[display="true"] { /* Target only display math */
+/* Styles for Footnotes */
+.footnotes {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.9em;
+    color: #555;
+}
+.footnotes h3 {
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+.footnotes ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+.footnotes li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+.footnotes li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    margin-left: 0.3em;
+}
+.footnotes li a:hover { text-decoration: underline; }
+sup {
+    line-height: 0;
+    vertical-align: super;
+    font-size: 0.8em;
+}
+sup a {
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+sup a:hover { background-color: var(--secondary-color); text-decoration: none; }
+:target { /* Optional highlight for jumped-to footnote */ }
+
+/* Styles for MathJax */
+mjx-container[display="true"] { /* Display math */
     display: block;
     margin: 1.5rem 0 !important;
     overflow-x: auto;
@@ -873,7 +933,7 @@ mjx-container[display="true"] { /* Target only display math */
     text-align: center;
     font-size: 1.05em;
 }
-mjx-container[display="false"] { /* Target only inline math */
+mjx-container[display="false"] { /* Inline math */
     display: inline-block;
     margin: 0 0.15em !important;
     padding: 0 !important;
@@ -883,9 +943,10 @@ mjx-container[display="false"] { /* Target only inline math */
     vertical-align: baseline;
 }
 
-/* === Styles for Timeline Placeholder === */
-#research-timeline-section { /* ... */ }
-#timeline-embed { /* ... */ }
+/* Styles for Timeline Placeholder */
+#research-timeline-section { background-color: #f8f9fa; padding: 50px 0; }
+#timeline-embed { border: 1px solid #ddd; margin-top: 1.5rem; background-color: #fff; }
+
 
 /* === END Styles for Blog Page Content === */
 
@@ -907,7 +968,7 @@ mjx-container[display="false"] { /* Target only inline math */
     .main-nav a:hover, .main-nav a:focus, .main-nav a.active { background-color: var(--accent-color); color: var(--light-text-color); }
     .main-nav a::after { display: none; }
     .mobile-nav-toggle { display: block; position: absolute; top: 15px; right: 20px; }
-    .hero-section { flex-direction: column-reverse; text-align: center; padding-top: 30px; padding-bottom: 30px; min-height: auto; }
+    .hero-section { flex-direction: column-reverse; text-align: center; padding: 30px 0; min-height: auto; }
     .hero-text { margin-top: 30px; }
     .hero-image img { max-width: 70%; max-height: 300px; margin: 0 auto; }
     .skills-grid { grid-template-columns: 1fr; }
@@ -918,9 +979,10 @@ mjx-container[display="false"] { /* Target only inline math */
     .filter-group { justify-content: center; }
     #keyword-search { width: 100%; min-width: unset; }
     .blog-post-title { font-size: 1.7rem; }
-    .blog-post-content h3 { font-size: 1.25rem; }
+    .blog-post-full .blog-post-content h3 { font-size: 1.25rem; } /* Target full post only */
     .proof-section, .equation-box, .definition-box, .test-steps { padding: 0.8rem 1rem; }
     .teaching-role.card-style { padding: 1rem 1.2rem; }
+    .blog-excerpt-card { padding: 1rem 1.2rem; } /* Adjust card padding */
 }
 
 @media (max-width: 480px) {
