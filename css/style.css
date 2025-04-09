@@ -512,6 +512,7 @@ img {
 #presentations { animation-delay: 0.3s; }
 #online-media { animation-delay: 0.4s; }
 #awards { animation-delay: 0.5s; }
+#research-timeline-section { animation-delay: 0.6s;} /* Delay for timeline */
 /* Stagger blog post animations */
 .blog-post.fade-in { animation-delay: 0.1s; } /* First post */
 .blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.3s; } /* Second post */
@@ -591,10 +592,10 @@ img {
 /* === Styles for Enhanced Blog Page Content === */
 
 .blog-header { /* Optional: Style blog page header differently */
-    background-color: var(--secondary-color); /* Lighter header for blog */
+     /* Removed specific background to match .page-header by default */
 }
 .blog-header h1, .blog-header p {
-    color: var(--heading-color); /* Adjust text color if needed */
+    /* Removed specific color to inherit from .page-header */
 }
 
 .blog-post {
@@ -736,13 +737,30 @@ mjx-container { /* Target MathJax elements */
     overflow-x: auto; /* Allow scrolling for very wide equations */
     overflow-y: hidden;
     font-size: 1.05em; /* Slightly larger math font if needed */
+    display: block; /* Ensure it takes block space */
+    text-align: center; /* Center display equations */
 }
 
 /* Inline math styling (optional) */
 mjx-container[display="inline"] {
     margin: 0 0.2em !important; /* Adjust spacing for inline math */
     font-size: 1em; /* Ensure inline math is not too big */
+    display: inline-block; /* Ensure proper inline flow */
+    text-align: left; /* Keep inline math left-aligned */
 }
+
+/* Optional: Style for the timeline placeholder */
+#research-timeline-section {
+    background-color: #f8f9fa;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+#timeline-embed {
+    border: 1px solid #ddd;
+    margin-top: 1.5rem;
+    background-color: #fff; /* White background for timeline embed area */
+}
+
 
 /* === END Styles for Enhanced Blog Content === */
 
