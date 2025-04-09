@@ -430,16 +430,16 @@ img {
 }
 
 /* --- CV Page Styles --- */
-.cv-summary, .cv-download {
+.cv-summary, .cv-download, .cv-request { /* Added .cv-request */
     margin-bottom: 2rem;
 }
-.cv-download {
+.cv-download, .cv-request { /* Added .cv-request */
     text-align: center;
     padding: 30px;
     background-color: var(--secondary-color);
     border-radius: var(--border-radius);
 }
-.cv-download-link i {
+.cv-download-link i, .cv-request a i { /* Added .cv-request */
     margin-right: 8px;
 }
 
@@ -512,6 +512,11 @@ img {
 #presentations { animation-delay: 0.3s; }
 #online-media { animation-delay: 0.4s; }
 #awards { animation-delay: 0.5s; }
+/* Stagger blog post animations */
+.blog-post.fade-in { animation-delay: 0.1s; } /* First post */
+.blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.3s; } /* Second post */
+
+
 /* Adjust delays for homepage sections if needed */
 #about { animation-delay: 0.2s; }
 #research-highlights { animation-delay: 0.4s; }
@@ -581,6 +586,91 @@ img {
 }
 
 /* === END Styles for Filter Controls === */
+
+
+/* === Styles for Blog Page === */
+
+.blog-header { /* Optional: Style blog page header differently */
+    background-color: var(--secondary-color); /* Lighter header for blog */
+}
+.blog-header h1, .blog-header p {
+    color: var(--heading-color); /* Adjust text color if needed */
+}
+
+.blog-post {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+}
+/* Remove bottom border from last post */
+.blog-post:last-of-type {
+     border-bottom: none;
+     margin-bottom: 0;
+     padding-bottom: 0;
+}
+
+
+.blog-post-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.blog-post-title {
+    font-size: 2rem; /* Slightly smaller than page title */
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.blog-post-meta {
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+}
+.blog-post-meta time {
+    /* Style date if needed */
+}
+
+
+.blog-post-content h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.blog-post-content ul {
+    list-style: disc;
+    margin-left: 25px; /* Indent list */
+    margin-bottom: 1.5rem;
+}
+.blog-post-content ul li {
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+}
+.blog-post-content ul ul { /* Nested lists */
+    margin-top: 0.5rem;
+    list-style: circle;
+}
+
+.blog-post-content code { /* Style for inline code/math representations */
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #c7254e; /* Example color */
+    border: 1px solid #e8e8e8;
+}
+
+.blog-divider {
+    border: 0;
+    height: 1px;
+    background-color: #ddd; /* Make divider more visible */
+    margin: 3rem 0;
+}
+
+/* === END Styles for Blog Page === */
 
 
 /* --- Responsiveness --- */
@@ -696,6 +786,14 @@ img {
         min-width: unset;
     }
 
+    /* Blog adjustments for mobile */
+    .blog-post-title {
+        font-size: 1.7rem;
+    }
+    .blog-post-content h3 {
+        font-size: 1.25rem;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -705,5 +803,9 @@ img {
      }
      .footer-links a {
          font-size: 1.1rem; /* Slightly smaller icons */
+     }
+
+     .cta-button { /* Make buttons slightly smaller padding */
+        padding: 10px 20px;
      }
 }
