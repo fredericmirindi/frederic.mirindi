@@ -58,6 +58,8 @@ h1, h2, h3, h4, h5, h6 {
 h1 { font-size: 2.8rem; font-weight: 700;}
 h2 { font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem;}
 h3 { font-size: 1.6rem; font-weight: 600; color: var(--primary-color); }
+h4 { font-size: 1.15rem; font-weight: 600; color: var(--heading-color); margin-top: 1.5rem; margin-bottom: 0.7rem; font-family: var(--font-body); } /* Style sub-headings like H4 */
+
 
 p {
     margin-bottom: 1.2rem;
@@ -328,6 +330,12 @@ img {
     color: var(--light-text-color);
      border-color: var(--accent-color);
 }
+/* Smaller button variant */
+.cta-button.small-button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+}
+
 
 /* --- Page Header for Subpages --- */
 .page-header {
@@ -349,12 +357,12 @@ img {
 }
 
 /* --- Research & Teaching Page Styles --- */
-.publication-list li, .presentation-list li, .teaching-role, .media-list li {
+.publication-list li, .presentation-list li, .media-list li { /* Group common list styles */
     margin-bottom: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--secondary-color);
 }
-.publication-list li:last-child, .presentation-list li:last-child, .teaching-role:last-child, .media-list li:last-child {
+.publication-list li:last-child, .presentation-list li:last-child, .media-list li:last-child {
     border-bottom: none;
 }
 
@@ -394,26 +402,92 @@ img {
     margin-left: 5px;
 }
 
-.teaching-role h3 {
-    font-size: 1.4rem;
-    margin-bottom: 0.2rem;
+/* --- Specific Teaching Page Styles --- */
+.teaching-role {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--secondary-color);
 }
-.teaching-role h4 {
+.teaching-role:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+/* Card style for teaching roles */
+.teaching-role.card-style {
+    background-color: #fdfdfd; /* Slightly off white background */
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid var(--secondary-color);
+    transition: box-shadow 0.3s ease;
+}
+.teaching-role.card-style:hover {
+     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.teaching-role h3 { /* Role title */
+    font-size: 1.5rem; /* Slightly larger */
+    margin-bottom: 0.3rem;
+    color: var(--primary-color);
+}
+.teaching-role h4 { /* Course section title */
     font-size: 1.1rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--text-color);
-    font-family: var(--font-body);
-    font-weight: 600;
+    margin-top: 1.5rem; /* More space before courses */
+    margin-bottom: 0.8rem;
+    color: var(--heading-color);
+    border-bottom: 1px solid #eee; /* Subtle separator */
+    padding-bottom: 0.3rem;
+}
+.course-list {
+    list-style: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
 }
 .course-list li {
-     margin-bottom: 0.8rem;
-     list-style-type: circle; /* Example list style */
-     margin-left: 20px;
+     margin-bottom: 1rem; /* More spacing between courses */
+     padding-left: 1.5rem; /* Indent course details */
+     position: relative; /* For pseudo-elements */
 }
+.course-list li::before { /* Custom bullet */
+    content: '\f192'; /* Font Awesome circle dot */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0.1em; /* Adjust vertical alignment */
+    font-size: 0.8em;
+}
+
 .course-list strong {
      font-weight: 600;
+     display: block; /* Put course title on its own line */
+     margin-bottom: 0.2rem;
 }
+.course-list em { /* Styling for dates */
+     font-size: 0.9rem;
+     color: #666;
+     display: block;
+     margin-bottom: 0.3rem;
+}
+.course-list .fa-users { /* Student icon */
+     margin-right: 5px;
+     color: #888;
+}
+
+.philosophy-box { /* Style the philosophy section */
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-color);
+    border-left: 5px solid var(--primary-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+.philosophy-box p {
+    margin-bottom: 0; /* Remove bottom margin for single paragraph */
+    font-size: 1.05rem; /* Slightly larger text */
+    line-height: 1.8;
+}
+
 
 .award-list li {
     padding-bottom: 1.5rem;
@@ -513,6 +587,10 @@ img {
 #online-media { animation-delay: 0.4s; }
 #awards { animation-delay: 0.5s; }
 #research-timeline-section { animation-delay: 0.6s;} /* Delay for timeline */
+#teaching-experience { animation-delay: 0.1s;} /* Delay teaching sections */
+#teaching-philosophy { animation-delay: 0.2s;}
+
+
 /* Stagger blog post animations */
 .blog-post.fade-in { animation-delay: 0.1s; } /* First post */
 .blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.3s; } /* Second post */
@@ -592,10 +670,10 @@ img {
 /* === Styles for Enhanced Blog Page Content === */
 
 .blog-header { /* Optional: Style blog page header differently */
-     /* Removed specific background to match .page-header by default */
+     /* Using standard .page-header style now */
 }
 .blog-header h1, .blog-header p {
-    /* Removed specific color to inherit from .page-header */
+    /* Inheriting from .page-header */
 }
 
 .blog-post {
@@ -888,6 +966,11 @@ mjx-container[display="inline"] {
      .proof-section, .equation-box {
         padding: 0.8rem 1rem; /* Reduce padding */
     }
+
+    /* Teaching page adjustments for mobile */
+     .teaching-role.card-style {
+         padding: 1rem 1.2rem;
+     }
 
 
 }
