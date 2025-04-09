@@ -1,3 +1,5 @@
+/* === Full Updated style.css === */
+
 /* --- Global Styles & Variables --- */
 :root {
     --primary-color: #2c3e50; /* Dark Slate Blue */
@@ -59,7 +61,6 @@ h1 { font-size: 2.8rem; font-weight: 700;}
 h2 { font-size: 2.2rem; margin-top: 2rem; margin-bottom: 1.5rem;}
 h3 { font-size: 1.6rem; font-weight: 600; color: var(--primary-color); }
 h4 { font-size: 1.15rem; font-weight: 600; color: var(--heading-color); margin-top: 1.5rem; margin-bottom: 0.7rem; font-family: var(--font-body); } /* Style sub-headings like H4 */
-
 
 p {
     margin-bottom: 1.2rem;
@@ -406,10 +407,9 @@ img {
 .teaching-role {
     margin-bottom: 2.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--secondary-color);
+    /* Removed bottom border here, handled by card-style if used */
 }
 .teaching-role:last-child {
-    border-bottom: none;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -421,6 +421,10 @@ img {
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     border: 1px solid var(--secondary-color);
     transition: box-shadow 0.3s ease;
+    margin-bottom: 2rem; /* Add margin between cards */
+}
+.teaching-role.card-style:last-child {
+     margin-bottom: 0;
 }
 .teaching-role.card-style:hover {
      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -594,6 +598,7 @@ img {
 /* Stagger blog post animations */
 .blog-post.fade-in { animation-delay: 0.1s; } /* First post */
 .blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.3s; } /* Second post */
+.blog-post.fade-in + .blog-divider + .blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.5s; } /* Third post */
 
 
 /* Adjust delays for homepage sections if needed */
@@ -668,13 +673,6 @@ img {
 
 
 /* === Styles for Enhanced Blog Page Content === */
-
-.blog-header { /* Optional: Style blog page header differently */
-     /* Using standard .page-header style now */
-}
-.blog-header h1, .blog-header p {
-    /* Inheriting from .page-header */
-}
 
 .blog-post {
     margin-bottom: 3rem;
@@ -839,8 +837,89 @@ mjx-container[display="inline"] {
     background-color: #fff; /* White background for timeline embed area */
 }
 
+/* Styles for definition box in blog */
+.definition-box {
+    background-color: #eaf7f4; /* Light teal/green background */
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+}
+.definition-box h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+}
 
-/* === END Styles for Enhanced Blog Content === */
+/* Styles for test steps in blog */
+.test-steps {
+    margin-top: 1.5rem;
+    background-color: #f8f9fa; /* Similar to proof section */
+    padding: 1rem 1.5rem 1.5rem 1.5rem; /* Add bottom padding */
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+}
+.test-steps h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+.test-steps ol {
+    list-style-type: decimal;
+    margin-left: 20px; /* Indent steps */
+}
+.test-steps li {
+    margin-bottom: 1.2rem; /* Space between steps */
+}
+.test-steps li p {
+    margin-bottom: 0.5rem; /* Less space within step */
+}
+.test-conclusion {
+    font-weight: 600;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #ccc; /* Separator for conclusion */
+    color: var(--heading-color);
+}
+
+/* Styles for Read More Functionality */
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+.collapsible-content.expanded {
+    max-height: 5000px; /* Adjust if needed */
+    transition: max-height 0.7s ease-in;
+}
+.read-more-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.read-more-btn:hover,
+.read-more-btn:focus {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    outline: none;
+}
+.read-more-btn i {
+    margin-left: 5px;
+}
+
+/* === END Styles for Enhanced Blog Content & Read More === */
 
 
 /* --- Responsiveness --- */
@@ -963,7 +1042,7 @@ mjx-container[display="inline"] {
     .blog-post-content h3 {
         font-size: 1.25rem;
     }
-     .proof-section, .equation-box {
+     .proof-section, .equation-box, .definition-box, .test-steps {
         padding: 0.8rem 1rem; /* Reduce padding */
     }
 
