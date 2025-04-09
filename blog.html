@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog by Frédéric Mirindi discussing topics in economics and econometrics, including game theory and macroeconomics.">
+    <title>Frédéric Mirindi - Blog</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <nav class="main-nav">
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
+    </header>
+
+    <main>
+         <header class="page-header blog-header"> <div class="container">
+                <h1>Blog: Economic Insights</h1>
+                <p>Discussions on microeconomic strategy and macroeconomic policy.</p>
+             </div>
+         </header>
+
+         <div class="container content-section">
+             <article class="blog-post fade-in">
+                 <header class="blog-post-header">
+                    <h2 class="blog-post-title">Understanding Auction Mechanisms: First-Price vs. Second-Price Sealed Bids</h2>
+                    <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Microeconomics, Game Theory</p>
+                 </header>
+
+                 <div class="blog-post-content">
+                    <p>Auctions are fundamental mechanisms for resource allocation. Understanding bidder strategy is key, especially in sealed-bid formats where participants submit bids simultaneously without knowing others' bids. Let's explore two common types:</p>
+
+                    <h3>1. First-Price Sealed-Bid Auction</h3>
+                    <p>In this auction, the highest bidder wins the item and pays the price they bid.</p>
+                    <ul>
+                        <li><strong>Strategy Challenge:</strong> Bidders face a trade-off. Bidding higher increases the probability of winning but reduces the potential profit (the difference between their true value for the item and the bid price). Bidding lower increases potential profit if they win, but decreases the chance of winning.</li>
+                        <li><strong>Optimal Bidding (Simplified):</strong> Under standard assumptions (private values drawn from a known distribution, risk-neutral bidders), the optimal strategy involves "shading" your bid – bidding *less* than your true value. The amount of shading depends on your value and the number of competitors. For example, with *n* bidders and values drawn uniformly from [0, 1], a bidder with value *v* optimally bids `b = ((n-1)/n) * v`.</li>
+                        <li><strong>Outcome:</strong> The winner pays their own (shaded) bid.</li>
+                    </ul>
+
+                     <h3>2. Second-Price Sealed-Bid Auction (Vickrey Auction)</h3>
+                    <p>Here, the highest bidder still wins, but they pay the price submitted by the *second-highest* bidder.</p>
+                     <ul>
+                        <li><strong>Dominant Strategy:</strong> This auction has a remarkable property: each bidder's best strategy is to bid their true value, regardless of what other bidders do. This is a *dominant strategy*.</li>
+                        <li><strong>Why bid truthfully?</strong>
+                            <ul>
+                                <li>Consider bidding *less* than your value *v*. If the second-highest bid *b_2* falls between your lower bid and your true value *v*, you lose the auction even though you would have been willing to pay *b_2* (which is less than *v*) to win. You gain nothing by bidding low.</li>
+                                <li>Consider bidding *more* than your value *v*. If you win only because your inflated bid was highest, but the second-highest bid *b_2* is actually *higher* than your true value *v*, you are forced to pay *b_2* for an item you value less. You lose by bidding high.</li>
+                            </ul>
+                        </li>
+                         <li><strong>Outcome:</strong> The winner pays the second-highest bid. This mechanism encourages truthful revelation of values.</li>
+                    </ul>
+                    <p>While seemingly similar, these two auction types induce very different bidding strategies and can lead to different revenue outcomes for the seller depending on the context and bidder assumptions.</p>
+                 </div>
+             </article>
+
+             <hr class="blog-divider"> <article class="blog-post fade-in" style="animation-delay: 0.2s;"> <header class="blog-post-header">
+                    <h2 class="blog-post-title">Monetary Policy Debates: Gordon, the NKPC, and DIS Curve Insights</h2>
+                    <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Macroeconomics, Monetary Policy</p>
+                 </header>
+
+                  <div class="blog-post-content">
+                     <p>Central banks grapple with stabilizing inflation and output. Modern macroeconomic analysis often employs frameworks like the New Keynesian Phillips Curve (NKPC) and a Dynamic IS (DIS) curve. However, the work of economists like Robert J. Gordon offers valuable perspective, particularly regarding inflation inertia and supply shocks, which complicate simple policy rules.</p>
+
+                     <h3>The Standard New Keynesian Framework (Briefly)</h3>
+                     <ul>
+                         <li><strong>NKPC:</strong> Relates current inflation to expected future inflation and a measure of marginal cost (often proxied by the output gap – the difference between actual and potential output). It emphasizes forward-looking expectations. A simplified form might look like: `π_t = β * E_t[π_{t+1}] + κ * y_t + u_t`, where π is inflation, y is the output gap, E is expectations, β is the discount factor, κ measures responsiveness to the output gap, and u represents cost-push shocks.</li>
+                         <li><strong>DIS Curve:</strong> Links the output gap to the real interest rate gap (the difference between the actual real interest rate and the 'natural' rate of interest). Simplified form: `y_t = E_t[y_{t+1}] - σ * (i_t - E_t[π_{t+1}] - r^n_t) + v_t`, where i is the nominal interest rate, r^n is the natural rate, σ is intertemporal substitution elasticity, and v represents demand shocks.</li>
+                     </ul>
+
+                     <h3>Gordon's Perspective & Policy Challenges</h3>
+                     <p>While the NKPC/DIS framework is influential, Robert Gordon's work, particularly his "Triangle Model" of inflation, highlights aspects that complicate its direct application to policy:</p>
+                     <ul>
+                         <li><strong>Inflation Inertia (Persistence):</strong> Gordon emphasized the role of *past* inflation (`π_{t-1}`) in determining current inflation, alongside demand (output gap) and supply shocks. Standard NKPC models can struggle to generate the degree of inflation persistence observed empirically without modification (e.g., adding rule-of-thumb price setters or indexation). This inertia means inflation may not respond quickly or solely to changes in expected future inflation or the output gap.</li>
+                         <li><strong>Supply Shocks:** Gordon strongly focused on the impact of supply shocks (e.g., oil price changes, productivity shifts) which directly affect inflation independently of demand. The NKPC's `u_t` term captures this, but policy responses become tricky. Stabilizing inflation might require worsening a recession caused by an adverse supply shock, highlighting the policy trade-off.</li>
+                         <li><strong>Measuring Potential Output/Natural Rates:</strong> The DIS and NKPC rely heavily on unobservable concepts like the output gap and the natural rate of interest (`r^n`). Estimating these in real-time is notoriously difficult, making precise policy implementation based on these gaps challenging. Gordon's work often involved careful analysis of historical data to understand shifts in potential output and the Non-Accelerating Inflation Rate of Unemployment (NAIRU).</li>
+                     </ul>
+                     <h3>Policy Implications</h3>
+                     <p>Gordon's insights often lead to a more cautious view of simple monetary policy rules (like strict Taylor rules derived purely from NKPC/DIS models). His work suggests policymakers must:</p>
+                     <ul>
+                         <li>Account for significant inflation inertia.</li>
+                         <li>Explicitly consider the nature and persistence of supply shocks when setting policy.</li>
+                         <li>Be humble about the precision of real-time estimates of potential output and natural rates.</li>
+                     </ul>
+                     <p>This perspective enriches the debate around optimal monetary policy, reminding us that while theoretical models provide structure, understanding historical context, inertia, and supply-side factors, as emphasized by Gordon, remains crucial for effective policymaking.</p>
+                  </div>
+             </article>
+
+         </div> </main>
+
+     <footer class="site-footer">
+         <div class="container footer-content">
+             <div class="footer-contact">
+                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+             </div>
+             <div class="footer-links">
+                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    </body>
+</html>
