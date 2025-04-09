@@ -1,5 +1,3 @@
-/* === Full Updated style.css === */
-
 /* --- Global Styles & Variables --- */
 :root {
     --primary-color: #2c3e50; /* Dark Slate Blue */
@@ -29,7 +27,7 @@ html {
 
 body {
     font-family: var(--font-body);
-    line-height: 1.7; /* Slightly increased line height */
+    line-height: 1.7; /* Base line height */
     color: var(--text-color);
     background-color: var(--background-color);
     display: flex;
@@ -807,23 +805,29 @@ img {
     margin-bottom: 0;
 }
 
-/* Ensure MathJax output looks good - adjust font size/margins if needed */
-mjx-container { /* Target MathJax elements */
-    margin: 1rem 0 !important; /* Add vertical spacing around display math */
-    overflow-x: auto; /* Allow scrolling for very wide equations */
-    overflow-y: hidden;
-    font-size: 1.05em; /* Slightly larger math font if needed */
+/* === Refined MathJax CSS Rules === */
+
+/* Styling for DISPLAY MathJax elements (e.g., $$...$$) */
+mjx-container[display="true"] { /* Target only display math */
     display: block; /* Ensure it takes block space */
+    margin: 1.5rem 0 !important; /* Vertical spacing ONLY for display math */
+    overflow-x: auto; /* Allow scrolling for wide equations */
+    overflow-y: hidden;
     text-align: center; /* Center display equations */
+    font-size: 1.05em; /* Slightly larger math font if needed */
 }
 
-/* Inline math styling (optional) */
-mjx-container[display="inline"] {
-    margin: 0 0.2em !important; /* Adjust spacing for inline math */
-    font-size: 1em; /* Ensure inline math is not too big */
-    display: inline-block; /* Ensure proper inline flow */
-    text-align: left; /* Keep inline math left-aligned */
+/* Styling for INLINE MathJax elements (e.g., $...$) */
+mjx-container[display="false"] { /* Target only inline math */
+    display: inline-block; /* Allow it to sit within text flow */
+    margin: 0 0.15em !important; /* Minimal horizontal spacing */
+    padding: 0 !important;
+    line-height: 1; /* Prevent it from stretching the text line height excessively */
+    font-size: 1em; /* Match surrounding text size */
+    text-align: left;
+    vertical-align: baseline; /* Align with text baseline */
 }
+/* === End Refined MathJax Rules === */
 
 /* Optional: Style for the timeline placeholder */
 #research-timeline-section {
