@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Blog by Frédéric Mirindi discussing topics in economics and econometrics, including game theory and macroeconomics.">
+    <meta name="description" content="Blog by Frédéric Mirindi discussing topics in economics and econometrics, including game theory, macroeconomics, and time series analysis.">
     <title>Frédéric Mirindi - Blog</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,10 +49,9 @@
     </header>
 
     <main>
-         <header class="page-header">
-             <div class="container">
+         <header class="page-header"> <div class="container">
                 <h1>Blog: Economic Insights</h1>
-                <p>Discussions on microeconomic strategy and macroeconomic policy.</p>
+                <p>Discussions on microeconomic strategy, macroeconomic policy, and econometric techniques.</p>
              </div>
          </header>
 
@@ -70,43 +69,40 @@
                     <p>The highest bidder wins and pays their own bid amount, $b_i$.</p>
                     <div class="proof-section">
                         <h4>Strategic Considerations</h4>
-                        <p>Bidding your true value ($b_i = v_i$) is generally not optimal. If you win, your payoff is $v_i - b_i = v_i - v_i = 0$. You can potentially do better by bidding lower.</p>
-                        <p>However, bidding too low risks losing the auction even if your value is highest. The optimal bid $b_i^*$ balances the probability of winning against the payoff conditional on winning.</p>
+                        <p>Bidding your true value ($b_i = v_i$) is generally not optimal. If you win, your payoff is $v_i - b_i = v_i - v_i = 0$. Bidding lower ($b_i < v_i$) creates a potential positive payoff but reduces the probability of winning.</p>
                         <h4>Equilibrium Bidding (Example)</h4>
-                        <p>Assume there are $n$ bidders whose values $v_i$ are independently drawn from a uniform distribution on $[0, 1]$. In a symmetric Bayesian Nash Equilibrium, a bidder with value $v_i$ submits the bid:</p>
+                        <p>Assume there are $n$ bidders whose values $v_i$ are independently drawn from a uniform distribution on $[0, 1]$. In a symmetric Bayesian Nash Equilibrium, a bidder with value $v_i$ submits the optimal bid $b_i^*(v_i)$:</p>
                         $$ b_i^*(v_i) = \frac{n-1}{n} v_i $$
-                        <p>This strategy involves "shading" the bid below the true value. The amount of shading decreases as the number of bidders $n$ increases (more competition forces bids closer to values).</p>
-                        <p class="proof-step">Deriving this equilibrium involves setting up the expected payoff function for bidder $i$, assuming others follow the same strategy $b^*(v_j)$, and finding the bid $b_i$ that maximizes this expected payoff. This requires calculating the probability of winning given the bid $b_i$ and the distribution of others' values.</p>
+                        <p>This strategy involves "shading" the bid below the true value. The derivation involves maximizing the expected payoff $E[\text{Payoff}] = (v_i - b_i) \times P(\text{Win} | b_i)$, considering that others use the same strategy form.</p>
                     </div>
 
                      <h3>2. Second-Price Sealed-Bid Auction (Vickrey Auction)</h3>
                     <p>The highest bidder wins but pays the amount of the *second-highest* bid.</p>
                     <div class="proof-section">
                         <h4>Dominant Strategy: Truthful Bidding</h4>
-                        <p>In this auction, bidding your true value ($b_i = v_i$) is a weakly dominant strategy. This means bidding $v_i$ yields an expected payoff at least as high as any other bid $b_i'$, regardless of what other bidders do.</p>
+                        <p>Bidding your true value ($b_i = v_i$) is a weakly dominant strategy. This means $b_i = v_i$ yields an expected payoff at least as high as any other bid $b_i'$, regardless of other players' bids.</p>
                         <h4>Proof Outline (Why $b_i = v_i$ is optimal)</h4>
-                        <p>Let $v_i$ be your true value and $b_{max}^{-i}$ be the highest bid among all *other* bidders. Consider bidding $b_i$.</p>
+                        <p>Let $v_i$ be your value and $B_{-i} = \max_{j \neq i} \{b_j\}$ be the highest bid among others.</p>
                         <ol class="proof-steps">
-                            <li><strong>Case 1: Suppose you bid $b_i > v_i$ (Overbidding).</strong>
+                            <li><strong>Case 1: Consider bidding $b_i' > v_i$ (Overbidding).</strong>
                                 <ul>
-                                    <li>If $b_{max}^{-i} \ge b_i$, you don't win. Bidding $v_i$ also wouldn't win. Payoff = 0 in both cases.</li>
-                                    <li>If $v_i \le b_{max}^{-i} < b_i$, you win and pay $b_{max}^{-i}$. Since $b_{max}^{-i} \ge v_i$, your payoff is $v_i - b_{max}^{-i} \le 0$. If you had bid $v_i$, you would *not* have won (since $b_{max}^{-i} \ge v_i$), getting a payoff of 0. Overbidding made you worse off (or equal).</li>
-                                    <li>If $b_{max}^{-i} < v_i < b_i$, you win and pay $b_{max}^{-i}$. Your payoff is $v_i - b_{max}^{-i} > 0$. Bidding $v_i$ would also have won, paying $b_{max}^{-i}$, giving the same payoff.</li>
+                                    <li>If $B_{-i} \ge b_i'$, you lose. Payoff = 0. (Same as bidding $v_i$).</li>
+                                    <li>If $v_i \le B_{-i} < b_i'$, you win and pay $B_{-i}$. Payoff = $v_i - B_{-i} \le 0$. Bidding $v_i$ would mean losing, Payoff = 0. So, overbidding is worse or equal.</li>
+                                    <li>If $B_{-i} < v_i$, you win and pay $B_{-i}$. Payoff = $v_i - B_{-i} > 0$. Bidding $v_i$ also wins and pays $B_{-i}$. Same payoff.</li>
                                 </ul>
-                                Conclusion for Case 1: Bidding $b_i > v_i$ is never better than bidding $v_i$, and sometimes worse.
+                                $\implies$ Never better, sometimes worse than bidding $v_i$.
                             </li>
-                            <li><strong>Case 2: Suppose you bid $b_i < v_i$ (Underbidding).</strong>
+                            <li><strong>Case 2: Consider bidding $b_i' < v_i$ (Underbidding).</strong>
                                 <ul>
-                                   <li>If $b_{max}^{-i} \ge v_i$, you don't win. Bidding $v_i$ also wouldn't win. Payoff = 0 in both cases.</li>
-                                   <li>If $b_i \le b_{max}^{-i} < v_i$, you don't win. Your payoff is 0. If you had bid $v_i$, you *would* have won (since $v_i > b_{max}^{-i}$) and paid $b_{max}^{-i}$, giving a payoff of $v_i - b_{max}^{-i} > 0$. Underbidding made you worse off.</li>
-                                   <li>If $b_{max}^{-i} < b_i < v_i$, you win and pay $b_{max}^{-i}$. Your payoff is $v_i - b_{max}^{-i} > 0$. Bidding $v_i$ would also have won, paying $b_{max}^{-i}$, giving the same payoff.</li>
+                                   <li>If $B_{-i} \ge v_i$, you lose. Payoff = 0. (Same as bidding $v_i$).</li>
+                                   <li>If $b_i' \le B_{-i} < v_i$, you lose. Payoff = 0. Bidding $v_i$ would mean winning and paying $B_{-i}$, Payoff = $v_i - B_{-i} > 0$. So, underbidding is worse.</li>
+                                   <li>If $B_{-i} < b_i'$, you win and pay $B_{-i}$. Payoff = $v_i - B_{-i} > 0$. Bidding $v_i$ also wins and pays $B_{-i}$. Same payoff.</li>
                                 </ul>
-                                Conclusion for Case 2: Bidding $b_i < v_i$ is never better than bidding $v_i$, and sometimes worse.
+                                $\implies$ Never better, sometimes worse than bidding $v_i$.
                             </li>
                         </ol>
-                        <p class="proof-conclusion">Since neither overbidding nor underbidding is ever strictly better than bidding truthfully ($b_i = v_i$), and they can be strictly worse, bidding your true value is a weakly dominant strategy.</p>
+                        <p class="proof-conclusion">Since bidding $b_i = v_i$ yields a payoff greater than or equal to any other strategy $b_i'$ in all cases, it is a weakly dominant strategy.</p>
                     </div>
-                    <p>This truth-telling property makes the second-price auction theoretically appealing, although first-price auctions are more common in practice.</p>
                  </div>
              </article>
 
@@ -119,44 +115,93 @@
                  </header>
 
                   <div class="blog-post-content">
-                     <p>Modern monetary policy analysis often utilizes the New Keynesian framework, typically featuring a New Keynesian Phillips Curve (NKPC) and a Dynamic IS (DIS) relationship. Robert J. Gordon's extensive work on inflation dynamics provides important context and highlights challenges for policymakers relying solely on this framework.</p>
+                     <p>Modern monetary policy analysis often utilizes the New Keynesian framework, featuring a New Keynesian Phillips Curve (NKPC) and a Dynamic IS (DIS) relationship. Robert J. Gordon's work provides important context regarding inflation inertia and supply shocks.</p>
 
                      <h3>The Standard New Keynesian Framework</h3>
                      <div class="equation-box">
-                         <p><strong>New Keynesian Phillips Curve (NKPC):</strong> Relates current inflation ($\pi_t$) to expected future inflation ($E_t[\pi_{t+1}]$) and real marginal cost, often proxied by the output gap ($y_t = Y_t - Y_t^n$, the deviation of actual output from potential output).</p>
+                         <p><strong>New Keynesian Phillips Curve (NKPC):</strong> Links current inflation ($\pi_t$) to expected future inflation ($E_t[\pi_{t+1}]$) and the output gap ($y_t$).</p>
                          $$ \pi_t = \beta E_t[\pi_{t+1}] + \kappa y_t + u_t $$
-                         <p>Here, $\beta$ is the household discount factor, $\kappa$ depends on the frequency of price adjustment and other structural parameters, and $u_t$ represents cost-push or markup shocks.</p>
+                         <p>where $\beta$ is the discount factor, $\kappa$ captures price stickiness, and $u_t$ represents cost-push shocks.</p>
                      </div>
                      <div class="equation-box">
-                         <p><strong>Dynamic IS Curve (DIS):</strong> Links the current output gap ($y_t$) to the expected future output gap ($E_t[y_{t+1}]$) and the real interest rate gap (the difference between the actual real rate $i_t - E_t[\pi_{t+1}]$ and the natural rate of interest $r^n_t$).</p>
+                         <p><strong>Dynamic IS Curve (DIS):</strong> Links the output gap ($y_t$) to its expected future value ($E_t[y_{t+1}]$) and the real interest rate gap.</p>
                          $$ y_t = E_t[y_{t+1}] - \sigma (i_t - E_t[\pi_{t+1}] - r^n_t) + v_t $$
-                         <p>Here, $\sigma$ is the coefficient of intertemporal substitution, $i_t$ is the nominal policy rate, and $v_t$ represents demand shocks.</p>
+                         <p>where $\sigma$ is intertemporal substitution elasticity, $i_t$ is the nominal policy rate, $r^n_t$ is the natural rate of interest, and $v_t$ represents demand shocks.</p>
                      </div>
 
                      <h3>Gordon's Perspective & Policy Challenges</h3>
-                     <p>Gordon's "Triangle Model" emphasizes three core drivers of inflation: inertia (lagged inflation), demand (output gap or unemployment gap), and supply shocks. While related to the NKPC, his approach highlights empirical realities that pose challenges:</p>
+                     <p>Gordon's "Triangle Model" highlights challenges for this framework:</p>
                      <ul>
-                         <li><strong>Strong Inflation Inertia:</strong> Empirically, past inflation ($\pi_{t-1}, \pi_{t-2}, ...$) often has significant predictive power for current inflation, potentially more than the purely forward-looking NKPC suggests. Gordon's model explicitly incorporates lagged inflation:
-                            $$ \pi_t = \sum_{j=1}^{k} \alpha_j \pi_{t-j} + \gamma D_t + \delta Z_t $$
-                            (where $D_t$ represents demand factors and $Z_t$ represents supply shocks). This inertia implies that disinflation can be costly and slow, as policy needs to overcome the momentum of past price changes.
-                         </li>
-                         <li><strong>Role of Supply Shocks ($Z_t$):</strong> Gordon placed significant weight on the direct impact of supply shocks (like oil price changes in the 1970s) on inflation. While the NKPC includes a shock term ($u_t$), the policy trade-off becomes acute: stabilizing inflation after an adverse supply shock might require a large negative output gap (recession). Gordon's historical analyses demonstrate the potent effects of these shocks.
-                         </li>
-                         <li><strong>Time-Varying NAIRU/Potential Output:</strong> A key theme in Gordon's work is that the Non-Accelerating Inflation Rate of Unemployment (NAIRU) – the unemployment rate consistent with stable inflation – is not constant. Similarly, potential output growth ($Y_t^n$) changes over time (e.g., due to productivity shifts). This makes real-time estimation of the output gap ($y_t$) or unemployment gap, crucial inputs for NKPC/DIS models and Taylor rules, highly uncertain for policymakers.
-                         </li>
+                         <li><strong>Inflation Inertia:</strong> Gordon emphasized the role of past inflation ($\pi_{t-j}$) alongside demand ($D_t$) and supply shocks ($Z_t$): $\pi_t = \sum \alpha_j \pi_{t-j} + \gamma D_t + \delta Z_t$. This observed persistence can be harder to generate in purely forward-looking NKPC models.</li>
+                         <li><strong>Supply Shocks ($Z_t$):</strong> Significant impacts from supply factors (e.g., oil prices) complicate policy, as stabilizing inflation might worsen output gaps.</li>
+                         <li><strong>Measurement Uncertainty:</strong> Real-time estimation of potential output ($Y_t^n$) and the natural rate of interest ($r^n_t$) needed for $y_t$ and the interest rate gap is highly uncertain.</li>
                      </ul>
-                     <h3>Policy Implications</h3>
-                     <p>Integrating Gordon's insights suggests a monetary policy approach that:</p>
-                     <ol>
-                         <li>Acknowledges and models inflation persistence explicitly.</li>
-                         <li>Distinguishes between demand-driven and supply-driven inflation, potentially responding differently to each.</li>
-                         <li>Recognizes the uncertainty surrounding potential output and the natural rates of interest and unemployment, leading to potentially more robust or cautious policy rules compared to those derived from purely theoretical NKPC/DIS models assuming perfect information.</li>
-                     </ol>
-                     <p>The debate continues, but understanding the empirical regularities and historical context emphasized by Gordon provides a vital counterpoint and complement to the elegant structure of the New Keynesian framework.</p>
+                     <p>These factors suggest caution regarding simple policy rules derived solely from the NKPC/DIS model, emphasizing the need to account for inertia, supply factors, and measurement difficulties in practical policymaking.</p>
                   </div>
              </article>
 
-         </div> </main>
+            <hr class="blog-divider">
+
+            <article class="blog-post fade-in" style="animation-delay: 0.4s;">
+                 <header class="blog-post-header">
+                    <h2 class="blog-post-title">Granger Causality in Time Series Analysis</h2>
+                    <p class="blog-post-meta">Posted on <time datetime="2025-04-09">April 9, 2025</time> | Category: Econometrics, Time Series</p>
+                 </header>
+
+                 <div class="blog-post-content">
+                    <p>In time series econometrics, establishing causal relationships is challenging. Clive Granger formalized a specific, testable notion of predictive causality known as Granger Causality.</p>
+
+                    <div class="definition-box">
+                        <h3>Definition</h3>
+                        <p>A time series variable $X_t$ is said to **Granger-cause** another variable $Y_t$ if past values of $X_t$ contain information that helps predict $Y_t$ beyond the information already contained in the past values of $Y_t$ itself.</p>
+                        <p>Crucially, this is about *predictability*, not necessarily true economic causality in a structural sense. Correlation does not imply causation, and Granger causality primarily tests for predictive power.</p>
+                    </div>
+
+                    <h3>Mathematical Formulation using VAR Models</h3>
+                    <p>Granger causality is typically tested within the framework of a Vector Autoregression (VAR) model. Consider a simple bivariate VAR(p) model with two stationary time series variables, $Y_t$ and $X_t$, and $p$ lags:</p>
+                    <div class="equation-box">
+                         $$ Y_t = \alpha_0 + \sum_{i=1}^{p} \alpha_i Y_{t-i} + \sum_{i=1}^{p} \beta_i X_{t-i} + \epsilon_{1t} $$
+                         $$ X_t = \gamma_0 + \sum_{i=1}^{p} \gamma_i Y_{t-i} + \sum_{i=1}^{p} \delta_i X_{t-i} + \epsilon_{2t} $$
+                         <p>where $\epsilon_{1t}$ and $\epsilon_{2t}$ are white noise error terms, potentially contemporaneously correlated.</p>
+                    </div>
+
+                    <h3>Testing for Granger Causality ($X \rightarrow Y$)</h3>
+                    <p>To test if $X$ Granger-causes $Y$, we examine the statistical significance of the lagged coefficients of $X$ in the equation for $Y$.</p>
+                    <div class="test-steps">
+                        <h4>Hypotheses:</h4>
+                        <p>The null hypothesis ($H_0$) is that $X$ does *not* Granger-cause $Y$. Mathematically, this means all coefficients on lagged $X$ terms in the $Y$ equation are zero:</p>
+                        $$ H_0: \beta_1 = \beta_2 = \dots = \beta_p = 0 $$
+                        <p>The alternative hypothesis ($H_1$) is that at least one $\beta_i \neq 0$.</p>
+
+                        <h4>Test Procedure (F-test):</h4>
+                        <ol>
+                            <li>Estimate the **Unrestricted Model**: This is the full VAR equation for $Y_t$ as written above, including lags of both $Y$ and $X$. Obtain the Sum of Squared Residuals, $SSR_U$.</li>
+                            <li>Estimate the **Restricted Model**: This is the equation for $Y_t$ imposing the null hypothesis, meaning lags of $X$ are excluded:
+                                $$ Y_t = \alpha_0 + \sum_{i=1}^{p} \alpha_i Y_{t-i} + \epsilon_{1t}^* $$
+                                Obtain the Sum of Squared Residuals from this regression, $SSR_R$.
+                            </li>
+                            <li>Calculate the F-statistic:
+                                $$ F = \frac{(SSR_R - SSR_U) / p}{SSR_U / (T - 2p - 1)} $$
+                                where $p$ is the number of lags (number of restrictions), $T$ is the number of observations in the sample, and $(T - 2p - 1)$ is the degrees of freedom for the unrestricted model.
+                            </li>
+                            <li>Compare to Critical Value: Compare the calculated F-statistic to the critical value from the F-distribution with $p$ and $(T - 2p - 1)$ degrees of freedom at a chosen significance level (e.g., 5%). If $F > F_{critical}$, reject $H_0$.
+                            </li>
+                        </ol>
+                         <p class="test-conclusion">Rejecting $H_0$ implies that past values of $X_t$ significantly improve the prediction of $Y_t$, and we conclude that $X_t$ Granger-causes $Y_t$. A similar test can be performed for whether $Y$ Granger-causes $X$ using the second equation ($\gamma_i$ coefficients).</p>
+                    </div>
+
+                    <h3>Important Considerations & Limitations</h3>
+                    <ul>
+                        <li><strong>Stationarity:</strong> Variables in the VAR should generally be stationary. Non-stationary data requires careful handling (e.g., cointegration analysis, differencing).</li>
+                        <li><strong>Lag Length ($p$):</strong> The choice of lag length $p$ is crucial and can affect results. Information criteria (AIC, BIC, HQIC) are often used to select $p$.</li>
+                        <li><strong>Omitted Variables:</strong> If a third variable $Z_t$ influences both $X_t$ and $Y_t$, a significant Granger causality test result between $X$ and $Y$ might be spurious, reflecting the influence of the omitted $Z_t$.</li>
+                        <li><strong>Instantaneous Causality:</strong> Granger causality tests only past predictive power. It doesn't capture contemporaneous relationships (often examined via the correlation of residuals $\epsilon_{1t}$ and $\epsilon_{2t}$).</li>
+                        <li><strong>"Causality" Definition:</strong> It's vital to remember this is *predictive* causality within the context of the model, not necessarily a deep structural or philosophical causal link.</li>
+                    </ul>
+                    <p>Despite its limitations, the Granger causality test is a valuable tool in the time series econometrician's toolkit for exploring dynamic relationships between variables.</p>
+                 </div>
+             </article>
+            </div> </main>
 
      <footer class="site-footer">
         <div class="container footer-content">
