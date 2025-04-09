@@ -17,7 +17,20 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
 
-</head>
+    <script>
+        MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']], // Define inline math delimiters
+            displayMath: [['$$', '$$'], ['\\[', '\\]']] // Define display math delimiters
+          },
+          svg: {
+            fontCache: 'global'
+          }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
 <body>
     <header class="site-header">
         <div class="container header-content">
@@ -36,7 +49,8 @@
     </header>
 
     <main>
-         <header class="page-header blog-header"> <div class="container">
+         <header class="page-header blog-header">
+             <div class="container">
                 <h1>Blog: Economic Insights</h1>
                 <p>Discussions on microeconomic strategy and macroeconomic policy.</p>
              </div>
@@ -50,68 +64,102 @@
                  </header>
 
                  <div class="blog-post-content">
-                    <p>Auctions are fundamental mechanisms for resource allocation. Understanding bidder strategy is key, especially in sealed-bid formats where participants submit bids simultaneously without knowing others' bids. Let's explore two common types:</p>
+                    <p>Auctions are common mechanisms for allocating goods. In sealed-bid auctions, participants submit bids simultaneously. Let's analyze bidder strategy in two key types, assuming independent private values where each bidder $i$ knows their own value $v_i$ but only the distribution of others' values.</p>
 
                     <h3>1. First-Price Sealed-Bid Auction</h3>
-                    <p>In this auction, the highest bidder wins the item and pays the price they bid.</p>
-                    <ul>
-                        <li><strong>Strategy Challenge:</strong> Bidders face a trade-off. Bidding higher increases the probability of winning but reduces the potential profit (the difference between their true value for the item and the bid price). Bidding lower increases potential profit if they win, but decreases the chance of winning.</li>
-                        <li><strong>Optimal Bidding (Simplified):</strong> Under standard assumptions (private values drawn from a known distribution, risk-neutral bidders), the optimal strategy involves "shading" your bid – bidding *less* than your true value. The amount of shading depends on your value and the number of competitors. For example, with *n* bidders and values drawn uniformly from [0, 1], a bidder with value *v* optimally bids `b = ((n-1)/n) * v`.</li>
-                        <li><strong>Outcome:</strong> The winner pays their own (shaded) bid.</li>
-                    </ul>
+                    <p>The highest bidder wins and pays their own bid amount, $b_i$.</p>
+                    <div class="proof-section">
+                        <h4>Strategic Considerations</h4>
+                        <p>Bidding your true value ($b_i = v_i$) is generally not optimal. If you win, your payoff is $v_i - b_i = v_i - v_i = 0$. You can potentially do better by bidding lower.</p>
+                        <p>However, bidding too low risks losing the auction even if your value is highest. The optimal bid $b_i^*$ balances the probability of winning against the payoff conditional on winning.</p>
+                        <h4>Equilibrium Bidding (Example)</h4>
+                        <p>Assume there are $n$ bidders whose values $v_i$ are independently drawn from a uniform distribution on $[0, 1]$. In a symmetric Bayesian Nash Equilibrium, a bidder with value $v_i$ submits the bid:</p>
+                        $$ b_i^*(v_i) = \frac{n-1}{n} v_i $$
+                        <p>This strategy involves "shading" the bid below the true value. The amount of shading decreases as the number of bidders $n$ increases (more competition forces bids closer to values).</p>
+                        <p class="proof-step">Deriving this equilibrium involves setting up the expected payoff function for bidder $i$, assuming others follow the same strategy $b^*(v_j)$, and finding the bid $b_i$ that maximizes this expected payoff. This requires calculating the probability of winning given the bid $b_i$ and the distribution of others' values.</p>
+                    </div>
 
                      <h3>2. Second-Price Sealed-Bid Auction (Vickrey Auction)</h3>
-                    <p>Here, the highest bidder still wins, but they pay the price submitted by the *second-highest* bidder.</p>
-                     <ul>
-                        <li><strong>Dominant Strategy:</strong> This auction has a remarkable property: each bidder's best strategy is to bid their true value, regardless of what other bidders do. This is a *dominant strategy*.</li>
-                        <li><strong>Why bid truthfully?</strong>
-                            <ul>
-                                <li>Consider bidding *less* than your value *v*. If the second-highest bid *b_2* falls between your lower bid and your true value *v*, you lose the auction even though you would have been willing to pay *b_2* (which is less than *v*) to win. You gain nothing by bidding low.</li>
-                                <li>Consider bidding *more* than your value *v*. If you win only because your inflated bid was highest, but the second-highest bid *b_2* is actually *higher* than your true value *v*, you are forced to pay *b_2* for an item you value less. You lose by bidding high.</li>
-                            </ul>
-                        </li>
-                         <li><strong>Outcome:</strong> The winner pays the second-highest bid. This mechanism encourages truthful revelation of values.</li>
-                    </ul>
-                    <p>While seemingly similar, these two auction types induce very different bidding strategies and can lead to different revenue outcomes for the seller depending on the context and bidder assumptions.</p>
+                    <p>The highest bidder wins but pays the amount of the *second-highest* bid.</p>
+                    <div class="proof-section">
+                        <h4>Dominant Strategy: Truthful Bidding</h4>
+                        <p>In this auction, bidding your true value ($b_i = v_i$) is a weakly dominant strategy. This means bidding $v_i$ yields an expected payoff at least as high as any other bid $b_i'$, regardless of what other bidders do.</p>
+                        <h4>Proof Outline (Why $b_i = v_i$ is optimal)</h4>
+                        <p>Let $v_i$ be your true value and $b_{max}^{-i}$ be the highest bid among all *other* bidders. Consider bidding $b_i$.</p>
+                        <ol class="proof-steps">
+                            <li><strong>Case 1: Suppose you bid $b_i > v_i$ (Overbidding).</strong>
+                                <ul>
+                                    <li>If $b_{max}^{-i} \ge b_i$, you don't win. Bidding $v_i$ also wouldn't win. Payoff = 0 in both cases.</li>
+                                    <li>If $v_i \le b_{max}^{-i} < b_i$, you win and pay $b_{max}^{-i}$. Since $b_{max}^{-i} \ge v_i$, your payoff is $v_i - b_{max}^{-i} \le 0$. If you had bid $v_i$, you would *not* have won (since $b_{max}^{-i} \ge v_i$), getting a payoff of 0. Overbidding made you worse off (or equal).</li>
+                                    <li>If $b_{max}^{-i} < v_i < b_i$, you win and pay $b_{max}^{-i}$. Your payoff is $v_i - b_{max}^{-i} > 0$. Bidding $v_i$ would also have won, paying $b_{max}^{-i}$, giving the same payoff.</li>
+                                </ul>
+                                Conclusion for Case 1: Bidding $b_i > v_i$ is never better than bidding $v_i$, and sometimes worse.
+                            </li>
+                            <li><strong>Case 2: Suppose you bid $b_i < v_i$ (Underbidding).</strong>
+                                <ul>
+                                   <li>If $b_{max}^{-i} \ge v_i$, you don't win. Bidding $v_i$ also wouldn't win. Payoff = 0 in both cases.</li>
+                                   <li>If $b_i \le b_{max}^{-i} < v_i$, you don't win. Your payoff is 0. If you had bid $v_i$, you *would* have won (since $v_i > b_{max}^{-i}$) and paid $b_{max}^{-i}$, giving a payoff of $v_i - b_{max}^{-i} > 0$. Underbidding made you worse off.</li>
+                                   <li>If $b_{max}^{-i} < b_i < v_i$, you win and pay $b_{max}^{-i}$. Your payoff is $v_i - b_{max}^{-i} > 0$. Bidding $v_i$ would also have won, paying $b_{max}^{-i}$, giving the same payoff.</li>
+                                </ul>
+                                Conclusion for Case 2: Bidding $b_i < v_i$ is never better than bidding $v_i$, and sometimes worse.
+                            </li>
+                        </ol>
+                        <p class="proof-conclusion">Since neither overbidding nor underbidding is ever strictly better than bidding truthfully ($b_i = v_i$), and they can be strictly worse, bidding your true value is a weakly dominant strategy.</p>
+                    </div>
+                    <p>This truth-telling property makes the second-price auction theoretically appealing, although first-price auctions are more common in practice.</p>
                  </div>
              </article>
 
-             <hr class="blog-divider"> <article class="blog-post fade-in" style="animation-delay: 0.2s;"> <header class="blog-post-header">
+             <hr class="blog-divider">
+
+             <article class="blog-post fade-in" style="animation-delay: 0.2s;">
+                  <header class="blog-post-header">
                     <h2 class="blog-post-title">Monetary Policy Debates: Gordon, the NKPC, and DIS Curve Insights</h2>
                     <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Macroeconomics, Monetary Policy</p>
                  </header>
 
                   <div class="blog-post-content">
-                     <p>Central banks grapple with stabilizing inflation and output. Modern macroeconomic analysis often employs frameworks like the New Keynesian Phillips Curve (NKPC) and a Dynamic IS (DIS) curve. However, the work of economists like Robert J. Gordon offers valuable perspective, particularly regarding inflation inertia and supply shocks, which complicate simple policy rules.</p>
+                     <p>Modern monetary policy analysis often utilizes the New Keynesian framework, typically featuring a New Keynesian Phillips Curve (NKPC) and a Dynamic IS (DIS) relationship. Robert J. Gordon's extensive work on inflation dynamics provides important context and highlights challenges for policymakers relying solely on this framework.</p>
 
-                     <h3>The Standard New Keynesian Framework (Briefly)</h3>
-                     <ul>
-                         <li><strong>NKPC:</strong> Relates current inflation to expected future inflation and a measure of marginal cost (often proxied by the output gap – the difference between actual and potential output). It emphasizes forward-looking expectations. A simplified form might look like: `π_t = β * E_t[π_{t+1}] + κ * y_t + u_t`, where π is inflation, y is the output gap, E is expectations, β is the discount factor, κ measures responsiveness to the output gap, and u represents cost-push shocks.</li>
-                         <li><strong>DIS Curve:</strong> Links the output gap to the real interest rate gap (the difference between the actual real interest rate and the 'natural' rate of interest). Simplified form: `y_t = E_t[y_{t+1}] - σ * (i_t - E_t[π_{t+1}] - r^n_t) + v_t`, where i is the nominal interest rate, r^n is the natural rate, σ is intertemporal substitution elasticity, and v represents demand shocks.</li>
-                     </ul>
+                     <h3>The Standard New Keynesian Framework</h3>
+                     <div class="equation-box">
+                         <p><strong>New Keynesian Phillips Curve (NKPC):</strong> Relates current inflation ($\pi_t$) to expected future inflation ($E_t[\pi_{t+1}]$) and real marginal cost, often proxied by the output gap ($y_t = Y_t - Y_t^n$, the deviation of actual output from potential output).</p>
+                         $$ \pi_t = \beta E_t[\pi_{t+1}] + \kappa y_t + u_t $$
+                         <p>Here, $\beta$ is the household discount factor, $\kappa$ depends on the frequency of price adjustment and other structural parameters, and $u_t$ represents cost-push or markup shocks.</p>
+                     </div>
+                     <div class="equation-box">
+                         <p><strong>Dynamic IS Curve (DIS):</strong> Links the current output gap ($y_t$) to the expected future output gap ($E_t[y_{t+1}]$) and the real interest rate gap (the difference between the actual real rate $i_t - E_t[\pi_{t+1}]$ and the natural rate of interest $r^n_t$).</p>
+                         $$ y_t = E_t[y_{t+1}] - \sigma (i_t - E_t[\pi_{t+1}] - r^n_t) + v_t $$
+                         <p>Here, $\sigma$ is the coefficient of intertemporal substitution, $i_t$ is the nominal policy rate, and $v_t$ represents demand shocks.</p>
+                     </div>
 
                      <h3>Gordon's Perspective & Policy Challenges</h3>
-                     <p>While the NKPC/DIS framework is influential, Robert Gordon's work, particularly his "Triangle Model" of inflation, highlights aspects that complicate its direct application to policy:</p>
+                     <p>Gordon's "Triangle Model" emphasizes three core drivers of inflation: inertia (lagged inflation), demand (output gap or unemployment gap), and supply shocks. While related to the NKPC, his approach highlights empirical realities that pose challenges:</p>
                      <ul>
-                         <li><strong>Inflation Inertia (Persistence):</strong> Gordon emphasized the role of *past* inflation (`π_{t-1}`) in determining current inflation, alongside demand (output gap) and supply shocks. Standard NKPC models can struggle to generate the degree of inflation persistence observed empirically without modification (e.g., adding rule-of-thumb price setters or indexation). This inertia means inflation may not respond quickly or solely to changes in expected future inflation or the output gap.</li>
-                         <li><strong>Supply Shocks:** Gordon strongly focused on the impact of supply shocks (e.g., oil price changes, productivity shifts) which directly affect inflation independently of demand. The NKPC's `u_t` term captures this, but policy responses become tricky. Stabilizing inflation might require worsening a recession caused by an adverse supply shock, highlighting the policy trade-off.</li>
-                         <li><strong>Measuring Potential Output/Natural Rates:</strong> The DIS and NKPC rely heavily on unobservable concepts like the output gap and the natural rate of interest (`r^n`). Estimating these in real-time is notoriously difficult, making precise policy implementation based on these gaps challenging. Gordon's work often involved careful analysis of historical data to understand shifts in potential output and the Non-Accelerating Inflation Rate of Unemployment (NAIRU).</li>
+                         <li><strong>Strong Inflation Inertia:</strong> Empirically, past inflation ($\pi_{t-1}, \pi_{t-2}, ...$) often has significant predictive power for current inflation, potentially more than the purely forward-looking NKPC suggests. Gordon's model explicitly incorporates lagged inflation:
+                            $$ \pi_t = \sum_{j=1}^{k} \alpha_j \pi_{t-j} + \gamma D_t + \delta Z_t $$
+                            (where $D_t$ represents demand factors and $Z_t$ represents supply shocks). This inertia implies that disinflation can be costly and slow, as policy needs to overcome the momentum of past price changes.
+                         </li>
+                         <li><strong>Role of Supply Shocks ($Z_t$):</strong> Gordon placed significant weight on the direct impact of supply shocks (like oil price changes in the 1970s) on inflation. While the NKPC includes a shock term ($u_t$), the policy trade-off becomes acute: stabilizing inflation after an adverse supply shock might require a large negative output gap (recession). Gordon's historical analyses demonstrate the potent effects of these shocks.
+                         </li>
+                         <li><strong>Time-Varying NAIRU/Potential Output:</strong> A key theme in Gordon's work is that the Non-Accelerating Inflation Rate of Unemployment (NAIRU) – the unemployment rate consistent with stable inflation – is not constant. Similarly, potential output growth ($Y_t^n$) changes over time (e.g., due to productivity shifts). This makes real-time estimation of the output gap ($y_t$) or unemployment gap, crucial inputs for NKPC/DIS models and Taylor rules, highly uncertain for policymakers.
+                         </li>
                      </ul>
                      <h3>Policy Implications</h3>
-                     <p>Gordon's insights often lead to a more cautious view of simple monetary policy rules (like strict Taylor rules derived purely from NKPC/DIS models). His work suggests policymakers must:</p>
-                     <ul>
-                         <li>Account for significant inflation inertia.</li>
-                         <li>Explicitly consider the nature and persistence of supply shocks when setting policy.</li>
-                         <li>Be humble about the precision of real-time estimates of potential output and natural rates.</li>
-                     </ul>
-                     <p>This perspective enriches the debate around optimal monetary policy, reminding us that while theoretical models provide structure, understanding historical context, inertia, and supply-side factors, as emphasized by Gordon, remains crucial for effective policymaking.</p>
+                     <p>Integrating Gordon's insights suggests a monetary policy approach that:</p>
+                     <ol>
+                         <li>Acknowledges and models inflation persistence explicitly.</li>
+                         <li>Distinguishes between demand-driven and supply-driven inflation, potentially responding differently to each.</li>
+                         <li>Recognizes the uncertainty surrounding potential output and the natural rates of interest and unemployment, leading to potentially more robust or cautious policy rules compared to those derived from purely theoretical NKPC/DIS models assuming perfect information.</li>
+                     </ol>
+                     <p>The debate continues, but understanding the empirical regularities and historical context emphasized by Gordon provides a vital counterpoint and complement to the elegant structure of the New Keynesian framework.</p>
                   </div>
              </article>
 
          </div> </main>
 
      <footer class="site-footer">
-         <div class="container footer-content">
+        <div class="container footer-content">
              <div class="footer-contact">
                  <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
                  <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
