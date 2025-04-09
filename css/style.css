@@ -588,7 +588,7 @@ img {
 /* === END Styles for Filter Controls === */
 
 
-/* === Styles for Blog Page === */
+/* === Styles for Enhanced Blog Page Content === */
 
 .blog-header { /* Optional: Style blog page header differently */
     background-color: var(--secondary-color); /* Lighter header for blog */
@@ -670,7 +670,81 @@ img {
     margin: 3rem 0;
 }
 
-/* === END Styles for Blog Page === */
+/* Style for proof/explanation sections within blog posts */
+.proof-section {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa; /* Light background to offset proof */
+    border-left: 4px solid var(--accent-color); /* Accent border */
+    border-radius: var(--border-radius);
+}
+
+.proof-section h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+
+/* Style for ordered list used in proofs */
+.proof-steps {
+    list-style-type: decimal; /* Use numbers for steps */
+    margin-left: 25px;
+    margin-top: 1rem;
+}
+.proof-steps li {
+    margin-bottom: 1rem;
+}
+.proof-steps > li > strong { /* Make Case titles bold */
+    font-weight: 700;
+}
+.proof-steps ul { /* Nested lists within proof steps */
+    list-style-type: disc; /* Use bullets for sub-points */
+    margin-top: 0.5rem;
+}
+
+/* Style for concluding remarks of a proof */
+.proof-conclusion {
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--heading-color);
+}
+
+/* Styling for equation display boxes */
+.equation-box {
+    background-color: #fdfdfd; /* Slightly off-white */
+    border: 1px solid var(--secondary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.equation-box p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem; /* Less space between description and formula */
+}
+.equation-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure MathJax output looks good - adjust font size/margins if needed */
+mjx-container { /* Target MathJax elements */
+    margin: 1rem 0 !important; /* Add vertical spacing around display math */
+    overflow-x: auto; /* Allow scrolling for very wide equations */
+    overflow-y: hidden;
+    font-size: 1.05em; /* Slightly larger math font if needed */
+}
+
+/* Inline math styling (optional) */
+mjx-container[display="inline"] {
+    margin: 0 0.2em !important; /* Adjust spacing for inline math */
+    font-size: 1em; /* Ensure inline math is not too big */
+}
+
+/* === END Styles for Enhanced Blog Content === */
 
 
 /* --- Responsiveness --- */
@@ -793,6 +867,10 @@ img {
     .blog-post-content h3 {
         font-size: 1.25rem;
     }
+     .proof-section, .equation-box {
+        padding: 0.8rem 1rem; /* Reduce padding */
+    }
+
 
 }
 
