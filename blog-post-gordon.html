@@ -15,7 +15,12 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <script> MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, svg: { fontCache: 'global' } }; </script>
+    <script>
+        MathJax = {
+          tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+          svg: { fontCache: 'global' }
+        };
+    </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
@@ -29,8 +34,7 @@
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                </ul>
+                    <li><a href="blog.html" class="active">Blog</a></li> </ul>
             </nav>
              <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
@@ -43,9 +47,51 @@
                     <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Macroeconomics, Monetary Policy</p>
                  </header>
                  <div class="blog-post-content">
-                     <p>Modern macroeconomic models used for monetary policy analysis... [Full post content with NKPC/DIS equations, Gordon's points, etc.] ...vital counterpoint and complement...</p>
+                     <p>Modern macroeconomic models used for monetary policy analysis, particularly within the New Keynesian tradition, often rely on the interplay between an aggregate supply relation (the New Keynesian Phillips Curve, NKPC) and an aggregate demand relation (the Dynamic IS curve, DIS). While this framework provides valuable insights, the extensive empirical work by Robert J. Gordon highlights important real-world complexities, especially concerning inflation inertia and the role of supply shocks, which policy must confront.</p>
+
+                     <h3>The Standard New Keynesian Framework</h3>
+                     <p>This framework typically builds from microfoundations assuming optimizing agents and nominal rigidities (sticky prices or wages).</p>
+                     <div class="equation-box">
+                         <p><strong>New Keynesian Phillips Curve (NKPC):</strong> Derived from firms' optimal price-setting behavior under constraints (e.g., Calvo pricing), it links current inflation ($\pi_t$) primarily to expected future inflation ($E_t[\pi_{t+1}]$) and a measure of real marginal cost ($mc_t$), often proxied by the output gap ($y_t$).</p>
+                         $$ \pi_t = \beta E_t[\pi_{t+1}] + \kappa mc_t \approx \beta E_t[\pi_{t+1}] + \kappa y_t + u_t $$
+                         <p>Here, $\beta \in (0,1)$ is the household's discount factor, $\kappa$ captures the degree of price stickiness (smaller $\kappa$ means stickier prices), and $u_t$ represents exogenous cost-push shocks (like unexpected changes in markups or input costs).</p>
+                     </div>
+                     <div class="equation-box">
+                         <p><strong>Dynamic IS Curve (DIS):</strong> Derived from households' Euler equation for consumption, it links the current output gap ($y_t$) to the expected future output gap ($E_t[y_{t+1}]$) and the gap between the real interest rate ($i_t - E_t[\pi_{t+1}]$) and the natural rate of interest ($r^n_t$).</p>
+                         $$ y_t = E_t[y_{t+1}] - \sigma (i_t - E_t[\pi_{t+1}] - r^n_t) + v_t $$
+                         <p>Here, $\sigma > 0$ is the intertemporal elasticity of substitution in consumption, $i_t$ is the central bank's nominal policy rate, and $v_t$ represents aggregate demand shocks (e.g., government spending or preference shocks).</p>
+                     </div>
+
+                     <h3>Gordon's Perspective & Policy Challenges</h3>
+                     <p>Robert Gordon's research, particularly his development of the "Triangle Model" of inflation<sup><a href="#fn3" id="fnref3">3</a></sup>, emphasizes empirical patterns and historical context, posing challenges to the direct application of the baseline NKPC/DIS framework:</p>
+                     <ul>
+                         <li><strong>Strong Inflation Inertia/Persistence:</strong> Gordon consistently found that lagged inflation terms ($\pi_{t-1}, \pi_{t-2}, \dots$) are highly significant determinants of current inflation $\pi_t$. His general model often takes the form:
+                             $$ \pi_t = \sum_{j=1}^{k} \alpha_j \pi_{t-j} + \gamma D_t + \delta Z_t + \epsilon_t $$
+                            Where $\sum \alpha_j$ is often close to 1 (indicating high persistence), $D_t$ captures demand pressures (like the unemployment or output gap), and $Z_t$ represents supply shock variables (e.g., relative import prices, oil prices, productivity trend deviations). Purely forward-looking NKPC models ($\pi_t = \beta E_t[\pi_{t+1}] + \kappa y_t + u_t$) can struggle to generate this level of inertia without modifications like assuming some agents use backward-looking rules or indexation<sup><a href="#fn4" id="fnref4">4</a></sup>. This inertia makes disinflation potentially more costly in terms of lost output (a higher sacrifice ratio).
+                         </li>
+                         <li><strong>Explicit Role of Supply Shocks ($Z_t$):</strong> The Triangle model explicitly incorporates identifiable supply shocks, which Gordon argued were crucial for explaining inflation dynamics, especially during the 1970s and other volatile periods. While the NKPC includes a generic shock $u_t$, Gordon's approach emphasizes pinning down specific sources. This highlights the policy dilemma: Should the central bank accommodate adverse supply shocks (leading to higher inflation) or fight them (potentially deepening a recession)? The optimal response depends on the shock's perceived persistence and the central bank's objectives.
+                         </li>
+                         <li><strong>Time-Varying Potential Output and NAIRU:</strong> Gordon's empirical work extensively documents shifts in the growth rate of potential output ($Y^n_t$) and the Non-Accelerating Inflation Rate of Unemployment (NAIRU) over time, driven by factors like demographics, technology, and globalization<sup><a href="#fn5" id="fnref5">5</a></sup>. Since the output gap ($y_t$) and the unemployment gap are central to both the NKPC/DIS framework and common policy rules (like the Taylor rule), the significant real-time uncertainty surrounding $Y^n_t$ and NAIRU makes precise policy calibration extremely difficult. Acting aggressively based on potentially mismeasured gaps can lead to policy errors.
+                         </li>
+                     </ul>
+                     <h3>Policy Implications</h3>
+                     <p>Integrating Gordon's insights suggests a monetary policy approach that:</p>
+                     <ol>
+                         <li>Acknowledges and models inflation persistence explicitly.</li>
+                         <li>Distinguishes between demand-driven and supply-driven inflation, potentially responding differently to each.</li>
+                         <li>Recognizes the uncertainty surrounding potential output and the natural rates of interest and unemployment, leading to potentially more robust or cautious policy rules compared to those derived from purely theoretical NKPC/DIS models assuming perfect information.</li>
+                     </ol>
+                     <p>The debate continues, but understanding the empirical regularities and historical context emphasized by Gordon provides a vital counterpoint and complement to the elegant structure of the New Keynesian framework.</p>
                  </div>
-                 <section class="footnotes"><hr><h3>Footnotes</h3><ol><li id="fn3">See, for example, Gordon, R. J. (1982)...<a href="#fnref3" title="Return to text">&#8617;</a></li><li id="fn4">Hybrid NKPC models... See Galí, J., & Gertler, M. (1999)...<a href="#fnref4" title="Return to text">&#8617;</a></li><li id="fn5">Gordon, R. J. (2016). *The Rise and Fall of American Growth*...<a href="#fnref5" title="Return to text">&#8617;</a></li></ol></section>
+                 <section class="footnotes">
+                     <hr>
+                     <h3>Footnotes</h3>
+                     <ol>
+                          <li id="fn3">See, for example, Gordon, R. J. (1982). Inflation, flexible exchange rates, and the natural rate of unemployment. In *Workers, Jobs, and Inflation* (pp. 89-158). Brookings Institution Press; or Gordon, R. J. (2011). The History of the Phillips Curve: Consensus and Bifurcation. *Economica*, 78(309), 10–50. <a href="#fnref3" title="Return to text">&#8617;</a></li>
+                          <li id="fn4">Hybrid NKPC models often add a lagged inflation term: $\pi_t = \gamma_b \pi_{t-1} + \gamma_f E_t[\pi_{t+1}] + \kappa y_t + u_t$, where $\gamma_b + \gamma_f \approx 1$. See Galí, J., & Gertler, M. (1999). Inflation dynamics: A structural econometric analysis. *Journal of Monetary Economics*, 44(2), 195–222. <a href="#fnref4" title="Return to text">&#8617;</a></li>
+                          <li id="fn5">Gordon, R. J. (2016). *The Rise and Fall of American Growth: The U.S. Standard of Living since the Civil War*. Princeton University Press. This book provides extensive historical analysis of productivity and potential output growth. <a href="#fnref5" title="Return to text">&#8617;</a></li>
+                     </ol>
+                 </section>
                   <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
              </article>
          </div>
