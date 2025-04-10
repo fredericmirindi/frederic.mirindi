@@ -233,722 +233,209 @@ img {
 
 /* --- Content Sections --- */
 .content-section {
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 0 0 50px 0; /* Removed top padding, handled by card/header */
 }
 
-.featured-section {
-    background-color: #f8f9fa; /* Slightly different background */
-    border-top: 1px solid var(--secondary-color);
-     border-bottom: 1px solid var(--secondary-color);
-}
-.featured-section ul {
-    list-style: none;
-    padding-left: 0;
-}
-.featured-section ul li {
-     margin-bottom: 0.8rem;
-     display: flex;
-     align-items: flex-start;
-}
-.icon-highlight {
-    color: var(--accent-color);
-    margin-right: 10px;
-    margin-top: 4px; /* Align icon better with text */
-    min-width: 20px; /* Ensure alignment */
-    text-align: center;
-}
-
-
-/* --- Skills Snapshot Section --- */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 30px;
-    margin-top: 2rem;
-}
-.skill-item {
-    text-align: center;
-    padding: 20px;
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-}
-.skill-icon {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-.skill-item h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-family: var(--font-body); /* Use body font for skill titles */
-     font-weight: 600;
-}
-.skill-item p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-/* --- Call to Action (CTA) Buttons --- */
-.cta-button {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: var(--light-text-color);
-    padding: 12px 25px;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    border: 2px solid var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-size: 0.9rem;
-}
-
-.cta-button:hover, .cta-button:focus {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-    border-color: var(--primary-color);
-    text-decoration: none;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.cta-button.secondary {
-    background-color: transparent;
-    color: var(--accent-color);
-    border-color: var(--accent-color);
-}
-.cta-button.secondary:hover, .cta-button.secondary:focus {
-    background-color: var(--accent-color);
-    color: var(--light-text-color);
-     border-color: var(--accent-color);
-}
-/* Smaller button variant */
-.cta-button.small-button {
-    padding: 8px 15px;
-    font-size: 0.8rem;
-}
-
-
-/* --- Page Header for Subpages --- */
-.page-header {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-    padding: 40px 0;
-    text-align: center;
-    margin-bottom: 40px;
-}
-.page-header h1 {
-    color: var(--light-text-color);
-    margin-bottom: 0.5rem;
-}
-.page-header p {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* --- Research & Teaching Page Styles --- */
-.publication-list li, .presentation-list li, .media-list li { /* Group common list styles */
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--secondary-color);
-}
-.publication-list li:last-child, .presentation-list li:last-child, .media-list li:last-child {
-    border-bottom: none;
-}
-
-.publication-list h3, .media-list h3 { /* Title of paper/article */
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-    font-family: var(--font-body);
-    font-weight: 600;
-}
-.publication-details, .course-details, .institution-dates, .media-details {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 0.7rem;
-    font-style: italic;
-}
-.publication-links a, .course-links a, .media-links a, .award-link {
-    margin-right: 15px;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-.publication-links i, .course-links i, .media-links i, .award-link i {
-    margin-right: 5px;
-}
-
-.presentation-list p, .award-list p { /* Use paragraphs for structure */
-    margin-bottom: 0.5rem;
-    line-height: 1.6; /* Ensure readability */
-}
-.presentation-list em, .award-list em { /* Italicize venue/date/details */
-     display: block;
-     font-size: 0.9rem;
-     color: #666;
-     margin-top: 5px;
-}
-.presentation-list a {
-    font-size: 0.9rem;
-    margin-left: 5px;
-}
-
-/* --- Specific Teaching Page Styles --- */
-.teaching-role {
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    /* Removed bottom border here, handled by card-style if used */
-}
-.teaching-role:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-/* Card style for teaching roles */
-.teaching-role.card-style {
-    background-color: #fdfdfd; /* Slightly off white background */
+/* Card Style for Research/Other Page Sections */
+.content-card {
+    background-color: #fdfdfd;
     padding: 1.5rem 2rem;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     border: 1px solid var(--secondary-color);
+    margin-bottom: 2rem; /* Space between cards */
     transition: box-shadow 0.3s ease;
-    margin-bottom: 2rem; /* Add margin between cards */
 }
-.teaching-role.card-style:last-child {
-     margin-bottom: 0;
-}
-.teaching-role.card-style:hover {
-     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.teaching-role h3 { /* Role title */
-    font-size: 1.5rem; /* Slightly larger */
-    margin-bottom: 0.3rem;
-    color: var(--primary-color);
-}
-.teaching-role h4 { /* Course section title */
-    font-size: 1.1rem;
-    margin-top: 1.5rem; /* More space before courses */
-    margin-bottom: 0.8rem;
-    color: var(--heading-color);
-    border-bottom: 1px solid #eee; /* Subtle separator */
-    padding-bottom: 0.3rem;
-}
-.course-list {
-    list-style: none; /* Remove default list style */
-    padding-left: 0; /* Remove default padding */
-}
-.course-list li {
-     margin-bottom: 1rem; /* More spacing between courses */
-     padding-left: 1.5rem; /* Indent course details */
-     position: relative; /* For pseudo-elements */
-}
-.course-list li::before { /* Custom bullet */
-    content: '\f192'; /* Font Awesome circle dot */
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    color: var(--accent-color);
-    position: absolute;
-    left: 0;
-    top: 0.1em; /* Adjust vertical alignment */
-    font-size: 0.8em;
+.content-card:last-child { margin-bottom: 0; }
+.content-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.content-card h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.8rem;
+    font-size: 2rem; /* Adjust size if needed */
 }
 
-.course-list strong {
-     font-weight: 600;
-     display: block; /* Put course title on its own line */
-     margin-bottom: 0.2rem;
-}
-.course-list em { /* Styling for dates */
-     font-size: 0.9rem;
-     color: #666;
-     display: block;
-     margin-bottom: 0.3rem;
-}
-.course-list .fa-users { /* Student icon */
-     margin-right: 5px;
-     color: #888;
-}
-
-.philosophy-box { /* Style the philosophy section */
-    margin-top: 2rem;
+/* Style for Research Interests Box */
+.interests-box {
+    margin-top: 1rem;
     padding: 1.5rem;
     background-color: var(--secondary-color);
     border-left: 5px solid var(--primary-color);
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
-.philosophy-box p {
-    margin-bottom: 0; /* Remove bottom margin for single paragraph */
-    font-size: 1.05rem; /* Slightly larger text */
-    line-height: 1.8;
+.interests-box p { /* Style each interest line */
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    display: flex; /* Align icon and text */
+    align-items: center;
+}
+.interests-box p:last-child { margin-bottom: 0; }
+.interests-box i.icon-highlight {
+     margin-right: 10px;
+     color: var(--accent-color);
+     min-width: 20px;
+     text-align: center;
 }
 
+.featured-section { /* Styles for specific featured sections if not using cards */
+    background-color: #f8f9fa;
+    border-top: 1px solid var(--secondary-color);
+    border-bottom: 1px solid var(--secondary-color);
+    padding: 50px 25px; /* Ensure padding if used outside .content-section */
+}
+.featured-section ul { list-style: none; padding-left: 0; }
+.featured-section ul li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
+/* icon-highlight defined above within .interests-box */
 
-.award-list li {
+
+/* --- Skills Snapshot Section --- */
+.skills-grid { /* ... */ }
+.skill-item { /* ... */ }
+.skill-item:hover { /* ... */ }
+.skill-icon { /* ... */ }
+.skill-item h3 { /* ... */ }
+.skill-item p { /* ... */ }
+
+/* --- Call to Action (CTA) Buttons --- */
+.cta-button { /* ... */ }
+.cta-button:hover, .cta-button:focus { /* ... */ }
+.cta-button.secondary { /* ... */ }
+.cta-button.secondary:hover, .cta-button.secondary:focus { /* ... */ }
+.cta-button.small-button { /* ... */ }
+
+
+/* --- Page Header for Subpages --- */
+.page-header { /* ... */ }
+.page-header h1 { /* ... */ }
+.page-header p { /* ... */ }
+
+/* --- Research Page Lists (within .content-card) --- */
+.publication-list li, .presentation-list li, .media-list li, .award-list li {
+    border-bottom: 1px solid var(--secondary-color);
     padding-bottom: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px dashed var(--secondary-color); /* Dashed border for awards */
+    margin-bottom: 1.5rem; /* Added margin back */
 }
-.award-list li:last-child {
+.publication-list li:last-child, .presentation-list li:last-child, .media-list li:last-child, .award-list li:last-child {
     border-bottom: none;
-    margin-bottom: 0;
     padding-bottom: 0;
+    margin-bottom: 0;
 }
-.award-list strong {
-     font-weight: 700;
-}
+
+.publication-list h3, .media-list h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-family: var(--font-body); font-weight: 600; }
+.publication-details, .institution-dates, .media-details { font-size: 0.95rem; color: #555; margin-bottom: 0.7rem; font-style: italic; }
+.publication-links a, .media-links a, .award-link { margin-right: 15px; font-weight: 600; font-size: 0.9rem; }
+.publication-links i, .media-links i, .award-link i { margin-right: 5px; }
+.presentation-list p, .award-list p { margin-bottom: 0.5rem; line-height: 1.6; }
+.presentation-list em, .award-list em { display: block; font-size: 0.9rem; color: #666; margin-top: 5px; }
+.presentation-list a { font-size: 0.9rem; margin-left: 5px; }
+.award-list strong { font-weight: 700; }
+
+
+/* --- Specific Teaching Page Styles --- */
+.teaching-role { margin-bottom: 2.5rem; padding-bottom: 1.5rem; }
+.teaching-role:last-child { margin-bottom: 0; padding-bottom: 0; }
+.teaching-role.card-style { /* ... card styles ... */ }
+.teaching-role.card-style:last-child { margin-bottom: 0; }
+.teaching-role.card-style:hover { /* ... */ }
+.teaching-role h3 { font-size: 1.5rem; margin-bottom: 0.3rem; color: var(--primary-color); }
+.teaching-role h4 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--heading-color); border-bottom: 1px solid #eee; padding-bottom: 0.3rem; }
+.course-list { list-style: none; padding-left: 0; }
+.course-list li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+.course-list li::before { content: '\f192'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-color); position: absolute; left: 0; top: 0.1em; font-size: 0.8em; }
+.course-list strong { font-weight: 600; display: block; margin-bottom: 0.2rem; }
+.course-list em { font-size: 0.9rem; color: #666; display: block; margin-bottom: 0.3rem; }
+.course-list .fa-users { margin-right: 5px; color: #888; }
+.philosophy-box { margin-top: 2rem; padding: 1.5rem; background-color: var(--secondary-color); border-left: 5px solid var(--primary-color); border-radius: 0 var(--border-radius) var(--border-radius) 0; }
+.philosophy-box p { margin-bottom: 0; font-size: 1.05rem; line-height: 1.8; }
 
 /* --- CV Page Styles --- */
-.cv-summary, .cv-download, .cv-request { /* Added .cv-request */
-    margin-bottom: 2rem;
-}
-.cv-download, .cv-request { /* Added .cv-request */
-    text-align: center;
-    padding: 30px;
-    background-color: var(--secondary-color);
-    border-radius: var(--border-radius);
-}
-.cv-download-link i, .cv-request a i { /* Added .cv-request */
-    margin-right: 8px;
-}
+.cv-summary, .cv-download, .cv-request { margin-bottom: 2rem; }
+.cv-download, .cv-request { text-align: center; padding: 30px; background-color: var(--secondary-color); border-radius: var(--border-radius); }
+.cv-download-link i, .cv-request a i { margin-right: 8px; }
 
 /* --- Footer --- */
-.site-footer {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    padding: 30px 0;
-    margin-top: auto; /* Push footer to bottom */
-}
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Allow wrapping */
-    gap: 20px;
-}
-.footer-contact p, .footer-links p {
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-}
-.footer-contact a, .footer-links a {
-    color: var(--secondary-color);
-}
-.footer-contact a:hover, .footer-links a:hover {
-    color: var(--accent-color);
-    text-decoration: underline;
-}
-.footer-contact i {
-    margin-right: 8px;
-    color: var(--accent-color);
-    width: 15px; /* Align icons */
-    text-align: center;
-}
-.footer-links {
-    text-align: right;
-    display: flex; /* Align items in footer links */
-    align-items: center;
-    gap: 15px; /* Spacing between icons and text */
-}
-.footer-links p {
-    margin-bottom: 0; /* Remove bottom margin from copyright */
-}
-.footer-links a {
-     font-size: 1.2rem; /* Make icons slightly larger */
-     line-height: 1; /* Adjust line height for icons */
-}
+.site-footer { /* ... */ }
+.footer-content { /* ... */ }
+.footer-contact p, .footer-links p { /* ... */ }
+.footer-contact a, .footer-links a { /* ... */ }
+.footer-contact a:hover, .footer-links a:hover { /* ... */ }
+.footer-contact i { /* ... */ }
+.footer-links { /* ... */ }
+.footer-links p { /* ... */ }
+.footer-links a { /* ... */ }
 
 
 /* --- Animation --- */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInAnimation 0.8s ease-out forwards;
-}
+.fade-in { opacity: 0; transform: translateY(20px); animation: fadeInAnimation 0.8s ease-out forwards; }
+@keyframes fadeInAnimation { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+/* ... Animation delays ... */
 
-@keyframes fadeInAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* Apply staggered delay for sections (optional) */
-#research-interests { animation-delay: 0.1s;}
-#publications { animation-delay: 0.2s; }
-#presentations { animation-delay: 0.3s; }
-#online-media { animation-delay: 0.4s; }
-#awards { animation-delay: 0.5s; }
-#research-timeline-section { animation-delay: 0.6s;} /* Delay for timeline */
-#teaching-experience { animation-delay: 0.1s;} /* Delay teaching sections */
-#teaching-philosophy { animation-delay: 0.2s;}
-
-
-/* Stagger blog post animations */
-.blog-post.fade-in { animation-delay: 0.1s; } /* First post */
-.blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.3s; } /* Second post */
-.blog-post.fade-in + .blog-divider + .blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.5s; } /* Third post */
-
-
-/* Adjust delays for homepage sections if needed */
-#about { animation-delay: 0.2s; }
-#research-highlights { animation-delay: 0.4s; }
-#skills-snapshot { animation-delay: 0.6s; }
-
-
-/* === Stlyes for Filter Controls === */
-
-.filter-controls {
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background-color: var(--secondary-color); /* Light background for controls */
-    border-radius: var(--border-radius);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-.filter-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    align-items: center;
-}
-
-.filter-group label {
-    font-weight: 600;
-    margin-right: 0.5rem;
-    color: var(--heading-color);
-}
-
-.filter-btn {
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    color: var(--text-color);
-    cursor: pointer;
-    border-radius: var(--border-radius);
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-    font-size: 0.9rem;
-}
-
-.filter-btn:hover, .filter-btn:focus {
-    background-color: #eee;
-    border-color: #bbb;
-}
-
-.filter-btn.active {
-    background-color: var(--primary-color);
-    color: var(--light-text-color);
-    border-color: var(--primary-color);
-    font-weight: 600;
-}
-
-#keyword-search {
-    padding: 8px 10px;
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius);
-    font-size: 0.9rem;
-    min-width: 200px; /* Adjust as needed */
-}
-
-/* Style for hidden items (JS will add/remove this class) */
-.publication-list li.hidden {
-    display: none;
-}
-
-/* === END Styles for Filter Controls === */
-
+/* === Styles for Filter Controls === */
+.filter-controls { /* ... */ }
+.filter-group { /* ... */ }
+.filter-group label { /* ... */ }
+.filter-btn { /* ... */ }
+.filter-btn:hover, .filter-btn:focus { /* ... */ }
+.filter-btn.active { /* ... */ }
+#keyword-search { /* ... */ }
+.publication-list li.hidden { display: none; }
 
 /* === Styles for Blog Page Content === */
+.blog-post { /* ... common styles ... */ }
+.blog-post:last-of-type { /* ... */ }
+.blog-excerpt-card { /* ... card style for index ... */ }
+.blog-excerpt-card:last-of-type { /* ... */ }
+.blog-excerpt-card:hover { /* ... */ }
+.blog-post-header { /* ... common header style ... */ }
+.blog-post-title { /* ... common title style ... */ }
+.blog-post-meta { /* ... common meta style ... */ }
+.blog-post-excerpt p:last-of-type { /* ... */ }
+.read-full-post-link { /* ... */ }
+.read-full-post-link:hover, .read-full-post-link:focus { /* ... */ }
+.blog-post-full .blog-post-content h3 { /* ... */ }
+.blog-post-full .blog-post-content ul { /* ... */ }
+.blog-post-full .blog-post-content ul li { /* ... */ }
+.blog-post-full .blog-post-content ul ul { /* ... */ }
+.blog-post-full .blog-post-content code { /* ... */ }
+.blog-divider { /* ... */ }
+.proof-section { /* ... */ }
+.proof-section h4 { /* ... */ }
+.proof-steps { /* ... */ }
+.proof-steps li { /* ... */ }
+.proof-steps > li > strong { /* ... */ }
+.proof-steps ul { /* ... */ }
+.proof-conclusion { /* ... */ }
+.equation-box { /* ... */ }
+.equation-box p { /* ... */ }
+.definition-box { /* ... */ }
+.definition-box h3 { /* ... */ }
+.test-steps { /* ... */ }
+.test-steps h4 { /* ... */ }
+.test-steps ol { /* ... */ }
+.test-steps li { /* ... */ }
+.test-steps li p { /* ... */ }
+.test-conclusion { /* ... */ }
+.back-to-blog { /* ... */ }
+.back-to-blog a { /* ... */ }
+.back-to-blog a:hover { /* ... */ }
+.footnotes { /* ... */ }
+.footnotes h3 { /* ... */ }
+.footnotes ol { /* ... */ }
+.footnotes li { /* ... */ }
+.footnotes li a { /* ... */ }
+.footnotes li a:hover { /* ... */ }
+sup { /* ... */ }
+sup a { /* ... */ }
+sup a:hover { /* ... */ }
+:target { /* ... */ }
 
-.blog-post { /* Common styles for posts on index and full pages */
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-}
-.blog-post:last-of-type { /* Remove bottom spacing/border on last post */
-     border-bottom: none;
-     margin-bottom: 0;
-     padding-bottom: 0;
-}
+/* === Styles for MathJax === */
+mjx-container[display="true"] { /* ... */ }
+mjx-container[display="false"] { /* ... */ }
 
-/* Card style for blog excerpts on the index page */
-.blog-excerpt-card {
-    background-color: #fdfdfd;
-    padding: 1.5rem 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-    border: 1px solid var(--secondary-color);
-    transition: box-shadow 0.3s ease;
-    border-bottom: none; /* Remove the default blog-post border */
-    margin-bottom: 2rem; /* Space between cards */
-}
-.blog-excerpt-card:last-of-type {
-    margin-bottom: 0;
-}
-.blog-excerpt-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-
-.blog-post-header { /* Header style common to index and full page */
-    margin-bottom: 1rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px solid var(--secondary-color);
-}
-
-.blog-post-title { /* Title style common to index and full page */
-    font-size: 1.8rem; /* Slightly adjusted size */
-    margin-bottom: 0.3rem;
-    color: var(--primary-color);
-}
-
-.blog-post-meta { /* Meta style common to index and full page */
-    font-size: 0.85rem;
-    color: #777;
-    font-style: italic;
-}
-
-.blog-post-excerpt p:last-of-type { /* Spacing below excerpt text */
-    margin-bottom: 0.5rem;
-}
-.read-full-post-link { /* Link on index page */
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.read-full-post-link:hover,
-.read-full-post-link:focus {
-    color: var(--accent-color);
-    text-decoration: underline;
-}
-
-/* Styles ONLY for full blog post content pages */
-.blog-post-full .blog-post-content h3 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    font-weight: 600;
-}
-.blog-post-full .blog-post-content ul {
-    list-style: disc;
-    margin-left: 25px; /* Indent list */
-    margin-bottom: 1.5rem;
-}
-.blog-post-full .blog-post-content ul li {
-    margin-bottom: 0.8rem;
-    line-height: 1.7;
-}
-.blog-post-full .blog-post-content ul ul { /* Nested lists */
-    margin-top: 0.5rem;
-    list-style: circle;
-}
-.blog-post-full .blog-post-content code { /* Style for inline code */
-    background-color: #f0f0f0;
-    padding: 0.2em 0.4em;
-    border-radius: 3px;
-    font-family: monospace;
-    font-size: 0.9em;
-    color: #c7254e;
-    border: 1px solid #e8e8e8;
-}
-
-.blog-divider { /* Separator on index page */
-    border: 0;
-    height: 1px;
-    background-color: #ddd;
-    margin: 2rem 0; /* Adjusted margin */
-}
-
-/* Style for proof/explanation sections within blog posts */
-.proof-section {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem 1.5rem;
-    background-color: #f8f9fa;
-    border-left: 4px solid var(--accent-color);
-    border-radius: var(--border-radius);
-}
-.proof-section h4 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    font-weight: 700;
-}
-.proof-steps {
-    list-style-type: decimal;
-    margin-left: 25px;
-    margin-top: 1rem;
-}
-.proof-steps li { margin-bottom: 1rem; }
-.proof-steps > li > strong { font-weight: 700; }
-.proof-steps ul { list-style-type: disc; margin-top: 0.5rem; }
-.proof-conclusion {
-    font-weight: 600;
-    margin-top: 1rem;
-    color: var(--heading-color);
-}
-
-/* Styling for equation display boxes */
-.equation-box {
-    background-color: #fdfdfd;
-    border: 1px solid var(--secondary-color);
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: var(--border-radius);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-.equation-box p {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-}
-.equation-box p:last-child { margin-bottom: 0; }
-
-/* Styles for definition box in blog */
-.definition-box {
-    background-color: #eaf7f4;
-    border-left: 5px solid var(--primary-color);
-    padding: 1rem 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: var(--border-radius);
-}
-.definition-box h3 {
-    color: var(--primary-color);
-    font-size: 1.3rem;
-    margin-top: 0;
-    margin-bottom: 0.7rem;
-}
-
-/* Styles for test steps in blog */
-.test-steps {
-    margin-top: 1.5rem;
-    background-color: #f8f9fa;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
-    border: 1px solid #eee;
-    border-radius: var(--border-radius);
-}
-.test-steps h4 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #ddd;
-}
-.test-steps ol { list-style-type: decimal; margin-left: 20px; }
-.test-steps li { margin-bottom: 1.2rem; }
-.test-steps li p { margin-bottom: 0.5rem; }
-.test-conclusion {
-    font-weight: 600;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px dashed #ccc;
-    color: var(--heading-color);
-}
-
-/* Styles specific to full blog post pages */
-.blog-post-full .blog-post-content { /* Target only content on full page */
-    /* Add specific styles if needed */
-}
-.back-to-blog { /* Link at bottom of full post page */
-    margin-top: 2.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--secondary-color);
-}
-.back-to-blog a {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-.back-to-blog a:hover {
-    color: var(--accent-color);
-}
-
-/* Styles for Footnotes */
-.footnotes {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #ddd;
-    font-size: 0.9em;
-    color: #555;
-}
-.footnotes h3 {
-    font-size: 1.1rem;
-    color: var(--heading-color);
-    margin-bottom: 1rem;
-}
-.footnotes ol {
-    list-style-type: decimal;
-    padding-left: 20px;
-    margin-left: 10px;
-}
-.footnotes li {
-    margin-bottom: 0.8rem;
-    line-height: 1.6;
-}
-.footnotes li a {
-    text-decoration: none;
-    color: var(--primary-color);
-    margin-left: 0.3em;
-}
-.footnotes li a:hover { text-decoration: underline; }
-sup {
-    line-height: 0;
-    vertical-align: super;
-    font-size: 0.8em;
-}
-sup a {
-    text-decoration: none;
-    color: var(--primary-color);
-    padding: 0.1em 0.2em;
-    border-radius: 2px;
-    transition: background-color 0.2s ease;
-}
-sup a:hover { background-color: var(--secondary-color); text-decoration: none; }
-:target { /* Optional highlight for jumped-to footnote */ }
-
-/* Styles for MathJax */
-mjx-container[display="true"] { /* Display math */
-    display: block;
-    margin: 1.5rem 0 !important;
-    overflow-x: auto;
-    overflow-y: hidden;
-    text-align: center;
-    font-size: 1.05em;
-}
-mjx-container[display="false"] { /* Inline math */
-    display: inline-block;
-    margin: 0 0.15em !important;
-    padding: 0 !important;
-    line-height: 1;
-    font-size: 1em;
-    text-align: left;
-    vertical-align: baseline;
-}
-
-/* Styles for Timeline Placeholder */
-#research-timeline-section { background-color: #f8f9fa; padding: 50px 0; }
-#timeline-embed { border: 1px solid #ddd; margin-top: 1.5rem; background-color: #fff; }
-
-
-/* === END Styles for Blog Page Content === */
+/* === Styles for Timeline Placeholder === */
+#research-timeline-section { /* ... */ }
+#timeline-embed { /* ... */ }
 
 
 /* --- Responsiveness --- */
@@ -956,7 +443,6 @@ mjx-container[display="false"] { /* Inline math */
     html { font-size: 15px; }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
-
     main { padding-top: 0; }
     .site-header { position: relative; height: auto; padding: 10px 0; }
     .header-content { flex-direction: column; align-items: flex-start; }
@@ -979,10 +465,11 @@ mjx-container[display="false"] { /* Inline math */
     .filter-group { justify-content: center; }
     #keyword-search { width: 100%; min-width: unset; }
     .blog-post-title { font-size: 1.7rem; }
-    .blog-post-full .blog-post-content h3 { font-size: 1.25rem; } /* Target full post only */
+    .blog-post-full .blog-post-content h3 { font-size: 1.25rem; }
     .proof-section, .equation-box, .definition-box, .test-steps { padding: 0.8rem 1rem; }
     .teaching-role.card-style { padding: 1rem 1.2rem; }
-    .blog-excerpt-card { padding: 1rem 1.2rem; } /* Adjust card padding */
+    .content-card { padding: 1rem 1.2rem; margin-bottom: 1.5rem; } /* Responsive card padding */
+    .blog-excerpt-card { padding: 1rem 1.2rem; margin-bottom: 1.5rem;}
 }
 
 @media (max-width: 480px) {
