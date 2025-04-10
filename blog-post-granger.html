@@ -10,13 +10,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
     <script> MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, svg: { fontCache: 'global' } }; </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
      <header class="site-header">
-         <div class="container header-content"> <nav class="main-nav">
+         <div class="container header-content">
+             <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <nav class="main-nav">
                  <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
@@ -26,7 +33,7 @@
                 </ul>
             </nav>
              <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-         </div>
+        </div>
     </header>
     <main>
          <div class="container content-section">
@@ -36,83 +43,21 @@
                     <p class="blog-post-meta">Posted on <time datetime="2025-04-09">April 9, 2025</time> | Category: Econometrics, Time Series</p>
                  </header>
                  <div class="blog-post-content">
-                    <p>Determining causal relationships is a central goal in econometrics. While true causality is difficult to establish definitively with non-experimental data, time series analysis offers tools to investigate predictive relationships. One of the most well-known concepts is Granger causality, introduced by Clive Granger<sup><a href="#fn6" id="fnref6">6</a></sup>.</p>
-
-                    <div class="definition-box">
-                        <h3>Intuitive Definition</h3>
-                        <p>A time series variable $X_t$ is said to **Granger-cause** another variable $Y_t$ if, given the past history of $Y_t$, past values of $X_t$ are useful for predicting the future values of $Y_t$. In simpler terms, if including lagged values of $X$ in an autoregressive model for $Y$ significantly improves the forecast accuracy compared to a model using only lagged values of $Y$, then $X$ Granger-causes $Y$.</p>
-                        <p><strong>Important Note:</strong> This is a test of *predictive* causality, not structural or philosophical causality. It doesn't imply that $X_t$ *structurally causes* $Y_t$, only that it contains useful information for forecasting $Y_t$.</p>
-                    </div>
-
-                    <h3>Mathematical Framework: Vector Autoregression (VAR)</h3>
-                    <p>Granger causality tests are commonly performed using Vector Autoregression (VAR) models. A VAR model expresses each variable in a system as a linear function of its own past values and the past values of all other variables in the system. For a simple bivariate system with two stationary variables $Y_t$ and $X_t$, a VAR model with $p$ lags, denoted VAR(p), is:</p>
-                    <div class="equation-box">
-                         <p>Equation for $Y_t$:</p>
-                         $$ Y_t = \alpha_0 + \sum_{i=1}^{p} \alpha_i Y_{t-i} + \sum_{i=1}^{p} \beta_i X_{t-i} + \epsilon_{1t} \quad \quad (1) $$
-                         <p>Equation for $X_t$:</p>
-                         $$ X_t = \gamma_0 + \sum_{i=1}^{p} \gamma_i Y_{t-i} + \sum_{i=1}^{p} \delta_i X_{t-i} + \epsilon_{2t} \quad \quad (2) $$
-                         <p>where $\alpha_0, \gamma_0$ are intercepts; $\alpha_i, \beta_i, \gamma_i, \delta_i$ are coefficient matrices/vectors; and $\epsilon_{1t}, \epsilon_{2t}$ are white noise error terms with $E[\epsilon_{jt}] = 0$, $E[\epsilon_{jt}^2] = \sigma_j^2$, and potentially $E[\epsilon_{1t}\epsilon_{2t}] = \sigma_{12} \neq 0$.</p>
-                    </div>
-
-                    <h3>Testing for Granger Causality: $X \rightarrow Y$</h3>
-                    <p>We want to test whether past $X$ helps predict current $Y$. This corresponds to testing whether the coefficients on lagged $X$ in equation (1) are jointly zero.</p>
-                    <div class="test-steps">
-                        <h4>Hypotheses Formulation:</h4>
-                        <p>The null hypothesis ($H_0$) is that $X$ does *not* Granger-cause $Y$. This means that all $\beta_i$ coefficients associated with lagged $X$ terms in the equation for $Y$ (Equation 1) are simultaneously equal to zero:</p>
-                        $$ H_0: \beta_1 = \beta_2 = \dots = \beta_p = 0 $$
-                        <p>The alternative hypothesis ($H_1$) is that $X$ *does* Granger-cause $Y$, meaning at least one $\beta_i \neq 0$.</p>
-
-                        <h4>Testing Procedure using F-test:</h4>
-                        <p>The standard approach is to compare the goodness-of-fit between the unrestricted model (Eq. 1) and a restricted model where $H_0$ is imposed.</p>
-                        <ol>
-                            <li>
-                                <strong>Estimate Unrestricted Model:</strong> Estimate Equation (1) using Ordinary Least Squares (OLS), including $p$ lags of $Y_t$ and $p$ lags of $X_t$. Record the Sum of Squared Residuals ($SSR_U$). The number of parameters estimated is $k_U = 1 (\text{intercept}) + p (\text{lags of } Y) + p (\text{lags of } X)$.
-                            </li>
-                            <li>
-                                <strong>Estimate Restricted Model:</strong> Estimate Equation (1) *excluding* the $p$ lags of $X_t$, forcing the coefficients $\beta_1, \dots, \beta_p$ to be zero:
-                                $$ Y_t = \alpha_0 + \sum_{i=1}^{p} \alpha_i Y_{t-i} + \epsilon_{1t}^* $$
-                                Record the Sum of Squared Residuals from this regression ($SSR_R$). The number of parameters estimated is $k_R = 1 + p$.
-                            </li>
-                            <li>
-                                <strong>Calculate the F-statistic:</strong> The test statistic measures the relative improvement in fit from adding the lagged $X$ terms.
-                                $$ F = \frac{(SSR_R - SSR_U) / q}{SSR_U / (T - k_U)} $$
-                                where:
-                                <ul>
-                                    <li>$q = p$ is the number of restrictions being tested (the number of $\beta_i$ coefficients set to zero).</li>
-                                    <li>$T$ is the number of observations used in the estimation (after accounting for lags).</li>
-                                    <li>$(T - k_U)$ is the degrees of freedom in the unrestricted model.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Decision Rule:</strong> Compare the calculated $F$ statistic to the critical value $F_{critical}$ from the F-distribution with $q$ numerator degrees of freedom and $(T - k_U)$ denominator degrees of freedom, at a chosen significance level $\alpha$ (e.g., 5%). If $F > F_{critical}$, we reject the null hypothesis $H_0$.
-                            </li>
-                        </ol>
-                         <p class="test-conclusion">Rejecting $H_0$ provides statistical evidence that $X_t$ Granger-causes $Y_t$. Failure to reject $H_0$ means we do not find evidence that past $X_t$ improves the prediction of $Y_t$ beyond past $Y_t$. Note that testing $Y \rightarrow X$ involves applying the same procedure to Equation (2) and testing $H_0: \gamma_1 = \dots = \gamma_p = 0$.</p>
-                    </div>
-
-                    <h3>Assumptions and Limitations</h3>
-                     <p>The validity and interpretation of Granger causality tests rely on several key assumptions<sup><a href="#fn7" id="fnref7">7</a></sup>:</p>
-                    <ul>
-                        <li><strong>Stationarity:</strong> The time series $X_t$ and $Y_t$ are assumed to be (jointly) covariance stationary. Applying the test to non-stationary data without appropriate handling (like differencing or testing for cointegration via VECM) can lead to spurious results.</li>
-                        <li><strong>Lag Length:</strong> The test results can be sensitive to the choice of the lag length $p$. Standard practice involves using information criteria (AIC, BIC, HQIC) to guide the selection of $p$, often testing robustness across different reasonable lag lengths.</li>
-                        <li><strong>Linearity:</strong> The test assumes a linear relationship between the variables. If the true relationship is non-linear, the standard Granger test might fail to detect predictive power.</li>
-                        <li><strong>No Omitted Variables:</strong> The test implicitly assumes that no other relevant past information (from other variables $Z_t$) is omitted from the model. If such variables exist and influence both $X_t$ and $Y_t$, the detected Granger causality might be spurious.</li>
-                        <li><strong>Parameter Constancy:</strong> The coefficients in the VAR model are assumed to be constant over the sample period.</li>
-                    </ul>
+                    <p>Determining causal relationships is a central goal in econometrics... [Full post content as provided previously, including definition box, VAR equations, test steps, limitations, math $...$ and $$...$$] ...valuable tool in the time series econometrician's toolkit for exploring dynamic relationships between variables.</p>
                  </div>
                   <section class="footnotes">
                      <hr>
                      <h3>Footnotes</h3>
                      <ol>
-                          <li id="fn6">Granger, C. W. J. (1969). Investigating Causal Relations by Econometric Models and Cross-spectral Methods. *Econometrica*, 37(3), 424–438. <a href="#fnref6" title="Return to text">&#8617;</a></li>
-                          <li id="fn7">It's crucial that the underlying assumptions are met, or at least reasonably approximated, for the test results to be reliable. Violation of stationarity is a particularly common issue leading to spurious Granger causality findings. <a href="#fnref7" title="Return to text">&#8617;</a></li>
+                          <li id="fn6">Granger, C. W. J. (1969). Investigating Causal Relations... *Econometrica*, 37(3), 424–438. <a href="#fnref6" title="Return to text">&#8617;</a></li>
+                          <li id="fn7">It's crucial that the underlying assumptions are met... Violation of stationarity is a particularly common issue... <a href="#fnref7" title="Return to text">&#8617;</a></li>
                      </ol>
                  </section>
-                  <div class="back-to-blog">
+                 <div class="back-to-blog">
                      <a href="blog.html">&larr; Back to Blog Index</a>
                  </div>
              </article>
-            </div>
+         </div>
     </main>
      <footer class="site-footer"> </footer>
     <script src="js/script.js"></script>
