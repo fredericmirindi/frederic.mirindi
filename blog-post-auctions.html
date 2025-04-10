@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Detailed discussion on first-price and second-price sealed-bid auction mechanisms by Frédéric Mirindi.">
-    <title>Frédéric Mirindi - Blog | Auction Mechanisms</title>
+    <meta name="description" content="Research, publications, presentations, and awards by Frédéric Mirindi.">
+    <title>Frédéric Mirindi - Research</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,51 +15,124 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <script> MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, svg: { fontCache: 'global' } }; </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <header class="site-header">
         <div class="container header-content">
-             <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
             <nav class="main-nav">
                  <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="research.html" class="active">Research</a></li> <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
              <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
     </header>
+
     <main>
-         <div class="container content-section">
-             <article class="blog-post blog-post-full fade-in">
-                 <header class="blog-post-header">
-                    <h2 class="blog-post-title">Understanding Auction Mechanisms: First-Price vs. Second-Price Sealed Bids</h2>
-                    <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Microeconomics, Game Theory</p>
-                 </header>
-                 <div class="blog-post-content">
-                    <p>Auctions are fundamental mechanisms for allocating scarce resources... [Full post content as provided previously, including proof sections, math notation using $...$ and $$...$$] ...key theoretical advantage of the second-price mechanism.</p>
-                 </div>
-                 <section class="footnotes">
-                     <hr>
-                     <h3>Footnotes</h3>
-                     <ol>
-                         <li id="fn1">A Bayesian Nash Equilibrium... <a href="#fnref1" title="Return to text">&#8617;</a></li>
-                         <li id="fn2">Named after William Vickrey... *The Journal of Finance*, 16(1), 8–37. <a href="#fnref2" title="Return to text">&#8617;</a></li>
-                     </ol>
-                 </section>
-                 <div class="back-to-blog">
-                     <a href="blog.html">&larr; Back to Blog Index</a>
-                 </div>
-             </article>
-         </div>
-    </main>
-     <footer class="site-footer"> </footer>
+         <header class="page-header">
+             <div class="container">
+                <h1>Research</h1>
+                <p>Exploring Econometrics, Macroeconomics, and Financial Economics, with a focus on AI/ML applications.</p>
+             </div>
+         </header>
+
+        <div class="container content-section">
+
+            <section id="research-interests" class="content-card fade-in">
+                 <h2>Research Interests</h2>
+                 <ul>
+                    <li>Econometrics (causal inference, time series analysis, microeconometrics)</li>
+                    <li>Macroeconomics (monetary policy, DSGE models, growth dynamics)</li>
+                    <li>Financial Economics (risk modeling, financial forecasting, asset pricing)</li>
+                    <li>Integration of Artificial Intelligence and Machine Learning in economic modeling</li>
+                 </ul>
+            </section>
+
+             <section id="publications" class="content-card fade-in" style="animation-delay: 0.1s;">
+                <h2>Selected Publications</h2>
+                 <p>
+                    <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Google Scholar</a> |
+                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer"><i class="fab fa-orcid"></i> ORCID</a> |
+                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                 </p>
+
+                <div class="filter-controls">
+                    <div class="filter-group">
+                        <label>Filter by Type:</label>
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                        <button class="filter-btn" data-filter="chapter">Book Chapters</button>
+                        <button class="filter-btn" data-filter="conference">Conference</button>
+                    </div>
+                    <div class="filter-group">
+                        <label for="keyword-search">Search Keywords:</label>
+                        <input type="text" id="keyword-search" placeholder="e.g., AI, machine learning...">
+                    </div>
+                </div>
+
+                <ul class="publication-list" id="publication-list">
+                     <li data-category="journal" data-year="2025"><h3>Ensemble Machine Learning...</h3>...</li>
+                     <li data-category="journal" data-year="2025"><h3>A Review on Aerospace-AI...</h3>...</li>
+                     <li data-category="journal" data-year="2024"><h3>Structural Performance...</h3>...</li>
+                     <li data-category="conference" data-year="2024"><h3>An Advance Review of Urban-AI...</h3>...</li>
+                     <li data-category="chapter" data-year="2025"><h3>Artificial Intelligence (AI) and Automation...</h3>...</li>
+                     <li data-category="chapter" data-year="2025"><h3>Three Chapters in Revolutionizing Digital Healthcare...</h3>...</li>
+                     <li data-category="chapter" data-year="2024"><h3>Forecasting Energy Prices...</h3>...</li>
+                     <li data-category="conference" data-year="2024"><h3>BIM-Driven Offsite Construction...</h3>...</li>
+                     <li data-category="conference" data-year="2024"><h3>An Advance Study of Recycled PP...</h3>...</li>
+                </ul>
+            </section>
+
+             <section id="presentations" class="content-card fade-in" style="animation-delay: 0.2s;">
+                <h2>Conference Presentations</h2>
+                 <ul class="presentation-list">
+                    <li><p><strong>Family Size and Child Outcomes...</strong> ...</p></li>
+                     <li><p><strong>Digital Feminism...</strong> ... <a href="...">Event Link</a></p></li>
+                     <li><p><strong>From Rubber to Cobalt...</strong> ... <a href="...">Event Link</a></p></li>
+                     <li><p><strong>A Review of Hybrid Machine Learning Approaches...</strong> ... <a href="...">Workshop Page</a></p></li>
+                     <li><p><strong>Navigating the Digital Frontier...</strong> ... <a href="...">Proceedings Paper</a></p></li>
+                     <li><p><strong>Neural Networks for Predicting Market Trends...</strong> ...</p></li>
+                 </ul>
+             </section>
+
+             <section id="online-media" class="content-card fade-in" style="animation-delay: 0.3s;">
+                 <h2>Online Publications & Media</h2>
+                 <ul class="media-list">
+                    <li><h3>Revolutionizing Science with AI...</h3> ... <a href="...">Read Article</a> ...</li>
+                     <li><h3>La Journée internationale des femmes...</h3> ... <a href="...">Read Article</a> ...</li>
+                     <li><h3>Célébration de l'héritage...</h3> ... <a href="...">Read Article</a> ...</li>
+                 </ul>
+             </section>
+
+             <section id="awards" class="content-card fade-in" style="animation-delay: 0.4s;">
+                <h2>Awards & Recognitions</h2>
+                 <ul class="award-list">
+                     <li><p><i class="fas fa-award"></i> <strong>University of Manitoba Department of Economics Fellowship...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>Faculty of Arts Endowment Fund...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>CPA Programme Scholarship...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>Projet Jeunesse francophone...</strong> ... <a href="..." class="award-link"><i class="fab fa-youtube"></i> Video</a></p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>48H Top Chrono Award...</strong> ... <a href="..." class="award-link"><i class="fas fa-link"></i> Project Feature</a></p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>Jeunes Entrepreneurs 18–35 ans Grant...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>VLIR-UOS Scholarship...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>African Economic Research Consortium Fellowship...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>Scholarship of Excellence...</strong> ...</p></li>
+                     <li><p><i class="fas fa-award"></i> <strong>AUCAM Scholarship...</strong> ...</p></li>
+                 </ul>
+            </section>
+
+        </div> </main>
+
+     <footer class="site-footer">
+          <div class="container footer-content">
+            <div class="footer-contact">...</div>
+            <div class="footer-links">...</div>
+        </div>
+    </footer>
+
     <script src="js/script.js"></script>
 </body>
 </html>
