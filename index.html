@@ -16,10 +16,8 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-
-</head>
-<body>
-    <header class="site-header">
+    </head>
+<body data-theme="light"> <header class="site-header">
         <div class="container header-content">
             <h1><a href="index.html">Frédéric Mirindi</a></h1>
             <nav class="main-nav">
@@ -30,6 +28,10 @@
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
+
+            <button id="theme-toggle" aria-label="Switch to dark theme">
+                <i class="fas fa-moon"></i> </button>
+
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
     </header>
@@ -57,20 +59,18 @@
             <p>As a sessional instructor at Booth University College, I design engaging, data-driven learning experiences in Microeconomics and Applied Finite Mathematics. My research leverages quantitative methods and increasingly integrates artificial intelligence and machine learning techniques to explore macroeconomic and financial questions. I thrive in multicultural environments and am fluent in English and French.</p>
         </section>
 
-         <section id="research-highlights" class="container content-section featured-section fade-in">
-            <h2>Research Highlights</h2>
+         <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;"> <h2>Research Highlights</h2>
             <p>My core research interest lies in the innovative application of quantitative methods to economic problems. Currently, I am focused on:</p>
-            <ul>
-                <li><i class="fas fa-brain icon-highlight"></i> Integrating AI and Machine Learning in macroeconomic and financial modeling.</li>
-                <li><i class="fas fa-chart-line icon-highlight"></i> Econometrics, including causal inference, time series analysis, and microeconometrics.</li>
-                <li><i class="fas fa-landmark icon-highlight"></i> Monetary policy, DSGE models, and growth dynamics.</li>
-                 <li><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</li>
-            </ul>
-            <a href="research.html" class="cta-button">Explore Publications</a>
+            <div class="interests-box"> <p><i class="fas fa-brain icon-highlight"></i> Integrating AI and Machine Learning in macroeconomic and financial modeling.</p>
+                 <p><i class="fas fa-chart-line icon-highlight"></i> Econometrics, including causal inference, time series analysis, and microeconometrics.</p>
+                 <p><i class="fas fa-landmark icon-highlight"></i> Monetary policy, DSGE models, and growth dynamics.</p>
+                 <p><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</p>
+            </div>
+            <div style="margin-top: 1.5rem;"> <a href="research.html" class="cta-button">Explore Publications</a>
+            </div>
         </section>
 
-        <section id="skills-snapshot" class="container content-section fade-in">
-            <h2>Skills Snapshot</h2>
+        <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;"> <h2>Skills Snapshot</h2>
             <div class="skills-grid">
                 <div class="skill-item">
                     <i class="fas fa-calculator skill-icon"></i>
