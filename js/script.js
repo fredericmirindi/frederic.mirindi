@@ -1,4 +1,4 @@
-/* === Full Updated script.js === */
+/* === Full Updated script.js (Reverted - No Theme Toggle) === */
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -122,56 +122,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // --- End Publication Filtering Logic ---
 
-    // === Light/Dark Mode Toggle Logic ===
-    const themeToggle = document.getElementById('theme-toggle');
-    // Function to set the theme
-    function setTheme(theme) {
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme); // Save preference
-        // Update button icon and aria-label only if button exists
-        if (themeToggle) {
-             if (theme === 'dark') {
-                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Sun icon for dark mode
-                 themeToggle.setAttribute('aria-label', 'Switch to light theme');
-             } else {
-                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Moon icon for light mode
-                 themeToggle.setAttribute('aria-label', 'Switch to dark theme');
-             }
-        }
-    }
 
-    // Apply theme on initial load
-    const currentTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (currentTheme) { // If user preference is saved
-        setTheme(currentTheme);
-    } else if (prefersDark) { // If OS prefers dark and no user preference
-        setTheme('dark');
-    } else { // Default to light
-         // Set default theme explicitly on body tag if not already set
-         if (!document.body.hasAttribute('data-theme')) {
-              document.body.setAttribute('data-theme', 'light');
-         }
-         // Ensure button reflects initial state if default is light
-         if (themeToggle && document.body.getAttribute('data-theme') === 'light') {
-             themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-             themeToggle.setAttribute('aria-label', 'Switch to dark theme');
-         }
-    }
+    // === Light/Dark Mode Toggle Logic is REMOVED from this version ===
 
 
-    // Add click listener to the toggle button if it exists
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            // Directly check the attribute on body, as localStorage might not be updated instantly on other tabs
-            const newTheme = document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            setTheme(newTheme);
-        });
-    }
-    // === END Light/Dark Mode Toggle Logic ===
-
-
-    console.log("Frederic Mirindi website scripts updated and loaded.");
+    console.log("Frederic Mirindi website scripts loaded.");
 
 }); // End of DOMContentLoaded
