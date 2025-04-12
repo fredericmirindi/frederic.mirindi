@@ -1144,3 +1144,35 @@ mjx-container[display="false"] { /* Inline math */
 }
 
 /* === END Styles for D3 Decision Tree === */
+
+/* === ADD Styles for Interactive Map === */
+
+#map-container {
+    height: 450px; /* Adjust height as needed */
+    width: 100%;
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem; /* Space above map */
+    margin-bottom: 0.5rem; /* Space below map before caption */
+    z-index: 0; /* Ensure map is behind fixed header if necessary */
+}
+
+/* Optional: ensure leaflet popups fit theme */
+.leaflet-popup-content-wrapper {
+    border-radius: var(--border-radius);
+}
+.leaflet-popup-content {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+.leaflet-popup-content b {
+     color: var(--heading-color);
+     font-weight: 600;
+}
+.leaflet-popup-content em {
+    color: #666;
+    font-size: 0.9em;
+}
+
+
+/* === END Styles for Interactive Map === */
