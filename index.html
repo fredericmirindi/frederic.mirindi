@@ -16,7 +16,10 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    </head>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+</head>
 <body> <header class="site-header">
         <div class="container header-content">
             <h1><a href="index.html">Frédéric Mirindi</a></h1>
@@ -28,8 +31,7 @@
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
-
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
     </header>
 
@@ -68,6 +70,12 @@
             <div style="margin-top: 1.5rem;">
                  <a href="research.html" class="cta-button">Explore Publications</a>
             </div>
+        </section>
+
+        <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
+             <h2>Global Experience & Education</h2>
+             <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
+             <div id="map-container"></div> <p class="caption">Map showing key locations for education and conference presentations.</p>
         </section>
 
         <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
@@ -116,5 +124,50 @@
     </footer>
 
     <script src="js/script.js"></script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if map container exists
+            const mapElement = document.getElementById('map-container');
+            if (mapElement) {
+                // Initialize the map
+                const map = L.map('map-container').setView([25, 15], 2); // Adjust center/zoom
+
+                // Add Tile Layer
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Define Locations
+                const locations = [
+                    // Education
+                    { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada" },
+                    { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium" },
+                    { lat: -1.2921, lng: 36.8219, name: "AERC", type: "Education (Masters Bridge)", city: "Nairobi, Kenya" },
+                    { lat: -2.5044, lng: 28.8611, name: "Catholic University of Bukavu", type: "Education (B.Sc, M.Sc)", city: "Bukavu, DRC" },
+                    // Conferences / Presentations
+                    { lat: 45.5019, lng: -73.5674, name: "CEA Annual Meeting (UQAM)", type: "Conference (2025)", city: "Montreal, Canada" },
+                    { lat: 52.3833, lng: -1.5609, name: "University of Warwick (CSWG)", type: "Seminar (2025)", city: "Warwick, UK" },
+                    { lat: 51.7520, lng: -1.2577, name: "University of Oxford (ESHS)", type: "Seminar (2024)", city: "Oxford, UK" },
+                    { lat: 51.6214, lng: -3.9436, name: "Human-Agent Interaction Conf. (HAI)", type: "Conference Workshop (2024)", city: "Swansea, UK" },
+                    { lat: 23.3441, lng: 85.3096, name: "RAISD Conference (JRU)", type: "Conference (2025)", city: "Ranchi, India" },
+                     // Research Experience Locations
+                     { lat: 50.0880, lng: 14.4208, name: "CERGE-EI", type: "Research Experience", city: "Prague, Czech Republic"},
+                     { lat: 49.9350, lng: 11.5758, name: "University of Bayreuth (BIGSAS)", type: "Research Experience", city: "Bayreuth, Germany"}
+                     // Add more locations as needed
+                ];
+
+                // Add Markers
+                locations.forEach(location => {
+                    L.marker([location.lat, location.lng]).addTo(map)
+                        .bindPopup(`<b>${location.name}</b><br>${location.type}<br><em>${location.city}</em>`);
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
