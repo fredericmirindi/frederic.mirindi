@@ -992,6 +992,71 @@ mjx-container[display="false"] { /* Inline math */
 }
 /* === ADD Styles for AI/ML Page === */
 
+/* Style subsections within a content card */
+.subsection {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--secondary-color);
+}
+.subsection:first-of-type {
+    margin-top: 1rem;
+    padding-top: 0;
+    border-top: none;
+}
+.subsection h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.subsection ul {
+    list-style: disc;
+    margin-left: 25px;
+    margin-bottom: 1rem;
+}
+.subsection ul ul {
+    list-style: circle;
+    margin-top: 0.5rem;
+}
+
+/* Container for charts */
+.chart-container {
+    max-width: 600px; /* Limit chart width */
+    margin: 1.5rem auto; /* Center chart */
+    background-color: #fff; /* White background */
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Placeholder for tree diagram */
+.tree-diagram-placeholder {
+    background-color: #f8f9fa;
+    border: 1px dashed #ccc;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    color: #666;
+    border-radius: var(--border-radius);
+}
+.tree-diagram-placeholder pre { /* Style text representation */
+    text-align: left;
+    font-size: 0.9em;
+    background-color: #eee;
+    padding: 0.5rem;
+    border-radius: 3px;
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+/* Caption style for charts/diagrams */
+.caption {
+    font-size: 0.85rem;
+    text-align: center;
+    color: #777;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
 /* Style for the skills list on ai-ml.html */
 .skills-list-ai {
     list-style: none;
