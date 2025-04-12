@@ -129,3 +129,62 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Frederic Mirindi website scripts loaded.");
 
 }); // End of DOMContentLoaded
+
+/* === Full Updated script.js (No Theme Toggle) === */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Update copyright year ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- Mobile navigation toggle ---
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (navToggle && mainNav) {
+        // ... (Mobile nav logic) ...
+         navToggle.addEventListener('click', function() { /* ... */ });
+         mainNav.querySelectorAll('a').forEach(link => { /* ... */ });
+         document.addEventListener('click', function(event) { /* ... */ });
+    }
+
+    // --- Fade-in animation on scroll ---
+    const fadeElements = document.querySelectorAll('.fade-in');
+    if ("IntersectionObserver" in window) {
+        // ... (Intersection Observer logic) ...
+        const observer = new IntersectionObserver((entries, observer) => { /* ... */ }, { threshold: 0.1 });
+        fadeElements.forEach(el => { /* ... */ });
+    } else {
+        fadeElements.forEach(el => { if (el) { el.style.opacity = 1; } });
+    }
+
+    // --- Publication Filtering and Search Logic ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const keywordInput = document.getElementById('keyword-search');
+    const publicationList = document.getElementById('publication-list');
+    const publicationListItems = publicationList ? publicationList.querySelectorAll('li') : [];
+
+    function filterAndSearchPublications() {
+        // ... (Filtering function) ...
+         const activeFilterBtn = document.querySelector('.filter-btn.active');
+         const selectedCategory = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
+         const searchTerm = keywordInput ? keywordInput.value.toLowerCase() : '';
+         publicationListItems.forEach(item => { /* ... show/hide logic ... */ });
+    }
+    // Add event listeners only if the elements exist on the current page
+    if (filterButtons.length > 0 && publicationListItems.length > 0) {
+        filterButtons.forEach(button => { /* ... Event listener ... */ });
+    }
+    if (keywordInput && publicationListItems.length > 0) {
+        keywordInput.addEventListener('input', filterAndSearchPublications);
+    }
+    // --- End Publication Filtering Logic ---
+
+    // Note: Theme toggle logic was removed
+
+    console.log("Frederic Mirindi website scripts updated and loaded.");
+
+}); // End of DOMContentLoaded
