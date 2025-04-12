@@ -990,3 +990,38 @@ mjx-container[display="false"] { /* Inline math */
     .footer-links a { font-size: 1.1rem; }
     .cta-button { padding: 10px 20px; }
 }
+/* === ADD Styles for AI/ML Page === */
+
+/* Style for the skills list on ai-ml.html */
+.skills-list-ai {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+.skills-list-ai li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start; /* Align icon top */
+}
+.skills-list-ai i {
+    margin-right: 10px;
+    margin-top: 0.15em; /* Adjust icon alignment */
+    color: var(--primary-color); /* Or accent color */
+    width: 1.2em;
+    text-align: center;
+    flex-shrink: 0;
+}
+.skills-list-ai strong {
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+/* Style for inline links within text */
+.inline-link {
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-left: 0.5em;
+    white-space: nowrap; /* Prevent link wrapping */
+}
+
+/* === END Styles for AI/ML Page === */
