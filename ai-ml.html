@@ -27,6 +27,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
 </head>
 <body>
     <header class="site-header">
@@ -58,7 +60,7 @@
              <section id="ai-intro" class="content-card fade-in">
                  <h2>Introduction</h2>
                  <p>Machine Learning (ML) offers powerful tools for prediction, classification, and pattern recognition, complementing traditional econometric methods. In economics, these techniques are increasingly used for tasks ranging from forecasting macroeconomic variables and financial market movements to analyzing causal effects (e.g., causal forests), classifying consumer behavior, and informing policy decisions.</p>
-                 <p>This page provides an overview of some common ML concepts and their relevance in the economic field, reflecting areas of my interest and application.</p>
+                 <p>This page provides an overview of some common ML concepts and their relevance in the economic field, reflecting areas of my interest and application. Also, check out relevant posts on my <a href="blog.html">Blog</a>.</p>
              </section>
 
             <section id="supervised-learning" class="content-card fade-in" style="animation-delay: 0.1s;">
@@ -89,17 +91,9 @@
                         <li><strong>Loss Function Example (Cross-Entropy):</strong> Often used for probabilistic classifiers, measuring the difference between predicted probabilities ($\hat{p}_i$) and actual labels ($y_i$, typically 0 or 1): $$ \text{Cross-Entropy} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{p}_i) + (1-y_i) \log(1-\hat{p}_i)] $$</li>
                     </ul>
                      <h4>Visualization Example: Decision Tree Structure</h4>
-                    <div class="tree-diagram-placeholder">
-                         <p><em>[ A visual representation of a simple decision tree could be embedded here, perhaps as a static image (SVG/PNG) or generated using CSS/HTML for basic trees, or a JS library like D3.js for complex ones. It would show nodes splitting data based on features to reach a classification. ]</em></p>
-                         <pre><code>Example Text Representation:
-IF Interest_Rate > 3% THEN
-|  IF Credit_Score < 600 THEN Predict Default
-|  ELSE Predict No Default
-ELSE
-|  IF Debt_to_Income > 0.4 THEN Predict Default
-|  ELSE Predict No Default</code></pre>
-                    </div>
-                     <p class="caption">Decision trees classify data by asking sequential questions about features.</p>
+                     <div class="tree-diagram-container">
+                         <svg id="decision-tree-svg"></svg> </div>
+                     <p class="caption">Example Decision Tree Visualization (generated via D3.js).</p>
                 </div>
             </section>
 
@@ -141,65 +135,86 @@ ELSE
 
      <footer class="site-footer">
         <div class="container footer-content">
-             <div class="footer-contact">...</div>
-             <div class="footer-links">...</div>
+             <div class="footer-contact">
+                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+             </div>
+             <div class="footer-links">
+                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+             </div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
     <script>
-        // Add chart initialization code here, inside DOMContentLoaded if preferred
-        // Ensure this runs AFTER the main script.js if that file handles DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if Chart.js is loaded before trying to use it
+             if (typeof Chart !== 'undefined') {
+                // Example: Regression Chart Placeholder Data
+                const regCtx = document.getElementById('regressionChart');
+                if(regCtx) {
+                    new Chart(regCtx, {
+                        type: 'scatter',
+                        data: {
+                            datasets: [{
+                                label: 'Data Points',
+                                data: [{x: 1, y: 2}, {x: 2, y: 2.5}, {x: 3, y: 4}, {x: 4, y: 3.5}, {x: 5, y: 5}],
+                                backgroundColor: 'rgba(44, 62, 80, 0.6)' // Example color
+                            }, {
+                                label: 'Regression Line',
+                                data: [{x: 0, y: 1.8}, {x: 6, y: 4.8}], // Example line points
+                                type: 'line',
+                                borderColor: 'rgba(26, 188, 156, 1)', // Example color
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0
+                            }]
+                        },
+                        options: { scales: { x: { beginAtZero: true, max: 6 }, y: { beginAtZero: true, max: 6 } } }
+                    });
+                }
 
-        // Example: Regression Chart Placeholder Data
-        const regCtx = document.getElementById('regressionChart');
-        if(regCtx) {
-            new Chart(regCtx, {
-                type: 'scatter',
-                data: {
-                    datasets: [{
-                        label: 'Data Points',
-                        data: [{x: 1, y: 2}, {x: 2, y: 2.5}, {x: 3, y: 4}, {x: 4, y: 3.5}, {x: 5, y: 5}],
-                        backgroundColor: 'rgba(44, 62, 80, 0.6)'
-                    }, {
-                        label: 'Regression Line',
-                        data: [{x: 1, y: 2.1}, {x: 5, y: 4.5}], // Example line points
+                 // Example: ROC Curve Placeholder Data
+                const rocCtx = document.getElementById('rocChart');
+                if(rocCtx) {
+                     new Chart(rocCtx, {
                         type: 'line',
-                        borderColor: 'rgba(26, 188, 156, 1)',
-                        borderWidth: 2,
-                        fill: false,
-                        tension: 0
-                    }]
-                },
-                options: { scales: { x: { beginAtZero: true }, y: { beginAtZero: true } } }
-            });
-        }
-
-         // Example: ROC Curve Placeholder Data
-        const rocCtx = document.getElementById('rocChart');
-        if(rocCtx) {
-             new Chart(rocCtx, {
-                type: 'line',
-                data: {
-                    labels: [0, 0.2, 0.4, 0.6, 0.8, 1.0], // FPR
-                    datasets: [{
-                        label: 'ROC Curve (AUC = 0.85)', // Example AUC
-                        data: [0, 0.5, 0.7, 0.8, 0.9, 1.0], // TPR
-                        borderColor: 'rgba(231, 76, 60, 1)', // Example color
-                        borderWidth: 2,
-                        fill: false,
-                        tension: 0.1
-                     }]
-                 },
-                options: {
-                    scales: {
-                         x: { title: { display: true, text: 'False Positive Rate' }, min: 0, max: 1 },
-                         y: { title: { display: true, text: 'True Positive Rate' }, min: 0, max: 1 }
-                     },
-                     plugins: { legend: { display: true } }
+                        data: {
+                            labels: [0, 0.2, 0.4, 0.6, 0.8, 1.0], // FPR
+                            datasets: [{
+                                label: 'ROC Curve (AUC = 0.85)', // Example AUC
+                                data: [0, 0.5, 0.7, 0.8, 0.9, 1.0], // TPR
+                                borderColor: 'rgba(231, 76, 60, 1)', // Example color
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1
+                             }]
+                         },
+                        options: {
+                            scales: {
+                                 x: { title: { display: true, text: 'False Positive Rate' }, min: 0, max: 1 },
+                                 y: { title: { display: true, text: 'True Positive Rate' }, min: 0, max: 1 }
+                             },
+                             plugins: { legend: { display: true } }
+                         }
+                     });
                  }
-             });
-         }
+             } else {
+                 console.warn("Chart.js library not loaded.");
+             }
+
+             // Check if D3 is loaded before trying to use it
+             if (typeof d3 !== 'undefined') {
+                  drawDecisionTree(); // Call D3 function defined in script.js
+             } else {
+                  console.warn("D3.js library not loaded.");
+             }
+        });
     </script>
 </body>
 </html>
