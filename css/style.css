@@ -1176,3 +1176,16 @@ mjx-container[display="false"] { /* Inline math */
 
 
 /* === END Styles for Interactive Map === */
+
+/* === ADD styles for custom map icons === */
+.map-fa-icon {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px; /* Match iconSize height */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.map-fa-icon i {
+    vertical-align: middle;
+}
+/* === END styles for custom map icons === */
