@@ -283,3 +283,86 @@ document.addEventListener('DOMContentLoaded', function() {
     // === END D3.js Decision Tree Example ===
 
 /* The closing }); of the main DOMContentLoaded function should be after this */
+
+// --- ADD Layer Groups and Control ---
+
+// Create Layer Groups for each category
+const educationLayer = L.layerGroup();
+const conferenceLayer = L.layerGroup();
+const researchLayer = L.layerGroup();
+
+// Define base map layers (optional, but good practice)
+const osmTile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+// Example alternative tile layer (needs attribution check if used)
+// const topoTile = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+//     maxZoom: 17,
+//     attribution: 'Map data: &copy; OpenStreetMap contributors, SRTM | Map style: &copy; OpenTopoMap (CC-BY-SA)'
+// });
+
+// Initialize map WITH the base layer and initially visible overlay layers
+const map = L.map('map-container', {
+    center: [25, 15], // Your desired center
+    zoom: 2,         // Your desired zoom
+    layers: [osmTile, educationLayer, conferenceLayer, researchLayer] // Add layers here
+});
+
+// Modify the location data and icon definitions as in Option 1 above!
+const locations = [ /* ... locations array WITH category key ... */ ];
+const educationIcon = L.divIcon({ /* ... icon definition ... */ });
+const conferenceIcon = L.divIcon({ /* ... icon definition ... */ });
+const researchIcon = L.divIcon({ /* ... icon definition ... */ });
+
+
+// --- MODIFY marker adding loop to add markers to correct layers ---
+locations.forEach(location => {
+     let iconToUse;
+     let targetLayer;
+
+     switch(location.category) {
+         case 'education':
+             iconToUse = educationIcon;
+             targetLayer = educationLayer;
+             break;
+         case 'conference':
+             iconToUse = conferenceIcon;
+             targetLayer = conferenceLayer;
+             break;
+         case 'research':
+             iconToUse = researchIcon;
+             targetLayer = researchLayer;
+             break;
+         default:
+             iconToUse = undefined;
+             targetLayer = map; // Add uncategorized to map directly if needed
+     }
+
+     // Add marker TO THE LAYER GROUP, not directly to map
+     if (targetLayer) {
+          L.marker([location.lat, location.lng], { icon: iconToUse })
+              .bindPopup(`<b><span class="math-inline">\{location\.name\}</b\><br\></span>{location.type}<br><em>${location.city}</em>`)
+              .addTo(targetLayer);
+     }
+});
+// --- END Marker Loop Modification ---
+
+
+// --- Define Overlay Maps for Control ---
+const overlayMaps = {
+    "<i class='fas fa-graduation-cap'></i> Education": educationLayer,
+    "<i class='fas fa-map-pin'></i> Conferences/Seminars": conferenceLayer,
+    "<i class='fas fa-flask'></i> Research Experience": researchLayer
+};
+
+// Define Base Maps for Control (Optional)
+ const baseMaps = {
+     "OpenStreetMap": osmTile,
+     // "Topographic": topoTile // Add if you defined topoTile
+ };
+
+// Add Layer Control to the map
+L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map); // Set collapsed: true if you prefer it smaller initially
+
+// --- END Layer Groups and Control ---
