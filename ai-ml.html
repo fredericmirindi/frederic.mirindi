@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Overview of Frédéric Mirindi's work and interests in AI and Machine Learning applications in Economics and Econometrics.">
+    <meta name="description" content="Frédéric Mirindi discusses AI and Machine Learning applications in Economics, including concepts like regression, classification, decision trees, and evaluation metrics.">
     <title>Frédéric Mirindi - AI & Machine Learning in Economics</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,18 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+
+    <script>
+        MathJax = {
+          tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+          svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
     <header class="site-header">
@@ -37,101 +49,157 @@
          <header class="page-header">
              <div class="container">
                 <h1>AI & Machine Learning in Economics</h1>
-                <p>Exploring the application of computational techniques to economic questions.</p>
+                <p>Applying computational techniques and predictive modeling to economic analysis.</p>
              </div>
          </header>
 
          <div class="container content-section">
 
-             <section id="ai-overview" class="content-card fade-in">
-                 <h2>Overview</h2>
-                 <p>A significant focus of my research involves leveraging Artificial Intelligence (AI) and Machine Learning (ML) techniques to address complex questions in macroeconomics, financial economics, and econometrics. This includes utilizing predictive modeling, exploring computational methods for forecasting, and analyzing large datasets to uncover economic insights.</p>
-                 <p>Below are highlights of my work, skills, and interests in this growing field. Also, check out relevant posts on my <a href="blog.html">Blog</a>.</p>
+             <section id="ai-intro" class="content-card fade-in">
+                 <h2>Introduction</h2>
+                 <p>Machine Learning (ML) offers powerful tools for prediction, classification, and pattern recognition, complementing traditional econometric methods. In economics, these techniques are increasingly used for tasks ranging from forecasting macroeconomic variables and financial market movements to analyzing causal effects (e.g., causal forests), classifying consumer behavior, and informing policy decisions.</p>
+                 <p>This page provides an overview of some common ML concepts and their relevance in the economic field, reflecting areas of my interest and application.</p>
              </section>
 
-             <section id="ai-publications" class="content-card fade-in" style="animation-delay: 0.1s;">
-                <h2>AI/ML Focused Publications & Contributions</h2>
-                 <p>Selected works where AI/ML methods are a central component:</p>
-                 <ul class="publication-list" id="ai-publication-list">
-                     <li data-category="journal" data-year="2025">
-                        <h3>Ensemble Machine Learning Algorithms for Efficient Prediction...</h3>
-                        <p class="publication-details">F. Mirindi (with...). <em>Cleaner Waste Systems</em>, 2025.</p>
-                        <div class="publication-links"><a href="https://www.sciencedirect.com/science/article/pii/S277291252500034X?via%3Dihub" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> Link</a></div>
-                    </li>
-                     <li data-category="journal" data-year="2025">
-                        <h3>A Review on Aerospace-AI, with Ethics and Implications</h3>
-                        <p class="publication-details">F. Mirindi (with...). <em>Journal of Civil, Construction and Environmental Engineering</em>, 2025.</p>
-                        <div class="publication-links"><a href="https://www.sciencepublishinggroup.com/article/10.11648/j.jccee.20251002.12" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> Link</a></div>
-                    </li>
-                     <li data-category="conference" data-year="2024">
-                        <h3>An Advance Review of Urban-AI and Ethical Considerations</h3>
-                        <p class="publication-details">F. Mirindi (with...). In: <em>Proceedings of the 2nd ACM SIGSPATIAL Int. Workshop on Advances in Urban-AI</em>, 2024.</p>
-                        <div class="publication-links"><a href="https://dl.acm.org/doi/10.1145/3681780.3697246" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> ACM Link</a></div>
-                    </li>
-                    <li data-category="chapter" data-year="2025">
-                        <h3>Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems...</h3>
-                        <p class="publication-details">F. Mirindi (with...). In: <em>Driving Green Transportation System...</em>, Springer, 2025.</p>
-                        <div class="publication-links"><a href="https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> Link</a></div>
-                    </li>
-                     <li data-category="chapter" data-year="2025">
-                        <h3>Three Chapters in Revolutionizing Digital Healthcare Through AI and Automation</h3>
-                        <p class="publication-details">F. Mirindi (with...). Elsevier, Sep 2025. (Titles: "Optimizing ML Algorithms...", "Integration of AI and AR...", "Revolutionizing Medical Imaging...")</p>
-                         <div class="publication-links"><a href="https://shop.elsevier.com/books/revolutionizing-digital-healthcare-through-artificial-intelligence-and-automation/khang/978-0-443-36434-1#full-description" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> Elsevier Book Link</a></div>
-                    </li>
-                     <li data-category="chapter" data-year="2024">
-                        <h3>Forecasting Energy Prices using Machine Learning Algorithms: A Comparative Analysis</h3>
-                        <p class="publication-details">F. Mirindi. In: <em>Studies in Int. Series in Operations Research...</em>, Springer (Forthcoming 2024).</p>
-                        <div class="publication-links"><a href="https://sites.google.com/view/ml-in-energy-fin-book/home?authuser=0" target="_blank" rel="noopener noreferrer"><i class="fas fa-book"></i> Link</a></div>
-                    </li>
-                     <li data-category="conference" data-year="2024">
-                         <h3>An Advance Study of Recycled PP, HDPE and PET Fibers with the Application of Machine Learning...</h3>
-                         <p class="publication-details">F. Mirindi (with...), 2024.</p>
-                        <div class="publication-links"><a href="https://www.researchgate.net/publication/383983210_An_advance_study_of_recycled_PP_HDPE_and_PET_fibers_with_the_application_of_machine_learning_to_enhance_concrete_compressive_strength" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i> ResearchGate Link</a></div>
-                    </li>
-                     <li data-category="online"> <h3>Revolutionizing Science with AI: From Hypothesis Generation to Anomaly Detection</h3>
-                         <p class="publication-details"><em>Medium</em> (March 29, 2025)</p>
-                         <div class="publication-links"><a href="https://medium.com/@mirindifrederic/revolutionizing-science-with-ai-from-hypothesis-generation-to-anomaly-detection-0c0b9c2d71f4" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium"></i> Read Article</a></div>
-                     </li>
-                 </ul>
-                 <p>See the full <a href="research.html">Research page</a> for more publications.</p>
-             </section>
+            <section id="supervised-learning" class="content-card fade-in" style="animation-delay: 0.1s;">
+                <h2>Supervised Learning</h2>
+                <p>Supervised learning involves training a model on labeled data, where both input features ($X$) and the corresponding output target ($Y$) are known. The goal is to learn a mapping function $f(X)$ that accurately predicts $Y$ for new, unseen data.</p>
 
-             <section id="ai-presentations" class="content-card fade-in" style="animation-delay: 0.2s;">
-                <h2>AI/ML Focused Presentations</h2>
-                 <p>Selected conference and seminar presentations discussing AI/ML applications:</p>
-                <ul class="presentation-list">
-                     <li><p><strong>A Review of Hybrid Machine Learning Approaches for Enhancing Human-Agent Interaction</strong>.<br><em>TheoriseHAI Workshop, 12th Int. Conf. on Human-Agent Interaction (HAI), Swansea, UK (Nov 2024)</em>. <a href="https://sites.google.com/view/theorisehai/contributions?authuser=0" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Workshop Page</a></p></li>
-                     <li><p><strong>Neural Networks for Predicting Market Trends in Sustainable Industries: A Review</strong>.<br><em>Int. Conf. on Recent Advances in Artificial Intelligence for Sustainable Development (RAISD 2025), Jharkhand Rai University, Ranchi (March 2025)</em>.</p></li>
-                     </ul>
-                 <p>See the full <a href="research.html#presentations">Research page</a> for more presentations.</p>
-             </section>
+                <div class="subsection">
+                    <h3>Regression Problems</h3>
+                    <p>Here, the target variable $Y$ is continuous. The goal is to predict a numerical value.</p>
+                    <ul>
+                        <li><strong>Examples in Economics:</strong> Forecasting GDP growth, inflation rates, asset prices, house prices; estimating demand elasticity.</li>
+                        <li><strong>Common Algorithms:</strong> Linear Regression (often with regularization like Ridge or Lasso), Support Vector Regression (SVR), Regression Trees, Random Forests, Gradient Boosting Machines (GBM), Neural Networks.</li>
+                        <li><strong>Loss Function Example (Mean Squared Error - MSE):</strong> A common objective is to minimize the average squared difference between predicted ($\hat{y}_i$) and actual ($y_i$) values: $$ MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2 $$</li>
+                    </ul>
+                    <h4>Visualization Example: Simple Regression</h4>
+                    <div class="chart-container">
+                         <canvas id="regressionChart"></canvas>
+                    </div>
+                    <p class="caption">Conceptual plot showing a simple linear regression fit. JavaScript libraries like Chart.js or Plotly.js can create interactive versions.</p>
+                </div>
 
-             <section id="ai-skills" class="content-card fade-in" style="animation-delay: 0.3s;">
-                 <h2>Relevant Skills</h2>
-                 <p>My technical skillset supporting this work includes:</p>
-                 <ul class="skills-list-ai"> <li><i class="fab fa-python"></i> **Python:** Libraries such as Scikit-learn, TensorFlow/Keras, PyTorch, Pandas, NumPy for ML model development, data processing, and analysis.</li>
-                     <li><i class="fab fa-r-project"></i> **R:** Statistical modeling, econometrics packages, time series analysis, visualization (ggplot2).</li>
-                     <li><i class="fas fa-database"></i> **Data Handling:** Experience with large dataset manipulation, cleaning, feature engineering, and database querying (SQL).</li>
-                     <li><i class="fas fa-cogs"></i> **Econometric Software:** Proficiency in Stata and RATS for traditional econometric modeling and time series forecasting.</li>
-                     <li><i class="fas fa-brain"></i> **ML Techniques:** Application of various supervised and unsupervised learning algorithms, time series forecasting models (ARIMA, GARCH, potentially ML-based), classification, regression, clustering.</li>
-                 </ul>
-             </section>
+                <div class="subsection">
+                    <h3>Classification Problems</h3>
+                    <p>Here, the target variable $Y$ is categorical. The goal is to predict a class label.</p>
+                     <ul>
+                        <li><strong>Examples in Economics:</strong> Predicting loan default risk (default/no default), identifying fraudulent transactions (fraud/not fraud), classifying firms based on performance (high/medium/low), predicting recession probability (recession/no recession).</li>
+                        <li><strong>Common Algorithms:</strong> Logistic Regression, Support Vector Machines (SVM), k-Nearest Neighbors (k-NN), Decision Trees, Random Forests, Naive Bayes, Neural Networks.</li>
+                        <li><strong>Loss Function Example (Cross-Entropy):</strong> Often used for probabilistic classifiers, measuring the difference between predicted probabilities ($\hat{p}_i$) and actual labels ($y_i$, typically 0 or 1): $$ \text{Cross-Entropy} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{p}_i) + (1-y_i) \log(1-\hat{p}_i)] $$</li>
+                    </ul>
+                     <h4>Visualization Example: Decision Tree Structure</h4>
+                    <div class="tree-diagram-placeholder">
+                         <p><em>[ A visual representation of a simple decision tree could be embedded here, perhaps as a static image (SVG/PNG) or generated using CSS/HTML for basic trees, or a JS library like D3.js for complex ones. It would show nodes splitting data based on features to reach a classification. ]</em></p>
+                         <pre><code>Example Text Representation:
+IF Interest_Rate > 3% THEN
+|  IF Credit_Score < 600 THEN Predict Default
+|  ELSE Predict No Default
+ELSE
+|  IF Debt_to_Income > 0.4 THEN Predict Default
+|  ELSE Predict No Default</code></pre>
+                    </div>
+                     <p class="caption">Decision trees classify data by asking sequential questions about features.</p>
+                </div>
+            </section>
 
-              <section id="ongoing-work" class="content-card fade-in" style="animation-delay: 0.4s;">
-                 <h2>Ongoing Work & Future Directions</h2>
-                 <p>I am actively exploring further applications of AI/ML in areas such as [Mention 1-2 specific ongoing interests, e.g., advanced natural language processing for economic text analysis, reinforcement learning for policy simulation, etc.].</p>
-                 <p>Links to specific project code or interactive demos will be added here as they become available.</p>
+            <section id="unsupervised-learning" class="content-card fade-in" style="animation-delay: 0.2s;">
+                <h2>Unsupervised Learning</h2>
+                <p>Unsupervised learning deals with unlabeled data ($X$ only). The goal is to find inherent structures, patterns, or groupings within the data without predefined targets.</p>
+                <ul>
+                    <li><strong>Clustering:</strong> Grouping similar data points together.
+                        <ul><li><em>Economic Applications:</em> Customer segmentation for marketing, identifying groups of countries with similar economic characteristics, grouping assets with similar risk profiles.</li><li><em>Algorithms:</em> K-Means, Hierarchical Clustering, DBSCAN.</li></ul>
+                    </li>
+                    <li><strong>Dimensionality Reduction:</strong> Reducing the number of input features while preserving important information.
+                        <ul><li><em>Economic Applications:</em> Simplifying complex datasets for visualization or further modeling, feature extraction for forecasting models, constructing economic indices.</li><li><em>Algorithms:</em> Principal Component Analysis (PCA), t-Distributed Stochastic Neighbor Embedding (t-SNE), Autoencoders (using neural networks).</li></ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="model-evaluation" class="content-card fade-in" style="animation-delay: 0.3s;">
+                <h2>Model Evaluation & Selection</h2>
+                <p>Choosing the right model and assessing its performance is crucial.</p>
+                 <ul>
+                    <li><strong>Train/Validation/Test Split:</strong> Data is typically split to train the model, tune hyperparameters (validation set), and finally evaluate performance on unseen data (test set). Cross-validation is often used for more robust estimates, especially with smaller datasets.</li>
+                    <li><strong>Regression Metrics:</strong> Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), R-squared ($R^2$).</li>
+                    <li><strong>Classification Metrics:</strong> Accuracy, Precision, Recall (Sensitivity), F1-Score, Area Under the ROC Curve (AUC-ROC), Confusion Matrix.</li>
+                    <li><strong>Bias-Variance Tradeoff:</strong> A central concept. Simple models may have high bias (underfitting), while complex models may have high variance (overfitting to training data). Regularization techniques (like Lasso/Ridge) help manage this tradeoff.</li>
+                </ul>
+                 <h4>Visualization Example: ROC Curve</h4>
+                 <div class="chart-container" style="max-width: 400px; margin: 1rem auto;">
+                     <canvas id="rocChart"></canvas>
+                 </div>
+                 <p class="caption">Conceptual ROC curve plotting True Positive Rate vs. False Positive Rate for a classifier. The area under the curve (AUC) measures overall performance.</p>
+            </section>
+
+             <section id="ai-links" class="content-card fade-in" style="animation-delay: 0.4s;">
+                 <h2>My Related Work</h2>
+                 <p>You can find applications or discussions of these techniques in some of my work listed on the <a href="research.html">Research</a> page or <a href="blog.html">Blog</a>.</p>
                  </section>
 
          </div> </main>
 
      <footer class="site-footer">
         <div class="container footer-content">
-             <div class="footer-contact"> ... </div>
-             <div class="footer-links"> ... </div>
+             <div class="footer-contact">...</div>
+             <div class="footer-links">...</div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        // Add chart initialization code here, inside DOMContentLoaded if preferred
+        // Ensure this runs AFTER the main script.js if that file handles DOMContentLoaded
+
+        // Example: Regression Chart Placeholder Data
+        const regCtx = document.getElementById('regressionChart');
+        if(regCtx) {
+            new Chart(regCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Data Points',
+                        data: [{x: 1, y: 2}, {x: 2, y: 2.5}, {x: 3, y: 4}, {x: 4, y: 3.5}, {x: 5, y: 5}],
+                        backgroundColor: 'rgba(44, 62, 80, 0.6)'
+                    }, {
+                        label: 'Regression Line',
+                        data: [{x: 1, y: 2.1}, {x: 5, y: 4.5}], // Example line points
+                        type: 'line',
+                        borderColor: 'rgba(26, 188, 156, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0
+                    }]
+                },
+                options: { scales: { x: { beginAtZero: true }, y: { beginAtZero: true } } }
+            });
+        }
+
+         // Example: ROC Curve Placeholder Data
+        const rocCtx = document.getElementById('rocChart');
+        if(rocCtx) {
+             new Chart(rocCtx, {
+                type: 'line',
+                data: {
+                    labels: [0, 0.2, 0.4, 0.6, 0.8, 1.0], // FPR
+                    datasets: [{
+                        label: 'ROC Curve (AUC = 0.85)', // Example AUC
+                        data: [0, 0.5, 0.7, 0.8, 0.9, 1.0], // TPR
+                        borderColor: 'rgba(231, 76, 60, 1)', // Example color
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.1
+                     }]
+                 },
+                options: {
+                    scales: {
+                         x: { title: { display: true, text: 'False Positive Rate' }, min: 0, max: 1 },
+                         y: { title: { display: true, text: 'True Positive Rate' }, min: 0, max: 1 }
+                     },
+                     plugins: { legend: { display: true } }
+                 }
+             });
+         }
+    </script>
 </body>
 </html>
