@@ -188,3 +188,98 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Frederic Mirindi website scripts updated and loaded.");
 
 }); // End of DOMContentLoaded
+
+/* Add this inside the DOMContentLoaded function in js/script.js */
+
+    // === D3.js Decision Tree Example ===
+    function drawDecisionTree() {
+        const svgElement = document.getElementById('decision-tree-svg');
+        if (!svgElement) return; // Exit if SVG container not found
+
+        // ** VERY IMPORTANT: Replace this sample data with your actual tree structure **
+        // Format: { name: "Node Label", children: [ ...child nodes... ] }
+        const sampleTreeData = {
+            name: "Root (e.g., Credit Score > 650?)",
+            children: [
+                {
+                    name: "Yes (e.g., Income > $50k?)",
+                    children: [
+                        { name: "Yes (Predict: Low Risk)" },
+                        { name: "No (Predict: Medium Risk)" }
+                    ]
+                },
+                { name: "No (Predict: High Risk)" }
+            ]
+        };
+
+        // --- D3 Setup ---
+        const width = svgElement.clientWidth || 600; // Use container width or fallback
+        const height = svgElement.clientHeight || 400; // Use container height or fallback
+        const marginTop = 20;
+        const marginRight = 20;
+        const marginBottom = 20;
+        const marginLeft = 40; // Adjust margin for labels if needed
+
+        // Create SVG element within the container
+        const svg = d3.select("#decision-tree-svg")
+            .attr("viewBox", [0, 0, width, height])
+            .append("g")
+            .attr("transform", `translate(${marginLeft},${marginTop})`);
+
+        // Create tree layout generator
+        const treeLayout = d3.tree()
+            // Adjust size: [height, width] because tree grows left-to-right or top-to-bottom
+            // For a top-to-bottom tree, use [width - marginRight - marginLeft, height - marginTop - marginBottom]
+            .size([height - marginTop - marginBottom, width - marginLeft - marginRight]);
+
+        // Create hierarchy from data
+        const root = d3.hierarchy(sampleTreeData);
+        treeLayout(root); // Calculate node positions
+
+        // --- Draw Links (Lines) ---
+        svg.append("g")
+            .attr("class", "tree-links")
+            .selectAll("path")
+            .data(root.links()) // Get parent-child links
+            .join("path")
+              .attr("class", "tree-link")
+              // Use d3.link(Vertical or Horizontal) for path generation
+              .attr("d", d3.linkVertical() // Or d3.linkHorizontal()
+                    // Swap source and target x/y depending on orientation
+                    .x(d => d.y) // Use calculated y for horizontal position in vertical tree
+                    .y(d => d.x) // Use calculated x for vertical position
+              );
+
+
+        // --- Draw Nodes ---
+        const node = svg.append("g")
+            .attr("class", "tree-nodes")
+            .selectAll("g")
+            .data(root.descendants()) // Get all nodes including root
+            .join("g")
+              // Position nodes: Swap x/y for vertical tree
+              .attr("transform", d => `translate(${d.y},${d.x})`)
+              .attr("class", d => d.children ? "tree-node" : "tree-node leaf"); // Add 'leaf' class
+
+        node.append("circle"); // Add circle marker
+
+        // --- Add Text Labels ---
+        node.append("text")
+            .text(d => d.data.name)
+            // Add x, y offsets based on whether it's a leaf node or not (see CSS)
+            // You might need more complex logic for label placement
+            .attr("paint-order", "stroke") // Make text more readable over lines
+            .attr("stroke", "white")
+            .attr("stroke-width", 3);
+
+
+        console.log("D3 tree drawn (basic example).");
+    }
+
+    // Call the function only if the SVG element exists (i.e., on ai-ml.html)
+    if (document.getElementById('decision-tree-svg')) {
+        drawDecisionTree();
+    }
+    // === END D3.js Decision Tree Example ===
+
+/* The closing }); of the main DOMContentLoaded function should be after this */
