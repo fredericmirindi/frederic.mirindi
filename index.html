@@ -140,7 +140,7 @@
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
-                // Define Locations with categories
+                // Define Locations (using categories for potential icon switching)
                 const locations = [
                     { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada", category: 'education' },
                     { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium", category: 'education' },
@@ -167,7 +167,7 @@
                         case 'education': iconToUse = educationIcon; break;
                         case 'conference': iconToUse = conferenceIcon; break;
                         case 'research': iconToUse = researchIcon; break;
-                        default: iconToUse = undefined;
+                        default: iconToUse = undefined; // Fallback to default marker
                     }
 
                     L.marker([location.lat, location.lng], { icon: iconToUse })
