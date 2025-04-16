@@ -69,13 +69,13 @@
             </div>
             <div style="margin-top: 1.5rem;">
                  <a href="research.html" class="cta-button">Explore Publications</a>
-            </div>
+                 <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a> </div>
         </section>
 
         <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
              <h2>Global Experience & Education</h2>
              <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
-             <div id="map-container"></div> <p class="caption">Map showing key locations for education and conference presentations.</p>
+             <div id="map-container"></div> <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
         </section>
 
         <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
@@ -129,11 +129,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Check if map container exists
             const mapElement = document.getElementById('map-container');
             if (mapElement) {
-                // Initialize the map
-                const map = L.map('map-container').setView([25, 15], 2); // Adjust center/zoom
+                // Initialize map WITH scrollWheelZoom disabled
+                const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2); // Adjust center/zoom
 
                 // Add Tile Layer
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -141,7 +140,7 @@
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
-                // Define Locations (using categories for potential icon switching)
+                // Define Locations with categories
                 const locations = [
                     { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada", category: 'education' },
                     { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium", category: 'education' },
@@ -156,11 +155,10 @@
                     { lat: 49.9350, lng: 11.5758, name: "University of Bayreuth (BIGSAS)", type: "Research Experience", city: "Bayreuth, Germany", category: 'research'}
                 ];
 
-                 // Define custom icons (place this *before* the loop)
+                // Define custom icons
                  const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
                  const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -26] });
                  const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
-
 
                 // Add Markers using custom icons
                 locations.forEach(location => {
@@ -169,7 +167,7 @@
                         case 'education': iconToUse = educationIcon; break;
                         case 'conference': iconToUse = conferenceIcon; break;
                         case 'research': iconToUse = researchIcon; break;
-                        default: iconToUse = undefined; // Fallback to default marker
+                        default: iconToUse = undefined;
                     }
 
                     L.marker([location.lat, location.lng], { icon: iconToUse })
