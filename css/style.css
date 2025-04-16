@@ -1,4 +1,4 @@
-/* === Full Updated style.css (Includes Award Card Styles, No Dark Mode) === */
+/* === Full Updated style.css === */
 
 /* --- Global Styles & Variables --- */
 :root {
@@ -87,8 +87,14 @@ ul li {
      margin-bottom: 0.5rem;
 }
 /* Keep specific list styles for certain sections */
-.publication-list li, .presentation-list li, .teaching-role ul, .media-list li { /* Removed award-list */
+.publication-list li, .presentation-list li, .teaching-role ul, .award-list li, .media-list li {
     margin-bottom: 1.5rem; /* Adjust spacing as needed */
+}
+.award-list i.fa-award { /* Style for award icons */
+     margin-right: 8px;
+     color: var(--accent-color);
+     width: 1.1em; /* Align icons better */
+     text-align: center;
 }
 
 
@@ -185,17 +191,33 @@ img {
     display: flex;
     align-items: center;
     gap: 50px;
-    padding: 60px 25px; /* Use container padding */
+    padding-top: 60px;
+    padding-bottom: 60px;
     background-color: var(--secondary-color);
     min-height: calc(80vh - var(--header-height));
     flex-wrap: wrap;
 }
 
-.hero-text { flex: 1.5; }
-.hero-text h2 { margin-top: 0; font-size: 2.5rem; }
-.hero-text p { font-size: 1.1rem; margin-bottom: 1.5rem; }
-.hero-buttons { margin-top: 2rem; }
-.hero-image { flex: 1; text-align: center; }
+.hero-text {
+    flex: 1.5; /* Give text slightly more space */
+}
+.hero-text h2 {
+    margin-top: 0; /* Remove top margin for first heading */
+    font-size: 2.5rem;
+}
+.hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
 
 /* Portrait Rectangle Image Style */
 .hero-image img {
@@ -211,299 +233,722 @@ img {
 
 /* --- Content Sections --- */
 .content-section {
-    padding: 0 0 50px 0; /* Only bottom padding for container */
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-/* Card Style for Research/Other Page Sections */
-.content-card {
-    background-color: #fdfdfd;
+.featured-section {
+    background-color: #f8f9fa; /* Slightly different background */
+    border-top: 1px solid var(--secondary-color);
+     border-bottom: 1px solid var(--secondary-color);
+}
+.featured-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+.featured-section ul li {
+     margin-bottom: 0.8rem;
+     display: flex;
+     align-items: flex-start;
+}
+.icon-highlight {
+    color: var(--accent-color);
+    margin-right: 10px;
+    margin-top: 4px; /* Align icon better with text */
+    min-width: 20px; /* Ensure alignment */
+    text-align: center;
+}
+
+
+/* --- Skills Snapshot Section --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 30px;
+    margin-top: 2rem;
+}
+.skill-item {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.skill-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+.skill-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-body); /* Use body font for skill titles */
+     font-weight: 600;
+}
+.skill-item p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* --- Call to Action (CTA) Buttons --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.cta-button:hover, .cta-button:focus {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border-color: var(--primary-color);
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cta-button.secondary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+.cta-button.secondary:hover, .cta-button.secondary:focus {
+    background-color: var(--accent-color);
+    color: var(--light-text-color);
+     border-color: var(--accent-color);
+}
+/* Smaller button variant */
+.cta-button.small-button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+}
+
+
+/* --- Page Header for Subpages --- */
+.page-header {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 40px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.page-header h1 {
+    color: var(--light-text-color);
+    margin-bottom: 0.5rem;
+}
+.page-header p {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Research & Teaching Page Styles --- */
+.publication-list li, .presentation-list li, .media-list li { /* Group common list styles */
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+.publication-list li:last-child, .presentation-list li:last-child, .media-list li:last-child {
+    border-bottom: none;
+}
+
+.publication-list h3, .media-list h3 { /* Title of paper/article */
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+.publication-details, .course-details, .institution-dates, .media-details {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 0.7rem;
+    font-style: italic;
+}
+.publication-links a, .course-links a, .media-links a, .award-link {
+    margin-right: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.publication-links i, .course-links i, .media-links i, .award-link i {
+    margin-right: 5px;
+}
+
+.presentation-list p, .award-list p { /* Use paragraphs for structure */
+    margin-bottom: 0.5rem;
+    line-height: 1.6; /* Ensure readability */
+}
+.presentation-list em, .award-list em { /* Italicize venue/date/details */
+     display: block;
+     font-size: 0.9rem;
+     color: #666;
+     margin-top: 5px;
+}
+.presentation-list a {
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+/* --- Specific Teaching Page Styles --- */
+.teaching-role {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    /* Removed bottom border here, handled by card-style if used */
+}
+.teaching-role:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+/* Card style for teaching roles */
+.teaching-role.card-style {
+    background-color: #fdfdfd; /* Slightly off white background */
     padding: 1.5rem 2rem;
     border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     border: 1px solid var(--secondary-color);
-    margin-bottom: 2rem; /* Space between cards */
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease;
-    border-left: 5px solid transparent; /* Base border for hover transition */
-    padding-left: calc(2rem - 5px); /* Adjust padding */
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 2rem; /* Add margin between cards */
 }
-.content-card:last-child { margin-bottom: 0; }
-.content-card:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    transform: translateY(-2px);
-    border-left-color: var(--accent-color);
+.teaching-role.card-style:last-child {
+     margin-bottom: 0;
 }
-.content-card h2 {
-    margin-top: 0;
-    border-bottom: 2px solid var(--accent-color); /* Use accent for H2 border */
-    padding-bottom: 0.6rem;
-    margin-bottom: 1.8rem;
-    font-size: 1.9rem; /* Slightly adjust size */
+.teaching-role.card-style:hover {
+     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.teaching-role h3 { /* Role title */
+    font-size: 1.5rem; /* Slightly larger */
+    margin-bottom: 0.3rem;
+    color: var(--primary-color);
+}
+.teaching-role h4 { /* Course section title */
+    font-size: 1.1rem;
+    margin-top: 1.5rem; /* More space before courses */
+    margin-bottom: 0.8rem;
     color: var(--heading-color);
+    border-bottom: 1px solid #eee; /* Subtle separator */
+    padding-bottom: 0.3rem;
+}
+.course-list {
+    list-style: none; /* Remove default list style */
+    padding-left: 0; /* Remove default padding */
+}
+.course-list li {
+     margin-bottom: 1rem; /* More spacing between courses */
+     padding-left: 1.5rem; /* Indent course details */
+     position: relative; /* For pseudo-elements */
+}
+.course-list li::before { /* Custom bullet */
+    content: '\f192'; /* Font Awesome circle dot */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0.1em; /* Adjust vertical alignment */
+    font-size: 0.8em;
 }
 
+.course-list strong {
+     font-weight: 600;
+     display: block; /* Put course title on its own line */
+     margin-bottom: 0.2rem;
+}
+.course-list em { /* Styling for dates */
+     font-size: 0.9rem;
+     color: #666;
+     display: block;
+     margin-bottom: 0.3rem;
+}
+.course-list .fa-users { /* Student icon */
+     margin-right: 5px;
+     color: #888;
+}
 
-/* Style for Research Interests Box */
-.interests-box {
-    margin-top: 1rem;
+.philosophy-box { /* Style the philosophy section */
+    margin-top: 2rem;
     padding: 1.5rem;
     background-color: var(--secondary-color);
     border-left: 5px solid var(--primary-color);
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
-/* Specific hover adjustments for interests card */
-#research-interests.content-card {
-    background-color: var(--secondary-color); /* Move background to outer card */
-    border-left: 5px solid var(--primary-color); /* Keep primary border */
-    padding: 1.5rem 2rem; /* Reset padding */
+.philosophy-box p {
+    margin-bottom: 0; /* Remove bottom margin for single paragraph */
+    font-size: 1.05rem; /* Slightly larger text */
+    line-height: 1.8;
 }
-#research-interests.content-card:hover {
-    border-left-color: var(--primary-color); /* Keep primary border on hover */
-    transform: translateY(0); /* Disable lift for this specific card if desired */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Keep original shadow */
+
+
+.award-list li {
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px dashed var(--secondary-color); /* Dashed border for awards */
 }
-#research-interests .interests-box {
-    border-left: none; /* Remove inner border */
-    border-radius: 0; /* Remove inner radius */
-    padding: 0; /* Remove inner padding */
-    margin-top: 0; /* Remove inner margin */
-    background-color: transparent; /* Make inner box transparent */
-}
-.interests-box p { margin-bottom: 0.8rem; font-size: 1.05rem; display: flex; align-items: center; }
-.interests-box p:last-child { margin-bottom: 0; }
-.interests-box i.icon-highlight { margin-right: 10px; color: var(--accent-color); min-width: 20px; text-align: center; }
-
-.featured-section { /* Keep styles if used elsewhere */
-    background-color: #f8f9fa;
-    border-top: 1px solid var(--secondary-color);
-    border-bottom: 1px solid var(--secondary-color);
-    padding: 50px 25px;
-}
-.featured-section ul { list-style: none; padding-left: 0; }
-.featured-section ul li { margin-bottom: 0.8rem; display: flex; align-items: flex-start; }
-
-/* --- Skills Snapshot Section --- */
-.skills-grid { /* ... */ }
-.skill-item { /* ... */ }
-.skill-item:hover { /* ... */ }
-.skill-icon { /* ... */ }
-.skill-item h3 { /* ... */ }
-.skill-item p { /* ... */ }
-
-/* --- Call to Action (CTA) Buttons --- */
-.cta-button { /* ... */ }
-.cta-button:hover, .cta-button:focus { /* ... */ }
-.cta-button.secondary { /* ... */ }
-.cta-button.secondary:hover, .cta-button.secondary:focus { /* ... */ }
-.cta-button.small-button { /* ... */ }
-
-
-/* --- Page Header for Subpages --- */
-.page-header { /* ... */ }
-.page-header h1 { /* ... */ }
-.page-header p { /* ... */ }
-
-/* --- Research & Teaching Page Styles --- */
-.publication-list li, .presentation-list li, .media-list li { /* Removed award-list */
-    margin-bottom: 2rem; /* More space between items */
-    padding-bottom: 2rem; /* Ensure padding matches margin */
-    line-height: 1.6; /* Ensure good line spacing */
-    border-bottom: 1px solid var(--secondary-color);
-}
-.publication-list li:last-child, .presentation-list li:last-child, .media-list li:last-child {
+.award-list li:last-child {
     border-bottom: none;
-    padding-bottom: 0; /* Adjusted */
-    margin-bottom: 0; /* Adjusted */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.award-list strong {
+     font-weight: 700;
 }
 
-.publication-list h3, .media-list h3 { /* Style publication titles */
-    font-size: 1.25rem;
-    color: var(--primary-color);
-    line-height: 1.4;
-    margin-bottom: 0.4rem;
-    font-family: var(--font-body);
+/* --- CV Page Styles --- */
+.cv-summary, .cv-download, .cv-request { /* Added .cv-request */
+    margin-bottom: 2rem;
+}
+.cv-download, .cv-request { /* Added .cv-request */
+    text-align: center;
+    padding: 30px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
+.cv-download-link i, .cv-request a i { /* Added .cv-request */
+    margin-right: 8px;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 30px 0;
+    margin-top: auto; /* Push footer to bottom */
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 20px;
+}
+.footer-contact p, .footer-links p {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+.footer-contact a, .footer-links a {
+    color: var(--secondary-color);
+}
+.footer-contact a:hover, .footer-links a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+.footer-contact i {
+    margin-right: 8px;
+    color: var(--accent-color);
+    width: 15px; /* Align icons */
+    text-align: center;
+}
+.footer-links {
+    text-align: right;
+    display: flex; /* Align items in footer links */
+    align-items: center;
+    gap: 15px; /* Spacing between icons and text */
+}
+.footer-links p {
+    margin-bottom: 0; /* Remove bottom margin from copyright */
+}
+.footer-links a {
+     font-size: 1.2rem; /* Make icons slightly larger */
+     line-height: 1; /* Adjust line height for icons */
+}
+
+
+/* --- Animation --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInAnimation 0.8s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Apply staggered delay for sections (optional) */
+#research-interests { animation-delay: 0.1s;}
+#publications { animation-delay: 0.2s; }
+#presentations { animation-delay: 0.3s; }
+#online-media { animation-delay: 0.4s; }
+#awards { animation-delay: 0.5s; }
+#research-timeline-section { animation-delay: 0.6s;} /* Delay for timeline */
+#teaching-experience { animation-delay: 0.1s;} /* Delay teaching sections */
+#teaching-philosophy { animation-delay: 0.2s;}
+
+
+/* Stagger blog post animations */
+.blog-post.fade-in { animation-delay: 0.1s; } /* First post */
+.blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.3s; } /* Second post */
+.blog-post.fade-in + .blog-divider + .blog-post.fade-in + .blog-divider + .blog-post.fade-in { animation-delay: 0.5s; } /* Third post */
+
+
+/* Adjust delays for homepage sections if needed */
+#about { animation-delay: 0.2s; }
+#research-highlights { animation-delay: 0.4s; }
+#skills-snapshot { animation-delay: 0.6s; }
+
+
+/* === Stlyes for Filter Controls === */
+
+.filter-controls {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background-color: var(--secondary-color); /* Light background for controls */
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.filter-group label {
+    font-weight: 600;
+    margin-right: 0.5rem;
+    color: var(--heading-color);
+}
+
+.filter-btn {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover, .filter-btn:focus {
+    background-color: #eee;
+    border-color: #bbb;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border-color: var(--primary-color);
     font-weight: 600;
 }
-.publication-details, .course-details, .institution-dates, .media-details { /* De-emphasize details */
+
+#keyword-search {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
     font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.6rem;
+    min-width: 200px; /* Adjust as needed */
+}
+
+/* Style for hidden items (JS will add/remove this class) */
+.publication-list li.hidden {
+    display: none;
+}
+
+/* === END Styles for Filter Controls === */
+
+
+/* === Styles for Blog Page Content === */
+
+.blog-post { /* Common styles for posts on index and full pages */
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+}
+.blog-post:last-of-type { /* Remove bottom spacing/border on last post */
+     border-bottom: none;
+     margin-bottom: 0;
+     padding-bottom: 0;
+}
+
+/* Card style for blog excerpts on the index page */
+.blog-excerpt-card {
+    background-color: #fdfdfd;
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid var(--secondary-color);
+    transition: box-shadow 0.3s ease;
+    border-bottom: none; /* Remove the default blog-post border */
+    margin-bottom: 2rem; /* Space between cards */
+}
+.blog-excerpt-card:last-of-type {
+    margin-bottom: 0;
+}
+.blog-excerpt-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+
+.blog-post-header { /* Header style common to index and full page */
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.blog-post-title { /* Title style common to index and full page */
+    font-size: 1.8rem; /* Slightly adjusted size */
+    margin-bottom: 0.3rem;
+    color: var(--primary-color);
+}
+
+.blog-post-meta { /* Meta style common to index and full page */
+    font-size: 0.85rem;
+    color: #777;
     font-style: italic;
 }
 
-.publication-links a, .course-links a, .media-links a, .award-link { /* Style all links similarly */
-    margin-right: 15px;
-    font-weight: 700; /* Bolder links */
-    font-size: 0.85rem;
-    text-transform: uppercase; /* Example: Uppercase links */
-    letter-spacing: 0.5px;
-    color: var(--accent-color); /* Use accent color */
+.blog-post-excerpt p:last-of-type { /* Spacing below excerpt text */
+    margin-bottom: 0.5rem;
 }
-.publication-links i, .course-links i, .media-links i, .award-link i { margin-right: 5px; }
-.publication-links a:hover, .course-links a:hover, .media-links a:hover, .award-link:hover { color: var(--primary-color); }
+.read-full-post-link { /* Link on index page */
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.read-full-post-link:hover,
+.read-full-post-link:focus {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
 
-.presentation-list p { margin-bottom: 0.5rem; line-height: 1.6; }
-.presentation-list strong { font-weight: 600; color: var(--heading-color); } /* Style presentation titles */
-.presentation-list em { display: block; font-size: 0.85rem; color: #777; margin-top: 5px; } /* Style venue/date */
-.presentation-list a { font-size: 0.85rem; margin-left: 5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-color); font-weight: 700; }
-.presentation-list a:hover { color: var(--primary-color); }
+/* Styles ONLY for full blog post content pages */
+.blog-post-full .blog-post-content h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.blog-post-full .blog-post-content ul {
+    list-style: disc;
+    margin-left: 25px; /* Indent list */
+    margin-bottom: 1.5rem;
+}
+.blog-post-full .blog-post-content ul li {
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+}
+.blog-post-full .blog-post-content ul ul { /* Nested lists */
+    margin-top: 0.5rem;
+    list-style: circle;
+}
+.blog-post-full .blog-post-content code { /* Style for inline code */
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #c7254e;
+    border: 1px solid #e8e8e8;
+}
 
-/* --- Specific Teaching Page Styles --- */
-.teaching-role { margin-bottom: 2.5rem; padding-bottom: 1.5rem; }
-.teaching-role:last-child { margin-bottom: 0; padding-bottom: 0; }
-.teaching-role.card-style { background-color: #fdfdfd; padding: 1.5rem 2rem; border-radius: var(--border-radius); box-shadow: 0 2px 8px rgba(0,0,0,0.07); border: 1px solid var(--secondary-color); transition: box-shadow 0.3s ease; margin-bottom: 2rem; }
-.teaching-role.card-style:last-child { margin-bottom: 0; }
-.teaching-role.card-style:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-.teaching-role h3 { font-size: 1.5rem; margin-bottom: 0.3rem; color: var(--primary-color); }
-.teaching-role h4 { font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.8rem; color: var(--heading-color); border-bottom: 1px solid #eee; padding-bottom: 0.3rem; }
-.course-list { list-style: none; padding-left: 0; }
-.course-list li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
-.course-list li::before { content: '\f192'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--accent-color); position: absolute; left: 0; top: 0.1em; font-size: 0.8em; }
-.course-list strong { font-weight: 600; display: block; margin-bottom: 0.2rem; }
-.course-list em { font-size: 0.9rem; color: #666; display: block; margin-bottom: 0.3rem; }
-.course-list .fa-users { margin-right: 5px; color: #aaa; }
-.philosophy-box { margin-top: 2rem; padding: 1.5rem; background-color: var(--secondary-color); border-left: 5px solid var(--primary-color); border-radius: 0 var(--border-radius) var(--border-radius) 0; }
-.philosophy-box p { margin-bottom: 0; font-size: 1.05rem; line-height: 1.8; }
+.blog-divider { /* Separator on index page */
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 2rem 0; /* Adjusted margin */
+}
 
-/* === Styles for Awards Page Cards === */
-.award-list { list-style: none; padding-left: 0; }
-.award-item-card { background-color: #fdfdfd; padding: 1.5rem 2rem; border-radius: var(--border-radius); box-shadow: 0 1px 5px rgba(0,0,0,0.06); border: 1px solid var(--secondary-color); margin-bottom: 1.5rem; transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease; border-left: 5px solid var(--accent-color); display: flex; align-items: flex-start; gap: 1rem; }
-.award-item-card:last-child { margin-bottom: 0; }
-.award-item-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateY(-4px); border-left-color: var(--primary-color); }
-.award-icon { margin-top: 0.15em; color: var(--accent-color); font-size: 1.6em; width: 1.5em; text-align: center; flex-shrink: 0; }
-.award-details { flex-grow: 1; }
-.award-details p { margin-bottom: 0.3rem; line-height: 1.5; }
-.award-details p:last-child { margin-bottom: 0; }
-.award-details strong { font-weight: 700; color: var(--heading-color); font-size: 1.1em; margin-right: 0.5em; }
-.award-details p:first-of-type { line-height: 1.4; margin-bottom: 0.4rem; } /* Title/Date paragraph */
-.award-description { font-size: 0.9em; color: #555; font-style: italic; margin-bottom: 0.5rem !important; }
-.award-links { margin-top: 0.5rem; }
-.award-link i { margin-right: 5px; }
+/* Style for proof/explanation sections within blog posts */
+.proof-section {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--accent-color);
+    border-radius: var(--border-radius);
+}
+.proof-section h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+}
+.proof-steps {
+    list-style-type: decimal;
+    margin-left: 25px;
+    margin-top: 1rem;
+}
+.proof-steps li { margin-bottom: 1rem; }
+.proof-steps > li > strong { font-weight: 700; }
+.proof-steps ul { list-style-type: disc; margin-top: 0.5rem; }
+.proof-conclusion {
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--heading-color);
+}
 
-/* --- CV Page Styles --- */
-.cv-summary, .cv-download, .cv-request { margin-bottom: 2rem; }
-.cv-summary ul { list-style: none; padding-left: 0; margin-top: 1rem; }
-.cv-summary ul li { display: flex; align-items: flex-start; margin-bottom: 0.8rem; line-height: 1.6; }
-.cv-summary ul li i.icon-highlight { margin-right: 10px; margin-top: 0.15em; color: var(--accent-color); width: 1.2em; text-align: center; flex-shrink: 0; }
-.cv-summary ul li strong { font-weight: 600; }
-.cv-download, .cv-request { text-align: center; padding: 30px; background-color: var(--secondary-color); border-radius: var(--border-radius); }
-.cv-download-link i, .cv-request a i { margin-right: 8px; }
+/* Styling for equation display boxes */
+.equation-box {
+    background-color: #fdfdfd;
+    border: 1px solid var(--secondary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.equation-box p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+.equation-box p:last-child { margin-bottom: 0; }
 
-/* --- Footer --- */
-.site-footer { /* ... */ }
-.footer-content { /* ... */ }
-.footer-contact p, .footer-links p { /* ... */ }
-.footer-contact a, .footer-links a { /* ... */ }
-.footer-contact a:hover, .footer-links a:hover { /* ... */ }
-.footer-contact i { /* ... */ }
-.footer-links { /* ... */ }
-.footer-links p { /* ... */ }
-.footer-links a { /* ... */ }
+/* Styles for definition box in blog */
+.definition-box {
+    background-color: #eaf7f4;
+    border-left: 5px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: var(--border-radius);
+}
+.definition-box h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 0.7rem;
+}
 
-/* --- Animation --- */
-.fade-in { /* ... */ }
-@keyframes fadeInAnimation { /* ... */ }
-/* ... Animation delays ... */
+/* Styles for test steps in blog */
+.test-steps {
+    margin-top: 1.5rem;
+    background-color: #f8f9fa;
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    border: 1px solid #eee;
+    border-radius: var(--border-radius);
+}
+.test-steps h4 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+.test-steps ol { list-style-type: decimal; margin-left: 20px; }
+.test-steps li { margin-bottom: 1.2rem; }
+.test-steps li p { margin-bottom: 0.5rem; }
+.test-conclusion {
+    font-weight: 600;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #ccc;
+    color: var(--heading-color);
+}
 
-/* === Styles for Filter Controls === */
-.filter-controls { /* ... */ }
-.filter-group { /* ... */ }
-.filter-group label { /* ... */ }
-.filter-btn { /* ... */ }
-.filter-btn:hover, .filter-btn:focus { /* ... */ }
-.filter-btn.active { /* ... */ }
-#keyword-search { /* ... */ }
-.publication-list li.hidden { display: none; }
+/* Styles specific to full blog post pages */
+.blog-post-full .blog-post-content { /* Target only content on full page */
+    /* Add specific styles if needed */
+}
+.back-to-blog { /* Link at bottom of full post page */
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--secondary-color);
+}
+.back-to-blog a {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.back-to-blog a:hover {
+    color: var(--accent-color);
+}
 
-/* === Styles for Blog Page Content === */
-.blog-post { /* ... */ }
-.blog-post:last-of-type { /* ... */ }
-.blog-excerpt-card { /* ... */ }
-.blog-excerpt-card:last-of-type { /* ... */ }
-.blog-excerpt-card:hover { /* ... */ }
-.blog-post-header { /* ... */ }
-.blog-post-title { /* ... */ }
-.blog-post-meta { /* ... */ }
-.blog-post-excerpt p:last-of-type { /* ... */ }
-.read-full-post-link { /* ... */ }
-.read-full-post-link:hover, .read-full-post-link:focus { /* ... */ }
-.blog-post-full .blog-post-content h3 { /* ... */ }
-.blog-post-full .blog-post-content ul { /* ... */ }
-.blog-post-full .blog-post-content ul li { /* ... */ }
-.blog-post-full .blog-post-content ul ul { /* ... */ }
-.blog-post-full .blog-post-content code { /* ... */ }
-.blog-divider { /* ... */ }
-.proof-section { /* ... */ }
-.proof-section h4 { /* ... */ }
-.proof-steps { /* ... */ }
-.proof-steps li { /* ... */ }
-.proof-steps > li > strong { /* ... */ }
-.proof-steps ul { /* ... */ }
-.proof-conclusion { /* ... */ }
-.equation-box { /* ... */ }
-.equation-box p { /* ... */ }
-.definition-box { /* ... */ }
-.definition-box h3 { /* ... */ }
-.test-steps { /* ... */ }
-.test-steps h4 { /* ... */ }
-.test-steps ol { /* ... */ }
-.test-steps li { /* ... */ }
-.test-steps li p { /* ... */ }
-.test-conclusion { /* ... */ }
-.back-to-blog { /* ... */ }
-.back-to-blog a { /* ... */ }
-.back-to-blog a:hover { /* ... */ }
-.footnotes { /* ... */ }
-.footnotes h3 { /* ... */ }
-.footnotes ol { /* ... */ }
-.footnotes li { /* ... */ }
-.footnotes li a { /* ... */ }
-.footnotes li a:hover { /* ... */ }
-sup { /* ... */ }
-sup a { /* ... */ }
-sup a:hover { /* ... */ }
-:target { /* ... */ }
+/* Styles for Footnotes */
+.footnotes {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #ddd;
+    font-size: 0.9em;
+    color: #555;
+}
+.footnotes h3 {
+    font-size: 1.1rem;
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+.footnotes ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+.footnotes li {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+.footnotes li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    margin-left: 0.3em;
+}
+.footnotes li a:hover { text-decoration: underline; }
+sup {
+    line-height: 0;
+    vertical-align: super;
+    font-size: 0.8em;
+}
+sup a {
+    text-decoration: none;
+    color: var(--primary-color);
+    padding: 0.1em 0.2em;
+    border-radius: 2px;
+    transition: background-color 0.2s ease;
+}
+sup a:hover { background-color: var(--secondary-color); text-decoration: none; }
+:target { /* Optional highlight for jumped-to footnote */ }
 
-/* === Styles for MathJax === */
-mjx-container[display="true"] { /* ... */ }
-mjx-container[display="false"] { /* ... */ }
+/* Styles for MathJax */
+mjx-container[display="true"] { /* Display math */
+    display: block;
+    margin: 1.5rem 0 !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+    font-size: 1.05em;
+}
+mjx-container[display="false"] { /* Inline math */
+    display: inline-block;
+    margin: 0 0.15em !important;
+    padding: 0 !important;
+    line-height: 1;
+    font-size: 1em;
+    text-align: left;
+    vertical-align: baseline;
+}
 
-/* === Styles for Timeline Placeholder === */
-#research-timeline-section { /* ... */ }
-#timeline-embed { /* ... */ }
+/* Styles for Timeline Placeholder */
+#research-timeline-section { background-color: #f8f9fa; padding: 50px 0; }
+#timeline-embed { border: 1px solid #ddd; margin-top: 1.5rem; background-color: #fff; }
 
-/* === Styles for AI/ML Page === */
-.subsection { /* ... */ }
-.subsection:first-of-type { /* ... */ }
-.subsection h3 { /* ... */ }
-.subsection ul { /* ... */ }
-.subsection ul ul { /* ... */ }
-.chart-container { /* ... */ }
-.tree-diagram-placeholder { /* ... */ }
-.tree-diagram-placeholder pre { /* ... */ }
-.caption { /* ... */ }
-.skills-list-ai { /* ... */ }
-.skills-list-ai li { /* ... */ }
-.skills-list-ai i { /* ... */ }
-.skills-list-ai strong { /* ... */ }
-.inline-link { /* ... */ }
-/* === Styles for D3 Decision Tree === */
-.tree-diagram-container { /* ... */ }
-#decision-tree-svg { /* ... */ }
-.tree-link { /* ... */ }
-.tree-node circle { /* ... */ }
-.tree-node text { /* ... */ }
-.tree-node:not(.leaf) text { /* ... */ }
-.tree-node.leaf text { /* ... */ }
-/* === Styles for Interactive Map === */
-#map-container { /* ... */ }
-.leaflet-popup-content-wrapper { /* ... */ }
-.leaflet-popup-content { /* ... */ }
-.leaflet-popup-content b { /* ... */ }
-.leaflet-popup-content em { /* ... */ }
-.map-fa-icon { /* ... */ }
-.map-fa-icon i { /* ... */ }
 
-/* === END Styles === */
+/* === END Styles for Blog Page Content === */
 
 
 /* --- Responsiveness --- */
@@ -511,6 +956,7 @@ mjx-container[display="false"] { /* ... */ }
     html { font-size: 15px; }
     h1 { font-size: 2.2rem; }
     h2 { font-size: 1.8rem; }
+
     main { padding-top: 0; }
     .site-header { position: relative; height: auto; padding: 10px 0; }
     .header-content { flex-direction: column; align-items: flex-start; }
@@ -533,23 +979,396 @@ mjx-container[display="false"] { /* ... */ }
     .filter-group { justify-content: center; }
     #keyword-search { width: 100%; min-width: unset; }
     .blog-post-title { font-size: 1.7rem; }
-    .blog-post-full .blog-post-content h3 { font-size: 1.25rem; }
+    .blog-post-full .blog-post-content h3 { font-size: 1.25rem; } /* Target full post only */
     .proof-section, .equation-box, .definition-box, .test-steps { padding: 0.8rem 1rem; }
     .teaching-role.card-style { padding: 1rem 1.2rem; }
-    .content-card { padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
-    .blog-excerpt-card { padding: 1rem 1.2rem; margin-bottom: 1.5rem;}
-     .award-item-card { padding: 1rem 1.2rem; }
-     /* .award-item-card em, .award-item-card .award-links { margin-left: 0; } // Keep indent for now */
-      .award-item-card p { /* align-items: center; // Revert for potential multi-line titles */ }
-      .award-icon { margin-top: 0.15em; } /* Revert mobile icon adjustment */
-     .chart-container { max-width: 95%; }
+    .blog-excerpt-card { padding: 1rem 1.2rem; } /* Adjust card padding */
 }
 
 @media (max-width: 480px) {
     .footer-links { gap: 10px; }
     .footer-links a { font-size: 1.1rem; }
     .cta-button { padding: 10px 20px; }
-     .award-item-card { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-     .award-icon { margin-bottom: 0.5rem;}
-     .award-details em, .award-details .award-links { margin-left: 0; } /* Remove indent when stacked */
 }
+/* === ADD Styles for AI/ML Page === */
+
+/* Style subsections within a content card */
+.subsection {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed var(--secondary-color);
+}
+.subsection:first-of-type {
+    margin-top: 1rem;
+    padding-top: 0;
+    border-top: none;
+}
+.subsection h3 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.subsection ul {
+    list-style: disc;
+    margin-left: 25px;
+    margin-bottom: 1rem;
+}
+.subsection ul ul {
+    list-style: circle;
+    margin-top: 0.5rem;
+}
+
+/* Container for charts */
+.chart-container {
+    max-width: 600px; /* Limit chart width */
+    margin: 1.5rem auto; /* Center chart */
+    background-color: #fff; /* White background */
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Placeholder for tree diagram */
+.tree-diagram-placeholder {
+    background-color: #f8f9fa;
+    border: 1px dashed #ccc;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    color: #666;
+    border-radius: var(--border-radius);
+}
+.tree-diagram-placeholder pre { /* Style text representation */
+    text-align: left;
+    font-size: 0.9em;
+    background-color: #eee;
+    padding: 0.5rem;
+    border-radius: 3px;
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+/* Caption style for charts/diagrams */
+.caption {
+    font-size: 0.85rem;
+    text-align: center;
+    color: #777;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Style for the skills list on ai-ml.html */
+.skills-list-ai {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+.skills-list-ai li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start; /* Align icon top */
+}
+.skills-list-ai i {
+    margin-right: 10px;
+    margin-top: 0.15em; /* Adjust icon alignment */
+    color: var(--primary-color); /* Or accent color */
+    width: 1.2em;
+    text-align: center;
+    flex-shrink: 0;
+}
+.skills-list-ai strong {
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+/* Style for inline links within text */
+.inline-link {
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-left: 0.5em;
+    white-space: nowrap; /* Prevent link wrapping */
+}
+
+/* === END Styles for AI/ML Page === */
+
+/* === ADD Styles for D3 Decision Tree Visualization === */
+
+.tree-diagram-container {
+    width: 100%;
+    min-height: 400px; /* Adjust height as needed */
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#decision-tree-svg {
+    width: 100%;
+    height: 100%;
+    min-height: 400px; /* Ensure SVG has height */
+    /* background-color: #f8f9fa; */ /* Optional background */
+    /* border: 1px solid #ddd; */ /* Optional border */
+}
+
+/* Basic styles for elements D3 will create */
+.tree-link { /* Style for the lines connecting nodes */
+    fill: none;
+    stroke: #aaa; /* Link color */
+    stroke-width: 1.5px;
+}
+
+.tree-node circle { /* Style for the node circles */
+    fill: var(--primary-color); /* Node fill color */
+    stroke: var(--background-color); /* Node border color */
+    stroke-width: 1.5px;
+    r: 5; /* Node radius */
+}
+
+.tree-node text { /* Style for the node labels */
+    font-family: var(--font-body);
+    font-size: 10px; /* Adjust label size */
+    fill: var(--text-color);
+    text-anchor: middle; /* Center text */
+    dy: 0.31em; /* Vertical alignment */
+}
+/* Adjust text position for non-leaf nodes */
+.tree-node:not(.leaf) text {
+     text-anchor: middle;
+     dy: -0.8em; /* Position above node */
+}
+/* Adjust text position for leaf nodes */
+.tree-node.leaf text {
+     text-anchor: start;
+     dx: 0.8em; /* Position slightly right of node */
+     dy: 0.31em;
+}
+
+/* === END Styles for D3 Decision Tree === */
+
+/* === ADD Styles for Interactive Map === */
+
+#map-container {
+    height: 450px; /* Adjust height as needed */
+    width: 100%;
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem; /* Space above map */
+    margin-bottom: 0.5rem; /* Space below map before caption */
+    z-index: 0; /* Ensure map is behind fixed header if necessary */
+}
+
+/* Optional: ensure leaflet popups fit theme */
+.leaflet-popup-content-wrapper {
+    border-radius: var(--border-radius);
+}
+.leaflet-popup-content {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+}
+.leaflet-popup-content b {
+     color: var(--heading-color);
+     font-weight: 600;
+}
+.leaflet-popup-content em {
+    color: #666;
+    font-size: 0.9em;
+}
+
+
+/* === END Styles for Interactive Map === */
+
+/* === ADD styles for custom map icons === */
+.map-fa-icon {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white background */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px; /* Match iconSize height */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.map-fa-icon i {
+    vertical-align: middle;
+}
+/* === END styles for custom map icons === */
+
+
+
+
+
+
+
+
+/* Increase space below each list item */
+.publication-list li,
+.presentation-list li,
+.media-list li {
+    margin-bottom: 2rem; /* More space between items */
+    padding-bottom: 2rem; /* Ensure padding matches margin */
+    line-height: 1.6; /* Ensure good line spacing */
+}
+
+/* Style publication titles */
+.publication-list h3, .media-list h3 {
+    font-size: 1.25rem; /* Slightly adjust size if needed */
+    color: var(--primary-color); /* Ensure primary color */
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+
+/* De-emphasize publication details slightly */
+.publication-details, .media-details {
+    font-size: 0.9rem; /* Slightly smaller */
+    color: #666; /* Lighter text */
+    margin-bottom: 0.6rem;
+}
+
+/* Style presentation titles */
+.presentation-list strong {
+     font-weight: 600;
+     color: var(--heading-color);
+     /* Consider font-size: 1.05em; */
+}
+
+/* Style presentation venue/date */
+ .presentation-list em {
+    font-size: 0.85rem; /* Smaller */
+    color: #777;
+ }
+
+/* Ensure links stand out */
+.publication-links a, .media-links a, .presentation-list a {
+     font-weight: 700; /* Bolder links */
+     font-size: 0.85rem;
+     text-transform: uppercase; /* Example: Uppercase links */
+     letter-spacing: 0.5px;
+     color: var(--accent-color); /* Use accent color */
+}
+ .publication-links a:hover, .media-links a:hover, .presentation-list a:hover {
+      color: var(--primary-color); /* Darker hover */
+ }
+
+.content-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Make shadow slightly larger */
+    transform: translateY(-2px); /* Subtle lift effect */
+    border-left-color: var(--accent-color); /* Add accent color to left border on hover if using cards */
+}
+
+/* Also ensure the base .content-card has a transition */
+.content-card {
+    /* ... other styles ... */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease; /* Add border-left-color */
+     border-left: 5px solid transparent; /* Add transparent border initially for smooth transition */
+     padding-left: calc(2rem - 5px); /* Adjust padding slightly if adding border */
+}
+
+/* Specific adjustment for interests box which already has a border */
+ #research-interests.content-card:hover {
+    border-left-color: var(--primary-color); /* Keep primary color border from interests-box */
+ }
+ #research-interests .interests-box {
+     border-left: none; /* Remove inner border */
+     border-radius: 0; /* Remove inner radius */
+     padding-left: 0; /* Remove inner padding */
+     margin-top: 0; /* Remove inner margin */
+     background-color: transparent; /* Make inner box transparent */
+ }
+ #research-interests.content-card {
+     background-color: var(--secondary-color); /* Move background to outer card */
+     border-left: 5px solid var(--primary-color); /* Move border to outer card */
+ }
+
+
+.content-card h2 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--accent-color); /* Use accent color for border */
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.8rem; /* More space below heading */
+    font-size: 1.9rem; /* Slightly adjust size */
+    color: var(--heading-color);
+}
+
+
+/* Refine styles within .award-item-card */
+
+.award-item-card p {
+    /* Base paragraph style in card */
+    margin-bottom: 0.5rem; /* Adjust spacing if needed */
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.award-item-card i.fa-award {
+    /* Icon style - maybe add a subtle background */
+    margin-right: 12px; /* Slightly more space */
+    margin-top: 0.2em; /* Fine-tune vertical alignment */
+    color: var(--accent-color); /* Ensure accent color */
+    font-size: 1.3em;
+    width: 1.3em;
+    text-align: center;
+    flex-shrink: 0;
+    /* Optional: Add a background circle */
+    /* background-color: var(--secondary-color); */
+    /* border-radius: 50%; */
+    /* padding: 3px; */
+    /* height: 1.3em; */
+    /* line-height: 1.3em; */
+}
+
+.award-item-card strong {
+    font-weight: 700;
+    color: var(--heading-color);
+    display: block;
+    font-size: 1.1em; /* Make title slightly larger */
+    margin-bottom: 0.3rem;
+}
+
+.award-item-card em { /* Description text */
+    display: block;
+    font-size: 0.85em; /* Make description smaller */
+    color: #666; /* Slightly lighter text */
+    font-style: italic;
+    margin-left: calc(1.3em + 12px); /* Align with text, accounting for icon width+margin */
+    padding-top: 0; /* Reset padding */
+    line-height: 1.5; /* Adjust line height */
+}
+
+ .award-item-card .award-link {
+    margin-left: calc(1.3em + 12px); /* Align link with description */
+    font-size: 0.85rem;
+    margin-top: 0.5rem; /* Space above link */
+}
+
+.award-item-card {
+    /* ... existing styles ... */
+    border-left: 5px solid var(--accent-color);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease; /* Add border transition */
+}
+
+.award-item-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Slightly stronger shadow */
+    transform: translateY(-4px); /* Slightly more lift */
+    border-left-color: var(--primary-color); /* Change border color on hover */
+}
+
+/* Styles for Year Grouping on Awards Page */
+.year-group {
+    margin-bottom: 2.5rem; /* Space between year groups */
+}
+.year-group h3 {
+    font-size: 1.8rem; /* Make year heading distinct */
+    color: var(--heading-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.year-group .award-list {
+    /* Reset any inherited list styles if needed */
+    padding-left: 0;
+}
+.year-group .award-item-card {
+    /* Ensure bottom margin is appropriate within the group */
+    margin-bottom: 1.5rem;
+}
+ .year-group .award-list li:last-child {
+     margin-bottom: 0; /* No margin after last card in group */
+ }
