@@ -1,4 +1,4 @@
-/* === Full Updated style.css (Includes Award Card Styles) === */
+/* === Full Updated style.css (Includes Award Card Styles, No Dark Mode) === */
 
 /* --- Global Styles & Variables --- */
 :root {
@@ -90,6 +90,7 @@ ul li {
 .publication-list li, .presentation-list li, .teaching-role ul, .media-list li { /* Removed award-list */
     margin-bottom: 1.5rem; /* Adjust spacing as needed */
 }
+
 
 img {
     max-width: 100%;
@@ -236,9 +237,10 @@ img {
     border-bottom: 2px solid var(--accent-color); /* Use accent for H2 border */
     padding-bottom: 0.6rem;
     margin-bottom: 1.8rem;
-    font-size: 1.9rem;
+    font-size: 1.9rem; /* Slightly adjust size */
     color: var(--heading-color);
 }
+
 
 /* Style for Research Interests Box */
 .interests-box {
@@ -256,6 +258,8 @@ img {
 }
 #research-interests.content-card:hover {
     border-left-color: var(--primary-color); /* Keep primary border on hover */
+    transform: translateY(0); /* Disable lift for this specific card if desired */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Keep original shadow */
 }
 #research-interests .interests-box {
     border-left: none; /* Remove inner border */
@@ -298,8 +302,8 @@ img {
 .page-header h1 { /* ... */ }
 .page-header p { /* ... */ }
 
-/* --- Research Page Lists (within .content-card) --- */
-.publication-list li, .presentation-list li, .media-list li {
+/* --- Research & Teaching Page Styles --- */
+.publication-list li, .presentation-list li, .media-list li { /* Removed award-list */
     margin-bottom: 2rem; /* More space between items */
     padding-bottom: 2rem; /* Ensure padding matches margin */
     line-height: 1.6; /* Ensure good line spacing */
@@ -307,8 +311,8 @@ img {
 }
 .publication-list li:last-child, .presentation-list li:last-child, .media-list li:last-child {
     border-bottom: none;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    padding-bottom: 0; /* Adjusted */
+    margin-bottom: 0; /* Adjusted */
 }
 
 .publication-list h3, .media-list h3 { /* Style publication titles */
@@ -319,16 +323,10 @@ img {
     font-family: var(--font-body);
     font-weight: 600;
 }
-.publication-details, .institution-dates, .media-details { /* De-emphasize details */
+.publication-details, .course-details, .institution-dates, .media-details { /* De-emphasize details */
     font-size: 0.9rem;
     color: #666;
     margin-bottom: 0.6rem;
-    font-style: italic;
-}
-.course-details { /* Keep course details slightly different */
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 0.7rem;
     font-style: italic;
 }
 
@@ -349,7 +347,6 @@ img {
 .presentation-list a { font-size: 0.85rem; margin-left: 5px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-color); font-weight: 700; }
 .presentation-list a:hover { color: var(--primary-color); }
 
-
 /* --- Specific Teaching Page Styles --- */
 .teaching-role { margin-bottom: 2.5rem; padding-bottom: 1.5rem; }
 .teaching-role:last-child { margin-bottom: 0; padding-bottom: 0; }
@@ -367,7 +364,6 @@ img {
 .philosophy-box { margin-top: 2rem; padding: 1.5rem; background-color: var(--secondary-color); border-left: 5px solid var(--primary-color); border-radius: 0 var(--border-radius) var(--border-radius) 0; }
 .philosophy-box p { margin-bottom: 0; font-size: 1.05rem; line-height: 1.8; }
 
-
 /* === Styles for Awards Page Cards === */
 .award-list { list-style: none; padding-left: 0; }
 .award-item-card { background-color: #fdfdfd; padding: 1.5rem 2rem; border-radius: var(--border-radius); box-shadow: 0 1px 5px rgba(0,0,0,0.06); border: 1px solid var(--secondary-color); margin-bottom: 1.5rem; transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease; border-left: 5px solid var(--accent-color); display: flex; align-items: flex-start; gap: 1rem; }
@@ -381,9 +377,7 @@ img {
 .award-details p:first-of-type { line-height: 1.4; margin-bottom: 0.4rem; } /* Title/Date paragraph */
 .award-description { font-size: 0.9em; color: #555; font-style: italic; margin-bottom: 0.5rem !important; }
 .award-links { margin-top: 0.5rem; }
-.award-link { font-size: 0.85rem; font-weight: 600; display: inline-block; } /* Inherits general link styles */
 .award-link i { margin-right: 5px; }
-
 
 /* --- CV Page Styles --- */
 .cv-summary, .cv-download, .cv-request { margin-bottom: 2rem; }
@@ -395,20 +389,19 @@ img {
 .cv-download-link i, .cv-request a i { margin-right: 8px; }
 
 /* --- Footer --- */
-.site-footer { background-color: var(--primary-color); color: var(--secondary-color); padding: 30px 0; margin-top: auto; }
-.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-.footer-contact p, .footer-links p { margin-bottom: 0.5rem; font-size: 0.9rem; }
-.footer-contact a, .footer-links a { color: var(--secondary-color); }
-.footer-contact a:hover, .footer-links a:hover { color: var(--accent-color); text-decoration: underline; }
-.footer-contact i { margin-right: 8px; color: var(--accent-color); width: 15px; text-align: center; }
-.footer-links { text-align: right; display: flex; align-items: center; gap: 15px; }
-.footer-links p { margin-bottom: 0; }
-.footer-links a { font-size: 1.2rem; line-height: 1; }
-
+.site-footer { /* ... */ }
+.footer-content { /* ... */ }
+.footer-contact p, .footer-links p { /* ... */ }
+.footer-contact a, .footer-links a { /* ... */ }
+.footer-contact a:hover, .footer-links a:hover { /* ... */ }
+.footer-contact i { /* ... */ }
+.footer-links { /* ... */ }
+.footer-links p { /* ... */ }
+.footer-links a { /* ... */ }
 
 /* --- Animation --- */
-.fade-in { opacity: 0; transform: translateY(20px); animation: fadeInAnimation 0.8s ease-out forwards; }
-@keyframes fadeInAnimation { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { /* ... */ }
+@keyframes fadeInAnimation { /* ... */ }
 /* ... Animation delays ... */
 
 /* === Styles for Filter Controls === */
@@ -546,9 +539,10 @@ mjx-container[display="false"] { /* ... */ }
     .content-card { padding: 1rem 1.2rem; margin-bottom: 1.5rem; }
     .blog-excerpt-card { padding: 1rem 1.2rem; margin-bottom: 1.5rem;}
      .award-item-card { padding: 1rem 1.2rem; }
-     .award-item-card em, .award-item-card .award-links { margin-left: 0; }
-      .award-item-card p { align-items: center;}
-      .award-item-card i.fa-award { margin-top: 0; }
+     /* .award-item-card em, .award-item-card .award-links { margin-left: 0; } // Keep indent for now */
+      .award-item-card p { /* align-items: center; // Revert for potential multi-line titles */ }
+      .award-icon { margin-top: 0.15em; } /* Revert mobile icon adjustment */
+     .chart-container { max-width: 95%; }
 }
 
 @media (max-width: 480px) {
@@ -557,5 +551,5 @@ mjx-container[display="false"] { /* ... */ }
     .cta-button { padding: 10px 20px; }
      .award-item-card { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
      .award-icon { margin-bottom: 0.5rem;}
-     /* .award-details em, .award-details .award-links { margin-left: 0; } // Already covered in 768px */
+     .award-details em, .award-details .award-links { margin-left: 0; } /* Remove indent when stacked */
 }
