@@ -1189,3 +1189,99 @@ mjx-container[display="false"] { /* Inline math */
     vertical-align: middle;
 }
 /* === END styles for custom map icons === */
+
+
+
+
+
+
+
+
+/* Increase space below each list item */
+.publication-list li,
+.presentation-list li,
+.media-list li {
+    margin-bottom: 2rem; /* More space between items */
+    padding-bottom: 2rem; /* Ensure padding matches margin */
+    line-height: 1.6; /* Ensure good line spacing */
+}
+
+/* Style publication titles */
+.publication-list h3, .media-list h3 {
+    font-size: 1.25rem; /* Slightly adjust size if needed */
+    color: var(--primary-color); /* Ensure primary color */
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+
+/* De-emphasize publication details slightly */
+.publication-details, .media-details {
+    font-size: 0.9rem; /* Slightly smaller */
+    color: #666; /* Lighter text */
+    margin-bottom: 0.6rem;
+}
+
+/* Style presentation titles */
+.presentation-list strong {
+     font-weight: 600;
+     color: var(--heading-color);
+     /* Consider font-size: 1.05em; */
+}
+
+/* Style presentation venue/date */
+ .presentation-list em {
+    font-size: 0.85rem; /* Smaller */
+    color: #777;
+ }
+
+/* Ensure links stand out */
+.publication-links a, .media-links a, .presentation-list a {
+     font-weight: 700; /* Bolder links */
+     font-size: 0.85rem;
+     text-transform: uppercase; /* Example: Uppercase links */
+     letter-spacing: 0.5px;
+     color: var(--accent-color); /* Use accent color */
+}
+ .publication-links a:hover, .media-links a:hover, .presentation-list a:hover {
+      color: var(--primary-color); /* Darker hover */
+ }
+
+.content-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* Make shadow slightly larger */
+    transform: translateY(-2px); /* Subtle lift effect */
+    border-left-color: var(--accent-color); /* Add accent color to left border on hover if using cards */
+}
+
+/* Also ensure the base .content-card has a transition */
+.content-card {
+    /* ... other styles ... */
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease; /* Add border-left-color */
+     border-left: 5px solid transparent; /* Add transparent border initially for smooth transition */
+     padding-left: calc(2rem - 5px); /* Adjust padding slightly if adding border */
+}
+
+/* Specific adjustment for interests box which already has a border */
+ #research-interests.content-card:hover {
+    border-left-color: var(--primary-color); /* Keep primary color border from interests-box */
+ }
+ #research-interests .interests-box {
+     border-left: none; /* Remove inner border */
+     border-radius: 0; /* Remove inner radius */
+     padding-left: 0; /* Remove inner padding */
+     margin-top: 0; /* Remove inner margin */
+     background-color: transparent; /* Make inner box transparent */
+ }
+ #research-interests.content-card {
+     background-color: var(--secondary-color); /* Move background to outer card */
+     border-left: 5px solid var(--primary-color); /* Move border to outer card */
+ }
+
+
+.content-card h2 {
+    margin-top: 0;
+    border-bottom: 2px solid var(--accent-color); /* Use accent color for border */
+    padding-bottom: 0.6rem;
+    margin-bottom: 1.8rem; /* More space below heading */
+    font-size: 1.9rem; /* Slightly adjust size */
+    color: var(--heading-color);
+}
