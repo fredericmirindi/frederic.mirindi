@@ -1285,3 +1285,90 @@ mjx-container[display="false"] { /* Inline math */
     font-size: 1.9rem; /* Slightly adjust size */
     color: var(--heading-color);
 }
+
+
+/* Refine styles within .award-item-card */
+
+.award-item-card p {
+    /* Base paragraph style in card */
+    margin-bottom: 0.5rem; /* Adjust spacing if needed */
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+
+.award-item-card i.fa-award {
+    /* Icon style - maybe add a subtle background */
+    margin-right: 12px; /* Slightly more space */
+    margin-top: 0.2em; /* Fine-tune vertical alignment */
+    color: var(--accent-color); /* Ensure accent color */
+    font-size: 1.3em;
+    width: 1.3em;
+    text-align: center;
+    flex-shrink: 0;
+    /* Optional: Add a background circle */
+    /* background-color: var(--secondary-color); */
+    /* border-radius: 50%; */
+    /* padding: 3px; */
+    /* height: 1.3em; */
+    /* line-height: 1.3em; */
+}
+
+.award-item-card strong {
+    font-weight: 700;
+    color: var(--heading-color);
+    display: block;
+    font-size: 1.1em; /* Make title slightly larger */
+    margin-bottom: 0.3rem;
+}
+
+.award-item-card em { /* Description text */
+    display: block;
+    font-size: 0.85em; /* Make description smaller */
+    color: #666; /* Slightly lighter text */
+    font-style: italic;
+    margin-left: calc(1.3em + 12px); /* Align with text, accounting for icon width+margin */
+    padding-top: 0; /* Reset padding */
+    line-height: 1.5; /* Adjust line height */
+}
+
+ .award-item-card .award-link {
+    margin-left: calc(1.3em + 12px); /* Align link with description */
+    font-size: 0.85rem;
+    margin-top: 0.5rem; /* Space above link */
+}
+
+.award-item-card {
+    /* ... existing styles ... */
+    border-left: 5px solid var(--accent-color);
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-left-color 0.3s ease; /* Add border transition */
+}
+
+.award-item-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Slightly stronger shadow */
+    transform: translateY(-4px); /* Slightly more lift */
+    border-left-color: var(--primary-color); /* Change border color on hover */
+}
+
+/* Styles for Year Grouping on Awards Page */
+.year-group {
+    margin-bottom: 2.5rem; /* Space between year groups */
+}
+.year-group h3 {
+    font-size: 1.8rem; /* Make year heading distinct */
+    color: var(--heading-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+.year-group .award-list {
+    /* Reset any inherited list styles if needed */
+    padding-left: 0;
+}
+.year-group .award-item-card {
+    /* Ensure bottom margin is appropriate within the group */
+    margin-bottom: 1.5rem;
+}
+ .year-group .award-list li:last-child {
+     margin-bottom: 0; /* No margin after last card in group */
+ }
