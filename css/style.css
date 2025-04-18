@@ -1372,3 +1372,39 @@ mjx-container[display="false"] { /* Inline math */
  .year-group .award-list li:last-child {
      margin-bottom: 0; /* No margin after last card in group */
  }
+
+.side-by-side {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.img-wrap img {
+    max-width: 100%;
+    width: 350px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.img-wrap {
+    flex: 1 1 350px;
+}
+
+.text-wrap {
+    flex: 1 1 400px;
+    min-width: 300px;
+}
+
+.img-caption {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
+    text-align: center;
+}
