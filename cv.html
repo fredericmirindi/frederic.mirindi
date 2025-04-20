@@ -3,44 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Restricted access to the Curriculum Vitae (CV) of Frédéric Mirindi." />
+  <meta name="description" content="Download the Curriculum Vitae (CV) of Frédéric Mirindi with secure access." />
   <title>Frédéric Mirindi - CV</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
   <style>
-    body {
-      font-family: 'Source Sans Pro', sans-serif;
-    }
+    body { font-family: 'Source Sans Pro', sans-serif; }
     .cta-button {
       display: inline-block;
       padding: 12px 20px;
-      background-color: #003366;
-      color: white;
+      background-color: #007acc;
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
       font-weight: 600;
-      margin-top: 10px;
+      transition: background-color 0.3s ease;
     }
     .cta-button:hover {
-      background-color: #0055aa;
+      background-color: #005b99;
+    }
+    .cv-download {
+      margin-top: 2rem;
     }
     .fade-in {
       animation: fadeIn 1s ease-in-out;
     }
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
   <header class="site-header">
     <div class="container header-content">
@@ -71,10 +73,10 @@
       </div>
 
       <div class="cv-download">
-        <h2>Access Full CV</h2>
-        <p>Click the button below to unlock and download the full version of my CV. A passcode is required for access.</p>
-        <a href="#" onclick="return requestAccess()" class="cta-button">
-          <i class="fas fa-lock"></i> Unlock CV (PDF)
+        <h2>Access My Full CV</h2>
+        <p>To protect sensitive details, please enter the passcode to access the document.</p>
+        <a href="#" onclick="return requestAccess();" class="cta-button">
+          <i class="fas fa-lock"></i> Access CV (PDF)
         </a>
       </div>
     </section>
@@ -101,7 +103,7 @@
     function requestAccess() {
       const passcode = prompt("Please enter the passcode to access the CV:");
       if (passcode === "Mirindi2025") {
-        window.location.href = "assets/CV_Frederic Mirindi 2.pdf";
+        window.location.href = encodeURI("assets/CV_Frederic Mirindi 2.pdf");
       } else if (passcode === null || passcode === "") {
         alert("Access cancelled.");
       } else {
@@ -110,7 +112,12 @@
       return false;
     }
 
-    document.getElementById("current-year").textContent = new Date().getFullYear();
+    document.addEventListener("DOMContentLoaded", function () {
+      const yearSpan = document.getElementById("current-year");
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
   </script>
 </body>
 </html>
