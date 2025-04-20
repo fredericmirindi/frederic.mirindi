@@ -1408,3 +1408,74 @@ mjx-container[display="false"] { /* Inline math */
     margin-top: 5px;
     text-align: center;
 }
+
+
+
+/* === ADD Styles for CV Request Form === */
+
+.cv-request-form {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--secondary-color); /* Match download box background */
+    border-radius: var(--border-radius);
+    text-align: left; /* Align form elements left */
+    max-width: 600px; /* Limit form width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cv-request-form h2 {
+    text-align: center; /* Center heading */
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.cv-request-form p {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resize */
+    min-height: 80px;
+}
+
+/* Center the submit button */
+#cv-request-form-element {
+    text-align: center;
+}
+
+
+/* === END Styles for CV Request Form === */
