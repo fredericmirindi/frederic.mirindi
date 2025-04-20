@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Analysis by Frédéric Mirindi on the resurgence of U.S. tariffs and its global impact, including Africa's trade outlook and macroeconomic signals." />
+  <meta name="description" content="Analysis by Frédéric Mirindi on the resurgence of U.S. tariffs and its global impact, including Africa's trade outlook." />
   <title>Frédéric Mirindi - Blog | U.S. Tariffs and Global Shockwaves</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -11,7 +11,59 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    body { font-family: 'Source Sans Pro', sans-serif; }
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
+    header, footer {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 1.2rem 0;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .header-content h1 a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding-left: 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a.active {
+      border-bottom: 2px solid orange;
+    }
+
+    main {
+      background: white;
+      padding: 2rem 0;
+    }
+
+    h2.blog-post-title {
+      font-family: 'Playfair Display', serif;
+    }
+
     .side-by-side {
       display: flex;
       flex-wrap: wrap;
@@ -19,7 +71,11 @@
       align-items: flex-start;
       margin-bottom: 2rem;
     }
-    .reverse { flex-direction: row-reverse; }
+
+    .reverse {
+      flex-direction: row-reverse;
+    }
+
     .img-wrap img {
       max-width: 100%;
       width: 350px;
@@ -27,32 +83,74 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
-    .img-wrap { flex: 1 1 350px; }
-    .text-wrap { flex: 1 1 400px; min-width: 300px; }
+
+    .img-wrap {
+      flex: 1 1 350px;
+    }
+
+    .text-wrap {
+      flex: 1 1 400px;
+      min-width: 300px;
+    }
+
     .img-caption {
       font-size: 0.85rem;
       color: #666;
       margin-top: 5px;
       text-align: center;
     }
+
     .tariff-table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 1rem;
       margin-bottom: 2rem;
     }
+
     .tariff-table th, .tariff-table td {
       border: 1px solid #ddd;
       padding: 10px;
       text-align: center;
     }
+
     .tariff-table th {
       background-color: #f2f2f2;
       font-weight: 600;
     }
-    .highlight { background-color: #fff5e0; }
+
+    .highlight {
+      background-color: #fff5e0;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      color: white;
+    }
+
+    .back-to-blog {
+      margin-top: 2rem;
+    }
+
+    .back-to-blog a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    h3 {
+      margin-top: 2.5rem;
+      color: #1a1a1a;
+    }
   </style>
 </head>
+
 <body>
 <header class="site-header">
   <div class="container header-content">
@@ -81,21 +179,21 @@
         <h3>1. The Return of High Tariffs</h3>
         <div class="side-by-side">
           <div class="img-wrap">
-            <img src="images/economist.png" alt="Effective U.S. tariff rate from The Economist" />
+            <img src="images/economist.png" alt="Effective U.S. tariff rate from The Economist">
             <p class="img-caption">Source: The Economist</p>
           </div>
           <div class="text-wrap">
-            <p>This graph highlights a dramatic increase in the U.S. effective tariff rate, now exceeding 20% for the first time since the pre-WWII era. After decades of trade liberalization, this sharp reversal signals a return to nationalist and protectionist trade strategies, particularly targeting China and other manufacturing hubs.</p>
+            <p>The U.S. effective tariff rate has surpassed 20% for the first time in decades. This shift marks a sharp deviation from the liberal trade policies that defined post-WWII economic integration. Driven primarily by tariffs against China and targeted industries, the return to protectionism is reshaping global trade flows and corporate strategies.</p>
           </div>
         </div>
 
         <h3>2. Market Reactions: Widespread Volatility</h3>
         <div class="side-by-side reverse">
           <div class="text-wrap">
-            <p>Data from <strong>The New York Times</strong> depicts how markets responded. The U.S. S&P 500 fell by 10%, while Japan experienced an even steeper drop. In contrast, Germany and China were relatively more resilient due to fiscal stimulus. Investor confidence declined amid fears of retaliatory tariffs and trade disruptions.</p>
+            <p>Global financial markets responded swiftly. Data from <strong>The New York Times</strong> shows a 10% drop in the S&P 500. Other markets, such as Japan, experienced even steeper declines. These responses reflect investor anxiety about retaliatory measures and disrupted supply chains across the globe.</p>
           </div>
           <div class="img-wrap">
-            <img src="images/tariffs.png" alt="Global market reaction to tariff announcements from NYT" />
+            <img src="images/tariffs.png" alt="Market reactions to tariffs">
             <p class="img-caption">Source: The New York Times</p>
           </div>
         </div>
@@ -103,7 +201,7 @@
         <h3>3. Case Study: Boeing and the Broken Supply Chain</h3>
         <div class="side-by-side">
           <div class="img-wrap">
-            <img src="images/tariffs_boeing.png" alt="Boeing supply chain affected by global tariffs" />
+            <img src="images/tariffs_boeing.png" alt="Tariffs disrupting Boeing’s international supply chain">
             <p class="img-caption">Source: The Washington Post</p>
           </div>
           <div class="text-wrap">
@@ -114,50 +212,60 @@
 
         <h3>4. What Should Africa Expect?</h3>
         <ul>
-          <li><strong>Commodity Demand Volatility:</strong> A global slowdown triggered by tariff escalation may reduce demand for oil, metals, and agricultural products, impacting African revenue streams.</li>
-          <li><strong>Trade Diversion Opportunities:</strong> African producers could benefit if U.S. tariffs divert trade away from China or other Asian exporters. However, this requires swift capacity building and preferential trade agreements.</li>
-          <li><strong>Need for Intra-African Trade:</strong> The moment underscores the importance of the African Continental Free Trade Area (AfCFTA). Building regional supply chains will reduce reliance on volatile global markets.</li>
-          <li><strong>Policy Agility:</strong> African policymakers must monitor currency shocks, inflationary pressures, and debt sustainability as external shocks unfold.</li>
+          <li><strong>Commodity Demand Volatility:</strong> Tariff-led global economic slowdowns could reduce demand for African exports such as oil, cocoa, and minerals.</li>
+          <li><strong>Trade Diversion Opportunities:</strong> Africa may benefit from trade redirection, especially in manufacturing and agriculture, if policy frameworks are adjusted swiftly.</li>
+          <li><strong>AfCFTA's Role:</strong> The African Continental Free Trade Area provides a buffer and opportunity to strengthen regional trade integration amid external turbulence.</li>
         </ul>
 
-        <h3>5. Energy Sector Shockwaves: Shale Industry Under Pressure</h3>
+        <h3>5. Energy Sector Shockwaves</h3>
         <div class="side-by-side">
           <div class="img-wrap">
-            <img src="images/tariffs_petrol.png" alt="Oil price plunge and shale crisis - Financial Times" />
+            <img src="images/tariffs_petrol.png" alt="Oil prices affecting U.S. shale" />
             <p class="img-caption">Source: Financial Times</p>
           </div>
           <div class="text-wrap">
-            <p>As reported by the <strong>Financial Times</strong>, the oil price plunge triggered by trade conflicts and oversupply has severely impacted the U.S. shale industry. Prices for U.S. crude fell over 12%, driven by tariff-induced disruptions and OPEC responses. This environment echoes the 2020 oil crash, putting thousands of jobs and drilling operations at risk.</p>
-            <p>Producers in regions like Texas and North Dakota are seeing declining demand and investor confidence, with warnings that half of U.S. shale companies could disappear if oil prices stay low. This demonstrates the indirect but potent consequences of tariff escalation—where cross-sectoral shocks can emerge in industries seemingly unrelated to international trade policy.</p>
+            <p>Tariffs have indirectly impacted oil prices, pushing them down due to oversupply and weakened demand. U.S. shale producers are under intense pressure, reminiscent of the 2020 downturn. Financial stress and falling rig counts are expected to lead to job losses and bankruptcies in regions dependent on shale output.</p>
           </div>
         </div>
 
         <h3>6. Macroeconomic Fallout: Recession Risks and Forecasts</h3>
-        <p>Recent Wall Street Journal economic forecasts signal growing recession risks tied to global uncertainty, inflation, and trade policy. The following charts detail expected performance on key macroeconomic indicators.</p>
-
         <div class="side-by-side">
           <div class="img-wrap">
-            <img src="images/unemployment.png" alt="Unemployment forecast - WSJ" />
+            <img src="images/likelihood_recession.png" alt="Recession likelihood forecast">
             <p class="img-caption">Source: The Wall Street Journal</p>
           </div>
+          <div class="text-wrap">
+            <p>The likelihood of a U.S. recession within the next 12 months has risen to 45%, up from 20% earlier this year. This reflects economic uncertainty, high inflation, and restrictive monetary policy combined with global tensions like tariffs.</p>
+          </div>
+        </div>
+
+        <div class="side-by-side reverse">
+          <div class="text-wrap">
+            <p>Forecasts for core PCE inflation show a bumpy decline, while GDP growth estimates have been revised downward. Unemployment projections for 2026 are slightly above 5%, indicating stress in the labor market. These trends paint a complex picture of delayed recovery and heightened risk.</p>
+          </div>
           <div class="img-wrap">
-            <img src="images/likelihood_recession.png" alt="Recession likelihood forecast" />
+            <img src="images/unemployment.png" alt="Unemployment projections">
             <p class="img-caption">Source: The Wall Street Journal</p>
           </div>
         </div>
 
         <div class="side-by-side">
           <div class="img-wrap">
-            <img src="images/core.png" alt="Core PCE Inflation" />
+            <img src="images/core.png" alt="Core PCE Inflation Forecasts" />
             <p class="img-caption">Source: The Wall Street Journal</p>
           </div>
           <div class="img-wrap">
-            <img src="images/gdp.png" alt="GDP Growth Forecasts" />
+            <img src="images/gdp.png" alt="GDP Forecasts" />
             <p class="img-caption">Source: The Wall Street Journal</p>
           </div>
         </div>
 
-        <p>These charts underscore declining business confidence, persistent inflationary pressures, and slowing GDP forecasts. The forecasted rise in unemployment and softening consumer demand reflect the spillover effects of geopolitical and trade tensions on domestic macroeconomic stability. Economic contraction risks are no longer speculative—they're gradually materializing in reduced growth expectations and cautious investment behavior.</p>
+        <div class="side-by-side">
+          <div class="img-wrap">
+            <img src="images/likelihood.png" alt="Economist predictions on recession" />
+            <p class="img-caption">Source: The Wall Street Journal</p>
+          </div>
+        </div>
 
         <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
       </div>
@@ -182,6 +290,9 @@
   </div>
 </footer>
 
+<script>
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
 <script src="js/script.js"></script>
 </body>
 </html>
