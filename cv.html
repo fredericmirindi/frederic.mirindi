@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download the Curriculum Vitae (CV) of Frédéric Mirindi.">
-    <title>Frédéric Mirindi - CV</title>
+    <meta name="description" content="Request the Curriculum Vitae (CV) of Frédéric Mirindi, PhD Student in Economics and Econometrics.">
+    <title>Frédéric Mirindi - CV Request</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    </head>
+</head>
 <body>
     <header class="site-header">
         <div class="container header-content">
@@ -44,35 +44,38 @@
                 <p>As a PhD Student in Economics & Econometrics at the University of Manitoba and Sessional Instructor at Booth University College, my work integrates advanced quantitative methods, including time series analysis and AI/ML techniques, with applications in macroeconomics and financial economics. My profile is further characterized by university-level teaching experience, proficiency in key statistical software (R, Python, Stata, RATS), multilingual capabilities, and recognition through competitive <a href="awards.html" class="inline-link">awards and fellowships</a>. For comprehensive details on education, experience, publications, and presentations, please access the full CV below.</p>
             </div>
 
-            <div class="cv-download">
-                <h2>Full CV Access</h2>
-                <p>Click the button below and enter the passcode to download the complete and most up-to-date version of my CV.</p>
-                <button onclick="requestCVAccess()" class="cta-button" id="cv-access-btn">
-                    <i class="fas fa-lock"></i> Access CV
-                </button>
-                <a id="cv-download-link" href="assets/CV_Frederic Mirindi 2.pdf" download="CV_Frederic_Mirindi.pdf" class="cta-button" style="display: none;">
-                    <i class="fas fa-download"></i> Download CV (PDF)
-                </a>
+            <div class="cv-request-form">
+                <h2>Request Full CV</h2>
+                <p>To receive a copy of my full CV, please complete the form below. I will send it to the email address provided as soon as possible.</p>
+
+                <form id="cv-request-form-element" action="YOUR_FORMSPREE_ENDPOINT_URL" method="POST">
+                     <div class="form-group">
+                        <label for="requester-name">Your Name:</label>
+                        <input type="text" id="requester-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="requester-email">Your Email:</label>
+                        <input type="email" id="requester-email" name="email" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="requester-reason">Reason for Request (Optional):</label>
+                        <textarea id="requester-reason" name="reason" rows="3"></textarea>
+                    </div>
+                     <input type="hidden" name="_subject" value="CV Request from Website">
+                    <button type="submit" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> Request CV
+                    </button>
+                </form>
             </div>
         </section>
 
     </main>
 
      <footer class="site-footer">
-        <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
-        </div>
+         <div class="container footer-content">
+            <div class="footer-contact">...</div>
+            <div class="footer-links">...</div>
+         </div>
     </footer>
 
     <script src="js/script.js"></script>
