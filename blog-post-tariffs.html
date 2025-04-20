@@ -15,77 +15,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-
-    <style>
-        body { font-family: 'Source Sans Pro', sans-serif; } /* Ensures body font */
-        .side-by-side {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px; /* Slightly increased gap */
-            align-items: flex-start; /* Align tops */
-            margin-bottom: 2.5rem; /* More space below sections */
-            padding: 1rem 0; /* Add some vertical padding */
-            border-bottom: 1px solid #eee; /* Separator line */
-        }
-         .side-by-side:last-of-type {
-             border-bottom: none; /* No border on last one */
-             margin-bottom: 1.5rem;
-         }
-
-        .reverse { flex-direction: row-reverse; }
-
-        .img-wrap {
-            flex: 1 1 350px; /* Flex basis 350px */
-            text-align: center; /* Center image within its container */
-        }
-        .img-wrap img {
-            max-width: 100%; /* Ensure image is responsive */
-            /* width: 350px; */ /* Removed fixed width to allow shrinking */
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slightly enhanced shadow */
-            border: 1px solid #eee; /* Subtle border */
-            margin: 0 auto; /* Center if container is wider */
-        }
-        .img-caption {
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 8px;
-            text-align: center;
-        }
-        .text-wrap {
-            flex: 1 1 450px; /* Allow text slightly more space */
-            min-width: 300px;
-        }
-        .text-wrap p {
-            margin-bottom: 1rem; /* Adjust paragraph spacing */
-            line-height: 1.65;
-        }
-        .text-wrap ul {
-            list-style: disc;
-            padding-left: 25px;
-            margin-bottom: 1rem;
-        }
-        .text-wrap li {
-             margin-bottom: 0.5rem;
-        }
-
-         /* Ensure headings within text-wrap are styled correctly */
-         .text-wrap h3 {
-            font-size: 1.4rem; /* Match other blog H3s */
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            margin-top: 0; /* Remove top margin if it's first element */
-            font-family: var(--font-headings); /* Use heading font */
-         }
-
-         /* Apply base content padding/margins if not within a card */
-         .content-section .blog-post-full {
-             padding: 20px 0; /* Add padding if needed */
-         }
-
-    </style>
-</head>
+    </head>
 <body>
 <header class="site-header">
     <div class="container header-content">
@@ -128,7 +58,7 @@
                         <p>Data from <strong>The New York Times</strong> depicts how markets responded. The U.S. S&P 500 fell by 10%, while Japan experienced an even steeper drop. In contrast, Germany and China were relatively more resilient due to fiscal stimulus. Investor confidence declined amid fears of retaliatory tariffs and trade disruptions.</p>
                     </div>
                     <div class="img-wrap">
-                         <img src="assets/images/tariffs.png" alt="Global market reaction to tariff announcements from NYT" />
+                        <img src="assets/images/tariffs.png" alt="Global market reaction to tariff announcements from NYT" />
                         <p class="img-caption">Source: The New York Times</p>
                     </div>
                 </div>
@@ -136,7 +66,7 @@
                 <h3>3. Case Study: Boeing and the Broken Supply Chain</h3>
                 <div class="side-by-side">
                     <div class="img-wrap">
-                         <img src="assets/images/tariffs_boeing.png" alt="Boeing supply chain affected by global tariffs" />
+                        <img src="assets/images/tariffs_boeing.png" alt="Boeing supply chain affected by global tariffs" />
                         <p class="img-caption">Source: The Washington Post</p>
                     </div>
                     <div class="text-wrap">
@@ -146,7 +76,7 @@
                 </div>
 
                 <h3>4. What Should Africa Expect?</h3>
-                <div class="text-wrap" style="flex-basis: 100%;"> <ul>
+                 <div class="text-wrap" style="flex-basis: 100%;"> <ul>
                         <li><strong>Commodity Demand Volatility:</strong> A global slowdown triggered by tariff escalation may reduce demand for oil, metals, and agricultural products, impacting African revenue streams.</li>
                         <li><strong>Trade Diversion Opportunities:</strong> African producers could benefit if U.S. tariffs divert trade away from China or other Asian exporters. However, this requires swift capacity building and preferential trade agreements.</li>
                         <li><strong>Need for Intra-African Trade:</strong> The moment underscores the importance of the African Continental Free Trade Area (AfCFTA). Building regional supply chains will reduce reliance on volatile global markets.</li>
@@ -157,7 +87,7 @@
                 <h3>5. Energy Sector Shockwaves: Shale Industry Under Pressure</h3>
                 <div class="side-by-side">
                     <div class="img-wrap">
-                         <img src="assets/images/tariffs_petrol.png" alt="Oil price plunge and shale crisis - Financial Times" />
+                        <img src="assets/images/tariffs_petrol.png" alt="Oil price plunge and shale crisis - Financial Times" />
                         <p class="img-caption">Source: Financial Times</p>
                     </div>
                     <div class="text-wrap">
@@ -167,12 +97,13 @@
                 </div>
 
                 <h3>6. Macroeconomic Fallout: Recession Risks and Forecasts</h3>
-                 <div class="text-wrap" style="flex-basis: 100%; margin-bottom: 1rem;"> <p>Recent <strong>Wall Street Journal</strong> forecasts reveal how global economic stressors—including tariffs, inflation, and monetary tightening—are influencing the broader U.S. macroeconomic outlook. The graphs below reflect expert predictions across five key indicators:</p>
+                 <div class="text-wrap" style="flex-basis: 100%; margin-bottom: 1rem;">
+                    <p>Recent <strong>Wall Street Journal</strong> forecasts reveal how global economic stressors—including tariffs, inflation, and monetary tightening—are influencing the broader U.S. macroeconomic outlook. The graphs below reflect expert predictions across five key indicators:</p>
                  </div>
 
                 <div class="side-by-side">
                     <div class="img-wrap">
-                         <img src="assets/images/unemployment.png" alt="Unemployment forecast - WSJ" />
+                        <img src="assets/images/unemployment.png" alt="Unemployment forecast - WSJ" />
                         <p class="img-caption">Unemployment Rate Forecast</p>
                     </div>
                     <div class="text-wrap">
@@ -185,14 +116,14 @@
                         <p>Forecasters now assign a higher probability to a U.S. recession in the next 12 months, with the likelihood approaching 50% according to recent survey averages. This elevated risk is driven by tightening credit conditions, declining consumer sentiment, and fragile global trade dynamics—all exacerbated by retaliatory tariff strategies.</p>
                     </div>
                     <div class="img-wrap">
-                         <img src="assets/images/likelihood_recession.png" alt="Recession likelihood forecast" />
+                        <img src="assets/images/likelihood_recession.png" alt="Recession likelihood forecast" />
                         <p class="img-caption">Probability of U.S. Recession</p>
                     </div>
                 </div>
 
                 <div class="side-by-side">
                     <div class="img-wrap">
-                         <img src="assets/images/core.png" alt="Core PCE Inflation" />
+                        <img src="assets/images/core.png" alt="Core PCE Inflation" />
                         <p class="img-caption">Core Inflation (PCE Index)</p>
                     </div>
                     <div class="text-wrap">
@@ -205,14 +136,14 @@
                         <p>GDP growth projections for 2025 have been revised downward. With investment momentum weakening and exports declining due to global trade frictions, the U.S. economy may struggle to maintain even modest growth. This erosion in output forecasts aligns with broader expectations of a slowing business cycle.</p>
                     </div>
                     <div class="img-wrap">
-                         <img src="assets/images/gdp.png" alt="GDP Growth Forecasts" />
+                        <img src="assets/images/gdp.png" alt="GDP Growth Forecasts" />
                         <p class="img-caption">GDP Growth Forecast (YoY)</p>
                     </div>
                 </div>
 
                 <div class="side-by-side">
                     <div class="img-wrap">
-                         <img src="assets/images/likelihood.png" alt="Likelihood of further rate hikes" />
+                        <img src="assets/images/likelihood.png" alt="Likelihood of further rate hikes" />
                         <p class="img-caption">Rate Hike Expectations</p>
                     </div>
                     <div class="text-wrap">
@@ -220,7 +151,8 @@
                     </div>
                 </div>
 
-                 <div class="text-wrap" style="flex-basis: 100%;"> <p><strong>Summary:</strong> These forecasts present a synchronized warning: the combination of trade protectionism, supply-side inflation, and policy uncertainty has shifted the U.S. economic outlook from cautious optimism to vulnerability. Whether or not a full-blown recession materializes, the trajectory for growth, jobs, and investment is clearly moderating. For Africa and other trade-exposed regions, these signals highlight the urgency of diversification, regional trade integration, and resilience-building measures to buffer against external shocks.</p>
+                 <div class="text-wrap" style="flex-basis: 100%;">
+                    <p><strong>Summary:</strong> These forecasts present a synchronized warning: the combination of trade protectionism, supply-side inflation, and policy uncertainty has shifted the U.S. economic outlook from cautious optimism to vulnerability. Whether or not a full-blown recession materializes, the trajectory for growth, jobs, and investment is clearly moderating. For Africa and other trade-exposed regions, these signals highlight the urgency of diversification, regional trade integration, and resilience-building measures to buffer against external shocks.</p>
                  </div>
 
                 <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
@@ -238,9 +170,9 @@
             <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com">fredericmirindi.com</a></p>
         </div>
         <div class="footer-links">
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi"><i class="fab fa-researchgate"></i></a>
+            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
             <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
         </div>
     </div>
