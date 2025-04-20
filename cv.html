@@ -1,78 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Download the Curriculum Vitae (CV) of Frédéric Mirindi.">
-    <title>Frédéric Mirindi - CV</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Restricted access to the Curriculum Vitae (CV) of Frédéric Mirindi." />
+  <title>Frédéric Mirindi - CV</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
+  <style>
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #003366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    .cta-button:hover {
+      background-color: #0055aa;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-content">
-            <h1><a href="index.html">Frédéric Mirindi</a></h1>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="cv.html" class="active">CV</a></li> <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-        </div>
+  <header class="site-header">
+    <div class="container header-content">
+      <h1><a href="index.html">Frédéric Mirindi</a></h1>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="cv.html" class="active">CV</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <header class="page-header">
+      <div class="container">
+        <h1>Curriculum Vitae</h1>
+      </div>
     </header>
 
-    <main>
-         <header class="page-header">
-             <div class="container">
-                <h1>Curriculum Vitae</h1>
-             </div>
-         </header>
-        <section id="cv-content" class="container content-section fade-in">
-            <div class="cv-summary">
-                <h2>Overview</h2>
-                <p>My CV details my academic journey, including a PhD in Economics & Econometrics at the University of Manitoba, teaching experience at Booth University College, research assistantships, industry experience as a Data Analyst at Canada Life, and a comprehensive list of skills, awards, publications, and presentations.</p>
-            </div>
-            <div class="cv-download">
-                <h2>Download Full CV</h2>
-                <p>Click the button below to download the complete and most up-to-date version of my CV.</p>
-                <a href="assets/CV_Frederic Mirindi 2.pdf" download="CV_Frederic_Mirindi.pdf" class="cta-button cv-download-link">
-                    <i class="fas fa-download"></i> Download CV (PDF)
-                </a>
-            </div>
-            </section>
+    <section id="cv-content" class="container content-section fade-in">
+      <div class="cv-summary">
+        <h2>Overview</h2>
+        <p>My CV details my academic journey, including a PhD in Economics & Econometrics at the University of Manitoba, teaching experience at Booth University College, research assistantships, industry experience as a Data Analyst at Canada Life, and a comprehensive list of skills, awards, publications, and presentations.</p>
+      </div>
 
-    </main>
+      <div class="cv-download">
+        <h2>Access Full CV</h2>
+        <p>Click the button below to unlock and download the full version of my CV. A passcode is required for access.</p>
+        <a href="#" onclick="return requestAccess()" class="cta-button">
+          <i class="fas fa-lock"></i> Unlock CV (PDF)
+        </a>
+      </div>
+    </section>
+  </main>
 
-     <footer class="site-footer">
-         <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
-        </div>
-    </footer>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-contact">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+        <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+        <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+        <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://orcid.org/0009-0001-1798-9914"><i class="fab fa-orcid"></i></a>
+        <a href="https://www.researchgate.net/profile/Frederic-Mirindi"><i class="fab fa-researchgate"></i></a>
+        <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <script src="js/script.js"></script>
+  <script>
+    function requestAccess() {
+      const passcode = prompt("Please enter the passcode to access the CV:");
+      if (passcode === "Mirindi2025") {
+        window.location.href = "assets/CV_Frederic Mirindi 2.pdf";
+      } else if (passcode === null || passcode === "") {
+        alert("Access cancelled.");
+      } else {
+        alert("Incorrect passcode. Please try again.");
+      }
+      return false;
+    }
+
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
