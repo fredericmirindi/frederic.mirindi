@@ -434,8 +434,54 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       }
     }
-    // === END CV Access Function ===
 
+/* === Full Updated script.js (Passcode Access Function Removed) === */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Update copyright year ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- Mobile navigation toggle ---
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', function() { /* ... */ });
+        mainNav.querySelectorAll('a').forEach(link => { /* ... */ });
+        document.addEventListener('click', function(event) { /* ... */ });
+    }
+
+    // --- Fade-in animation on scroll ---
+    const fadeElements = document.querySelectorAll('.fade-in');
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, observer) => { /* ... */ }, { threshold: 0.1 });
+        fadeElements.forEach(el => { /* ... */ });
+    } else {
+        fadeElements.forEach(el => { if (el) { el.style.opacity = 1; } });
+    }
+
+
+    // --- Publication Filtering and Search Logic ---
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const keywordInput = document.getElementById('keyword-search');
+    const publicationList = document.getElementById('publication-list');
+    const publicationListItems = publicationList ? publicationList.querySelectorAll('li') : [];
+
+    function filterAndSearchPublications() { /* ... Filtering function ... */ }
+
+    if (filterButtons.length > 0 && publicationListItems.length > 0) {
+        filterButtons.forEach(button => { /* ... Event listener ... */ });
+    }
+    if (keywordInput && publicationListItems.length > 0) {
+        keywordInput.addEventListener('input', filterAndSearchPublications);
+    }
+    // --- End Publication Filtering Logic ---
+
+    // === CV Access Passcode Function REMOVED ===
 
     // --- D3 Decision Tree Function (if added previously) ---
     // function drawDecisionTree() { /* ... D3 code ... */ }
@@ -448,33 +494,4 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Frederic Mirindi website scripts updated and loaded.");
 
 }); // End of DOMContentLoaded
-
-// Note: requestCVAccess is placed outside the DOMContentLoaded listener
-// to make it globally accessible for the inline onclick attribute.
-// Alternatively, attach the event listener within DOMContentLoaded:
-/*
-document.addEventListener('DOMContentLoaded', function() {
-    // ... other initializations ...
-
-    const accessBtn = document.getElementById('cv-access-btn');
-    if (accessBtn) {
-        accessBtn.addEventListener('click', function requestCVAccess() {
-             const passcode = prompt("Please enter the CV access passcode:");
-             const correctPasscode = "mirindi2024";
-             const downloadLink = document.getElementById('cv-download-link');
-
-             if (passcode === correctPasscode) {
-               this.style.display = 'none'; // 'this' refers to the button here
-               if (downloadLink) downloadLink.style.display = 'inline-block';
-             } else {
-               if (passcode !== null && passcode !== "") {
-                  alert("Incorrect passcode. Access denied.");
-               }
-             }
-        });
-    }
-
-    // ... rest of the code ...
-});
-*/
-// If using the second method (adding listener), remove the onclick="requestCVAccess()" from the button in cv.html
+                          
