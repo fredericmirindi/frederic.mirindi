@@ -1,118 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Teaching experience of Frédéric Mirindi in Economics and Mathematics.">
-    <title>Frédéric Mirindi - Teaching</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frédéric Mirindi discusses AI and Machine Learning applications in Economics, including concepts like regression, classification, decision trees, and evaluation metrics.">
+    <title>Frédéric Mirindi - AI & Machine Learning in Economics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+
+    <script>
+        MathJax = {
+          tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+          svg: { fontCache: 'global' }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-content">
-            <h1><a href="index.html">Frédéric Mirindi</a></h1>
-            <nav class="main-nav">
-                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html" class="active">Teaching</a></li> <li><a href="cv.html">CV</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-        </div>
-    </header>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <nav class="main-nav">
+                 <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    </ul>
+            </nav>
+             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        </div>
+    </header>
 
-    <main>
-         <header class="page-header">
-             <div class="container">
-                <h1>Teaching</h1>
-                 <p>Committed to designing engaging, student-centered, and data-driven learning experiences.</p>
-             </div>
-         </header>
+    <main>
+         <header class="page-header">
+             <div class="container">
+                <h1>AI & Machine Learning in Economics</h1>
+                <p>Applying computational techniques and predictive modeling to economic analysis.</p>
+             </div>
+         </header>
 
-        <section id="teaching-experience" class="container content-section fade-in">
-            <div class="teaching-roles-container">
-                 <div class="teaching-role card-style"> <h3>Sessional Instructor</h3>
-                    <p class="institution-dates">Booth University College, Winnipeg, Canada (September 2024 - Present)</p>
-                     <h4>Courses Taught (Lecturer and Curriculum Development):</h4>
-                     <ul class="course-list">
-                        <li>
-                            <strong>ECO110 Introduction to Microeconomics</strong><br>
-                            <em>(Oct 2024 - Dec 2024; Jan 2025 - Feb 2025; Mar 2025 - May 2025)</em><br>
-                            <i class="fas fa-users"></i> Average class size: 15-25 students.
-                        </li>
-                        <li>
-                            <strong>MAT100 Applied Finite Mathematics</strong><br>
-                             <em>(Jan 2025 - Feb 2025; Mar 2025 - May 2025)</em><br>
-                             <i class="fas fa-users"></i> Average class size: 15-25 students.
-                        </li>
-                        <li>
-                            <strong>BHS200: Research Methods</strong><br>
-                            <em>(May 2025 - Jun 2025)</em><br>
-                            <i class="fas fa-users"></i> Average class size: 15-25 students.
-                        </li>
-                        <li>
-                            <strong>MAT100: Applied Finite Math</strong><br>
-                            <em>(May 2025 - Jun 2025)</em><br>
-                            <i class="fas fa-users"></i> Average class size: 15-25 students.
-                        </li>
-                    </ul>
-                     <p><a href="https://boothuc.ca/about/our-people/staff-and-faculty-directory/view-staff/122/frdric-mirindi/" target="_blank" rel="noopener noreferrer" class="cta-button secondary small-button"><i class="fas fa-external-link-alt"></i> Faculty Profile</a></p>
-                 </div>
+         <div class="container content-section">
 
-                <div class="teaching-role card-style"> <h3>Teaching Assistant</h3>
-                    <p class="institution-dates">Catholic University of Bukavu, DR Congo (September 2016 - May 2017)</p>
-                     <h4>Courses Assisted (Curriculum Development Support):</h4>
-                    <ul class="course-list">
-                        <li>
-                            <strong>Macroeconomics (Undergraduate)</strong><br>
-                            <em>(Fall 2016 Term: Sep 1, 2016 - Dec 24, 2016)</em><br>
-                            <i class="fas fa-users"></i> Number of students: 132.
-                        </li>
-                        <li>
-                            <strong>Quantitative Methods (Undergraduate)</strong><br>
-                            <em>(Winter 2017 Term: Jan 10, 2017 - May 2, 2017)</em><br>
-                            <i class="fas fa-users"></i> Number of students: 210.
-                        </li>
-                    </ul>
-                </div>
-            </div> </section>
+             <section id="ai-intro" class="content-card fade-in">
+                 <h2>Introduction</h2>
+                 <p>Machine Learning (ML) offers powerful tools for prediction, classification, and pattern recognition, complementing traditional econometric methods. In economics, these techniques are increasingly used for tasks ranging from forecasting macroeconomic variables and financial market movements to analyzing causal effects (e.g., causal forests), classifying consumer behavior, and informing policy decisions.</p>
+                 <p>This page provides an overview of some common ML concepts and their relevance in the economic field, reflecting areas of my interest and application. Also, check out relevant posts on my <a href="blog.html">Blog</a>.</p>
+             </section>
 
-        <section id="teaching-philosophy" class="container content-section fade-in">
-            <h2>Teaching Philosophy</h2>
-            <div class="philosophy-box"> <p>My teaching philosophy centers on creating engaging, student-focused environments where economic theory comes alive through real-world data and applications. I strive to empower students with quantitative tools and critical thinking skills, fostering a deeper understanding of economic principles and their relevance in society.</p>
-            </div>
-        </section>
+            <section id="supervised-learning" class="content-card fade-in" style="animation-delay: 0.1s;">
+                <h2>Supervised Learning</h2>
+                <p>Supervised learning involves training a model on labeled data, where both input features ($X$) and the corresponding output target ($Y$) are known. The goal is to learn a mapping function $f(X)$ that accurately predicts $Y$ for new, unseen data.</p>
 
-    </main>
+                <div class="subsection">
+                    <h3>Regression Problems</h3>
+                    <p>Here, the target variable $Y$ is continuous. The goal is to predict a numerical value.</p>
+                    <ul>
+                        <li><strong>Examples in Economics:</strong> Forecasting GDP growth, inflation rates, asset prices, house prices; estimating demand elasticity.</li>
+                        <li><strong>Common Algorithms:</strong> Linear Regression (often with regularization like Ridge or Lasso), Support Vector Regression (SVR), Regression Trees, Random Forests, Gradient Boosting Machines (GBM), Neural Networks.</li>
+                        <li><strong>Loss Function Example (Mean Squared Error - MSE):</strong> A common objective is to minimize the average squared difference between predicted ($\hat{y}_i$) and actual ($y_i$) values: $$ MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2 $$</li>
+                    </ul>
+                    <h4>Visualization Example: Simple Regression</h4>
+                    <div class="chart-container">
+                         <canvas id="regressionChart"></canvas>
+                    </div>
+                    <p class="caption">Conceptual plot showing a simple linear regression fit. JavaScript libraries like Chart.js or Plotly.js can create interactive versions.</p>
+                </div>
 
-     <footer class="site-footer">
-          <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
-        </div>
-    </footer>
+                <div class="subsection">
+                    <h3>Classification Problems</h3>
+                    <p>Here, the target variable $Y$ is categorical. The goal is to predict a class label.</p>
+                     <ul>
+                        <li><strong>Examples in Economics:</strong> Predicting loan default risk (default/no default), identifying fraudulent transactions (fraud/not fraud), classifying firms based on performance (high/medium/low), predicting recession probability (recession/no recession).</li>
+                        <li><strong>Common Algorithms:</strong> Logistic Regression, Support Vector Machines (SVM), k-Nearest Neighbors (k-NN), Decision Trees, Random Forests, Naive Bayes, Neural Networks.</li>
+                        <li><strong>Loss Function Example (Cross-Entropy):</strong> Often used for probabilistic classifiers, measuring the difference between predicted probabilities ($\hat{p}_i$) and actual labels ($y_i$, typically 0 or 1): $$ \text{Cross-Entropy} = -\frac{1}{N} \sum_{i=1}^{N} [y_i \log(\hat{p}_i) + (1-y_i) \log(1-\hat{p}_i)] $$</li>
+                    </ul>
+                     <h4>Visualization Example: Decision Tree Structure</h4>
+                     <div class="tree-diagram-container">
+                         <svg id="decision-tree-svg"></svg> </div>
+                     <p class="caption">Example Decision Tree Visualization (generated via D3.js).</p>
+                </div>
+            </section>
 
-    <script src="js/script.js"></script>
+            <section id="unsupervised-learning" class="content-card fade-in" style="animation-delay: 0.2s;">
+                <h2>Unsupervised Learning</h2>
+                <p>Unsupervised learning deals with unlabeled data ($X$ only). The goal is to find inherent structures, patterns, or groupings within the data without predefined targets.</p>
+                <ul>
+                    <li><strong>Clustering:</strong> Grouping similar data points together.
+                        <ul><li><em>Economic Applications:</em> Customer segmentation for marketing, identifying groups of countries with similar economic characteristics, grouping assets with similar risk profiles.</li><li><em>Algorithms:</em> K-Means, Hierarchical Clustering, DBSCAN.</li></ul>
+                    </li>
+                    <li><strong>Dimensionality Reduction:</strong> Reducing the number of input features while preserving important information.
+                        <ul><li><em>Economic Applications:</em> Simplifying complex datasets for visualization or further modeling, feature extraction for forecasting models, constructing economic indices.</li><li><em>Algorithms:</em> Principal Component Analysis (PCA), t-Distributed Stochastic Neighbor Embedding (t-SNE), Autoencoders (using neural networks).</li></ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="model-evaluation" class="content-card fade-in" style="animation-delay: 0.3s;">
+                <h2>Model Evaluation & Selection</h2>
+                <p>Choosing the right model and assessing its performance is crucial.</p>
+                 <ul>
+                    <li><strong>Train/Validation/Test Split:</strong> Data is typically split to train the model, tune hyperparameters (validation set), and finally evaluate performance on unseen data (test set). Cross-validation is often used for more robust estimates, especially with smaller datasets.</li>
+                    <li><strong>Regression Metrics:</strong> Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), R-squared ($R^2$).</li>
+                    <li><strong>Classification Metrics:</strong> Accuracy, Precision, Recall (Sensitivity), F1-Score, Area Under the ROC Curve (AUC-ROC), Confusion Matrix.</li>
+                    <li><strong>Bias-Variance Tradeoff:</strong> A central concept. Simple models may have high bias (underfitting), while complex models may have high variance (overfitting to training data). Regularization techniques (like Lasso/Ridge) help manage this tradeoff.</li>
+                </ul>
+                 <h4>Visualization Example: ROC Curve</h4>
+                 <div class="chart-container" style="max-width: 400px; margin: 1rem auto;">
+                     <canvas id="rocChart"></canvas>
+                 </div>
+                 <p class="caption">Conceptual ROC curve plotting True Positive Rate vs. False Positive Rate for a classifier. The area under the curve (AUC) measures overall performance.</p>
+            </section>
+
+             <section id="ai-links" class="content-card fade-in" style="animation-delay: 0.4s;">
+                 <h2>My Related Work</h2>
+                 <p>You can find applications or discussions of these techniques in some of my work listed on the <a href="research.html">Research</a> page or <a href="blog.html">Blog</a>.</p>
+                 </section>
+
+         </div> </main>
+
+     <footer class="site-footer">
+        <div class="container footer-content">
+             <div class="footer-contact">
+                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+             </div>
+             <div class="footer-links">
+                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if Chart.js is loaded before trying to use it
+             if (typeof Chart !== 'undefined') {
+                // Example: Regression Chart Placeholder Data
+                const regCtx = document.getElementById('regressionChart');
+                if(regCtx) {
+                    new Chart(regCtx, {
+                        type: 'scatter',
+                        data: {
+                            datasets: [{
+                                label: 'Data Points',
+                                data: [{x: 1, y: 2}, {x: 2, y: 2.5}, {x: 3, y: 4}, {x: 4, y: 3.5}, {x: 5, y: 5}],
+                                backgroundColor: 'rgba(44, 62, 80, 0.6)' // Example color
+                            }, {
+                                label: 'Regression Line',
+                                data: [{x: 0, y: 1.8}, {x: 6, y: 4.8}], // Example line points
+                                type: 'line',
+                                borderColor: 'rgba(26, 188, 156, 1)', // Example color
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0
+                            }]
+                        },
+                        options: { scales: { x: { beginAtZero: true, max: 6 }, y: { beginAtZero: true, max: 6 } } }
+                    });
+                }
+
+                 // Example: ROC Curve Placeholder Data
+                const rocCtx = document.getElementById('rocChart');
+                if(rocCtx) {
+                     new Chart(rocCtx, {
+                        type: 'line',
+                        data: {
+                            labels: [0, 0.2, 0.4, 0.6, 0.8, 1.0], // FPR
+                            datasets: [{
+                                label: 'ROC Curve (AUC = 0.85)', // Example AUC
+                                data: [0, 0.5, 0.7, 0.8, 0.9, 1.0], // TPR
+                                borderColor: 'rgba(231, 76, 60, 1)', // Example color
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.1
+                             }]
+                         },
+                        options: {
+                            scales: {
+                                 x: { title: { display: true, text: 'False Positive Rate' }, min: 0, max: 1 },
+                                 y: { title: { display: true, text: 'True Positive Rate' }, min: 0, max: 1 }
+                             },
+                             plugins: { legend: { display: true } }
+                         }
+                     });
+                 }
+             } else {
+                 console.warn("Chart.js library not loaded.");
+             }
+
+             // Check if D3 is loaded and if drawDecisionTree function exists (in script.js)
+             if (typeof d3 !== 'undefined' && typeof drawDecisionTree === 'function') {
+                  drawDecisionTree(); // Call D3 function defined in script.js
+             } else if (typeof d3 === 'undefined') {
+                  console.warn("D3.js library not loaded.");
+             }
+             // No warning if drawDecisionTree doesn't exist, maybe it's intentionally omitted from script.js
+        });
+    </script>
 </body>
 </html>
