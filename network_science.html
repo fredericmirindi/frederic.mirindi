@@ -1,113 +1,225 @@
-<article class="blog-post blog-post-full fade-in">
-  <header class="blog-post-header">
-    <h2 class="blog-post-title">Can Network Science Predict the New Pope? Insights from the 2025 Conclave</h2>
-    <p class="blog-post-meta">Posted on <time datetime="2025-05-09">May 9, 2025</time> | Category: Religion, Network Science</p>
-  </header>
-  <div class="blog-post-content">
-
-    <h3>1. The Power of Networks in the Papal Election</h3>
-    <div class="side-by-side">
-      <div class="img-wrap">
-        <img src="images/pope.png" alt="The new pope greets the crowd from the balcony" />
-        <p class="img-caption">Source: The Washington Post</p>
-      </div>
-      <div class="text-wrap">
-        <p>
-          The election of a new pope is one of the world’s most secretive and consequential decisions. While spiritual discernment is at its heart, recent research from Bocconi University shows that social dynamics-status, alliances, and information flow among cardinals-play a crucial role in shaping the outcome. This year’s conclave, which brought together 133 cardinal electors from 70 countries, offered a real-world test for the predictive power of <strong>network science</strong> in understanding papal succession<sup>[5][6]</sup>.
-        </p>
-      </div>
-    </div>
-
-    <h3>2. How Network Science Illuminates the Conclave</h3>
-    <div class="side-by-side reverse">
-      <div class="text-wrap">
-        <p>
-          The Bocconi study mapped the Vatican’s relational ecosystem using data on official roles, spiritual lineages, and informal connections. It identified three main factors that determine a cardinal’s prominence:
-        </p>
-        <ul>
-          <li><strong>Status:</strong> Institutional authority and visibility within the Church.</li>
-          <li><strong>Information Control:</strong> Ability to bridge and connect different groups.</li>
-          <li><strong>Coalition-Building:</strong> Embeddedness within cohesive groups and capacity to unite factions.</li>
-        </ul>
-        <p>
-          This approach doesn’t claim to predict the outcome with certainty, but it offers a new lens to understand why certain cardinals become frontrunners<sup>[5][6]</sup>.
-        </p>
-      </div>
-      <div class="img-wrap">
-        <img src="images/network.jpg" alt="Network map of cardinal relationships and ideological segments" />
-        <p class="img-caption">Source: Bocconi University Network Conclave Study</p>
-      </div>
-    </div>
-
-    <h3>3. Segmentation of Cardinals: Status, Ideology, and Influence</h3>
-    <p>
-      The network analysis segments cardinals by their ideological orientation and influence. The table below summarizes the main groups identified in the Bocconi study:
-    </p>
-    <table>
-      <thead>
-        <tr>
-          <th>Segment</th>
-          <th>Ideology</th>
-          <th>Characteristics</th>
-          <th>Key Figures</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Liberal</td>
-          <td>Reformist, progressive</td>
-          <td>Advocate for Church openness, social justice, often aligned with Pope Francis’s vision</td>
-          <td>A. Roche, L. Heung-sik, T. Tobin</td>
-        </tr>
-        <tr>
-          <td>Soft Liberal</td>
-          <td>Moderate reformist</td>
-          <td>Support gradual change, bridge between liberals and moderates</td>
-          <td>C. Cupich, J. Advincula</td>
-        </tr>
-        <tr>
-          <td>Moderate</td>
-          <td>Centrist</td>
-          <td>Balance between tradition and reform, pragmatic coalition builders</td>
-          <td>R. Prevost, G. Re</td>
-        </tr>
-        <tr>
-          <td>Soft Conservative</td>
-          <td>Moderate traditionalist</td>
-          <td>Lean toward tradition but open to some reforms</td>
-          <td>A. Arborelius</td>
-        </tr>
-        <tr>
-          <td>Conservative</td>
-          <td>Traditionalist</td>
-          <td>Emphasize doctrine, liturgical tradition, cautious about reforms</td>
-          <td>R. Sarah, G. Marengo</td>
-        </tr>
-        <tr>
-          <td>Non-voting</td>
-          <td>N/A</td>
-          <td>Cardinals above voting age or not participating</td>
-          <td>G. Bertone, W. Kasper</td>
-        </tr>
-      </tbody>
-    </table>
-    <p style="font-size:0.9em;color:#666;">Source: Bocconi University Network Conclave Study<sup>[5][6]</sup></p>
-
-    <h3>4. The 2025 Conclave: Network Science Meets Reality</h3>
-    <p>
-      This year’s conclave confirmed the value of network analysis. Despite media speculation favoring Italian or Asian candidates, the election of a moderate, well-connected cardinal-who bridged several ideological groups-mirrored the predictions of the Bocconi model. The new pope’s rise was less about public profile and more about his centrality in the Church’s intricate web of relationships.
-    </p>
-
-    <blockquote>
-      “We’re not trying to forecast the future... This model is meant to offer perspective, not prophecy.”<br>
-      <span style="font-size:0.9em;">- Professor Giuseppe Soda, Bocconi University<sup>[6]</sup></span>
-    </blockquote>
-
-    <p>
-      As the Church continues to globalize and diversify, understanding the conclave as a networked system will only become more relevant for scholars, journalists, and the faithful alike.
-    </p>
-
-    <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Exploring how network science can help predict the new pope, based on Bocconi University’s conclave research and the 2025 papal election." />
+  <title>Can Network Science Predict the New Pope? | Frédéric Mirindi Blog</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    body { font-family: 'Source Sans Pro', sans-serif; }
+    .side-by-side {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 2rem;
+    }
+    .reverse { flex-direction: row-reverse; }
+    .img-wrap img {
+      max-width: 100%;
+      width: 350px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    .img-wrap { flex: 1 1 350px; }
+    .text-wrap { flex: 1 1 400px; min-width: 300px; }
+    .img-caption {
+      font-size: 0.85rem;
+      color: #666;
+      margin-top: 5px;
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      text-align: left;
+    }
+    table th {
+      background-color: #f4f4f4;
+      font-weight: 600;
+    }
+    blockquote {
+      font-style: italic;
+      color: #555;
+      border-left: 4px solid #ccc;
+      margin: 2rem 0;
+      padding-left: 1rem;
+      background-color: #fafafa;
+    }
+    .back-to-blog a {
+      color: #007acc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-to-blog a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-content">
+    <h1><a href="index.html">Frédéric Mirindi</a></h1>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+    </nav>
   </div>
-</article>
+</header>
 
+<main>
+  <div class="container content-section">
+    <article class="blog-post blog-post-full fade-in">
+      <header class="blog-post-header">
+        <h2 class="blog-post-title">Can Network Science Predict the New Pope? Insights from the 2025 Conclave</h2>
+        <p class="blog-post-meta">Posted on <time datetime="2025-05-09">May 9, 2025</time> | Category: Religion, Network Science</p>
+      </header>
+      <div class="blog-post-content">
+
+        <h3>1. The Power of Networks in the Papal Election</h3>
+        <div class="side-by-side">
+          <div class="img-wrap">
+            <img src="images/pope.png" alt="The new pope greets the crowd from the balcony" />
+            <p class="img-caption">Source: The Washington Post</p>
+          </div>
+          <div class="text-wrap">
+            <p>
+              The election of a new pope is one of the most secretive and consequential decisions in global religious affairs. While spiritual discernment is central, recent research from Bocconi University reveals that social dynamics-such as status, alliances, and information flow among cardinals-play a crucial role in shaping the outcome. The 2025 conclave, with 133 cardinals from 70 countries, provided a unique opportunity to test the predictive power of <strong>network science</strong> in this ancient process<sup>[5][6]</sup>.
+            </p>
+          </div>
+        </div>
+
+        <h3>2. How Network Science Illuminates the Conclave</h3>
+        <div class="side-by-side reverse">
+          <div class="text-wrap">
+            <p>
+              The Bocconi study mapped the Vatican’s relational ecosystem by analyzing official roles, spiritual lineages, and informal connections among cardinals. It identified three key factors that determine a cardinal’s prominence:
+            </p>
+            <ul>
+              <li><strong>Status:</strong> Institutional authority and visibility within the Church hierarchy.</li>
+              <li><strong>Information Control:</strong> Ability to connect different groups and influence information flow.</li>
+              <li><strong>Coalition-Building:</strong> Embeddedness within cohesive groups and capacity to unite factions.</li>
+            </ul>
+            <p>
+              This network approach offers a fresh lens to understand why certain cardinals emerge as frontrunners, beyond public speculation or media narratives<sup>[5][6]</sup>.
+            </p>
+          </div>
+          <div class="img-wrap">
+            <img src="images/network.jpg" alt="Network map of cardinal relationships and ideological segments" />
+            <p class="img-caption">Source: Bocconi University Network Conclave Study</p>
+          </div>
+        </div>
+
+        <h3>3. Segmentation of Cardinals: Status, Ideology, and Influence</h3>
+        <p>The Bocconi network analysis segments cardinals by ideological orientation and influence. Below is a summary of the main groups identified:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>Ideology</th>
+              <th>Characteristics</th>
+              <th>Key Figures</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Liberal</td>
+              <td>Reformist, progressive</td>
+              <td>Advocate for Church openness, social justice, aligned with Pope Francis’s vision</td>
+              <td>A. Roche, L. Heung-sik, T. Tobin</td>
+            </tr>
+            <tr>
+              <td>Soft Liberal</td>
+              <td>Moderate reformist</td>
+              <td>Support gradual change, bridge between liberals and moderates</td>
+              <td>C. Cupich, J. Advincula</td>
+            </tr>
+            <tr>
+              <td>Moderate</td>
+              <td>Centrist</td>
+              <td>Balance between tradition and reform, pragmatic coalition builders</td>
+              <td>R. Prevost, G. Re</td>
+            </tr>
+            <tr>
+              <td>Soft Conservative</td>
+              <td>Moderate traditionalist</td>
+              <td>Lean toward tradition but open to some reforms</td>
+              <td>A. Arborelius</td>
+            </tr>
+            <tr>
+              <td>Conservative</td>
+              <td>Traditionalist</td>
+              <td>Emphasize doctrine and liturgical tradition, cautious about reforms</td>
+              <td>R. Sarah, G. Marengo</td>
+            </tr>
+            <tr>
+              <td>Non-voting</td>
+              <td>N/A</td>
+              <td>Cardinals above voting age or not participating</td>
+              <td>G. Bertone, W. Kasper</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.9em;color:#666;">Source: Bocconi University Network Conclave Study<sup>[5][6]</sup></p>
+
+        <h3>4. The 2025 Conclave: Network Science Meets Reality</h3>
+        <p>
+          The 2025 conclave confirmed the value of network analysis. Despite media speculation favoring Italian or Asian candidates, the election of a moderate cardinal who bridged several ideological groups mirrored the Bocconi model’s predictions. The new pope’s ascent was less about public profile and more about his centrality in the Church’s complex relational web.
+        </p>
+
+        <blockquote>
+          “We’re not trying to forecast the future... This model is meant to offer perspective, not prophecy.”<br />
+          <span style="font-size:0.9em;">– Professor Giuseppe Soda, Bocconi University<sup>[6]</sup></span>
+        </blockquote>
+
+        <p>
+          As the Church continues to globalize and diversify, understanding the conclave as a networked system will become increasingly relevant for scholars, journalists, and the faithful alike.
+        </p>
+
+        <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-content">
+    <div class="footer-contact">
+      <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+      <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+      <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+      <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com">fredericmirindi.com</a></p>
+    </div>
+    <div class="footer-links">
+      <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ"><i class="fas fa-graduation-cap"></i></a>
+      <a href="https://orcid.org/0009-0001-1798-9914"><i class="fab fa-orcid"></i></a>
+      <a href="https://www.researchgate.net/profile/Frederic-Mirindi"><i class="fab fa-researchgate"></i></a>
+    </div>
+    <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>
+  // Set current year in footer
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
