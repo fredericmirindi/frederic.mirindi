@@ -1481,3 +1481,125 @@ mjx-container[display="false"] { /* Inline math */
 /* === END Styles for CV Request Form === */
 
 
+
+
+
+/* === Styles for Certificates Section === */
+.certificates-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.certificate-card {
+    background-color: #fdfdfd;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid var(--secondary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.certificate-link {
+    display: block;
+    position: relative;
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid var(--secondary-color);
+    overflow: hidden;
+}
+
+.certificate-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.certificate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 62, 80, 0.55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #fff;
+    border-radius: var(--border-radius);
+    pointer-events: none;
+}
+
+.certificate-link:hover .certificate-overlay,
+.certificate-link:focus .certificate-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.certificate-overlay i {
+    font-size: 2.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.certificate-overlay span {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.certificate-details {
+    padding: 1.2rem 1.5rem;
+}
+
+.certificate-details h3 {
+    font-size: 1.13rem;
+    margin-bottom: 0.7rem;
+    color: var(--primary-color);
+}
+
+.certificate-details p {
+    margin-bottom: 0.35rem;
+    color: #666;
+    font-size: 0.98rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.certificate-details i {
+    width: 1.3em;
+    color: var(--accent-color);
+    margin-right: 0.3em;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Responsive: side-by-side on larger screens */
+@media (min-width: 900px) {
+    .certificates-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+    .certificate-card {
+        flex: 1 1 calc(50% - 16px);
+        max-width: calc(50% - 16px);
+    }
+}
