@@ -1603,3 +1603,54 @@ mjx-container[display="false"] { /* Inline math */
         max-width: calc(50% - 16px);
     }
 }
+
+
+
+/* === Certificates Carousel Section === */
+.certificates-carousel {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 2rem;
+    background: #f8f9fa;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 1rem 0;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    animation: scrollCertificates 40s linear infinite;
+    width: max-content;
+}
+
+.carousel-track img {
+    height: 200px;
+    width: auto;
+    margin: 0 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.carousel-track img:hover {
+    transform: scale(1.04) rotate(-1deg);
+    box-shadow: 0 6px 24px rgba(44,62,80,0.12);
+}
+
+@keyframes scrollCertificates {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+    .carousel-track img {
+        height: 120px;
+        margin: 0 0.7rem;
+    }
+}
+
