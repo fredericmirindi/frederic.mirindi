@@ -140,3 +140,31 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
 }
+
+
+
+
+
+
+
+
+
+
+i18next.init({
+  lng: 'en', // default language
+  debug: true,
+  resources: {
+    en: {
+      translation: {
+        heroTitle: "PhD Student in Economics & Econometrics"
+      }
+    },
+    fr: {
+      translation: {
+        heroTitle: "Doctorant en économie et économétrie"
+      }
+    }
+  }
+}, function(err, t) {
+  document.querySelector("#hero h2").textContent = t('heroTitle');
+});
