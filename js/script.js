@@ -171,6 +171,32 @@ i18next.init({
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const darkModeClass = 'dark-mode';
+
+  // Apply saved theme on load
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add(darkModeClass);
+    themeIcon.classList.remove('fa-moon');
+    themeIcon.classList.add('fa-sun');
+  }
+
+  toggleBtn.addEventListener('click', function() {
+    document.body.classList.toggle(darkModeClass);
+
+    if (document.body.classList.contains(darkModeClass)) {
+      localStorage.setItem('theme', 'dark');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    } else {
+      localStorage.setItem('theme', 'light');
+      themeIcon.classList.remove('fa-sun');
+      themeIcon.classList.add('fa-moon');
+    }
+  });
+});
 
 
 
