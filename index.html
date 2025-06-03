@@ -5,52 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance.">
     <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
+    
+    <!-- Main site styles -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Theme (light/dark) styles -->
+    <link rel="stylesheet" href="css/theme.css">
+
+    <!-- Fonts and icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <!-- Favicon and meta icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
 
+    <!-- Map library CSS (if used) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-    <style>
-    /* Light/Dark mode styles */
-    body.dark-mode {
-      background: #181a1b;
-      color: #f5f5f5;
-    }
-    body.dark-mode .site-header,
-    body.dark-mode .site-footer {
-      background: #222;
-    }
-    body.dark-mode a {
-      color: #8ecae6;
-    }
-    body.dark-mode .content-section {
-      background: #23272b;
-    }
-    /* Light/Dark mode toggle button styling (optional, adjust as needed) */
-    #theme-toggle {
-      background: none;
-      border: none;
-      color: inherit;
-      font-size: 1.4rem;
-      margin-left: 1rem;
-      cursor: pointer;
-      transition: color 0.2s;
-      vertical-align: middle;
-    }
-    #theme-toggle:focus {
-      outline: 2px solid #8ecae6;
-      outline-offset: 2px;
-    }
-    </style>
 </head>
 <body>
     <header class="site-header">
@@ -81,8 +56,8 @@
                 <p>Sessional Instructor, Booth University College</p>
                 <p>Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
                 <div class="hero-buttons">
-                     <a href="research.html" class="cta-button">View Research</a>
-                     <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary">Contact Me</a>
+                    <a href="research.html" class="cta-button">View Research</a>
+                    <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary">Contact Me</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -96,26 +71,26 @@
             <p>As a sessional instructor at Booth University College, I design engaging, data-driven learning experiences in Microeconomics and Applied Finite Mathematics. My research leverages quantitative methods and increasingly integrates artificial intelligence and machine learning techniques to explore macroeconomic and financial questions. I thrive in multicultural environments and am fluent in English and French.</p>
         </section>
 
-         <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
+        <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
             <h2>Research Highlights</h2>
             <p>My core research interest lies in the innovative application of quantitative methods to economic problems. Currently, I am focused on:</p>
             <div class="interests-box">
-                 <p><i class="fas fa-brain icon-highlight"></i> Integrating AI and Machine Learning in macroeconomic and financial modeling.</p>
-                 <p><i class="fas fa-chart-line icon-highlight"></i> Econometrics, including causal inference, time series analysis, and microeconometrics.</p>
-                 <p><i class="fas fa-landmark icon-highlight"></i> Monetary policy, DSGE models, and growth dynamics.</p>
-                 <p><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</p>
+                <p><i class="fas fa-brain icon-highlight"></i> Integrating AI and Machine Learning in macroeconomic and financial modeling.</p>
+                <p><i class="fas fa-chart-line icon-highlight"></i> Econometrics, including causal inference, time series analysis, and microeconometrics.</p>
+                <p><i class="fas fa-landmark icon-highlight"></i> Monetary policy, DSGE models, and growth dynamics.</p>
+                <p><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</p>
             </div>
             <div style="margin-top: 1.5rem;">
-                 <a href="research.html" class="cta-button">Explore Publications</a>
-                 <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a>
+                <a href="research.html" class="cta-button">Explore Publications</a>
+                <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a>
             </div>
         </section>
 
         <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
-             <h2>Global Experience & Education</h2>
-             <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
-             <div id="map-container"></div>
-             <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
+            <h2>Global Experience & Education</h2>
+            <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
+            <div id="map-container"></div>
+            <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
         </section>
 
         <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
@@ -131,12 +106,12 @@
                     <h3>Technical Proficiency</h3>
                     <p>R, Python, Stata, RATS, ML/AI techniques.</p>
                 </div>
-                 <div class="skill-item">
+                <div class="skill-item">
                     <i class="fas fa-chalkboard-teacher skill-icon"></i>
                     <h3>Academic Instruction</h3>
                     <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
                 </div>
-                 <div class="skill-item">
+                <div class="skill-item">
                     <i class="fas fa-globe-americas skill-icon"></i>
                     <h3>Collaboration & Languages</h3>
                     <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
@@ -147,24 +122,23 @@
 
     <footer class="site-footer">
         <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
     <script>
         // Light/Dark mode toggle logic
         document.addEventListener('DOMContentLoaded', function() {
@@ -194,13 +168,12 @@
             });
         });
     </script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mapElement = document.getElementById('map-container');
             if (mapElement) {
                 // Initialize map WITH scrollWheelZoom disabled
-                const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2); // Adjust center/zoom
+                const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2);
 
                 // Add Tile Layer
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -224,9 +197,9 @@
                 ];
 
                 // Define custom icons
-                 const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
-                 const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -26] });
-                 const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+                const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+                const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -26] });
+                const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
 
                 // Add Markers using custom icons
                 locations.forEach(location => {
@@ -235,7 +208,7 @@
                         case 'education': iconToUse = educationIcon; break;
                         case 'conference': iconToUse = conferenceIcon; break;
                         case 'research': iconToUse = researchIcon; break;
-                        default: iconToUse = undefined; // Fallback to default marker
+                        default: iconToUse = undefined;
                     }
 
                     L.marker([location.lat, location.lng], { icon: iconToUse })
