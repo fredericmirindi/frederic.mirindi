@@ -168,3 +168,31 @@ i18next.init({
 }, function(err, t) {
   document.querySelector("#hero h2").textContent = t('heroTitle');
 });
+
+
+
+
+
+
+
+
+async function askAI() {
+  const prompt = document.getElementById('userPrompt').value.trim();
+  const responseBox = document.getElementById('response');
+  responseBox.textContent = 'Loading...';
+
+  try {
+    const res = await fetch('https://bold-recipe-9562.mirindifrederic.workers.dev/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ prompt })
+    });
+
+    const data = await res.json();
+    responseBox.textContent = data.content || JSON.stringify(data) || 'No response received.';
+  } catch (error) {
+    responseBox.textContent = 'Error: ' + error.message;
+  }
+}
