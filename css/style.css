@@ -1690,17 +1690,22 @@ body.dark-mode {
     color: var(--text-color);
 }
 
+/* === Elements affected in dark mode === */
 body.dark-mode .site-header,
-body.dark-mode .main-nav a,
-body.dark-mode .footer-contact a,
-body.dark-mode .footer-links a {
+body.dark-mode .main-nav a {
     background-color: var(--background-color);
     color: var(--text-color);
 }
 
+/* Footer is intentionally excluded from dark mode */
 body.dark-mode .site-footer {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    /* background-color: var(--primary-color); */
+    /* color: var(--secondary-color); */
+}
+body.dark-mode .footer-contact a,
+body.dark-mode .footer-links a {
+    /* background-color: var(--background-color); */
+    /* color: var(--text-color); */
 }
 
 body.dark-mode .hero-section,
@@ -1723,6 +1728,7 @@ body.dark-mode .test-steps {
     border-color: #2d3436;
 }
 
+/* Buttons in dark mode */
 body.dark-mode .cta-button {
     background-color: var(--accent-color);
     color: #fff;
@@ -1747,6 +1753,7 @@ body.dark-mode .cta-button.secondary:hover {
     color: #fff;
 }
 
+/* Navigation link hover effect */
 body.dark-mode .main-nav a:hover,
 body.dark-mode .main-nav a.active {
     color: var(--accent-color);
