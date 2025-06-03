@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -41,7 +41,7 @@
         </ul>
       </nav>
       <div class="header-tools">
-        <button onclick="toggleSearch()" aria-label="Search"><i class="fas fa-search"></i></button>
+        <button onclick="toggleSolver()" aria-label="Math Solver"><i class="fas fa-calculator"></i></button>
         <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i><span id="lang-label" class="language-indicator">EN</span></button>
         <button onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-adjust"></i></button>
       </div>
@@ -67,8 +67,8 @@
       </div>
     </section>
 
-    <!-- Math Solver Section -->
-    <section class="solver-container">
+    <!-- Math Solver Section (Initially Hidden) -->
+    <section class="solver-container" id="mathSolver" style="display:none;">
       <h2>🧠 Math Solver</h2>
       <p>Enter any expression (e.g., <code>2x + 3 = 5</code> or <code>PV = 1000 / (1 + 0.05)^3</code>):</p>
       <textarea id="mathInput" placeholder="Type your math problem here..."></textarea>
@@ -110,6 +110,12 @@
 
     function toggleTheme() {
       document.body.classList.toggle("dark-mode");
+    }
+
+    function toggleSolver() {
+      const section = document.getElementById("mathSolver");
+      section.style.display = section.style.display === "none" ? "block" : "none";
+      section.scrollIntoView({ behavior: "smooth" });
     }
 
     const resources = {
