@@ -1,55 +1,52 @@
-/* css/theme.css */
+/* theme.css */
 
-/* Default (light mode) variables */
-:root {
-  --background-color: #fff;
-  --text-color: #222;
-  --header-footer-bg: #f8f9fa;
-  --link-color: #0056b3;
-  --section-bg: #f5f5f5;
-}
-
-/* Dark mode overrides */
+/* Dark mode variables and global styles */
 body.dark-mode {
   --background-color: #181a1b;
-  --text-color: #f5f5f5;
-  --header-footer-bg: #222;
-  --link-color: #8ecae6;
   --section-bg: #23272b;
+  --header-footer-bg: #222831;
+  --text-color: #eaeaea;
+  --border-color: #2d3a4a;
+  --accent-color: #3ec6e0;
 }
 
-/* Apply variables */
-body {
+body.dark-mode {
   background: var(--background-color);
   color: var(--text-color);
-  transition: background 0.3s, color 0.3s;
 }
 
-.site-header,
-.site-footer {
+body.dark-mode .site-header,
+body.dark-mode .site-footer {
   background: var(--header-footer-bg);
 }
 
-a {
-  color: var(--link-color);
-}
-
-.content-section {
+body.dark-mode .content-section {
   background: var(--section-bg);
+  border-radius: 10px;
+  margin-bottom: 2rem;
 }
 
-/* Toggle button styling */
-#theme-toggle {
-  background: none;
-  border: none;
-  color: inherit;
-  font-size: 1.4rem;
-  margin-left: 1rem;
-  cursor: pointer;
-  transition: color 0.2s;
-  vertical-align: middle;
+/* Improved image styling for dark mode */
+body.dark-mode .hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34, 40, 49, 0.85); /* soft dark background */
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  border: 1.5px solid var(--border-color); /* deep blue-gray */
+  max-width: 260px;
+  margin: 0 auto;
+  transition: background 0.3s, box-shadow 0.3s;
 }
-#theme-toggle:focus {
-  outline: 2px solid var(--link-color);
-  outline-offset: 2px;
+
+body.dark-mode .hero-image img {
+  display: block;
+  border-radius: 6px;
+  background: #222831;
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.18), 0 0 0 3px #263545;
 }
