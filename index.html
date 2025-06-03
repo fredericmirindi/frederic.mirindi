@@ -1,168 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance." />
-    <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance." />
+  <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="math-solver.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-content">
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <img src="images/profile.jpg" alt="Logo" style="height: 32px; width: auto;" />
-                <h1><a href="index.html">Frédéric Mirindi</a></h1>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="cv.html">CV</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-            <div class="header-tools">
-                <button onclick="toggleSearch()" aria-label="Search"><i class="fas fa-search"></i></button>
-                <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i><span id="lang-label" class="language-indicator">EN</span></button>
-                <button onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-adjust"></i></button>
-            </div>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <header class="site-header">
+    <div class="container header-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="images/profile.jpg" alt="Logo" style="height: 32px; width: auto;" />
+        <h1><a href="index.html">Frédéric Mirindi</a></h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button onclick="toggleSearch()" aria-label="Search"><i class="fas fa-search"></i></button>
+        <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i><span id="lang-label" class="language-indicator">EN</span></button>
+        <button onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-adjust"></i></button>
+      </div>
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="container hero-section">
+      <div class="hero-text">
+        <h2 data-i18n="heroTitle">PhD Student in Economics &amp; Econometrics</h2>
+        <p data-i18n="heroLine1">University of Manitoba</p>
+        <p data-i18n="heroLine2">Sessional Instructor, Booth University College</p>
+        <p data-i18n="heroBio">Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
+        <div class="hero-buttons">
+          <a href="research.html" class="cta-button" data-i18n="viewResearch">View Research</a>
+          <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary" data-i18n="contactMe">Contact Me</a>
         </div>
-    </header>
+      </div>
+      <div class="hero-image">
+        <img src="images/profile.jpg" alt="Profile picture of Frédéric Mirindi">
+      </div>
+    </section>
 
-    <main>
-        <!-- Main content included here -->
-        <section id="hero" class="container hero-section">
-            <div class="hero-text">
-                <h2 data-i18n="heroTitle">PhD Student in Economics &amp; Econometrics</h2>
-                <p data-i18n="heroLine1">University of Manitoba</p>
-                <p data-i18n="heroLine2">Sessional Instructor, Booth University College</p>
-                <p data-i18n="heroBio">Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
-                <div class="hero-buttons">
-                    <a href="research.html" class="cta-button" data-i18n="viewResearch">View Research</a>
-                    <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary" data-i18n="contactMe">Contact Me</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/profile.jpg" alt="Profile picture of Frédéric Mirindi">
-            </div>
-        </section>
-    </main>
+    <!-- Math Solver Section -->
+    <section class="solver-container">
+      <h2>🧠 Math Solver</h2>
+      <p>Enter any expression (e.g., <code>2x + 3 = 5</code> or <code>PV = 1000 / (1 + 0.05)^3</code>):</p>
+      <textarea id="mathInput" placeholder="Type your math problem here..."></textarea>
+      <button onclick="solveMath()">Solve</button>
+      <div id="solution" class="solution"></div>
+    </section>
+  </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-contact">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank">fredericmirindi.com</a></p>
-            </div>
-            <div class="footer-links">
-                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank"><i class="fab fa-orcid"></i></a>
-                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank"><i class="fab fa-researchgate"></i></a>
-                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-contact">
+        <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+        <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+        <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+        <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank">fredericmirindi.com</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://orcid.org/0009-0001-1798-9914" target="_blank"><i class="fab fa-orcid"></i></a>
+        <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank"><i class="fab fa-researchgate"></i></a>
+        <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <!-- Translation Libraries -->
-    <script src="https://unpkg.com/i18next@21.6.15/dist/umd/i18next.min.js"></script>
-    <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.5/i18nextBrowserLanguageDetector.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.js"></script>
+  <script src="math-solver.js"></script>
 
-    <script>
-        document.getElementById("current-year").textContent = new Date().getFullYear();
+  <!-- Translation Libraries -->
+  <script src="https://unpkg.com/i18next@21.6.15/dist/umd/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.5/i18nextBrowserLanguageDetector.min.js"></script>
+  <script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
 
-        function toggleSearch() {
-            alert("Search feature coming soon.");
+    function toggleSearch() {
+      alert("Search feature coming soon.");
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    const resources = {
+      en: {
+        translation: {
+          heroTitle: "PhD Student in Economics & Econometrics",
+          heroLine1: "University of Manitoba",
+          heroLine2: "Sessional Instructor, Booth University College",
+          heroBio: "Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.",
+          viewResearch: "View Research",
+          contactMe: "Contact Me"
         }
-
-        function toggleTheme() {
-            document.body.classList.toggle("dark-mode");
+      },
+      fr: {
+        translation: {
+          heroTitle: "Doctorant en économie et économétrie",
+          heroLine1: "Université du Manitoba",
+          heroLine2: "Chargé de cours, Booth University College",
+          heroBio: "Économiste, éducateur et chercheur explorant l'intersection de l'IA/ML avec la modélisation macroéconomique et financière. Passionné par l'avancement des connaissances et la collaboration.",
+          viewResearch: "Voir les recherches",
+          contactMe: "Me contacter"
         }
+      }
+    };
 
-        const resources = {
-            en: {
-                translation: {
-                    heroTitle: "PhD Student in Economics & Econometrics",
-                    heroLine1: "University of Manitoba",
-                    heroLine2: "Sessional Instructor, Booth University College",
-                    heroBio: "Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.",
-                    viewResearch: "View Research",
-                    contactMe: "Contact Me"
-                }
-            },
-            fr: {
-                translation: {
-                    heroTitle: "Doctorant en économie et économétrie",
-                    heroLine1: "Université du Manitoba",
-                    heroLine2: "Chargé de cours, Booth University College",
-                    heroBio: "Économiste, éducateur et chercheur explorant l'intersection de l'IA/ML avec la modélisation macroéconomique et financière. Passionné par l'avancement des connaissances et la collaboration.",
-                    viewResearch: "Voir les recherches",
-                    contactMe: "Me contacter"
-                }
-            }
-        };
+    i18next
+      .use(i18nextBrowserLanguageDetector)
+      .init({
+        debug: true,
+        fallbackLng: 'en',
+        resources
+      }, function(err, t) {
+        updateContent();
+      });
 
-        i18next
-            .use(i18nextBrowserLanguageDetector)
-            .init({
-                debug: true,
-                fallbackLng: 'en',
-                resources
-            }, function(err, t) {
-                updateContent();
-            });
+    function toggleLanguage() {
+      const currentLang = i18next.language;
+      const newLang = currentLang === "en" ? "fr" : "en";
+      i18next.changeLanguage(newLang, updateContent);
+      document.getElementById("lang-label").textContent = newLang.toUpperCase();
+    }
 
-        function toggleLanguage() {
-            const currentLang = i18next.language;
-            const newLang = currentLang === "en" ? "fr" : "en";
-            i18next.changeLanguage(newLang, updateContent);
-            document.getElementById("lang-label").textContent = newLang.toUpperCase();
-        }
+    function updateContent() {
+      document.querySelectorAll("[data-i18n]").forEach(function(element) {
+        const key = element.getAttribute("data-i18n");
+        element.textContent = i18next.t(key);
+      });
+    }
+  </script>
 
-        function updateContent() {
-            document.querySelectorAll("[data-i18n]").forEach(function(element) {
-                const key = element.getAttribute("data-i18n");
-                element.textContent = i18next.t(key);
-            });
-        }
-    </script>
-
-    <style>
-        .header-tools {
-            display: flex;
-            gap: 10px;
-        }
-        .header-tools button {
-            background: none;
-            border: none;
-            font-size: 1rem;
-            color: var(--primary-color);
-            cursor: pointer;
-        }
-        .header-tools button:hover {
-            color: var(--accent-color);
-        }
-
-        .language-indicator {
-            font-size: 0.85rem;
-            font-weight: bold;
-            color: var(--accent-color);
-            margin-left: 5px;
-        }
-    </style>
+  <style>
+    .header-tools {
+      display: flex;
+      gap: 10px;
+    }
+    .header-tools button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+    .header-tools button:hover {
+      color: var(--accent-color);
+    }
+    .language-indicator {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-left: 5px;
+    }
+  </style>
 </body>
 </html>
