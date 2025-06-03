@@ -135,3 +135,8 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("Frederic Mirindi website scripts loaded correctly.");
 
 }); // End of DOMContentLoaded
+
+
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+}
