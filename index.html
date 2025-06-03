@@ -35,7 +35,7 @@
             </nav>
             <div class="header-tools">
                 <button onclick="toggleSearch()" aria-label="Search"><i class="fas fa-search"></i></button>
-                <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i></button>
+                <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i><span id="lang-label" class="language-indicator">EN</span></button>
                 <button onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-adjust"></i></button>
             </div>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
@@ -46,21 +46,19 @@
         <!-- Main content included here -->
         <section id="hero" class="container hero-section">
             <div class="hero-text">
-                <h2>PhD Student in Economics &amp; Econometrics</h2>
-                <p>University of Manitoba</p>
-                <p>Sessional Instructor, Booth University College</p>
-                <p>Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
+                <h2 data-i18n="heroTitle">PhD Student in Economics &amp; Econometrics</h2>
+                <p data-i18n="heroLine1">University of Manitoba</p>
+                <p data-i18n="heroLine2">Sessional Instructor, Booth University College</p>
+                <p data-i18n="heroBio">Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
                 <div class="hero-buttons">
-                    <a href="research.html" class="cta-button">View Research</a>
-                    <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary">Contact Me</a>
+                    <a href="research.html" class="cta-button" data-i18n="viewResearch">View Research</a>
+                    <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary" data-i18n="contactMe">Contact Me</a>
                 </div>
             </div>
             <div class="hero-image">
                 <img src="images/profile.jpg" alt="Profile picture of Frédéric Mirindi">
             </div>
         </section>
-
-        <!-- Other sections remain unchanged, such as About, Research Highlights, Skills, Map, etc. -->
     </main>
 
     <footer class="site-footer">
@@ -80,6 +78,10 @@
         </div>
     </footer>
 
+    <!-- Translation Libraries -->
+    <script src="https://unpkg.com/i18next@21.6.15/dist/umd/i18next.min.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.5/i18nextBrowserLanguageDetector.min.js"></script>
+
     <script>
         document.getElementById("current-year").textContent = new Date().getFullYear();
 
@@ -87,14 +89,55 @@
             alert("Search feature coming soon.");
         }
 
-        function toggleLanguage() {
-            const currentLang = document.documentElement.lang;
-            document.documentElement.lang = currentLang === "en" ? "fr" : "en";
-            alert("Language switched to: " + document.documentElement.lang);
-        }
-
         function toggleTheme() {
             document.body.classList.toggle("dark-mode");
+        }
+
+        const resources = {
+            en: {
+                translation: {
+                    heroTitle: "PhD Student in Economics & Econometrics",
+                    heroLine1: "University of Manitoba",
+                    heroLine2: "Sessional Instructor, Booth University College",
+                    heroBio: "Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.",
+                    viewResearch: "View Research",
+                    contactMe: "Contact Me"
+                }
+            },
+            fr: {
+                translation: {
+                    heroTitle: "Doctorant en économie et économétrie",
+                    heroLine1: "Université du Manitoba",
+                    heroLine2: "Chargé de cours, Booth University College",
+                    heroBio: "Économiste, éducateur et chercheur explorant l'intersection de l'IA/ML avec la modélisation macroéconomique et financière. Passionné par l'avancement des connaissances et la collaboration.",
+                    viewResearch: "Voir les recherches",
+                    contactMe: "Me contacter"
+                }
+            }
+        };
+
+        i18next
+            .use(i18nextBrowserLanguageDetector)
+            .init({
+                debug: true,
+                fallbackLng: 'en',
+                resources
+            }, function(err, t) {
+                updateContent();
+            });
+
+        function toggleLanguage() {
+            const currentLang = i18next.language;
+            const newLang = currentLang === "en" ? "fr" : "en";
+            i18next.changeLanguage(newLang, updateContent);
+            document.getElementById("lang-label").textContent = newLang.toUpperCase();
+        }
+
+        function updateContent() {
+            document.querySelectorAll("[data-i18n]").forEach(function(element) {
+                const key = element.getAttribute("data-i18n");
+                element.textContent = i18next.t(key);
+            });
         }
     </script>
 
@@ -114,69 +157,11 @@
             color: var(--accent-color);
         }
 
-        /* === Theme Switching === */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #ecf0f1;
-            --accent-color: #1abc9c;
-            --text-color: #34495e;
-            --heading-color: #2c3e50;
-            --light-text-color: #ffffff;
-            --background-color: #ffffff;
-        }
-
-        body.dark-mode {
-            --primary-color: #ffffff;
-            --secondary-color: #1e272e;
-            --accent-color: #00cec9;
-            --text-color: #ecf0f1;
-            --heading-color: #ffffff;
-            --light-text-color: #2c3e50;
-            --background-color: #121212;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        body.dark-mode .site-header,
-        body.dark-mode .main-nav a,
-        body.dark-mode .footer-contact a,
-        body.dark-mode .footer-links a {
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        body.dark-mode .site-footer {
-            background-color: var(--primary-color);
-            color: var(--secondary-color);
-        }
-
-        body.dark-mode .cta-button {
-            background-color: var(--accent-color);
-            color: #fff;
-            border-color: var(--accent-color);
-        }
-
-        body.dark-mode .cta-button.secondary {
-            background-color: transparent;
+        .language-indicator {
+            font-size: 0.85rem;
+            font-weight: bold;
             color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        body.dark-mode .cta-button:hover,
-        body.dark-mode .cta-button:focus {
-            background-color: #0984e3;
-            border-color: #0984e3;
-            color: #fff;
-        }
-
-        body.dark-mode .cta-button.secondary:hover {
-            background-color: var(--accent-color);
-            color: #fff;
-        }
-
-        body.dark-mode .main-nav a:hover,
-        body.dark-mode .main-nav a.active {
-            color: var(--accent-color);
+            margin-left: 5px;
         }
     </style>
 </body>
