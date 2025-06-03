@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance." />
     <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
-<body> <header class="site-header">
+<body>
+    <header class="site-header">
         <div class="container header-content">
-            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <img src="images/logo-small.png" alt="Logo" style="height: 32px; width: auto;" />
+                <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li> <li><a href="research.html">Research</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
-             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <div class="header-tools">
+                <button onclick="toggleSearch()" aria-label="Search"><i class="fas fa-search"></i></button>
+                <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i></button>
+                <button onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-adjust"></i></button>
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
     </header>
 
@@ -58,7 +65,7 @@
             <p>As a sessional instructor at Booth University College, I design engaging, data-driven learning experiences in Microeconomics and Applied Finite Mathematics. My research leverages quantitative methods and increasingly integrates artificial intelligence and machine learning techniques to explore macroeconomic and financial questions. I thrive in multicultural environments and am fluent in English and French.</p>
         </section>
 
-         <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
+        <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
             <h2>Research Highlights</h2>
             <p>My core research interest lies in the innovative application of quantitative methods to economic problems. Currently, I am focused on:</p>
             <div class="interests-box">
@@ -69,13 +76,15 @@
             </div>
             <div style="margin-top: 1.5rem;">
                  <a href="research.html" class="cta-button">Explore Publications</a>
-                 <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a> </div>
+                 <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a>
+            </div>
         </section>
 
         <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
              <h2>Global Experience & Education</h2>
              <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
-             <div id="map-container"></div> <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
+             <div id="map-container"></div>
+             <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
         </section>
 
         <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
@@ -91,92 +100,74 @@
                     <h3>Technical Proficiency</h3>
                     <p>R, Python, Stata, RATS, ML/AI techniques.</p>
                 </div>
-                 <div class="skill-item">
+                <div class="skill-item">
                     <i class="fas fa-chalkboard-teacher skill-icon"></i>
                     <h3>Academic Instruction</h3>
                     <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
                 </div>
-                 <div class="skill-item">
+                <div class="skill-item">
                     <i class="fas fa-globe-americas skill-icon"></i>
                     <h3>Collaboration & Languages</h3>
-                    <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
+                    <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc.</p>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer class="site-footer">
         <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank"><i class="fab fa-researchgate"></i></a>
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mapElement = document.getElementById('map-container');
-            if (mapElement) {
-                // Initialize map WITH scrollWheelZoom disabled
-                const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2); // Adjust center/zoom
+        document.getElementById("current-year").textContent = new Date().getFullYear();
 
-                // Add Tile Layer
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    maxZoom: 18,
-                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                }).addTo(map);
+        function toggleSearch() {
+            alert("Search feature coming soon.");
+        }
 
-                // Define Locations (using categories for potential icon switching)
-                const locations = [
-                    { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada", category: 'education' },
-                    { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium", category: 'education' },
-                    { lat: -1.2921, lng: 36.8219, name: "AERC", type: "Education (Masters Bridge)", city: "Nairobi, Kenya", category: 'education' },
-                    { lat: -2.5044, lng: 28.8611, name: "Catholic University of Bukavu", type: "Education (B.Sc, M.Sc)", city: "Bukavu, DRC", category: 'education' },
-                    { lat: 45.5019, lng: -73.5674, name: "CEA Annual Meeting (UQAM)", type: "Conference (2025)", city: "Montreal, Canada", category: 'conference' },
-                    { lat: 52.3833, lng: -1.5609, name: "University of Warwick (CSWG)", type: "Seminar (2025)", city: "Warwick, UK", category: 'conference' },
-                    { lat: 51.7520, lng: -1.2577, name: "University of Oxford (ESHS)", type: "Seminar (2024)", city: "Oxford, UK", category: 'conference' },
-                    { lat: 51.6214, lng: -3.9436, name: "Human-Agent Interaction Conf. (HAI)", type: "Conference Workshop (2024)", city: "Swansea, UK", category: 'conference' },
-                    { lat: 23.3441, lng: 85.3096, name: "RAISD Conference (JRU)", type: "Conference (2025)", city: "Ranchi, India", category: 'conference' },
-                    { lat: 50.0880, lng: 14.4208, name: "CERGE-EI", type: "Research Experience", city: "Prague, Czech Republic", category: 'research'},
-                    { lat: 49.9350, lng: 11.5758, name: "University of Bayreuth (BIGSAS)", type: "Research Experience", city: "Bayreuth, Germany", category: 'research'}
-                ];
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            document.documentElement.lang = currentLang === "en" ? "fr" : "en";
+            alert("Language switched to: " + document.documentElement.lang);
+        }
 
-                // Define custom icons
-                 const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
-                 const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -26] });
-                 const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
-
-                // Add Markers using custom icons
-                locations.forEach(location => {
-                    let iconToUse;
-                    switch(location.category) {
-                        case 'education': iconToUse = educationIcon; break;
-                        case 'conference': iconToUse = conferenceIcon; break;
-                        case 'research': iconToUse = researchIcon; break;
-                        default: iconToUse = undefined; // Fallback to default marker
-                    }
-
-                    L.marker([location.lat, location.lng], { icon: iconToUse })
-                        .addTo(map)
-                        .bindPopup(`<b>${location.name}</b><br>${location.type}<br><em>${location.city}</em>`);
-                });
-            }
-        });
+        function toggleTheme() {
+            document.body.classList.toggle("dark-mode");
+        }
     </script>
 
+    <style>
+        .header-tools {
+            display: flex;
+            gap: 10px;
+        }
+        .header-tools button {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        .header-tools button:hover {
+            color: var(--accent-color);
+        }
+        .dark-mode {
+            background-color: #111;
+            color: #eee;
+        }
+    </style>
 </body>
 </html>
