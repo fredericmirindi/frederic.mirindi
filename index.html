@@ -3,34 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance." />
-  <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
-
-  <!-- Styles -->
+  <title>Frédéric Mirindi - Economist | Researcher | Educator</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/math-solver.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-content">
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="images/profile.jpg" alt="Logo" style="height: 32px; width: auto;" />
-        <h1><a href="index.html">Frédéric Mirindi</a></h1>
-      </div>
+      <h1><a href="index.html">Frédéric Mirindi</a></h1>
       <nav class="main-nav">
         <ul>
           <li><a href="index.html" class="active">Home</a></li>
@@ -42,10 +27,9 @@
       </nav>
       <div class="header-tools">
         <button onclick="toggleSolver()" aria-label="Math Solver"><i class="fas fa-calculator"></i></button>
-        <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i><span id="lang-label" class="language-indicator">EN</span></button>
+        <button onclick="toggleLanguage()" aria-label="Translate"><i class="fas fa-language"></i><span id="lang-label">EN</span></button>
         <button onclick="toggleTheme()" aria-label="Toggle Theme"><i class="fas fa-adjust"></i></button>
       </div>
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     </div>
   </header>
 
@@ -53,13 +37,13 @@
     <!-- Hero Section -->
     <section id="hero" class="container hero-section">
       <div class="hero-text">
-        <h2 data-i18n="heroTitle">PhD Student in Economics &amp; Econometrics</h2>
-        <p data-i18n="heroLine1">University of Manitoba</p>
-        <p data-i18n="heroLine2">Sessional Instructor, Booth University College</p>
-        <p data-i18n="heroBio">Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
+        <h2>PhD Student in Economics &amp; Econometrics</h2>
+        <p>University of Manitoba</p>
+        <p>Sessional Instructor, Booth University College</p>
+        <p>Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
         <div class="hero-buttons">
-          <a href="research.html" class="cta-button" data-i18n="viewResearch">View Research</a>
-          <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary" data-i18n="contactMe">Contact Me</a>
+          <a href="research.html" class="cta-button">View Research</a>
+          <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary">Contact Me</a>
         </div>
       </div>
       <div class="hero-image">
@@ -67,13 +51,68 @@
       </div>
     </section>
 
-    <!-- Math Solver Section -->
-    <section class="solver-container" id="mathSolver" style="display: none;">
-      <h2>🧠 Math Solver</h2>
-      <p>Enter any expression (e.g., <code>2x + 3 = 5</code> or <code>PV = 1000 / (1 + 0.05)^3</code>):</p>
+    <!-- Math Solver Section (Hidden by default) -->
+    <section id="math-solver" class="solver-container" style="display:none;">
+      <h2>🔢 Math Solver</h2>
+      <p>Enter a math expression like <code>2x + 3 = 5</code> or <code>PV = 1000 / (1 + 0.05)^3</code>:</p>
       <textarea id="mathInput" placeholder="Type your math problem here..."></textarea>
       <button onclick="solveMath()">Solve</button>
       <div id="solution" class="solution"></div>
+    </section>
+
+    <!-- About and Other Sections -->
+    <section id="about" class="container content-section fade-in">
+      <h2>About Me</h2>
+      <p>I am currently pursuing a Ph.D. in Economics and Econometrics at the University of Manitoba, building upon a diverse academic background including degrees from the University of Antwerp and the Catholic University of Bukavu. My professional journey blends research, teaching, and data analysis, driven by a commitment to understanding and solving complex economic challenges.</p>
+      <p>As a sessional instructor at Booth University College, I design engaging, data-driven learning experiences in Microeconomics and Applied Finite Mathematics. My research leverages quantitative methods and increasingly integrates artificial intelligence and machine learning techniques to explore macroeconomic and financial questions. I thrive in multicultural environments and am fluent in English and French.</p>
+    </section>
+
+    <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
+      <h2>Research Highlights</h2>
+      <p>My core research interest lies in the innovative application of quantitative methods to economic problems. Currently, I am focused on:</p>
+      <div class="interests-box">
+        <p><i class="fas fa-brain icon-highlight"></i> Integrating AI and Machine Learning in macroeconomic and financial modeling.</p>
+        <p><i class="fas fa-chart-line icon-highlight"></i> Econometrics, including causal inference, time series analysis, and microeconometrics.</p>
+        <p><i class="fas fa-landmark icon-highlight"></i> Monetary policy, DSGE models, and growth dynamics.</p>
+        <p><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</p>
+      </div>
+      <div style="margin-top: 1.5rem;">
+        <a href="research.html" class="cta-button">Explore Publications</a>
+        <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a>
+      </div>
+    </section>
+
+    <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
+      <h2>Global Experience & Education</h2>
+      <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
+      <div id="map-container"></div>
+      <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
+    </section>
+
+    <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
+      <h2>Skills Snapshot</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <i class="fas fa-calculator skill-icon"></i>
+          <h3>Quantitative Research</h3>
+          <p>Econometric analysis, data modeling, experimental design.</p>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-laptop-code skill-icon"></i>
+          <h3>Technical Proficiency</h3>
+          <p>R, Python, Stata, RATS, ML/AI techniques.</p>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-chalkboard-teacher skill-icon"></i>
+          <h3>Academic Instruction</h3>
+          <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-globe-americas skill-icon"></i>
+          <h3>Collaboration & Languages</h3>
+          <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc.</p>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -94,94 +133,35 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.js"></script>
-  <script src="js/math-solver.js"></script>
-  <script src="https://unpkg.com/i18next@21.6.15/dist/umd/i18next.min.js"></script>
-  <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.5/i18nextBrowserLanguageDetector.min.js"></script>
-
   <script>
     document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    function toggleSolver() {
+      const section = document.getElementById("math-solver");
+      section.style.display = section.style.display === "none" ? "block" : "none";
+    }
+
+    function solveMath() {
+      const input = document.getElementById("mathInput").value;
+      try {
+        const result = math.evaluate(input);
+        document.getElementById("solution").innerHTML = `<strong>Solution:</strong> ${result}`;
+        renderMathInElement(document.getElementById("solution"));
+      } catch (err) {
+        document.getElementById("solution").innerHTML = `<strong>Error:</strong> ${err.message}`;
+      }
+    }
+
+    function toggleLanguage() {
+      const current = document.getElementById("lang-label").textContent;
+      const next = current === "EN" ? "FR" : "EN";
+      document.getElementById("lang-label").textContent = next;
+      alert("Language toggle is under development.");
+    }
 
     function toggleTheme() {
       document.body.classList.toggle("dark-mode");
     }
-
-    function toggleSolver() {
-      const section = document.getElementById("mathSolver");
-      section.style.display = section.style.display === "none" ? "block" : "none";
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-
-    const resources = {
-      en: {
-        translation: {
-          heroTitle: "PhD Student in Economics & Econometrics",
-          heroLine1: "University of Manitoba",
-          heroLine2: "Sessional Instructor, Booth University College",
-          heroBio: "Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.",
-          viewResearch: "View Research",
-          contactMe: "Contact Me"
-        }
-      },
-      fr: {
-        translation: {
-          heroTitle: "Doctorant en économie et économétrie",
-          heroLine1: "Université du Manitoba",
-          heroLine2: "Chargé de cours, Booth University College",
-          heroBio: "Économiste, éducateur et chercheur explorant l'intersection de l'IA/ML avec la modélisation macroéconomique et financière. Passionné par l'avancement des connaissances et la collaboration.",
-          viewResearch: "Voir les recherches",
-          contactMe: "Me contacter"
-        }
-      }
-    };
-
-    i18next
-      .use(i18nextBrowserLanguageDetector)
-      .init({
-        debug: false,
-        fallbackLng: 'en',
-        resources
-      }, function(err, t) {
-        updateContent();
-      });
-
-    function toggleLanguage() {
-      const currentLang = i18next.language;
-      const newLang = currentLang === "en" ? "fr" : "en";
-      i18next.changeLanguage(newLang, updateContent);
-      document.getElementById("lang-label").textContent = newLang.toUpperCase();
-    }
-
-    function updateContent() {
-      document.querySelectorAll("[data-i18n]").forEach(function(element) {
-        const key = element.getAttribute("data-i18n");
-        element.textContent = i18next.t(key);
-      });
-    }
   </script>
-
-  <style>
-    .header-tools {
-      display: flex;
-      gap: 10px;
-    }
-    .header-tools button {
-      background: none;
-      border: none;
-      font-size: 1rem;
-      color: var(--primary-color);
-      cursor: pointer;
-    }
-    .header-tools button:hover {
-      color: var(--accent-color);
-    }
-    .language-indicator {
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: var(--accent-color);
-      margin-left: 5px;
-    }
-  </style>
 </body>
 </html>
