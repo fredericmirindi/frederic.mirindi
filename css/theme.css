@@ -1,32 +1,52 @@
-/* theme.css */
-
-/* Dark mode variables and global styles */
+/* ====== DARK MODE BASE COLORS ====== */
 body.dark-mode {
   --background-color: #181a1b;
   --section-bg: #23272b;
-  --header-footer-bg: #222831;
-  --text-color: #eaeaea;
+  --header-footer-bg: #202326;
+  --text-color: #e4e6eb;
+  --text-color-muted: #b0b3b8;
   --border-color: #2d3a4a;
-  --accent-color: #3ec6e0;
+  --accent-color: #22d3ee;
+  --button-bg: #164e63;
+  --button-bg-hover: #22d3ee;
+  --button-text: #e4e6eb;
 }
 
 body.dark-mode {
   background: var(--background-color);
   color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
 }
 
+/* ====== HEADER & FOOTER ====== */
 body.dark-mode .site-header,
 body.dark-mode .site-footer {
   background: var(--header-footer-bg);
+  color: var(--text-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
-body.dark-mode .content-section {
+body.dark-mode .site-footer a,
+body.dark-mode .site-footer p {
+  color: var(--text-color-muted);
+}
+
+body.dark-mode .site-footer a:hover {
+  color: var(--accent-color);
+}
+
+/* ====== MAIN CONTENT SECTIONS ====== */
+body.dark-mode .content-section,
+body.dark-mode .container.hero-section {
   background: var(--section-bg);
   border-radius: 10px;
   margin-bottom: 2rem;
+  box-shadow: none; /* Avoid heavy shadows in dark mode[8] */
+  transition: background 0.3s;
 }
 
-/* Improved image styling for dark mode */
+/* ====== IMAGE PRESENTATION ====== */
 body.dark-mode .hero-image {
   display: flex;
   align-items: center;
@@ -34,11 +54,10 @@ body.dark-mode .hero-image {
   background: rgba(34, 40, 49, 0.85); /* soft dark background */
   border-radius: 10px;
   padding: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
-  border: 1.5px solid var(--border-color); /* deep blue-gray */
+  border: 1.5px solid var(--border-color);
   max-width: 260px;
   margin: 0 auto;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, border 0.3s;
 }
 
 body.dark-mode .hero-image img {
@@ -48,5 +67,66 @@ body.dark-mode .hero-image img {
   max-width: 220px;
   width: 100%;
   height: auto;
-  box-shadow: 0 1px 8px rgba(0,0,0,0.18), 0 0 0 3px #263545;
+  box-shadow: 0 0 0 2px #22d3ee33, 0 2px 12px rgba(0,0,0,0.25); /* subtle glow/accent */
+  transition: box-shadow 0.3s;
+}
+
+/* ====== BUTTONS & ACCENTS ====== */
+body.dark-mode .cta-button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: 1.5px solid var(--accent-color);
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+body.dark-mode .cta-button:hover,
+body.dark-mode .cta-button:focus {
+  background: var(--button-bg-hover);
+  color: #181a1b;
+  border-color: var(--button-bg-hover);
+}
+
+/* ====== NAVIGATION ====== */
+body.dark-mode .main-nav a {
+  color: var(--text-color-muted);
+}
+
+body.dark-mode .main-nav a.active,
+body.dark-mode .main-nav a:hover {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+/* ====== ICONS ====== */
+body.dark-mode .fa,
+body.dark-mode .fab,
+body.dark-mode .fas {
+  color: var(--accent-color);
+}
+
+/* ====== GENERAL TYPOGRAPHY ====== */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4 {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+body.dark-mode p,
+body.dark-mode li,
+body.dark-mode span {
+  color: var(--text-color-muted);
+}
+
+/* ====== MAP CONTAINER ====== */
+body.dark-mode #map-container {
+  background: #181a1b;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* ====== TRANSITIONS ====== */
+body, .content-section, .site-header, .site-footer, .hero-image, .cta-button {
+  transition: background 0.3s, color 0.3s, border 0.3s, box-shadow 0.3s;
 }
