@@ -22,3 +22,10 @@ function solveMath() {
     output.textContent = `❌ Error: ${error.message}`;
   }
 }
+
+
+// Solve linear equations
+const result = math.solve('2x + 3 = 5', 'x'); 
+
+// Evaluate financial expression
+const value = math.evaluate('PV = 1000 / (1 + 0.05)^3');
