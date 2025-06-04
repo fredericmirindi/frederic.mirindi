@@ -43,102 +43,102 @@
     </header>
 
     <main>
-        <!-- Improved page header for dark mode -->
-        <header class="page-header">
+        <!-- Integrated, visually appealing page header -->
+        <section class="page-header" style="background: var(--header-footer-bg, #222831); color: var(--text-color, #eaeaea); padding: 2.5rem 0 1.5rem 0; text-align: center; border-bottom: 2px solid #22d3ee;">
             <div class="container">
-                <h1>Research</h1>
-                <p>Advancing Economics and Finance through Data, Discovery, and AI.</p>
+                <h1 style="font-size:2.5rem; font-family:'Playfair Display',serif; font-weight:700; margin-bottom:0.3rem;">Research</h1>
+                <p style="font-size:1.18rem; color:var(--text-color-muted,#b0b3b8); max-width:700px; margin:0 auto;">
+                    Advancing Economics and Finance through Data, Discovery, and AI.
+                </p>
             </div>
-        </header>
+        </section>
 
-        <div class="container content-section">
+        <div class="container content-section" style="margin-top:2.5rem;">
             <!-- Research Interests Section -->
-            <section id="research-interests" class="content-card fade-in">
+            <section id="research-interests" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Research Interests</h2>
                 <div class="interests-box">
-                    <p>My primary research areas span across modern econometric methods and their application to macroeconomic and financial questions, with a growing focus on computational techniques:</p>
-                    <p><i class="fas fa-calculator icon-highlight"></i> Econometrics (causal inference, time series analysis, microeconometrics)</p>
-                    <p><i class="fas fa-landmark icon-highlight"></i> Macroeconomics (monetary policy, DSGE models, growth dynamics)</p>
-                    <p><i class="fas fa-search-dollar icon-highlight"></i> Financial Economics (risk modeling, financial forecasting, asset pricing)</p>
-                    <p><i class="fas fa-brain icon-highlight"></i> Integration of Artificial Intelligence and Machine Learning in economic modeling. <a href="ai-ml.html" class="inline-link">(See AI/ML Projects)</a></p>
+                    <ul style="list-style:none; padding:0;">
+                        <li><i class="fas fa-calculator icon-highlight"></i> <strong>Econometrics:</strong> causal inference, time series analysis, microeconometrics</li>
+                        <li><i class="fas fa-landmark icon-highlight"></i> <strong>Macroeconomics:</strong> monetary policy, DSGE models, growth dynamics</li>
+                        <li><i class="fas fa-search-dollar icon-highlight"></i> <strong>Financial Economics:</strong> risk modeling, financial forecasting, asset pricing</li>
+                        <li><i class="fas fa-brain icon-highlight"></i> <strong>AI & Machine Learning:</strong> integration in economic modeling (<a href="ai-ml.html" class="inline-link">See AI/ML Projects</a>)</li>
+                    </ul>
                 </div>
             </section>
-            <!-- Publications Section with images -->
-            <section id="publications" class="content-card fade-in" style="animation-delay: 0.1s;">
+
+            <!-- Publications Section -->
+            <section id="publications" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Selected Publications</h2>
-                <p>
+                <div style="margin-bottom:1rem;">
                     <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Google Scholar</a> |
                     <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer"><i class="fab fa-orcid"></i> ORCID</a> |
                     <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i> ResearchGate</a>
-                </p>
-                <p>Below is a selection of my peer-reviewed articles, book chapters, and conference contributions. Please refer to my CV or online profiles for a comprehensive list.</p>
-                <div class="publications-gallery">
-                    <!-- Article 1 -->
-                    <div class="publication-item">
-                        <a href="https://doi.org/10.11648/j.jccee.20251002.12" target="_blank">
-                            <img src="https://pplx-res.cloudinary.com/image/private/user_uploads/5918905/7422a5e1-d2de-4948-b100-12e06293748b/image.jpg" alt="A Review on Aerospace-AI, with Ethics and Implications">
-                        </a>
-                        <div class="publication-info">
-                            <h3><a href="https://doi.org/10.11648/j.jccee.20251002.12" target="_blank">A Review on Aerospace-AI, with Ethics and Implications</a></h3>
-                            <p><em>Journal of Civil, Construction and Environmental Engineering</em>, 2025</p>
-                        </div>
+                </div>
+                <p style="color:var(--text-color-muted,#b0b3b8);">A selection of peer-reviewed articles, book chapters, and conference contributions. See my CV or online profiles for a complete list.</p>
+                <div class="filter-controls" style="margin:1.5rem 0;">
+                    <div class="filter-group" style="display:inline-block; margin-right:1.5rem;">
+                        <label style="font-weight:600;">Filter by Type:</label>
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="journal">Journal Articles</button>
+                        <button class="filter-btn" data-filter="chapter">Book Chapters</button>
+                        <button class="filter-btn" data-filter="conference">Conference</button>
                     </div>
-                    <!-- Article 2 -->
-                    <div class="publication-item">
-                        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=K5--CxAAAAAJ&citation_for_view=K5--CxAAAAAJ:u5HHmVD_uO8C" target="_blank">
-                            <img src="https://pplx-res.cloudinary.com/image/private/user_uploads/5918905/e83a3dda-74a5-4c92-a431-dc66964b665d/image.jpg" alt="BIM-driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability">
-                        </a>
-                        <div class="publication-info">
-                            <h3><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=K5--CxAAAAAJ&citation_for_view=K5--CxAAAAAJ:u5HHmVD_uO8C" target="_blank">BIM-driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability</a></h3>
-                            <p><em>Transforming Construction with Off-site Methods and Technologies</em>, 2024</p>
-                        </div>
-                    </div>
-                    <!-- Article 3: Economist image -->
-                    <div class="publication-item">
-                        <a href="#" target="_blank">
-                            <img src="images/economist.png" alt="Economist Article">
-                        </a>
-                        <div class="publication-info">
-                            <h3><a href="#" target="_blank">Economist Article Title</a></h3>
-                            <p><em>Publication Name</em>, Year</p>
-                        </div>
+                    <div class="filter-group" style="display:inline-block;">
+                        <label for="keyword-search" style="font-weight:600;">Search Keywords:</label>
+                        <input type="text" id="keyword-search" placeholder="e.g., AI, machine learning..." style="padding:0.3rem 0.7rem; border-radius:5px; border:1px solid #444;">
                     </div>
                 </div>
-            </section>
-            <!-- Presentations Section -->
-            <section id="presentations" class="content-card fade-in" style="animation-delay: 0.2s;">
-                <h2>Conference Presentations</h2>
-                <p>I have presented my ongoing and completed research at various national and international conferences, workshops, and seminars.</p>
-                <ul class="presentation-list">
-                    <!-- ... (presentation items go here) ... -->
+                <ul class="publication-list" id="publication-list" style="margin-top:1.5rem;">
+                    <!-- Example publication item -->
+                    <li style="margin-bottom:1.2rem;">
+                        <strong><a href="https://doi.org/10.11648/j.jccee.20251002.12" target="_blank">A Review on Aerospace-AI, with Ethics and Implications</a></strong>
+                        <br>
+                        <span style="color:var(--text-color-muted,#b0b3b8);"><em>Journal of Civil, Construction and Environmental Engineering</em>, 2025</span>
+                    </li>
+                    <li style="margin-bottom:1.2rem;">
+                        <strong><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=K5--CxAAAAAJ&citation_for_view=K5--CxAAAAAJ:u5HHmVD_uO8C" target="_blank">BIM-driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability</a></strong>
+                        <br>
+                        <span style="color:var(--text-color-muted,#b0b3b8);"><em>Transforming Construction with Off-site Methods and Technologies</em>, 2024</span>
+                    </li>
+                    <!-- Add more publications as needed -->
                 </ul>
             </section>
+
+            <!-- Presentations Section -->
+            <section id="presentations" class="content-card fade-in" style="margin-bottom:2.5rem;">
+                <h2>Conference Presentations</h2>
+                <p style="color:var(--text-color-muted,#b0b3b8);">I have presented my ongoing and completed research at various national and international conferences, workshops, and seminars.</p>
+                <ul class="presentation-list" style="margin-top:1rem;">
+                    <!-- Example presentation item -->
+                    <li style="margin-bottom:0.9rem;">Neural Networks for Predicting Market Trends in Sustainable Industries: A Review – RAISD 2025, Jharkhand Rai University</li>
+                    <!-- Add more presentations as needed -->
+                </ul>
+            </section>
+
             <!-- Online Media Section -->
-            <section id="online-media" class="content-card fade-in" style="animation-delay: 0.3s;">
+            <section id="online-media" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Online Publications & Media</h2>
-                <p>Beyond academic publications, I occasionally contribute articles and commentary on economic topics to online platforms.</p>
-                <ul class="media-list">
-                    <!-- ... (media items go here) ... -->
+                <p style="color:var(--text-color-muted,#b0b3b8);">Beyond academic publications, I occasionally contribute articles and commentary on economic topics to online platforms.</p>
+                <ul class="media-list" style="margin-top:1rem;">
+                    <!-- Example media item -->
+                    <li style="margin-bottom:0.9rem;"><a href="https://medium.com/@fredericmirindi/revolutionizing-science-with-ai-from-hypothesis-generation-to-anomaly-detection-2025" target="_blank">Revolutionizing Science with AI: From Hypothesis Generation to Anomaly Detection</a> – Medium, 2025</li>
+                    <!-- Add more online media as needed -->
                 </ul>
                 <p style="margin-top: 2rem;">A list of scholarships and awards received can be found on the dedicated <a href="awards.html">Awards & Recognitions</a> page.</p>
             </section>
+
             <!-- Certificates Carousel Section -->
-            <section id="certificates" class="content-card fade-in" style="animation-delay: 0.5s;">
+            <section id="certificates" class="content-card fade-in">
                 <h2>Academic Certificates</h2>
-                <p>Below are selected academic certificates and recognitions from conferences and scholarly activities.</p>
-                <div class="certificates-carousel">
-                    <div class="carousel-track">
-                        <img src="images/certificate_1.jpg" alt="RAISD 2025 Conference Certificate">
-                        <img src="images/certificate_2.JPG" alt="ICIDSSD 2025 Conference Certificate">
-                        <img src="images/certificate_3.png" alt="48h Top Chrono Certificate">
-                        <img src="images/certificate_4.png" alt="Nuffield College Oxford Letter">
-                        <img src="images/certificate_5.png" alt="IConSE 2024 Presenter Certificate">
-                        <!-- Duplicate images for infinite scroll effect -->
-                        <img src="images/certificate_1.jpg" alt="RAISD 2025 Conference Certificate">
-                        <img src="images/certificate_2.JPG" alt="ICIDSSD 2025 Conference Certificate">
-                        <img src="images/certificate_3.png" alt="48h Top Chrono Certificate">
-                        <img src="images/certificate_4.png" alt="Nuffield College Oxford Letter">
-                        <img src="images/certificate_5.png" alt="IConSE 2024 Presenter Certificate">
+                <p style="color:var(--text-color-muted,#b0b3b8);">Below are selected academic certificates and recognitions from conferences and scholarly activities.</p>
+                <div class="certificates-carousel" style="margin-top:1.5rem;">
+                    <div class="carousel-track" style="display:flex; gap:1.2rem; overflow-x:auto;">
+                        <img src="images/certificate_1.jpg" alt="RAISD 2025 Conference Certificate" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_2.JPG" alt="ICIDSSD 2025 Conference Certificate" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_3.png" alt="48h Top Chrono Certificate" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_4.png" alt="Nuffield College Oxford Letter" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_5.png" alt="IConSE 2024 Presenter Certificate" style="height:120px; border-radius:6px;">
                     </div>
                 </div>
             </section>
@@ -168,17 +168,13 @@
             const toggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
             const darkModeClass = 'dark-mode';
-
-            // Apply saved theme on load
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add(darkModeClass);
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
             }
-
             toggleBtn.addEventListener('click', function() {
                 document.body.classList.toggle(darkModeClass);
-
                 if (document.body.classList.contains(darkModeClass)) {
                     localStorage.setItem('theme', 'dark');
                     themeIcon.classList.remove('fa-moon');
