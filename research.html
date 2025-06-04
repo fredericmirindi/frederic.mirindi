@@ -20,126 +20,6 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <style>
-        /* Extra spacing for clarity and visual separation */
-        .content-section {
-            margin-top: 2.5rem;
-        }
-        .content-card {
-            margin-bottom: 3.5rem !important;
-            padding-bottom: 2.5rem;
-            background: var(--section-bg, #23272b);
-            border-radius: 12px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-            padding-left: 2.2rem;
-            padding-right: 2.2rem;
-        }
-        .content-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-color, #eaeaea);
-            border-bottom: 2px solid #22d3ee;
-            padding-bottom: 0.4rem;
-        }
-        .content-card ul,
-        .content-card li {
-            color: var(--text-color, #eaeaea);
-            font-size: 1.08rem;
-        }
-        .content-card a {
-            color: #22d3ee;
-            text-decoration: none;
-        }
-        .content-card a:hover {
-            text-decoration: underline;
-        }
-        .page-header {
-            background: var(--header-footer-bg, #222831);
-            color: var(--text-color, #eaeaea);
-            padding: 2.5rem 0 1.5rem 0;
-            text-align: center;
-            border-bottom: 2px solid #22d3ee;
-        }
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-        .page-header p {
-            font-size: 1.18rem;
-            color: var(--text-color-muted, #b0b3b8);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .interests-box ul {
-            list-style: none;
-            padding: 0;
-        }
-        .interests-box li {
-            margin-bottom: 0.8rem;
-        }
-        .interests-box i {
-            color: #22d3ee;
-            margin-right: 0.5rem;
-        }
-        .filter-controls {
-            margin: 1.5rem 0 1rem 0;
-        }
-        .filter-btn {
-            padding: 0.35rem 1rem;
-            border-radius: 5px;
-            border: 1px solid #22d3ee;
-            background: transparent;
-            color: #22d3ee;
-            font-weight: 600;
-            margin-right: 0.4rem;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-        }
-        .filter-btn.active, .filter-btn:hover {
-            background: #22d3ee;
-            color: #181a1b;
-        }
-        #keyword-search {
-            padding: 0.3rem 0.7rem;
-            border-radius: 5px;
-            border: 1px solid #444;
-            margin-left: 0.5rem;
-        }
-        .publication-list {
-            margin-top: 1.5rem;
-        }
-        .publication-list li {
-            margin-bottom: 1.2rem;
-        }
-        .presentation-list, .media-list {
-            margin-top: 1.2rem;
-        }
-        .presentation-list li,
-        .media-list li {
-            margin-bottom: 0.9rem;
-        }
-        .certificates-carousel {
-            margin-top: 1.5rem;
-        }
-        .carousel-track {
-            display: flex;
-            gap: 1.2rem;
-            overflow-x: auto;
-        }
-        .carousel-track img {
-            height: 120px;
-            border-radius: 6px;
-        }
-        @media (max-width: 900px) {
-            .content-card {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header class="site-header">
@@ -164,31 +44,31 @@
 
     <main>
         <!-- Integrated, visually appealing page header -->
-        <section class="page-header">
+        <section class="page-header" style="background: var(--header-footer-bg, #222831); color: var(--text-color, #eaeaea); padding: 2.5rem 0 1.5rem 0; text-align: center; border-bottom: 2px solid #22d3ee;">
             <div class="container">
-                <h1>Research</h1>
-                <p>
+                <h1 style="font-size:2.5rem; font-family:'Playfair Display',serif; font-weight:700; margin-bottom:0.3rem;">Research</h1>
+                <p style="font-size:1.18rem; color:var(--text-color-muted,#b0b3b8); max-width:700px; margin:0 auto;">
                     Advancing Economics and Finance through Data, Discovery, and AI.
                 </p>
             </div>
         </section>
 
-        <div class="container content-section">
+        <div class="container content-section" style="margin-top:2.5rem;">
             <!-- Research Interests Section -->
-            <section id="research-interests" class="content-card fade-in">
+            <section id="research-interests" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Research Interests</h2>
                 <div class="interests-box">
-                    <ul>
-                        <li><i class="fas fa-calculator"></i> <strong>Econometrics:</strong> causal inference, time series analysis, microeconometrics</li>
-                        <li><i class="fas fa-landmark"></i> <strong>Macroeconomics:</strong> monetary policy, DSGE models, growth dynamics</li>
-                        <li><i class="fas fa-search-dollar"></i> <strong>Financial Economics:</strong> risk modeling, financial forecasting, asset pricing</li>
-                        <li><i class="fas fa-brain"></i> <strong>AI & Machine Learning:</strong> integration in economic modeling (<a href="ai-ml.html" class="inline-link">See AI/ML Projects</a>)</li>
+                    <ul style="list-style:none; padding:0;">
+                        <li><i class="fas fa-calculator icon-highlight"></i> <strong>Econometrics:</strong> causal inference, time series analysis, microeconometrics</li>
+                        <li><i class="fas fa-landmark icon-highlight"></i> <strong>Macroeconomics:</strong> monetary policy, DSGE models, growth dynamics</li>
+                        <li><i class="fas fa-search-dollar icon-highlight"></i> <strong>Financial Economics:</strong> risk modeling, financial forecasting, asset pricing</li>
+                        <li><i class="fas fa-brain icon-highlight"></i> <strong>AI & Machine Learning:</strong> integration in economic modeling (<a href="ai-ml.html" class="inline-link">See AI/ML Projects</a>)</li>
                     </ul>
                 </div>
             </section>
 
             <!-- Publications Section -->
-            <section id="publications" class="content-card fade-in">
+            <section id="publications" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Selected Publications</h2>
                 <div style="margin-bottom:1rem;">
                     <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Google Scholar</a> |
@@ -196,7 +76,7 @@
                     <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer"><i class="fab fa-researchgate"></i> ResearchGate</a>
                 </div>
                 <p style="color:var(--text-color-muted,#b0b3b8);">A selection of peer-reviewed articles, book chapters, and conference contributions. See my CV or online profiles for a complete list.</p>
-                <div class="filter-controls">
+                <div class="filter-controls" style="margin:1.5rem 0;">
                     <div class="filter-group" style="display:inline-block; margin-right:1.5rem;">
                         <label style="font-weight:600;">Filter by Type:</label>
                         <button class="filter-btn active" data-filter="all">All</button>
@@ -206,16 +86,17 @@
                     </div>
                     <div class="filter-group" style="display:inline-block;">
                         <label for="keyword-search" style="font-weight:600;">Search Keywords:</label>
-                        <input type="text" id="keyword-search" placeholder="e.g., AI, machine learning...">
+                        <input type="text" id="keyword-search" placeholder="e.g., AI, machine learning..." style="padding:0.3rem 0.7rem; border-radius:5px; border:1px solid #444;">
                     </div>
                 </div>
-                <ul class="publication-list" id="publication-list">
-                    <li>
+                <ul class="publication-list" id="publication-list" style="margin-top:1.5rem;">
+                    <!-- Example publication item -->
+                    <li style="margin-bottom:1.2rem;">
                         <strong><a href="https://doi.org/10.11648/j.jccee.20251002.12" target="_blank">A Review on Aerospace-AI, with Ethics and Implications</a></strong>
                         <br>
                         <span style="color:var(--text-color-muted,#b0b3b8);"><em>Journal of Civil, Construction and Environmental Engineering</em>, 2025</span>
                     </li>
-                    <li>
+                    <li style="margin-bottom:1.2rem;">
                         <strong><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=K5--CxAAAAAJ&citation_for_view=K5--CxAAAAAJ:u5HHmVD_uO8C" target="_blank">BIM-driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability</a></strong>
                         <br>
                         <span style="color:var(--text-color-muted,#b0b3b8);"><em>Transforming Construction with Off-site Methods and Technologies</em>, 2024</span>
@@ -224,38 +105,40 @@
                 </ul>
             </section>
 
-            <!-- Conference Presentations Section -->
-            <section id="presentations" class="content-card fade-in">
+            <!-- Presentations Section -->
+            <section id="presentations" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Conference Presentations</h2>
                 <p style="color:var(--text-color-muted,#b0b3b8);">I have presented my ongoing and completed research at various national and international conferences, workshops, and seminars.</p>
-                <ul class="presentation-list">
-                    <li>Neural Networks for Predicting Market Trends in Sustainable Industries: A Review – RAISD 2025, Jharkhand Rai University</li>
+                <ul class="presentation-list" style="margin-top:1rem;">
+                    <!-- Example presentation item -->
+                    <li style="margin-bottom:0.9rem;">Neural Networks for Predicting Market Trends in Sustainable Industries: A Review – RAISD 2025, Jharkhand Rai University</li>
                     <!-- Add more presentations as needed -->
                 </ul>
             </section>
 
             <!-- Online Media Section -->
-            <section id="online-media" class="content-card fade-in">
+            <section id="online-media" class="content-card fade-in" style="margin-bottom:2.5rem;">
                 <h2>Online Publications & Media</h2>
                 <p style="color:var(--text-color-muted,#b0b3b8);">Beyond academic publications, I occasionally contribute articles and commentary on economic topics to online platforms.</p>
-                <ul class="media-list">
-                    <li><a href="https://medium.com/@fredericmirindi/revolutionizing-science-with-ai-from-hypothesis-generation-to-anomaly-detection-2025" target="_blank">Revolutionizing Science with AI: From Hypothesis Generation to Anomaly Detection</a> – Medium, 2025</li>
+                <ul class="media-list" style="margin-top:1rem;">
+                    <!-- Example media item -->
+                    <li style="margin-bottom:0.9rem;"><a href="https://medium.com/@fredericmirindi/revolutionizing-science-with-ai-from-hypothesis-generation-to-anomaly-detection-2025" target="_blank">Revolutionizing Science with AI: From Hypothesis Generation to Anomaly Detection</a> – Medium, 2025</li>
                     <!-- Add more online media as needed -->
                 </ul>
                 <p style="margin-top: 2rem;">A list of scholarships and awards received can be found on the dedicated <a href="awards.html">Awards & Recognitions</a> page.</p>
             </section>
 
-            <!-- Academic Certificates Section -->
+            <!-- Certificates Carousel Section -->
             <section id="certificates" class="content-card fade-in">
                 <h2>Academic Certificates</h2>
                 <p style="color:var(--text-color-muted,#b0b3b8);">Below are selected academic certificates and recognitions from conferences and scholarly activities.</p>
-                <div class="certificates-carousel">
-                    <div class="carousel-track">
-                        <img src="images/certificate_1.jpg" alt="RAISD 2025 Conference Certificate">
-                        <img src="images/certificate_2.JPG" alt="ICIDSSD 2025 Conference Certificate">
-                        <img src="images/certificate_3.png" alt="48h Top Chrono Certificate">
-                        <img src="images/certificate_4.png" alt="Nuffield College Oxford Letter">
-                        <img src="images/certificate_5.png" alt="IConSE 2024 Presenter Certificate">
+                <div class="certificates-carousel" style="margin-top:1.5rem;">
+                    <div class="carousel-track" style="display:flex; gap:1.2rem; overflow-x:auto;">
+                        <img src="images/certificate_1.jpg" alt="RAISD 2025 Conference Certificate" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_2.JPG" alt="ICIDSSD 2025 Conference Certificate" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_3.png" alt="48h Top Chrono Certificate" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_4.png" alt="Nuffield College Oxford Letter" style="height:120px; border-radius:6px;">
+                        <img src="images/certificate_5.png" alt="IConSE 2024 Presenter Certificate" style="height:120px; border-radius:6px;">
                     </div>
                 </div>
             </section>
