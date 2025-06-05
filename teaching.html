@@ -6,6 +6,7 @@
     <meta name="description" content="Teaching experience of Frédéric Mirindi in Economics and Mathematics.">
     <title>Frédéric Mirindi - Teaching</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -15,104 +16,319 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+    <style>
+        .page-header.teaching-header {
+            background: #34495e;
+            color: #fff;
+            padding: 48px 0 36px 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .page-header.teaching-header h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+        .page-header.teaching-header .lead {
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .teaching-roles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: flex-start;
+        }
+        .teaching-role.card-style {
+            background: #f8fafc;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+            padding: 2rem 1.5rem 2rem 1.5rem;
+            flex: 1 1 420px;
+            min-width: 340px;
+            margin-bottom: 2rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .teaching-role.card-style:hover {
+            box-shadow: 0 8px 28px rgba(30,60,90,0.13);
+            transform: translateY(-2px) scale(1.012);
+        }
+        .teaching-role h3 {
+            font-size: 1.5rem;
+            color: #1abc9c;
+            margin-bottom: 0.3rem;
+        }
+        .institution-dates {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1.1rem;
+        }
+        .course-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 0.8rem;
+        }
+        .course-list li {
+            margin-bottom: 1.6rem;
+            padding-bottom: 1.1rem;
+            border-bottom: 1px dashed #eaf6fb;
+        }
+        .course-list li:last-child {
+            border-bottom: none;
+        }
+        .course-title {
+            font-size: 1.13rem;
+            font-weight: 700;
+            color: #34495e;
+            margin-bottom: 0.2rem;
+        }
+        .course-dates {
+            font-size: 0.98rem;
+            color: #888;
+            margin-bottom: 0.2rem;
+        }
+        .course-desc {
+            font-size: 1.02rem;
+            color: #222;
+            margin-bottom: 0.3rem;
+        }
+        .course-skills {
+            font-size: 0.97rem;
+            color: #1abc9c;
+            margin-bottom: 0.2rem;
+        }
+        .course-meta {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        .cta-button.small-button {
+            margin-top: 1.1rem;
+        }
+        .philosophy-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #eaf6fb;
+            border-left: 5px solid #1abc9c;
+            border-radius: 0 10px 10px 0;
+        }
+        .philosophy-box p {
+            margin-bottom: 0;
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+        /* Dark mode adjustments */
+        body.dark-mode .teaching-role.card-style {
+            background: #232e3a;
+            color: #181818;
+        }
+        body.dark-mode .teaching-role h3,
+        body.dark-mode .course-title,
+        body.dark-mode .course-skills {
+            color: #1abc9c;
+        }
+        body.dark-mode .course-desc,
+        body.dark-mode .course-meta {
+            color: #f0f0f0;
+        }
+        body.dark-mode .philosophy-box {
+            background: #232e3a;
+            color: #f0f0f0;
+        }
+        @media (max-width: 900px) {
+            .teaching-roles-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .teaching-role.card-style {
+                min-width: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container header-content">
             <h1><a href="index.html">Frédéric Mirindi</a></h1>
             <nav class="main-nav">
-                 <ul>
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html" class="active">Teaching</a></li> <li><a href="cv.html">CV</a></li>
+                    <li><a href="teaching.html" class="active">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
-             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <!-- Light/Dark mode toggle button -->
+            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
     <main>
-         <header class="page-header">
-             <div class="container">
-                <h1>Teaching</h1>
-                 <p>Committed to designing engaging, student-centered, and data-driven learning experiences.</p>
-             </div>
-         </header>
+        <header class="page-header teaching-header">
+            <h1>Teaching</h1>
+            <p class="lead">
+                Committed to designing engaging, student-centered, and data-driven learning experiences that empower students to master economics and mathematics for real-world success.
+            </p>
+        </header>
 
         <section id="teaching-experience" class="container content-section fade-in">
             <div class="teaching-roles-container">
-                 <div class="teaching-role card-style"> <h3>Sessional Instructor</h3>
-                    <p class="institution-dates">Booth University College, Winnipeg, Canada (September 2024 - Present)</p>
-                     <h4>Courses Taught (Lecturer and Curriculum Development):</h4>
-                     <ul class="course-list">
-                        <li>
-                            <strong>ECO110 Introduction to Microeconomics</strong><br>
-                            <em>(Oct 2024 - Dec 2024; Jan 2025 - Feb 2025; Mar 2025 - May 2025)</em><br>
-                            <i class="fas fa-users"></i> Average class size: 15-25 students.
-                        </li>
-                         <li>
-                            <strong>MAT100 Applied Finite Mathematics</strong><br>
-                             <em>(Jan 2025 - Feb 2025; Mar 2025 - May 2025)</em><br>
-                             <i class="fas fa-users"></i> Average class size: 15-25 students.
-                        </li>
-                         <li>
-                            <strong>BHS200: Research Methods</strong><br>
-                            <em>(May 2025 - Jun 2025)</em><br>
-                            <i class="fas fa-users"></i> Average class size: 15-25 students.
-                         </li>
-                         <li>
-                            <strong>MAT100: Applied Finite Math</strong><br>
-                            <em>(May 2025 - Jun 2025)</em><br>
-                            <i class="fas fa-users"></i> Average class size: 15-25 students.
-                         </li>
-                    </ul>
-                     <p><a href="https://boothuc.ca/about/our-people/staff-and-faculty-directory/view-staff/122/frdric-mirindi/" target="_blank" rel="noopener noreferrer" class="cta-button secondary small-button"><i class="fas fa-external-link-alt"></i> Faculty Profile</a></p>
-                 </div>
 
-                <div class="teaching-role card-style"> <h3>Teaching Assistant</h3>
-                    <p class="institution-dates">Catholic University of Bukavu, DR Congo (September 2016 - May 2017)</p>
-                     <h4>Courses Assisted (Curriculum Development Support):</h4>
+                <!-- Sessional Instructor -->
+                <div class="teaching-role card-style">
+                    <h3>Sessional Instructor</h3>
+                    <p class="institution-dates">Booth University College, Winnipeg, Canada (September 2024 - Present)</p>
+                    <h4>Courses Taught:</h4>
                     <ul class="course-list">
                         <li>
-                            <strong>Macroeconomics (Undergraduate)</strong><br>
-                            <em>(Fall 2016 Term: Sep 1, 2016 - Dec 24, 2016)</em><br>
-                            <i class="fas fa-users"></i> Number of students: 132.
+                            <div class="course-title">ECO110 Introduction to Microeconomics</div>
+                            <div class="course-dates">(Oct 2024 - Dec 2024; Jan 2025 - Feb 2025; Mar 2025 - May 2025)</div>
+                            <div class="course-desc">
+                                <strong>Description:</strong> Introduction to the principles of microeconomics, including supply and demand, market equilibrium, consumer choice, production, and market structures.
+                            </div>
+                            <div class="course-skills">
+                                <strong>Key Skills:</strong> Economic reasoning, graphical analysis, critical thinking, real-world application.
+                            </div>
+                            <div class="course-meta">
+                                <i class="fas fa-users"></i> Average class size: 15-25 students.
+                            </div>
                         </li>
                         <li>
-                            <strong>Quantitative Methods (Undergraduate)</strong><br>
-                            <em>(Winter 2017 Term: Jan 10, 2017 - May 2, 2017)</em><br>
-                            <i class="fas fa-users"></i> Number of students: 210.
+                            <div class="course-title">MAT100 Applied Finite Mathematics</div>
+                            <div class="course-dates">(Jan 2025 - Feb 2025; Mar 2025 - May 2025; May 2025 - Jun 2025)</div>
+                            <div class="course-desc">
+                                <strong>Description:</strong> Covers mathematical concepts used in business and social sciences: linear models, matrices, systems of equations, probability, and introductory statistics.
+                            </div>
+                            <div class="course-skills">
+                                <strong>Key Skills:</strong> Quantitative reasoning, problem solving, mathematical modeling, data interpretation.
+                            </div>
+                            <div class="course-meta">
+                                <i class="fas fa-users"></i> Average class size: 15-25 students.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="course-title">BHS200 Research Methods</div>
+                            <div class="course-dates">(May 2025 - Jun 2025)</div>
+                            <div class="course-desc">
+                                <strong>Description:</strong> Explores research design, data collection, analysis, and interpretation in the social sciences. Emphasizes critical evaluation of sources and ethical research practices.
+                            </div>
+                            <div class="course-skills">
+                                <strong>Key Skills:</strong> Research design, critical analysis, academic writing, data literacy.
+                            </div>
+                            <div class="course-meta">
+                                <i class="fas fa-users"></i> Average class size: 15-25 students.
+                            </div>
+                        </li>
+                    </ul>
+                    <p>
+                        <a href="https://boothuc.ca/about/our-people/staff-and-faculty-directory/view-staff/122/frdric-mirindi/" target="_blank" rel="noopener noreferrer" class="cta-button secondary small-button">
+                            <i class="fas fa-external-link-alt"></i> Faculty Profile
+                        </a>
+                    </p>
+                </div>
+
+                <!-- Teaching Assistant -->
+                <div class="teaching-role card-style">
+                    <h3>Teaching Assistant</h3>
+                    <p class="institution-dates">Catholic University of Bukavu, DR Congo (September 2016 - May 2017)</p>
+                    <h4>Courses Assisted:</h4>
+                    <ul class="course-list">
+                        <li>
+                            <div class="course-title">Macroeconomics (Undergraduate)</div>
+                            <div class="course-dates">(Sep 2016 - Dec 2016)</div>
+                            <div class="course-desc">
+                                <strong>Description:</strong> Study of national income, economic growth, unemployment, inflation, and fiscal/monetary policy. Assisted in lectures, grading, and student support.
+                            </div>
+                            <div class="course-skills">
+                                <strong>Key Skills:</strong> Macroeconomic analysis, academic support, communication, assessment.
+                            </div>
+                            <div class="course-meta">
+                                <i class="fas fa-users"></i> Number of students: 132.
+                            </div>
+                        </li>
+                        <li>
+                            <div class="course-title">Quantitative Methods (Undergraduate)</div>
+                            <div class="course-dates">(Jan 2017 - May 2017)</div>
+                            <div class="course-desc">
+                                <strong>Description:</strong> Introduction to quantitative tools for economics: statistics, probability, linear algebra, and their application to economic data.
+                            </div>
+                            <div class="course-skills">
+                                <strong>Key Skills:</strong> Data analysis, mathematical reasoning, tutoring, teamwork.
+                            </div>
+                            <div class="course-meta">
+                                <i class="fas fa-users"></i> Number of students: 210.
+                            </div>
                         </li>
                     </ul>
                 </div>
-            </div> </section>
-
-        <section id="teaching-philosophy" class="container content-section fade-in" style="animation-delay: 0.1s;">
-            <h2>Teaching Philosophy</h2>
-            <div class="philosophy-box"> <p>My teaching philosophy centers on creating engaging, student-focused environments where economic theory comes alive through real-world data and applications. I strive to empower students with quantitative tools and critical thinking skills, fostering a deeper understanding of economic principles and their relevance in society.</p>
             </div>
         </section>
 
+        <section id="teaching-philosophy" class="container content-section fade-in" style="animation-delay: 0.1s;">
+            <h2>Teaching Philosophy</h2>
+            <div class="philosophy-box">
+                <p>
+                    My teaching philosophy centers on creating engaging, student-focused environments where economic and mathematical concepts come alive through real-world data and applications. I strive to empower students with quantitative tools and critical thinking skills, fostering a deeper understanding of principles and their relevance in society. I believe in inclusive, interactive learning where every student is encouraged to participate, question, and grow.
+                </p>
+            </div>
+        </section>
     </main>
 
-     <footer class="site-footer">
+    <footer class="site-footer">
         <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Light/Dark mode toggle logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const darkModeClass = 'dark-mode';
+            // Apply saved theme on load
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add(darkModeClass);
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            toggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle(darkModeClass);
+                if (document.body.classList.contains(darkModeClass)) {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            });
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
