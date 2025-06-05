@@ -6,6 +6,7 @@
     <meta name="description" content="Request the Curriculum Vitae (CV) of Frédéric Mirindi, PhD Student in Economics and Econometrics.">
     <title>Frédéric Mirindi - CV Request</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -15,41 +16,180 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+    <style>
+        .page-header.cv-header {
+            background: #34495e;
+            color: #fff;
+            padding: 48px 0 36px 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .page-header.cv-header h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+        .page-header.cv-header .lead {
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .cv-content-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+            padding: 2.5rem 2rem;
+            max-width: 700px;
+            margin: 2.5rem auto;
+        }
+        .cv-summary h2 {
+            margin-top: 0;
+            color: #1abc9c;
+            font-size: 1.4rem;
+            margin-bottom: 0.7rem;
+        }
+        .cv-summary p {
+            font-size: 1.08rem;
+            color: #222;
+        }
+        .cv-request-form h2 {
+            color: #1abc9c;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.7rem;
+        }
+        .cv-request-form p {
+            color: #222;
+            font-size: 1.05rem;
+            margin-bottom: 1.1rem;
+        }
+        .cv-request-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 0.3rem;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.6rem 0.9rem;
+            border: 1px solid #dbe8ef;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #f7fafd;
+            color: #222;
+            transition: border 0.2s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border: 1.5px solid #1abc9c;
+            outline: none;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #1abc9c;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #1abc9c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .cta-button:hover, .cta-button:focus {
+            background-color: #16a085;
+            border-color: #16a085;
+        }
+        /* Dark mode adjustments */
+        body.dark-mode .cv-content-card {
+            background: #232e3a;
+            color: #f0f0f0;
+        }
+        body.dark-mode .cv-summary h2,
+        body.dark-mode .cv-request-form h2 {
+            color: #1abc9c;
+        }
+        body.dark-mode .cv-summary p,
+        body.dark-mode .cv-request-form p {
+            color: #f0f0f0;
+        }
+        body.dark-mode .form-group label {
+            color: #1abc9c;
+        }
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #1a222b;
+            color: #fff;
+            border: 1px solid #34495e;
+        }
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group textarea:focus {
+            border: 1.5px solid #1abc9c;
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container header-content">
             <h1><a href="index.html">Frédéric Mirindi</a></h1>
             <nav class="main-nav">
-                 <ul>
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
-                    <li><a href="cv.html" class="active">CV</a></li> <li><a href="blog.html">Blog</a></li>
+                    <li><a href="cv.html" class="active">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
-             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <!-- Light/Dark mode toggle button -->
+            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
     <main>
-         <header class="page-header">
-             <div class="container">
-                <h1>Curriculum Vitae</h1>
-             </div>
-         </header>
-         <section id="cv-content" class="container content-section content-card fade-in">
+        <header class="page-header cv-header">
+            <h1>Curriculum Vitae</h1>
+            <p class="lead">
+                For a detailed overview of my academic background, teaching, research, and professional experience, please request my full CV below.
+            </p>
+        </header>
+        <section id="cv-content" class="cv-content-card fade-in">
             <div class="cv-summary">
                 <h2>Overview</h2>
-                <p>As a PhD Student in Economics & Econometrics at the University of Manitoba and Sessional Instructor at Booth University College, my work integrates advanced quantitative methods, including time series analysis and AI/ML techniques, with applications in macroeconomics and financial economics. My profile is further characterized by university-level teaching experience, proficiency in key statistical software (R, Python, Stata, RATS), multilingual capabilities, and recognition through competitive <a href="awards.html" class="inline-link">awards and fellowships</a>. For comprehensive details on education, experience, publications, and presentations, please access the full CV below.</p>
+                <p>
+                    As a PhD Student in Economics & Econometrics and Sessional Instructor, my work integrates advanced quantitative methods (including time series analysis and AI/ML techniques) with macroeconomics and financial economics. I have university-level teaching experience, proficiency in R, Python, Stata, and RATS, speak multiple languages, and have received competitive <a href="awards.html" class="inline-link">awards and fellowships</a>. For full details on education, experience, publications, and presentations, please request my CV below.
+                </p>
             </div>
 
             <div class="cv-request-form">
                 <h2>Request Full CV</h2>
-                <p>To receive a copy of my full CV, please complete the form below. I will send it to the email address provided as soon as possible.</p>
-
+                <p>
+                    To receive a copy of my full CV, please complete the form below. I will send it to the email address provided as soon as possible.
+                </p>
                 <form id="cv-request-form-element" action="https://formspree.io/f/mdknnrol" method="POST">
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="requester-name">Your Name:</label>
                         <input type="text" id="requester-name" name="name" required>
                     </div>
@@ -57,37 +197,62 @@
                         <label for="requester-email">Your Email:</label>
                         <input type="email" id="requester-email" name="email" required>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <label for="requester-reason">Reason for Request (Optional):</label>
                         <textarea id="requester-reason" name="reason" rows="3"></textarea>
                     </div>
-                     <input type="hidden" name="_subject" value="CV Request from Website">
+                    <input type="hidden" name="_subject" value="CV Request from Website">
                     <button type="submit" class="cta-button">
                         <i class="fas fa-paper-plane"></i> Request CV
                     </button>
                 </form>
             </div>
         </section>
-
     </main>
 
-     <footer class="site-footer">
-         <div class="container footer-content">
-             <div class="footer-contact">
-                 <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                 <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-             </div>
-             <div class="footer-links">
-                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-             </div>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-links">
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Light/Dark mode toggle logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const darkModeClass = 'dark-mode';
+            // Apply saved theme on load
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add(darkModeClass);
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            toggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle(darkModeClass);
+                if (document.body.classList.contains(darkModeClass)) {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            });
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
