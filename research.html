@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Research publications and projects of FrÃ©dÃ©ric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba.">
-    <title>Research | FrÃ©dÃ©ric Mirindi</title>
+    <meta name="description" content="Research of Frédéric Mirindi, PhD Student in Economics and Econometrics, University of Manitoba.">
+    <title>Research | Frédéric Mirindi</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -15,57 +16,12 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <style>
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .header-profile-img {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-color, #1abc9c);
-        }
-        .main-nav .nav-icon-btn {
-            background: none;
-            border: none;
-            color: var(--primary-color, #2c3e50);
-            font-size: 1.15rem;
-            cursor: pointer;
-            margin-left: 8px;
-            padding: 6px 8px;
-            border-radius: 50%;
-            transition: background 0.2s, color 0.2s;
-        }
-        .main-nav .nav-icon-btn:hover,
-        .main-nav .nav-icon-btn:focus {
-            color: var(--accent-color, #1abc9c);
-            background: #f3f3f3;
-        }
-        .main-nav .nav-icons {
-            display: flex;
-            align-items: center;
-            margin-left: 18px;
-            gap: 4px;
-        }
-        body.dark-mode {
-            --background-color: #222;
-            --text-color: #f0f0f0;
-            --secondary-color: #333;
-            --heading-color: #fff;
-            --primary-color: #fff;
-        }
-    </style>
 </head>
 <body>
     <header class="site-header">
         <div class="container header-content">
-            <div class="header-left">
-                <img src="images/profile-small.jpg" alt="FrÃ©dÃ©ric Mirindi" class="header-profile-img">
-                <h1><a href="index.html">FrÃ©dÃ©ric Mirindi</a></h1>
-            </div>
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <span class="site-affiliation">University of Manitoba</span>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -73,114 +29,199 @@
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="blog.html">Blog</a></li>
-                    <span class="nav-icons">
-                        <li>
-                            <button class="nav-icon-btn" aria-label="Search" id="search-btn">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </li>
-                        <li>
-                            <button class="nav-icon-btn" aria-label="Translate" id="lang-toggle">
-                                <i class="fas fa-language"></i>
-                            </button>
-                        </li>
-                        <li>
-                            <button class="nav-icon-btn" aria-label="Toggle dark/light mode" id="theme-toggle">
-                                <i class="fas fa-moon" id="theme-icon"></i>
-                            </button>
-                        </li>
-                    </span>
                 </ul>
             </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">â˜°</button>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
     <main>
         <header class="page-header">
-            <h1>Research & Publications</h1>
-            <p>Explore my research interests, publications, and selected conference presentations in economics, econometrics, and AI/ML applications.</p>
+            <h1>Research</h1>
+            <p class="lead">
+                My research explores the intersection of artificial intelligence, machine learning, and quantitative economics, with applications in macroeconomic and financial modeling.
+            </p>
         </header>
 
-        <section id="research-interests" class="container content-section fade-in">
-            <h2>Research Interests</h2>
-            <ul>
-                <li><strong>AI and Machine Learning in Economics:</strong> Integration of modern AI/ML techniques in macroeconomic and financial modeling.</li>
-                <li><strong>Econometrics:</strong> Causal inference, time series analysis, microeconometrics, and experimental economics.</li>
-                <li><strong>Monetary Policy & DSGE Models:</strong> Policy analysis, growth dynamics, and structural modeling.</li>
-                <li><strong>Financial Economics:</strong> Risk modeling, asset pricing, and forecasting using advanced quantitative methods.</li>
-                <li><strong>Resource & Development Economics:</strong> Historical and contemporary analysis of resource exploitation and economic development, especially in Africa.</li>
+        <section class="container content-section fade-in">
+            <h2>Research Areas</h2>
+            <ul class="research-areas-list">
+                <li><strong>AI/ML in Economics:</strong> Integrating machine learning into macroeconomic and financial models</li>
+                <li><strong>Econometrics:</strong> Causal inference, time series, microeconometrics</li>
+                <li><strong>Monetary Policy & DSGE Models:</strong> Policy analysis, growth dynamics</li>
+                <li><strong>Financial Economics:</strong> Risk modeling, asset pricing</li>
+                <li><strong>Resource & Development Economics:</strong> Socioeconomic impacts of resource exploitation</li>
             </ul>
         </section>
 
-        <section id="publications" class="container content-section fade-in">
-            <h2>Selected Publications</h2>
-            <ul class="publication-list">
-                <li>
-                    <h3>BIM-driven offsite construction: pathway to efficiency, functionality and sustainability</h3>
-                    <div class="publication-details">D Mirindi, F Mirindi<br>
-                    <em>Transforming Construction with Off-site Methods and Technologies, 2024</em></div>
-                </li>
-                <li>
-                    <h3>Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review</h3>
-                    <div class="publication-details">D Mirindi, A Khang, F Mirindi<br>
-                    <em>Driving Green Transportation System Through Artificial Intelligence and ..., 2025</em></div>
-                </li>
-                <li>
-                    <h3>Structural performance of boards through nanoparticle reinforcement: An advance review</h3>
-                    <div class="publication-details">D Mirindi, J Hunter, F Mirindi, D Sinkhonde, F Yazdandoust<br>
-                    <em>Nanotechnology Reviews 13 (1), 20240119, 2024</em></div>
-                </li>
-                <li>
-                    <h3>Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder</h3>
-                    <div class="publication-details">D Sinkhonde, T Bezabih, D Mirindi, D Mashava, F Mirindi<br>
-                    <em>Cleaner Waste Systems, 100236, 2025</em></div>
-                </li>
-                <li>
-                    <h3>A Review on Aerospace-AI, with Ethics and Implications</h3>
-                    <div class="publication-details">D Mirindi, D Sinkhonde, F Mirindi, T Bezabih<br>
-                    <em>2025</em></div>
-                </li>
-                <li>
-                    <h3>Navigating the Digital Frontier: Social and Economic Impacts of Digital Transformation on Communication, Language, and Culture</h3>
-                    <div class="publication-details">F Mirindi, D Mirindi<br>
-                    <em>ASTEEC Conference Proceeding: Social Science 1 (254-262), 9, 2024</em></div>
-                </li>
-                <li>
-                    <h3>An Advance Review of Urban-AI and Ethical Considerations</h3>
-                    <div class="publication-details">D Mirindi, D Sinkhonde, F Mirindi<br>
-                    <em>Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in Urban-AI, 2024</em></div>
-                </li>
-            </ul>
+        <section class="container content-section fade-in">
+            <h2>Peer-Reviewed Journal Articles</h2>
+            <div class="publication-cards">
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.sciencedirect.com/science/article/pii/S277291252500034X?via%3Dihub" target="_blank" rel="noopener">
+                            Ensemble Machine Learning Algorithms for Efficient Prediction of Compressive Strength of Concrete Containing Tyre Rubber and Brick Powder
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Sinkhonde, T Bezabih, D Mirindi, D Mashava, F Mirindi<br>
+                        <em>Cleaner Waste Systems, 100236, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.sciencepublishinggroup.com/article/10.11648/j.jccee.20251002.12" target="_blank" rel="noopener">
+                            A Review on Aerospace-AI, with Ethics and Implications
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, D Sinkhonde, F Mirindi, T Bezabih<br>
+                        <em>Journal of Civil, Construction and Environmental Engineering, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.degruyter.com/document/doi/10.1515/ntrev-2024-0119/html" target="_blank" rel="noopener">
+                            Structural Performance of Boards through Nanoparticle Reinforcement: An Advance Review
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, J Hunter, F Mirindi, D Sinkhonde, F Yazdandoust<br>
+                        <em>Nanotechnology Reviews 13(1), 20240119, 2024</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://dl.acm.org/doi/10.1145/3681780.3697246" target="_blank" rel="noopener">
+                            An Advance Review of Urban-AI and Ethical Considerations
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, D Sinkhonde, F Mirindi<br>
+                        <em>Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in Urban-AI, 2024</em>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="presentations" class="container content-section fade-in">
-            <h2>Selected Conference Presentations</h2>
-            <ul class="presentation-list">
-                <li>
-                    <strong>From Rubber to Cobalt: Evolving Patterns of Resource Exploitation and Social Impact in the Democratic Republic of Congo</strong>
-                    <em>University of Oxford, ESHS Seminar, 2024</em>
-                </li>
-                <li>
-                    <strong>Human-Agent Interaction Conference (HAI)</strong>
-                    <em>Swansea, UK, 2024</em>
-                </li>
-                <li>
-                    <strong>RAISD Conference (JRU)</strong>
-                    <em>Ranchi, India, 2025</em>
-                </li>
-                <li>
-                    <strong>CEA Annual Meeting (UQAM)</strong>
-                    <em>Montreal, Canada, 2025</em>
-                </li>
-                <li>
-                    <strong>University of Warwick (CSWG Seminar)</strong>
-                    <em>Warwick, UK, 2025</em>
-                </li>
-            </ul>
+        <section class="container content-section fade-in">
+            <h2>Book Chapters</h2>
+            <div class="publication-cards">
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1" target="_blank" rel="noopener">
+                            Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, A Khang, F Mirindi<br>
+                        <em>Driving Green Transportation System Through Artificial Intelligence and Automation, Springer, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://shop.elsevier.com/books/revolutionizing-digital-healthcare-through-artificial-intelligence-and-automation/khang/978-0-443-36434-1#full-description" target="_blank" rel="noopener">
+                            Optimizing ML Algorithms for Real-Time Privacy-Preserving Patient Monitoring in Embedded Systems
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, A Khang, F Mirindi<br>
+                        <em>In: Revolutionizing Digital Healthcare Through Artificial Intelligence and Automation, Elsevier, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://shop.elsevier.com/books/revolutionizing-digital-healthcare-through-artificial-intelligence-and-automation/khang/978-0-443-36434-1#full-description" target="_blank" rel="noopener">
+                            Integration of AI and AR in Medical Imaging: A Quantitative Analysis of Workflow Optimization and Diagnostic Performance
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, A Khang, F Mirindi<br>
+                        <em>In: Revolutionizing Digital Healthcare Through Artificial Intelligence and Automation, Elsevier, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://shop.elsevier.com/books/revolutionizing-digital-healthcare-through-artificial-intelligence-and-automation/khang/978-0-443-36434-1#full-description" target="_blank" rel="noopener">
+                            Revolutionizing Medical Imaging and Diagnostics through Advanced AI and Augmented Reality Technologies
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, A Khang, F Mirindi<br>
+                        <em>In: Revolutionizing Digital Healthcare Through Artificial Intelligence and Automation, Elsevier, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://sites.google.com/view/ml-in-energy-fin-book/home?authuser=0" target="_blank" rel="noopener">
+                            Forecasting Energy Prices using Machine Learning Algorithms: A Comparative Analysis
+                        </a>
+                    </h3>
+                    <div class="publication-meta">F Mirindi<br>
+                        <em>Studies in International Series in Operations Research & Management Science, Springer (forthcoming 2024)</em>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="online-media" class="container content-section fade-in">
+        <section class="container content-section fade-in">
+            <h2>Conference Papers & Proceedings</h2>
+            <div class="publication-cards">
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.researchgate.net/publication/383293307_BIM-Driven_off-site_Construction_Pathway_to_Efficiency_Functionality_and_Sustainability?channel=doi&linkId=66c7416a97265406eaa3178b&showFulltext=true" target="_blank" rel="noopener">
+                            BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, F Mirindi<br>
+                        <em>Transforming Construction with Off-site Methods and Technologies Conference, 2024</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.researchgate.net/publication/383983210_An_advance_study_of_recycled_PP_HDPE_and_PET_fibers_with_the_application_of_machine_learning_to_enhance_concrete_compressive_strength" target="_blank" rel="noopener">
+                            An Advance Study of Recycled PP, HDPE and PET Fibers with the Application of Machine Learning to Enhance Concrete Compressive Strength
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, D Sinkhonde, F Mirindi<br>
+                        <em>2024</em>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container content-section fade-in">
+            <h2>Online Publications & Media</h2>
+            <div class="publication-cards">
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://medium.com/@mirindifrederic/revolutionizing-science-with-ai-from-hypothesis-generation-to-anomaly-detection-0c0b9c2d71f4" target="_blank" rel="noopener">
+                            Revolutionizing Science with AI: From Hypothesis Generation to Anomaly Detection
+                        </a>
+                    </h3>
+                    <div class="publication-meta">F Mirindi<br>
+                        <em>Medium, March 29, 2025</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://webouest.ca/la-journee-internationale-des-femmes-au-manitoba-celebration-et-reflexion/" target="_blank" rel="noopener">
+                            La Journée internationale des femmes au Manitoba: Célébration et réflexion
+                        </a>
+                    </h3>
+                    <div class="publication-meta">F Mirindi<br>
+                        <em>WebOuest, Winnipeg, March 13, 2024</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://webouest.ca/celebration-de-lheritage-et-des-contributions-des-noirs-au-canada-un-regard-approfondi/" target="_blank" rel="noopener">
+                            Célébration de l'héritage et des contributions des Noirs au Canada: Un regard approfondi
+                        </a>
+                    </h3>
+                    <div class="publication-meta">F Mirindi<br>
+                        <em>WebOuest, Winnipeg, February 26, 2024</em>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container content-section fade-in">
             <h2>Profiles & Online Research</h2>
             <ul class="media-list">
                 <li>
@@ -194,6 +235,10 @@
                 <li>
                     <h3>ResearchGate</h3>
                     <div class="media-details"><a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener"><i class="fab fa-researchgate"></i> researchgate.net</a></div>
+                </li>
+                <li>
+                    <h3>DBLP</h3>
+                    <div class="media-details"><a href="https://dblp.org/pid/389/3718" target="_blank" rel="noopener"><i class="fas fa-database"></i> dblp.org</a></div>
                 </li>
             </ul>
         </section>
@@ -211,38 +256,36 @@
                 <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
                 <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
                 <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                <p>Â© <span id="current-year"></span> FrÃ©dÃ©ric Mirindi. All rights reserved.</p>
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme toggle (dark/light)
-        document.getElementById('theme-toggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            // Icon swap
-            const icon = document.getElementById('theme-icon');
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+        // Theme toggle logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const darkModeClass = 'dark-mode';
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add(darkModeClass);
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
             }
+            toggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle(darkModeClass);
+                if (document.body.classList.contains(darkModeClass)) {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            });
+            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
-
-        // Language toggle (placeholder)
-        document.getElementById('lang-toggle').addEventListener('click', function() {
-            alert('Language toggle clicked! (Implement translation logic)');
-        });
-
-        // Search button (placeholder)
-        document.getElementById('search-btn').addEventListener('click', function() {
-            alert('Search clicked! (Implement search modal or bar)');
-        });
-
-        // Current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
