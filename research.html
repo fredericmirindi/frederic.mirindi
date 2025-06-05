@@ -367,98 +367,105 @@
             </div>
         </section>
 
-<section class="certificates-section fade-in">
-    <h2><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
-    <div class="certificates-film-carousel" id="certificates-film-carousel">
-        <img src="images/certificate_1.jpg" alt="Certificate 1">
-        <img src="images/certificate_2.JPG" alt="Certificate 2">
-        <img src="images/certificate_3.png" alt="Certificate 3">
-        <img src="images/certificate_4.png" alt="Certificate 4">
-        <img src="images/certificate_5.png" alt="Certificate 5">
-        <!-- Repeat images for infinite loop effect -->
-        <img src="images/certificate_1.jpg" alt="Certificate 1">
-        <img src="images/certificate_2.JPG" alt="Certificate 2">
-        <img src="images/certificate_3.png" alt="Certificate 3">
-        <img src="images/certificate_4.png" alt="Certificate 4">
-        <img src="images/certificate_5.png" alt="Certificate 5">
+<section class="photos-section">
+  <h2>Photos</h2>
+  <div class="photos-gallery">
+    <div class="photo-card">
+      <img src="images/certificate_1.jpg" alt="Certificate 1">
+      <div class="photo-caption">
+        What life is like in Sudan, where a devastating crisis has changed lives forever
+      </div>
     </div>
+    <div class="photo-card">
+      <img src="images/certificate_2.JPG" alt="Certificate 2">
+      <div class="photo-caption">
+        A photographer followed moms through a dark time in their lives. She found something unexpected
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="images/certificate_3.png" alt="Certificate 3">
+      <div class="photo-caption">
+        The week in 37 photos
+      </div>
+    </div>
+    <div class="photo-card">
+      <img src="images/certificate_4.png" alt="Certificate 4">
+      <div class="photo-caption">
+        This ancient Australian reef is sending a silent distress call
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
-.certificates-section {
+.photos-section {
     margin: 2.5rem auto;
     padding: 0 1rem;
-    max-width: 1100px;
+    max-width: 1200px;
 }
-.certificates-section h2 {
+.photos-section h2 {
     font-size: 2rem;
     margin-bottom: 1.2rem;
     font-family: 'Playfair Display', serif;
-    color: #222;
-    text-align: left;
+    color: #111;
+    font-weight: 700;
 }
-.certificates-film-carousel {
+.photos-gallery {
     display: flex;
-    gap: 22px;
-    overflow: hidden;
-    width: 100%;
-    align-items: flex-start;
-    position: relative;
-    height: 200px;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: flex-start;
+}
+.photo-card {
+    width: 280px;
     background: none;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
-.certificates-film-carousel img {
-    width: 240px;
-    height: 160px;
+.photo-card img {
+    width: 100%;
+    height: 180px;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 8px;
     background: #f0f0f0;
-    flex-shrink: 0;
-    box-shadow: 0 2px 10px rgba(44,62,80,0.08);
-    transition: transform 0.2s;
+    margin-bottom: 0.7rem;
+    box-shadow: 0 1px 6px rgba(30,60,90,0.07);
+    display: block;
 }
-.certificates-film-carousel img:hover {
-    transform: scale(1.04);
-    box-shadow: 0 8px 28px rgba(30,60,90,0.13);
+.photo-caption {
+    font-size: 1.1rem;
+    color: #111;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: left;
+    margin-bottom: 0.2rem;
 }
-@media (max-width: 900px) {
-    .certificates-film-carousel img {
-        width: 38vw;
-        max-width: 220px;
-        height: 120px;
+@media (max-width: 1100px) {
+    .photos-gallery {
+        gap: 18px;
+    }
+    .photo-card {
+        width: 44vw;
+        min-width: 180px;
+        max-width: 320px;
     }
 }
-@media (max-width: 600px) {
-    .certificates-film-carousel img {
-        width: 80vw;
-        max-width: 320px;
-        height: 90px;
+@media (max-width: 700px) {
+    .photos-gallery {
+        gap: 14px;
+        justify-content: center;
+    }
+    .photo-card {
+        width: 90vw;
+        max-width: 360px;
+    }
+    .photo-card img {
+        height: 140px;
     }
 }
 </style>
-
-<script>
-// Auto-scroll "film" effect
-document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('certificates-film-carousel');
-    let scrollAmount = 0;
-    let scrollStep = 1; // pixels per frame
-    let maxScroll = carousel.scrollWidth / 2;
-
-    function autoScroll() {
-        scrollAmount += scrollStep;
-        if (scrollAmount >= maxScroll) {
-            scrollAmount = 0;
-        }
-        carousel.scrollLeft = scrollAmount;
-        requestAnimationFrame(autoScroll);
-    }
-    autoScroll();
-});
-</script>
-
-
-
 
 
 
