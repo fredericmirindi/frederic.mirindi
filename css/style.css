@@ -1758,3 +1758,30 @@ body.dark-mode .main-nav a:hover,
 body.dark-mode .main-nav a.active {
     color: var(--accent-color);
 }
+
+
+.research-header {
+    background: #34495e; /* Same as Teaching */
+    color: #fff;
+    padding: 48px 0 36px 0;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.research-header h1 {
+    color: #fff;
+    font-size: 2.8rem;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    letter-spacing: -1px;
+    text-shadow: none;
+}
+.research-header .lead {
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
