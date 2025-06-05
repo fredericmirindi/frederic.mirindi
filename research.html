@@ -16,6 +16,146 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+    <style>
+        /* --- Soft, beautiful enhancements --- */
+        body {
+            background: var(--background-color, #f7fafd);
+        }
+        .page-header {
+            background: linear-gradient(120deg, #eaf6fb 0%, #f7fafd 100%);
+            border-radius: 0 0 32px 32px;
+            box-shadow: 0 4px 32px rgba(30,60,90,0.04);
+            margin-bottom: 2rem;
+            padding-bottom: 2.5rem;
+        }
+        .page-header h1 {
+            font-size: 2.8rem;
+            letter-spacing: -1px;
+        }
+        .page-header .lead {
+            font-size: 1.25rem;
+            color: #4a6a7d;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.7em;
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+        }
+        .content-section {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 2px 18px rgba(30,60,90,0.07);
+            margin-bottom: 2.5rem;
+            padding: 2.5rem 2rem;
+        }
+        @media (max-width: 600px) {
+            .content-section { padding: 1.2rem 0.5rem; }
+        }
+        .research-areas-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0;
+        }
+        .research-areas-list li {
+            background: #eaf6fb;
+            border-radius: 12px;
+            padding: 1.1rem 1.5rem;
+            font-size: 1.08rem;
+            color: #375a6c;
+            flex: 1 1 250px;
+            box-shadow: 0 2px 8px rgba(30,60,90,0.04);
+        }
+        .publication-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .publication-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+            padding: 1.5rem 1.2rem;
+            transition: box-shadow 0.18s, transform 0.18s;
+            border-left: 5px solid var(--accent-color, #1abc9c);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 170px;
+        }
+        .publication-card:hover {
+            box-shadow: 0 8px 28px rgba(30,60,90,0.13);
+            transform: translateY(-2px) scale(1.012);
+        }
+        .publication-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color, #2c3e50);
+        }
+        .publication-card a {
+            color: var(--primary-color, #2c3e50);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-color, #1abc9c);
+            transition: color 0.2s, border 0.2s;
+        }
+        .publication-card a:hover {
+            color: var(--accent-color, #1abc9c);
+            border-bottom: 1px solid var(--accent-color, #1abc9c);
+        }
+        .publication-meta {
+            color: #5d6d7e;
+            font-size: 0.97rem;
+            margin-top: 0.2rem;
+        }
+        .media-list h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .media-details a {
+            color: var(--accent-color, #1abc9c);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .media-details a:hover {
+            color: var(--primary-color, #2c3e50);
+            text-decoration: underline;
+        }
+        .project-list {
+            margin-top: 1.4rem;
+        }
+        .project-list li {
+            background: #f0f7f6;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.1rem;
+            color: #3c5c5c;
+            font-size: 1.05rem;
+            box-shadow: 0 1px 4px rgba(30,60,90,0.04);
+        }
+        .presentation-list li {
+            background: #f7fafd;
+            border-radius: 10px;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.1rem;
+            color: #3a4e5c;
+            font-size: 1.04rem;
+            box-shadow: 0 1px 4px rgba(30,60,90,0.03);
+        }
+        .site-affiliation {
+            font-size: 1.05rem;
+            color: #1abc9c;
+            margin-left: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .fade-in { animation: fadeInAnimation 0.8s ease-out forwards; opacity: 0; }
+        @keyframes fadeInAnimation { from { opacity: 0; } to { opacity: 1; } }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -40,14 +180,14 @@
 
     <main>
         <header class="page-header">
-            <h1>Research</h1>
+            <h1><i class="fas fa-flask"></i> Research</h1>
             <p class="lead">
                 My research explores the intersection of artificial intelligence, machine learning, and quantitative economics, with applications in macroeconomic and financial modeling.
             </p>
         </header>
 
         <section class="container content-section fade-in">
-            <h2>Research Areas</h2>
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> Research Areas</h2>
             <ul class="research-areas-list">
                 <li><strong>AI/ML in Economics:</strong> Integrating machine learning into macroeconomic and financial models</li>
                 <li><strong>Econometrics:</strong> Causal inference, time series, microeconometrics</li>
@@ -58,7 +198,7 @@
         </section>
 
         <section class="container content-section fade-in">
-            <h2>Peer-Reviewed Journal Articles</h2>
+            <h2 class="section-title"><i class="fas fa-book-open"></i> Peer-Reviewed Journal Articles</h2>
             <div class="publication-cards">
                 <div class="publication-card">
                     <h3>
@@ -104,7 +244,7 @@
         </section>
 
         <section class="container content-section fade-in">
-            <h2>Book Chapters</h2>
+            <h2 class="section-title"><i class="fas fa-book"></i> Book Chapters</h2>
             <div class="publication-cards">
                 <div class="publication-card">
                     <h3>
@@ -160,7 +300,7 @@
         </section>
 
         <section class="container content-section fade-in">
-            <h2>Conference Papers & Proceedings</h2>
+            <h2 class="section-title"><i class="fas fa-chalkboard"></i> Conference Papers & Proceedings</h2>
             <div class="publication-cards">
                 <div class="publication-card">
                     <h3>
@@ -186,7 +326,7 @@
         </section>
 
         <section class="container content-section fade-in">
-            <h2>Online Publications & Media</h2>
+            <h2 class="section-title"><i class="fas fa-globe"></i> Online Publications & Media</h2>
             <div class="publication-cards">
                 <div class="publication-card">
                     <h3>
@@ -222,7 +362,7 @@
         </section>
 
         <section class="container content-section fade-in">
-            <h2>Profiles & Online Research</h2>
+            <h2 class="section-title"><i class="fas fa-id-card"></i> Profiles & Online Research</h2>
             <ul class="media-list">
                 <li>
                     <h3>Google Scholar</h3>
