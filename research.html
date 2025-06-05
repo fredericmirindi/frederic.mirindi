@@ -367,100 +367,194 @@
             </div>
         </section>
 
-       <section class="certificates-section fade-in">
-    <h2>Certificates & Achievements</h2>
-    <div class="certificates-photo-gallery">
-        <div class="certificate-photo-card">
-            <img src="images/certificate_1.jpg" alt="Certificate 1">
-            <div class="certificate-photo-caption">Certificate Title 1<br><span class="certificate-meta">Institution or Description, Year</span></div>
+<section class="certificates-section fade-in">
+    <h2><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
+    <div class="certificates-carousel-container">
+        <button class="carousel-btn prev" aria-label="Previous certificate" onclick="plusCertSlide(-1)">&#10094;</button>
+        <div class="certificates-carousel" id="certificates-carousel">
+            <div class="cert-slide">
+                <img src="images/certificate_1.jpg" alt="Certificate 1">
+                <div class="cert-caption">
+                    Certificate Title 1<br>
+                    <span class="certificate-meta">Institution or Description, Year</span>
+                </div>
+            </div>
+            <div class="cert-slide">
+                <img src="images/certificate_2.JPG" alt="Certificate 2">
+                <div class="cert-caption">
+                    Certificate Title 2<br>
+                    <span class="certificate-meta">Institution or Description, Year</span>
+                </div>
+            </div>
+            <div class="cert-slide">
+                <img src="images/certificate_3.png" alt="Certificate 3">
+                <div class="cert-caption">
+                    Certificate Title 3<br>
+                    <span class="certificate-meta">Institution or Description, Year</span>
+                </div>
+            </div>
+            <div class="cert-slide">
+                <img src="images/certificate_4.png" alt="Certificate 4">
+                <div class="cert-caption">
+                    Certificate Title 4<br>
+                    <span class="certificate-meta">Institution or Description, Year</span>
+                </div>
+            </div>
+            <div class="cert-slide">
+                <img src="images/certificate_5.png" alt="Certificate 5">
+                <div class="cert-caption">
+                    Certificate Title 5<br>
+                    <span class="certificate-meta">Institution or Description, Year</span>
+                </div>
+            </div>
         </div>
-        <div class="certificate-photo-card">
-            <img src="images/certificate_2.JPG" alt="Certificate 2">
-            <div class="certificate-photo-caption">Certificate Title 2<br><span class="certificate-meta">Institution or Description, Year</span></div>
-        </div>
-        <div class="certificate-photo-card">
-            <img src="images/certificate_3.png" alt="Certificate 3">
-            <div class="certificate-photo-caption">Certificate Title 3<br><span class="certificate-meta">Institution or Description, Year</span></div>
-        </div>
-        <div class="certificate-photo-card">
-            <img src="images/certificate_4.png" alt="Certificate 4">
-            <div class="certificate-photo-caption">Certificate Title 4<br><span class="certificate-meta">Institution or Description, Year</span></div>
-        </div>
-        <div class="certificate-photo-card">
-            <img src="images/certificate_5.png" alt="Certificate 5">
-            <div class="certificate-photo-caption">Certificate Title 5<br><span class="certificate-meta">Institution or Description, Year</span></div>
-        </div>
+        <button class="carousel-btn next" aria-label="Next certificate" onclick="plusCertSlide(1)">&#10095;</button>
     </div>
+    <div class="carousel-dots" id="carousel-dots"></div>
 </section>
 
 <style>
 .certificates-section {
-    margin: 2.5rem auto 2.5rem auto;
+    margin: 2.5rem auto;
     padding: 0 1rem;
-    max-width: 1200px;
+    max-width: 900px;
 }
 .certificates-section h2 {
     font-size: 2rem;
     margin-bottom: 1.2rem;
     font-family: 'Playfair Display', serif;
     color: #222;
+    text-align: left;
 }
-.certificates-photo-gallery {
+.certificates-carousel-container {
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
+    align-items: center;
+    justify-content: center;
+}
+.certificates-carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    min-height: 260px;
     justify-content: flex-start;
 }
-.certificate-photo-card {
-    width: 260px;
-    flex: 0 0 260px;
+.cert-slide {
+    min-width: 260px;
+    max-width: 320px;
+    margin: 0 12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(44,62,80,0.08);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transition: transform 0.4s cubic-bezier(.4,1.6,.6,1);
+    overflow: hidden;
 }
-.certificate-photo-card img {
+.cert-slide img {
     width: 100%;
     height: 170px;
     object-fit: cover;
-    border-radius: 9px;
+    border-radius: 12px 12px 0 0;
     background: #f0f0f0;
     margin-bottom: 0.7rem;
-    box-shadow: 0 1px 6px rgba(30,60,90,0.07);
 }
-.certificate-photo-caption {
+.cert-caption {
     font-size: 1.07rem;
     color: #111;
     font-weight: 500;
     line-height: 1.3;
-    margin-bottom: 0.2rem;
+    margin: 0.5rem 1rem 0.7rem 1rem;
+    text-align: left;
 }
 .certificate-meta {
     font-size: 0.97rem;
     color: #666;
     font-weight: 400;
 }
-@media (max-width: 900px) {
-    .certificates-photo-gallery {
-        gap: 18px;
-    }
-    .certificate-photo-card {
-        width: 45vw;
-        min-width: 160px;
-        max-width: 260px;
-    }
+.carousel-btn {
+    background: #fff;
+    border: none;
+    color: #1abc9c;
+    font-size: 2.5rem;
+    padding: 0 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(30,60,90,0.07);
+    z-index: 2;
+    margin: 0 8px;
 }
-@media (max-width: 600px) {
-    .certificates-photo-gallery {
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
+.carousel-btn:hover, .carousel-btn:focus {
+    background: #eaf6fb;
+    color: #16a085;
+}
+.carousel-btn.prev { left: 0; }
+.carousel-btn.next { right: 0; }
+.carousel-dots {
+    text-align: center;
+    margin-top: 14px;
+}
+.carousel-dot {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    margin: 0 4px;
+    background: #eaf6fb;
+    border-radius: 50%;
+    border: 2px solid #1abc9c;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+}
+.carousel-dot.active {
+    background: #1abc9c;
+    border: 2px solid #16a085;
+}
+@media (max-width: 700px) {
+    .certificates-carousel {
+        min-height: 220px;
     }
-    .certificate-photo-card {
-        width: 98vw;
-        max-width: 340px;
+    .cert-slide {
+        min-width: 90vw;
+        max-width: 99vw;
     }
 }
 </style>
+
+<script>
+let certSlideIndex = 0;
+const certSlides = document.querySelectorAll('.cert-slide');
+const certCarousel = document.getElementById('certificates-carousel');
+const dotsContainer = document.getElementById('carousel-dots');
+const totalSlides = certSlides.length;
+
+// Create dots
+for(let i=0; i<totalSlides; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('carousel-dot');
+    if(i === 0) dot.classList.add('active');
+    dot.onclick = () => showCertSlide(i);
+    dotsContainer.appendChild(dot);
+}
+const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+function showCertSlide(n) {
+    certSlideIndex = (n + totalSlides) % totalSlides;
+    certCarousel.scrollTo({
+        left: certSlides[certSlideIndex].offsetLeft - certCarousel.offsetLeft,
+        behavior: 'smooth'
+    });
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[certSlideIndex].classList.add('active');
+}
+function plusCertSlide(n) {
+    showCertSlide(certSlideIndex + n);
+}
+// Make sure first slide is visible on load
+window.addEventListener('DOMContentLoaded', () => showCertSlide(0));
+</script>
+
 
 
 
