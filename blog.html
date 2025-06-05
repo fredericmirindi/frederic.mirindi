@@ -6,6 +6,7 @@
     <meta name="description" content="Blog by Frédéric Mirindi discussing topics in economics and econometrics, including game theory, macroeconomics, and time series analysis.">
     <title>Frédéric Mirindi - Blog</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -24,6 +25,108 @@
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .page-header.blog-header {
+            background: #34495e;
+            color: #fff;
+            padding: 48px 0 36px 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .page-header.blog-header h1 {
+            color: #fff;
+            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+        .page-header.blog-header p {
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .blog-excerpt-card {
+            background: #f8fafc;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+            padding: 2rem 2rem 1.5rem 2rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+            border-left: 5px solid #1abc9c;
+        }
+        .blog-excerpt-card:hover {
+            box-shadow: 0 8px 28px rgba(30,60,90,0.13);
+            transform: translateY(-2px) scale(1.012);
+        }
+        .blog-post-header {
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eaf6fb;
+        }
+        .blog-post-title {
+            font-size: 1.6rem;
+            color: #34495e;
+            margin-bottom: 0.3rem;
+        }
+        .blog-post-meta {
+            font-size: 0.98rem;
+            color: #888;
+            font-style: italic;
+        }
+        .blog-post-excerpt p {
+            margin-bottom: 0.7rem;
+            color: #222;
+        }
+        .read-full-post-link {
+            color: #1abc9c;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .read-full-post-link:hover {
+            color: #16a085;
+            text-decoration: underline;
+        }
+        .blog-divider {
+            border: 0;
+            height: 1px;
+            background-color: #eaf6fb;
+            margin: 2rem 0;
+        }
+        /* Dark mode adjustments */
+        body.dark-mode .blog-excerpt-card {
+            background: #232e3a;
+            color: #f0f0f0;
+            border-left: 5px solid #1abc9c;
+        }
+        body.dark-mode .blog-post-title {
+            color: #1abc9c;
+        }
+        body.dark-mode .blog-post-meta {
+            color: #bfc9d1;
+        }
+        body.dark-mode .blog-divider {
+            background-color: #34495e;
+        }
+        body.dark-mode .read-full-post-link {
+            color: #1abc9c;
+        }
+        body.dark-mode .read-full-post-link:hover {
+            color: #fff;
+        }
+        @media (max-width: 700px) {
+            .blog-excerpt-card {
+                padding: 1.2rem 0.6rem;
+            }
+            .blog-post-title {
+                font-size: 1.18rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -39,15 +142,17 @@
                 </ul>
             </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <!-- Light/Dark mode toggle button -->
+            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
     <main>
-        <header class="page-header">
-            <div class="container">
-                <h1>Blog: Economic Insights</h1>
-                <p>Discussions on microeconomic strategy, macroeconomic policy, and econometric techniques.</p>
-            </div>
+        <header class="page-header blog-header">
+            <h1>Blog: Economic Insights</h1>
+            <p>Discussions on microeconomic strategy, macroeconomic policy, and econometric techniques.</p>
         </header>
 
         <div class="container content-section">
@@ -59,7 +164,7 @@
                     <p class="blog-post-meta">Posted on <time datetime="2025-05-09">May 9, 2025</time> | Category: Religion, Network Science</p>
                 </header>
                 <div class="blog-post-excerpt">
-                    <p>How can network science help us understand and even anticipate the outcome of the papal conclave? Drawing on Bocconi University’s research and the latest election, this article explores how cardinal alliances, status, and information flow shaped the 2025 conclave-and what it means for the future of the Church.</p>
+                    <p>How can network science help us understand and even anticipate the outcome of the papal conclave? Drawing on Bocconi University’s research and the latest election, this article explores how cardinal alliances, status, and information flow shaped the 2025 conclave—and what it means for the future of the Church.</p>
                     <p><a href="blog-network-science.html" class="read-full-post-link">Read Full Post &rarr;</a></p>
                 </div>
             </article>
@@ -115,7 +220,6 @@
                     <p><a href="blog-post-auctions.html" class="read-full-post-link">Read Full Post &rarr;</a></p>
                 </div>
             </article>
-
         </div>
     </main>
 
@@ -136,6 +240,32 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Light/Dark mode toggle logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const darkModeClass = 'dark-mode';
+            // Apply saved theme on load
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add(darkModeClass);
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            toggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle(darkModeClass);
+                if (document.body.classList.contains(darkModeClass)) {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+            });
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
 </body>
 </html>
