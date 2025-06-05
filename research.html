@@ -16,8 +16,8 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <style>
-        /* Match Teaching header style */
         .page-header.research-header {
             background: #34495e;
             color: #fff;
@@ -139,6 +139,29 @@
         }
         .fade-in { animation: fadeInAnimation 0.8s ease-out forwards; opacity: 0; }
         @keyframes fadeInAnimation { from { opacity: 0; } to { opacity: 1; } }
+        /* 3D Animation Section */
+        .economics-3d-section {
+            background: #f8fafc;
+            border-radius: 18px;
+            box-shadow: 0 2px 18px rgba(30,60,90,0.07);
+            margin: 3rem auto 2.5rem auto;
+            padding: 2.5rem 2rem 2rem 2rem;
+            text-align: center;
+            max-width: 800px;
+        }
+        .economics-3d-section h2 {
+            font-size: 2rem;
+            color: #1abc9c;
+            margin-bottom: 1.4rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .economics-3d-section p {
+            color: #375a6c;
+            margin-bottom: 2rem;
+        }
+        .economics-3d-section lottie-player {
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -342,6 +365,26 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- 3D Economics Animation Section -->
+        <section class="economics-3d-section fade-in">
+            <h2><i class="fas fa-chart-bar"></i> Interactive Economics 3D Animation</h2>
+            <p>
+                Explore economic concepts visually! The animation below illustrates financial growth and market dynamics, bringing data to life for a modern economics perspective.
+            </p>
+            <!-- Example Lottie animation: Economic growth bar chart -->
+            <lottie-player
+                src="https://lottie.host/3d1f4e2a-9c77-4e1d-89c2-7b8c3a8d3c9e/2vQJHk6b2z.json"
+                background="transparent"
+                speed="1"
+                style="width: 400px; height: 400px;"
+                loop
+                autoplay
+            ></lottie-player>
+            <p style="font-size: 0.95rem; color: #888; margin-top: 1.5rem;">
+                Animation credit: <a href="https://iconscout.com/lottie-animations/economic" target="_blank" rel="noopener" style="color:#1abc9c;">IconScout Lottie Animations</a>
+            </p>
         </section>
     </main>
 
