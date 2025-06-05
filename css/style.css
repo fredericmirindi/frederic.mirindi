@@ -1787,12 +1787,4 @@ body.dark-mode .main-nav a.active {
 
 
 
-
-/* Pour le mode sombre */
-body.dark-mode .research-areas-list li {
-    color: #181818; /* noir ou très foncé */
-}
-body.dark-mode .research-areas-list li strong {
-    color: #181818;
-}
-
+ 
