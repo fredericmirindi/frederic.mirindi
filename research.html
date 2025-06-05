@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Research of Frédéric Mirindi, PhD Student in Economics and Econometrics, University of Manitoba.">
+    <meta name="description" content="Research of Frédéric Mirindi, PhD Student in Economics and Econometrics.">
     <title>Research | Frédéric Mirindi</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/theme.css">
@@ -17,7 +17,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
     <style>
-        /* --- Soft, beautiful enhancements --- */
         body {
             background: var(--background-color, #f7fafd);
         }
@@ -27,10 +26,15 @@
             box-shadow: 0 4px 32px rgba(30,60,90,0.04);
             margin-bottom: 2rem;
             padding-bottom: 2.5rem;
+            text-align: center;
         }
         .page-header h1 {
             font-size: 2.8rem;
             letter-spacing: -1px;
+            margin-bottom: 1.2rem;
+            color: #1abc9c; /* Accent color for visibility */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
         }
         .page-header .lead {
             font-size: 1.25rem;
@@ -147,11 +151,7 @@
             box-shadow: 0 1px 4px rgba(30,60,90,0.03);
         }
         .site-affiliation {
-            font-size: 1.05rem;
-            color: #1abc9c;
-            margin-left: 1.2rem;
-            font-weight: 600;
-            letter-spacing: 1px;
+            display: none;
         }
         .fade-in { animation: fadeInAnimation 0.8s ease-out forwards; opacity: 0; }
         @keyframes fadeInAnimation { from { opacity: 0; } to { opacity: 1; } }
@@ -161,7 +161,6 @@
     <header class="site-header">
         <div class="container header-content">
             <h1><a href="index.html">Frédéric Mirindi</a></h1>
-            <span class="site-affiliation">University of Manitoba</span>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -180,7 +179,7 @@
 
     <main>
         <header class="page-header">
-            <h1><i class="fas fa-flask"></i> Research</h1>
+            <h1>Research</h1>
             <p class="lead">
                 My research explores the intersection of artificial intelligence, machine learning, and quantitative economics, with applications in macroeconomic and financial modeling.
             </p>
@@ -197,6 +196,7 @@
             </ul>
         </section>
 
+        <!-- Publications Section -->
         <section class="container content-section fade-in">
             <h2 class="section-title"><i class="fas fa-book-open"></i> Peer-Reviewed Journal Articles</h2>
             <div class="publication-cards">
