@@ -17,30 +17,29 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
     <style>
-        body {
-            background: var(--background-color, #f7fafd);
-        }
-        .page-header {
-            background: linear-gradient(120deg, #eaf6fb 0%, #f7fafd 100%);
-            border-radius: 0 0 32px 32px;
-            box-shadow: 0 4px 32px rgba(30,60,90,0.04);
+        /* Match Teaching header style */
+        .page-header.research-header {
+            background: #34495e;
+            color: #fff;
+            padding: 48px 0 36px 0;
+            border-radius: 0;
+            box-shadow: none;
             margin-bottom: 2rem;
-            padding-bottom: 2.5rem;
             text-align: center;
         }
-        .page-header h1 {
+        .page-header.research-header h1 {
+            color: #fff;
             font-size: 2.8rem;
-            letter-spacing: -1px;
-            margin-bottom: 1.2rem;
-            color: #1abc9c; /* Accent color for visibility */
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            text-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+            text-shadow: none;
         }
-        .page-header .lead {
-            font-size: 1.25rem;
-            color: #4a6a7d;
-            max-width: 650px;
+        .page-header.research-header .lead {
+            color: #ecf0f1;
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto;
         }
         .section-title {
@@ -138,9 +137,6 @@
             font-size: 1.04rem;
             box-shadow: 0 1px 4px rgba(30,60,90,0.03);
         }
-        .site-affiliation {
-            display: none;
-        }
         .fade-in { animation: fadeInAnimation 0.8s ease-out forwards; opacity: 0; }
         @keyframes fadeInAnimation { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -166,12 +162,12 @@
     </header>
 
     <main>
-    <header class="page-header research-header">
-    <h1>Research</h1>
-    <p class="lead">
-        My research explores the intersection of artificial intelligence, machine learning, and quantitative economics, with applications in macroeconomic and financial modeling.
-    </p>
-    </header>
+        <header class="page-header research-header">
+            <h1>Research</h1>
+            <p class="lead">
+                My research explores the intersection of artificial intelligence, machine learning, and quantitative economics, with applications in macroeconomic and financial modeling.
+            </p>
+        </header>
 
         <section class="container content-section fade-in">
             <h2 class="section-title"><i class="fas fa-lightbulb"></i> Research Areas</h2>
@@ -184,7 +180,6 @@
             </ul>
         </section>
 
-        <!-- Publications Section -->
         <section class="container content-section fade-in">
             <h2 class="section-title"><i class="fas fa-book-open"></i> Peer-Reviewed Journal Articles</h2>
             <div class="publication-cards">
