@@ -124,33 +124,66 @@
     </main>
 
     <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-contact">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-            </div>
-            <div class="footer-links">
-                <!-- Footer navigation menu -->
-                <nav class="footer-nav" aria-label="Footer navigation">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="research.html">Research</a></li>
-                        <li><a href="teaching.html">Teaching</a></li>
-                        <li><a href="cv.html">CV</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                    </ul>
-                </nav>
-                <!-- Social icons -->
-                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-            </div>
+    <div class="container footer-content">
+        <div class="footer-contact">
+            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
         </div>
-    </footer>
+        <div class="footer-links">
+            <ul class="footer-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="research.html">Research</a></li>
+                <li><a href="teaching.html">Teaching</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+
+.footer-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    justify-content: center;
+}
+.footer-menu li {
+    display: inline-block;
+}
+.footer-menu a {
+    color: #1abc9c;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.09rem;
+    transition: color 0.2s;
+}
+.footer-menu a:hover,
+.footer-menu a:focus {
+    color: #16a085;
+    text-decoration: underline;
+}
+@media (max-width: 700px) {
+    .footer-menu {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+}
+
+
+
+
+    
 
     <script src="js/script.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
