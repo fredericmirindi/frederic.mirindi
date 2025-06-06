@@ -5,332 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and finance.">
     <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
+    
     <!-- Main site styles -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Theme (light/dark) styles -->
     <link rel="stylesheet" href="css/theme.css">
+
     <!-- Fonts and icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <!-- Favicon and meta icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <!-- Map library CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-    <style>
-        :root {
-            --accent-color: #1abc9c;
-        }
-        body {
-            background: var(--background-color, #f7fafd);
-        }
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: #fff;
-            box-shadow: 0 2px 10px rgba(30,60,90,0.07);
-            transition: background 0.2s;
-        }
-        .site-header .header-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.2rem 0;
-        }
-        .main-nav ul {
-            display: flex;
-            gap: 1.2rem;
-        }
-        .main-nav a {
-            font-weight: 600;
-            color: #34495e;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .main-nav a.active, .main-nav a:hover, .main-nav a:focus {
-            color: var(--accent-color);
-        }
-        #theme-toggle {
-            font-size: 1.7rem;
-            margin-left: 1.2rem;
-            background: #eaf6fb;
-            color: var(--accent-color);
-            border: none;
-            border-radius: 50%;
-            padding: 0.4em 0.6em;
-            cursor: pointer;
-            transition: background 0.2s, color 0.2s;
-        }
-        #theme-toggle:focus { outline: 2px solid var(--accent-color); }
-        @media (max-width: 700px) {
-            #theme-toggle { margin-left: 0; margin-right: 1.2rem; }
-            .main-nav ul { gap: 0.7rem; }
-        }
-        .hero-section {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2.5rem;
-            margin-top: 2.5rem;
-            margin-bottom: 2.5rem;
-            min-height: 350px;
-        }
-        .hero-text {
-            flex: 1 1 400px;
-            animation: fadeInLeft 1.2s cubic-bezier(.22,1.02,.45,.98);
-        }
-        .hero-text h2 {
-            font-size: 2.2rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: var(--accent-color);
-            margin-bottom: 0.4rem;
-        }
-        .hero-text .ai-badge {
-            display: inline-block;
-            background: #eaf6fb;
-            color: var(--accent-color);
-            font-weight: bold;
-            border-radius: 20px;
-            padding: 0.2em 0.8em;
-            margin-left: 0.6em;
-            font-size: 1rem;
-            vertical-align: middle;
-            letter-spacing: 1px;
-        }
-        .hero-text p {
-            font-size: 1.13rem;
-            color: #34495e;
-            margin-bottom: 0.5rem;
-            margin-top: 0;
-        }
-        .hero-buttons {
-            margin-top: 1.1rem;
-            display: flex;
-            gap: 1.1rem;
-        }
-        .cta-button, .cta-button.secondary {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 2px solid var(--accent-color);
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        .cta-button.secondary {
-            background: #fff;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-        }
-        .cta-button:hover, .cta-button:focus, .cta-button.secondary:hover, .cta-button.secondary:focus {
-            background: #16a085;
-            color: #fff;
-            border-color: #16a085;
-            transform: translateY(-2px) scale(1.03);
-        }
-        .hero-image {
-            flex: 0 0 210px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeInRight 1.2s cubic-bezier(.22,1.02,.45,.98);
-        }
-        .hero-image img {
-            width: 210px;
-            height: 210px;
-            border-radius: 50%;
-            object-fit: cover;
-            box-shadow: 0 6px 32px rgba(30,60,90,0.17);
-            border: 5px solid #eaf6fb;
-            animation: fadeIn 1.2s;
-        }
-        .facts-list {
-            display: flex;
-            gap: 2.2rem;
-            margin-top: 1.2rem;
-            margin-bottom: 0.4rem;
-            font-size: 1.13rem;
-        }
-        .facts-list li {
-            list-style: none;
-            background: #eaf6fb;
-            color: var(--accent-color);
-            font-weight: 600;
-            border-radius: 18px;
-            padding: 0.5em 1.2em;
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-            box-shadow: 0 2px 8px rgba(30,60,90,0.04);
-        }
-        .content-section {
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 2px 18px rgba(30,60,90,0.07);
-            margin-bottom: 2.5rem;
-            padding: 2.5rem 2rem;
-            animation: fadeInUp 1.2s cubic-bezier(.22,1.02,.45,.98);
-        }
-        .featured-section .ai-ml-badge {
-            display: inline-block;
-            background: var(--accent-color);
-            color: #fff;
-            font-weight: bold;
-            border-radius: 18px;
-            padding: 0.2em 0.9em;
-            font-size: 1rem;
-            margin-left: 0.7em;
-            letter-spacing: 1px;
-            vertical-align: middle;
-        }
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.6rem;
-        }
-        .skill-item {
-            flex: 1 1 210px;
-            min-width: 200px;
-            background: #eaf6fb;
-            border-radius: 14px;
-            padding: 1.3rem 1.1rem;
-            text-align: center;
-            transition: box-shadow 0.2s, transform 0.2s;
-            box-shadow: 0 2px 8px rgba(30,60,90,0.04);
-            cursor: pointer;
-        }
-        .skill-item:hover, .skill-item:focus {
-            box-shadow: 0 8px 28px rgba(30,60,90,0.13);
-            transform: translateY(-2px) scale(1.03);
-            background: #d0f5f0;
-        }
-        .skill-icon {
-            font-size: 2.3rem;
-            color: var(--accent-color);
-            margin-bottom: 0.6rem;
-        }
-        .progress-bar-container {
-            background: #fff;
-            border-radius: 8px;
-            margin: 0.7rem auto 0.3rem auto;
-            width: 85%;
-            height: 14px;
-            box-shadow: 0 1px 4px rgba(30,60,90,0.06);
-        }
-        .progress-bar {
-            height: 100%;
-            border-radius: 8px;
-            background: linear-gradient(90deg, var(--accent-color) 70%, #16a085 100%);
-            transition: width 1s cubic-bezier(.22,1.02,.45,.98);
-        }
-        .progress-label {
-            font-size: 0.98rem;
-            color: #34495e;
-            margin-top: 0.1rem;
-        }
-        #map-container {
-            width: 100%;
-            height: 420px;
-            border-radius: 16px;
-            border: 3px solid var(--accent-color);
-            margin-bottom: 1.1rem;
-            margin-top: 1.1rem;
-        }
-        .map-legend {
-            display: flex;
-            gap: 2.2rem;
-            margin-bottom: 1.2rem;
-            align-items: center;
-        }
-        .map-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 0.4em;
-            font-size: 1.01rem;
-        }
-        .map-legend-item i {
-            font-size: 1.1rem;
-        }
-        .caption {
-            color: #888;
-            font-size: 0.97rem;
-        }
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 1.8rem;
-            align-items: flex-start;
-        }
-        .footer-contact, .footer-links {
-            flex: 1 1 220px;
-        }
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 0.7rem;
-        }
-        .footer-links .quick-links {
-            display: flex;
-            gap: 1.3rem;
-            margin-bottom: 0.7rem;
-        }
-        .footer-links a {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
-            transition: color 0.2s;
-        }
-        .footer-links a:hover, .footer-links a:focus {
-            color: #16a085;
-        }
-        .footer-links .social-icons {
-            display: flex;
-            gap: 1.1rem;
-        }
-        @media (max-width: 900px) {
-            .hero-section { flex-direction: column; gap: 1.6rem; }
-            .footer-content { flex-direction: column; gap: 1.3rem; }
-            .footer-links { align-items: flex-start; }
-        }
-        @media (max-width: 700px) {
-            .hero-section { flex-direction: column; gap: 1.6rem; }
-            .facts-list { flex-direction: column; gap: 0.7rem; }
-            .skills-grid { flex-direction: column; gap: 1.1rem; }
-        }
-        /* Animations */
-        @keyframes fadeInLeft { from { opacity:0; transform: translateX(-30px);} to { opacity:1; transform: none;} }
-        @keyframes fadeInRight { from { opacity:0; transform: translateX(30px);} to { opacity:1; transform: none;} }
-        @keyframes fadeInUp { from { opacity:0; transform: translateY(30px);} to { opacity:1; transform: none;} }
-        @keyframes fadeIn { from { opacity:0;} to { opacity:1;} }
-        /* PAS de redéfinition de --accent-color dans .dark-mode */
-        body.dark-mode {
-            /* autres couleurs dark, PAS de --accent-color ici */
-        }
-    </style>
+
+    <!-- Map library CSS (if used) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body>
-    <header class="site-header" role="banner">
+    <header class="site-header">
         <div class="container header-content">
-            <button id="theme-toggle" aria-label="Toggle light and dark mode">
-                <i id="theme-icon" class="fas fa-moon"></i>
-            </button>
-            <h1><a href="index.html" aria-label="Home">Frédéric Mirindi</a></h1>
-            <nav class="main-nav" aria-label="Main navigation">
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
@@ -338,45 +41,38 @@
                 </ul>
             </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <!-- Light/Dark mode toggle button -->
+            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
 
     <main>
-        <section id="hero" class="container hero-section fade-in" aria-label="Hero section">
+        <section id="hero" class="container hero-section">
             <div class="hero-text">
-                <h2>
-                    PhD Student in Economics &amp; Econometrics
-                    <span class="ai-badge" aria-label="AI/ML Specialist"><i class="fas fa-robot"></i> AI/ML</span>
-                </h2>
+                <h2>PhD Student in Economics &amp; Econometrics</h2>
                 <p>University of Manitoba</p>
                 <p>Sessional Instructor, Booth University College</p>
                 <p>Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration.</p>
-                <ul class="facts-list" aria-label="Key facts">
-                    <li><i class="fas fa-book"></i> +8 publications</li>
-                    <li><i class="fas fa-language"></i> 4 langues</li>
-                    <li><i class="fas fa-globe"></i> 3 continents d’enseignement</li>
-                </ul>
                 <div class="hero-buttons">
-                    <a href="research.html" class="cta-button" aria-label="View Research">View Research</a>
-                    <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary" aria-label="Contact Me">Contact Me</a>
-                    <a href="https://www.linkedin.com/in/fredericmirindi" class="cta-button secondary" aria-label="LinkedIn" target="_blank" rel="noopener">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
+                    <a href="research.html" class="cta-button">View Research</a>
+                    <a href="mailto:mirindif@myumanitoba.ca" class="cta-button secondary">Contact Me</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="images/profile.jpg" alt="Profile picture of Frédéric Mirindi" aria-label="Profile picture">
+                <img src="images/profile.jpg" alt="Profile picture of Frédéric Mirindi">
             </div>
         </section>
 
-        <section id="about" class="container content-section fade-in" aria-label="About Me">
+        <section id="about" class="container content-section fade-in">
             <h2>About Me</h2>
             <p>I am currently pursuing a Ph.D. in Economics and Econometrics at the University of Manitoba, building upon a diverse academic background including degrees from the University of Antwerp and the Catholic University of Bukavu. My professional journey blends research, teaching, and data analysis, driven by a commitment to understanding and solving complex economic challenges.</p>
             <p>As a sessional instructor at Booth University College, I design engaging, data-driven learning experiences in Microeconomics and Applied Finite Mathematics. My research leverages quantitative methods and increasingly integrates artificial intelligence and machine learning techniques to explore macroeconomic and financial questions. I thrive in multicultural environments and am fluent in English and French.</p>
         </section>
 
-        <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;" aria-label="Research Highlights">
-            <h2>Research Highlights <span class="ai-ml-badge"><i class="fas fa-robot"></i> AI/ML</span></h2>
+        <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
+            <h2>Research Highlights</h2>
             <p>My core research interest lies in the innovative application of quantitative methods to economic problems. Currently, I am focused on:</p>
             <div class="interests-box">
                 <p><i class="fas fa-brain icon-highlight"></i> Integrating AI and Machine Learning in macroeconomic and financial modeling.</p>
@@ -385,107 +81,81 @@
                 <p><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</p>
             </div>
             <div style="margin-top: 1.5rem;">
-                <a href="research.html" class="cta-button" aria-label="Explore Publications">Explore Publications</a>
-                <a href="ai-ml.html" class="cta-button secondary" aria-label="AI/ML Focus">AI/ML Focus</a>
+                <a href="research.html" class="cta-button">Explore Publications</a>
+                <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a>
             </div>
         </section>
 
-        <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;" aria-label="Global Experience & Education">
+        <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
             <h2>Global Experience & Education</h2>
             <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
-            <div class="map-legend" aria-label="Map Legend">
-                <div class="map-legend-item"><i class="fas fa-graduation-cap" style="color:#2c3e50"></i> Education</div>
-                <div class="map-legend-item"><i class="fas fa-map-pin" style="color:#e74c3c"></i> Conference</div>
-                <div class="map-legend-item"><i class="fas fa-flask" style="color:#f39c12"></i> Research</div>
-            </div>
-            <div id="map-container" aria-label="Map of academic and professional locations"></div>
+            <div id="map-container"></div>
             <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
         </section>
 
-        <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;" aria-label="Skills Snapshot">
+        <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
             <h2>Skills Snapshot</h2>
             <div class="skills-grid">
-                <div class="skill-item" tabindex="0" aria-label="Quantitative Research">
+                <div class="skill-item">
                     <i class="fas fa-calculator skill-icon"></i>
                     <h3>Quantitative Research</h3>
                     <p>Econometric analysis, data modeling, experimental design.</p>
-                    <div class="progress-bar-container" aria-label="Quantitative Research proficiency">
-                        <div class="progress-bar" style="width: 93%;"></div>
-                    </div>
-                    <div class="progress-label">Advanced</div>
                 </div>
-                <div class="skill-item" tabindex="0" aria-label="Technical Proficiency">
+                <div class="skill-item">
                     <i class="fas fa-laptop-code skill-icon"></i>
                     <h3>Technical Proficiency</h3>
                     <p>R, Python, Stata, RATS, ML/AI techniques.</p>
-                    <div class="progress-bar-container" aria-label="Technical Proficiency">
-                        <div class="progress-bar" style="width: 90%;"></div>
-                    </div>
-                    <div class="progress-label">Advanced</div>
                 </div>
-                <div class="skill-item" tabindex="0" aria-label="Academic Instruction">
+                <div class="skill-item">
                     <i class="fas fa-chalkboard-teacher skill-icon"></i>
                     <h3>Academic Instruction</h3>
                     <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
-                    <div class="progress-bar-container" aria-label="Academic Instruction">
-                        <div class="progress-bar" style="width: 88%;"></div>
-                    </div>
-                    <div class="progress-label">Experienced</div>
                 </div>
-                <div class="skill-item" tabindex="0" aria-label="Collaboration & Languages">
+                <div class="skill-item">
                     <i class="fas fa-globe-americas skill-icon"></i>
                     <h3>Collaboration & Languages</h3>
-                    <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc.</p>
-                    <div class="progress-bar-container" aria-label="Collaboration & Languages">
-                        <div class="progress-bar" style="width: 85%;"></div>
-                    </div>
-                    <div class="progress-label">Fluent</div>
+                    <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer" role="contentinfo">
+    <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-contact">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca" aria-label="Email">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer" aria-label="Website">fredericmirindi.com</a></p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
             </div>
             <div class="footer-links">
-                <div class="quick-links">
-                    <a href="research.html" aria-label="Research">Research</a>
-                    <a href="teaching.html" aria-label="Teaching">Teaching</a>
-                    <a href="cv.html" aria-label="CV">CV</a>
-                    <a href="blog.html" aria-label="Blog">Blog</a>
-                </div>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener" aria-label="ORCID"><i class="fab fa-orcid"></i></a>
-                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener" aria-label="ResearchGate"><i class="fab fa-researchgate"></i></a>
-                </div>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
                 <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="js/script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script>
         // Light/Dark mode toggle logic
         document.addEventListener('DOMContentLoaded', function() {
             const toggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
             const darkModeClass = 'dark-mode';
+
             // Apply saved theme on load
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add(darkModeClass);
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
             }
+
             toggleBtn.addEventListener('click', function() {
                 document.body.classList.toggle(darkModeClass);
+
                 if (document.body.classList.contains(darkModeClass)) {
                     localStorage.setItem('theme', 'dark');
                     themeIcon.classList.remove('fa-moon');
@@ -496,20 +166,22 @@
                     themeIcon.classList.add('fa-moon');
                 }
             });
-            document.getElementById('current-year').textContent = new Date().getFullYear();
         });
     </script>
     <script>
-        // Leaflet map with legend/filter
         document.addEventListener('DOMContentLoaded', function() {
             const mapElement = document.getElementById('map-container');
             if (mapElement) {
+                // Initialize map WITH scrollWheelZoom disabled
                 const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2);
+
+                // Add Tile Layer
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
+                // Define Locations (using categories for potential icon switching)
                 const locations = [
                     { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada", category: 'education' },
                     { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium", category: 'education' },
@@ -524,12 +196,12 @@
                     { lat: 49.9350, lng: 11.5758, name: "University of Bayreuth (BIGSAS)", type: "Research Experience", city: "Bayreuth, Germany", category: 'research'}
                 ];
 
-                // Custom icons
+                // Define custom icons
                 const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
                 const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -26] });
                 const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
 
-                // Add Markers
+                // Add Markers using custom icons
                 locations.forEach(location => {
                     let iconToUse;
                     switch(location.category) {
@@ -538,71 +210,12 @@
                         case 'research': iconToUse = researchIcon; break;
                         default: iconToUse = undefined;
                     }
+
                     L.marker([location.lat, location.lng], { icon: iconToUse })
                         .addTo(map)
                         .bindPopup(`<b>${location.name}</b><br>${location.type}<br><em>${location.city}</em>`);
                 });
-
-                // Interactive legend/filter
-                const legend = document.createElement('div');
-                legend.className = 'leaflet-control leaflet-bar map-legend-control';
-                legend.style.background = '#fff';
-                legend.style.padding = '8px 16px';
-                legend.style.borderRadius = '10px';
-                legend.style.boxShadow = '0 1px 6px rgba(30,60,90,0.11)';
-                legend.innerHTML = `
-                    <strong>Filter:</strong>
-                    <label style="margin-left:10px;"><input type="checkbox" class="map-filter" value="education" checked> <i class="fas fa-graduation-cap" style="color:#2c3e50"></i> Education</label>
-                    <label style="margin-left:10px;"><input type="checkbox" class="map-filter" value="conference" checked> <i class="fas fa-map-pin" style="color:#e74c3c"></i> Conference</label>
-                    <label style="margin-left:10px;"><input type="checkbox" class="map-filter" value="research" checked> <i class="fas fa-flask" style="color:#f39c12"></i> Research</label>
-                `;
-                map.getContainer().appendChild(legend);
-
-                // Filtering logic
-                const allMarkers = [];
-                locations.forEach(location => {
-                    let iconToUse;
-                    switch(location.category) {
-                        case 'education': iconToUse = educationIcon; break;
-                        case 'conference': iconToUse = conferenceIcon; break;
-                        case 'research': iconToUse = researchIcon; break;
-                        default: iconToUse = undefined;
-                    }
-                    const marker = L.marker([location.lat, location.lng], { icon: iconToUse })
-                        .bindPopup(`<b>${location.name}</b><br>${location.type}<br><em>${location.city}</em>`);
-                    allMarkers.push({ marker, category: location.category });
-                });
-                // Add all markers initially
-                allMarkers.forEach(obj => obj.marker.addTo(map));
-                // Filter handler
-                legend.querySelectorAll('.map-filter').forEach(checkbox => {
-                    checkbox.addEventListener('change', function() {
-                        const checked = Array.from(legend.querySelectorAll('.map-filter:checked')).map(cb => cb.value);
-                        allMarkers.forEach(obj => {
-                            if (checked.includes(obj.category)) {
-                                if (!map.hasLayer(obj.marker)) obj.marker.addTo(map);
-                            } else {
-                                if (map.hasLayer(obj.marker)) map.removeLayer(obj.marker);
-                            }
-                        });
-                    });
-                });
             }
-        });
-        // Animate sections on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeEls = document.querySelectorAll('.fade-in');
-            function onScroll() {
-                fadeEls.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 40) {
-                        el.style.opacity = 1;
-                        el.style.transform = "none";
-                    }
-                });
-            }
-            window.addEventListener('scroll', onScroll);
-            onScroll();
         });
     </script>
 </body>
