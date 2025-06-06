@@ -1,3 +1,19 @@
+:root {
+  --accent-color: #1abc9c;
+}
+
+/* Use the variable in your styles */
+.cta-button, .footer-menu a, .footer-social-icons a {
+  color: var(--accent-color);
+  /* or background-color: var(--accent-color); when needed */
+}
+
+/* Do NOT redefine --accent-color in dark mode */
+body.dark-mode {
+  /* only override other colors, not --accent-color */
+}
+
+
 /* === Full Updated style.css === */
 
 /* --- Global Styles & Variables --- */
