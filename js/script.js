@@ -201,38 +201,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const mapElement = document.getElementById('map-container');
-    if (mapElement) {
-        const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-
-        // Désactive tout mouvement sur mobile
-        function updateMapInteraction() {
-            if (window.innerWidth <= 768) {
-                map.dragging.disable();
-                map.touchZoom.disable();
-                map.doubleClickZoom.disable();
-                map.scrollWheelZoom.disable();
-                map.boxZoom.disable();
-                map.keyboard.disable();
-            } else {
-                map.dragging.enable();
-                map.touchZoom.enable();
-                map.doubleClickZoom.enable();
-                map.scrollWheelZoom.enable();
-                map.boxZoom.enable();
-                map.keyboard.enable();
-            }
-        }
-        updateMapInteraction();
-        window.addEventListener('resize', updateMapInteraction);
-
-        // ... (Ajoute ici tes marqueurs comme avant)
-    }
-});
 
