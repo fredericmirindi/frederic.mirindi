@@ -1845,3 +1845,60 @@ body.dark-mode .main-nav a.active {
         flex-wrap: wrap;
     }
 }
+
+
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+.footer-links {
+    align-self: flex-end;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.footer-menu {
+    display: flex;
+    gap: 1.3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-contact {
+    text-align: center;
+}
+.footer-social-icons {
+    display: flex;
+    gap: 1.1rem;
+    justify-content: center;
+}
+.footer-social-icons a {
+    color: #1abc9c;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+.footer-social-icons a:hover,
+.footer-social-icons a:focus {
+    color: #16a085;
+}
+.footer-copyright {
+    text-align: center;
+    font-size: 0.98rem;
+    color: #666;
+}
+@media (max-width: 700px) {
+    .footer-content {
+        gap: 0.5rem;
+    }
+    .footer-links {
+        justify-content: center;
+    }
+    .footer-menu {
+        flex-wrap: wrap;
+        gap: 0.7rem;
+    }
+}
+
