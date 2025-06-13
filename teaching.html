@@ -286,42 +286,44 @@
         </section>
     </main>
 
+    <!-- Footer (matches your exact layout from the screenshot) -->
     <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="container footer-content">
+            <nav class="footer-links" aria-label="Footer navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> mirindif@myumanitoba.ca</p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> fredericmirindi.com</p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.com/citations?user=K5--CxAAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+        <div class="container">
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
-        // Light/Dark mode toggle logic
+        // Theme toggle logic and dynamic year
         document.addEventListener('DOMContentLoaded', function() {
             const toggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
             const darkModeClass = 'dark-mode';
-            // Apply saved theme on load
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add(darkModeClass);
                 themeIcon.classList.remove('fa-moon');
@@ -340,6 +342,20 @@
                 }
             });
             document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+        // Certificates carousel auto-scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            if (!track) return;
+            let step = 1;
+            let pos = 0;
+            function scrollLoop() {
+                pos += step;
+                if (pos >= track.scrollWidth / 2) pos = 0;
+                track.style.transform = `translateX(-${pos}px)`;
+                requestAnimationFrame(scrollLoop);
+            }
+            scrollLoop();
         });
     </script>
 </body>
