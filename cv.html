@@ -3,149 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Request the Curriculum Vitae (CV) of Frédéric Mirindi, PhD Student in Economics and Econometrics.">
-    <title>Frédéric Mirindi - CV Request</title>
+    <meta name="description" content="Academic CV of Frédéric Mirindi, PhD Student, Economist, Educator, and Researcher.">
+    <title>Frédéric Mirindi - CV</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <style>
-        .page-header.cv-header {
-            background: #34495e;
-            color: #fff;
-            padding: 48px 0 36px 0;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .page-header.cv-header h1 {
-            color: #fff;
-            font-size: 2.8rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            letter-spacing: -1px;
-        }
-        .page-header.cv-header .lead {
-            color: #ecf0f1;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .cv-content-card {
-            background: #f8fafc;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
-            padding: 2.5rem 2rem;
-            max-width: 700px;
-            margin: 2.5rem auto;
-        }
-        .cv-summary h2 {
-            margin-top: 0;
-            color: #1abc9c;
-            font-size: 1.4rem;
-            margin-bottom: 0.7rem;
-        }
-        .cv-summary p {
-            font-size: 1.08rem;
-            color: #222;
-        }
-        .cv-request-form h2 {
-            color: #1abc9c;
-            font-size: 1.25rem;
-            margin-top: 2rem;
-            margin-bottom: 0.7rem;
-        }
-        .cv-request-form p {
-            color: #222;
-            font-size: 1.05rem;
-            margin-bottom: 1.1rem;
-        }
-        .cv-request-form form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .form-group label {
-            font-weight: 600;
-            color: #34495e;
-            margin-bottom: 0.3rem;
-        }
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.6rem 0.9rem;
-            border: 1px solid #dbe8ef;
-            border-radius: 6px;
-            font-size: 1rem;
-            background: #f7fafd;
-            color: #222;
-            transition: border 0.2s;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border: 1.5px solid #1abc9c;
-            outline: none;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: #1abc9c;
-            color: #fff;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid #1abc9c;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        .cta-button:hover, .cta-button:focus {
-            background-color: #16a085;
-            border-color: #16a085;
-        }
-        /* Dark mode adjustments */
-        body.dark-mode .cv-content-card {
-            background: #232e3a;
-            color: #f0f0f0;
-        }
-        body.dark-mode .cv-summary h2,
-        body.dark-mode .cv-request-form h2 {
-            color: #1abc9c;
-        }
-        body.dark-mode .cv-summary p,
-        body.dark-mode .cv-request-form p {
-            color: #f0f0f0;
-        }
-        body.dark-mode .form-group label {
-            color: #1abc9c;
-        }
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group textarea {
-            background: #1a222b;
-            color: #fff;
-            border: 1px solid #34495e;
-        }
-        body.dark-mode .form-group input:focus,
-        body.dark-mode .form-group textarea:focus {
-            border: 1.5px solid #1abc9c;
-        }
-    </style>
 </head>
 <body>
     <header class="site-header">
@@ -161,7 +30,6 @@
                 </ul>
             </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-            <!-- Light/Dark mode toggle button -->
             <button id="theme-toggle" aria-label="Toggle light and dark mode">
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
@@ -169,83 +37,167 @@
     </header>
 
     <main>
-        <header class="page-header cv-header">
-            <h1>Curriculum Vitae</h1>
-            <p class="lead">
-                For a detailed overview of my academic background, teaching, research, and professional experience, please request my full CV below.
+        <header class="page-header" style="background:#34495e;color:#fff;text-align:center;padding:44px 0 30px 0;">
+            <h1 style="color:#fff;font-size:2.8rem;font-family:'Playfair Display',serif;font-weight:700;margin-bottom:1.2rem;">Curriculum Vitae</h1>
+            <p class="lead" style="color:#ecf0f1;font-size:1.2rem;max-width:700px;margin:0 auto;">
+                PhD Student in Economics & Econometrics<br>
+                University of Manitoba | Sessional Instructor, Booth University College
             </p>
         </header>
-        <section id="cv-content" class="cv-content-card fade-in">
-            <div class="cv-summary">
-                <h2>Overview</h2>
-                <p>
-                    As a PhD Student in Economics & Econometrics and Sessional Instructor, my work integrates advanced quantitative methods (including time series analysis and AI/ML techniques) with macroeconomics and financial economics. I have university-level teaching experience, proficiency in R, Python, Stata, and RATS, speak multiple languages, and have received competitive <a href="awards.html" class="inline-link">awards and fellowships</a>. For full details on education, experience, publications, and presentations, please request my CV below.
-                </p>
-            </div>
 
-            <div class="cv-request-form">
-                <h2>Request Full CV</h2>
-                <p>
-                    To receive a copy of my full CV, please complete the form below. I will send it to the email address provided as soon as possible.
-                </p>
-                <form id="cv-request-form-element" action="https://formspree.io/f/mdknnrol" method="POST">
-                    <div class="form-group">
-                        <label for="requester-name">Your Name:</label>
-                        <input type="text" id="requester-name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="requester-email">Your Email:</label>
-                        <input type="email" id="requester-email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="requester-reason">Reason for Request (Optional):</label>
-                        <textarea id="requester-reason" name="reason" rows="3"></textarea>
-                    </div>
-                    <input type="hidden" name="_subject" value="CV Request from Website">
-                    <button type="submit" class="cta-button">
-                        <i class="fas fa-paper-plane"></i> Request CV
-                    </button>
-                </form>
-            </div>
+        <section class="container content-section fade-in" id="profile">
+            <h2 class="section-title"><i class="fas fa-user"></i> Profile</h2>
+            <p>
+                Economist, educator, and researcher exploring the intersection of AI/ML with macroeconomic and financial modeling. Passionate about advancing knowledge and fostering collaboration. Experienced in curriculum development and international academic environments.
+            </p>
+        </section>
+
+        <section class="container content-section fade-in" id="education">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+            <ul class="cv-list">
+                <li>
+                    <strong>PhD (Economics & Econometrics)</strong>, University of Manitoba, Canada (2023–2028 expected)
+                </li>
+                <li>
+                    <strong>MSc (Development Evaluation)</strong>, University of Antwerp, Belgium (2020–2022)
+                </li>
+                <li>
+                    <strong>MSc (Economics)</strong>, Catholic University of Bukavu, DR Congo (2016–2018)
+                </li>
+                <li>
+                    <strong>BSc (Economics)</strong>, Catholic University of Bukavu, DR Congo (2013–2016)
+                </li>
+            </ul>
+        </section>
+
+        <section class="container content-section fade-in" id="appointments">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> Academic Appointments</h2>
+            <ul class="cv-list">
+                <li>
+                    <strong>Sessional Instructor</strong>, Booth University College, Winnipeg, Canada (2024–Present)
+                </li>
+                <li>
+                    <strong>Teaching Assistant</strong>, Catholic University of Bukavu, DR Congo (2016–2017)
+                </li>
+            </ul>
+        </section>
+
+        <section class="container content-section fade-in" id="research">
+            <h2 class="section-title"><i class="fas fa-flask"></i> Research Interests</h2>
+            <ul class="cv-list">
+                <li>AI/ML in Economics and Finance</li>
+                <li>Econometrics: Causal inference, time series, microeconometrics</li>
+                <li>Monetary Policy & DSGE Models</li>
+                <li>Financial Economics: Risk modeling, asset pricing</li>
+                <li>Resource & Development Economics</li>
+                <li>Digital Social Sciences: Intersectionality, feminism, and activism in digital spaces</li>
+            </ul>
+        </section>
+
+        <section class="container content-section fade-in" id="teaching">
+            <h2 class="section-title"><i class="fas fa-chalkboard-teacher"></i> Teaching Experience</h2>
+            <ul class="cv-list">
+                <li>
+                    <strong>Booth University College (2024–Present):</strong>
+                    <ul>
+                        <li>ECO110 Introduction to Microeconomics</li>
+                        <li>MAT100 Applied Finite Mathematics</li>
+                        <li>BHS200 Research Methods</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Catholic University of Bukavu (2016–2017):</strong>
+                    <ul>
+                        <li>Macroeconomics (Teaching Assistant)</li>
+                        <li>Quantitative Methods (Teaching Assistant)</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="container content-section fade-in" id="publications">
+            <h2 class="section-title"><i class="fas fa-book"></i> Selected Publications</h2>
+            <ul class="cv-list">
+                <li>
+                    <strong>BIM-driven offsite construction: pathway to efficiency, functionality and sustainability</strong><br>
+                    <em>Transforming Construction with Off-site Methods and Technologies, 2024</em><br>
+                    <a href="https://scholar.google.com/citations?user=K5--CxAAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+                </li>
+                <li>
+                    <strong>Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review</strong><br>
+                    <em>Driving Green Transportation System Through Artificial Intelligence and Automation, Springer, 2025</em><br>
+                    <a href="https://doi.org/10.1007/978-3-031-72617-0_1" target="_blank" rel="noopener">Springer</a>
+                </li>
+                <li>
+                    <strong>Structural performance of boards through nanoparticle reinforcement: An advance review</strong><br>
+                    <em>Nanotechnology Reviews 13(1), 20240119, 2024</em><br>
+                    <a href="https://doi.org/10.1515/ntrev-2024-0119" target="_blank" rel="noopener">Journal Link</a>
+                </li>
+                <li>
+                    <strong>Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder</strong><br>
+                    <em>Cleaner Waste Systems, 100236, 2025</em><br>
+                    <a href="https://doi.org/10.1016/j.clwas.2025.100236" target="_blank" rel="noopener">ScienceDirect</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="container content-section fade-in" id="skills">
+            <h2 class="section-title"><i class="fas fa-tools"></i> Skills Snapshot</h2>
+            <ul class="cv-list">
+                <li>Quantitative Research: Econometric analysis, data modeling, experimental design</li>
+                <li>Technical Proficiency: R, Python, Stata, RATS, ML/AI techniques</li>
+                <li>Academic Instruction: Curriculum development, undergraduate teaching (Microeconomics, Math)</li>
+                <li>Collaboration & Languages: Cross-cultural teamwork; Fluent English & French, Swahili, etc.</li>
+            </ul>
+        </section>
+
+        <section class="container content-section fade-in" id="languages">
+            <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
+            <ul class="cv-list">
+                <li>English (fluent)</li>
+                <li>French (fluent)</li>
+                <li>Swahili (conversational)</li>
+            </ul>
         </section>
     </main>
 
     <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="container footer-content">
+            <nav class="footer-links" aria-label="Footer navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html" class="active">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> mirindif@myumanitoba.ca</p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> fredericmirindi.com</p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.com/citations?user=K5--CxAAAAAJ" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+        <div class="container">
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
-        // Light/Dark mode toggle logic
+        // Theme toggle logic and dynamic year
         document.addEventListener('DOMContentLoaded', function() {
             const toggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
             const darkModeClass = 'dark-mode';
-            // Apply saved theme on load
             if (localStorage.getItem('theme') === 'dark') {
                 document.body.classList.add(darkModeClass);
                 themeIcon.classList.remove('fa-moon');
