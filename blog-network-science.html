@@ -6,12 +6,12 @@
   <meta name="description" content="Exploring how network science can help predict the new pope, based on Bocconi University’s conclave research and the 2025 papal election." />
   <title>Can Network Science Predict the New Pope? | Frédéric Mirindi Blog</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    body { font-family: 'Source Sans Pro', sans-serif; }
     .side-by-side {
       display: flex;
       flex-wrap: wrap;
@@ -24,22 +24,24 @@
       max-width: 100%;
       width: 350px;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      display: block;
+      margin: 0 auto;
     }
     .img-wrap { flex: 1 1 350px; }
     .text-wrap { flex: 1 1 400px; min-width: 300px; }
     .img-caption {
-      font-size: 0.85rem;
-      color: #666;
-      margin-top: 5px;
+      font-size: 0.95rem;
+      color: #888;
+      margin-top: 8px;
       text-align: center;
     }
     table {
       width: 100%;
       border-collapse: collapse;
       margin: 2rem 0;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
     table th, table td {
       border: 1px solid #ddd;
@@ -53,19 +55,20 @@
     blockquote {
       font-style: italic;
       color: #555;
-      border-left: 4px solid #ccc;
+      border-left: 4px solid #1abc9c;
       margin: 2rem 0;
       padding-left: 1rem;
       background-color: #fafafa;
     }
     .back-to-blog {
       margin: 2.5rem 0 1.5rem 0;
+      text-align: left;
     }
     .back-to-blog a {
-      color: #222;
+      color: #1abc9c;
       text-decoration: none;
       font-weight: 600;
-      font-size: 1.05em;
+      font-size: 1.07em;
       background: none;
       padding: 0;
       border: none;
@@ -73,7 +76,7 @@
     }
     .back-to-blog a:hover {
       text-decoration: underline;
-      color: #444;
+      color: #16a085;
     }
     .references-section {
       margin-top: 2.5rem;
@@ -91,6 +94,16 @@
     .references-section li {
       margin-bottom: 0.4em;
     }
+    @media (max-width: 900px) {
+      .side-by-side, .side-by-side.reverse {
+        flex-direction: column !important;
+        gap: 1.2rem;
+      }
+      .img-wrap, .text-wrap {
+        min-width: 0;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -106,6 +119,10 @@
         <li><a href="blog.html" class="active">Blog</a></li>
       </ul>
     </nav>
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <button id="theme-toggle" aria-label="Toggle light and dark mode">
+      <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
   </div>
 </header>
 
@@ -121,12 +138,12 @@
         <h3>1. The Power of Networks in the Papal Election</h3>
         <div class="side-by-side">
           <div class="img-wrap">
-            <img src="images/pope.JPG" alt="The new pope greets the crowd from the balcony" />
+            <img src="images/newpope.png" alt="The new pope greets the crowd from the balcony" />
             <p class="img-caption">Source: The Washington Post</p>
           </div>
           <div class="text-wrap">
             <p>
-              The election of a new pope is one of the most secretive and consequential decisions in global religious affairs. While spiritual discernment is central, recent research from Bocconi University reveals that social dynamics-such as status, alliances, and information flow among cardinals-play a crucial role in shaping the outcome. The 2025 conclave, with 133 cardinals from 70 countries, provided a unique opportunity to test the predictive power of <strong>network science</strong> in this ancient process.
+              The election of a new pope is one of the most secretive and consequential decisions in global religious affairs. While spiritual discernment is central, recent research from Bocconi University reveals that social dynamics—such as status, alliances, and information flow among cardinals—play a crucial role in shaping the outcome. The 2025 conclave, with 133 cardinals from 70 countries, provided a unique opportunity to test the predictive power of <strong>network science</strong> in this ancient process.
             </p>
           </div>
         </div>
@@ -234,33 +251,35 @@
   </div>
 </main>
 
-    <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-        </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
+<footer class="site-footer">
+  <div class="container footer-content">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <ul class="footer-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+    </nav>
+    <div class="footer-contact">
+      <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+      <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+      <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+      <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
     </div>
+    <div class="footer-social-icons">
+      <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+      <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+      <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+      <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-copyright">
+      <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
 <script src="js/script.js"></script>
