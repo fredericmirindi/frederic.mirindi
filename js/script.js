@@ -200,5 +200,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
- 
+
+
+$(document).ready(function(){
+  $('.logo-slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '40px',
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 2200,
+    arrows: true,
+    dots: true,
+    responsive: [
+      { breakpoint: 900, settings: { slidesToShow: 2, centerPadding: '20px' } },
+      { breakpoint: 600, settings: { slidesToShow: 1, centerPadding: '0px' } }
+    ]
+  });
+});
+
 
