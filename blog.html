@@ -11,12 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-
     <script>
         MathJax = {
           tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
@@ -126,6 +124,95 @@
                 font-size: 1.18rem;
             }
         }
+        /* Footer alignment for copyright */
+        .site-footer .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1.5rem 0 0.5rem 0;
+        }
+        .footer-links {
+            flex: 1 1 25%;
+            text-align: left;
+        }
+        .footer-menu {
+            display: flex;
+            gap: 1.3rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .footer-contact {
+            flex: 1 1 40%;
+            text-align: center;
+            font-size: 1rem;
+            color: #fff;
+        }
+        .footer-social-icons {
+            flex: 1 1 25%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: flex-start;
+            gap: 1.1rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-social-icons a {
+            color: #1abc9c;
+            font-size: 1.35rem;
+            transition: color 0.2s;
+            vertical-align: middle;
+        }
+        .footer-social-icons a:hover,
+        .footer-social-icons a:focus {
+            color: #16a085;
+        }
+        .site-footer {
+            background: #2d3e50;
+            color: #fff;
+            margin-top: 3rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 1rem;
+        }
+        .footer-contact a,
+        .footer-contact a:visited {
+            color: #1abc9c;
+            text-decoration: underline;
+        }
+        .footer-contact i {
+            margin-right: 0.5em;
+        }
+        .footer-copyright {
+            text-align: center;
+            font-size: 0.98rem;
+            color: #bfc9d1;
+            padding: 0.7rem 0 0.5rem 0;
+            margin-top: 0;
+            background: none;
+        }
+        @media (max-width: 900px) {
+            .site-footer .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.2rem;
+                padding: 1.2rem 0 0.5rem 0;
+            }
+            .footer-links, .footer-contact, .footer-social-icons {
+                flex: none;
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .footer-social-icons {
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -142,7 +229,6 @@
                 </ul>
             </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-            <!-- Light/Dark mode toggle button -->
             <button id="theme-toggle" aria-label="Toggle light and dark mode">
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
@@ -224,33 +310,35 @@
     </main>
 
     <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="container footer-content">
+            <nav class="footer-links" aria-label="Footer navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+        <div class="container">
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         // Light/Dark mode toggle logic
