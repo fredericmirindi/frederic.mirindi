@@ -11,148 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <style>
-        .page-header.teaching-header {
-            background: #34495e;
-            color: #fff;
-            padding: 48px 0 36px 0;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .page-header.teaching-header h1 {
-            color: #fff;
-            font-size: 2.8rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            letter-spacing: -1px;
-        }
-        .page-header.teaching-header .lead {
-            color: #ecf0f1;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .teaching-roles-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            justify-content: flex-start;
-        }
-        .teaching-role.card-style {
-            background: #f8fafc;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
-            padding: 2rem 1.5rem 2rem 1.5rem;
-            flex: 1 1 420px;
-            min-width: 340px;
-            margin-bottom: 2rem;
-            transition: box-shadow 0.2s, transform 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-        .teaching-role.card-style:hover {
-            box-shadow: 0 8px 28px rgba(30,60,90,0.13);
-            transform: translateY(-2px) scale(1.012);
-        }
-        .teaching-role h3 {
-            font-size: 1.5rem;
-            color: #1abc9c;
-            margin-bottom: 0.3rem;
-        }
-        .institution-dates {
-            font-size: 1.05rem;
-            color: #555;
-            margin-bottom: 1.1rem;
-        }
-        .course-list {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 0.8rem;
-        }
-        .course-list li {
-            margin-bottom: 1.6rem;
-            padding-bottom: 1.1rem;
-            border-bottom: 1px dashed #eaf6fb;
-        }
-        .course-list li:last-child {
-            border-bottom: none;
-        }
-        .course-title {
-            font-size: 1.13rem;
-            font-weight: 700;
-            color: #34495e;
-            margin-bottom: 0.2rem;
-        }
-        .course-dates {
-            font-size: 0.98rem;
-            color: #888;
-            margin-bottom: 0.2rem;
-        }
-        .course-desc {
-            font-size: 1.02rem;
-            color: #222;
-            margin-bottom: 0.3rem;
-        }
-        .course-skills {
-            font-size: 0.97rem;
-            color: #1abc9c;
-            margin-bottom: 0.2rem;
-        }
-        .course-meta {
-            font-size: 0.95rem;
-            color: #666;
-        }
-        .cta-button.small-button {
-            margin-top: 1.1rem;
-        }
-        .philosophy-box {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background-color: #eaf6fb;
-            border-left: 5px solid #1abc9c;
-            border-radius: 0 10px 10px 0;
-        }
-        .philosophy-box p {
-            margin-bottom: 0;
-            font-size: 1.08rem;
-            line-height: 1.8;
-        }
-        /* Dark mode adjustments */
-        body.dark-mode .teaching-role.card-style {
-            background: #232e3a;
-            color: #181818;
-        }
-        body.dark-mode .teaching-role h3,
-        body.dark-mode .course-title,
-        body.dark-mode .course-skills {
-            color: #1abc9c;
-        }
-        body.dark-mode .course-desc,
-        body.dark-mode .course-meta {
-            color: #f0f0f0;
-        }
-        body.dark-mode .philosophy-box {
-            background: #232e3a;
-            color: #f0f0f0;
-        }
-        @media (max-width: 900px) {
-            .teaching-roles-container {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            .teaching-role.card-style {
-                min-width: 0;
-            }
-        }
-    </style>
 </head>
 <body>
     <header class="site-header">
@@ -168,7 +30,6 @@
                 </ul>
             </nav>
             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-            <!-- Light/Dark mode toggle button -->
             <button id="theme-toggle" aria-label="Toggle light and dark mode">
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
@@ -185,50 +46,49 @@
 
         <section id="teaching-experience" class="container content-section fade-in">
             <div class="teaching-roles-container">
-
                 <!-- Sessional Instructor -->
                 <div class="teaching-role card-style">
                     <h3>Sessional Instructor</h3>
-                    <p class="institution-dates">Booth University College, Winnipeg, Canada (September 2024 - Present)</p>
+                    <p class="institution-dates">Booth University College, Winnipeg, Canada (Sep 2024 – Present)</p>
                     <h4>Courses Taught:</h4>
                     <ul class="course-list">
                         <li>
                             <div class="course-title">ECO110 Introduction to Microeconomics</div>
-                            <div class="course-dates">(Oct 2024 - Dec 2024; Jan 2025 - Feb 2025; Mar 2025 - May 2025)</div>
+                            <div class="course-dates">(Oct 2024 – Dec 2024; Jan 2025 – Feb 2025; Mar 2025 – May 2025)</div>
                             <div class="course-desc">
-                                <strong>Description:</strong> Introduction to the principles of microeconomics, including supply and demand, market equilibrium, consumer choice, production, and market structures.
+                                <strong>Description:</strong> Principles of microeconomics: supply and demand, market equilibrium, consumer choice, production, and market structures.
                             </div>
                             <div class="course-skills">
                                 <strong>Key Skills:</strong> Economic reasoning, graphical analysis, critical thinking, real-world application.
                             </div>
                             <div class="course-meta">
-                                <i class="fas fa-users"></i> Average class size: 15-25 students.
+                                <i class="fas fa-users"></i> Average class size: 15–25 students.
                             </div>
                         </li>
                         <li>
                             <div class="course-title">MAT100 Applied Finite Mathematics</div>
-                            <div class="course-dates">(Jan 2025 - Feb 2025; Mar 2025 - May 2025; May 2025 - Jun 2025)</div>
+                            <div class="course-dates">(Jan 2025 – Feb 2025; Mar 2025 – May 2025; May 2025 – Jun 2025)</div>
                             <div class="course-desc">
-                                <strong>Description:</strong> Covers mathematical concepts used in business and social sciences: linear models, matrices, systems of equations, probability, and introductory statistics.
+                                <strong>Description:</strong> Mathematical concepts for business/social sciences: linear models, matrices, probability, and statistics.
                             </div>
                             <div class="course-skills">
-                                <strong>Key Skills:</strong> Quantitative reasoning, problem solving, mathematical modeling, data interpretation.
+                                <strong>Key Skills:</strong> Quantitative reasoning, problem solving, modeling, data interpretation.
                             </div>
                             <div class="course-meta">
-                                <i class="fas fa-users"></i> Average class size: 15-25 students.
+                                <i class="fas fa-users"></i> Average class size: 15–25 students.
                             </div>
                         </li>
                         <li>
                             <div class="course-title">BHS200 Research Methods</div>
-                            <div class="course-dates">(May 2025 - Jun 2025)</div>
+                            <div class="course-dates">(May 2025 – Jun 2025)</div>
                             <div class="course-desc">
-                                <strong>Description:</strong> Explores research design, data collection, analysis, and interpretation in the social sciences. Emphasizes critical evaluation of sources and ethical research practices.
+                                <strong>Description:</strong> Research design, data collection, analysis, and interpretation in the social sciences, with emphasis on ethics and critical evaluation.
                             </div>
                             <div class="course-skills">
                                 <strong>Key Skills:</strong> Research design, critical analysis, academic writing, data literacy.
                             </div>
                             <div class="course-meta">
-                                <i class="fas fa-users"></i> Average class size: 15-25 students.
+                                <i class="fas fa-users"></i> Average class size: 15–25 students.
                             </div>
                         </li>
                     </ul>
@@ -238,18 +98,17 @@
                         </a>
                     </p>
                 </div>
-
                 <!-- Teaching Assistant -->
                 <div class="teaching-role card-style">
                     <h3>Teaching Assistant</h3>
-                    <p class="institution-dates">Catholic University of Bukavu, DR Congo (September 2016 - May 2017)</p>
+                    <p class="institution-dates">Catholic University of Bukavu, DR Congo (Sep 2016 – May 2017)</p>
                     <h4>Courses Assisted:</h4>
                     <ul class="course-list">
                         <li>
                             <div class="course-title">Macroeconomics (Undergraduate)</div>
-                            <div class="course-dates">(Sep 2016 - Dec 2016)</div>
+                            <div class="course-dates">(Sep 2016 – Dec 2016)</div>
                             <div class="course-desc">
-                                <strong>Description:</strong> Study of national income, economic growth, unemployment, inflation, and fiscal/monetary policy. Assisted in lectures, grading, and student support.
+                                <strong>Description:</strong> National income, growth, unemployment, inflation, fiscal/monetary policy. Supported lectures, grading, and student mentoring.
                             </div>
                             <div class="course-skills">
                                 <strong>Key Skills:</strong> Macroeconomic analysis, academic support, communication, assessment.
@@ -260,9 +119,9 @@
                         </li>
                         <li>
                             <div class="course-title">Quantitative Methods (Undergraduate)</div>
-                            <div class="course-dates">(Jan 2017 - May 2017)</div>
+                            <div class="course-dates">(Jan 2017 – May 2017)</div>
                             <div class="course-desc">
-                                <strong>Description:</strong> Introduction to quantitative tools for economics: statistics, probability, linear algebra, and their application to economic data.
+                                <strong>Description:</strong> Statistics, probability, linear algebra, and their application to economic data.
                             </div>
                             <div class="course-skills">
                                 <strong>Key Skills:</strong> Data analysis, mathematical reasoning, tutoring, teamwork.
@@ -286,14 +145,13 @@
         </section>
     </main>
 
-    <!-- Footer (matches your exact layout from the screenshot) -->
     <footer class="site-footer">
         <div class="container footer-content">
             <nav class="footer-links" aria-label="Footer navigation">
                 <ul class="footer-menu">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="teaching.html" class="active">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
@@ -342,20 +200,6 @@
                 }
             });
             document.getElementById('current-year').textContent = new Date().getFullYear();
-        });
-        // Certificates carousel auto-scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.querySelector('.carousel-track');
-            if (!track) return;
-            let step = 1;
-            let pos = 0;
-            function scrollLoop() {
-                pos += step;
-                if (pos >= track.scrollWidth / 2) pos = 0;
-                track.style.transform = `translateX(-${pos}px)`;
-                requestAnimationFrame(scrollLoop);
-            }
-            scrollLoop();
         });
     </script>
 </body>
