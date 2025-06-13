@@ -7,9 +7,8 @@
     <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
     
     <!-- Main site styles -->
-    <!-- Theme (light/dark) styles -->
     <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/theme.css">
 
     <!-- Fonts and icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +17,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Favicon and meta icons -->
-<link rel="icon" type="image/svg+xml" href="images/logo.svg">
-<link rel="shortcut icon" href="/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
 
     <!-- Map library CSS (if used) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
- 
+
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
 </head>
+
 <body>
     <header class="site-header">
         <div class="container header-content">
@@ -123,17 +125,46 @@
             </div>
         </section>
 
+
         <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
     <h2>Skills Snapshot</h2>
     <div class="skills-grid">
-        <!-- ... skill items ... -->
+        <div class="skill-item">
+            <i class="fas fa-calculator skill-icon"></i>
+            <h3>Quantitative Research</h3>
+            <p>Econometric analysis, data modeling, experimental design.</p>
+        </div>
+        <div class="skill-item">
+            <i class="fas fa-laptop-code skill-icon"></i>
+            <h3>Technical Proficiency</h3>
+            <p>R, Python, Stata, RATS, ML/AI techniques.</p>
+        </div>
+        <div class="skill-item">
+            <i class="fas fa-chalkboard-teacher skill-icon"></i>
+            <h3>Academic Instruction</h3>
+            <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
+        </div>
+        <div class="skill-item">
+            <i class="fas fa-globe-americas skill-icon"></i>
+            <h3>Collaboration & Languages</h3>
+            <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
+        </div>
     </div>
-    <!-- Add university logos here -->
-    <div class="university-logos">
-        <img src="images/university-of-manitoba-logo_1.jpg" alt="University of Manitoba" title="University of Manitoba">
-        <img src="images/Booth_University_College.png" alt="Booth University College" title="Booth University College">
-        <img src="images/university-of-antwerp3699.jpg" alt="University of Antwerp" title="University of Antwerp">
-        <img src="images/ucb.jpg" alt="Catholic University of Bukavu" title="Catholic University of Bukavu">
+
+    <!-- University Logos Slider -->
+    <div class="logo-slider" style="margin-top: 2.5rem;">
+        <div>
+            <img src="images/university-of-manitoba-logo_1.jpg" alt="University of Manitoba" title="University of Manitoba"/>
+        </div>
+        <div>
+            <img src="images/Booth_University_College.png" alt="Booth University College" title="Booth University College"/>
+        </div>
+        <div>
+            <img src="images/university-of-antwerp3699.jpg" alt="University of Antwerp" title="University of Antwerp"/>
+        </div>
+        <div>
+            <img src="images/ucb.jpg" alt="Catholic University of Bukavu" title="Catholic University of Bukavu"/>
+        </div>
     </div>
 </section>
 
@@ -341,5 +372,13 @@
             }
         });
     </script>
+
+    <!-- jQuery and Slick Carousel libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- Your custom JS file -->
+<script src="js/script.js"></script>
+
+    
 </body>
 </html>
