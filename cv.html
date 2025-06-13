@@ -39,28 +39,12 @@
             max-width: 700px;
             margin: 0 auto;
         }
-        .cv-summary {
-            background: #f8fafc;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
-            padding: 2rem 1.5rem 2rem 1.5rem;
-            margin-bottom: 2.5rem;
-            font-size: 1.12rem;
-            line-height: 1.7;
-        }
-        .cv-section-title {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: #1abc9c;
-            margin-top: 2.5rem;
-            margin-bottom: 1.1rem;
-        }
         .cv-request-form {
             background: #eaf6fb;
             border-radius: 10px;
             padding: 2rem 1.5rem;
             max-width: 480px;
-            margin: 0 auto 2.5rem auto;
+            margin: 2.5rem auto 2.5rem auto;
             box-shadow: 0 1px 8px rgba(30,60,90,0.09);
         }
         .cv-request-form h2 {
@@ -97,19 +81,19 @@
         .cv-request-form button:hover {
             background: #16a085;
         }
-        .cv-download-link {
-            display: block;
+        .cv-info-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+            padding: 2rem 1.5rem 2rem 1.5rem;
+            margin: 2.5rem auto 0 auto;
+            font-size: 1.12rem;
+            line-height: 1.7;
+            max-width: 700px;
             text-align: center;
-            margin-top: 2rem;
-            font-size: 1.1rem;
-        }
-        .cv-download-link a {
-            color: #1abc9c;
-            font-weight: bold;
-            text-decoration: underline;
         }
         @media (max-width: 900px) {
-            .cv-summary, .cv-request-form {
+            .cv-request-form, .cv-info-box {
                 padding: 1.2rem 0.7rem;
             }
         }
@@ -139,27 +123,20 @@
         <header class="page-header cv-header">
             <h1>Curriculum Vitae</h1>
             <p class="lead">
-                Economist, educator, and researcher with expertise in quantitative analysis, AI/ML, and academic instruction. Download my CV or request a copy below.
+                To access my full and up-to-date CV, please complete the request form below. This helps ensure privacy and allows me to provide the most relevant version for your needs.
             </p>
         </header>
 
-        <section class="container content-section fade-in">
-            <div class="cv-summary">
-                <strong>Frédéric Mirindi</strong><br>
-                PhD Student in Economics & Econometrics, University of Manitoba<br>
-                <strong>Areas:</strong> Quantitative research, AI/ML in macroeconomics and finance, econometrics, teaching, and academic writing.<br>
-                <strong>Languages:</strong> English, French, Swahili<br>
-                <strong>Email:</strong> mirindif@myumanitoba.ca
-            </div>
-
-            <div class="cv-download-link">
-                <a href="cv/Frederic_Mirindi_CV.pdf" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download PDF CV</a>
-            </div>
-        </section>
+        <div class="cv-info-box">
+            <p>
+                My CV details my academic background, research experience, teaching appointments, publications, and professional skills in economics, econometrics, and data science. <br>
+                If you require a copy for academic, professional, or collaboration purposes, please fill out the form below and I will respond promptly.
+            </p>
+        </div>
 
         <section class="container content-section fade-in">
             <div class="cv-request-form">
-                <h2>Request Full CV</h2>
+                <h2>Request My CV</h2>
                 <form action="mailto:mirindif@myumanitoba.ca" method="POST" enctype="text/plain">
                     <label for="name">Your Name</label>
                     <input type="text" id="name" name="name" required>
