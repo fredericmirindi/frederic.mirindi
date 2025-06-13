@@ -11,158 +11,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <style>
-        .page-header.research-header {
-            background: #34495e;
-            color: #fff;
-            padding: 48px 0 36px 0;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .page-header.research-header h1 {
-            color: #fff;
-            font-size: 2.8rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            letter-spacing: -1px;
-            text-shadow: none;
-        }
-        .page-header.research-header .lead {
-            color: #ecf0f1;
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.7em;
-            font-size: 2rem;
-            margin-bottom: 1.2rem;
-        }
-        .content-section {
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 2px 18px rgba(30,60,90,0.07);
-            margin-bottom: 2.5rem;
-            padding: 2.5rem 2rem;
-        }
-        @media (max-width: 600px) {
-            .content-section { padding: 1.2rem 0.5rem; }
-        }
-        .research-areas-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            margin-bottom: 0;
-        }
-        .research-areas-list li {
-            background: #eaf6fb;
-            border-radius: 12px;
-            padding: 1.1rem 1.5rem;
-            font-size: 1.08rem;
-            color: #375a6c;
-            flex: 1 1 250px;
-            box-shadow: 0 2px 8px rgba(30,60,90,0.04);
-        }
-        .publication-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-        .publication-card {
-            background: #f8fafc;
-            border-radius: 14px;
-            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
-            padding: 1.5rem 1.2rem;
-            transition: box-shadow 0.18s, transform 0.18s;
-            border-left: 5px solid var(--accent-color, #1abc9c);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 170px;
-        }
-        .publication-card:hover {
-            box-shadow: 0 8px 28px rgba(30,60,90,0.13);
-            transform: translateY(-2px) scale(1.012);
-        }
-        .publication-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color, #2c3e50);
-        }
-        .publication-card a {
-            color: var(--primary-color, #2c3e50);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--accent-color, #1abc9c);
-            transition: color 0.2s, border 0.2s;
-        }
-        .publication-card a:hover {
-            color: var(--accent-color, #1abc9c);
-            border-bottom: 1px solid var(--accent-color, #1abc9c);
-        }
-        .publication-meta {
-            color: #5d6d7e;
-            font-size: 0.97rem;
-            margin-top: 0.2rem;
-        }
-        .project-list {
-            margin-top: 1.4rem;
-        }
-        .project-list li {
-            background: #f0f7f6;
-            border-radius: 10px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.1rem;
-            color: #3c5c5c;
-            font-size: 1.05rem;
-            box-shadow: 0 1px 4px rgba(30,60,90,0.04);
-        }
-        .presentation-list li {
-            background: #f7fafd;
-            border-radius: 10px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 1.1rem;
-            color: #3a4e5c;
-            font-size: 1.04rem;
-            box-shadow: 0 1px 4px rgba(30,60,90,0.03);
-        }
-        .fade-in { animation: fadeInAnimation 0.8s ease-out forwards; opacity: 0; }
-        @keyframes fadeInAnimation { from { opacity: 0; } to { opacity: 1; } }
-        /* 3D Animation Section */
-        .economics-3d-section {
-            background: #f8fafc;
-            border-radius: 18px;
-            box-shadow: 0 2px 18px rgba(30,60,90,0.07);
-            margin: 3rem auto 2.5rem auto;
-            padding: 2.5rem 2rem 2rem 2rem;
-            text-align: center;
-            max-width: 800px;
-        }
-        .economics-3d-section h2 {
-            font-size: 2rem;
-            color: #1abc9c;
-            margin-bottom: 1.4rem;
-            font-family: 'Playfair Display', serif;
-        }
-        .economics-3d-section p {
-            color: #375a6c;
-            margin-bottom: 2rem;
-        }
-        .economics-3d-section lottie-player {
-            margin: 0 auto;
-        }
-    </style>
 </head>
 <body>
     <header class="site-header">
@@ -185,6 +37,7 @@
     </header>
 
     <main>
+        <!-- Page Header -->
         <header class="page-header research-header">
             <h1>Research</h1>
             <p class="lead">
@@ -192,29 +45,20 @@
             </p>
         </header>
 
-<section class="container content-section fade-in">
-    <h2 class="section-title"><i class="fas fa-lightbulb"></i> Research Areas</h2>
-    <ul class="research-areas-list">
-        <li><strong>AI/ML in Economics:</strong> Integrating machine learning into macroeconomic and financial models</li>
-        <li><strong>Econometrics:</strong> Causal inference, time series, microeconometrics</li>
-        <li><strong>Monetary Policy & DSGE Models:</strong> Policy analysis, growth dynamics</li>
-        <li><strong>Financial Economics:</strong> Risk modeling, asset pricing</li>
-        <li><strong>Resource & Development Economics:</strong> Socioeconomic impacts of resource exploitation</li>
-    </ul>
-</section>
+        <!-- Research Areas -->
+        <section class="container content-section fade-in" id="research-areas">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> Research Areas</h2>
+            <ul class="research-areas-list">
+                <li><strong>AI/ML in Economics:</strong> Integrating machine learning into macroeconomic and financial models</li>
+                <li><strong>Econometrics:</strong> Causal inference, time series, microeconometrics</li>
+                <li><strong>Monetary Policy & DSGE Models:</strong> Policy analysis, growth dynamics</li>
+                <li><strong>Financial Economics:</strong> Risk modeling, asset pricing</li>
+                <li><strong>Resource & Development Economics:</strong> Socioeconomic impacts of resource exploitation</li>
+            </ul>
+        </section>
 
-<style>
-/* Pour le mode sombre */
-body.dark-mode .research-areas-list li {
-    color: #181818 !important; /* noir ou très foncé */
-}
-body.dark-mode .research-areas-list li strong {
-    color: #181818 !important;
-}
-</style>
-
-
-        <section class="container content-section fade-in">
+        <!-- Peer-Reviewed Journal Articles -->
+        <section class="container content-section fade-in" id="peer-reviewed">
             <h2 class="section-title"><i class="fas fa-book-open"></i> Peer-Reviewed Journal Articles</h2>
             <div class="publication-cards">
                 <div class="publication-card">
@@ -260,7 +104,8 @@ body.dark-mode .research-areas-list li strong {
             </div>
         </section>
 
-        <section class="container content-section fade-in">
+        <!-- Book Chapters -->
+        <section class="container content-section fade-in" id="book-chapters">
             <h2 class="section-title"><i class="fas fa-book"></i> Book Chapters</h2>
             <div class="publication-cards">
                 <div class="publication-card">
@@ -316,53 +161,53 @@ body.dark-mode .research-areas-list li strong {
             </div>
         </section>
 
-<section class="container content-section fade-in">
-    <h2 class="section-title"><i class="fas fa-chalkboard"></i> Conference Papers & Proceedings</h2>
-    <div class="publication-cards">
-        <div class="publication-card">
-            <h3>
-                <a href="https://www.researchgate.net/publication/383293307_BIM-Driven_off-site_Construction_Pathway_to_Efficiency_Functionality_and_Sustainability?channel=doi&linkId=66c7416a97265406eaa3178b&showFulltext=true" target="_blank" rel="noopener">
-                    BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability
-                </a>
-            </h3>
-            <div class="publication-meta">D Mirindi, F Mirindi<br>
-                <em>Transforming Construction with Off-site Methods and Technologies Conference, 2024</em>
+        <!-- Conference Papers & Proceedings -->
+        <section class="container content-section fade-in" id="conference-papers">
+            <h2 class="section-title"><i class="fas fa-chalkboard"></i> Conference Papers & Proceedings</h2>
+            <div class="publication-cards">
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.researchgate.net/publication/383293307_BIM-Driven_off-site_Construction_Pathway_to_Efficiency_Functionality_and_Sustainability?channel=doi&linkId=66c7416a97265406eaa3178b&showFulltext=true" target="_blank" rel="noopener">
+                            BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, F Mirindi<br>
+                        <em>Transforming Construction with Off-site Methods and Technologies Conference, 2024</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        <a href="https://www.researchgate.net/publication/383983210_An_advance_study_of_recycled_PP_HDPE_and_PET_fibers_with_the_application_of_machine_learning_to_enhance_concrete_compressive_strength" target="_blank" rel="noopener">
+                            An Advance Study of Recycled PP, HDPE and PET Fibers with the Application of Machine Learning to Enhance Concrete Compressive Strength
+                        </a>
+                    </h3>
+                    <div class="publication-meta">D Mirindi, D Sinkhonde, F Mirindi<br>
+                        <em>2024</em>
+                    </div>
+                </div>
+                <div class="publication-card">
+                    <h3>
+                        Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms
+                    </h3>
+                    <div class="publication-meta">
+                        F Mirindi<br>
+                        <em>
+                            Progressive Economics Forum Sessions,<br>
+                            59th Annual Meetings of the Canadian Economics Association,<br>
+                            Université du Québec à Montréal, Montréal, Canada<br>
+                            May 31, 2025
+                        </em>
+                        <br>
+                        <a href="https://www.economics.ca/cea2025" target="_blank" rel="noopener">
+                            Conference Website
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="publication-card">
-            <h3>
-                <a href="https://www.researchgate.net/publication/383983210_An_advance_study_of_recycled_PP_HDPE_and_PET_fibers_with_the_application_of_machine_learning_to_enhance_concrete_compressive_strength" target="_blank" rel="noopener">
-                    An Advance Study of Recycled PP, HDPE and PET Fibers with the Application of Machine Learning to Enhance Concrete Compressive Strength
-                </a>
-            </h3>
-            <div class="publication-meta">D Mirindi, D Sinkhonde, F Mirindi<br>
-                <em>2024</em>
-            </div>
-        </div>
-        <!-- Nouvelle conférence ajoutée -->
-        <div class="publication-card">
-            <h3>
-                Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms
-            </h3>
-            <div class="publication-meta">
-                F Mirindi<br>
-                <em>
-                    Progressive Economics Forum Sessions,<br>
-                    59th Annual Meetings of the Canadian Economics Association,<br>
-                    Université du Québec à Montréal, Montréal, Canada<br>
-                    May 31, 2025
-                </em>
-                <br>
-                <a href="https://www.economics.ca/cea2025" target="_blank" rel="noopener">
-                    Conference Website
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-
-        <section class="container content-section fade-in">
+        <!-- Online Publications & Media -->
+        <section class="container content-section fade-in" id="online-publications">
             <h2 class="section-title"><i class="fas fa-globe"></i> Online Publications & Media</h2>
             <div class="publication-cards">
                 <div class="publication-card">
@@ -398,151 +243,63 @@ body.dark-mode .research-areas-list li strong {
             </div>
         </section>
 
-<section class="certificates-section fade-in">
-    <h2><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
-    <div class="certificates-film-carousel" id="certificates-film-carousel">
-        <img src="images/certificate_1.jpg" alt="Certificate 1">
-        <img src="images/certificate_2.JPG" alt="Certificate 2">
-        <img src="images/certificate_3.png" alt="Certificate 3">
-        <img src="images/certificate_4.png" alt="Certificate 4">
-        <img src="images/certificate_5.png" alt="Certificate 5">
-        <!-- Repeat images for infinite loop effect -->
-        <img src="images/certificate_1.jpg" alt="Certificate 1">
-        <img src="images/certificate_2.JPG" alt="Certificate 2">
-        <img src="images/certificate_3.png" alt="Certificate 3">
-        <img src="images/certificate_4.png" alt="Certificate 4">
-        <img src="images/certificate_5.png" alt="Certificate 5">
-    </div>
-</section>
-
-<style>
-.certificates-section {
-    margin: 2.5rem auto;
-    padding: 0 1rem;
-    max-width: 1100px;
-}
-.certificates-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
-    font-family: 'Playfair Display', serif;
-    color: #222;
-    text-align: left;
-}
-.certificates-film-carousel {
-    display: flex;
-    gap: 22px;
-    overflow: hidden;
-    width: 100%;
-    align-items: flex-start;
-    position: relative;
-    height: 200px;
-    background: none;
-}
-.certificates-film-carousel img {
-    width: 240px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 12px;
-    background: #f0f0f0;
-    flex-shrink: 0;
-    box-shadow: 0 2px 10px rgba(44,62,80,0.08);
-    transition: transform 0.2s;
-}
-.certificates-film-carousel img:hover {
-    transform: scale(1.04);
-    box-shadow: 0 8px 28px rgba(30,60,90,0.13);
-}
-@media (max-width: 900px) {
-    .certificates-film-carousel img {
-        width: 38vw;
-        max-width: 220px;
-        height: 120px;
-    }
-}
-@media (max-width: 600px) {
-    .certificates-film-carousel {
-        gap: 10px;
-        height: 120px; /* Set to fit image height */
-        min-height: 0;
-    }
-    .certificates-film-carousel img {
-        width: 90vw;
-        max-width: 98vw;
-        height: 110px;
-        object-fit: contain;
-        display: block;
-        margin: 0 auto;
-        background: #f0f0f0;
-    }
-}
-</style>
-
-<script>
-// Auto-scroll "film" effect
-document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.getElementById('certificates-film-carousel');
-    let scrollAmount = 0;
-    let scrollStep = 1; // pixels per frame
-    let maxScroll = carousel.scrollWidth / 2;
-
-    function autoScroll() {
-        scrollAmount += scrollStep;
-        if (scrollAmount >= maxScroll) {
-            scrollAmount = 0;
-        }
-        carousel.scrollLeft = scrollAmount;
-        requestAnimationFrame(autoScroll);
-    }
-    autoScroll();
-});
-</script>
-
-
-
-
-
-        
+        <!-- Certificates & Achievements Carousel -->
+        <section class="container content-section fade-in" id="certificates">
+            <h2 class="section-title"><i class="fas fa-certificate"></i> Certificates & Achievements</h2>
+            <div class="certificates-carousel">
+                <div class="carousel-track">
+                    <img src="images/certificate_1.jpg" alt="Certificate 1">
+                    <img src="images/certificate_2.JPG" alt="Certificate 2">
+                    <img src="images/certificate_3.png" alt="Certificate 3">
+                    <img src="images/certificate_4.png" alt="Certificate 4">
+                    <img src="images/certificate_5.png" alt="Certificate 5">
+                    <!-- Repeat for seamless loop -->
+                    <img src="images/certificate_1.jpg" alt="Certificate 1">
+                    <img src="images/certificate_2.JPG" alt="Certificate 2">
+                    <img src="images/certificate_3.png" alt="Certificate 3">
+                    <img src="images/certificate_4.png" alt="Certificate 4">
+                    <img src="images/certificate_5.png" alt="Certificate 5">
+                </div>
+            </div>
+        </section>
     </main>
 
-<footer class="site-footer">
-  <div class="container footer-content">
-    <!-- Left: Navigation -->
-    <nav class="footer-links" aria-label="Footer navigation">
-      <ul class="footer-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="blog.html">Blog</a></li>
-      </ul>
-    </nav>
-    <!-- Center: Contact Info -->
-    <div class="footer-contact">
-      <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-      <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-      <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-      <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-    </div>
-    <!-- Right: Social Icons (horizontal) -->
-    <div class="footer-social-icons">
-      <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-      <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-      <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-      <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-    </div>
-  </div>
-  <div class="container">
-    <div class="footer-copyright">
-      <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-
-
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <!-- Left: Navigation -->
+            <nav class="footer-links" aria-label="Footer navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <!-- Center: Contact Info -->
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <!-- Right: Social Icons (horizontal) -->
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
+        </div>
+        <div class="container">
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Theme toggle logic
+        // Theme toggle logic and dynamic year
         document.addEventListener('DOMContentLoaded', function() {
             const toggleBtn = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
@@ -565,6 +322,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
             document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+    </script>
+    <script>
+        // Certificates carousel auto-scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            if (!track) return;
+            let step = 1;
+            let pos = 0;
+            function scrollLoop() {
+                pos += step;
+                if (pos >= track.scrollWidth / 2) pos = 0;
+                track.style.transform = `translateX(-${pos}px)`;
+                requestAnimationFrame(scrollLoop);
+            }
+            scrollLoop();
         });
     </script>
 </body>
