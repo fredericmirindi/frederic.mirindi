@@ -1,3 +1,62 @@
+@media (max-width: 900px) {
+    .main-nav ul {
+        display: none;
+        flex-direction: column;
+        background: #2d3e50;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        margin: 0;
+        padding: 0.5em 0;
+        box-shadow: 0 2px 8px rgba(30,60,90,0.15);
+    }
+    .main-nav.active ul {
+        display: flex;
+    }
+    .mobile-nav-toggle {
+        display: inline-block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+        margin-left: 1em;
+    }
+}
+@media (min-width: 901px) {
+    .main-nav ul {
+        display: flex !important;
+        position: static;
+        background: none;
+        flex-direction: row;
+        box-shadow: none;
+    }
+    .mobile-nav-toggle {
+        display: none;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* === Full Updated style.css === */
 
 /* --- Global Styles & Variables --- */
