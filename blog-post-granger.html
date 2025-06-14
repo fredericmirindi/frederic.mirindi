@@ -85,27 +85,54 @@
     <main>
         <div class="container content-section">
             <!-- Implementation Workflow -->
-            <div class="visualization-section">
-                <h2 class="graph-title">Granger Causality Implementation Workflow</h2>
-                <div id="flowchart">
-                    <img src="images/granger-flowchart.svg" alt="Implementation flowchart: Steps for Granger causality analysis. Step 1: Collect time series data. Step 2: Test for stationarity. Step 3: Select lag order. Step 4: Estimate VAR model. Step 5: Perform Granger causality test. Step 6: Interpret results." style="max-width:100%;height:auto;">
-                </div>
-                <div class="graph-description">
-                    <strong>Description:</strong> The flowchart above illustrates the standard workflow for Granger causality analysis. It starts with collecting time series data, checking for stationarity, selecting the optimal lag order (using AIC/BIC), estimating a vector autoregression (VAR) model, running the Granger causality test, and finally interpreting the results. This stepwise process ensures the validity and interpretability of Granger causality findings.
-                </div>
-            </div>
+<div class="visualization-section">
+    <h2 class="graph-title">Granger Causality Implementation Workflow</h2>
+    <ol class="workflow-steps">
+        <li>
+            <span class="workflow-step-title">1. Data Collection</span>
+            <span class="workflow-step-desc">Gather relevant time series data for all variables of interest.</span>
+        </li>
+        <li>
+            <span class="workflow-step-title">2. Stationarity Testing</span>
+            <span class="workflow-step-desc">Check each series for stationarity (e.g., using the Augmented Dickey-Fuller test). If non-stationary, difference or transform the data.</span>
+        </li>
+        <li>
+            <span class="workflow-step-title">3. Lag Length Selection</span>
+            <span class="workflow-step-desc">Determine the optimal lag order (p) using criteria such as AIC or BIC.</span>
+        </li>
+        <li>
+            <span class="workflow-step-title">4. Model Estimation</span>
+            <span class="workflow-step-desc">Estimate a vector autoregression (VAR) model including all relevant lags.</span>
+        </li>
+        <li>
+            <span class="workflow-step-title">5. Granger Causality Test</span>
+            <span class="workflow-step-desc">Test whether lagged values of X help predict Y (and/or vice versa), typically using an F-test or Wald test.</span>
+        </li>
+        <li>
+            <span class="workflow-step-title">6. Interpretation & Validation</span>
+            <span class="workflow-step-desc">Interpret results (statistical significance ≠ true causality) and validate with out-of-sample checks or diagnostics.</span>
+        </li>
+    </ol>
+    <div class="graph-description">
+        <strong>Description:</strong> This workflow details each step in a standard Granger causality analysis. Begin by collecting and preparing your time series data, ensure all series are stationary, select the optimal lag length, estimate a VAR model, perform the Granger causality test, and carefully interpret the results. This process helps ensure your findings are robust and meaningful.<br>
+        <span style="font-size:0.98em;color:#888;">Source: <a href="https://www.numberanalytics.com/blog/ultimate-guide-granger-causality-econ" target="_blank" rel="noopener">Number Analytics</a>, <a href="https://en.wikipedia.org/wiki/Granger_causality" target="_blank" rel="noopener">Wikipedia</a></span>
+    </div>
+</div>
 
-            <!-- Mathematical Formulation -->
-            <div class="equation-box">
-                <h3>Vector Autoregression (VAR) Model</h3>
-                $$
-                \begin{cases}
-                Y_t = \alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \sum_{i=1}^p \beta_i X_{t-i} + \epsilon_t \\
-                X_t = \gamma_0 + \sum_{i=1}^p \gamma_i X_{t-i} + \sum_{i=1}^p \delta_i Y_{t-i} + \eta_t
-                \end{cases}
-                $$
-                <p>Optimal lag length <em>p</em> is determined by information criteria such as AIC or BIC. Granger causality is tested by checking if the coefficients $\beta_i$ (or $\delta_i$) are jointly significant.</p>
-            </div>
+<!-- Mathematical Formulation -->
+<div class="equation-box">
+    <h3>Vector Autoregression (VAR) Model</h3>
+    $$
+    \begin{cases}
+    Y_t = \alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \sum_{i=1}^p \beta_i X_{t-i} + \epsilon_t \\
+    X_t = \gamma_0 + \sum_{i=1}^p \gamma_i X_{t-i} + \sum_{i=1}^p \delta_i Y_{t-i} + \eta_t
+    \end{cases}
+    $$
+    <p>
+        The optimal lag length <em>p</em> is determined by minimizing information criteria (AIC/BIC). Granger causality is present if the coefficients $\beta_i$ (or $\delta_i$) are jointly significant, meaning past values of X help predict Y (or vice versa), beyond what is possible using only past values of Y.
+    </p>
+</div>
+
 
             <!-- Interactive Demonstration -->
             <div class="visualization-section">
