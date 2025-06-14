@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Detailed discussion on Granger Causality in time series analysis by Frédéric Mirindi.">
-    <title>Frédéric Mirindi - Blog | Granger Causality</title>
-     <link rel="stylesheet" href="css/style.css">
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-     <link rel="shortcut icon" href="/favicon.ico">
-     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-     <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
-     <script>
+    <meta name="description" content="Modern monetary policy, the New Keynesian Phillips Curve, DIS curve, and Robert Gordon's perspective on inflation dynamics.">
+    <title>Frédéric Mirindi - Blog | Monetary Policy Debates</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="msapplication-square310x310logo" content="/ms-icon-310x310.png">
+    <script>
         MathJax = {
           tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
           svg: { fontCache: 'global' }
@@ -23,13 +23,71 @@
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .blog-illustration {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 1.1rem auto;
+            background: #eaf6fb;
+        }
+        .blog-image-caption {
+            font-size: 0.96rem;
+            color: #888;
+            text-align: center;
+            margin-top: -0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .equation-box {
+            background: #f8fafc;
+            border-left: 4px solid #1abc9c;
+            border-radius: 8px;
+            padding: 1.1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .footnotes {
+            font-size: 0.96em;
+            margin-top: 2.5rem;
+        }
+        .footnotes hr {
+            margin-bottom: 1rem;
+        }
+        .back-to-blog {
+            margin: 2.5rem 0 1.5rem 0;
+            text-align: left;
+        }
+        .back-to-blog a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.07em;
+            background: none;
+            padding: 0;
+            border: none;
+            transition: color 0.2s;
+        }
+        .back-to-blog a:hover {
+            text-decoration: underline;
+            color: #16a085;
+        }
+        @media (max-width: 700px) {
+            .equation-box {
+                padding: 0.9rem 0.5rem;
+            }
+            .blog-illustration {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-     <header class="site-header">
-         <div class="container header-content">
-             <h1><a href="index.html">Frédéric Mirindi</a></h1>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
             <nav class="main-nav">
-                 <ul>
+                <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
@@ -37,115 +95,104 @@
                     <li><a href="blog.html" class="active">Blog</a></li>
                 </ul>
             </nav>
-             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         </div>
     </header>
     <main>
-         <div class="container content-section">
-             <article class="blog-post blog-post-full fade-in">
-                 <header class="blog-post-header">
-                    <h2 class="blog-post-title">Granger Causality in Time Series Analysis</h2>
-                    <p class="blog-post-meta">Posted on <time datetime="2025-04-09">April 9, 2025</time> | Category: Econometrics, Time Series</p>
-                 </header>
-                 <div class="blog-post-content">
-                    <p>Determining causal relationships is a central goal in econometrics. While true causality is difficult to establish definitively with non-experimental data, time series analysis offers tools to investigate predictive relationships. One of the most well-known concepts is Granger causality, introduced by Clive Granger<sup><a href="#fn6" id="fnref6">6</a></sup>.</p>
+        <div class="container content-section">
+            <article class="blog-post blog-post-full fade-in">
+                <header class="blog-post-header">
+                    <h2 class="blog-post-title">Monetary Policy Debates: Gordon, the NKPC, and DIS Curve Insights</h2>
+                    <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Macroeconomics, Monetary Policy</p>
+                </header>
+                <figure>
+                    <img src="images/monetary.png" alt="Monetary policy, Phillips Curve, and macroeconomic models illustration" class="blog-illustration">
+                    <figcaption class="blog-image-caption">Modern monetary policy debates: NKPC, DIS curve, and inflation dynamics.</figcaption>
+                </figure>
+                <div class="blog-post-content">
+                    <p>
+                        Modern macroeconomic models used for monetary policy analysis, particularly within the New Keynesian tradition, often rely on the interplay between an aggregate supply relation (the New Keynesian Phillips Curve, NKPC) and an aggregate demand relation (the Dynamic IS curve, DIS). While this framework provides valuable insights, the extensive empirical work by Robert J. Gordon highlights important real-world complexities, especially concerning inflation inertia and the role of supply shocks, which policy must confront.
+                    </p>
 
-                    <div class="definition-box">
-                        <h3>Definition</h3>
-                        <p>A time series variable $X_t$ is said to **Granger-cause** another variable $Y_t$ if, given the past history of $Y_t$, past values of $X_t$ are useful for predicting the future values of $Y_t$. In simpler terms, if including lagged values of $X$ in an autoregressive model for $Y$ significantly improves the forecast accuracy compared to a model using only lagged values of $Y$, then $X$ Granger-causes $Y$.</p>
-                        <p><strong>Important Note:</strong> This is a test of *predictive* causality, not structural or philosophical causality. It doesn't imply that $X_t$ *structurally causes* $Y_t$, only that it contains useful information for forecasting $Y_t$.</p>
-                    </div>
-
-                    <h3>Mathematical Framework: Vector Autoregression (VAR)</h3>
-                    <p>Granger causality tests are commonly performed using Vector Autoregression (VAR) models. A VAR model expresses each variable in a system as a linear function of its own past values and the past values of all other variables in the system. For a simple bivariate system with two stationary variables $Y_t$ and $X_t$, a VAR model with $p$ lags, denoted VAR(p), is:</p>
+                    <h3>The Standard New Keynesian Framework</h3>
+                    <p>This framework typically builds from microfoundations assuming optimizing agents and nominal rigidities (sticky prices or wages).</p>
                     <div class="equation-box">
-                         <p>Equation for $Y_t$:</p>
-                         $$ Y_t = \alpha_0 + \sum_{i=1}^{p} \alpha_i Y_{t-i} + \sum_{i=1}^{p} \beta_i X_{t-i} + \epsilon_{1t} \quad \quad (1) $$
-                         <p>Equation for $X_t$:</p>
-                         $$ X_t = \gamma_0 + \sum_{i=1}^{p} \gamma_i Y_{t-i} + \sum_{i=1}^{p} \delta_i X_{t-i} + \epsilon_{2t} \quad \quad (2) $$
-                         <p>where $\alpha_0, \gamma_0$ are intercepts; $\alpha_i, \beta_i, \gamma_i, \delta_i$ are coefficient matrices/vectors; and $\epsilon_{1t}, \epsilon_{2t}$ are white noise error terms with $E[\epsilon_{jt}] = 0$, $E[\epsilon_{jt}^2] = \sigma_j^2$, and potentially $E[\epsilon_{1t}\epsilon_{2t}] = \sigma_{12} \neq 0$.</p>
+                        <p><strong>New Keynesian Phillips Curve (NKPC):</strong> Derived from firms' optimal price-setting behavior under constraints (e.g., Calvo pricing), it links current inflation ($\pi_t$) primarily to expected future inflation ($E_t[\pi_{t+1}]$) and a measure of real marginal cost ($mc_t$), often proxied by the output gap ($y_t$).</p>
+                        $$ \pi_t = \beta E_t[\pi_{t+1}] + \kappa mc_t \approx \beta E_t[\pi_{t+1}] + \kappa y_t + u_t $$
+                        <p>Here, $\beta \in (0,1)$ is the household's discount factor, $\kappa$ captures the degree of price stickiness (smaller $\kappa$ means stickier prices), and $u_t$ represents exogenous cost-push shocks (like unexpected changes in markups or input costs).</p>
+                    </div>
+                    <div class="equation-box">
+                        <p><strong>Dynamic IS Curve (DIS):</strong> Derived from households' Euler equation for consumption, it links the current output gap ($y_t$) to the expected future output gap ($E_t[y_{t+1}]$) and the gap between the real interest rate ($i_t - E_t[\pi_{t+1}]$) and the natural rate of interest ($r^n_t$).</p>
+                        $$ y_t = E_t[y_{t+1}] - \sigma (i_t - E_t[\pi_{t+1}] - r^n_t) + v_t $$
+                        <p>Here, $\sigma > 0$ is the intertemporal elasticity of substitution in consumption, $i_t$ is the central bank's nominal policy rate, and $v_t$ represents aggregate demand shocks (e.g., government spending or preference shocks).</p>
                     </div>
 
-                    <h3>Testing for Granger Causality: $X \rightarrow Y$</h3>
-                    <p>We want to test whether past $X$ helps predict current $Y$. This corresponds to testing whether the coefficients on lagged $X$ in equation (1) are jointly zero.</p>
-                    <div class="test-steps">
-                        <h4>Hypotheses Formulation:</h4>
-                        <p>The null hypothesis ($H_0$) is that $X$ does *not* Granger-cause $Y$. This means that all $\beta_i$ coefficients associated with lagged $X$ terms in the equation for $Y$ (Equation 1) are simultaneously equal to zero:</p>
-                        $$ H_0: \beta_1 = \beta_2 = \dots = \beta_p = 0 $$
-                        <p>The alternative hypothesis ($H_1$) is that $X$ *does* Granger-cause $Y$, meaning at least one $\beta_i \neq 0$.</p>
-
-                        <h4>Testing Procedure using F-test:</h4>
-                        <p>The standard approach is to compare the goodness-of-fit between the unrestricted model (Eq. 1) and a restricted model where $H_0$ is imposed.</p>
-                        <ol>
-                            <li>
-                                <strong>Estimate Unrestricted Model:</strong> Estimate Equation (1) using Ordinary Least Squares (OLS), including $p$ lags of $Y_t$ and $p$ lags of $X_t$. Record the Sum of Squared Residuals ($SSR_U$). The number of parameters estimated is $k_U = 1 (\text{intercept}) + p (\text{lags of } Y) + p (\text{lags of } X)$.
-                            </li>
-                            <li>
-                                <strong>Estimate Restricted Model:</strong> Estimate Equation (1) *excluding* the $p$ lags of $X_t$, forcing the coefficients $\beta_1, \dots, \beta_p$ to be zero:
-                                $$ Y_t = \alpha_0 + \sum_{i=1}^{p} \alpha_i Y_{t-i} + \epsilon_{1t}^* $$
-                                Record the Sum of Squared Residuals from this regression ($SSR_R$). The number of parameters estimated is $k_R = 1 + p$.
-                            </li>
-                            <li>
-                                <strong>Calculate the F-statistic:</strong> The test statistic measures the relative improvement in fit from adding the lagged $X$ terms.
-                                $$ F = \frac{(SSR_R - SSR_U) / q}{SSR_U / (T - k_U)} $$
-                                where:
-                                <ul>
-                                    <li>$q = p$ is the number of restrictions being tested (the number of $\beta_i$ coefficients set to zero).</li>
-                                    <li>$T$ is the number of observations used in the estimation (after accounting for lags).</li>
-                                    <li>$(T - k_U)$ is the degrees of freedom in the unrestricted model.</li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Decision Rule:</strong> Compare the calculated $F$ statistic to the critical value $F_{critical}$ from the F-distribution with $q$ numerator degrees of freedom and $(T - k_U)$ denominator degrees of freedom, at a chosen significance level $\alpha$ (e.g., 5%). If $F > F_{critical}$, we reject the null hypothesis $H_0$.
-                            </li>
-                        </ol>
-                         <p class="test-conclusion">Rejecting $H_0$ provides statistical evidence that $X_t$ Granger-causes $Y_t$. Failure to reject $H_0$ means we do not find evidence that past $X_t$ improves the prediction of $Y_t$ beyond past $Y_t$. Note that testing $Y \rightarrow X$ involves applying the same procedure to Equation (2) and testing $H_0: \gamma_1 = \dots = \gamma_p = 0$.</p>
-                    </div>
-
-                    <h3>Important Considerations & Limitations</h3>
-                    <p>The validity and interpretation of Granger causality tests rely on several key assumptions<sup><a href="#fn7" id="fnref7">7</a></sup>:</p>
+                    <h3>Gordon's Perspective & Policy Challenges</h3>
+                    <p>Robert Gordon's research, particularly his development of the "Triangle Model" of inflation, emphasizes empirical patterns and historical context, posing challenges to the direct application of the baseline NKPC/DIS framework:</p>
                     <ul>
-                        <li><strong>Stationarity:</strong> The time series $X_t$ and $Y_t$ are assumed to be (jointly) covariance stationary. Applying the test to non-stationary data without appropriate handling (like differencing or testing for cointegration via VECM) can lead to spurious results.</li>
-                        <li><strong>Lag Length:</strong> The test results can be sensitive to the choice of the lag length $p$. Standard practice involves using information criteria (AIC, BIC, HQIC) to guide the selection of $p$, often testing robustness across different reasonable lag lengths.</li>
-                        <li><strong>Linearity:</strong> The test assumes a linear relationship between the variables. If the true relationship is non-linear, the standard Granger test might fail to detect predictive power.</li>
-                        <li><strong>No Omitted Variables:</strong> The test implicitly assumes that no other relevant past information (from other variables $Z_t$) is omitted from the model. If such variables exist and influence both $X_t$ and $Y_t$, the detected Granger causality might be spurious.</li>
-                        <li><strong>Parameter Constancy:</strong> The coefficients in the VAR model are assumed to be constant over the sample period.</li>
+                        <li><strong>Strong Inflation Inertia/Persistence:</strong> Gordon consistently found that lagged inflation terms ($\pi_{t-1}, \pi_{t-2}, \dots$) are highly significant determinants of current inflation $\pi_t$. His general model often takes the form:
+                            $$ \pi_t = \sum_{j=1}^{k} \alpha_j \pi_{t-j} + \gamma D_t + \delta Z_t + \epsilon_t $$
+                            Where $\sum \alpha_j$ is often close to 1 (indicating high persistence), $D_t$ captures demand pressures (like the unemployment or output gap), and $Z_t$ represents supply shock variables (e.g., relative import prices, oil prices, productivity trend deviations). Purely forward-looking NKPC models ($\pi_t = \beta E_t[\pi_{t+1}] + \kappa y_t + u_t$) can struggle to generate this level of inertia without modifications like assuming some agents use backward-looking rules or indexation. This inertia makes disinflation potentially more costly in terms of lost output (a higher sacrifice ratio).
+                        </li>
+                        <li><strong>Explicit Role of Supply Shocks ($Z_t$):</strong> The Triangle model explicitly incorporates identifiable supply shocks, which Gordon argued were crucial for explaining inflation dynamics, especially during the 1970s and other volatile periods. While the NKPC includes a generic shock $u_t$, Gordon's approach emphasizes pinning down specific sources. This highlights the policy dilemma: Should the central bank accommodate adverse supply shocks (leading to higher inflation) or fight them (potentially deepening a recession)? The optimal response depends on the shock's perceived persistence and the central bank's objectives.
+                        </li>
+                        <li><strong>Time-Varying Potential Output and NAIRU:</strong> Gordon's empirical work extensively documents shifts in the growth rate of potential output ($Y^n_t$) and the Non-Accelerating Inflation Rate of Unemployment (NAIRU) over time, driven by factors like demographics, technology, and globalization. Since the output gap ($y_t$) and the unemployment gap are central to both the NKPC/DIS framework and common policy rules (like the Taylor rule), the significant real-time uncertainty surrounding $Y^n_t$ and NAIRU makes precise policy calibration extremely difficult. Acting aggressively based on potentially mismeasured gaps can lead to policy errors.
+                        </li>
                     </ul>
-                    <p>Despite its limitations, the Granger causality test is a valuable tool in the time series econometrician's toolkit for exploring dynamic relationships between variables.</p>
-                 </div>
-                  <section class="footnotes"><hr><h3>Footnotes</h3><ol><li id="fn6">Granger, C. W. J. (1969). Investigating Causal Relations by Econometric Models and Cross-spectral Methods. *Econometrica*, 37(3), 424–438. <a href="#fnref6" title="Return to text">&#8617;</a></li><li id="fn7">It's crucial that the underlying assumptions are met, or at least reasonably approximated, for the test results to be reliable. Violation of stationarity is a particularly common issue leading to spurious Granger causality findings. <a href="#fnref7" title="Return to text">&#8617;</a></li></ol></section>
-                  <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
-             </article>
-         </div>
+                    <h3>Policy Implications</h3>
+                    <p>Integrating Gordon's insights suggests a monetary policy approach that:</p>
+                    <ol>
+                        <li>Acknowledges and models inflation persistence explicitly.</li>
+                        <li>Distinguishes between demand-driven and supply-driven inflation, potentially responding differently to each.</li>
+                        <li>Recognizes the uncertainty surrounding potential output and the natural rates of interest and unemployment, leading to potentially more robust or cautious policy rules compared to those derived from purely theoretical NKPC/DIS models assuming perfect information.</li>
+                    </ol>
+                    <p>The debate continues, but understanding the empirical regularities and historical context emphasized by Gordon provides a vital counterpoint and complement to the elegant structure of the New Keynesian framework.</p>
+                </div>
+                <section class="footnotes">
+                    <hr>
+                    <h3>References</h3>
+                    <ol>
+                        <li>Gordon, R. J. (1982). Inflation, flexible exchange rates, and the natural rate of unemployment. In <em>Workers, Jobs, and Inflation</em> (pp. 89-158). Brookings Institution Press.</li>
+                        <li>Gordon, R. J. (2011). The History of the Phillips Curve: Consensus and Bifurcation. <em>Economica</em>, 78(309), 10–50.</li>
+                        <li>Galí, J., & Gertler, M. (1999). Inflation dynamics: A structural econometric analysis. <em>Journal of Monetary Economics</em>, 44(2), 195–222.</li>
+                        <li>Gordon, R. J. (2016). <em>The Rise and Fall of American Growth: The U.S. Standard of Living since the Civil War</em>. Princeton University Press.</li>
+                    </ol>
+                </section>
+                <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
+            </article>
+        </div>
     </main>
     <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-        </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
     <script src="js/script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
