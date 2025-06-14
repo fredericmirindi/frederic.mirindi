@@ -1,260 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A modern, research-based overview of Granger causality, including advanced methods, pitfalls, and real-world applications in economics, finance, and data science." />
-  <title>Frédéric Mirindi - Blog | Advanced Granger Causality in Time Series</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <script>
-    MathJax = {
-      tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
-      svg: { fontCache: 'global' }
-    };
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    .blog-illustration {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      border-radius: 10px;
-      display: block;
-      margin: 0 auto 1.1rem auto;
-      background: #eaf6fb;
-    }
-    .blog-image-caption {
-      font-size: 0.96rem;
-      color: #888;
-      text-align: center;
-      margin-top: -0.5rem;
-      margin-bottom: 1.2rem;
-    }
-    .equation-box {
-      background: #f8fafc;
-      border-left: 4px solid #1abc9c;
-      border-radius: 8px;
-      padding: 1.1rem 1.5rem;
-      margin: 1.5rem 0;
-      font-family: inherit;
-    }
-    .graph-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    .graph-card {
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 1.2rem;
-      text-align: center;
-    }
-    .graph-card img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-    }
-    .back-to-blog {
-      margin: 2.5rem 0 1.5rem 0;
-      text-align: left;
-    }
-    .back-to-blog a {
-      color: #1abc9c;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.07em;
-      background: none;
-      padding: 0;
-      border: none;
-      transition: color 0.2s;
-    }
-    .back-to-blog a:hover {
-      text-decoration: underline;
-      color: #16a085;
-    }
-    @media (max-width: 700px) {
-      .equation-box {
-        padding: 0.9rem 0.5rem;
-      }
-      .blog-illustration {
-        max-width: 100%;
-      }
-      .graph-container {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Frédéric Mirindi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .chart-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+        }
+        .graph-title {
+            color: #2d3e50;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        #networkDiagram svg {
+            width: 100% !important;
+            height: 400px !important;
+            display: block;
+            margin: 0 auto;
+        }
+        #citationChart svg {
+            width: 100% !important;
+            height: 300px !important;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-content">
-    <h1><a href="index.html">Frédéric Mirindi</a></h1>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<main>
-  <div class="container content-section">
-    <article class="blog-post blog-post-full fade-in">
-      <header class="blog-post-header">
-        <h2 class="blog-post-title">Granger Causality: Beyond Correlation in Time Series</h2>
-        <p class="blog-post-meta">Posted on <time datetime="2025-06-13">June 13, 2025</time> | Category: Econometrics, Time Series</p>
-      </header>
-      <figure>
-        <img src="images/granger.png" alt="Illustration of Granger causality in time series" class="blog-illustration">
-        <figcaption class="blog-image-caption">Granger causality helps reveal predictive directionality in time series data.</figcaption>
-      </figure>
-      <div class="blog-post-content">
-        <p>
-          In modern data science and economics, understanding the direction of influence between time series is crucial. Granger causality, introduced by Nobel laureate Clive Granger, is a foundational concept for testing whether one time series contains predictive information about another. Unlike simple correlation, Granger causality is rooted in the principle that a cause must precede its effect and must improve the prediction of that effect<sup><a href="#fn1" id="fnref1">1</a></sup>.
-        </p>
-
-        <h3>How Does Granger Causality Work?</h3>
-        <p>
-          The Granger causality test compares the predictive accuracy of two models for a target variable $Y_t$:
-        </p>
-        <ol>
-          <li>
-            <strong>Autoregressive Model:</strong> $Y_t$ is predicted using its own lagged values.
-          </li>
-          <li>
-            <strong>Augmented Model:</strong> $Y_t$ is predicted using its own lags <em>and</em> the lagged values of another series $X_t$.
-          </li>
-        </ol>
-        <div class="equation-box">
-          $$
-          Y_t = a_0 + \sum_{j=1}^p a_j Y_{t-j} + \sum_{k=1}^q b_k X_{t-k} + \varepsilon_t
-          $$
-          <p>If the coefficients $b_k$ are jointly significant, X is said to Granger-cause Y.</p>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
         </div>
-        <p>
-          The test is typically implemented via F-tests or Wald tests to check if including $X$'s lags significantly reduces the prediction error variance for $Y$ compared to the model without $X$<sup><a href="#fn2" id="fnref2">2</a></sup>.
-        </p>
+    </header>
 
-        <h3>Advanced Extensions</h3>
-        <div class="graph-container">
-          <div class="graph-card">
-            <img src="images/nonlinear-granger.svg" alt="Diagram of nonlinear Granger causality using neural networks">
-            <p class="blog-image-caption"><strong>Nonlinear Granger Causality:</strong> Neural networks and copula-based approaches can capture nonlinear and non-Gaussian relationships<sup><a href="#fn3" id="fnref3">3</a></sup>.</p>
-          </div>
-          <div class="graph-card">
-            <img src="images/multivariate-dag.svg" alt="Directed acyclic graph for multivariate Granger causality">
-            <p class="blog-image-caption"><strong>Multivariate Granger Causality:</strong> DAGs and heatmaps reveal complex networks of causality among many variables<sup><a href="#fn4" id="fnref4">4</a></sup>.</p>
-          </div>
+    <main>
+        <header class="page-header research-header">
+            <h1>Research Visualizations</h1>
+            <p class="lead">
+                Explore my research through interactive data visualizations: publication trends, collaboration networks, and citation impact.
+            </p>
+        </header>
+
+        <!-- Publication Trends Chart -->
+        <section class="container content-section fade-in">
+            <div class="chart-container">
+                <h3 class="graph-title">Publication Trends (2020-2025)</h3>
+                <canvas id="publicationChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Collaboration Network Diagram -->
+        <section class="container content-section fade-in">
+            <div class="chart-container">
+                <h3 class="graph-title">Research Collaboration Network</h3>
+                <div id="networkDiagram"></div>
+            </div>
+        </section>
+
+        <!-- Citation Impact Visualization -->
+        <section class="container content-section fade-in">
+            <div class="chart-container">
+                <h3 class="graph-title">Citation Impact Analysis</h3>
+                <div id="citationChart"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <nav class="footer-links" aria-label="Footer navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html" class="active">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
         </div>
-        <ul>
-          <li><strong>Nonlinear Granger causality:</strong> Machine learning (e.g., LSTMs, kernel methods) extends Granger’s concept to nonlinear and high-dimensional settings.</li>
-          <li><strong>Frequency-domain causality:</strong> Spectral analysis uncovers causal relationships at specific frequencies (e.g., business cycles).</li>
-          <li><strong>Conditional and panel causality:</strong> Tests can control for third variables or be applied to panel data for richer inference<sup><a href="#fn5" id="fnref5">5</a></sup>.</li>
-        </ul>
-
-        <h3>Applications in Practice</h3>
-        <div class="graph-container">
-          <div class="graph-card">
-            <img src="images/macroeconomic-heatmap.svg" alt="Macroeconomic Granger causality heatmap">
-            <p class="blog-image-caption"><strong>Macroeconomics:</strong> Heatmaps show Granger-causal links among GDP, unemployment, inflation, and interest rates.</p>
-          </div>
-          <div class="graph-card">
-            <img src="images/genomics-granger.svg" alt="Genomics Granger causality diagram">
-            <p class="blog-image-caption"><strong>Genomics:</strong> Granger causality helps reconstruct gene regulatory networks from time-lapse data.</p>
-          </div>
+        <div class="container">
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <ul>
-          <li><strong>Finance:</strong> Trading volume Granger-causes price volatility, aiding risk management<sup><a href="#fn6" id="fnref6">6</a></sup>.</li>
-          <li><strong>Marketing:</strong> Lagged advertising spend Granger-causes sales, informing campaign timing<sup><a href="#fn7" id="fnref7">7</a></sup>.</li>
-          <li><strong>Macroeconomics:</strong> GDP growth, inflation, and interest rates form feedback networks best visualized via Granger-causal graphs.</li>
-        </ul>
+    </footer>
 
-        <h3>Best Practices and Pitfalls</h3>
-        <ul>
-          <li><strong>Ensure stationarity:</strong> Use differencing or transformation to stabilize mean/variance<sup><a href="#fn8" id="fnref8">8</a></sup>.</li>
-          <li><strong>Optimal lag selection:</strong> Use AIC/BIC, cross-validation, and domain knowledge.</li>
-          <li><strong>Check for cointegration:</strong> If series are non-stationary but cointegrated, use VECM-based causality tests.</li>
-          <li><strong>Beware structural breaks:</strong> Regime changes can invalidate causality inferences.</li>
-          <li><strong>Interpret with caution:</strong> Granger causality is predictive, not proof of true causality—hidden confounders may exist<sup><a href="#fn9" id="fnref9">9</a></sup>.</li>
-        </ul>
+    <script>
+        // Publication Trends Chart (Chart.js)
+        const ctx = document.getElementById('publicationChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'Journal Articles',
+                    data: [2, 4, 6, 8, 10, 12],
+                    backgroundColor: '#1abc9c'
+                }, {
+                    label: 'Conference Papers',
+                    data: [3, 5, 4, 7, 9, 11],
+                    backgroundColor: '#34495e'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
 
-        <h3>Case Study: Energy and GDP</h3>
-        <div class="equation-box">
-          <p>Recent research using copula-based nonlinear Granger causality (arXiv:2409.15070, 2025) finds:</p>
-          $$
-          \text{Energy Consumption} \leftrightarrow \text{GDP Growth}
-          $$
-          <p>Bidirectional causality detected, missed by linear tests.</p>
-        </div>
+        // Collaboration Network Diagram (D3.js)
+        const width = document.getElementById('networkDiagram').offsetWidth || 800;
+        const height = 400;
+        const svg = d3.select("#networkDiagram")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
 
-        <h3>Future Trends</h3>
-        <ul>
-          <li>Integration with deep learning for high-dimensional, nonlinear, and real-time causality discovery.</li>
-          <li>Scalable algorithms for big data and streaming environments (e.g., Spark, cloud computing).</li>
-          <li>Ethical and explainable AI for causal inference in sensitive applications.</li>
-        </ul>
-      </div>
-      <section class="footnotes">
-        <hr>
-        <h3>References</h3>
-        <ol>
-          <li id="fn1">Granger, C.W.J. (1969). "Investigating Causal Relations by Econometric Models and Cross-spectral Methods." <em>Econometrica</em>, 37(3), 424–438. <a href="#fnref1" title="Return to text">&#8617;</a></li>
-          <li id="fn2">Number Analytics. <a href="https://www.numberanalytics.com/blog/ultimate-guide-granger-causality-testing" target="_blank" rel="noopener">The Ultimate Guide to Granger Causality Testing</a> (2025). <a href="#fnref2">&#8617;</a></li>
-          <li id="fn3">Shojaie & Fox (2022). "Granger Causality: A Review and Recent Advances." <em>Annual Review of Statistics</em>. <a href="#fnref3">&#8617;</a></li>
-          <li id="fn4">Eichler, M. (2007). "Granger-causality graphs for multivariate time series." <em>Journal of Econometrics</em>. <a href="#fnref4">&#8617;</a></li>
-          <li id="fn5">Number Analytics. <a href="https://www.numberanalytics.com/blog/advanced-granger-causality-test-applications" target="_blank" rel="noopener">Advanced Granger Causality Test Applications for Data Science</a> (2025). <a href="#fnref5">&#8617;</a></li>
-          <li id="fn6">Aptech Blog. <a href="https://www.aptech.com/blog/introduction-to-granger-causality/" target="_blank" rel="noopener">Introduction to Granger Causality</a>. <a href="#fnref6">&#8617;</a></li>
-          <li id="fn7">Quickonomics. <a href="https://quickonomics.com/terms/causality-in-grangers-sense/" target="_blank" rel="noopener">Causality (In Granger's Sense) Definition & Examples</a>. <a href="#fnref7">&#8617;</a></li>
-          <li id="fn8">Damavis Blog. <a href="https://blog.damavis.com/en/granger-causality-time-series-causalities/" target="_blank" rel="noopener">Granger Causality: Time series causalities</a>. <a href="#fnref8">&#8617;</a></li>
-          <li id="fn9">Barnett, L. et al. (2017). "A study of problems encountered in Granger causality analysis from a neuroscience perspective." <em>PNAS</em>. <a href="https://www.pnas.org/doi/10.1073/pnas.1704663114" target="_blank" rel="noopener">&#8617;</a></li>
-        </ol>
-      </section>
-      <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
-    </article>
-  </div>
-</main>
-<footer class="site-footer">
-  <div class="container footer-content">
-    <nav class="footer-links" aria-label="Footer navigation">
-      <ul class="footer-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="blog.html" class="active">Blog</a></li>
-      </ul>
-    </nav>
-    <div class="footer-contact">
-      <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-      <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-      <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-      <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-    </div>
-    <div class="footer-social-icons">
-      <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-      <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-      <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-      <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-    </div>
-  </div>
-  <div class="container">
-    <div class="footer-copyright">
-      <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-<script src="js/script.js"></script>
-<script>
-  document.getElementById('current-year').textContent = new Date().getFullYear();
-</script>
+        const nodes = [
+            { id: "Frédéric Mirindi", type: "center" },
+            { id: "Researcher A", type: "collaborator" },
+            { id: "Researcher B", type: "collaborator" },
+            { id: "Institution X", type: "institution" }
+        ];
+
+        const links = [
+            { source: "Frédéric Mirindi", target: "Researcher A" },
+            { source: "Frédéric Mirindi", target: "Researcher B" },
+            { source: "Researcher A", target: "Institution X" }
+        ];
+
+        const simulation = d3.forceSimulation(nodes)
+            .force("link", d3.forceLink(links).id(d => d.id).distance(120))
+            .force("charge", d3.forceManyBody().strength(-300))
+            .force("center", d3.forceCenter(width / 2, height / 2));
+
+        const link = svg.append("g")
+            .attr("stroke", "#1abc9c")
+            .attr("stroke-width", 2)
+            .selectAll("line")
+            .data(links)
+            .enter().append("line");
+
+        const node = svg.append("g")
+            .selectAll("circle")
+            .data(nodes)
+            .enter().append("circle")
+            .attr("r", d => d.type === "center" ? 14 : 9)
+            .attr("fill", d => d.type === "center" ? "#1abc9c" : (d.type === "institution" ? "#f39c12" : "#34495e"))
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended)
+            );
+
+        const label = svg.append("g")
+            .selectAll("text")
+            .data(nodes)
+            .enter().append("text")
+            .attr("dy", -18)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "0.95rem")
+            .attr("fill", "#2d3e50")
+            .text(d => d.id);
+
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+            node
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y);
+            label
+                .attr("x", d => d.x)
+                .attr("y", d => d.y);
+        });
+
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        // Citation Impact Visualization (D3.js Line Chart)
+        const citationData = [
+            { year: 2020, citations: 5 },
+            { year: 2021, citations: 18 },
+            { year: 2022, citations: 33 },
+            { year: 2023, citations: 55 },
+            { year: 2024, citations: 80 },
+            { year: 2025, citations: 120 }
+        ];
+        const margin = { top: 20, right: 30, bottom: 30, left: 50 },
+              w = document.getElementById('citationChart').offsetWidth || 800,
+              h = 300;
+
+        const svgCite = d3.select("#citationChart")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        const x = d3.scaleLinear()
+            .domain([2020, 2025])
+            .range([margin.left, w - margin.right]);
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(citationData, d => d.citations) + 10])
+            .range([h - margin.bottom, margin.top]);
+
+        svgCite.append("g")
+            .attr("transform", `translate(0,${h - margin.bottom})`)
+            .call(d3.axisBottom(x).ticks(6).tickFormat(d3.format("d")));
+
+        svgCite.append("g")
+            .attr("transform", `translate(${margin.left},0)`)
+            .call(d3.axisLeft(y));
+
+        const line = d3.line()
+            .x(d => x(d.year))
+            .y(d => y(d.citations));
+
+        svgCite.append("path")
+            .datum(citationData)
+            .attr("fill", "none")
+            .attr("stroke", "#1abc9c")
+            .attr("stroke-width", 3)
+            .attr("d", line);
+
+        svgCite.selectAll("circle")
+            .data(citationData)
+            .enter().append("circle")
+            .attr("cx", d => x(d.year))
+            .attr("cy", d => y(d.citations))
+            .attr("r", 5)
+            .attr("fill", "#34495e");
+    </script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
