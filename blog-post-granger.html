@@ -54,6 +54,16 @@
             background-color: #1abc9c;
             color: white;
         }
+        .graph-description {
+            font-size: 1.02rem;
+            color: #444;
+            margin: 0.7rem 0 1.1rem 0;
+        }
+        .d3-legend {
+            font-size: 0.98rem;
+            margin-top: 0.3rem;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -78,7 +88,10 @@
             <div class="visualization-section">
                 <h2 class="graph-title">Granger Causality Implementation Workflow</h2>
                 <div id="flowchart">
-                    <img src="images/granger-flowchart.svg" alt="Implementation flowchart" style="max-width:100%;height:auto;">
+                    <img src="images/granger-flowchart.svg" alt="Implementation flowchart: Steps for Granger causality analysis. Step 1: Collect time series data. Step 2: Test for stationarity. Step 3: Select lag order. Step 4: Estimate VAR model. Step 5: Perform Granger causality test. Step 6: Interpret results." style="max-width:100%;height:auto;">
+                </div>
+                <div class="graph-description">
+                    <strong>Description:</strong> The flowchart above illustrates the standard workflow for Granger causality analysis. It starts with collecting time series data, checking for stationarity, selecting the optimal lag order (using AIC/BIC), estimating a vector autoregression (VAR) model, running the Granger causality test, and finally interpreting the results. This stepwise process ensures the validity and interpretability of Granger causality findings.
                 </div>
             </div>
 
@@ -91,13 +104,16 @@
                 X_t = \gamma_0 + \sum_{i=1}^p \gamma_i X_{t-i} + \sum_{i=1}^p \delta_i Y_{t-i} + \eta_t
                 \end{cases}
                 $$
-                <p>Optimal lag length <em>p</em> determined by AIC/BIC criteria</p>
+                <p>Optimal lag length <em>p</em> is determined by information criteria such as AIC or BIC. Granger causality is tested by checking if the coefficients $\beta_i$ (or $\delta_i$) are jointly significant.</p>
             </div>
 
             <!-- Interactive Demonstration -->
             <div class="visualization-section">
                 <h2 class="graph-title">Interactive Causality Test</h2>
-                <canvas id="causalityChart"></canvas>
+                <div class="graph-description">
+                    <strong>Description:</strong> The line chart below simulates two economic time series: Consumer Confidence and Retail Sales. Notice how movements in Consumer Confidence often precede similar movements in Retail Sales. In Granger causality analysis, if including lagged values of Consumer Confidence improves the prediction of Retail Sales, we say that confidence Granger-causes sales. This visualization helps you see the predictive relationship in real time.
+                </div>
+                <canvas id="causalityChart" aria-label="Simulated time series for Granger causality demonstration" role="img"></canvas>
                 <div class="code-block">
                     <pre><code class="language-javascript">
 // Chart.js Configuration
@@ -127,7 +143,14 @@ const config = {
             <!-- Causal Network -->
             <div class="visualization-section">
                 <h2 class="graph-title">Multivariate Causal Relationships</h2>
+                <div class="graph-description">
+                    <strong>Description:</strong> The network diagram below visualizes Granger-causal links among four macroeconomic variables: GDP, Interest Rates, Inflation, and Unemployment. Arrows indicate the direction of predictive influence. For example, GDP and Inflation both Granger-cause Interest Rates, and GDP also Granger-causes Unemployment. Node color distinguishes causes (green) from effects (dark blue). This type of graph helps reveal the structure of complex economic systems and can be extended to larger datasets.
+                </div>
                 <div id="networkDiagram"></div>
+                <div class="d3-legend">
+                    <span style="display:inline-block;width:14px;height:14px;background:#1abc9c;border-radius:7px;margin-right:5px;"></span> Cause
+                    <span style="display:inline-block;width:14px;height:14px;background:#34495e;border-radius:7px;margin-left:20px;margin-right:5px;"></span> Effect
+                </div>
                 <div class="code-block">
                     <pre><code class="language-javascript">
 // D3.js Network Configuration
@@ -142,7 +165,10 @@ const simulation = d3.forceSimulation(nodes)
             <!-- Interpretation Guide -->
             <div class="visualization-section">
                 <h2 class="graph-title">Test Result Interpretation</h2>
-                <table class="styled-table">
+                <div class="graph-description">
+                    <strong>Description:</strong> This table summarizes how to interpret the statistical results of a Granger causality test. A high F-statistic and low p-value indicate strong evidence that one variable Granger-causes another. Marginal evidence occurs with moderate values, while low F and high p indicate no significant predictive relationship.
+                </div>
+                <table class="styled-table" aria-label="Granger causality result interpretation guide">
                     <thead>
                         <tr>
                             <th>F-Statistic</th>
@@ -152,9 +178,9 @@ const simulation = d3.forceSimulation(nodes)
                     </thead>
                     <tbody>
                         <tr>
-                            <td>> 3.0</td>
-                            <td>< 0.05</td>
-                            <td>Strong evidence</td>
+                            <td>&gt; 3.0</td>
+                            <td>&lt; 0.05</td>
+                            <td>Strong evidence of Granger causality</td>
                         </tr>
                         <tr>
                             <td>1.5-3.0</td>
@@ -162,9 +188,9 @@ const simulation = d3.forceSimulation(nodes)
                             <td>Marginal evidence</td>
                         </tr>
                         <tr>
-                            <td>< 1.5</td>
-                            <td>> 0.1</td>
-                            <td>No significance</td>
+                            <td>&lt; 1.5</td>
+                            <td>&gt; 0.1</td>
+                            <td>No significant causality</td>
                         </tr>
                     </tbody>
                 </table>
@@ -280,6 +306,17 @@ const simulation = d3.forceSimulation(nodes)
                 .on("drag", dragged)
                 .on("end", dragended));
 
+        // Add labels to nodes
+        const label = svg.append("g")
+            .selectAll("text")
+            .data(nodes)
+            .enter().append("text")
+            .attr("dy", 4)
+            .attr("dx", 14)
+            .attr("font-size", "1rem")
+            .attr("fill", "#222")
+            .text(d => d.id);
+
         simulation.on("tick", () => {
             link.attr("x1", d => d.source.x)
                 .attr("y1", d => d.source.y)
@@ -287,6 +324,8 @@ const simulation = d3.forceSimulation(nodes)
                 .attr("y2", d => d.target.y);
             node.attr("cx", d => d.x)
                 .attr("cy", d => d.y);
+            label.attr("x", d => d.x)
+                .attr("y", d => d.y);
         });
 
         function dragstarted(event, d) {
