@@ -3,21 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | Frédéric Mirindi</title>
+    <title>Granger Causality Analysis | Frédéric Mirindi</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        .chart-container {
+        .visualization-section {
             background: #f8fafc;
             border-radius: 12px;
             padding: 2rem;
             margin: 2rem 0;
             box-shadow: 0 2px 12px rgba(30,60,90,0.06);
+        }
+        .code-block {
+            background: #2d3e50;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        .equation-box {
+            background: #eaf6fb;
+            border-left: 4px solid #1abc9c;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
         }
         .graph-title {
             color: #2d3e50;
@@ -25,17 +40,19 @@
             margin-bottom: 1.5rem;
             text-align: center;
         }
-        #networkDiagram svg {
-            width: 100% !important;
-            height: 400px !important;
-            display: block;
-            margin: 0 auto;
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
         }
-        #citationChart svg {
-            width: 100% !important;
-            height: 300px !important;
-            display: block;
-            margin: 0 auto;
+        .styled-table th, .styled-table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .styled-table th {
+            background-color: #1abc9c;
+            color: white;
         }
     </style>
 </head>
@@ -56,36 +73,103 @@
     </header>
 
     <main>
-        <header class="page-header research-header">
-            <h1>Research Visualizations</h1>
-            <p class="lead">
-                Explore my research through interactive data visualizations: publication trends, collaboration networks, and citation impact.
-            </p>
-        </header>
-
-        <!-- Publication Trends Chart -->
-        <section class="container content-section fade-in">
-            <div class="chart-container">
-                <h3 class="graph-title">Publication Trends (2020-2025)</h3>
-                <canvas id="publicationChart"></canvas>
+        <div class="container content-section">
+            <!-- Implementation Workflow -->
+            <div class="visualization-section">
+                <h2 class="graph-title">Granger Causality Implementation Workflow</h2>
+                <div id="flowchart">
+                    <img src="images/granger-flowchart.svg" alt="Implementation flowchart" style="max-width:100%;height:auto;">
+                </div>
             </div>
-        </section>
 
-        <!-- Collaboration Network Diagram -->
-        <section class="container content-section fade-in">
-            <div class="chart-container">
-                <h3 class="graph-title">Research Collaboration Network</h3>
+            <!-- Mathematical Formulation -->
+            <div class="equation-box">
+                <h3>Vector Autoregression (VAR) Model</h3>
+                $$
+                \begin{cases}
+                Y_t = \alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \sum_{i=1}^p \beta_i X_{t-i} + \epsilon_t \\
+                X_t = \gamma_0 + \sum_{i=1}^p \gamma_i X_{t-i} + \sum_{i=1}^p \delta_i Y_{t-i} + \eta_t
+                \end{cases}
+                $$
+                <p>Optimal lag length <em>p</em> determined by AIC/BIC criteria</p>
+            </div>
+
+            <!-- Interactive Demonstration -->
+            <div class="visualization-section">
+                <h2 class="graph-title">Interactive Causality Test</h2>
+                <canvas id="causalityChart"></canvas>
+                <div class="code-block">
+                    <pre><code class="language-javascript">
+// Chart.js Configuration
+const config = {
+    type: 'line',
+    data: {
+        labels: timeLabels,
+        datasets: [{
+            label: 'Consumer Confidence',
+            data: confidenceData,
+            borderColor: '#1abc9c'
+        },{
+            label: 'Retail Sales',
+            data: salesData,
+            borderColor: '#34495e'
+        }]
+    },
+    options: {
+        responsive: true,
+        interaction: { mode: 'index' }
+    }
+};
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- Causal Network -->
+            <div class="visualization-section">
+                <h2 class="graph-title">Multivariate Causal Relationships</h2>
                 <div id="networkDiagram"></div>
+                <div class="code-block">
+                    <pre><code class="language-javascript">
+// D3.js Network Configuration
+const simulation = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(links).id(d => d.id))
+    .force("charge", d3.forceManyBody().strength(-50))
+    .force("center", d3.forceCenter(width/2, height/2));
+                    </code></pre>
+                </div>
             </div>
-        </section>
 
-        <!-- Citation Impact Visualization -->
-        <section class="container content-section fade-in">
-            <div class="chart-container">
-                <h3 class="graph-title">Citation Impact Analysis</h3>
-                <div id="citationChart"></div>
+            <!-- Interpretation Guide -->
+            <div class="visualization-section">
+                <h2 class="graph-title">Test Result Interpretation</h2>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>F-Statistic</th>
+                            <th>p-value</th>
+                            <th>Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>> 3.0</td>
+                            <td>< 0.05</td>
+                            <td>Strong evidence</td>
+                        </tr>
+                        <tr>
+                            <td>1.5-3.0</td>
+                            <td>0.05-0.1</td>
+                            <td>Marginal evidence</td>
+                        </tr>
+                        <tr>
+                            <td>< 1.5</td>
+                            <td>> 0.1</td>
+                            <td>No significance</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -100,16 +184,16 @@
                 </ul>
             </nav>
             <div class="footer-contact">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-envelope"></i> mirindif@myumanitoba.ca</p>
                 <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
                 <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+                <p><i class="fas fa-globe"></i> fredericmirindi.com</p>
             </div>
             <div class="footer-social-icons">
-                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fas fa-graduation-cap"></i></a>
+                <a href="#"><i class="fab fa-orcid"></i></a>
+                <a href="#"><i class="fab fa-researchgate"></i></a>
             </div>
         </div>
         <div class="container">
@@ -120,62 +204,67 @@
     </footer>
 
     <script>
-        // Publication Trends Chart (Chart.js)
-        const ctx = document.getElementById('publicationChart');
+        // Chart.js Implementation
+        const timeLabels = Array.from({length: 24}, (_,i) => `2025-Q${Math.floor(i/6)+1}`);
+        const confidenceData = Array.from({length: 24}, () => Math.random()*100);
+        const salesData = confidenceData.map(x => x*0.8 + Math.random()*20);
+        
+        const ctx = document.getElementById('causalityChart');
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
-                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                labels: timeLabels,
                 datasets: [{
-                    label: 'Journal Articles',
-                    data: [2, 4, 6, 8, 10, 12],
-                    backgroundColor: '#1abc9c'
+                    label: 'Consumer Confidence',
+                    data: confidenceData,
+                    borderColor: '#1abc9c',
+                    tension: 0.4
                 }, {
-                    label: 'Conference Papers',
-                    data: [3, 5, 4, 7, 9, 11],
-                    backgroundColor: '#34495e'
+                    label: 'Retail Sales',
+                    data: salesData,
+                    borderColor: '#34495e',
+                    tension: 0.4
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
-                    legend: { position: 'top' }
+                    tooltip: { mode: 'index' }
                 },
                 scales: {
+                    x: { grid: { display: false } },
                     y: { beginAtZero: true }
                 }
             }
         });
 
-        // Collaboration Network Diagram (D3.js)
-        const width = document.getElementById('networkDiagram').offsetWidth || 800;
-        const height = 400;
+        // D3.js Network Diagram
+        const width = 800, height = 400;
         const svg = d3.select("#networkDiagram")
             .append("svg")
             .attr("width", width)
             .attr("height", height);
 
         const nodes = [
-            { id: "Frédéric Mirindi", type: "center" },
-            { id: "Researcher A", type: "collaborator" },
-            { id: "Researcher B", type: "collaborator" },
-            { id: "Institution X", type: "institution" }
+            {id: "GDP", type: "cause"}, 
+            {id: "Interest Rates", type: "effect"},
+            {id: "Inflation", type: "cause"},
+            {id: "Unemployment", type: "effect"}
         ];
 
         const links = [
-            { source: "Frédéric Mirindi", target: "Researcher A" },
-            { source: "Frédéric Mirindi", target: "Researcher B" },
-            { source: "Researcher A", target: "Institution X" }
+            {source: "GDP", target: "Interest Rates"},
+            {source: "Inflation", target: "Interest Rates"},
+            {source: "GDP", target: "Unemployment"}
         ];
 
         const simulation = d3.forceSimulation(nodes)
-            .force("link", d3.forceLink(links).id(d => d.id).distance(120))
-            .force("charge", d3.forceManyBody().strength(-300))
-            .force("center", d3.forceCenter(width / 2, height / 2));
+            .force("link", d3.forceLink(links).id(d => d.id).distance(100))
+            .force("charge", d3.forceManyBody().strength(-50))
+            .force("center", d3.forceCenter(width/2, height/2));
 
         const link = svg.append("g")
             .attr("stroke", "#1abc9c")
-            .attr("stroke-width", 2)
             .selectAll("line")
             .data(links)
             .enter().append("line");
@@ -184,36 +273,20 @@
             .selectAll("circle")
             .data(nodes)
             .enter().append("circle")
-            .attr("r", d => d.type === "center" ? 14 : 9)
-            .attr("fill", d => d.type === "center" ? "#1abc9c" : (d.type === "institution" ? "#f39c12" : "#34495e"))
+            .attr("r", 10)
+            .attr("fill", d => d.type === "cause" ? "#1abc9c" : "#34495e")
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
-                .on("end", dragended)
-            );
-
-        const label = svg.append("g")
-            .selectAll("text")
-            .data(nodes)
-            .enter().append("text")
-            .attr("dy", -18)
-            .attr("text-anchor", "middle")
-            .attr("font-size", "0.95rem")
-            .attr("fill", "#2d3e50")
-            .text(d => d.id);
+                .on("end", dragended));
 
         simulation.on("tick", () => {
-            link
-                .attr("x1", d => d.source.x)
+            link.attr("x1", d => d.source.x)
                 .attr("y1", d => d.source.y)
                 .attr("x2", d => d.target.x)
                 .attr("y2", d => d.target.y);
-            node
-                .attr("cx", d => d.x)
+            node.attr("cx", d => d.x)
                 .attr("cy", d => d.y);
-            label
-                .attr("x", d => d.x)
-                .attr("y", d => d.y);
         });
 
         function dragstarted(event, d) {
@@ -231,59 +304,7 @@
             d.fy = null;
         }
 
-        // Citation Impact Visualization (D3.js Line Chart)
-        const citationData = [
-            { year: 2020, citations: 5 },
-            { year: 2021, citations: 18 },
-            { year: 2022, citations: 33 },
-            { year: 2023, citations: 55 },
-            { year: 2024, citations: 80 },
-            { year: 2025, citations: 120 }
-        ];
-        const margin = { top: 20, right: 30, bottom: 30, left: 50 },
-              w = document.getElementById('citationChart').offsetWidth || 800,
-              h = 300;
-
-        const svgCite = d3.select("#citationChart")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
-
-        const x = d3.scaleLinear()
-            .domain([2020, 2025])
-            .range([margin.left, w - margin.right]);
-        const y = d3.scaleLinear()
-            .domain([0, d3.max(citationData, d => d.citations) + 10])
-            .range([h - margin.bottom, margin.top]);
-
-        svgCite.append("g")
-            .attr("transform", `translate(0,${h - margin.bottom})`)
-            .call(d3.axisBottom(x).ticks(6).tickFormat(d3.format("d")));
-
-        svgCite.append("g")
-            .attr("transform", `translate(${margin.left},0)`)
-            .call(d3.axisLeft(y));
-
-        const line = d3.line()
-            .x(d => x(d.year))
-            .y(d => y(d.citations));
-
-        svgCite.append("path")
-            .datum(citationData)
-            .attr("fill", "none")
-            .attr("stroke", "#1abc9c")
-            .attr("stroke-width", 3)
-            .attr("d", line);
-
-        svgCite.selectAll("circle")
-            .data(citationData)
-            .enter().append("circle")
-            .attr("cx", d => x(d.year))
-            .attr("cy", d => y(d.citations))
-            .attr("r", 5)
-            .attr("fill", "#34495e");
-    </script>
-    <script>
+        // Update current year
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
