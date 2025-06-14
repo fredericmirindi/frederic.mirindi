@@ -6,6 +6,7 @@
     <meta name="description" content="Detailed discussion on first-price and second-price sealed-bid auction mechanisms by Frédéric Mirindi.">
     <title>Frédéric Mirindi - Blog | Auction Mechanisms</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -23,6 +24,76 @@
     </script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .blog-illustration {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 1.1rem auto;
+            background: #eaf6fb;
+        }
+        .blog-image-caption {
+            font-size: 0.96rem;
+            color: #888;
+            text-align: center;
+            margin-top: -0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        .proof-section {
+            background: #f8fafc;
+            border-left: 4px solid #1abc9c;
+            border-radius: 8px;
+            padding: 1.1rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .proof-section h4 {
+            margin-top: 0;
+        }
+        .proof-steps {
+            margin-left: 1.3em;
+            margin-bottom: 0.5em;
+        }
+        .proof-conclusion {
+            margin-top: 0.7em;
+            font-weight: 600;
+            color: #1abc9c;
+        }
+        .footnotes {
+            font-size: 0.96em;
+            margin-top: 2.5rem;
+        }
+        .footnotes hr {
+            margin-bottom: 1rem;
+        }
+        .back-to-blog {
+            margin: 2.5rem 0 1.5rem 0;
+            text-align: left;
+        }
+        .back-to-blog a {
+            color: #1abc9c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.07em;
+            background: none;
+            padding: 0;
+            border: none;
+            transition: color 0.2s;
+        }
+        .back-to-blog a:hover {
+            text-decoration: underline;
+            color: #16a085;
+        }
+        @media (max-width: 700px) {
+            .proof-section {
+                padding: 0.9rem 0.5rem;
+            }
+            .blog-illustration {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -34,17 +105,26 @@
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li> </ul>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
             </nav>
-             <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
         </div>
     </header>
     <main>
          <div class="container content-section">
-             <article class="blog-post blog-post-full fade-in"> <header class="blog-post-header">
+             <article class="blog-post blog-post-full fade-in">
+                 <header class="blog-post-header">
                     <h2 class="blog-post-title">Understanding Auction Mechanisms: First-Price vs. Second-Price Sealed Bids</h2>
                     <p class="blog-post-meta">Posted on <time datetime="2025-04-08">April 8, 2025</time> | Category: Microeconomics, Game Theory</p>
                  </header>
+                 <figure>
+                    <img src="images/auction.png" alt="Illustration of sealed-bid auction mechanisms" class="blog-illustration">
+                    <figcaption class="blog-image-caption">Visualizing first- and second-price sealed-bid auctions.</figcaption>
+                 </figure>
                  <div class="blog-post-content">
                     <p>Auctions are fundamental mechanisms for allocating scarce resources when potential buyers have different valuations for an item. In sealed-bid auctions, participants submit their bids simultaneously and privately. The allocation and payment rules define the auction type. We analyze bidder strategy under the standard Independent Private Values (IPV) paradigm, where each bidder $i$ knows their own value $v_i$ precisely, these values are drawn independently from a common distribution $F(v)$, and this distribution is known to all bidders.</p>
 
@@ -61,8 +141,8 @@
                         <p>Where $Y_1$ is the highest value among the *other* $n-1$ bidders. This formula shows optimal bids involve "shading" below the true value $v_i$. The extent of shading, $v_i - b^*(v_i) = v_i/n$, decreases as the number of competitors $n$ increases.</p>
                     </div>
 
-                     <h3>2. Second-Price Sealed-Bid Auction (Vickrey Auction)<sup><a href="#fn2" id="fnref2">2</a></sup></h3>
-                    <p>Again, the highest bidder wins, but the price paid is equal to the *second-highest* bid submitted.</p>
+                    <h3>2. Second-Price Sealed-Bid Auction (Vickrey Auction)<sup><a href="#fn2" id="fnref2">2</a></sup></h3>
+                    <p>Again, the highest bidder wins, but the price paid is equal to the <em>second-highest</em> bid submitted.</p>
                     <div class="proof-section">
                         <h4>Dominant Strategy: Truthful Bidding</h4>
                         <p>A remarkable feature of the Vickrey auction is that bidding one's true value ($b_i = v_i$) is a weakly dominant strategy. This means the strategy $b_i = v_i$ performs at least as well as any other strategy $b_i'$, regardless of the bids submitted by other players.</p>
@@ -95,46 +175,50 @@
                      <h3>Footnotes</h3>
                      <ol>
                          <li id="fn1">A Bayesian Nash Equilibrium in this context is a set of strategies (bidding functions), one for each player type (value $v_i$), such that no player can improve their expected payoff by unilaterally changing their strategy, given their beliefs about other players' types and assuming others follow their equilibrium strategies. <a href="#fnref1" title="Return to text">&#8617;</a></li>
-                         <li id="fn2">Named after William Vickrey, who analyzed this auction mechanism in his seminal 1961 paper. See: Vickrey, W. (1961). Counterspeculation, Auctions, and Competitive Sealed Tenders. *The Journal of Finance*, 16(1), 8–37. <a href="#fnref2" title="Return to text">&#8617;</a></li>
+                         <li id="fn2">Named after William Vickrey, who analyzed this auction mechanism in his seminal 1961 paper. See: Vickrey, W. (1961). Counterspeculation, Auctions, and Competitive Sealed Tenders. <em>The Journal of Finance</em>, 16(1), 8–37. <a href="#fnref2" title="Return to text">&#8617;</a></li>
                      </ol>
                  </section>
                  <div class="back-to-blog">
                      <a href="blog.html">&larr; Back to Blog Index</a>
                  </div>
              </article>
-         </div> </main>
+         </div>
+    </main>
 
-    
     <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="container footer-content">
+            <nav class="footer-links" aria-label="Footer navigation">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                </ul>
+            </nav>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+        <div class="container">
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-                                    
+    </footer>
     <script src="js/script.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
