@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A clear introduction to Granger causality: what it is, how it works, and why it matters for time series analysis in economics and beyond." />
-  <title>Frédéric Mirindi - Blog | Granger Causality in Time Series</title>
+  <meta name="description" content="A modern, research-based overview of Granger causality, including advanced methods, pitfalls, and real-world applications in economics, finance, and data science." />
+  <title>Frédéric Mirindi - Blog | Advanced Granger Causality in Time Series</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,6 +41,24 @@
       border-radius: 8px;
       padding: 1.1rem 1.5rem;
       margin: 1.5rem 0;
+      font-family: inherit;
+    }
+    .graph-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .graph-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .graph-card img {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
     }
     .back-to-blog {
       margin: 2.5rem 0 1.5rem 0;
@@ -67,6 +85,9 @@
       .blog-illustration {
         max-width: 100%;
       }
+      .graph-container {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -89,87 +110,112 @@
   <div class="container content-section">
     <article class="blog-post blog-post-full fade-in">
       <header class="blog-post-header">
-        <h2 class="blog-post-title">Granger Causality: Predictive Relationships in Time Series</h2>
+        <h2 class="blog-post-title">Granger Causality: Beyond Correlation in Time Series</h2>
         <p class="blog-post-meta">Posted on <time datetime="2025-06-13">June 13, 2025</time> | Category: Econometrics, Time Series</p>
       </header>
       <figure>
         <img src="images/granger.png" alt="Illustration of Granger causality in time series" class="blog-illustration">
-        <figcaption class="blog-image-caption">Granger causality helps us determine if one time series can forecast another.</figcaption>
+        <figcaption class="blog-image-caption">Granger causality helps reveal predictive directionality in time series data.</figcaption>
       </figure>
       <div class="blog-post-content">
         <p>
-          In economics and many other fields, we often want to know not just whether two variables move together, but whether changes in one actually help predict changes in the other. This is where <strong>Granger causality</strong> comes in—a powerful tool for uncovering predictive relationships in time series data.
+          In modern data science and economics, understanding the direction of influence between time series is crucial. Granger causality, introduced by Nobel laureate Clive Granger, is a foundational concept for testing whether one time series contains predictive information about another. Unlike simple correlation, Granger causality is rooted in the principle that a cause must precede its effect and must improve the prediction of that effect<sup><a href="#fn1" id="fnref1">1</a></sup>.
         </p>
 
-        <h3>What Is Granger Causality?</h3>
+        <h3>How Does Granger Causality Work?</h3>
         <p>
-          Introduced by Nobel laureate Clive Granger in 1969, Granger causality is a statistical hypothesis test that asks: <em>Does knowing the past values of time series X improve our forecast of time series Y, beyond what we could predict using only Y’s own past?</em> If so, we say that “X Granger-causes Y”<sup><a href="#fn1" id="fnref1">1</a></sup>.
+          The Granger causality test compares the predictive accuracy of two models for a target variable $Y_t$:
         </p>
-        <div class="equation-box">
-          <strong>Key Principle:</strong><br>
-          <em>X Granger-causes Y if predictions of Y based on its own past values <u>and</u> on the past values of X are better than predictions of Y based only on Y’s own past values.</em>
-        </div>
-        <p>
-          It’s important to note that Granger causality does <em>not</em> mean true causality in the philosophical sense. Rather, it’s about <strong>predictive causality</strong>—whether one variable contains unique information about the future of another<sup><a href="#fn2" id="fnref2">2</a></sup>.
-        </p>
-
-        <h3>How Does the Granger Causality Test Work?</h3>
         <ol>
           <li>
-            <strong>Build two forecasting models for Y:</strong>
-            <ul>
-              <li>Model 1: Predict Y using only its own past values (an autoregression).</li>
-              <li>Model 2: Predict Y using its own past values <u>and</u> the past values of X.</li>
-            </ul>
+            <strong>Autoregressive Model:</strong> $Y_t$ is predicted using its own lagged values.
           </li>
           <li>
-            <strong>Compare forecasting accuracy:</strong>
-            <ul>
-              <li>If Model 2 yields significantly better forecasts (lower prediction error), we say X Granger-causes Y.</li>
-            </ul>
+            <strong>Augmented Model:</strong> $Y_t$ is predicted using its own lags <em>and</em> the lagged values of another series $X_t$.
           </li>
         </ol>
         <div class="equation-box">
-          <strong>Typical Model:</strong><br>
           $$
-          Y_t = a_0 + a_1 Y_{t-1} + \dots + a_p Y_{t-p} + b_1 X_{t-1} + \dots + b_q X_{t-q} + \varepsilon_t
+          Y_t = a_0 + \sum_{j=1}^p a_j Y_{t-j} + \sum_{k=1}^q b_k X_{t-k} + \varepsilon_t
           $$
-          <p>If the coefficients $b_1, \dots, b_q$ are jointly statistically significant, X is said to Granger-cause Y.</p>
+          <p>If the coefficients $b_k$ are jointly significant, X is said to Granger-cause Y.</p>
         </div>
-
-        <h3>Example: Consumer Confidence and Retail Sales</h3>
         <p>
-          Suppose you want to know if changes in consumer confidence (X) can help predict retail sales (Y). If adding past values of consumer confidence to your model for retail sales significantly improves forecast accuracy, then consumer confidence Granger-causes retail sales<sup><a href="#fn3" id="fnref3">3</a></sup>.
+          The test is typically implemented via F-tests or Wald tests to check if including $X$'s lags significantly reduces the prediction error variance for $Y$ compared to the model without $X$<sup><a href="#fn2" id="fnref2">2</a></sup>.
         </p>
 
-        <h3>Important Caveats and Limitations</h3>
+        <h3>Advanced Extensions</h3>
+        <div class="graph-container">
+          <div class="graph-card">
+            <img src="images/nonlinear-granger.svg" alt="Diagram of nonlinear Granger causality using neural networks">
+            <p class="blog-image-caption"><strong>Nonlinear Granger Causality:</strong> Neural networks and copula-based approaches can capture nonlinear and non-Gaussian relationships<sup><a href="#fn3" id="fnref3">3</a></sup>.</p>
+          </div>
+          <div class="graph-card">
+            <img src="images/multivariate-dag.svg" alt="Directed acyclic graph for multivariate Granger causality">
+            <p class="blog-image-caption"><strong>Multivariate Granger Causality:</strong> DAGs and heatmaps reveal complex networks of causality among many variables<sup><a href="#fn4" id="fnref4">4</a></sup>.</p>
+          </div>
+        </div>
         <ul>
-          <li>
-            <strong>Stationarity:</strong> The time series must be stationary (their statistical properties do not change over time) for the test to be valid<sup><a href="#fn4" id="fnref4">4</a></sup>.
-          </li>
-          <li>
-            <strong>No true causality:</strong> Granger causality means “X precedes and predicts Y,” not that X truly causes Y. There could be hidden variables or feedback loops<sup><a href="#fn5" id="fnref5">5</a></sup>.
-          </li>
-          <li>
-            <strong>Linear and lagged relationships only:</strong> The standard test detects only linear and lagged predictive relationships, not instantaneous or nonlinear effects.
-          </li>
+          <li><strong>Nonlinear Granger causality:</strong> Machine learning (e.g., LSTMs, kernel methods) extends Granger’s concept to nonlinear and high-dimensional settings.</li>
+          <li><strong>Frequency-domain causality:</strong> Spectral analysis uncovers causal relationships at specific frequencies (e.g., business cycles).</li>
+          <li><strong>Conditional and panel causality:</strong> Tests can control for third variables or be applied to panel data for richer inference<sup><a href="#fn5" id="fnref5">5</a></sup>.</li>
         </ul>
 
-        <h3>Why Is Granger Causality Useful?</h3>
-        <p>
-          Despite its limitations, Granger causality is widely used in economics, finance, neuroscience, and many other fields because it is simple, interpretable, and computationally efficient. It helps researchers move beyond mere correlation and rigorously test for predictive links in time series data<sup><a href="#fn6" id="fnref6">6</a></sup>.
-        </p>
+        <h3>Applications in Practice</h3>
+        <div class="graph-container">
+          <div class="graph-card">
+            <img src="images/macroeconomic-heatmap.svg" alt="Macroeconomic Granger causality heatmap">
+            <p class="blog-image-caption"><strong>Macroeconomics:</strong> Heatmaps show Granger-causal links among GDP, unemployment, inflation, and interest rates.</p>
+          </div>
+          <div class="graph-card">
+            <img src="images/genomics-granger.svg" alt="Genomics Granger causality diagram">
+            <p class="blog-image-caption"><strong>Genomics:</strong> Granger causality helps reconstruct gene regulatory networks from time-lapse data.</p>
+          </div>
+        </div>
+        <ul>
+          <li><strong>Finance:</strong> Trading volume Granger-causes price volatility, aiding risk management<sup><a href="#fn6" id="fnref6">6</a></sup>.</li>
+          <li><strong>Marketing:</strong> Lagged advertising spend Granger-causes sales, informing campaign timing<sup><a href="#fn7" id="fnref7">7</a></sup>.</li>
+          <li><strong>Macroeconomics:</strong> GDP growth, inflation, and interest rates form feedback networks best visualized via Granger-causal graphs.</li>
+        </ul>
+
+        <h3>Best Practices and Pitfalls</h3>
+        <ul>
+          <li><strong>Ensure stationarity:</strong> Use differencing or transformation to stabilize mean/variance<sup><a href="#fn8" id="fnref8">8</a></sup>.</li>
+          <li><strong>Optimal lag selection:</strong> Use AIC/BIC, cross-validation, and domain knowledge.</li>
+          <li><strong>Check for cointegration:</strong> If series are non-stationary but cointegrated, use VECM-based causality tests.</li>
+          <li><strong>Beware structural breaks:</strong> Regime changes can invalidate causality inferences.</li>
+          <li><strong>Interpret with caution:</strong> Granger causality is predictive, not proof of true causality—hidden confounders may exist<sup><a href="#fn9" id="fnref9">9</a></sup>.</li>
+        </ul>
+
+        <h3>Case Study: Energy and GDP</h3>
+        <div class="equation-box">
+          <p>Recent research using copula-based nonlinear Granger causality (arXiv:2409.15070, 2025) finds:</p>
+          $$
+          \text{Energy Consumption} \leftrightarrow \text{GDP Growth}
+          $$
+          <p>Bidirectional causality detected, missed by linear tests.</p>
+        </div>
+
+        <h3>Future Trends</h3>
+        <ul>
+          <li>Integration with deep learning for high-dimensional, nonlinear, and real-time causality discovery.</li>
+          <li>Scalable algorithms for big data and streaming environments (e.g., Spark, cloud computing).</li>
+          <li>Ethical and explainable AI for causal inference in sensitive applications.</li>
+        </ul>
       </div>
       <section class="footnotes">
         <hr>
         <h3>References</h3>
         <ol>
           <li id="fn1">Granger, C.W.J. (1969). "Investigating Causal Relations by Econometric Models and Cross-spectral Methods." <em>Econometrica</em>, 37(3), 424–438. <a href="#fnref1" title="Return to text">&#8617;</a></li>
-          <li id="fn2">See <a href="https://en.wikipedia.org/wiki/Granger_causality" target="_blank" rel="noopener">Wikipedia: Granger causality</a> for a detailed overview.<a href="#fnref2">&#8617;</a></li>
-          <li id="fn3">Quickonomics. "Causality (In Granger's Sense) Definition & Examples." <a href="https://quickonomics.com/terms/causality-in-grangers-sense/" target="_blank" rel="noopener">Link</a>.<a href="#fnref3">&#8617;</a></li>
-          <li id="fn4">Damavis Blog. "Granger Causality: Time series causalities." <a href="https://blog.damavis.com/en/granger-causality-time-series-causalities/" target="_blank" rel="noopener">Link</a>.<a href="#fnref4">&#8617;</a></li>
-          <li id="fn5">Aptech Blog. "Introduction to Granger Causality." <a href="https://www.aptech.com/blog/introduction-to-granger-causality/" target="_blank" rel="noopener">Link</a>.<a href="#fnref5">&#8617;</a></li>
-          <li id="fn6">Scholarpedia. "Granger causality." <a href="http://www.scholarpedia.org/article/Granger_causality" target="_blank" rel="noopener">Link</a>.<a href="#fnref6">&#8617;</a></li>
+          <li id="fn2">Number Analytics. <a href="https://www.numberanalytics.com/blog/ultimate-guide-granger-causality-testing" target="_blank" rel="noopener">The Ultimate Guide to Granger Causality Testing</a> (2025). <a href="#fnref2">&#8617;</a></li>
+          <li id="fn3">Shojaie & Fox (2022). "Granger Causality: A Review and Recent Advances." <em>Annual Review of Statistics</em>. <a href="#fnref3">&#8617;</a></li>
+          <li id="fn4">Eichler, M. (2007). "Granger-causality graphs for multivariate time series." <em>Journal of Econometrics</em>. <a href="#fnref4">&#8617;</a></li>
+          <li id="fn5">Number Analytics. <a href="https://www.numberanalytics.com/blog/advanced-granger-causality-test-applications" target="_blank" rel="noopener">Advanced Granger Causality Test Applications for Data Science</a> (2025). <a href="#fnref5">&#8617;</a></li>
+          <li id="fn6">Aptech Blog. <a href="https://www.aptech.com/blog/introduction-to-granger-causality/" target="_blank" rel="noopener">Introduction to Granger Causality</a>. <a href="#fnref6">&#8617;</a></li>
+          <li id="fn7">Quickonomics. <a href="https://quickonomics.com/terms/causality-in-grangers-sense/" target="_blank" rel="noopener">Causality (In Granger's Sense) Definition & Examples</a>. <a href="#fnref7">&#8617;</a></li>
+          <li id="fn8">Damavis Blog. <a href="https://blog.damavis.com/en/granger-causality-time-series-causalities/" target="_blank" rel="noopener">Granger Causality: Time series causalities</a>. <a href="#fnref8">&#8617;</a></li>
+          <li id="fn9">Barnett, L. et al. (2017). "A study of problems encountered in Granger causality analysis from a neuroscience perspective." <em>PNAS</em>. <a href="https://www.pnas.org/doi/10.1073/pnas.1704663114" target="_blank" rel="noopener">&#8617;</a></li>
         </ol>
       </section>
       <div class="back-to-blog"><a href="blog.html">&larr; Back to Blog Index</a></div>
