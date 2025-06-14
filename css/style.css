@@ -2078,3 +2078,54 @@ body.dark-mode .main-nav a.active {
     margin-bottom: 0.8rem;
 }
 
+
+
+
+
+.workflow-steps {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    max-width: 680px;
+}
+.workflow-steps li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.1rem;
+    position: relative;
+    padding-left: 2.5em;
+}
+.workflow-steps li:before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
+    background: #1abc9c;
+    color: #fff;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    box-shadow: 0 1px 4px rgba(30,60,90,0.08);
+}
+.workflow-step-title {
+    font-weight: 600;
+    margin-right: 0.5em;
+    color: #34495e;
+}
+.workflow-step-desc {
+    color: #555;
+}
+@media (max-width: 600px) {
+    .workflow-steps li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 2.2em;
+    }
+}
