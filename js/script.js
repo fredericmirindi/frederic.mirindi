@@ -205,3 +205,164 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('current-year').textContent = new Date().getFullYear();
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // --- Mobile Navigation Toggle Logic ---
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+    const navLinks = mainNav ? mainNav.querySelectorAll('a') : []; // Ensure mainNav exists before querying links
+
+    if (mobileNavToggle && mainNav) {
+        // Function to close the menu
+        function closeMenu() {
+            mainNav.classList.remove('active');
+            mobileNavToggle.setAttribute('aria-expanded', 'false');
+            mobileNavToggle.querySelector('i').classList.remove('fa-xmark'); // Change icon back to bars
+            mobileNavToggle.querySelector('i').classList.add('fa-bars');
+        }
+
+        // Function to open the menu
+        function openMenu() {
+            mainNav.classList.add('active');
+            mobileNavToggle.setAttribute('aria-expanded', 'true');
+            mobileNavToggle.querySelector('i').classList.remove('fa-bars'); // Change icon to 'x'
+            mobileNavToggle.querySelector('i').classList.add('fa-xmark');
+        }
+
+        // Toggle function
+        mobileNavToggle.addEventListener('click', function() {
+            if (mainNav.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close menu when a navigation link is clicked (for single-page sites with smooth scroll)
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Optional: Close menu if clicked outside
+        document.addEventListener('click', function(event) {
+            // Check if the click is outside the nav and outside the toggle button
+            const isClickInsideNav = mainNav.contains(event.target);
+            const isClickOnToggle = mobileNavToggle.contains(event.target);
+
+            if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+
+        // Optional: Close menu on window resize if it transitions to desktop view
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 900 && mainNav.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    }
+
+    // --- Light/Dark Mode Toggle Logic ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const darkModeClass = 'dark-mode';
+
+    if (themeToggleBtn && themeIcon) {
+        // Apply saved theme on load
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add(darkModeClass);
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggleBtn.addEventListener('click', function() {
+            document.body.classList.toggle(darkModeClass);
+
+            if (document.body.classList.contains(darkModeClass)) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+    }
+
+    // --- Update Current Year in Footer ---
+    const currentYearSpan = document.getElementById('current-year');
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- Map Initialization Logic ---
+    const mapElement = document.getElementById('map-container');
+    if (mapElement) {
+        // Initialize map WITH scrollWheelZoom disabled
+        const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2);
+
+        // Add Tile Layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define Locations (using categories for potential icon switching)
+        const locations = [
+            { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada", category: 'education' },
+            { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium", category: 'education' },
+            { lat: -1.2921, lng: 36.8219, name: "AERC", type: "Education (Masters Bridge)", city: "Nairobi, Kenya", category: 'education' },
+            { lat: -2.5044, lng: 28.8611, name: "Catholic University of Bukavu", type: "Education (B.Sc, M.Sc)", city: "Bukavu, DRC", category: 'education' },
+            { lat: 45.5019, lng: -73.5674, name: "CEA Annual Meeting (UQAM)", type: "Conference (2025)", city: "Montreal, Canada", category: 'conference' },
+            { lat: 52.3833, lng: -1.5609, name: "University of Warwick (CSWG)", type: "Seminar (2025)", city: "Warwick, UK", category: 'conference' },
+            { lat: 51.7520, lng: -1.2577, name: "University of Oxford (ESHS)", type: "Seminar (2024)", city: "Oxford, UK", category: 'conference' },
+            { lat: 51.6214, lng: -3.9436, name: "Human-Agent Interaction Conf. (HAI)", type: "Conference Workshop (2024)", city: "Swansea, UK", category: 'conference' },
+            { lat: 23.3441, lng: 85.3096, name: "RAISD Conference (JRU)", type: "Conference (2025)", city: "Ranchi, India", category: 'conference' },
+            { lat: 50.0880, lng: 14.4208, name: "CERGE-EI", type: "Research Experience", city: "Prague, Czech Republic", category: 'research'},
+            { lat: 49.9350, lng: 11.5758, name: "University of Bayreuth (BIGSAS)", type: "Research Experience", city: "Bayreuth, Germany", category: 'research'}
+        ];
+
+        // Define custom icons
+        const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+        const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -26] });
+        const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -12] });
+
+        // Add Markers using custom icons
+        locations.forEach(location => {
+            let iconToUse;
+            switch(location.category) {
+                case 'education': iconToUse = educationIcon; break;
+                case 'conference': iconToUse = conferenceIcon; break;
+                case 'research': iconToUse = researchIcon; break;
+                default: iconToUse = undefined;
+            }
+
+            L.marker([location.lat, location.lng], { icon: iconToUse })
+                .addTo(map)
+                .bindPopup(`<b>${location.name}</b><br>${location.type}<br><em>${location.city}</em>`);
+        });
+    }
+});
