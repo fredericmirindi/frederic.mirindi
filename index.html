@@ -14,7 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Updated Font Awesome link to ensure fa-xmark is available and for latest version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Favicon and meta icons -->
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
@@ -34,7 +35,14 @@
     <header class="site-header">
         <div class="container header-content">
             <h1><a href="index.html">Frédéric Mirindi</a></h1>
-            <nav class="main-nav">
+            
+            <!-- Mobile Navigation Toggle Button - UPDATED -->
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Main Navigation - UPDATED -->
+            <nav class="main-nav" id="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="research.html">Research</a></li>
@@ -43,7 +51,7 @@
                     <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
-            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+            
             <!-- Light/Dark mode toggle button -->
             <button id="theme-toggle" aria-label="Toggle light and dark mode">
                 <i id="theme-icon" class="fas fa-moon"></i>
@@ -100,66 +108,60 @@
         </section>
 
        <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
-    <h2>Skills Snapshot</h2>
-    <div class="skills-grid">
-        <div class="skill-item">
-            <i class="fas fa-calculator skill-icon"></i>
-            <h3>Quantitative Research</h3>
-            <p>Econometric analysis, data modeling, experimental design.</p>
-        </div>
-        <div class="skill-item">
-            <i class="fas fa-laptop-code skill-icon"></i>
-            <h3>Technical Proficiency</h3>
-            <p>R, Python, Stata, RATS, ML/AI techniques.</p>
-        </div>
-        <div class="skill-item">
-            <i class="fas fa-chalkboard-teacher skill-icon"></i>
-            <h3>Academic Instruction</h3>
-            <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
-        </div>
-        <div class="skill-item">
-            <i class="fas fa-globe-americas skill-icon"></i>
-            <h3>Collaboration & Languages</h3>
-            <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
-        </div>
-    </div>
- 
-</section>
-
-
- 
-
-        
+            <h2>Skills Snapshot</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <i class="fas fa-calculator skill-icon"></i>
+                    <h3>Quantitative Research</h3>
+                    <p>Econometric analysis, data modeling, experimental design.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-laptop-code skill-icon"></i>
+                    <h3>Technical Proficiency</h3>
+                    <p>R, Python, Stata, RATS, ML/AI techniques.</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-chalkboard-teacher skill-icon"></i>
+                    <h3>Academic Instruction</h3>
+                    <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
+                </div>
+                <div class="skill-item">
+                    <i class="fas fa-globe-americas skill-icon"></i>
+                    <h3>Collaboration & Languages</h3>
+                    <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <ul class="footer-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <li><a href="teaching.html">Teaching</a></li>
-                <li><a href="cv.html">CV</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <ul class="footer-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
+                <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
+                <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
+                <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
+            </div>
+            <div class="footer-social-icons">
+                <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
+            </div>
+            <div class="footer-copyright">
+                <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
+            </div>
         </div>
-        <div class="footer-contact">
-            <p><i class="fas fa-envelope"></i> <a href="mailto:mirindif@myumanitoba.ca">mirindif@myumanitoba.ca</a></p>
-            <p><i class="fas fa-phone"></i> +1 (204) 298-4337</p>
-            <p><i class="fas fa-map-marker-alt"></i> Winnipeg, MB, Canada</p>
-            <p><i class="fas fa-globe"></i> <a href="https://fredericmirindi.com" target="_blank" rel="noopener noreferrer">fredericmirindi.com</a></p>
-        </div>
-        <div class="footer-social-icons">
-            <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
-            <a href="https://scholar.google.ca/citations?user=K5--CxAAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar Profile"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" aria-label="ORCID Profile"><i class="fab fa-orcid"></i></a>
-            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile"><i class="fab fa-researchgate"></i></a>
-        </div>
-        <div class="footer-copyright">
-            <p>© <span id="current-year"></span> Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 <style>
 .footer-content {
