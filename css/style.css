@@ -177,14 +177,6 @@ img {
     text-decoration: none; /* Remove default underline */
 }
 
-.mobile-nav-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--primary-color);
-    font-size: 2rem;
-    cursor: pointer;
-}
 
 /* --- Hero Section --- */
 .hero-section {
@@ -2133,69 +2125,100 @@ body.dark-mode .main-nav a.active {
 
 
 
-/* --- Mobile Navigation Fix --- */
+
+
+
+
+
+/* Hide hamburger by default, show on mobile */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary-color, #333);
+  font-size: 2.2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  z-index: 1100;
+}
+
+/* Hamburger icon (three lines) using CSS */
+.mobile-nav-toggle .hamburger {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: currentColor;
+  position: relative;
+}
+.mobile-nav-toggle .hamburger::before,
+.mobile-nav-toggle .hamburger::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: currentColor;
+  position: absolute;
+  left: 0;
+  transition: 0.3s;
+}
+.mobile-nav-toggle .hamburger::before { top: -10px; }
+.mobile-nav-toggle .hamburger::after  { top: 10px; }
+
+/* Mobile nav styles */
 @media (max-width: 900px) {
-    .main-nav {
-        display: none;
-        width: 100%;
-        background-color: var(--secondary-color);
-        position: absolute;
-        top: var(--header-height);
-        left: 0;
-        z-index: 1001;
-        box-shadow: 0 2px 8px rgba(30,60,90,0.15);
-    }
-    .main-nav.active {
-        display: block;
-    }
-    .main-nav ul {
-        flex-direction: column;
-        gap: 0;
-        padding: 5px 0;
-        border-top: 1px solid #ddd;
-    }
-    .main-nav a {
-        display: block;
-        padding: 14px 20px;
-        border-radius: 0;
-        border-bottom: 1px solid #ddd;
-        color: var(--primary-color);
-        background: none;
-        font-weight: 600;
-    }
-    .main-nav a:hover, .main-nav a:focus, .main-nav a.active {
-        background-color: var(--accent-color);
-        color: var(--light-text-color);
-    }
-    .main-nav a::after { display: none; }
-    .mobile-nav-toggle {
-        display: block;
-        position: absolute;
-        top: 18px;
-        right: 20px;
-        background: none;
-        border: none;
-        color: var(--primary-color);
-        font-size: 2.2rem;
-        cursor: pointer;
-        z-index: 1100;
-    }
+  .mobile-nav-toggle {
+    display: block;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 60px; /* Adjust as needed */
+    left: 0;
+    width: 100%;
+    background: var(--secondary-color, #fff);
+    box-shadow: 0 2px 8px rgba(30,60,90,0.15);
+    z-index: 1001;
+  }
+  .main-nav.active {
+    display: block;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+  }
+  .main-nav a {
+    display: block;
+    padding: 14px 20px;
+    border-bottom: 1px solid #ddd;
+    color: var(--primary-color, #333);
+    background: none;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .main-nav a:hover,
+  .main-nav a:focus,
+  .main-nav a.active {
+    background-color: var(--accent-color, #007bff);
+    color: var(--light-text-color, #fff);
+  }
 }
 @media (min-width: 901px) {
-    .main-nav {
-        display: block !important;
-        position: static;
-        background: none;
-        box-shadow: none;
-    }
-    .main-nav ul {
-        display: flex !important;
-        flex-direction: row;
-        gap: 25px;
-        border-top: none;
-        padding: 0;
-    }
-    .mobile-nav-toggle {
-        display: none !important;
-    }
+  .main-nav {
+    display: block !important;
+    position: static;
+    background: none;
+    box-shadow: none;
+  }
+  .main-nav ul {
+    display: flex !important;
+    flex-direction: row;
+    gap: 25px;
+    padding: 0;
+  }
+  .mobile-nav-toggle {
+    display: none !important;
+  }
 }
