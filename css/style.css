@@ -2222,3 +2222,17 @@ body.dark-mode .main-nav a.active {
     display: none !important;
   }
 }
+
+
+
+
+@media (max-width: 700px) {
+    .main-nav {
+        display: none;
+        /* ...other mobile styles... */
+    }
+    .main-nav.nav-open {
+        display: block;
+        /* ...other styles for open menu... */
+    }
+}
