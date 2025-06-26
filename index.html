@@ -6,7 +6,7 @@
     <meta name="description" content="Personal academic website of Frédéric Mirindi, PhD Student in Economics and Econometrics at the University of Manitoba. Research focuses on AI/ML in macroeconomics and financial modeling.">
     <title>Frédéric Mirindi - PhD Student | Economist, Educator, Researcher</title>
     
-    <!-- Main site styles -->
+    <!-- Main styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/theme.css">
 
@@ -14,8 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <!-- Updated Font Awesome link for latest icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQhM8h3qk2U7Zs4v2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Favicon and meta icons -->
     <link rel="icon" type="image/svg+xml" href="images/logo.svg">
@@ -32,9 +31,9 @@
 </head>
 
 <body>
-    <header class="site-header">
+    <header class="site-header" role="banner">
         <div class="container header-content">
-            <h1><a href="index.html">Frédéric Mirindi</a></h1>
+            <h1><a href="index.html" aria-label="Home">Frédéric Mirindi</a></h1>
             
             <!-- Mobile Navigation Toggle Button -->
             <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -42,9 +41,9 @@
             </button>
 
             <!-- Main Navigation -->
-            <nav class="main-nav" id="main-nav">
+            <nav class="main-nav" id="main-nav" role="navigation" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                     <li><a href="research.html">Research</a></li>
                     <li><a href="teaching.html">Teaching</a></li>
                     <li><a href="cv.html">CV</a></li>
@@ -53,14 +52,25 @@
             </nav>
             
             <!-- Light/Dark mode toggle button -->
-            <button id="theme-toggle" aria-label="Toggle light and dark mode">
+            <button id="theme-toggle" aria-label="Toggle light and dark mode" data-tooltip="Switch theme">
                 <i id="theme-icon" class="fas fa-moon"></i>
             </button>
         </div>
     </header>
 
-    <main>
-        <section id="hero" class="container hero-section">
+    <!-- Accessibility skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">&rsaquo;</span>
+        <span>Welcome</span>
+    </nav>
+
+    <main id="main-content">
+        <!-- Hero Section with animation and ARIA landmark -->
+        <section id="hero" class="container hero-section fade-in" aria-label="Introduction">
             <div class="hero-text">
                 <h2>PhD Student in Economics &amp; Econometrics, University of Manitoba</h2>
                 <p>Sessional Instructor, Booth University College</p>
@@ -71,25 +81,27 @@
                     spark curiosity, and foster meaningful collaboration.
                 </p>
                 <div class="hero-buttons">
-                    <a href="research.html" class="cta-button">View Research</a>
-                    <a href="mailto:frederic.mirindi@umanitoba.ca" class="cta-button secondary">Contact Me</a>
-                    <a href="https://www.linkedin.com/in/fredericmirindi" class="cta-button secondary" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <a href="research.html" class="cta-button" data-tooltip="See my research">View Research</a>
+                    <a href="mailto:frederic.mirindi@umanitoba.ca" class="cta-button secondary" data-tooltip="Send email">Contact Me</a>
+                    <a href="https://www.linkedin.com/in/fredericmirindi" class="cta-button secondary" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="Connect on LinkedIn">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
                 </div>
             </div>
-            <div class="hero-image">
-                <img src="images/cea.JPG" alt="Profile picture of Frédéric Mirindi">
+            <div class="hero-image" aria-hidden="true">
+                <img src="images/cea.JPG" alt="Profile picture of Frédéric Mirindi" loading="lazy">
             </div>
         </section>
 
-        <section id="about" class="container content-section fade-in">
+        <!-- About Section -->
+        <section id="about" class="container content-section fade-in" aria-label="About Me">
             <h2>About Me</h2>
             <p>I am currently pursuing a Ph.D. in Economics and Econometrics at the University of Manitoba, building upon a diverse academic background including degrees from the University of Antwerp and the Catholic University of Bukavu. My multidisciplinary perspective and international experience inform both my teaching and research.</p>
             <p>As a sessional instructor at Booth University College, I design engaging, data-driven learning experiences in Microeconomics and Applied Finite Mathematics. My research leverages quantitative methods and machine learning to tackle real-world economic challenges, with a focus on policy relevance and innovation.</p>
         </section>
 
-        <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;">
+        <!-- Featured Research with Carousel -->
+        <section id="research-highlights" class="container content-section featured-section fade-in" style="animation-delay: 0.2s;" aria-label="Research Highlights">
             <h2>Research Highlights</h2>
             <p>My core research interest lies in the innovative application of quantitative methods to economic problems. Currently, I am focused on:</p>
             <div class="interests-box">
@@ -98,47 +110,101 @@
                 <p><i class="fas fa-landmark icon-highlight"></i> Monetary policy, DSGE models, and growth dynamics.</p>
                 <p><i class="fas fa-search-dollar icon-highlight"></i> Financial economics, encompassing risk modeling and asset pricing.</p>
             </div>
+            <div class="carousel-track" aria-label="Recent Publications">
+                <!-- Carousel Items, add images/titles as needed -->
+                <div class="blog-excerpt-card">
+                    <div class="blog-post-header">
+                        <h2 class="blog-post-title">AI for Macroeconomic Forecasting</h2>
+                        <div class="blog-post-meta">2024 &bull; <span>Machine Learning</span></div>
+                    </div>
+                    <p class="blog-excerpt">A new approach to forecasting using deep learning and macroeconomic time series data.</p>
+                    <a href="blog-post-forecasting.html" class="read-full-post-link">Read More</a>
+                </div>
+                <div class="blog-excerpt-card">
+                    <div class="blog-post-header">
+                        <h2 class="blog-post-title">Network Science in Economics</h2>
+                        <div class="blog-post-meta">2024 &bull; <span>Network Analysis</span></div>
+                    </div>
+                    <p class="blog-excerpt">Exploring how complex networks impact financial market stability.</p>
+                    <a href="blog-network-science.html" class="read-full-post-link">Read More</a>
+                </div>
+                <div class="blog-excerpt-card">
+                    <div class="blog-post-header">
+                        <h2 class="blog-post-title">Causal Inference in Policy Evaluation</h2>
+                        <div class="blog-post-meta">2023 &bull; <span>Econometrics</span></div>
+                    </div>
+                    <p class="blog-excerpt">Advanced techniques for robust causal inference and policy design.</p>
+                    <a href="blog-post-causal-inference.html" class="read-full-post-link">Read More</a>
+                </div>
+            </div>
             <div style="margin-top: 1.5rem;">
                 <a href="research.html" class="cta-button">Explore Publications</a>
                 <a href="ai-ml.html" class="cta-button secondary">AI/ML Focus</a>
             </div>
         </section>
 
-        <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;">
+        <!-- Global Experience Map -->
+        <section id="locations-map" class="container content-section fade-in" style="animation-delay: 0.3s;" aria-label="Global Experience & Education">
             <h2>Global Experience & Education</h2>
             <p>My academic and professional journey has taken me to various institutions and conferences globally.</p>
-            <div id="map-container"></div>
+            <div id="map-container" style="height:350px;border-radius:12px;box-shadow:0 2px 18px rgba(30,60,90,0.05);"></div>
             <p class="caption">Map showing key locations for education, research, and conference presentations.</p>
         </section>
 
-        <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;">
+        <!-- Skills Snapshot (animated) -->
+        <section id="skills-snapshot" class="container content-section fade-in" style="animation-delay: 0.4s;" aria-label="Skills Snapshot">
             <h2>Skills Snapshot</h2>
             <div class="skills-grid">
-                <div class="skill-item">
+                <div class="skill-item" data-tooltip="Econometric analysis, data modeling, experimental design.">
                     <i class="fas fa-calculator skill-icon"></i>
                     <h3>Quantitative Research</h3>
                     <p>Econometric analysis, data modeling, experimental design.</p>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item" data-tooltip="R, Python, Stata, RATS, ML/AI techniques.">
                     <i class="fas fa-laptop-code skill-icon"></i>
                     <h3>Technical Proficiency</h3>
                     <p>R, Python, Stata, RATS, ML/AI techniques.</p>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item" data-tooltip="Curriculum development, undergraduate teaching (Microeconomics, Math).">
                     <i class="fas fa-chalkboard-teacher skill-icon"></i>
                     <h3>Academic Instruction</h3>
                     <p>Curriculum development, undergraduate teaching (Microeconomics, Math).</p>
                 </div>
-                <div class="skill-item">
+                <div class="skill-item" data-tooltip="Cross-cultural teamwork; Fluent English &amp; French, Swahili, etc.">
                     <i class="fas fa-globe-americas skill-icon"></i>
-                    <h3>Collaboration & Languages</h3>
-                    <p>Cross-cultural teamwork; Fluent English & French, Swahili, etc..</p>
+                    <h3>Collaboration &amp; Languages</h3>
+                    <p>Cross-cultural teamwork; Fluent English &amp; French, Swahili, etc..</p>
                 </div>
             </div>
         </section>
+
+        <!-- Contact Form modal trigger -->
+        <button class="fab" data-modal-target="#contact-modal" aria-label="Contact Frédéric" data-tooltip="Contact Me">
+            <i class="fas fa-envelope"></i>
+        </button>
+
+        <!-- Modal: Contact Form -->
+        <div class="modal" id="contact-modal" aria-modal="true" role="dialog">
+            <div class="modal-content">
+                <button class="modal-close" aria-label="Close contact form">&times;</button>
+                <h2>Contact Frédéric</h2>
+                <form action="mailto:frederic.mirindi@umanitoba.ca" method="POST" enctype="text/plain" autocomplete="on">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required autocomplete="name">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                    <label for="message">Message or Reason for Contact</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loader example (hidden by default, show for async actions if needed) -->
+        <div class="loader" style="display:none;" aria-label="Loading"></div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="container footer-content">
             <div class="footer-links">
                 <ul class="footer-menu">
@@ -172,22 +238,16 @@
     <!-- Leaflet Map library for locations map -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script>
-        // Light/Dark mode toggle logic, Mobile nav, dynamic year handled in js/script.js
-
         // Locations Map JS (Leaflet)
         document.addEventListener('DOMContentLoaded', function () {
             const mapElement = document.getElementById('map-container');
             if (mapElement) {
-                // Initialize map WITH scrollWheelZoom disabled
                 const map = L.map('map-container', { scrollWheelZoom: false }).setView([25, 15], 2);
-
-                // Add Tile Layer
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     maxZoom: 18,
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
 
-                // Define Locations
                 const locations = [
                     { lat: 49.8951, lng: -97.1384, name: "University of Manitoba", type: "Education (PhD)", city: "Winnipeg, Canada", category: 'education' },
                     { lat: 51.2194, lng: 4.4025, name: "University of Antwerp", type: "Education (M.Sc.)", city: "Antwerp, Belgium", category: 'education' },
@@ -202,12 +262,10 @@
                     { lat: 49.9350, lng: 11.5758, name: "University of Bayreuth (BIGSAS)", type: "Research Experience", city: "Bayreuth, Germany", category: 'research'}
                 ];
 
-                // Define custom icons
                 const educationIcon = L.divIcon({ html: '<i class="fas fa-graduation-cap" style="color: #2c3e50;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -10] });
                 const conferenceIcon = L.divIcon({ html: '<i class="fas fa-map-pin" style="color: #e74c3c;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 24], popupAnchor: [0, -15] });
                 const researchIcon = L.divIcon({ html: '<i class="fas fa-flask" style="color: #f39c12;"></i>', className: 'map-fa-icon', iconSize: [24, 24], iconAnchor: [12, 12], popupAnchor: [0, -10] });
 
-                // Add Markers using custom icons
                 locations.forEach(location => {
                     let iconToUse;
                     switch(location.category) {
@@ -225,7 +283,7 @@
         });
     </script>
 
-    <!-- jQuery and Slick Carousel libraries (if used elsewhere) -->
+    <!-- jQuery and Slick Carousel libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
