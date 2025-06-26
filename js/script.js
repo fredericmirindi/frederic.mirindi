@@ -366,3 +366,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const mainNav = document.getElementById('main-nav');
+
+    if (mobileNavToggle && mainNav) {
+        mobileNavToggle.addEventListener('click', function () {
+            mainNav.classList.toggle('nav-open');
+            // Optionally update aria-expanded for accessibility
+            const expanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+            mobileNavToggle.setAttribute('aria-expanded', !expanded);
+        });
+    }
+});
