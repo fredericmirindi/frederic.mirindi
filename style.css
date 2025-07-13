@@ -1750,15 +1750,6 @@ select.form-control {
 
 
 
-
-
-
-
-
-
-
-
-
 .circle {
   width: 150px;         /* Adjust size as needed */
   height: 150px;
@@ -1781,49 +1772,3 @@ select.form-control {
 
 
 
-
-
-.profile-background {
-  position: relative;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #6e8efb 0%, #a777e3 100%);
-  overflow: hidden;
-}
-
-.profile-background::before {
-  content: "";
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 180px;
-  background: url('data:image/svg+xml;utf8,<svg width="100%" height="180" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C150,180 350,0 500,120 L500,00 L0,0 Z" fill="%23fff" fill-opacity="0.2"/></svg>');
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: wave 8s linear infinite alternate;
-}
-
-@keyframes wave {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-40px); }
-}
-
-.profile-content {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  text-align: center;
-}
-
-
-
-
-
-
-.hero-description {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  color: #f0f0f0;
-  line-height: 1.6;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
