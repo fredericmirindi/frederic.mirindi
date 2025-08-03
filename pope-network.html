@@ -5,12 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Can Network Science Predict the New Pope? | Frédéric Mirindi Blog</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .blog-main-img {
+      width: 100%;
+      max-width: 540px;
+      border-radius: 14px;
+      display: block;
+      margin: 22px auto;
+    }
+    .blog-network-img {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 14px;
+      display: block;
+      margin: 22px auto;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--color-surface, #232524);
+      margin-bottom: 28px;
+      box-shadow: 0 1px 8px #0002;
+    }
+    .data-table th, .data-table td {
+      padding: 13px 12px;
+      text-align: left;
+      font-size: 1rem;
+    }
+    .data-table th {
+      background: var(--color-primary, #1fb8cd);
+      color: #fff;
+      font-weight: 600;
+      border-bottom: 2px solid var(--color-border, #222);
+    }
+    .data-table tr:nth-child(even) td {
+      background: var(--color-secondary, #232b2b11);
+    }
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+    @media (max-width: 600px) {
+      .data-table th, .data-table td { font-size: 0.95rem; padding: 10px 8px;}
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation (reuse your main nav if desired) -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <div class="nav-brand"><h2>Frédéric Mirindi</h2></div>
+      <div class="nav-brand">
+        <h2>Frédéric Mirindi</h2>
+      </div>
       <ul class="nav-menu" id="nav-menu">
         <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="index.html#papers" class="nav-link">Publications</a></li>
@@ -20,23 +67,32 @@
         <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
         <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
       </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
     </div>
   </nav>
   <main class="main-content">
-    <article class="container" style="max-width:780px; margin-top:48px;">
+    <article class="container" style="max-width:820px; margin-top:48px;">
       <header class="page-header" style="text-align:left;">
         <h1>Can Network Science Predict the New Pope? Insights from the 2025 Conclave</h1>
         <div style="color: var(--color-primary); margin-bottom:24px;">Posted on May 9, 2025 | Category: Religion, Network Science</div>
       </header>
-      <img src="images/pope.JPG" alt="The new pope greets the crowd" style="width:100%;max-width:520px;border-radius:12px;display:block;margin:18px auto;">
-      
+
       <h2>1. The Power of Networks in the Papal Election</h2>
       <p>
         The election of a new pope is one of the most secretive and consequential decisions in global religious affairs. While spiritual discernment is central, recent research from Bocconi University reveals that social dynamics—such as status, alliances, and information flow among cardinals—play a crucial role in shaping the outcome. The 2025 conclave, with 133 cardinals from 70 countries, provided a unique opportunity to test the predictive power of <strong>network science</strong> in this ancient process.
       </p>
 
-      <img src="images/newpope.jpg" alt="Photo of the new pope" style="width:100%;max-width:400px;border-radius:12px;display:block;margin:18px auto;">
-      
+      <img src="images/newpope.jpg" alt="Photo of the new pope" class="blog-main-img">
+
       <h2>2. How Network Science Illuminates the Conclave</h2>
       <p>
         The Bocconi study mapped the Vatican’s relational ecosystem by analyzing official roles, spiritual lineages, and informal connections among cardinals. It identified three key factors that determine a cardinal’s prominence:
@@ -46,13 +102,13 @@
         <li><strong>Information Control:</strong> Ability to connect different groups and influence information flow.</li>
         <li><strong>Coalition-Building:</strong> Embeddedness within cohesive groups and capacity to unite factions.</li>
       </ul>
-      <img src="images/network.JPG" alt="Network map of cardinal relationships" style="width:100%;max-width:450px;border-radius:12px;display:block;margin:18px auto;">
+      <img src="images/network.JPG" alt="Network map of cardinal relationships" class="blog-network-img">
 
       <h2>3. Segmentation of Cardinals: Status, Ideology, and Influence</h2>
       <p>The Bocconi network analysis segments cardinals by ideological orientation and influence. Below is a summary of the main groups identified:</p>
       <div style="overflow-x:auto;">
-        <table style="width:100%;margin-bottom:18px;">
-          <tr style="background:var(--color-secondary);">
+        <table class="data-table">
+          <tr>
             <th>Segment</th>
             <th>Ideology</th>
             <th>Characteristics</th>
@@ -115,7 +171,6 @@
       <a href="index.html#blog" class="btn btn--outline" style="margin-top:32px;">← Back to Blog</a>
     </article>
   </main>
-  <!-- Footer to match your brand style and screenshot -->
   <footer class="footer" style="background: var(--color-surface, #232524); border-top: 1px solid var(--color-border, #444); padding: 42px 0 18px 0; color: var(--color-text-secondary, #aaa); margin-top:42px;">
     <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap:48px; max-width:1150px;">
       <div>
@@ -143,4 +198,3 @@
   </footer>
 </body>
 </html>
-
