@@ -2168,3 +2168,47 @@ select.form-control {
   .hero-nom::after { height: 3px; }
 }
 
+
+
+
+
+
+
+
+
+
+.hero-title {
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    font-size: 2.6rem;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    font-weight: 700;
+    background: none;
+    line-height: 1.1;
+}
+
+.hero-nom-accent {
+    color: var(--color-primary, #14b8c8);
+    font-weight: 800;
+    position: relative;
+    padding-bottom: 7px;
+    display: inline-block;
+    /* Feel free to adjust the next line for size */
+    font-size: 2.6rem;
+    letter-spacing: 0.1rem;
+}
+
+.hero-nom-accent::after {
+    content: "";
+    display: block;
+    height: 5px;
+    width: 80%;
+    min-width: 60px;
+    margin: 8px auto 0 0;
+    background: linear-gradient(90deg, #14b8c8 60%, #1692a7 100%);
+    border-radius: 2px;
+}
+@media (max-width: 600px) {
+    .hero-title, .hero-nom-accent { font-size: 1.5rem; }
+    .hero-nom-accent::after { height: 3px; }
+}
