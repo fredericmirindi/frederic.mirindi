@@ -2131,3 +2131,40 @@ select.form-control {
   .blog-title { font-size: 1rem;}
 }
 
+
+
+
+
+
+
+
+
+.hero-nom {
+  color: var(--color-primary, #14b8c8);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  line-height: 1.14;
+  display: inline-block;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+.hero-nom::after {
+  content: "";
+  display: block;
+  width: 54%;
+  height: 4px;
+  background: linear-gradient(90deg, #14b8c8 0%, #1692a7 100%);
+  border-radius: 2px;
+  margin: 5px auto 0 auto;
+}
+
+@media (max-width: 600px) {
+  .hero-nom {
+    font-size: 1.2rem;
+  }
+  .hero-nom::after { height: 3px; }
+}
+
