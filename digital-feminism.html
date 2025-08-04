@@ -92,28 +92,54 @@
         offline organizing and policy advocacy.
       </p>
 
-      <a href="index.html#blog" class="btn btn--outline" style="margin-top:32px;">← Back to Blog</a>
+   <a href="index.html#blog" class="btn btn--outline" style="margin-top:32px;">← Back to Blog</a>
     </article>
   </main>
+  <footer class="footer" style="background: var(--color-surface, #232524); border-top: 1px solid var(--color-border, #444); padding: 42px 0 18px 0; color: var(--color-text-secondary, #aaa); margin-top:42px;">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap:48px; max-width:1150px;">
+      <div>
+        <div style="color: var(--color-primary, #1fb8cd); font-weight:600; font-size:1.13rem; margin-bottom:6px;">Frédéric Mirindi</div>
+        <div style="margin-bottom:4px;">PhD Candidate - Economics &amp; Econometrics</div>
+        <div>Founder - ThinkBit Edge Corp.</div>
+      </div>
+      <div>
+  <div style="color: var(--color-primary, #1fb8cd); font-weight:600; font-size:1.13rem; margin-bottom:6px;">Quick Links</div>
+  <div><a href="papers.html" style="color:inherit;text-decoration:none;">Publications</a></div>
+  <div><a href="conferences.html" style="color:inherit;text-decoration:none;">Conferences</a></div>
+  <div><a href="research.html" style="color:inherit;text-decoration:none;">Research</a></div>
+  <div><a href="ai-implementation.html" style="color:inherit;text-decoration:none;">AI Tools</a></div>
+</div>
 
-  <!-- Simple footer (reuse your site footer if desired) -->
-  <footer class="footer" style="background: var(--color-surface); border-top: 1px solid var(--color-border); padding: 42px 0 18px;">
-    <div class="container" style="text-align:center; color: var(--color-text-secondary);">
-      © 2025 Frédéric Mirindi. All rights reserved.
+      <div>
+        <div style="color: var(--color-primary, #1fb8cd); font-weight:600; font-size:1.13rem; margin-bottom:6px;">Contact</div>
+        <div><a href="mailto:frederic.mirindi@umanitoba.ca" style="color:inherit;text-decoration:none;">frederic.mirindi@umanitoba.ca</a></div>
+        <div style="margin-top:4px;">+1 (204) 298-4337</div>
+      </div>
+    </div>
+    <hr style="border: 0; border-top:1px solid var(--color-border, #444); margin:32px 0;">
+    <div style="text-align:center; color:var(--color-text-secondary, #888); font-size:0.97rem;">
+      © 2020 Frédéric Mirindi. All rights reserved.
     </div>
   </footer>
-
-  <!-- Theme toggle JS (same as other pages) -->
   <script>
-    const themeToggle=document.getElementById('theme-toggle');
-    const themeIcon=themeToggle.querySelector('.theme-icon');
-    function getSystemDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}
-    function setTheme(t){document.documentElement.setAttribute('data-color-scheme',t);
-      localStorage.setItem('theme',t);themeIcon.textContent=(t==='dark')?'☀️':'🌙';}
-    function initTheme(){let saved=localStorage.getItem('theme');
-      if(!saved){saved=getSystemDark()?'dark':'light';}setTheme(saved);}
-    themeToggle.addEventListener('click',()=>{const dark=document.documentElement.getAttribute('data-color-scheme')==='dark';setTheme(dark?'light':'dark');});
-    initTheme();
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = themeToggle.querySelector('.theme-icon');
+    function getSystemDarkMode() { return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches; }
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-color-scheme', theme);
+      localStorage.setItem('theme', theme);
+      themeIcon.textContent = (theme === 'dark') ? '☀️' : '🌙';
+    }
+    function initializeTheme() {
+      let savedTheme = localStorage.getItem('theme');
+      if (!savedTheme) { savedTheme = getSystemDarkMode() ? 'dark' : 'light'; }
+      setTheme(savedTheme);
+    }
+    themeToggle.addEventListener('click', function() {
+      let isDark = document.documentElement.getAttribute('data-color-scheme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+    initializeTheme();
   </script>
 </body>
 </html>
