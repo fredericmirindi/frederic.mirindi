@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Feminism: Intersectionality and Activism in the Age of Social Media | Frédéric Mirindi Blog</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Local page-only styles (optional tweak) -->
+  <style>
+    .blog-main-img, .blog-network-img {
+      width: 100%;
+      max-width: 540px;
+      border-radius: 14px;
+      display: block;
+      margin: 22px auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top navbar copied from other posts (optional) -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="nav-brand"><h2>Frédéric Mirindi</h2></div>
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="index.html#papers" class="nav-link">Publications</a></li>
+        <li class="nav-item"><a href="index.html#conferences" class="nav-link">Conferences</a></li>
+        <li class="nav-item"><a href="index.html#research" class="nav-link">Research</a></li>
+        <li class="nav-item"><a href="index.html#blog" class="nav-link active">Blog</a></li>
+        <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <article class="container" style="max-width:820px; margin-top:48px;">
+      <header class="page-header" style="text-align:left;">
+        <h1>Digital Feminism: Intersectionality and Activism in the Age of Social Media</h1>
+        <div style="color: var(--color-primary); margin-bottom:24px;">
+          Presented at the University of Warwick · Jan 22, 2025
+        </div>
+      </header>
+
+      <h2>From Marches to Memes: A New Era of Feminist Activism</h2>
+      <p>
+        In my graduate seminar presentation at the University of Warwick, I explored how social
+        media has transformed feminist activism from localized street protests into globally
+        networked movements. Platforms like X (formerly Twitter), Instagram, and TikTok collapse
+        geographic and socioeconomic barriers, enabling marginalized voices to document abuse,
+        coordinate action, and pressure institutions in real time.
+      </p>
+
+      <img src="images/metoo3.png" alt="#MeToo tweet collage" class="blog-main-img">
+
+      <h2>Intersectionality: The Movement’s Engine</h2>
+      <p>
+        Drawing on Kimberlé Crenshaw’s theory of intersectionality, I showed that the most
+        successful digital campaigns foreground overlapping systems of oppression—
+        gender, race, class, sexuality, and disability. Hashtags such as
+        <strong>#SayHerName</strong>, <strong>#BalanceTonPorc</strong>, and
+        <strong>#YoTambien</strong> gained traction precisely because they amplified stories
+        mainstream feminism once overlooked.
+      </p>
+
+      <img src="images/metoo2.png" alt="Historical women's march juxtaposed with MeToo tweets" class="blog-network-img">
+
+      <h2>Key Takeaways</h2>
+      <ul>
+        <li><strong>Amplification &amp; Access:</strong> Digital platforms give historically
+          excluded groups low-cost entry to global audiences.</li>
+        <li><strong>Real-time Coalition Building:</strong> Activists can synchronize tactics
+          across continents instantly.</li>
+        <li><strong>Risks:</strong> Echo chambers, performative allyship, and escalating online
+          harassment—especially targeting women of color and LGBTQ+ organizers.</li>
+      </ul>
+
+      <h2>Looking Ahead</h2>
+      <p>
+        As visual storytelling on Instagram and TikTok grows and encrypted apps enable
+        transnational coordination, digital feminism will continue redefining who can speak,
+        be heard, and lead. Sustaining momentum, however, demands pairing viral hashtags with
+        offline organizing and policy advocacy.
+      </p>
+
+      <a href="index.html#blog" class="btn btn--outline" style="margin-top:32px;">← Back to Blog</a>
+    </article>
+  </main>
+
+  <!-- Simple footer (reuse your site footer if desired) -->
+  <footer class="footer" style="background: var(--color-surface); border-top: 1px solid var(--color-border); padding: 42px 0 18px;">
+    <div class="container" style="text-align:center; color: var(--color-text-secondary);">
+      © 2025 Frédéric Mirindi. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Theme toggle JS (same as other pages) -->
+  <script>
+    const themeToggle=document.getElementById('theme-toggle');
+    const themeIcon=themeToggle.querySelector('.theme-icon');
+    function getSystemDark(){return window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;}
+    function setTheme(t){document.documentElement.setAttribute('data-color-scheme',t);
+      localStorage.setItem('theme',t);themeIcon.textContent=(t==='dark')?'☀️':'🌙';}
+    function initTheme(){let saved=localStorage.getItem('theme');
+      if(!saved){saved=getSystemDark()?'dark':'light';}setTheme(saved);}
+    themeToggle.addEventListener('click',()=>{const dark=document.documentElement.getAttribute('data-color-scheme')==='dark';setTheme(dark?'light':'dark');});
+    initTheme();
+  </script>
+</body>
+</html>
