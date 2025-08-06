@@ -65,25 +65,25 @@
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
-                    <a href="index.html#home" class="nav-link">Home</a>
+                    <a href="index.html#home" class="nav-link" data-page="home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#papers" class="nav-link">Publications</a>
+                    <a href="index.html#papers" class="nav-link" data-page="papers">Publications</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#conferences" class="nav-link">Conferences</a>
+                    <a href="index.html#conferences" class="nav-link" data-page="conferences">Conferences</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#research" class="nav-link">Research</a>
+                    <a href="index.html#research" class="nav-link" data-page="research">Research</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#blog" class="nav-link active">Blog</a>
+                    <a href="index.html#blog" class="nav-link" data-page="blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#about" class="nav-link">About</a>
+                    <a href="index.html#about" class="nav-link" data-page="about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="index.html#contact" class="nav-link">Contact</a>
+                    <a href="index.html#contact" class="nav-link" data-page="contact">Contact</a>
                 </li>
             </ul>
             <div class="nav-controls">
@@ -228,13 +228,13 @@
                     <p>frederic.mirindi@umanitoba.ca</p>
                     <p>+1 (204) 298-4337</p>
                     <div style="margin-top:10px; display:flex; gap:18px;">
-                        <!-- LinkedIn Icon -->
+                        <!-- LinkedIn -->
                         <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener" title="LinkedIn" style="display:inline-flex;align-items:center;">
                             <svg height="22" width="22" fill="#1fb8cd" viewBox="0 0 32 32">
                                 <path d="M27 27h-5v-7.08c0-1.69-0.03-3.87-2.36-3.87-2.36 0-2.73 1.84-2.73 3.75v7.2h-5v-14h4.81v1.91h.07c.67-1.28 2.3-2.36 4.74-2.36 5.08 0 6.02 3.34 6.02 7.68v6.77zM7 10.41c-1.6 0-2.91-1.3-2.91-2.91S5.4 4.59 7 4.59s2.9 1.3 2.9 2.91-1.3 2.91-2.9 2.91zm2.5 16.59h-5v-14h5v14z"></path>
                             </svg>
                         </a>
-                        <!-- X Icon -->
+                        <!-- X -->
                         <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener" title="X (formerly Twitter)" style="display:inline-flex;align-items:center;">
                             <svg width="22" height="22" fill="#1fb8cd" viewBox="0 0 24 24">
                                 <path d="M17.53 2.477h3.76l-8.227 9.394 9.693 9.652h-7.892l-6.044-6.893-6.904 6.893h-3.764l8.786-9.822-9.329-9.224h8.072l5.526 6.627zm-1.2 17.078h2.086l-7.012-7.965-2.08-2.283-6.032-7.166h2.057l7.018 7.968 2.079 2.285 5.965 6.727h-1.981z"/>
@@ -250,5 +250,27 @@
     </footer>
 
     <script src="app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('.nav-link');
+        var thisPage = window.location.pathname.split('/').pop();
+        var thisHash = window.location.hash;
+
+        links.forEach(function(link) {
+            link.classList.remove('active');
+            // Highlight by hash on index.html
+            if ((thisPage === "index.html" || thisPage === "") && thisHash && link.getAttribute("href").endsWith(thisHash)) {
+                link.classList.add('active');
+            }
+            // Highlight Blog on blog post pages
+            if (thisPage === "digital-feminism.html" && link.getAttribute("data-page") === "blog") {
+                link.classList.add('active');
+            }
+            if (thisPage === "pope-network.html" && link.getAttribute("data-page") === "blog") {
+                link.classList.add('active');
+            }
+        });
+    });
+    </script>
 </body>
 </html>
