@@ -2172,5 +2172,9 @@ select.form-control {
 
 
 
+@media (max-width: 900px) {
+  .nav-menu { display: none; /* ...rest as previous answer... */ }
+  .nav-menu.open { display: flex; }
+}
 
 
