@@ -2173,3 +2173,63 @@ select.form-control {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.floating-shape {
+  position: absolute;
+  z-index: 1;
+  border-radius: 40% 60% 70% 30%/60% 40% 70% 40%;
+  opacity: 0.13;
+  pointer-events: none;
+  animation: float 22s ease-in-out infinite;
+  filter: blur(2.5px);
+}
+.shape-1 {
+  width: 180px;
+  height: 180px;
+  background: linear-gradient(130deg, #58c7e2 0%, #6bc273 100%);
+  top: 12%;
+  left: 4%;
+  animation-delay: 0s;
+}
+.shape-2 {
+  width: 220px;
+  height: 220px;
+  background: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+  top: 52%;
+  left: 77%;
+  animation-delay: -9s;
+}
+.shape-3 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(70deg, #fdc3a9 0%, #f97fa6 100%);
+  top: 83%;
+  left: 10%;
+  animation-delay: -13s;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg);}
+  24% { transform: translateY(-25px) rotate(20deg);}
+  48% { transform: translateY(20px) rotate(-12deg);}
+  72% { transform: translateY(-24px) rotate(13deg);}
+}
+
+
