@@ -2253,50 +2253,99 @@ select.form-control {
 
 /* Code for Watch and Meteo Widgets */
 
-.widget-container {
+.widget-innovative-section {
+  padding: 40px 0 60px 0;
+  background: linear-gradient(135deg, #edf0f7 65%, #eebbc3 100%);
+  box-shadow: 0 6px 48px rgba(35,41,70,0.055);
+}
+
+.widget-flex-row {
   display: flex;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 3rem;
   justify-content: center;
-  align-items: center;
-  margin: 40px 0;
+  align-items: flex-start;
 }
 
-.watch-widget {
-  background: #232946;
-  color: #fffffe;
-  font-size: 2.5rem;
-  padding: 20px 40px;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(35,41,70,0.15);
-  text-align: center;
-  min-width: 120px;
-  font-family: 'Segoe UI', monospace, sans-serif;
-}
-
-.meteo-widget {
-  background: #eebbc3;
-  color: #232946;
-  padding: 20px 40px;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(35,41,70,0.15);
+.widget-designer, .widget-meteologist {
+  flex: 1 1 320px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 140px;
-  font-family: 'Segoe UI', sans-serif;
+}
+
+.widget-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #232946;
+  text-shadow: 0 2px 16px #fff7;
+  text-align: center;
+}
+
+.watch-widget.enhanced,
+.meteo-widget.enhanced {
+  background: rgba(255,255,255,0.60);
+  border-radius: 28px;
+  padding: 28px 44px;
+  box-shadow: 0 8px 32px rgba(35,41,70,0.12);
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Segoe UI', monospace, sans-serif;
+  position: relative;
+}
+
+.watch-widget.enhanced {
+  color: #232946;
+  font-size: 3rem;
+  letter-spacing: .05em;
+}
+
+.watch-widget .widget-sub {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.07rem;
+  color: #6f6f85;
+  font-weight: 400;
+}
+
+.meteo-widget.enhanced {
+  color: #232946;
+  min-width: 180px;
 }
 
 .meteo-widget .weather-icon {
-  font-size: 2.2rem;
-  margin-bottom: 6px;
+  font-size: 2.7rem;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 6px #eebbc360);
 }
-
 .meteo-widget .weather-temp {
-  font-size: 1.7rem;
-  font-weight: bold;
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+.meteo-widget .weather-desc {
+  margin-top: 3px;
+  font-size: 1.10rem;
+  text-transform: capitalize;
+  color: #545471;
+  font-weight: 500;
+}
+.meteo-widget .widget-sub {
+  display: block;
+  margin-top: 6px;
+  font-size: 1.05rem;
+  color: #6f6f85;
 }
 
-.meteo-widget .weather-desc {
-  font-size: 1.05rem;
-  margin-top: 4px;
+/* Captions/credits */
+.widget-caption {
+  text-align: center;
+  font-size: 0.97rem;
+  color: #667;
+  margin-top: 12px;
+  font-style: italic;
 }
