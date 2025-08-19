@@ -2349,3 +2349,33 @@ select.form-control {
   margin-top: 12px;
   font-style: italic;
 }
+
+
+
+
+
+
+
+
+
+
+/* Info Cards section - add this to your style.css */
+.container.my-8 > .flex {
+  gap: 4rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 600px) {
+  .container.my-8 > .flex {
+    gap: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .container.my-8 .card {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    min-width: 94vw;      /* makes each card almost full width for very small screens */
+    max-width: 99vw;
+  }
+}
