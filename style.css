@@ -2251,131 +2251,165 @@ select.form-control {
 
 
 
-/* Code for Watch and Meteo Widgets */
+
+
+
+
+/*----------------------------------*
+ *    Watch & Meteo Widget Styles   *
+ *----------------------------------*/
 
 .widget-innovative-section {
-  padding: 40px 0 60px 0;
-  background: linear-gradient(135deg, #edf0f7 65%, #eebbc3 100%);
-  box-shadow: 0 6px 48px rgba(35,41,70,0.055);
+  padding: 48px 0 72px 0;
+  background: linear-gradient(125deg, #e8ebf3 64%, #eebbc3 100%);
+  box-shadow: 0 8px 48px rgba(35,41,70,0.09);
+  border-radius: 32px;
+  position: relative;
 }
 
 .widget-flex-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 3.5rem;
   justify-content: center;
   align-items: flex-start;
 }
 
-.widget-designer, .widget-meteologist {
-  flex: 1 1 320px;
+.widget-designer,
+.widget-meteologist {
+  flex: 1 1 340px;
   max-width: 420px;
+  min-width: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 12px;
 }
 
 .widget-title {
-  font-size: 1.5rem;
-  margin-bottom: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 1.62rem;
+  margin-bottom: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.035em;
   color: #232946;
-  text-shadow: 0 2px 16px #fff7;
+  text-shadow: 0 4px 16px #fff7;
   text-align: center;
 }
 
 .watch-widget.enhanced,
 .meteo-widget.enhanced {
-  background: rgba(255,255,255,0.60);
-  border-radius: 28px;
-  padding: 28px 44px;
-  box-shadow: 0 8px 32px rgba(35,41,70,0.12);
-  margin-bottom: 8px;
+  background: rgba(255,255,255,0.74);
+  border-radius: 24px;
+  padding: 32px 46px 26px 46px;
+  box-shadow: 0 7px 28px rgba(35,41,70,0.13);
+  margin-bottom: 22px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Segoe UI', monospace, sans-serif;
+  font-family: 'Segoe UI', 'Fira Mono', Consolas, monospace, sans-serif;
   position: relative;
+  backdrop-filter: blur(1px);
+  transition: background 0.26s, box-shadow 0.26s;
 }
 
 .watch-widget.enhanced {
-  color: #232946;
-  font-size: 3rem;
-  letter-spacing: .05em;
+  color: #151a30;
+  font-size: 2.85rem;
+  letter-spacing: .055em;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .watch-widget .widget-sub {
-  display: block;
-  margin-top: 8px;
-  font-size: 1.07rem;
-  color: #6f6f85;
+  margin-top: 13px;
+  font-size: 1.08rem;
+  color: #788197;
   font-weight: 400;
+  text-align: center;
 }
 
 .meteo-widget.enhanced {
   color: #232946;
-  min-width: 180px;
+  min-width: 210px;
+  font-weight: 600;
 }
 
 .meteo-widget .weather-icon {
-  font-size: 2.7rem;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 2px 6px #eebbc360);
+  font-size: 2.9rem;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 8px #eebbc330);
 }
 .meteo-widget .weather-temp {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 700;
+  letter-spacing: .014em;
 }
 .meteo-widget .weather-desc {
-  margin-top: 3px;
-  font-size: 1.10rem;
+  margin-top: 4px;
+  font-size: 1.12rem;
   text-transform: capitalize;
-  color: #545471;
+  color: #4b4b73;
   font-weight: 500;
+  text-align: center;
 }
 .meteo-widget .widget-sub {
-  display: block;
-  margin-top: 6px;
-  font-size: 1.05rem;
-  color: #6f6f85;
+  margin-top: 7px;
+  font-size: 1.03rem;
+  color: #8ca0b4;
+  text-align: center;
 }
 
 /* Captions/credits */
 .widget-caption {
   text-align: center;
-  font-size: 0.97rem;
-  color: #667;
-  margin-top: 12px;
+  font-size: 1.02rem;
+  color: #6a6a81;
+  margin-top: 14px;
   font-style: italic;
+  opacity: 0.92;
 }
 
-
-
-
-
-
-
-
-
-
-/* Info Cards section - add this to your style.css */
-.container.my-8 > .flex {
-  gap: 4rem;
-  margin-left: 0;
-  margin-right: 0;
+@media (max-width: 900px) {
+  .widget-flex-row {
+    gap: 2rem;
+  }
+  .widget-designer,
+  .widget-meteologist {
+    min-width: 98vw;
+    max-width: 99vw;
+    margin: 0 0;
+  }
+  .watch-widget.enhanced,
+  .meteo-widget.enhanced {
+    min-width: 92vw;
+    max-width: 99vw;
+    padding: 24px 8vw;
+  }
 }
 
 @media (max-width: 600px) {
-  .container.my-8 > .flex {
-    gap: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+  .widget-innovative-section {
+    padding: 30px 0 44px 0;
+    border-radius: 0;
   }
-  .container.my-8 .card {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    min-width: 94vw;      /* makes each card almost full width for very small screens */
-    max-width: 99vw;
+  .widget-title {
+    font-size: 1.25rem;
+  }
+  .widget-flex-row {
+    gap: 1.1rem;
+    flex-direction: column;
+  }
+  .widget-designer,
+  .widget-meteologist {
+    min-width: 99vw;
+    max-width: 100vw;
+    margin: 0;
+  }
+  .watch-widget.enhanced,
+  .meteo-widget.enhanced {
+    min-width: 96vw;
+    max-width: 100vw;
+    padding: 18px 6vw;
   }
 }
