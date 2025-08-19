@@ -757,7 +757,17 @@ window.showPage = showPage;
 window.toggleTheme = toggleTheme;
 
 
-
+// JavaScript for the Watch  
+<script>
+function updateTime() {
+  const now = new Date();
+  let h = String(now.getHours()).padStart(2, '0');
+  let m = String(now.getMinutes()).padStart(2, '0');
+  document.getElementById('watch-time').textContent = `${h}:${m}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+</script>
 
 
 
