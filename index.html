@@ -152,30 +152,33 @@
                 </div>
             </div>
         </section>
-
-    <!-- Time & Weather Section -->
-<section class="widget-innovative-section">
-  <div class="container widget-flex-row">
-    <div class="widget-designer">
-      <h2 class="widget-title">Live Local Time</h2>
-      <div class="watch-widget enhanced">
-        <span id="watch-time"></span>
-        <span class="widget-sub">Winnipeg, MB</span>
-      </div>
-      <div class="widget-caption">Time is always synchronized with Winnipeg local time (CST/CDT).</div>
-    </div>
-    <div class="widget-meteologist">
-      <h2 class="widget-title">Current Weather</h2>
-      <div class="meteo-widget enhanced">
-        <span class="weather-icon" id="weather-icon">☀️</span>
-        <span class="weather-temp" id="weather-temp">25°C</span>
-        <span class="weather-desc" id="weather-desc">Sunny</span>
-        <span class="widget-sub">Winnipeg, MB</span>
-      </div>
-      <div class="widget-caption">Weather updated for Winnipeg—add API for real-time data anytime!</div>
-    </div>
-  </div>
-</section>
+    
+           <!-- Time and Weather Widgets -->
+           <section class="widget-innovative-section">
+          <div class="container widget-flex-row">
+            <!-- Time Widget -->
+            <div class="widget-designer">
+              <h2 class="widget-title">Live Local Time</h2>
+              <div class="watch-widget enhanced" style="color: var(--color-primary)">
+                <span id="watch-time" style="font-variant-numeric: tabular-nums; font-size:2.2rem;"></span>
+                <span class="widget-sub" style="color: var(--color-info)">Winnipeg, MB</span>
+              </div>
+              <div class="widget-caption">Time is synchronized with Winnipeg, MB (CST/CDT).</div>
+            </div>
+        
+            <!-- Weather Widget -->
+            <div class="widget-meteologist">
+              <h2 class="widget-title">Current Weather</h2>
+              <div class="meteo-widget enhanced" style="color: var(--color-primary)">
+                <span class="weather-icon" id="weather-icon" style="font-size:2.6rem;">⏳</span>
+                <span class="weather-temp" id="weather-temp" style="font-size:2rem;">—</span>
+                <span class="weather-desc" id="weather-desc" style="color: var(--color-info)">Loading...</span>
+                <span class="widget-sub" style="color: var(--color-info)">Winnipeg, MB</span>
+              </div>
+              <div class="widget-caption">Live weather automatically updates for Winnipeg, MB.</div>
+            </div>
+          </div>
+        </section>
 
 
     
