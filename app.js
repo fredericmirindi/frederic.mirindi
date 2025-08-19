@@ -757,130 +757,103 @@ window.showPage = showPage;
 window.toggleTheme = toggleTheme;
 
 
-// JavaScript for the Watch  
- // --- Professional Winnipeg Clock (with fallback) ---
-function getWinnipegTime() {
+// ----------- TIME (Winnipeg) -----------
+function updateLocalTime() {
+  const winnipegOffset = -5; // CDT is UTC-5 in August, switch to -6 for CST in winter!
+  const nowUTC = new Date(new Date().toLocaleString("en-US", { timeZone: "UTC" }));
+  nowUTC.setHours(nowUTC.getHours() + winnipegOffset);
+
+  const h = nowUTC.getHours().toString().padStart(2, '0');
+  const m = nowUTC.getMinutes().toString().padStart(2, '0');
+  const s = nowUTC.getSeconds().toString().padStart(2, '0');
+  document.getElementById("watch-time").textContent = `${h}:${m}:${s}`;
+}
+setInterval(updateLocalTime, 1000);
+updateLocalTime();
+
+// ----------- WEATHER (Winnipeg) -----------
+async function updateWeather() {
+  // Replace with your API KEY if you wish: this goes through Open-Meteo as a demo (no key needed!)
   try {
-    const now = new Date();
-    return new Date(now.toLocaleString('en-US', { timeZone: 'America/Winnipeg' }));
+    // Winnipeg coordinates: 49.8951° N, 97.1384° W
+    let url = `https://api.open-meteo.com/v1/forecast?latitude=49.8951&longitude=-97.1384&current_weather=true`;
+    let r = await fetch(url);
+    let j = await r.json();
+    let temp = Math.round(j.current_weather.temperature);
+    let code = j.current_weather.weathercode;
+    let description = "Clear";
+    let icon = "☀️";
+    // Weather code mapping for icon + desc (simplified)
+    if (code >= 51 && code < 70) {icon='🌧️'; description="Rain";}
+    else if (code >= 71 && code < 80) {icon='❄️'; description="Snow";}
+    else if (code === 0) {icon='☀️'; description="Sunny";}
+    else if (code > 2 && code < 5) {icon='⛅'; description="Partly Cloudy";}
+    else if (code < 3) {icon='🌤️'; description="Mainly Sunny";}
+    else if (code >= 3 && code < 5) {icon='☁️'; description="Cloudy";}
+    document.getElementById('weather-temp').textContent = temp + '°C';
+    document.getElementById('weather-desc').textContent = description;
+    document.getElementById('weather-icon').textContent = icon;
   } catch (e) {
-    // Fallback to offset calculation (approximate)
-    const now = new Date();
-    const month = now.getUTCMonth();
-    const offset = (month >= 2 && month <= 10) ? -5 : -6; // Mar–Oct DST = -5, else -6
-    return new Date(now.getTime() + offset * 60 * 60 * 1000);
+    document.getElementById('weather-temp').textContent = "—";
+    document.getElementById('weather-desc').textContent = "Unavailable";
+    document.getElementById('weather-icon').textContent = "⚠️";
   }
 }
-function updateWinnipegClock() {
-  const now = getWinnipegTime();
-  const h = String(now.getHours()).padStart(2, '0');
-  const m = String(now.getMinutes()).padStart(2, '0');
-  const s = String(now.getSeconds()).padStart(2, '0');
-  document.getElementById('watch-time').textContent = `${h}:${m}:${s}`;
-}
-setInterval(updateWinnipegClock, 1000);
-updateWinnipegClock();
+updateWeather();
+setInterval(updateWeather, 10 * 60 * 1000); // update every 10min
 
-// --- Professional Winnipeg Weather Widget ---
-const weatherColors = {
-  sunny: "☀️",
-  clear: "🌙",
-  partlycloudy: "⛅",
-  cloudy: "☁️",
-  rain: "🌧️",
-  drizzle: "🌦️",
-  snow: "❄️",
-  thunderstorm: "⛈️",
-  freezing: "🌨️",
-  fog: "🌫️"
-};
-
-function getWeatherIcon(conditionCode, isDay) {
-  // [See Open-Meteo weather codes: https://open-meteo.com/en/docs]
-  // Basic mapping only - you can be more specific if desired
-  switch (conditionCode) {
-    case 0: return isDay ? weatherColors.sunny : weatherColors.clear;
-    case 1: case 2: case 3: return weatherColors.partlycloudy;
-    case 45: case 48: return weatherColors.fog;
-    case 51: case 53: case 55: case 56: case 57: return weatherColors.drizzle;
-    case 61: case 63: case 65: case 66: case 67: return weatherColors.rain;
-    case 71: case 73: case 75: case 77: return weatherColors.snow;
-    case 80: case 81: case 82: return weatherColors.rain;
-    case 85: case 86: return weatherColors.snow;
-    case 95: case 96: case 99: return weatherColors.thunderstorm;
-    case 45: case 48: return weatherColors.fog;
-    default: return weatherColors.cloudy;
+// ----------- MARKET INDEX (S&P/TSX, simple demo!) -----------
+async function updateMarket() {
+  // For a real-world setup, use a paid data provider for intraday stock quotes due to CORS. Here: demo with hardcoded/placeholder.
+  try {
+    // Replace with your own market API if needed.
+    let demo = { value: "22,100.30", change: "+70.44", up: true }; // Placeholder for S&P/TSX value!
+    document.getElementById('market-value').textContent = `${demo.value} (${demo.change})`;
+    document.getElementById('market-arrow').textContent = demo.up ? '↑' : '↓';
+    document.getElementById('market-arrow').style.color = demo.up ? '#13B04A' : '#E14D3A';
+  } catch (e) {
+    document.getElementById('market-value').textContent = "N/A";
+    document.getElementById('market-arrow').textContent = '-';
   }
 }
+updateMarket();
 
-// Professional color styling from your CSS vars
-function setWeatherWidgetColors() {
-  const weatherWidget = document.querySelector('.meteo-widget.enhanced');
-  const root = getComputedStyle(document.documentElement);
-  if (weatherWidget) {
-    weatherWidget.style.background = root.getPropertyValue('--color-background');
-    weatherWidget.style.border = '1px solid ' + root.getPropertyValue('--color-card-border');
-    weatherWidget.style.color = root.getPropertyValue('--color-primary');
+// ----------- RESEARCH HIGHLIGHT -----------
+const papers = [
+  {
+    title: "Forecasting Energy Prices Using Machine Learning Algorithms",
+    url: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6"
+  },
+  {
+    title: "Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning",
+    url: "https://ieeexplore.ieee.org/author/497245784122578"
+  },
+  {
+    title: "Applications of machine learning algorithms on compressive strength",
+    url: "https://www.sciencedirect.com/science/article/pii/S2949750725000410"
+  },
+  {
+    title: "Review: The Role of Artificial Intelligence in Building Information Modeling",
+    url: "https://dl.acm.org/doi/full/10.1145/3716489.3728433"
   }
+];
+function updateFeaturedPaper() {
+  const obj = papers[Math.floor(Math.random() * papers.length)];
+  document.getElementById("featured-paper-title").textContent = obj.title;
+  document.getElementById("featured-paper-link").href = obj.url;
 }
+updateFeaturedPaper();
+setInterval(updateFeaturedPaper, 18000); // Rotate every 18 seconds
 
-// Fetch live weather using Open-Meteo API
-function fetchWinnipegWeather() {
-  // Winnipeg, MB latitude and longitude
-  // Docs: https://open-meteo.com/en/docs
-  const url = 'https://api.open-meteo.com/v1/forecast?latitude=49.8951&longitude=-97.1384&current_weather=true';
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      const wx = data.current_weather;
-      if (!wx) throw new Error('No weather');
-      // Assign variables
-      const tempC = Math.round(wx.temperature);
-      const icon = getWeatherIcon(wx.weathercode, wx.is_day);
-      const descMap = {
-        0: "Clear sky",
-        1: "Mainly clear",
-        2: "Partly cloudy",
-        3: "Overcast",
-        45: "Fog",
-        48: "Depositing rime fog",
-        51: "Light drizzle",
-        53: "Drizzle",
-        55: "Dense drizzle",
-        56: "Freezing drizzle",
-        57: "Freezing drizzle (dense)",
-        61: "Slight rain",
-        63: "Rain",
-        65: "Heavy rain",
-        66: "Freezing rain",
-        67: "Freezing rain (heavy)",
-        71: "Slight snow",
-        73: "Snow",
-        75: "Heavy snow",
-        77: "Snow grains",
-        80: "Rain showers",
-        81: "Moderate rain showers",
-        82: "Violent rain showers",
-        85: "Snow showers",
-        86: "Heavy snow showers",
-        95: "Thunderstorm",
-        96: "Thunderstorm + hail",
-        99: "Severe thunderstorm"
-      };
-      // Set outputs
-      document.getElementById('weather-temp').textContent = `${tempC}°C`;
-      document.getElementById('weather-desc').textContent = descMap[wx.weathercode] || "N/A";
-      document.getElementById('weather-icon').textContent = icon;
-      setWeatherWidgetColors();
-    })
-    .catch(() => {
-      document.getElementById('weather-temp').textContent = '—';
-      document.getElementById('weather-desc').textContent = 'Weather unavailable';
-      document.getElementById('weather-icon').textContent = "❔";
-      setWeatherWidgetColors();
-    });
+// ----------- DAILY FACT / QUOTE -----------
+const econFacts = [
+  "Canada’s S&P/TSX is among the world’s top 10 largest stock exchanges.",
+  "The Consumer Price Index (CPI) measures the average change in prices paid by consumers for goods and services.",
+  "AI in economics enables better policy simulations and more accurate forecasting.",
+  "\"In the middle of difficulty lies opportunity.\" – Albert Einstein",
+  "Central banks use interest rates to regulate inflation and stimulate or cool the economy."
+];
+function loadRandomFact() {
+  document.getElementById('fact-box').textContent = econFacts[Math.floor(Math.random() * econFacts.length)];
 }
-fetchWinnipegWeather();
-setInterval(fetchWinnipegWeather, 15 * 60 * 1000); // Update every 15 min
-
-
+loadRandomFact();
