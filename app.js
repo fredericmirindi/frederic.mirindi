@@ -759,16 +759,32 @@ window.toggleTheme = toggleTheme;
 
 // JavaScript for the Watch  
 <script>
-function updateTime() {
+// Winnipeg is in Central Time, UTC-6, CDT in summer (UTC-5). This code auto-adjusts for DST.
+function getWinnipegTime() {
+  // Use moment.js or Intl API if the site supports it; here, use standard JS with timezone.
   const now = new Date();
+  // Get UTC time then adjust with offset for Winnipeg
+  // Central Time (America/Winnipeg)
+  // For modern browsers:
+  try {
+    return new Date(now.toLocaleString("en-US", {timeZone: "America/Winnipeg"}));
+  } catch {
+    // fallback: UTC -5 or -6 depending on month (approx)
+    let month = now.getUTCMonth();
+    let offset = (month >= 2 && month <= 10) ? -5 : -6; // Mar–Oct: DST = -5
+    return new Date(now.getTime() + offset * 60 * 60 * 1000);
+  }
+}
+
+function updateWinnipegClock() {
+  const now = getWinnipegTime();
   let h = String(now.getHours()).padStart(2, '0');
   let m = String(now.getMinutes()).padStart(2, '0');
-  document.getElementById('watch-time').textContent = `${h}:${m}`;
+  let s = String(now.getSeconds()).padStart(2, '0');
+  document.getElementById('watch-time').textContent = `${h}:${m}:${s}`;
 }
-setInterval(updateTime, 1000);
-updateTime();
+setInterval(updateWinnipegClock, 1000);
+updateWinnipegClock();
 </script>
-
-
 
 
