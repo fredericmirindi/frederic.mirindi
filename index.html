@@ -153,103 +153,106 @@
             </div>
         
     
-                    <!-- Info Cards: Only for Home Page, after Key Achievements and before Footnote -->
-                    <section class="container my-8" style="padding: 0 1rem;">
-              <div class="flex gap-4 justify-center flex-wrap items-stretch"
-                   style="
-                     display: flex;
-                     gap: 1rem;
-                     justify-content: center;
-                     flex-wrap: wrap;
-                     align-items: stretch;
-                     max-width: 100vw;
-                   ">
-                <!-- Local Time Card -->
-                <div class="card"
-                     style="
-                       flex: 1 1 240px;
-                       max-width: 340px;
-                       min-width: 200px;
-                       box-sizing: border-box;
-                       background: #fff;
-                       border-radius: 1rem;
-                       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-                       margin-bottom: 1rem;
-                       display: flex;
-                       flex-direction: column;
-                       height: 210px;
-                       ">
-                  <div class="card__body" style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;">
-                    <div style="font-size:2.3rem; margin-bottom: 6px;">🕓</div>
-                    <div style="font-size:2rem; letter-spacing:0.05em;">
-                      <span id="watch-time"></span>
-                    </div>
-                    <div class="widget-sub" style="margin-top:8px;font-size:1.1rem;color:var(--color-text-secondary);">
-                      Winnipeg, MB (Local Time)
-                    </div>
-                    <div class="widget-caption" style="margin-top:12px; font-size:0.98rem;">
-                      Time is always synchronized with Winnipeg local time.
-                    </div>
-                  </div>
+        <!-- Info Cards: Only for Home Page, after Key Achievements and before Footnote -->
+        <section class="container my-8" style="padding: 0 1rem;">
+          <div class="flex gap-4 justify-center flex-wrap items-stretch"
+               style="
+                 display: flex;
+                 gap: 1rem;
+                 justify-content: center;
+                 flex-wrap: wrap;
+                 align-items: stretch;
+                 max-width: 100vw;
+               ">
+            <!-- Local Time Card -->
+            <div class="card"
+                 style="
+                   flex: 1 1 240px;
+                   max-width: 340px;
+                   min-width: 200px;
+                   box-sizing: border-box;
+                   background: var(--color-card-bg, #fff);
+                   border-radius: 1rem;
+                   box-shadow: 0 2px 6px var(--color-shadow, rgba(0,0,0,0.06));
+                   margin-bottom: 1rem;
+                   display: flex;
+                   flex-direction: column;
+                   height: 210px;
+                   border: 1px solid var(--color-bg-secondary, #e9f4f9);
+                 ">
+              <div class="card__body" style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;">
+                <div style="font-size:2.3rem; margin-bottom: 6px; color:var(--color-primary, #1fb8cd);">🕓</div>
+                <div style="font-size:2rem; letter-spacing:0.05em; color:var(--color-text, #21272a);">
+                  <span id="watch-time"></span>
                 </div>
-            
-                <!-- Weather Card -->
-                <div class="card"
-                     style="
-                       flex: 1 1 240px;
-                       max-width: 340px;
-                       min-width: 200px;
-                       box-sizing: border-box;
-                       background: #fff;
-                       border-radius: 1rem;
-                       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-                       margin-bottom: 1rem;
-                       display: flex;
-                       flex-direction: column;
-                       height: 210px;
-                       ">
-                  <div class="card__body" style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;">
-                    <div style="font-size:2.4rem; margin-bottom:6px;" id="weather-icon">☀️</div>
-                    <div class="weather-temp" id="weather-temp" style="font-size:2.1rem; font-weight:700;">25°C</div>
-                    <div class="weather-desc" id="weather-desc" style="margin-top:2px;font-size:1.08rem;text-transform:capitalize;color:var(--color-text-secondary);">
-                      Sunny
-                    </div>
-                    <div class="widget-sub" style="margin-top:8px; font-size:1.05rem; color:var(--color-text-secondary);">
-                      Winnipeg, MB
-                    </div>
-                    <div class="widget-caption" style="margin-top:12px;font-size:0.98rem;">
-                      Weather data updates every 10 minutes (live).
-                    </div>
-                  </div>
+                <div class="widget-sub" style="margin-top:8px;font-size:1.1rem; color:var(--color-text-secondary, #7b868c);">
+                  Winnipeg, MB (Local Time)
                 </div>
-            
-                <!-- Quote Card -->
-                <div class="card"
-                     style="
-                       flex: 1 1 240px;
-                       max-width: 340px;
-                       min-width: 200px;
-                       box-sizing: border-box;
-                       background: #fff;
-                       border-radius: 1rem;
-                       box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-                       margin-bottom: 1rem;
-                       display: flex;
-                       flex-direction: column;
-                       height: 210px;
-                       ">
-                  <div class="card__body" style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;">
-                    <div style="font-size:2.3rem; margin-bottom: 6px;">💡</div>
-                    <div id="fact-box" style="font-size:1.15rem; min-height:40px;"></div>
-                    <div class="widget-sub" style="margin-top:8px; font-size:1.05rem; color:var(--color-text-secondary);">Economic Quote</div>
-                    <div class="widget-caption" style="margin-top:12px;font-size:0.98rem;">
-                      Discover fresh economic wisdom each day!
-                    </div>
-                  </div>
+                <div class="widget-caption" style="margin-top:12px; font-size:0.98rem; color:var(--color-text-secondary, #7b868c);">
+                  Time is always synchronized with Winnipeg local time.
                 </div>
               </div>
-            </section>
-            </section>
+            </div>
+        
+            <!-- Weather Card -->
+            <div class="card"
+                 style="
+                   flex: 1 1 240px;
+                   max-width: 340px;
+                   min-width: 200px;
+                   box-sizing: border-box;
+                   background: var(--color-card-bg, #fff);
+                   border-radius: 1rem;
+                   box-shadow: 0 2px 6px var(--color-shadow, rgba(0,0,0,0.06));
+                   margin-bottom: 1rem;
+                   display: flex;
+                   flex-direction: column;
+                   height: 210px;
+                   border: 1px solid var(--color-bg-secondary, #e9f4f9);
+                 ">
+              <div class="card__body" style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;">
+                <div style="font-size:2.4rem; margin-bottom:6px; color:var(--color-primary, #1fb8cd);" id="weather-icon">☀️</div>
+                <div class="weather-temp" id="weather-temp" style="font-size:2.1rem; font-weight:700; color:var(--color-text, #21272a);">25°C</div>
+                <div class="weather-desc" id="weather-desc" style="margin-top:2px;font-size:1.08rem;text-transform:capitalize;color:var(--color-text-secondary, #7b868c);">
+                  Sunny
+                </div>
+                <div class="widget-sub" style="margin-top:8px; font-size:1.05rem; color:var(--color-text-secondary, #7b868c);">
+                  Winnipeg, MB
+                </div>
+                <div class="widget-caption" style="margin-top:12px;font-size:0.98rem; color:var(--color-text-secondary, #7b868c);">
+                  Weather data updates every 10 minutes (live).
+                </div>
+              </div>
+            </div>
+        
+            <!-- Quote Card -->
+            <div class="card"
+                 style="
+                   flex: 1 1 240px;
+                   max-width: 340px;
+                   min-width: 200px;
+                   box-sizing: border-box;
+                   background: var(--color-card-bg, #fff);
+                   border-radius: 1rem;
+                   box-shadow: 0 2px 6px var(--color-shadow, rgba(0,0,0,0.06));
+                   margin-bottom: 1rem;
+                   display: flex;
+                   flex-direction: column;
+                   height: 210px;
+                   border: 1px solid var(--color-bg-secondary, #e9f4f9);
+                 ">
+              <div class="card__body" style="text-align:center; flex:1; display:flex; flex-direction:column; justify-content:center;">
+                <div style="font-size:2.3rem; margin-bottom: 6px; color:var(--color-primary, #1fb8cd);">💡</div>
+                <div id="fact-box" style="font-size:1.15rem; min-height:40px; color:var(--color-text, #21272a);"></div>
+                <div class="widget-sub" style="margin-top:8px; font-size:1.05rem; color:var(--color-text-secondary, #7b868c);">Economic Quote</div>
+                <div class="widget-caption" style="margin-top:12px;font-size:0.98rem; color:var(--color-text-secondary, #7b868c);">
+                  Discover fresh economic wisdom each day!
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+         </section>
 
 
     
