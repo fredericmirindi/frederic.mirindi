@@ -758,33 +758,129 @@ window.toggleTheme = toggleTheme;
 
 
 // JavaScript for the Watch  
- 
-// Winnipeg is in Central Time, UTC-6, CDT in summer (UTC-5). This code auto-adjusts for DST.
+ // --- Professional Winnipeg Clock (with fallback) ---
 function getWinnipegTime() {
-  // Use moment.js or Intl API if the site supports it; here, use standard JS with timezone.
-  const now = new Date();
-  // Get UTC time then adjust with offset for Winnipeg
-  // Central Time (America/Winnipeg)
-  // For modern browsers:
   try {
-    return new Date(now.toLocaleString("en-US", {timeZone: "America/Winnipeg"}));
-  } catch {
-    // fallback: UTC -5 or -6 depending on month (approx)
-    let month = now.getUTCMonth();
-    let offset = (month >= 2 && month <= 10) ? -5 : -6; // Mar–Oct: DST = -5
+    const now = new Date();
+    return new Date(now.toLocaleString('en-US', { timeZone: 'America/Winnipeg' }));
+  } catch (e) {
+    // Fallback to offset calculation (approximate)
+    const now = new Date();
+    const month = now.getUTCMonth();
+    const offset = (month >= 2 && month <= 10) ? -5 : -6; // Mar–Oct DST = -5, else -6
     return new Date(now.getTime() + offset * 60 * 60 * 1000);
   }
 }
-
 function updateWinnipegClock() {
   const now = getWinnipegTime();
-  let h = String(now.getHours()).padStart(2, '0');
-  let m = String(now.getMinutes()).padStart(2, '0');
-  let s = String(now.getSeconds()).padStart(2, '0');
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  const s = String(now.getSeconds()).padStart(2, '0');
   document.getElementById('watch-time').textContent = `${h}:${m}:${s}`;
 }
 setInterval(updateWinnipegClock, 1000);
 updateWinnipegClock();
- 
+
+// --- Professional Winnipeg Weather Widget ---
+const weatherColors = {
+  sunny: "☀️",
+  clear: "🌙",
+  partlycloudy: "⛅",
+  cloudy: "☁️",
+  rain: "🌧️",
+  drizzle: "🌦️",
+  snow: "❄️",
+  thunderstorm: "⛈️",
+  freezing: "🌨️",
+  fog: "🌫️"
+};
+
+function getWeatherIcon(conditionCode, isDay) {
+  // [See Open-Meteo weather codes: https://open-meteo.com/en/docs]
+  // Basic mapping only - you can be more specific if desired
+  switch (conditionCode) {
+    case 0: return isDay ? weatherColors.sunny : weatherColors.clear;
+    case 1: case 2: case 3: return weatherColors.partlycloudy;
+    case 45: case 48: return weatherColors.fog;
+    case 51: case 53: case 55: case 56: case 57: return weatherColors.drizzle;
+    case 61: case 63: case 65: case 66: case 67: return weatherColors.rain;
+    case 71: case 73: case 75: case 77: return weatherColors.snow;
+    case 80: case 81: case 82: return weatherColors.rain;
+    case 85: case 86: return weatherColors.snow;
+    case 95: case 96: case 99: return weatherColors.thunderstorm;
+    case 45: case 48: return weatherColors.fog;
+    default: return weatherColors.cloudy;
+  }
+}
+
+// Professional color styling from your CSS vars
+function setWeatherWidgetColors() {
+  const weatherWidget = document.querySelector('.meteo-widget.enhanced');
+  const root = getComputedStyle(document.documentElement);
+  if (weatherWidget) {
+    weatherWidget.style.background = root.getPropertyValue('--color-background');
+    weatherWidget.style.border = '1px solid ' + root.getPropertyValue('--color-card-border');
+    weatherWidget.style.color = root.getPropertyValue('--color-primary');
+  }
+}
+
+// Fetch live weather using Open-Meteo API
+function fetchWinnipegWeather() {
+  // Winnipeg, MB latitude and longitude
+  // Docs: https://open-meteo.com/en/docs
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=49.8951&longitude=-97.1384&current_weather=true';
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const wx = data.current_weather;
+      if (!wx) throw new Error('No weather');
+      // Assign variables
+      const tempC = Math.round(wx.temperature);
+      const icon = getWeatherIcon(wx.weathercode, wx.is_day);
+      const descMap = {
+        0: "Clear sky",
+        1: "Mainly clear",
+        2: "Partly cloudy",
+        3: "Overcast",
+        45: "Fog",
+        48: "Depositing rime fog",
+        51: "Light drizzle",
+        53: "Drizzle",
+        55: "Dense drizzle",
+        56: "Freezing drizzle",
+        57: "Freezing drizzle (dense)",
+        61: "Slight rain",
+        63: "Rain",
+        65: "Heavy rain",
+        66: "Freezing rain",
+        67: "Freezing rain (heavy)",
+        71: "Slight snow",
+        73: "Snow",
+        75: "Heavy snow",
+        77: "Snow grains",
+        80: "Rain showers",
+        81: "Moderate rain showers",
+        82: "Violent rain showers",
+        85: "Snow showers",
+        86: "Heavy snow showers",
+        95: "Thunderstorm",
+        96: "Thunderstorm + hail",
+        99: "Severe thunderstorm"
+      };
+      // Set outputs
+      document.getElementById('weather-temp').textContent = `${tempC}°C`;
+      document.getElementById('weather-desc').textContent = descMap[wx.weathercode] || "N/A";
+      document.getElementById('weather-icon').textContent = icon;
+      setWeatherWidgetColors();
+    })
+    .catch(() => {
+      document.getElementById('weather-temp').textContent = '—';
+      document.getElementById('weather-desc').textContent = 'Weather unavailable';
+      document.getElementById('weather-icon').textContent = "❔";
+      setWeatherWidgetColors();
+    });
+}
+fetchWinnipegWeather();
+setInterval(fetchWinnipegWeather, 15 * 60 * 1000); // Update every 15 min
 
 
