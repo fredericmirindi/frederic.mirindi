@@ -845,6 +845,10 @@ function updateFeaturedPaper() {
 updateFeaturedPaper();
 setInterval(updateFeaturedPaper, 18000); // Rotate every 18 seconds
 
+
+
+
+
 // ----------- DAILY FACT / QUOTE -----------
 const econFacts = [
   "Canada’s S&P/TSX is among the world’s top 10 largest stock exchanges.",
