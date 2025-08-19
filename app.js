@@ -757,107 +757,77 @@ window.showPage = showPage;
 window.toggleTheme = toggleTheme;
 
 
-// ----------- TIME (Winnipeg) -----------
-function updateLocalTime() {
-  const winnipegOffset = -5; // CDT is UTC-5 in August, switch to -6 for CST in winter!
-  const nowUTC = new Date(new Date().toLocaleString("en-US", { timeZone: "UTC" }));
-  nowUTC.setHours(nowUTC.getHours() + winnipegOffset);
 
-  const h = nowUTC.getHours().toString().padStart(2, '0');
-  const m = nowUTC.getMinutes().toString().padStart(2, '0');
-  const s = nowUTC.getSeconds().toString().padStart(2, '0');
-  document.getElementById("watch-time").textContent = `${h}:${m}:${s}`;
+
+
+
+// ----------- WATCH WIDGET (Winnipeg Local Time - handles DST) -----------
+function updateWinnipegTime() {
+    const watchSpan = document.getElementById('watch-time');
+    if (!watchSpan) return;
+
+    // Use "America/Winnipeg" time zone for perfect handling of DST
+    const now = new Date();
+    // Format: HH:MM:SS (24h)
+    const timeString = now.toLocaleTimeString("en-CA", { hour12: false, timeZone: "America/Winnipeg" });
+    watchSpan.textContent = timeString;
 }
-setInterval(updateLocalTime, 1000);
-updateLocalTime();
+setInterval(updateWinnipegTime, 1000);
+updateWinnipegTime();
 
-// ----------- WEATHER (Winnipeg) -----------
-async function updateWeather() {
-  // Replace with your API KEY if you wish: this goes through Open-Meteo as a demo (no key needed!)
-  try {
-    // Winnipeg coordinates: 49.8951° N, 97.1384° W
-    let url = `https://api.open-meteo.com/v1/forecast?latitude=49.8951&longitude=-97.1384&current_weather=true`;
-    let r = await fetch(url);
-    let j = await r.json();
-    let temp = Math.round(j.current_weather.temperature);
-    let code = j.current_weather.weathercode;
-    let description = "Clear";
-    let icon = "☀️";
-    // Weather code mapping for icon + desc (simplified)
-    if (code >= 51 && code < 70) {icon='🌧️'; description="Rain";}
-    else if (code >= 71 && code < 80) {icon='❄️'; description="Snow";}
-    else if (code === 0) {icon='☀️'; description="Sunny";}
-    else if (code > 2 && code < 5) {icon='⛅'; description="Partly Cloudy";}
-    else if (code < 3) {icon='🌤️'; description="Mainly Sunny";}
-    else if (code >= 3 && code < 5) {icon='☁️'; description="Cloudy";}
-    document.getElementById('weather-temp').textContent = temp + '°C';
-    document.getElementById('weather-desc').textContent = description;
-    document.getElementById('weather-icon').textContent = icon;
-  } catch (e) {
-    document.getElementById('weather-temp').textContent = "—";
-    document.getElementById('weather-desc').textContent = "Unavailable";
-    document.getElementById('weather-icon').textContent = "⚠️";
-  }
+// ----------- WEATHER WIDGET (Winnipeg, Open-Meteo API, no API key needed) -----------
+async function updateWinnipegWeather() {
+    // Check if widget exists to avoid errors on page changes
+    const tempSpan = document.getElementById('weather-temp');
+    const descSpan = document.getElementById('weather-desc');
+    const iconSpan = document.getElementById('weather-icon');
+    if (!tempSpan || !descSpan || !iconSpan) return;
+
+    try {
+        // Winnipeg: 49.8951° N, 97.1384° W
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=49.8951&longitude=-97.1384&current_weather=true`;
+        const response = await fetch(url);
+        const json = await response.json();
+        const temp = Math.round(json.current_weather.temperature);
+        const code = json.current_weather.weathercode;
+
+        // Weather code → icon + desc
+        let description = "Clear", icon = "☀️";
+        if (code >= 51 && code < 70)      { icon = "🌧️"; description = "Rain"; }
+        else if (code >= 71 && code < 80) { icon = "❄️"; description = "Snow"; }
+        else if (code === 0)              { icon = "☀️"; description = "Sunny"; }
+        else if (code > 2 && code < 5)    { icon = "⛅"; description = "Partly Cloudy"; }
+        else if (code < 3)                { icon = "🌤️"; description = "Mainly Sunny"; }
+        else if (code >= 3 && code < 5)   { icon = "☁️"; description = "Cloudy"; }
+
+        tempSpan.textContent = temp + "°C";
+        descSpan.textContent = description;
+        iconSpan.textContent = icon;
+    } catch (e) {
+        tempSpan.textContent = "—";
+        descSpan.textContent = "Unavailable";
+        iconSpan.textContent = "⚠️";
+    }
 }
-updateWeather();
-setInterval(updateWeather, 10 * 60 * 1000); // update every 10min
+updateWinnipegWeather();
+setInterval(updateWinnipegWeather, 10 * 60 * 1000); // every 10 minutes
 
-// ----------- MARKET INDEX (S&P/TSX, simple demo!) -----------
-async function updateMarket() {
-  // For a real-world setup, use a paid data provider for intraday stock quotes due to CORS. Here: demo with hardcoded/placeholder.
-  try {
-    // Replace with your own market API if needed.
-    let demo = { value: "22,100.30", change: "+70.44", up: true }; // Placeholder for S&P/TSX value!
-    document.getElementById('market-value').textContent = `${demo.value} (${demo.change})`;
-    document.getElementById('market-arrow').textContent = demo.up ? '↑' : '↓';
-    document.getElementById('market-arrow').style.color = demo.up ? '#13B04A' : '#E14D3A';
-  } catch (e) {
-    document.getElementById('market-value').textContent = "N/A";
-    document.getElementById('market-arrow').textContent = '-';
-  }
-}
-updateMarket();
-
-// ----------- RESEARCH HIGHLIGHT -----------
-const papers = [
-  {
-    title: "Forecasting Energy Prices Using Machine Learning Algorithms",
-    url: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6"
-  },
-  {
-    title: "Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning",
-    url: "https://ieeexplore.ieee.org/author/497245784122578"
-  },
-  {
-    title: "Applications of machine learning algorithms on compressive strength",
-    url: "https://www.sciencedirect.com/science/article/pii/S2949750725000410"
-  },
-  {
-    title: "Review: The Role of Artificial Intelligence in Building Information Modeling",
-    url: "https://dl.acm.org/doi/full/10.1145/3716489.3728433"
-  }
-];
-function updateFeaturedPaper() {
-  const obj = papers[Math.floor(Math.random() * papers.length)];
-  document.getElementById("featured-paper-title").textContent = obj.title;
-  document.getElementById("featured-paper-link").href = obj.url;
-}
-updateFeaturedPaper();
-setInterval(updateFeaturedPaper, 18000); // Rotate every 18 seconds
-
-
-
-
-
-// ----------- DAILY FACT / QUOTE -----------
+// ----------- ECONOMIC FACTS / QUOTES WIDGET -----------
 const econFacts = [
-  "Canada’s S&P/TSX is among the world’s top 10 largest stock exchanges.",
-  "The Consumer Price Index (CPI) measures the average change in prices paid by consumers for goods and services.",
-  "AI in economics enables better policy simulations and more accurate forecasting.",
-  "\"In the middle of difficulty lies opportunity.\" – Albert Einstein",
-  "Central banks use interest rates to regulate inflation and stimulate or cool the economy."
+    "Canada’s S&P/TSX is among the world’s top 10 largest stock exchanges.",
+    "The Consumer Price Index (CPI) measures the average change in prices paid by consumers for goods and services.",
+    "AI in economics enables better policy simulations and more accurate forecasting.",
+    "\"In the middle of difficulty lies opportunity.\" — Albert Einstein",
+    "Central banks use interest rates to regulate inflation and stimulate or cool the economy."
 ];
-function loadRandomFact() {
-  document.getElementById('fact-box').textContent = econFacts[Math.floor(Math.random() * econFacts.length)];
+// **Replace #fact-box with your widget's element ID**
+function displayRandomFact() {
+    const factBox = document.getElementById('fact-box');
+    if (!factBox) return;
+    const index = Math.floor(Math.random() * econFacts.length);
+    factBox.textContent = econFacts[index];
 }
-loadRandomFact();
+displayRandomFact();
+
+
+
