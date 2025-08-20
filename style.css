@@ -2255,398 +2255,290 @@ select.form-control {
 
 
 
-/*----------------------------------*
- *   Watch & Meteo Widget Styles    *
- *    (Professional/Innovative)     *
- *----------------------------------*/
+/* ----------------------------------------
+ * Responsive Widget Section (Time/Weather/Quote)
+ * Stylish, professional, mobile-optimized
+ * --------------------------------------*/
 
-.widget-innovative-section {
-  padding: 56px 0 76px 0;
-  background: linear-gradient(135deg, #edf0f7 60%, #eebbc3 110%);
-  box-shadow: 0 8px 44px rgba(35,41,70,0.10);
-  border-radius: 34px;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
+.widget-responsive-section {
+  --widget-gap: 32px;
+  --widget-bg: linear-gradient(132deg, #f9fafb 70%, #eebbc311 100%);
+  --widget-radius: 22px;
   width: 100%;
+  margin: 0 auto;
+  margin-top: 48px;
+  margin-bottom: 64px;
+  padding: 1.5em 0;
+  background: var(--widget-bg);
+  border-radius: var(--widget-radius);
+  box-shadow: 0 8px 44px rgba(35,41,70,0.08);
+  position: relative;
+  isolation: isolate;
+  /* gentle glass effect */
+  backdrop-filter: blur(2.5px) saturate(1.09);
+  transition: box-shadow .25s;
 }
 
-/* Glass frosted glassmorphism overlay (optional) */
-.widget-innovative-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(100deg,rgba(255,255,255,.23) 45%,rgba(238,187,195,.09) 98%);
-  backdrop-filter: blur(1.5px);
-}
-
-.widget-flex-row {
+/* Widget card row (flex on desktop, stack on mobile) */
+.widget-cards-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 3.5rem;
   justify-content: center;
-  align-items: flex-start;
-  position: relative;
-  z-index: 1;
-  width: 100vw;
-  box-sizing: border-box;
-  overflow-x: auto;
-}
-
-.widget-designer,
-.widget-meteologist {
-  flex: 1 1 320px;
-  max-width: 420px;
-  min-width: 260px;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 10px;
-  /* Add a fade-in animation */
-  opacity: 0;
-  animation: widgetEntry 1.3s cubic-bezier(.53,.03,.4,1) forwards;
-  /* On mobile, make tap-target large */
-  touch-action: manipulation;
-}
-@keyframes widgetEntry {
-  to { opacity: 1; transform: none;}
-  from { opacity: 0; transform: translateY(28px) scale(.97);}
-}
-
-.widget-title {
-  font-size: clamp(1.1rem, 2vw, 1.65rem);
-  margin-bottom: 1.15em;
-  font-weight: 800;
-  letter-spacing: 0.03em;
-  color: #1d2338;
-  text-shadow: 0 4px 16px #eebbc355, 0 1.5px 1.5px #fff;
-  text-align: center;
-  position: relative;
-}
-.widget-title::after {
-  content: '';
-  display: block;
-  margin: 10px auto 0;
-  width: 30px;
-  border-bottom: 3px solid #eebbc3;
-  border-radius: 3px;
-  opacity: 0.6;
-}
-
-.watch-widget.enhanced, .meteo-widget.enhanced {
-  background: rgba(255,255,255,0.78);
-  border-radius: 28px;
-  padding: 2.2em 2vw 2em 2vw;
-  box-shadow: 0 9px 28px rgba(35,41,70,0.12), 0 1.5px 10px #eebbc355;
-  margin-bottom: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Segoe UI', 'Fira Mono', Consolas, monospace, sans-serif;
-  position: relative;
-  backdrop-filter: blur(3px) saturate(1.10);
-  border: 1.5px solid rgba(90, 120, 170, 0.09);
-  transition: box-shadow .3s, background .25s, transform .18s;
-  overflow: hidden;
+  gap: var(--widget-gap);
+  margin: 0 auto;
+  max-width: 1140px;
   width: 96%;
-  max-width: 98vw;
+}
+
+.widget-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 4px 20px 0 rgba(33,128,141,0.11);
+  border-radius: 15px;
+  min-width: 0;
+  max-width: 340px;
+  width: 100%;
+  padding: 22px 26px 22px 22px;
+  transition: box-shadow .22s, transform .19s;
+  border: 1.5px solid #e3e7ea38;
+  position: relative;
+  margin: 0;
+}
+
+.widget-card:not(:last-child) {
+  /* For mobile: bottom margin when stacked */
+  margin-bottom: 0;
+}
+
+.widget-card:hover {
+  box-shadow: 0 10px 32px #eebbc339, 0 0 0 3px #21a5b534;
+  transform: translateY(-4px) scale(1.01);
+}
+
+.widget-card-icon {
+  font-size: 2.65rem;
+  margin-right: 17px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 10px #eebbc340);
+}
+
+.widget-card-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 0;
 }
 
-.watch-widget.enhanced:active, .meteo-widget.enhanced:active { /* touch effect */
-  background: rgba(255,255,255,0.82);
-  transform: scale(.99);
-}
-
-.watch-widget.enhanced:hover, .meteo-widget.enhanced:hover {
-  background: rgba(255,255,255,0.85);
-  box-shadow: 0 18px 48px 0 #eebbc328, 0 0 0 3px #eebbc3aa;
-  transform: translateY(-6px) scale(1.012);
-  z-index: 2;
-}
-
-.watch-widget.enhanced {
-  color: #13162a;
-  font-size: clamp(2.1rem, 6vw, 2.8rem);
-  letter-spacing: .055em;
-  font-weight: 700;
-  line-height: 1.14;
-  text-align: center;
-  user-select: none;
-  transition: color .2s;
-}
-.watch-widget.enhanced::after {
-  content:"";
-  display:block;
-  margin: 19px auto 0;
-  width: 20px; height:2px;
-  background: linear-gradient(to right,#eebbc3cc 20%,#DFE0ED00 100%);
-  opacity:.6;
-  border-radius:2px;
-}
-.watch-widget .widget-sub {
-  margin-top: 13px;
-  font-size: 1.07rem;
-  color: #75808f;
-  font-weight: 400;
-  text-align: center;
-}
-
-.meteo-widget.enhanced {
-  color: #232946;
-  min-width: 210px;
-  font-weight: 600;
-  background: linear-gradient(110deg,rgba(255,255,255,.79) 80%,#f7e5ea1c 99%);
-  /* Subtle shine effect */
-  position: relative;
-}
-.meteo-widget.enhanced::before {
-  content: "";
-  display: block;
-  position: absolute; left:-60%; top: 80%;
-  width: 200%; height: 18px;
-  background: linear-gradient(110deg,rgba(238,187,195,0.13) 5%,rgba(255,255,255,.17) 80%);
-  filter: blur(3.4px);
-  z-index: 0;
-  pointer-events:none;
-}
-
-.meteo-widget .weather-icon {
-  font-size: clamp(2.1rem, 7vw, 3.2rem);
-  margin-bottom: 14px;
-  filter: drop-shadow(0 2px 10px #eebbc350);
-  text-shadow: 0 1px 3px #fbe2e6b4;
-}
-.meteo-widget .weather-temp {
-  font-size: clamp(1.3rem, 4vw, 2.2rem);
-  font-weight: 700;
-  letter-spacing: .022em;
-  color: #ea5177;
-}
-.meteo-widget .weather-desc {
-  margin-top: 5px;
+.widget-card-title {
   font-size: 1.13rem;
-  text-transform: capitalize;
-  color: #4b4b73;
-  font-weight: 500;
-  text-align: center;
-}
-.meteo-widget .widget-sub {
-  margin-top: 8px;
-  font-size: 1.04rem;
-  color: #878faf;
-  text-align: center;
+  color: #21808d;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+  margin-top: -2px;
 }
 
-.widget-caption {
-  text-align: center;
-  font-size: 1.06rem;
-  color: #6a6a81;
-  margin-top: 16px;
+.widget-time-main {
+  font-size: 1.74rem;
+  font-family: 'Fira Mono','Segoe UI Mono',monospace;
+  color: #1a4655;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.12em;
+  margin-top: -0.08em;
+}
+
+.widget-card-secondary {
+  font-size: 0.99rem;
+  color: #8898a8;
+  margin-bottom: 3px;
+}
+
+.widget-card-caption {
+  font-size: 0.98rem;
+  color: #ab8890;
   font-style: italic;
-  opacity: 0.97;
+  margin-top: 10px;
+  margin-bottom: 7px;
+  opacity: 0.93;
+}
+
+.widget-weather-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.widget-weather-icon {
+  font-size: 2.17rem;
+  filter: drop-shadow(0 2px 9px #eebbc345);
+}
+.widget-weather-temp {
+  font-size: 1.34rem;
+  color: #d84068;
+  font-weight: 700;
+  letter-spacing: .01em;
+}
+
+.widget-weather-desc {
+  font-size: 1.03rem;
+  color: #5e6596;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-top: 7px;
+}
+
+.widget-quote-main {
+  font-size: 1.09rem;
+  color: #2c3f44;
+  font-style: italic;
+  margin-bottom: 0.4em;
+  min-height: 46px;
+}
+
+.widget-details-btn {
+  margin-top: 12px;
+  padding: 7px 21px 7px 13px;
+  border: none;
+  border-radius: 40px;
+  background: linear-gradient(90deg,#eebbc3 40%,#21a5b5 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+  letter-spacing: 0.03em;
+  box-shadow: 0 2px 8px #eebbc329;
+  cursor: pointer;
+  transition: background .19s, box-shadow .17s, transform .12s;
   position: relative;
 }
-.widget-caption::before {
-  content: '';
-  position: absolute; left: 50%; top: -9px;
-  transform: translateX(-50%);
-  width: 24px; height: 3px;
-  background: linear-gradient(90deg,#eebbc3bb 30%,#e8ebf3 100%);
-  opacity: .6;
-  border-radius: 2px;
+
+.widget-details-btn:hover, .widget-details-btn:focus {
+  background: linear-gradient(98deg,#21a5b5 8%,#eebbc3 90%);
+  box-shadow: 0 8px 16px #67c4db29;
+  transform: translateY(-2px) scale(1.035);
+  outline: none;
 }
 
+/* Add some breathing room below each card on mobile */
 @media (max-width: 900px) {
-  .widget-innovative-section {
-    padding: 32px 0 40px 0;
-    border-radius: 0px;
-  }
-  .widget-flex-row {
-    gap: 1.2rem;
+  .widget-cards-row {
     flex-direction: column;
-    align-items: stretch;
-  }
-  .widget-designer,
-  .widget-meteologist {
-    min-width: 96vw;
+    gap: 14px;
+    width: 99vw;
+    padding: 0 6vw;
     max-width: 100vw;
-    width: 100%;
-    margin: 0 auto 1.4rem auto;
   }
-  .watch-widget.enhanced,
-  .meteo-widget.enhanced {
-    min-width: 92vw;
+  .widget-card {
     max-width: 99vw;
     width: 100%;
-    padding: 15px 3vw;
+    margin: 0 auto 8px auto;
+    border-radius: 15px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 }
 
-/* --- Replace and Improve for true mobile fix --- */
+/* True Mobile UX (phones) */
 @media (max-width: 600px) {
 
-  .widget-innovative-section {
-    padding: 12px 0 14px 0;
+  .widget-responsive-section {
+    margin-top: 20px;
+    margin-bottom: 16px;
+    padding: 8px 0;
     border-radius: 0;
+    background: var(--widget-bg);
+    box-shadow: 0 2px 12px rgba(44,105,144,0.07);
   }
-
-  .widget-title {
-    font-size: 0.93rem;
-    margin-bottom: 0.75em;
-  }
-
-  .widget-flex-row {
-    gap: 0.3rem;
+  .widget-cards-row {
     flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    margin: 0;
+    gap: 6px;
     width: 100vw;
     max-width: 100vw;
-    overflow-x: hidden;
-    box-sizing: border-box;
+    padding: 0 2vw;
   }
-
-  .widget-designer,
-  .widget-meteologist {
-    width: 96vw;
+  .widget-card {
+    flex-direction: row;
+    border-radius: 12px;
+    padding: 15px 7vw 16px 3vw;
     min-width: 0;
     max-width: 100vw;
-    margin: 0 auto 0.65rem auto;
-    padding: 0;
-    box-sizing: border-box;
+    width: 100vw;
+    margin: 0 0 7px 0;
+    box-shadow: 0 2px 8px #bbafbb17;
   }
-
-  .watch-widget.enhanced,
-  .meteo-widget.enhanced {
-    padding: 10px 2vw 12px 2vw;
-    width: 94vw;
-    min-width: 0;
-    max-width: 98vw;
-    border-radius: 11px;
-    margin-bottom: 0.75rem;
-    font-size: 1.05rem;
-    /* Reduce shadow for less visual "bulk" on mobile */
-    box-shadow: 0 3px 10px rgba(35,41,70,0.09), 0 1px 2px #eebbc322;
+  .widget-card-icon {
+    font-size: 2rem;
+    margin-right: 11px;
+    margin-top: 2px;
   }
-
-  .meteo-widget .weather-icon,
-  .watch-widget.enhanced {
-    font-size: 1.45rem !important;
+  .widget-card-title {
+    font-size: 0.99rem;
+    margin-bottom: 3px;
   }
-  .meteo-widget .weather-temp {
-    font-size: 1.1rem !important;
+  .widget-time-main, .widget-weather-temp {
+    font-size: 1.12rem;
   }
-  .widget-caption {
-    font-size: 0.9rem;
+  .widget-weather-icon {
+    font-size: 1.22rem;
+  }
+  .widget-card-caption {
+    font-size: 0.88rem;
     margin-top: 5px;
+    margin-bottom: 4px;
+  }
+  .widget-details-btn {
+    font-size: 0.92em;
+    padding: 6px 18px 6px 10px;
+    margin-top: 7px;
+    min-width: 0;
+  }
+  .widget-quote-main {
+    font-size: 0.98rem;
+    min-height: 32px;
+  }
+  .widget-card-secondary, .widget-weather-desc {
+    font-size: .90rem;
   }
 }
 
-/* Dark mode support */
+/* Beautiful in dark mode as well! */
 @media (prefers-color-scheme: dark) {
-  .widget-innovative-section {
-    background: linear-gradient(135deg,#222337 70%,#1e212b 100%);
-    box-shadow: 0 8px 48px rgba(16,18,32,0.3);
+  .widget-responsive-section {
+    background: linear-gradient(135deg, #23253b 68%, #26283d 100%);
+    box-shadow: 0 8px 44px rgba(11,16,32,0.24);
   }
-  .watch-widget.enhanced,
-  .meteo-widget.enhanced {
-    background: rgba(28,31,44,0.86);
-    color: #eee;
-    border: 1.5px solid #45475d;
-    box-shadow: 0 10px 36px #15141e44;
+  .widget-card {
+    background: #1a1e26e0;
+    border: 1.5px solid #383b4f50;
+    color: #fafafb;
+    box-shadow: 0 5px 24px #1c1a1e38;
   }
-  .widget-title {
-    color: #eed6e7;
-    text-shadow: 0 4px 16px #f3bbea22, 0 1.5px 1.5px #243;
+  .widget-card-title {
+    color: #aadcdf;
   }
-  .widget-caption {
-    color: #aab;
-    opacity: 1;
+  .widget-details-btn {
+    background: linear-gradient(100deg,#33bfe6 40%,#e9a2c4 100%);
+    color: #1a1e26;
+  }
+  .widget-details-btn:hover, .widget-details-btn:focus {
+    background: linear-gradient(99deg,#e9a2c4 8%,#33bfe6 90%);
+    color: #16283d;
+  }
+  .widget-card-caption {
+    color: #c7bacc;
   }
 }
 
-
-
-
- /* ------ Widget Styles: MOBILE OPTIMISATION ------ */
-@media (max-width: 600px) {
-
-  .widget-innovative-section {
-    padding: 12px 0 14px 0;
-    border-radius: 0;
-    /* Décommente ici si tu veux fixer le widget en bas de l'écran */
-    /* position: fixed; bottom: 0; left: 0; width: 100vw; max-width: 100vw; z-index: 9999; */
-  }
-
-  .widget-title {
-    font-size: 0.93rem;
-    margin-bottom: 0.75em;
-  }
-
-  .widget-flex-row {
-    gap: 0.3rem;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-    margin: 0;
-    width: 100vw;
-    max-width: 100vw;
-    overflow-x: hidden;
-    box-sizing: border-box;
-  }
-
-  .widget-designer,
-  .widget-meteologist {
-    width: 96vw;
-    min-width: 0;
-    max-width: 100vw;
-    margin: 0 auto 0.65rem auto;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  .watch-widget.enhanced,
-  .meteo-widget.enhanced {
-    padding: 10px 2vw 12px 2vw;
-    width: 94vw;
-    min-width: 0;
-    max-width: 98vw;
-    border-radius: 11px;
-    margin-bottom: 0.75rem;
-    font-size: 1.05rem;
-    box-shadow: 0 3px 10px rgba(35,41,70,0.09), 0 1px 2px #eebbc322;
-  }
-
-  .meteo-widget .weather-icon,
-  .watch-widget.enhanced {
-    font-size: 1.45rem !important;
-  }
-
-  .meteo-widget .weather-temp {
-    font-size: 1.1rem !important;
-  }
-
-  .widget-caption {
-    font-size: 0.9rem;
-    margin-top: 5px;
-  }
-
-  /* Tu peux encore réduire les font-size ci-dessus si tu veux un affichage encore plus compact ! */
+/* Accessibility & focus */
+.widget-details-btn:focus-visible {
+  outline: 2px solid #33bfe6;
+  outline-offset: 2px;
 }
 
-
-
-
-
-
-
-
-
-
- 
