@@ -152,76 +152,54 @@
                 </div>
             </div>
 
-        <!-- Info Cards: Only for Home Page, after Key Achievements and before Footnote -->
-       <!-- Info Cards + boutons d'ouverture des widgets latéraux -->
-<section class="container my-8">
-  <div class="flex gap-16 justify-center flex-wrap items-center">
-    <!-- Local Time Card -->
-    <div class="card" style="min-width: 220px; max-width: 320px; flex: 1 1 260px;">
-      <div class="card__body" style="text-align:center;">
-        <div style="font-size:2.3rem; margin-bottom: 6px;">🕓</div>
-        <div style="font-size:2rem; letter-spacing:0.05em;">
-          <span id="watch-time"></span>
-        </div>
-        <div class="widget-sub" style="margin-top:8px;font-size:1.1rem; color:var(--color-text-secondary);">
-          Winnipeg, MB (Local Time)
-        </div>
-        <div class="widget-caption" style="margin-top:12px;">
-          Time is always synchronized with Winnipeg local time.
-        </div>
-        <button class="open-widget-btn" onclick="toggleWidget('widget-watch')" style="margin-top:18px;">
-          ➔ Plus de détails
-        </button>
-      </div>
-    </div>
-    <!-- Weather Card -->
-    <div class="card" style="min-width: 220px; max-width: 320px; flex: 1 1 260px;">
-      <div class="card__body" style="text-align:center;">
-        <div style="font-size:2.3rem; margin-bottom: 6px;">🌤️</div>
-        <span class="weather-icon" id="weather-icon" style="font-size:2.7rem; margin-bottom: 4px;">☀️</span>
-        <div class="weather-temp" id="weather-temp" style="font-size:2.1rem; font-weight:700;">25°C</div>
-        <div class="weather-desc" id="weather-desc" style="margin-top:2px;font-size:1.08rem;text-transform:capitalize;color:var(--color-text-secondary);">Sunny</div>
-        <div class="widget-sub" style="margin-top:8px; font-size:1.05rem; color:var(--color-text-secondary);">Winnipeg, MB</div>
-        <div class="widget-caption" style="margin-top:12px;">
-          Weather data updates every 10 minutes (live).
-        </div>
-        <button class="open-widget-btn" onclick="toggleWidget('widget-meteo')" style="margin-top:18px;">
-          ➔ Plus de détails
-        </button>
-      </div>
-    </div>
-    <!-- Quote Card -->
-    <div class="card" style="min-width: 220px; max-width: 340px; flex: 1 1 260px;">
-      <div class="card__body" style="text-align:center;">
-        <div style="font-size:2.3rem; margin-bottom: 6px;">💡</div>
-        <div id="fact-box" style="font-size:1.15rem; min-height:40px;"></div>
-        <div class="widget-sub" style="margin-top:8px; font-size:1.05rem; color:var(--color-text-secondary);">Economic Quote</div>
-        <div class="widget-caption" style="margin-top:12px;">
-          Discover fresh economic wisdom each day!
-        </div>
-        <!-- Si tu veux une version détaillée pour le quote, ajoute un bouton similaire ici -->
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Widgets déroulants latéraux -->
-<div id="widget-watch" class="widget-slider">
-  <div class="widget-slider-content">
-    <button onclick="toggleWidget('widget-watch')" class="widget-close-btn" style="float:right;">&times;</button>
-    <h3>Horloge détaillée</h3>
-    <div><!-- Met ici tout ton contenu avancé horloge / time zone / dashboard détails etc. --></div>
-  </div>
-</div>
-<div id="widget-meteo" class="widget-slider">
-  <div class="widget-slider-content">
-    <button onclick="toggleWidget('widget-meteo')" class="widget-close-btn" style="float:right;">&times;</button>
-    <h3>Météo avancée</h3>
-    <div><!-- Met ici des prévisions, graphiques, autres détails météo --></div>
-  </div>
-</div>
-
-         </section>
+                    <!-- Info Cards: Only for Home Page, after Key Achievements and before Footnote -->
+            <section class="widget-responsive-section">
+              <div class="widget-cards-row">
+                <!-- Local Time Card -->
+                <div class="widget-card widget-time">
+                  <div class="widget-card-icon" aria-hidden="true">🕓</div>
+                  <div class="widget-card-content">
+                    <div class="widget-card-title">Local Time</div>
+                    <div class="widget-time-main" id="watch-time">11:28</div>
+                    <div class="widget-card-secondary">Winnipeg, MB</div>
+                    <div class="widget-card-caption">Synchronized with Winnipeg local time.</div>
+                    <button class="widget-details-btn" onclick="toggleWidget('widget-watch')">
+                      ➔ Plus de détails
+                    </button>
+                  </div>
+                </div>
+                <!-- Weather Card -->
+                <div class="widget-card widget-weather">
+                  <div class="widget-card-icon" aria-hidden="true">🌤️</div>
+                  <div class="widget-card-content">
+                    <div class="widget-card-title">Weather</div>
+                    <div class="widget-weather-main">
+                      <span class="widget-weather-icon" id="weather-icon">☀️</span>
+                      <span class="widget-weather-temp" id="weather-temp">25°C</span>
+                    </div>
+                    <div class="widget-weather-desc" id="weather-desc">Sunny</div>
+                    <div class="widget-card-secondary">Winnipeg, MB</div>
+                    <div class="widget-card-caption">Weather auto-updates every 10 min.</div>
+                    <button class="widget-details-btn" onclick="toggleWidget('widget-meteo')">
+                      ➔ Plus de détails
+                    </button>
+                  </div>
+                </div>
+                <!-- Quote Card -->
+                <div class="widget-card widget-quote">
+                  <div class="widget-card-icon" aria-hidden="true">💡</div>
+                  <div class="widget-card-content">
+                    <div class="widget-card-title">Quote of the Day</div>
+                    <div class="widget-quote-main" id="fact-box">
+                      "Economics is the study of how society manages its scarce resources."
+                    </div>
+                    <div class="widget-card-secondary">Gregory Mankiw</div>
+                    <div class="widget-card-caption">Discover fresh economic wisdom each day!</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            </section>
 
 
     
