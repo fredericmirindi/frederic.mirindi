@@ -836,3 +836,26 @@ displayRandomFact();
 
 
 
+
+
+
+
+// Gère le slide des widgets
+function toggleWidget(id) {
+  // Ferme les autres widgets si besoin
+  document.querySelectorAll('.widget-slider').forEach(w => {
+    if (w.id !== id) w.classList.remove('active');
+  });
+  document.getElementById(id).classList.toggle('active');
+}
+
+// Fermer en cliquant à l’extérieur du widget (optionnel)
+document.addEventListener('click', function(e){
+  document.querySelectorAll('.widget-slider').forEach(widget => {
+    if (widget.classList.contains('active') && !widget.contains(e.target) && !e.target.classList.contains('open-widget-btn')) {
+      widget.classList.remove('active');
+    }
+  });
+});
+
+
