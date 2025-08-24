@@ -2536,3 +2536,19 @@ select.form-control {
   outline: 2px solid var(--color-primary, #33bfe6);
   outline-offset: 2px;
 }
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+  .widget-responsive-section .container {
+    padding: 0 12px;
+  }
+}
