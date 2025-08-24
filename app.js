@@ -944,6 +944,29 @@ displayRandomFact();
 
 
 
+// Example: Fetch from your backend, not directly from Twitter
+fetch('/api/latest-tweets')
+  .then(res => res.json())
+  .then(data => {
+    const tweetContainer = document.getElementById('latest-tweets');
+    data.tweets.forEach(tweet => {
+      const tweetDiv = document.createElement('div');
+      tweetDiv.classList.add('tweet');
+      tweetDiv.innerHTML = `
+        <div class="tweet-date">${tweet.created_at}</div>
+        <div class="tweet-text">${tweet.text}</div>
+        <a href="https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}"
+           target="_blank">View on X</a>
+      `;
+      tweetContainer.appendChild(tweetDiv);
+    });
+  }).catch(err => {
+    console.error(err);
+  });
+
+
+
+
 
 
 
