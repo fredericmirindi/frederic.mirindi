@@ -2544,3 +2544,61 @@ select.form-control {
 
 
  
+
+
+
+
+/* Collaboration Invite Styling */
+.collaboration-invite {
+  text-align: center;
+  padding: var(--space-16);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.collaboration-invite:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.invite-text {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  margin: 0 0 var(--space-8) 0;
+  line-height: var(--line-height-normal);
+}
+
+.contact-email {
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  display: inline-block;
+  padding: var(--space-6) var(--space-12);
+  background: var(--color-secondary);
+  border-radius: var(--radius-full);
+  transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.contact-email:hover {
+  background: var(--color-secondary-hover);
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .collaboration-invite {
+    background: var(--color-surface);
+    border-color: var(--color-card-border);
+  }
+}
+
+[data-color-scheme="dark"] .collaboration-invite {
+  background: var(--color-surface);
+  border-color: var(--color-card-border);
+}
