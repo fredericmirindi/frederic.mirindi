@@ -976,47 +976,4 @@ fetch('/api/latest-tweets')
 
 
 
-
-function initializeCollaborationFlip() {
-  const btn = document.getElementById('open-collab');
-  const flipper = document.getElementById('profileFlip');
-
-  if (!btn || !flipper) return;
-
-  btn.addEventListener('click', () => {
-    flipper.classList.toggle('is-flipped');
-  });
-  
-  // Optional: Make circle itself clickable
-  flipper.addEventListener('click', () => {
-    flipper.classList.toggle('is-flipped');
-  });
-  
-  flipper.setAttribute('role', 'button');
-  flipper.setAttribute('tabindex', '0');
-  
-  flipper.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      flipper.classList.toggle('is-flipped');
-    }
-  });
-}
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  initializeTheme();
-  initializeNavigation();
-  initializeAnimations();
-  initializeInteractiveElements();
-  initializeCharts();
-  initializeForms();
-  initializeFootnotes();
-  initializeCollaborationFlip();  // add this line
-  showPage('home');
-});
-
-
+ 
