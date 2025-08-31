@@ -2577,3 +2577,117 @@ select.form-control {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+/* 3D flip container */
+.profile-flip {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  perspective: 1000px;
+  position: relative;
+}
+
+/* Inner element that flips */
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--duration-normal) var(--ease-standard);
+}
+
+/* Faces */
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Front keeps your existing styling */
+.flip-front .profile-image {
+  width: 100%;
+  height: 100%;
+}
+
+.flip-front .circle {
+  width: 100%;
+  height: 100%;
+}
+
+.flip-front .profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Back face */
+.flip-back {
+  transform: rotateY(180deg);
+  padding: 16px;
+  text-align: center;
+}
+
+.flip-back-content h4 {
+  margin: 0 0 8px 0;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+}
+
+.flip-back-content p {
+  margin: 0 0 6px 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.flip-email {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  word-break: break-word;
+  font-size: var(--font-size-sm);
+}
+
+.flip-email:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Flipped state */
+.flip-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .flip-face {
+    background: var(--color-surface);
+    border-color: var(--color-card-border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+}
+
+[data-color-scheme="dark"] .flip-face {
+  background: var(--color-surface);
+  border-color: var(--color-card-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+}
+
+
