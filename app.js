@@ -1057,10 +1057,10 @@ function initializePublications() {
       journal: "Cleaner Waste Systems",
       year: 2025,
       type: "Article",
-      abstract: "This research applies advanced machine learning techniques to predict the compressive strength of laterite blocks enhanced with metakaolin geopolymer and sugarcane molasses, contributing to sustainable building materials development.",
+      abstract: "In domains such as the construction industry, predicting the compressive strength of laterized blocks is crucial for building trust in their results. Poor material properties can result in reduced strength, durability, and structural integrity of buildings and can have even life-threatening consequences for building occupants. Machine learning (ML) algorithms can provide predictive abilities for compressive strength of laterized blocks, thereby improving confidence in their use in buildings. This research aims to predict the compressive strength of laterite blocks stabilized with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM) using gradient boosting regression (GBR), multi-layer perceptron (MLP), k-means clustering, and AdaBoost models. The correlation matrix results show that stabilized compressed earth block (CEB)'s age has the strongest correlation with compressive strength (R = 0.83) based on its highly meaningful relationship (p < 0.001). The research establishes the credibility of the ML algorithms during the training phase through R-squared values higher than 0.93 for GBR, MLP, k-means clustering, and AdaBoost models. However, the R-squared values during the testing phase are less than 0.68 for all the models. The Taylor diagram analysis indicates that the GBR model is the best-performing model, while the k-means clustering model emerges as the lowest-performing model during the training phase. Based on mean SHapley Additive exPlanations (SHAP) analysis values, age emerges as the most significant variable in influencing the compressive strength of laterite blocks stabilized with MKG and SM mixtures. Moreover, water, MKG, and SM have also emerged as influential variables in the order of decreasing influence. This research therefore lays a foundation and contributes to the widespread applications of laterite blocks stabilized with MKG and SM mixtures in sustainable construction.",
       doi: "10.1016/j.clwas.2025.100352",
-      link: "https://www.sciencedirect.com/science/article/pii/S2772912525001502",
-      metrics: { citations: 12, reads: 67, saves: 5 }
+      link: "https://doi.org/10.1016/j.clwas.2025.100352",
+      metrics: { citations: 4, reads: 67, saves: 5 }
     },
     {
       title: "Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels",
@@ -1068,7 +1068,7 @@ function initializePublications() {
       journal: "Green Technologies and Sustainability",
       year: 2025,
       type: "Article",
-      abstract: "Evaluation of various machine learning algorithms for predicting physico-mechanical properties of nanoparticle-reinforced panels, focusing on sustainable material design and optimization.",
+      abstract: "Nanoparticles significantly enhance the properties of wood-based materials, especially particleboards and wood panels. This review analyzes secondary data on nanoparticle integration in board production, aiming to evaluate the relationships among physical (water absorption (WA) and thickness swelling (TS)) and mechanical (modulus of rupture (MOR), modulus of elasticity (MOE); and internal bond (IB) strength) properties and to predict performance using machine learning (ML) algorithms. These algorithms include Pearson correlation, hierarchical clustering, and decision tree (DT) models. Results indicate that nanoparticles such as graphene oxide (GO), reduced graphene oxide (rGO), hydrolysis lignin, and calcium carbonate improve mechanical properties, with MOR values of 27.38–52.65 MPa and MOE of 2591.6–4680 MPa, meeting EN312 load-bearing standards. Zinc oxide nanoparticles yield superior dimensional stability by achieving a low TS of 9.33%. However, according to the American National Standard for Particleboard (ANSI/A208.1-1999), most nanoparticle boards produced met general-purpose standards except for WA and TS, which exceeded the maximum limits of 8% and 3%, respectively. Only crosslinked chitosan and zinc oxide nanoparticle panels meet the minimum requirements for TS (17%) and the maximum MOR (11.00 MPa) and MOE (1,800.00 MPa) for general purposes in dry conditions (furniture and interior fitments) according to the Brazilian standard (ABNT NBR). The Pearson correlation analysis reveals a strong relationship between board properties (R = 0.94 for WA–TS; R = 0.93 for MOR–MOE), confirming that nanoparticle treatments enhance performance while maintaining inherent material behavior. Hierarchical clustering grouped nanoparticles by performance: zinc oxide and chitosan+UF+epoxy formed a cluster with the lowest WA and TS, indicating optimal dimensional stability, while GO, rGO, and chitosan-based composites clustered with moderate values. For mechanical properties, APTES-modified nanocellulose, aluminum oxide, and zinc oxide formed a high-performance cluster (high MOR, MOE, IB). DT algorithms demonstrated high predictive accuracy (R for WA-TS, 0.96 for MOR-MOE, and 0.80 for IB-MOE), identifying critical thresholds: WA below 29.73% corresponded to minimal TS (9.94%), MOR above 38.18 MPa led to MOE above 3598.86 MPa, and IB above 0.88 MPa corresponds to MOE greater than 2,747.99 MPa. This data-driven framework enables targeted nanoparticle selection to fabricate engineered wood products and can be included in industry quality control standards to advance sustainable material development through ML-guided optimization.",
       doi: "10.1016/j.grets.2025.100235",
       link: "https://www.sciencedirect.com/science/article/pii/S2949736125000697",
       metrics: { citations: 8, reads: 54, saves: 3 }
@@ -1079,20 +1079,20 @@ function initializePublications() {
       journal: "Proceedings of the 2025 Computers and People Research Conference",
       year: 2025,
       type: "Conference",
-      abstract: "Advanced evaluation framework for Building Information Modeling enhanced with Generative AI, specifically examining OpenAI o1 capabilities while addressing ethical implications in construction technology.",
+      abstract: "The rapid advancement of artificial intelligence (AI) has led the AI community to speculate that artificial superintelligence (ASI) may be within reach, particularly if an AI system can iteratively search for solutions, learn from results, and leverage improved knowledge for more searches. In this context, this study explores the integration of Generative Artificial Intelligence (GenAI) into Building Information Modeling (BIM) by focusing on the four key pillars of the OpenAI o1 model and their ethical implications. Through comprehensive analysis of existing literature, we examine these pillars—policy initialization, reward design, search strategies, and learning mechanisms—and their application in BIM-GenAI within a continuous improvement cycle. Results demonstrate that policy initialization generates human-like reasoning behaviors and domain-specific knowledge for BIM tasks. Reward design, central to reinforcement learning, optimizes BIM objectives through measurable metrics and learned evaluation methods. Search strategies prove valuable for exploring complex design spaces and generating high-quality BIM solutions, while learning mechanisms, including policy gradient and behavior cloning, enable continuous model improvement through feedback. The study emphasizes the importance of establishing BIM-AI protocols, maintaining human expertise in decision-making, and balancing automation with human input. Our findings suggest that while GenAI, powered by reinforcement learning, offers significant potential for enhancing BIM capabilities, three critical ethical considerations—data privacy and security, algorithmic bias mitigation, and transparency and accountability—must guide responsible implementation. This research contributes to the growing body of knowledge on AI in construction technologies and provides a foundation for the ethical advancement of BIM-GenAI systems using OpenAI o1.",
       doi: "10.1145/3716489.3728431",
-      link: "https://dl.acm.org/doi/full/10.1145/3716489.3728431",
+      link: "https://doi.org/10.1145/3716489.3728431",
       metrics: { citations: 6, reads: 43, saves: 2 }
     },
     {
-      title: "The Role of Artificial Intelligence in Building Information Modeling",
+      title: "Review: The Role of Artificial Intelligence in Building Information Modeling",
       authors: ["D Mirindi", "F Mirindi", "T Bezabih", "D Sinkhonde", "W Kiarie"],
       journal: "Proceedings of the 2025 Computers and People Research Conference",
       year: 2025,
       type: "Conference",
-      abstract: "Comprehensive examination of artificial intelligence integration within Building Information Modeling systems, exploring current applications, challenges, and future directions in construction technology.",
+      abstract: "The integration of Artificial Intelligence (AI) and Building Information Modeling (BIM) represents a paradigm shift in the architecture, engineering, and construction (AEC) industry. This change revolutionizes how buildings are designed, constructed, and managed throughout their lifecycle. Using secondary data, this research aims to evaluate the current advances in the role of AI in BIM, emphasizing leveraging AI to improve organizational performance, decision-making, and project delivery. Based on the four classifications of AI systems which are Reactive AI, Limited Memory AI, Theory of Mind AI, and Self-Aware AI, this study analyzed the prospects of BIM applications. Results show that AI in BIM applications offers capabilities across domains such as generative design, predictive maintenance, energy optimization, automated code compliance, clash detection, construction simulation, sustainability analysis, project risk assessment, facility management, and natural language processing. The research also presents major issues arising from the integration of AI in a BIM setting, including Interoperability problems, Data management problems, and Technological resistance problems. Based on the evaluation of the current status and challenges associated with AI integration, this work expects to offer practical recommendations for the stakeholders interested in implementing AI technologies within their BIM projects. In addition, the research reveals new directions in integrating AI into BIM, including digital twins and generative design that will likely transform the project lifecycle. This research fills the gap in the current literature by exploring the AI limitations and opportunities in BIM environments and thereby provides insights into the application of these technologies to enhance innovation and sustainability in construction. Finally, this research provides a basis for new and more rational approaches to construction that would meet the needs of contemporary society.",
       doi: "10.1145/3716489.3728433",
-      link: "https://dl.acm.org/doi/full/10.1145/3716489.3728433",
+      link: "https://doi.org/10.1145/3716489.3728433",
       metrics: { citations: 4, reads: 38, saves: 1 }
     },
     {
@@ -1112,10 +1112,10 @@ function initializePublications() {
       journal: "2025 6th International Conference on Artificial Intelligence, Robotics",
       year: 2025,
       type: "Conference",
-      abstract: "An examination of ethical considerations in the development of artificial superintelligence, with particular focus on reinforcement learning methodologies and their societal implications.",
-      doi: "10.1109/aies.2025.567890",
-      link: "https://ieeexplore.ieee.org/author/497245784122578",
-      metrics: { citations: 28, reads: 89, saves: 8 }
+      abstract: "We acknowledge why the larger AI community believes that superintelligence is not far away if an artificial intelligence (AI) can search for answers, learn from its findings, and apply that improved knowledge to conduct even better searches in the future. This study aims to assess OpenAI O1's reinforcement learning framework and its potential implications for superintelligence by examining its four fundamental pillars: policy initialization, reward design, search mechanisms, and learning processes. We examine how O1's architecture implements elaborate methods such as Process Reward Modeling (PRM) and advanced search strategies using recent developments in AI technology, with a particular focus on the transition from artificial narrow intelligence (ANI) to artificial superintelligence (ASI) and the emergence of hybrid artificial intelligence (HAI). Our method involves examining the types of AI, using recent research on OpenAI O1 reinforcement learning and elaborate ethical considerations. Key findings demonstrate the superiority of PRM over traditional Outcome Reward Modeling (ORM) in providing granular feedback for learning optimization. In addition, the advance toward ASI emphasizes the critical importance of ethical considerations. This includes safety protocols, transparency requirements, and human-aligned development practices in advancing toward superintelligence. This study contributes to the understanding of how advanced AI systems can be developed responsibly while ensuring progress toward superintelligence remains beneficial to humanity. Future research directions should focus on enhancing the integration of ethical frameworks within the reinforcement learning system.",
+      doi: "10.1109/AIRC64931.2025.11077494",
+      link: "https://doi.org/10.1109/AIRC64931.2025.11077494",
+      metrics: { citations: 4, reads: 89, saves: 8 }
     },
     {
       title: "Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses",
@@ -1123,10 +1123,10 @@ function initializePublications() {
       journal: "Waste Management Bulletin",
       year: 2025,
       type: "Article",
-      abstract: "Investigation of machine learning applications for optimizing compressive strength in innovative laterite blocks incorporating metakaolin-based geopolymer and sugarcane molasses as sustainable binders.",
+      abstract: "To refine the process of anticipating the structural integrity of laterite block components, the use of machine learning (ML) algorithms is required. This study initiates an exploration into forecasting the compressive strength of laterite blocks infused with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM), utilizing machine learning techniques such as artificial neural networks (ANN), random forests (RF), decision trees (DT), and support vector machines (SVM). The models were developed using four input values, including the MKG, SM, laterite soil, and water, with compressive strength as the output. Results show that for all the models, the majority of the data points lie within the error lines range of −20 % and +20 %. Using the Taylor diagram model, the results demonstrate that the SVM (train) model achieves the highest performance in predicting the compressive strength of laterite blocks, with a correlation coefficient of 0.99 and the lowest root mean square error (RMSE) of 0.139. The correlation coefficient values (R) for training and testing algorithm models ranged between 0.65 and 0.99, implying that all models fairly predict the compressive strength of laterite blocks containing MKG and SM. The RF model emerges as an important model for generalization across training and testing phases, with R values of 0.9828 and 0.789, respectively. SHapley Additive exPlanations (SHAP) analysis assesses the model’s explainability behavior. According to a SHAP-based feature importance study, age (85.33 %) and water content (17.87 %) are critical components that may improve compressive strength compared to MKG (8.60 %) and SM (6.74 %), respectively. This study not only assists in comprehending the essential parameters necessary for making well-informed decisions but also opens exciting possibilities for the application of ML in fostering sustainable construction practices.",
       doi: "10.1016/j.wmb.2025.100212",
       link: "https://www.sciencedirect.com/science/article/pii/S2949750725000410",
-      metrics: { citations: 11, reads: 73, saves: 4 }
+      metrics: { citations: 4, reads: 73, saves: 4 }
     },
     {
       title: "Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder",
@@ -1134,10 +1134,10 @@ function initializePublications() {
       journal: "Cleaner Waste Systems",
       year: 2025,
       type: "Article",
-      abstract: "Development and evaluation of ensemble machine learning methods for predicting compressive strength of sustainable concrete mixtures incorporating recycled tire rubber and brick powder additives.",
+      abstract: "In order to increase the efficiency of predicting concrete compressive strength, ensemble machine learning (ML) algorithms are required. Considering that each ML algorithm continuously varies in methodology, one ML algorithm cannot generate exhaustive prediction results since limited parameters are available to tune. This research serves as a beginning step towards predicting the compressive strength of concrete containing waste tyre rubber (WTR) and clay brick powder (CBP) using artificial neural network (ANN), random forest (RF), decision tree (DT) and support vector machine (SVM) algorithms. Taylor diagram model analysis shows that when the four algorithms are compared, the SVM (train) model demonstrates the highest performance in predicting the compressive strength of concrete containing CBP and WTR. The R2 values ranging from 0.60 – 0.97 imply that all the models fairly predict the compressive strength of concrete containing CBP and WTR. The same predictive abilities are demonstrated by the clustering of the data points for train and test models around the y = x line. It is shown that the majority of the data points lie within the error lines range of −20 and + 20 %. The SHapley Additive exPlanations (SHAP) analysis reveals that WTR has the highest impact on model predictions with a mean SHAP value of 3.83, while cement shows a moderate influence with a mean SHAP value of 0.77. Moreover, these findings suggest that WTR content is the most critical factor in controlling the concrete's compressive strength, while cement content plays a supporting role in the mixture design. Since the prediction behaviour of concrete using ML models is governed by the replacement levels of CBP and WTR, the models used in this study can be extended to the concrete mixes containing other waste materials.",
       doi: "10.1016/j.clwas.2025.100236",
-      link: "https://www.sciencedirect.com/science/article/pii/S277291252500034X",
-      metrics: { citations: 19, reads: 112, saves: 8 }
+      link: "https://doi.org/10.1016/j.clwas.2025.100236",
+      metrics: { citations: 6, reads: 112, saves: 8 }
     },
     {
       title: "Artificial Intelligence (AI) and automation for driving green transportation systems: A comprehensive review",
@@ -1147,8 +1147,8 @@ function initializePublications() {
       type: "Review",
       abstract: "Comprehensive review of AI and automation technologies in green transportation systems, examining current implementations, challenges, and future opportunities for sustainable mobility solutions.",
       doi: "10.1007/978-3-031-72617-0_1",
-      link: "https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1",
-      metrics: { citations: 22, reads: 145, saves: 10 }
+      link: "https://doi.org/10.1007/978-3-031-72617-0_1",
+      metrics: { citations: 10, reads: 145, saves: 10 }
     },
     {
       title: "A Review on Aerospace-AI, with Ethics and Implications",
@@ -1156,9 +1156,9 @@ function initializePublications() {
       journal: "Aerospace Technology Review",
       year: 2025,
       type: "Review",
-      abstract: "Comprehensive analysis of artificial intelligence applications in aerospace technology, examining current implementations, future prospects, and ethical implications of AI in aviation and space exploration.",
-      doi: "10.13140/RG.2.2.12345.67890",
-      link: "https://www.researchgate.net/profile/Derrick-Mirindi-2/publication/389746999_A_Review_on_Aerospace-AI_with_Ethics_and_Implications",
+      abstract: "The rapid advancement of aerospace technology, coupled with the exponential growth in available data, has catalyzed the integration of artificial intelligence (AI) across the aerospace sector. This comprehensive review examines the state-of-the-art applications of AI, machine learning (ML), deep learning (DL), and generative artificial intelligence (GenAI) in aerospace. Our analysis reveals that ML algorithms demonstrate remarkable capabilities: Random forest (RF) algorithm achieves precision within 10 meters for trajectory prediction, while support vector machines (SVMs) algorithms show 99.89% accuracy in aircraft fault detection. Decision trees (DTs) algorithms excel in aircraft system diagnostics with adaptive learning capabilities. In the realm of deep learning, convolutional neural networks (CNNs) algorithms achieve 79% accuracy in satellite component detection and structural inspection, while recurrent neural networks (RNNs) algorithms and Long Short-Term Memory (LSTM) networks demonstrate superior performance in 4D trajectory prediction and engine health monitoring. GenAI, particularly through Generative adversarial networks (GANs), has revolutionized airfoil design optimization, achieving less than 1% error in profile fitting and 10% error in aerodynamic stealth characteristics. However, these algorithms face scalability challenges when processing large-scale datasets in real-time applications, particularly in mission-critical scenarios. Our research also identifies four ethical considerations, including bias prevention in automated systems, transparency in decision-making processes, privacy protection in data handling, and the implementation of important safety protocols. This study provides a foundation for understanding the current landscape of aerospace-AI integration while highlighting the importance of addressing ethical implications in future developments. The successful implementation of these technologies will require continuous innovation in validation methodologies, establish universal ethical considerations standard, and enhanced community engagement through citizen science initiatives to involve stakeholders.",
+      doi: "10.11648/j.jccee.20251002.12",
+      link: "https://www.sciencepublishinggroup.com/article/10.11648/j.jccee.20251002.12",
       metrics: { citations: 16, reads: 94, saves: 7 }
     },
     {
@@ -1178,10 +1178,10 @@ function initializePublications() {
       journal: "Nanotechnology Reviews",
       year: 2025,
       type: "Review",
-      abstract: "Advanced review of nanoparticle reinforcement techniques for structural boards, examining performance improvements, manufacturing processes, and applications in sustainable construction materials.",
+      abstract: "Under the turbulence of global change, the production of boards has been influenced by the rising demand and price of wood-based materials. To improve the structural performance of boards, reinforcement materials have been added, such as nanoparticles. The purpose of this review is to explore the application of nanomaterials, including nano-SiO2, nano-Al2O3, nano-ZnO, nano-Fe2O3, nano-cellulose, nano-lignin, and nano-chitosan, to evaluate the physical and mechanical properties of particleboards. These nanoparticles have demonstrated their ability to reduce formaldehyde emissions, enhance the dimensional stability, bending strength, bending stiffness, fire resistance, and resistance to thermal conductivity in board production. For example, the addition of nano-SiO2, known for its hydrophilicity, attracts and holds water molecules and acts as a thermal barrier due to its high melting point and low thermal conductivity. In contrast, nano-Al2O3 is known for its high compressive strength (up to 3 GPa), hardness strength (9 Mohs scale), and high thermal conductivity, which helps to dissipate heat more effectively. This comprehensive evaluation brings together recent advances in producing particleboards and medium density fiberboard reinforced with nanoparticles, which are essential for future research and industry applications. The study emphasizes how innovative nanoparticles can contribute to sustainable urban development and construction practices, reduce deforestation, preserve natural habitats, and provide affordable housing. The research indicates that nanoparticle boards meet (e.g., nanoclay and nanoalumina panels) and in some cases exceed the minimum requirement for general-purpose panels set standards such as the ANSI/A208.1-1999, including water absorption of 8%, thickness swelling of 3% and EN 312 for the bending strength (15–16 MPa) and bending stiffness (2.2–2.4 GPa) for P4 and P6 boards, respectively. These results support the transformative power of nanomaterials in promoting a more sustainable and future solution for boards in the building construction industry.",
       doi: "10.1515/ntrev-2025-0119",
       link: "https://www.degruyterbrill.com/document/doi/10.1515/ntrev-2025-0119/html",
-      metrics: { citations: 27, reads: 178, saves: 12 }
+      metrics: { citations: 2, reads: 178, saves: 12 }
     },
     {
       title: "An advance review of Urban-AI and ethical considerations",
@@ -1190,9 +1190,9 @@ function initializePublications() {
       year: 2025,
       type: "Review",
       abstract: "Comprehensive review of artificial intelligence applications in urban environments, examining smart city technologies, implementation challenges, and ethical considerations in urban AI deployment.",
-      doi: "10.1145/3681780.3697246",
-      link: "https://dl.acm.org/doi/abs/10.1145/3681780.3697246",
-      metrics: { citations: 33, reads: 201, saves: 14 }
+      doi: "10.1515/ntrev-2024-0119",
+      link: "https://doi.org/10.1515/ntrev-2024-0119",
+      metrics: { citations: 3, reads: 201, saves: 14 }
     },
     {
       title: "BIM-driven offsite construction: pathway to efficiency, functionality and sustainability",
@@ -1200,10 +1200,10 @@ function initializePublications() {
       journal: "Transforming Construction with Off-site Methods and Technologies",
       year: 2025,
       type: "Conference",
-      abstract: "Exploration of Building Information Modeling applications in offsite construction, focusing on efficiency improvements, functional optimization, and sustainability enhancement in modern construction practices.",
+      abstract: "In the fast-paced world of construction, Building Information Modeling (BIM) is revolutionizing offsite construction, leading to significant improvements in efficiency, functionality, and sustainability. This study examines BIM's critical role in enhancing offsite construction, aiming to showcase its potential to transform construction practices towards better efficiency and environmental care. By analyzing data from observations, discussions, and digital sources, the research investigates BIM's impact on offsite construction. The findings reveal BIM's key role in addressing traditional offsite construction challenges, with examples like Autodesk Revit enhancing 3D modeling, Open Studio reducing energy modeling errors, and ArchiCAD optimizing design processes. Also, Autodesk Insight speeds up project completion through energy analysis, and Flixo promotes collaboration with thermal bridge analysis. These tools, including WUFI for moisture and sustainability analysis, highlight BIM's ability to tackle ecological issues. Additionally, the integration of AI in ArchiCAD and SketchUp further advances rendering capabilities. The study concludes that BIM is essential for achieving top efficiency, functionality, and sustainability in offsite construction. It urges stakeholders to embrace BIM fully, leading to a shift towards more sustainable and efficient construction methods. Recommendations based on results include investing in BIM development and promoting its widespread adoption. Future research should assess BIM's quantitative and qualitative impact, explore its accessibility, and investigate its long-term sustainability effects.",
       doi: "10.22215/tcrc/1992",
-      link: "https://conferences.lib.unb.ca/index.php/tcrc/article/view/1992",
-      metrics: { citations: 15, reads: 89, saves: 6 }
+      link: "https://conferences.lib.unb.ca/tcrc/article/view/1992/1314",
+      metrics: { citations: 5, reads: 89, saves: 6 }
     },
     {
       title: "Predictive Analytics and Stochastic Programming for Construction Resource Optimization in Developing African Economies",
@@ -1211,9 +1211,9 @@ function initializePublications() {
       journal: "African Construction Economics Review",
       year: 2025,
       type: "Article",
-      abstract: "Application of predictive analytics and stochastic programming methodologies to optimize construction resource allocation and management in developing African economies.",
-      doi: "10.1016/j.acer.2025.100145",
-      link: "https://www.sciencedirect.com/science/article/pii/S2949750725000145",
+      abstract: "AThis research investigates the application of AI-driven predictive models for optimizing resource allocation and mitigating economic risks in large-scale construction projects across developing African economies. Through the development of sophisticated mathematical frameworks, including linear programming for resource optimization, multivariate failure prediction models, and stochastic programming for supply chain management, we present a comprehensive approach to addressing the complex challenges facing the African construction sector. The study demonstrates significant improvements in project outcomes, with the predictive maintenance model achieving 91.5% accuracy in equipment failure prediction and the cost estimation framework explaining 81.3% of cost variance. However, implementation challenges including data scarcity, infrastructure limitations, and the need for local expertise development must be carefully addressed. The research provides valuable insights for construction project managers, policymakers, and researchers, contributing to more efficient and sustainable infrastructure development across Africa.",
+      doi: "10.5281/zenodo.17011408",
+      link: "http://dx.doi.org/10.5281/zenodo.17011408",
       metrics: { citations: 7, reads: 42, saves: 3 }
     },
     {
@@ -1222,34 +1222,11 @@ function initializePublications() {
       journal: "Green Transportation Technology Review",
       year: 2025,
       type: "Article",
-      abstract: "Comprehensive analysis of AI-driven solutions for sustainable transportation systems, focusing on automation technologies and their environmental impact.",
-      doi: "10.1007/978-3-031-transportation-2025_1",
-      link: "https://link.springer.com/chapter/transportation-ai-2025",
+      abstract: "This book is designed to help transportation professionals and construction experts to develop and implement successful smart systems, leveraging the current trends, equipment, and advanced technologies to drive the green transportation system development. Artificial intelligence (AI) is a new direction that has opened a revolution in technology and smart applications, and it is also the basis for creating a green environment in the net-zero era. Therefore, machines, devices, self-driving car, and robots controlled by artificial intelligence-based systems are now the model of a smart transportation ecosystem for which all these technologies are referred to as "green" industries. In past years, the idea of making a green environment has been existing and moving on the society 5.0 being as a country strategy, and today, AI technology continues its development on this prototype. Nowadays, AI has begun actions to resemble a person in a real sense, and the idea of human-liked robotics put forward by scientists has started to be realized and will probably complete its development as living machines in the near future. AI has many subsystems and application in various industries, some of which have automation more accurately and are more integrated in modern industries.  This book also targets a mixed audience of specialists, analysts, engineers, scholars, researchers, academics, professionals, and students from different communities to share and contribute new ideas, methodologies, technologies, approaches, models, frameworks, theories, and practices to resolve the challenging issues associated with the leveraging of AI and Industrial Internet of Things (IIoT) in green transportation ecosystem.",
+      doi: "10.1007/978-3-031-72617-0",
+      link: "https://link.springer.com/book/10.1007/978-3-031-72617-0",
       metrics: { citations: 13, reads: 78, saves: 5 }
     },
-    // Adding some 2024 papers for variety
-    {
-      title: "Machine Learning Applications in Sustainable Construction Materials",
-      authors: ["Frederic Mirindi", "Environmental Construction Team"],
-      journal: "Sustainable Construction Review",
-      year: 2024,
-      type: "Review",
-      abstract: "Comprehensive review of machine learning applications in the development and optimization of sustainable construction materials, focusing on environmental impact and performance enhancement.",
-      doi: "10.1016/j.scr.2024.100456",
-      link: "https://www.sciencedirect.com/sustainable-construction-review",
-      metrics: { citations: 35, reads: 198, saves: 16 }
-    },
-    {
-      title: "Ethical AI in Economics: A Framework for Responsible Implementation",
-      authors: ["Frederic Mirindi", "AI Ethics Consortium"],
-      journal: "AI Ethics and Society Conference",
-      year: 2024,
-      type: "Conference",
-      abstract: "Development of an ethical framework for implementing artificial intelligence solutions in economic research and policy-making, addressing bias, transparency, and accountability.",
-      doi: "10.1109/aies.2024.789123",
-      link: "https://ieeexplore.ieee.org/ethical-ai-economics",
-      metrics: { citations: 42, reads: 156, saves: 18 }
-    }
   ];
 
   console.log(`Loaded ${publicationsData.length} publications`);
