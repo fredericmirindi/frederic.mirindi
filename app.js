@@ -1216,17 +1216,6 @@ function initializePublications() {
       link: "http://dx.doi.org/10.5281/zenodo.17011408",
       metrics: { citations: 7, reads: 42, saves: 3 }
     },
-    {
-      title: "Driving Green Transportation System Through Artificial Intelligence and Automation",
-      authors: ["A Khang", "D Mirindi", "F Mirindi"],
-      journal: "Green Transportation Technology Review",
-      year: 2025,
-      type: "Article",
-      abstract: "This book is designed to help transportation professionals and construction experts to develop and implement successful smart systems, leveraging the current trends, equipment, and advanced technologies to drive the green transportation system development. Artificial intelligence (AI) is a new direction that has opened a revolution in technology and smart applications, and it is also the basis for creating a green environment in the net-zero era. Therefore, machines, devices, self-driving car, and robots controlled by artificial intelligence-based systems are now the model of a smart transportation ecosystem for which all these technologies are referred to as "green" industries. In past years, the idea of making a green environment has been existing and moving on the society 5.0 being as a country strategy, and today, AI technology continues its development on this prototype. Nowadays, AI has begun actions to resemble a person in a real sense, and the idea of human-liked robotics put forward by scientists has started to be realized and will probably complete its development as living machines in the near future. AI has many subsystems and application in various industries, some of which have automation more accurately and are more integrated in modern industries.  This book also targets a mixed audience of specialists, analysts, engineers, scholars, researchers, academics, professionals, and students from different communities to share and contribute new ideas, methodologies, technologies, approaches, models, frameworks, theories, and practices to resolve the challenging issues associated with the leveraging of AI and Industrial Internet of Things (IIoT) in green transportation ecosystem.",
-      doi: "10.1007/978-3-031-72617-0",
-      link: "https://link.springer.com/book/10.1007/978-3-031-72617-0",
-      metrics: { citations: 13, reads: 78, saves: 5 }
-    },
   ];
 
   console.log(`Loaded ${publicationsData.length} publications`);
