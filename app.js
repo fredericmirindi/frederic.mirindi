@@ -971,3 +971,541 @@ fetch('/api/latest-tweets')
 
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Enhanced Publications Page JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializePublicationsPage();
+});
+
+function initializePublicationsPage() {
+    initializeSearch();
+    initializeFilters();
+    initializeCitations();
+    initializeTagFiltering();
+    initializeLoadingStates();
+}
+
+// Search Functionality
+function initializeSearch() {
+    const searchInput = document.getElementById('publicationSearch');
+    const searchBtn = document.getElementById('searchBtn');
+    
+    if (searchInput) {
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch(this.value.trim());
+            }, 300);
+        });
+        
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch(this.value.trim());
+            }
+        });
+    }
+    
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            const query = searchInput.value.trim();
+            performSearch(query);
+        });
+    }
+}
+
+function performSearch(query) {
+    const papers = document.querySelectorAll('.paper-card.enhanced');
+    const noResults = document.getElementById('noResults');
+    let visibleCount = 0;
+    
+    // Show loading state
+    showLoadingState(true);
+    
+    setTimeout(() => {
+        papers.forEach(paper => {
+            if (query === '') {
+                // Show all papers if search is empty
+                paper.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                // Search in title, journal, abstract, and tags
+                const title = paper.querySelector('.paper-title').textContent.toLowerCase();
+                const journal = paper.querySelector('.journal').textContent.toLowerCase();
+                const abstract = paper.querySelector('.paper-abstract')?.textContent.toLowerCase() || '';
+                const tags = Array.from(paper.querySelectorAll('.tag'))
+                    .map(tag => tag.textContent.toLowerCase())
+                    .join(' ');
+                
+                const searchContent = `${title} ${journal} ${abstract} ${tags}`;
+                
+                if (searchContent.includes(query.toLowerCase())) {
+                    paper.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    paper.classList.add('hidden');
+                }
+            }
+        });
+        
+        // Show/hide no results message
+        if (noResults) {
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        showLoadingState(false);
+        
+        // Animate visible papers
+        animateVisiblePapers();
+        
+    }, 300);
+}
+
+// Filter Functionality
+function initializeFilters() {
+    const yearFilter = document.getElementById('yearFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    
+    if (yearFilter) {
+        yearFilter.addEventListener('change', applyFilters);
+    }
+    
+    if (typeFilter) {
+        typeFilter.addEventListener('change', applyFilters);
+    }
+    
+    if (clearFiltersBtn) {
+        clearFiltersBtn.addEventListener('click', clearAllFilters);
+    }
+}
+
+function applyFilters() {
+    const yearFilter = document.getElementById('yearFilter')?.value || '';
+    const typeFilter = document.getElementById('typeFilter')?.value || '';
+    const papers = document.querySelectorAll('.paper-card.enhanced');
+    const noResults = document.getElementById('noResults');
+    let visibleCount = 0;
+    
+    showLoadingState(true);
+    
+    setTimeout(() => {
+        papers.forEach(paper => {
+            const paperYear = paper.getAttribute('data-year') || '';
+            const paperType = paper.getAttribute('data-type') || '';
+            
+            const yearMatch = !yearFilter || paperYear === yearFilter;
+            const typeMatch = !typeFilter || paperType === typeFilter;
+            
+            if (yearMatch && typeMatch) {
+                paper.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                paper.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide no results message
+        if (noResults) {
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        showLoadingState(false);
+        animateVisiblePapers();
+        
+    }, 200);
+}
+
+function clearAllFilters() {
+    // Clear all filter inputs
+    const yearFilter = document.getElementById('yearFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const searchInput = document.getElementById('publicationSearch');
+    
+    if (yearFilter) yearFilter.value = '';
+    if (typeFilter) typeFilter.value = '';
+    if (searchInput) searchInput.value = '';
+    
+    // Show all papers
+    const papers = document.querySelectorAll('.paper-card.enhanced');
+    const noResults = document.getElementById('noResults');
+    
+    papers.forEach(paper => {
+        paper.classList.remove('hidden');
+    });
+    
+    if (noResults) {
+        noResults.style.display = 'none';
+    }
+    
+    showNotification('All filters cleared', 'success');
+    animateVisiblePapers();
+}
+
+// Citation Functionality
+function initializeCitations() {
+    const citationModal = document.getElementById('citationModal');
+    const citationModalClose = document.getElementById('citationModalClose');
+    const citationFormat = document.getElementById('citationFormat');
+    const citationText = document.getElementById('citationText');
+    const copyCitationBtn = document.getElementById('copyCitation');
+    
+    let currentCitation = '';
+    
+    // Handle cite button clicks
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('cite-btn') || e.target.closest('.cite-btn')) {
+            e.preventDefault();
+            const citeBtn = e.target.classList.contains('cite-btn') ? e.target : e.target.closest('.cite-btn');
+            currentCitation = citeBtn.getAttribute('data-citation') || '';
+            
+            if (currentCitation) {
+                showCitationModal(currentCitation);
+            }
+        }
+    });
+    
+    // Close modal
+    if (citationModalClose) {
+        citationModalClose.addEventListener('click', hideCitationModal);
+    }
+    
+    // Close modal on backdrop click
+    if (citationModal) {
+        citationModal.addEventListener('click', function(e) {
+            if (e.target === citationModal) {
+                hideCitationModal();
+            }
+        });
+    }
+    
+    // Format change
+    if (citationFormat) {
+        citationFormat.addEventListener('change', function() {
+            updateCitationFormat(currentCitation, this.value);
+        });
+    }
+    
+    // Copy citation
+    if (copyCitationBtn) {
+        copyCitationBtn.addEventListener('click', function() {
+            const textToCopy = citationText.value;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showNotification('Citation copied to clipboard', 'success');
+                }).catch(() => {
+                    fallbackCopy(textToCopy);
+                });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+        });
+    }
+    
+    // ESC key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && citationModal?.classList.contains('active')) {
+            hideCitationModal();
+        }
+    });
+}
+
+function showCitationModal(citation) {
+    const citationModal = document.getElementById('citationModal');
+    const citationFormat = document.getElementById('citationFormat');
+    
+    if (citationModal) {
+        updateCitationFormat(citation, citationFormat?.value || 'apa');
+        citationModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function hideCitationModal() {
+    const citationModal = document.getElementById('citationModal');
+    
+    if (citationModal) {
+        citationModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function updateCitationFormat(citation, format) {
+    const citationText = document.getElementById('citationText');
+    
+    if (!citationText || !citation) return;
+    
+    let formattedCitation = citation;
+    
+    // Basic format conversion (you can enhance this)
+    switch (format) {
+        case 'apa':
+            formattedCitation = citation;
+            break;
+        case 'mla':
+            // Convert to MLA format (simplified)
+            formattedCitation = citation.replace(/\(\d{4}\)/, '').replace(/\. /, ', ') + '.';
+            break;
+        case 'chicago':
+            // Convert to Chicago format (simplified)
+            formattedCitation = citation.replace(/\(\d{4}\)/, '').replace(/\. /, '. ');
+            break;
+    }
+    
+    citationText.value = formattedCitation;
+}
+
+function fallbackCopy(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showNotification('Citation copied to clipboard', 'success');
+    } catch (err) {
+        showNotification('Failed to copy citation', 'error');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Tag Filtering
+function initializeTagFiltering() {
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('tag')) {
+            const tagText = e.target.textContent.trim().toLowerCase();
+            filterByTag(tagText);
+        }
+    });
+}
+
+function filterByTag(tagName) {
+    const papers = document.querySelectorAll('.paper-card.enhanced');
+    const noResults = document.getElementById('noResults');
+    let visibleCount = 0;
+    
+    // Clear other filters
+    const yearFilter = document.getElementById('yearFilter');
+    const typeFilter = document.getElementById('typeFilter');
+    const searchInput = document.getElementById('publicationSearch');
+    
+    if (yearFilter) yearFilter.value = '';
+    if (typeFilter) typeFilter.value = '';
+    if (searchInput) searchInput.value = '';
+    
+    showLoadingState(true);
+    
+    setTimeout(() => {
+        papers.forEach(paper => {
+            const tags = Array.from(paper.querySelectorAll('.tag'))
+                .map(tag => tag.textContent.trim().toLowerCase());
+            
+            if (tags.includes(tagName)) {
+                paper.classList.remove('hidden');
+                visibleCount++;
+            } else {
+                paper.classList.add('hidden');
+            }
+        });
+        
+        // Show/hide no results message
+        if (noResults) {
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        showLoadingState(false);
+        animateVisiblePapers();
+        
+        showNotification(`Filtering by tag: ${tagName}`, 'info');
+        
+    }, 200);
+}
+
+// Loading States
+function initializeLoadingStates() {
+    // Add loading states for external links
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href^="http"]');
+        if (link && link.target === '_blank') {
+            showNotification('Opening publication...', 'info');
+        }
+    });
+}
+
+function showLoadingState(show) {
+    const papersList = document.getElementById('papersList');
+    
+    if (papersList) {
+        if (show) {
+            papersList.classList.add('loading');
+        } else {
+            papersList.classList.remove('loading');
+        }
+    }
+}
+
+function animateVisiblePapers() {
+    const visiblePapers = document.querySelectorAll('.paper-card.enhanced:not(.hidden)');
+    
+    visiblePapers.forEach((paper, index) => {
+        paper.style.animationDelay = `${index * 0.1}s`;
+        paper.style.animation = 'none';
+        
+        // Trigger reflow
+        paper.offsetHeight;
+        
+        paper.style.animation = 'fadeInUp 0.5s ease-out forwards';
+    });
+}
+
+// Notification System
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification--${type}`;
+    notification.textContent = message;
+    
+    // Style the notification
+    Object.assign(notification.style, {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        padding: '12px 20px',
+        borderRadius: '8px',
+        color: 'white',
+        fontWeight: '500',
+        fontSize: '14px',
+        zIndex: '9999',
+        transform: 'translateX(100%)',
+        transition: 'transform 0.3s ease',
+        maxWidth: '300px',
+        wordWrap: 'break-word'
+    });
+    
+    // Set background color based on type
+    const colors = {
+        success: 'var(--color-success)',
+        error: 'var(--color-error)',
+        warning: 'var(--color-warning)',
+        info: 'var(--color-primary)'
+    };
+    notification.style.backgroundColor = colors[type] || colors.info;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Keyboard Navigation
+document.addEventListener('keydown', function(e) {
+    // Ctrl/Cmd + F to focus search
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+        e.preventDefault();
+        const searchInput = document.getElementById('publicationSearch');
+        if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+        }
+    }
+    
+    // Escape to clear search
+    if (e.key === 'Escape') {
+        const searchInput = document.getElementById('publicationSearch');
+        if (searchInput && document.activeElement === searchInput) {
+            searchInput.value = '';
+            performSearch('');
+            searchInput.blur();
+        }
+    }
+});
+
+// Statistics Update
+function updatePublicationStats() {
+    const totalPapers = document.querySelectorAll('.paper-card.enhanced').length;
+    const visiblePapers = document.querySelectorAll('.paper-card.enhanced:not(.hidden)').length;
+    
+    // Update stats if they exist
+    const statNumber = document.querySelector('.stat-item .stat-number');
+    if (statNumber && statNumber.textContent === '14') {
+        statNumber.textContent = visiblePapers.toString();
+    }
+}
+
+// Intersection Observer for Performance
+function initializeIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    document.querySelectorAll('.paper-card.enhanced').forEach(card => {
+        observer.observe(card);
+    });
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initializeIntersectionObserver, 500);
+});
+
+// Export functions for global access
+window.PublicationsPage = {
+    performSearch,
+    applyFilters,
+    clearAllFilters,
+    showCitationModal,
+    filterByTag,
+    showNotification,
+    updatePublicationStats
+};
