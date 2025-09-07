@@ -1024,10 +1024,10 @@ function initializePublications() {
       journal: "Manufacturing Letters",
       year: 2025,
       type: "Article",
-      abstract: "Investigation of machine learning algorithms to predict mechanical properties of wood-composite materials incorporating recycled plastic fibers from PET, HDPE, and PP sources for sustainable construction applications.",
+      abstract: "Plastic composites provide an eco-friendly substitute for conventional construction materials. Indeed, recycling waste plastic represents a progressive approach to waste management with the aim of mitigating the growing issue of pollution in urban environments. Our research aims to review the physical properties, including water absorption (WA) and thickness swelling (TS), and mechanical properties, such as the internal bond (IB), the modulus of rupture (MOR), and the modulus of elasticity (MOE), of the latest findings made of wood panels combined with plastic. We are focusing on three types of plastic, namely polyethylene terephthalate (PET), polypropylene (PP), and high-density polyethylene (HDPE). In addition, we employed machine learning (ML) algorithms, including the hierarchical clustering dendrogram, the Pearson correlation coefficient, the support vector regression, the random forest (RF), and the decision tree (DT) for prediction analysis. For instance, the results indicate that combining HDPE with wood pulp fiber increases the MOR (42.45 MPa) and MOE (66.7 MPa), respectively. Furthermore, mixed plastics such as PET, HDPE, PP, and LDPE improve the dimensional stability by reducing the WA (0.32 %) and TS (0.18 %), respectively. In most cases, these results meet the minimum standard requirement for general-purpose boards, according with the American National Standard for Particleboard (ANSI/A208.1-1999), the European standard (EN 312), and Brazilian Association of Technical (ABNT NBR) standard. In addition, the dendrogram identifies three primary clusters with varying Euclidean distances, indicating the performance of wood-plastic panels for both physical and mechanical properties. Notably, the dimensional stability among panels is stronger than that of mechanical properties. The correlation matrix is important for selecting an appropriate plastic. The SVR, RF, and DT algorithms make predictions by analyzing the properties of the panel. For instance, the DT algorithm shows that when WA is less than 25 %, the predicted value of TS is 0.24 %; in addition, when the value is between 25 % and 75 %, TS is equal to 7.92 %; also, when WA is greater than 75 %, TS is predicted to be at 13.7 %. This innovative method of utilizing ML and DL for prediction opens new possibilities for the use of plastic in panel production, as it allows for the selection of suitable materials and fabrication techniques to create a wood-plastic composite.",
       doi: "10.1016/j.mfglet.2025.24-35",
-      link: "https://www.sciencedirect.com/science/article/pii/S2351978924000014",
-      metrics: { citations: 18, reads: 92, saves: 7 }
+      link: "https://www.sciencedirect.com/science/article/pii/S2213846325000288#:~:text=We%20are%20focusing%20on%20three,(66.7%20MPa)%2C%20respectively.",
+      metrics: { citations: 0, reads: 92, saves: 7 }
     },
     {
       title: "Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties",
@@ -1035,10 +1035,10 @@ function initializePublications() {
       journal: "Manufacturing Letters",
       year: 2025,
       type: "Article",
-      abstract: "Comprehensive analysis using machine learning approaches to evaluate the impact of nanoparticle additives on concrete mechanical performance and durability characteristics in construction materials.",
-      doi: "10.1016/j.mfglet.2025.1657-1668",
-      link: "https://www.sciencedirect.com/science/article/pii/S2351978924000026",
-      metrics: { citations: 24, reads: 156, saves: 11 }
+      abstract: "Nanoparticles as raw material additive are substances that modify the concrete product. This study presents a comprehensive analysis of nanoparticle effects on concrete mechanical properties using advanced machine learning (ML) algorithms. We examine various nanoparticle types, including multi-walled carbon nanotubes (MWCNTs), graphene nanoplatelets (GNPs), nano-SiO2 (silica), and nano-TiO2 (titanium dioxide), investigating their impact on concrete’s flexural (fb), compressive (fc), and tensile (ft) strengths. We use ML algorithms such as decision tree (DT), Pearson correlation coefficient, and the hierarchical clustering algorithms to analyze their mechanical properties. Results show that there is a significant increase in mechanical strength when nanoparticles are incorporated into concrete. For example, adding nano-Fe2O3 (iron oxide) can increase the control concrete sample of fc and fb from 105 MPa to 140 MPa and 16 MPa to 23 MPa, respectively. The study identifies five primary enhancement mechanisms: filler effect, nucleation site provision, pozzolanic reaction, nano-reinforcement, and C-S-H structure modification. However, Pearson correlation analysis reveals significant inconsistencies in strength improvements, with correlation coefficients ranging from 0.87 for tensile-compressive strength relationships to −0.26 for flexural strength improvements. The DT analysis reveals that nanoparticle concentration is the decisive factor in determining the improvement of concrete strength. On the other hand, the hierarchical clustering analysis identifies distinct groupings of nanoparticles based on their enhancement mechanisms, with MWCNTs forming an independent cluster due to their unique concrete fb (23 MPa) and fc (140 MPa) strengths. In addition, the cost analysis reveals that nanoparticle additions can improve concrete qualities, but their selection and dosage optimization should be considered to balance performance increases with economic viability in practical use. This research provides useful information for developing optimized nanoparticle-enhanced concrete formulations while highlighting the complexity of strength enhancement mechanisms.",
+      doi: "10.1016/j.mfglet.2025.07.001",
+      link: "https://doi.org/10.1016/j.mfglet.2025.07.001",
+      metrics: { citations: 1, reads: 25, saves: 11 }
     },
     {
       title: "Neural Networks for Predicting Market Trends in Sustainable Industries: A Review",
@@ -1046,9 +1046,9 @@ function initializePublications() {
       journal: "Recent Advances in Artificial Intelligence for Sustainable Development",
       year: 2025,
       type: "Review",
-      abstract: "Comprehensive review of neural network applications in predicting market dynamics within sustainable industries, examining methodological approaches and performance metrics across various economic sectors.",
-      doi: "10.2991/978-94-6463-440-4_1",
-      link: "https://www.atlantis-press.com/proceedings/raisd-25/126013736",
+      abstract: "Neural networks (NN) are increasingly acknowledged as effective tools for forecasting market trends in sustainable industries, providing the ability to improve decision-making in complex, dynamic environments. This paper provides a review of current research employing NN for forecasting trends in key sustainable fields, specifically energy, finance, and construction. It explores diverse NN architectures, their mathematical underpinnings, and practical applications such as energy demand forecasting, sustainable finance approaches, and construction workflow optimization. Consideration is given to the particular advantages NN offer in handling non-linear patterns and adapting to variable market dynamics. While significant obstacles related to data accessibility and model interpretability persists, the outlook for NNin sustainable industries is encouraging. Advancements in explainable AI (XAI), Green AI initiatives, and real-time adaptive systems bolster this positive outlook. In an era where sustainability is paramount, NN are poised to contribute substantially to innovation and the global transition toward a more sustainable future.",
+      doi: "10.2991/978-94-6463-787-8_50",
+      link: "https://doi.org/10.2991/978-94-6463-787-8_50",
       metrics: { citations: 31, reads: 187, saves: 9 }
     },
     {
@@ -1101,10 +1101,10 @@ function initializePublications() {
       journal: "Machine Learning Technologies on Energy Economics and Finance",
       year: 2025,
       type: "Article",
-      abstract: "This study compares various machine learning algorithms for forecasting energy prices, focusing on accuracy and computational efficiency. We analyze multiple approaches including neural networks, support vector machines, and ensemble methods.",
+      abstract: "Accurate forecasting of energy prices is crucial for effective decision-making in the energy sector. Traditional forecasting methods often struggle to capture the complex and dynamic nature of energy markets. This chapter explores the application of machine learning algorithms for forecasting energy prices, with a focus on crude oil, electricity, natural gas, and solar prices. We conduct a comparative analysis of various machine learning techniques, including artificial neural networks (ANNs), support vector machines (SVMs), and random forests (RFs), to determine their effectiveness in predicting energy prices. Our findings reveal that machine learning algorithms outperform traditional forecasting methods, with ANN and SVM exhibiting the highest accuracy. We also discuss the role of renewable energy technologies (RETs) in shaping energy economics and finance, highlighting their potential to reduce energy costs and increase revenue for economic growth. This research contributes to the advancement of energy systems and provides valuable insights for policymakers, financial managers, and stakeholders in the energy sector.",
       doi: "10.1007/978-3-031-94862-6_6",
       link: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6",
-      metrics: { citations: 45, reads: 128, saves: 12 }
+      metrics: { citations: 1, reads: 52, saves: 12 }
     },
     {
       title: "Advance toward Artificial Superintelligence with OpenAI's O1 reinforcement learning and ethics",
