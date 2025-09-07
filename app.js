@@ -990,8 +990,6 @@ fetch('/api/latest-tweets')
 
 
 
-
-
 /* ===== Publications (scoped) ===== */
 function initializePublications() {
   const wrap = document.getElementById('pubs-grid-wrap');
@@ -1005,8 +1003,7 @@ function initializePublications() {
   const listBtn = document.getElementById('pubs-list');
   const toast = document.getElementById('pubs-toast');
 
-  // Source data derived from the existing Publications list
-  // (fields: title, journal, year, type, link)
+  // Extended publications data with new papers from screenshots
   const publicationsData = [
     { title: "Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis", journal: "Springer - International Series in Operations Research & Management Science", year: 2025, type: "Article", link: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6" },
     { title: "Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics", journal: "IEEE", year: 2025, type: "Article", link: "https://ieeexplore.ieee.org/author/497245784122578" },
@@ -1021,7 +1018,10 @@ function initializePublications() {
     { title: "Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels", journal: "ScienceDirect", year: 2025, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S2949736125000697" },
     { title: "Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations", journal: "ACM Digital Library", year: 2025, type: "Article", link: "https://dl.acm.org/doi/full/10.1145/3716489.3728431" },
     { title: "Review: The Role of Artificial Intelligence in Building Information Modeling", journal: "ACM Digital Library", year: 2025, type: "Review", link: "https://dl.acm.org/doi/full/10.1145/3716489.3728433" },
-    { title: "A Review on Aerospace-AI, with Ethics and Implications", journal: "ResearchGate", year: 2024, type: "Review", link: "https://www.researchgate.net/profile/Derrick-Mirindi-2/publication/389746999_A_Review_on_Aerospace-AI_with_Ethics_and_Implications/links/67d0e88cbab3d32d8440e012/A-Review-on-Aerospace-AI-with-Ethics-and-Implications.pdf" }
+    { title: "A Review on Aerospace-AI, with Ethics and Implications", journal: "ResearchGate", year: 2024, type: "Review", link: "https://www.researchgate.net/profile/Derrick-Mirindi-2/publication/389746999_A_Review_on_Aerospace-AI_with_Ethics_and_Implications/links/67d0e88cbab3d32d8440e012/A-Review-on-Aerospace-AI-with-Ethics-and-Implications.pdf" },
+    // NEW PAPERS FROM SCREENSHOTS
+    { title: "Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres", journal: "Manufacturing Letters", year: 2024, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S2351978924000014" },
+    { title: "Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties", journal: "Manufacturing Letters", year: 2024, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S2351978924000026" }
   ];
 
   // Build option sets
@@ -1043,7 +1043,7 @@ function initializePublications() {
 
   const mkTags = (title, type) => {
     const base = [type];
-    const keywords = ["AI","Machine","Learning","Neural","Economics","Forecast","BIM","Ethics","Sustainability","Concrete","Geopolymer","Nanoparticle","Review"];
+    const keywords = ["AI","Machine","Learning","Neural","Economics","Forecast","BIM","Ethics","Sustainability","Concrete","Geopolymer","Nanoparticle","Review","Wood","Composite","PET","HDPE","Laterite","Manufacturing"];
     const found = keywords.filter(k => title.toLowerCase().includes(k.toLowerCase()));
     return Array.from(new Set([...base, ...found])).slice(0,5);
   };
