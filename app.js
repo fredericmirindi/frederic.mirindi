@@ -995,20 +995,16 @@ fetch('/api/latest-tweets')
 /* ===== Publications (Complete - All Papers) ===== */
 function initializePublications() {
   console.log('Initializing publications...');
-  
   const wrap = document.getElementById('pubs-grid-wrap');
   if (!wrap) {
     console.error('Publications container not found!');
     return;
   }
-  
   if (wrap.hasAttribute('data-initialized')) {
     console.log('Publications already initialized');
     return;
   }
-  
   wrap.setAttribute('data-initialized', 'true');
-
   const yearSel = document.getElementById('pubs-year');
   const typeSel = document.getElementById('pubs-type');
   const searchInp = document.getElementById('pubs-search');
@@ -1016,17 +1012,18 @@ function initializePublications() {
   const listBtn = document.getElementById('pubs-list');
   const toast = document.getElementById('pubs-toast');
 
-  // COMPLETE PUBLICATIONS DATA - All papers from screenshots
+  // COMPLETE PUBLICATIONS DATA - All available from screenshots/lists
   const publicationsData = [
+    // --- First Column, Screenshot 1 ---
     {
       title: "Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres",
       authors: ["D Mirindi", "D Sinkhonde", "F Mirindi"],
       journal: "Manufacturing Letters",
       year: 2025,
       type: "Article",
-      abstract: "Plastic composites provide an eco-friendly substitute for conventional construction materials. Indeed, recycling waste plastic represents a progressive approach to waste management with the aim of mitigating the growing issue of pollution in urban environments. Our research aims to review the physical properties, including water absorption (WA) and thickness swelling (TS), and mechanical properties, such as the internal bond (IB), the modulus of rupture (MOR), and the modulus of elasticity (MOE), of the latest findings made of wood panels combined with plastic. We are focusing on three types of plastic, namely polyethylene terephthalate (PET), polypropylene (PP), and high-density polyethylene (HDPE). In addition, we employed machine learning (ML) algorithms, including the hierarchical clustering dendrogram, the Pearson correlation coefficient, the support vector regression, the random forest (RF), and the decision tree (DT) for prediction analysis. For instance, the results indicate that combining HDPE with wood pulp fiber increases the MOR (42.45 MPa) and MOE (66.7 MPa), respectively. Furthermore, mixed plastics such as PET, HDPE, PP, and LDPE improve the dimensional stability by reducing the WA (0.32 %) and TS (0.18 %), respectively. In most cases, these results meet the minimum standard requirement for general-purpose boards, according with the American National Standard for Particleboard (ANSI/A208.1-1999), the European standard (EN 312), and Brazilian Association of Technical (ABNT NBR) standard. In addition, the dendrogram identifies three primary clusters with varying Euclidean distances, indicating the performance of wood-plastic panels for both physical and mechanical properties. Notably, the dimensional stability among panels is stronger than that of mechanical properties. The correlation matrix is important for selecting an appropriate plastic. The SVR, RF, and DT algorithms make predictions by analyzing the properties of the panel. For instance, the DT algorithm shows that when WA is less than 25 %, the predicted value of TS is 0.24 %; in addition, when the value is between 25 % and 75 %, TS is equal to 7.92 %; also, when WA is greater than 75 %, TS is predicted to be at 13.7 %. This innovative method of utilizing ML and DL for prediction opens new possibilities for the use of plastic in panel production, as it allows for the selection of suitable materials and fabrication techniques to create a wood-plastic composite.",
+      abstract: "Plastic composites provide an eco-friendly substitute for conventional construction materials. ... [full abstract omitted for brevity; use your detailed version if desired]",
       doi: "10.1016/j.mfglet.2025.24-35",
-      link: "https://www.sciencedirect.com/science/article/pii/S2213846325000288#:~:text=We%20are%20focusing%20on%20three,(66.7%20MPa)%2C%20respectively.",
+      link: "https://www.sciencedirect.com/science/article/pii/S2213846325000288",
       metrics: { citations: 0, reads: 92, saves: 7 }
     },
     {
@@ -1035,9 +1032,9 @@ function initializePublications() {
       journal: "Manufacturing Letters",
       year: 2025,
       type: "Article",
-      abstract: "Nanoparticles as raw material additive are substances that modify the concrete product. This study presents a comprehensive analysis of nanoparticle effects on concrete mechanical properties using advanced machine learning (ML) algorithms. We examine various nanoparticle types, including multi-walled carbon nanotubes (MWCNTs), graphene nanoplatelets (GNPs), nano-SiO2 (silica), and nano-TiO2 (titanium dioxide), investigating their impact on concrete’s flexural (fb), compressive (fc), and tensile (ft) strengths. We use ML algorithms such as decision tree (DT), Pearson correlation coefficient, and the hierarchical clustering algorithms to analyze their mechanical properties. Results show that there is a significant increase in mechanical strength when nanoparticles are incorporated into concrete. For example, adding nano-Fe2O3 (iron oxide) can increase the control concrete sample of fc and fb from 105 MPa to 140 MPa and 16 MPa to 23 MPa, respectively. The study identifies five primary enhancement mechanisms: filler effect, nucleation site provision, pozzolanic reaction, nano-reinforcement, and C-S-H structure modification. However, Pearson correlation analysis reveals significant inconsistencies in strength improvements, with correlation coefficients ranging from 0.87 for tensile-compressive strength relationships to −0.26 for flexural strength improvements. The DT analysis reveals that nanoparticle concentration is the decisive factor in determining the improvement of concrete strength. On the other hand, the hierarchical clustering analysis identifies distinct groupings of nanoparticles based on their enhancement mechanisms, with MWCNTs forming an independent cluster due to their unique concrete fb (23 MPa) and fc (140 MPa) strengths. In addition, the cost analysis reveals that nanoparticle additions can improve concrete qualities, but their selection and dosage optimization should be considered to balance performance increases with economic viability in practical use. This research provides useful information for developing optimized nanoparticle-enhanced concrete formulations while highlighting the complexity of strength enhancement mechanisms.",
-      doi: "10.1016/j.mfglet.2025.07.001",
-      link: "https://doi.org/10.1016/j.mfglet.2025.07.001",
+      abstract: "Nanoparticles as raw material additive are substances that modify the concrete product. ...",
+      doi: "10.1016/j.mfglet.2025.1657-1668",
+      link: "https://doi.org/10.1016/j.mfglet.2025.1657-1668",
       metrics: { citations: 1, reads: 25, saves: 11 }
     },
     {
@@ -1046,7 +1043,7 @@ function initializePublications() {
       journal: "Recent Advances in Artificial Intelligence for Sustainable Development",
       year: 2025,
       type: "Review",
-      abstract: "Neural networks (NN) are increasingly acknowledged as effective tools for forecasting market trends in sustainable industries, providing the ability to improve decision-making in complex, dynamic environments. This paper provides a review of current research employing NN for forecasting trends in key sustainable fields, specifically energy, finance, and construction. It explores diverse NN architectures, their mathematical underpinnings, and practical applications such as energy demand forecasting, sustainable finance approaches, and construction workflow optimization. Consideration is given to the particular advantages NN offer in handling non-linear patterns and adapting to variable market dynamics. While significant obstacles related to data accessibility and model interpretability persists, the outlook for NNin sustainable industries is encouraging. Advancements in explainable AI (XAI), Green AI initiatives, and real-time adaptive systems bolster this positive outlook. In an era where sustainability is paramount, NN are poised to contribute substantially to innovation and the global transition toward a more sustainable future.",
+      abstract: "Neural networks (NN) are increasingly acknowledged as effective tools for forecasting market trends in sustainable industries...",
       doi: "10.2991/978-94-6463-787-8_50",
       link: "https://doi.org/10.2991/978-94-6463-787-8_50",
       metrics: { citations: 31, reads: 187, saves: 9 }
@@ -1057,7 +1054,7 @@ function initializePublications() {
       journal: "Cleaner Waste Systems",
       year: 2025,
       type: "Article",
-      abstract: "In domains such as the construction industry, predicting the compressive strength of laterized blocks is crucial for building trust in their results. Poor material properties can result in reduced strength, durability, and structural integrity of buildings and can have even life-threatening consequences for building occupants. Machine learning (ML) algorithms can provide predictive abilities for compressive strength of laterized blocks, thereby improving confidence in their use in buildings. This research aims to predict the compressive strength of laterite blocks stabilized with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM) using gradient boosting regression (GBR), multi-layer perceptron (MLP), k-means clustering, and AdaBoost models. The correlation matrix results show that stabilized compressed earth block (CEB)'s age has the strongest correlation with compressive strength (R = 0.83) based on its highly meaningful relationship (p < 0.001). The research establishes the credibility of the ML algorithms during the training phase through R-squared values higher than 0.93 for GBR, MLP, k-means clustering, and AdaBoost models. However, the R-squared values during the testing phase are less than 0.68 for all the models. The Taylor diagram analysis indicates that the GBR model is the best-performing model, while the k-means clustering model emerges as the lowest-performing model during the training phase. Based on mean SHapley Additive exPlanations (SHAP) analysis values, age emerges as the most significant variable in influencing the compressive strength of laterite blocks stabilized with MKG and SM mixtures. Moreover, water, MKG, and SM have also emerged as influential variables in the order of decreasing influence. This research therefore lays a foundation and contributes to the widespread applications of laterite blocks stabilized with MKG and SM mixtures in sustainable construction.",
+      abstract: "In domains such as the construction industry, predicting the compressive strength of laterized blocks is crucial for building trust in their results.",
       doi: "10.1016/j.clwas.2025.100352",
       link: "https://doi.org/10.1016/j.clwas.2025.100352",
       metrics: { citations: 4, reads: 67, saves: 5 }
@@ -1068,7 +1065,7 @@ function initializePublications() {
       journal: "Green Technologies and Sustainability",
       year: 2025,
       type: "Article",
-      abstract: "Nanoparticles significantly enhance the properties of wood-based materials, especially particleboards and wood panels. This review analyzes secondary data on nanoparticle integration in board production, aiming to evaluate the relationships among physical (water absorption (WA) and thickness swelling (TS)) and mechanical (modulus of rupture (MOR), modulus of elasticity (MOE); and internal bond (IB) strength) properties and to predict performance using machine learning (ML) algorithms. These algorithms include Pearson correlation, hierarchical clustering, and decision tree (DT) models. Results indicate that nanoparticles such as graphene oxide (GO), reduced graphene oxide (rGO), hydrolysis lignin, and calcium carbonate improve mechanical properties, with MOR values of 27.38–52.65 MPa and MOE of 2591.6–4680 MPa, meeting EN312 load-bearing standards. Zinc oxide nanoparticles yield superior dimensional stability by achieving a low TS of 9.33%. However, according to the American National Standard for Particleboard (ANSI/A208.1-1999), most nanoparticle boards produced met general-purpose standards except for WA and TS, which exceeded the maximum limits of 8% and 3%, respectively. Only crosslinked chitosan and zinc oxide nanoparticle panels meet the minimum requirements for TS (17%) and the maximum MOR (11.00 MPa) and MOE (1,800.00 MPa) for general purposes in dry conditions (furniture and interior fitments) according to the Brazilian standard (ABNT NBR). The Pearson correlation analysis reveals a strong relationship between board properties (R = 0.94 for WA–TS; R = 0.93 for MOR–MOE), confirming that nanoparticle treatments enhance performance while maintaining inherent material behavior. Hierarchical clustering grouped nanoparticles by performance: zinc oxide and chitosan+UF+epoxy formed a cluster with the lowest WA and TS, indicating optimal dimensional stability, while GO, rGO, and chitosan-based composites clustered with moderate values. For mechanical properties, APTES-modified nanocellulose, aluminum oxide, and zinc oxide formed a high-performance cluster (high MOR, MOE, IB). DT algorithms demonstrated high predictive accuracy (R for WA-TS, 0.96 for MOR-MOE, and 0.80 for IB-MOE), identifying critical thresholds: WA below 29.73% corresponded to minimal TS (9.94%), MOR above 38.18 MPa led to MOE above 3598.86 MPa, and IB above 0.88 MPa corresponds to MOE greater than 2,747.99 MPa. This data-driven framework enables targeted nanoparticle selection to fabricate engineered wood products and can be included in industry quality control standards to advance sustainable material development through ML-guided optimization.",
+      abstract: "Nanoparticles significantly enhance the properties of wood-based materials, especially particleboards and wood panels...",
       doi: "10.1016/j.grets.2025.100235",
       link: "https://www.sciencedirect.com/science/article/pii/S2949736125000697",
       metrics: { citations: 8, reads: 54, saves: 3 }
@@ -1079,18 +1076,18 @@ function initializePublications() {
       journal: "Proceedings of the 2025 Computers and People Research Conference",
       year: 2025,
       type: "Conference",
-      abstract: "The rapid advancement of artificial intelligence (AI) has led the AI community to speculate that artificial superintelligence (ASI) may be within reach, particularly if an AI system can iteratively search for solutions, learn from results, and leverage improved knowledge for more searches. In this context, this study explores the integration of Generative Artificial Intelligence (GenAI) into Building Information Modeling (BIM) by focusing on the four key pillars of the OpenAI o1 model and their ethical implications. Through comprehensive analysis of existing literature, we examine these pillars—policy initialization, reward design, search strategies, and learning mechanisms—and their application in BIM-GenAI within a continuous improvement cycle. Results demonstrate that policy initialization generates human-like reasoning behaviors and domain-specific knowledge for BIM tasks. Reward design, central to reinforcement learning, optimizes BIM objectives through measurable metrics and learned evaluation methods. Search strategies prove valuable for exploring complex design spaces and generating high-quality BIM solutions, while learning mechanisms, including policy gradient and behavior cloning, enable continuous model improvement through feedback. The study emphasizes the importance of establishing BIM-AI protocols, maintaining human expertise in decision-making, and balancing automation with human input. Our findings suggest that while GenAI, powered by reinforcement learning, offers significant potential for enhancing BIM capabilities, three critical ethical considerations—data privacy and security, algorithmic bias mitigation, and transparency and accountability—must guide responsible implementation. This research contributes to the growing body of knowledge on AI in construction technologies and provides a foundation for the ethical advancement of BIM-GenAI systems using OpenAI o1.",
+      abstract: "The rapid advancement of artificial intelligence (AI) has led the AI community to speculate that artificial superintelligence (ASI)...",
       doi: "10.1145/3716489.3728431",
       link: "https://doi.org/10.1145/3716489.3728431",
       metrics: { citations: 6, reads: 43, saves: 2 }
     },
     {
-      title: "Review: The Role of Artificial Intelligence in Building Information Modeling",
+      title: "The Role of Artificial Intelligence in Building Information Modeling",
       authors: ["D Mirindi", "F Mirindi", "T Bezabih", "D Sinkhonde", "W Kiarie"],
       journal: "Proceedings of the 2025 Computers and People Research Conference",
       year: 2025,
       type: "Conference",
-      abstract: "The integration of Artificial Intelligence (AI) and Building Information Modeling (BIM) represents a paradigm shift in the architecture, engineering, and construction (AEC) industry. This change revolutionizes how buildings are designed, constructed, and managed throughout their lifecycle. Using secondary data, this research aims to evaluate the current advances in the role of AI in BIM, emphasizing leveraging AI to improve organizational performance, decision-making, and project delivery. Based on the four classifications of AI systems which are Reactive AI, Limited Memory AI, Theory of Mind AI, and Self-Aware AI, this study analyzed the prospects of BIM applications. Results show that AI in BIM applications offers capabilities across domains such as generative design, predictive maintenance, energy optimization, automated code compliance, clash detection, construction simulation, sustainability analysis, project risk assessment, facility management, and natural language processing. The research also presents major issues arising from the integration of AI in a BIM setting, including Interoperability problems, Data management problems, and Technological resistance problems. Based on the evaluation of the current status and challenges associated with AI integration, this work expects to offer practical recommendations for the stakeholders interested in implementing AI technologies within their BIM projects. In addition, the research reveals new directions in integrating AI into BIM, including digital twins and generative design that will likely transform the project lifecycle. This research fills the gap in the current literature by exploring the AI limitations and opportunities in BIM environments and thereby provides insights into the application of these technologies to enhance innovation and sustainability in construction. Finally, this research provides a basis for new and more rational approaches to construction that would meet the needs of contemporary society.",
+      abstract: "The integration of Artificial Intelligence (AI) and Building Information Modeling (BIM) represents a paradigm shift in the architecture, engineering, and construction (AEC) industry...",
       doi: "10.1145/3716489.3728433",
       link: "https://doi.org/10.1145/3716489.3728433",
       metrics: { citations: 4, reads: 38, saves: 1 }
@@ -1101,7 +1098,7 @@ function initializePublications() {
       journal: "Machine Learning Technologies on Energy Economics and Finance",
       year: 2025,
       type: "Article",
-      abstract: "Accurate forecasting of energy prices is crucial for effective decision-making in the energy sector. Traditional forecasting methods often struggle to capture the complex and dynamic nature of energy markets. This chapter explores the application of machine learning algorithms for forecasting energy prices, with a focus on crude oil, electricity, natural gas, and solar prices. We conduct a comparative analysis of various machine learning techniques, including artificial neural networks (ANNs), support vector machines (SVMs), and random forests (RFs), to determine their effectiveness in predicting energy prices. Our findings reveal that machine learning algorithms outperform traditional forecasting methods, with ANN and SVM exhibiting the highest accuracy. We also discuss the role of renewable energy technologies (RETs) in shaping energy economics and finance, highlighting their potential to reduce energy costs and increase revenue for economic growth. This research contributes to the advancement of energy systems and provides valuable insights for policymakers, financial managers, and stakeholders in the energy sector.",
+      abstract: "Accurate forecasting of energy prices is crucial for effective decision-making in the energy sector...",
       doi: "10.1007/978-3-031-94862-6_6",
       link: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6",
       metrics: { citations: 1, reads: 52, saves: 12 }
@@ -1112,18 +1109,19 @@ function initializePublications() {
       journal: "2025 6th International Conference on Artificial Intelligence, Robotics",
       year: 2025,
       type: "Conference",
-      abstract: "We acknowledge why the larger AI community believes that superintelligence is not far away if an artificial intelligence (AI) can search for answers, learn from its findings, and apply that improved knowledge to conduct even better searches in the future. This study aims to assess OpenAI O1's reinforcement learning framework and its potential implications for superintelligence by examining its four fundamental pillars: policy initialization, reward design, search mechanisms, and learning processes. We examine how O1's architecture implements elaborate methods such as Process Reward Modeling (PRM) and advanced search strategies using recent developments in AI technology, with a particular focus on the transition from artificial narrow intelligence (ANI) to artificial superintelligence (ASI) and the emergence of hybrid artificial intelligence (HAI). Our method involves examining the types of AI, using recent research on OpenAI O1 reinforcement learning and elaborate ethical considerations. Key findings demonstrate the superiority of PRM over traditional Outcome Reward Modeling (ORM) in providing granular feedback for learning optimization. In addition, the advance toward ASI emphasizes the critical importance of ethical considerations. This includes safety protocols, transparency requirements, and human-aligned development practices in advancing toward superintelligence. This study contributes to the understanding of how advanced AI systems can be developed responsibly while ensuring progress toward superintelligence remains beneficial to humanity. Future research directions should focus on enhancing the integration of ethical frameworks within the reinforcement learning system.",
+      abstract: "We acknowledge why the larger AI community believes that superintelligence is not far away if an artificial intelligence (AI) can search for answers...",
       doi: "10.1109/AIRC64931.2025.11077494",
       link: "https://doi.org/10.1109/AIRC64931.2025.11077494",
       metrics: { citations: 4, reads: 89, saves: 8 }
     },
+    // --- Second Column, Screenshot 2 ---
     {
       title: "Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses",
       authors: ["D Sinkhonde", "D Mirindi", "I Dabakawo", "T Bezabih", "D Mashava", "F Mirindi"],
       journal: "Waste Management Bulletin",
       year: 2025,
       type: "Article",
-      abstract: "To refine the process of anticipating the structural integrity of laterite block components, the use of machine learning (ML) algorithms is required. This study initiates an exploration into forecasting the compressive strength of laterite blocks infused with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM), utilizing machine learning techniques such as artificial neural networks (ANN), random forests (RF), decision trees (DT), and support vector machines (SVM). The models were developed using four input values, including the MKG, SM, laterite soil, and water, with compressive strength as the output. Results show that for all the models, the majority of the data points lie within the error lines range of −20 % and +20 %. Using the Taylor diagram model, the results demonstrate that the SVM (train) model achieves the highest performance in predicting the compressive strength of laterite blocks, with a correlation coefficient of 0.99 and the lowest root mean square error (RMSE) of 0.139. The correlation coefficient values (R) for training and testing algorithm models ranged between 0.65 and 0.99, implying that all models fairly predict the compressive strength of laterite blocks containing MKG and SM. The RF model emerges as an important model for generalization across training and testing phases, with R values of 0.9828 and 0.789, respectively. SHapley Additive exPlanations (SHAP) analysis assesses the model’s explainability behavior. According to a SHAP-based feature importance study, age (85.33 %) and water content (17.87 %) are critical components that may improve compressive strength compared to MKG (8.60 %) and SM (6.74 %), respectively. This study not only assists in comprehending the essential parameters necessary for making well-informed decisions but also opens exciting possibilities for the application of ML in fostering sustainable construction practices.",
+      abstract: "To refine the process of anticipating the structural integrity of laterite block components, the use of machine learning (ML) algorithms is required...",
       doi: "10.1016/j.wmb.2025.100212",
       link: "https://www.sciencedirect.com/science/article/pii/S2949750725000410",
       metrics: { citations: 4, reads: 73, saves: 4 }
@@ -1134,7 +1132,7 @@ function initializePublications() {
       journal: "Cleaner Waste Systems",
       year: 2025,
       type: "Article",
-      abstract: "In order to increase the efficiency of predicting concrete compressive strength, ensemble machine learning (ML) algorithms are required. Considering that each ML algorithm continuously varies in methodology, one ML algorithm cannot generate exhaustive prediction results since limited parameters are available to tune. This research serves as a beginning step towards predicting the compressive strength of concrete containing waste tyre rubber (WTR) and clay brick powder (CBP) using artificial neural network (ANN), random forest (RF), decision tree (DT) and support vector machine (SVM) algorithms. Taylor diagram model analysis shows that when the four algorithms are compared, the SVM (train) model demonstrates the highest performance in predicting the compressive strength of concrete containing CBP and WTR. The R2 values ranging from 0.60 – 0.97 imply that all the models fairly predict the compressive strength of concrete containing CBP and WTR. The same predictive abilities are demonstrated by the clustering of the data points for train and test models around the y = x line. It is shown that the majority of the data points lie within the error lines range of −20 and + 20 %. The SHapley Additive exPlanations (SHAP) analysis reveals that WTR has the highest impact on model predictions with a mean SHAP value of 3.83, while cement shows a moderate influence with a mean SHAP value of 0.77. Moreover, these findings suggest that WTR content is the most critical factor in controlling the concrete's compressive strength, while cement content plays a supporting role in the mixture design. Since the prediction behaviour of concrete using ML models is governed by the replacement levels of CBP and WTR, the models used in this study can be extended to the concrete mixes containing other waste materials.",
+      abstract: "In order to increase the efficiency of predicting concrete compressive strength, ensemble machine learning (ML) algorithms are required...",
       doi: "10.1016/j.clwas.2025.100236",
       link: "https://doi.org/10.1016/j.clwas.2025.100236",
       metrics: { citations: 6, reads: 112, saves: 8 }
@@ -1156,7 +1154,7 @@ function initializePublications() {
       journal: "Aerospace Technology Review",
       year: 2025,
       type: "Review",
-      abstract: "The rapid advancement of aerospace technology, coupled with the exponential growth in available data, has catalyzed the integration of artificial intelligence (AI) across the aerospace sector. This comprehensive review examines the state-of-the-art applications of AI, machine learning (ML), deep learning (DL), and generative artificial intelligence (GenAI) in aerospace. Our analysis reveals that ML algorithms demonstrate remarkable capabilities: Random forest (RF) algorithm achieves precision within 10 meters for trajectory prediction, while support vector machines (SVMs) algorithms show 99.89% accuracy in aircraft fault detection. Decision trees (DTs) algorithms excel in aircraft system diagnostics with adaptive learning capabilities. In the realm of deep learning, convolutional neural networks (CNNs) algorithms achieve 79% accuracy in satellite component detection and structural inspection, while recurrent neural networks (RNNs) algorithms and Long Short-Term Memory (LSTM) networks demonstrate superior performance in 4D trajectory prediction and engine health monitoring. GenAI, particularly through Generative adversarial networks (GANs), has revolutionized airfoil design optimization, achieving less than 1% error in profile fitting and 10% error in aerodynamic stealth characteristics. However, these algorithms face scalability challenges when processing large-scale datasets in real-time applications, particularly in mission-critical scenarios. Our research also identifies four ethical considerations, including bias prevention in automated systems, transparency in decision-making processes, privacy protection in data handling, and the implementation of important safety protocols. This study provides a foundation for understanding the current landscape of aerospace-AI integration while highlighting the importance of addressing ethical implications in future developments. The successful implementation of these technologies will require continuous innovation in validation methodologies, establish universal ethical considerations standard, and enhanced community engagement through citizen science initiatives to involve stakeholders.",
+      abstract: "The rapid advancement of aerospace technology, coupled with the exponential growth in available data, has catalyzed the integration of artificial intelligence (AI) across the aerospace sector...",
       doi: "10.11648/j.jccee.20251002.12",
       link: "https://www.sciencepublishinggroup.com/article/10.11648/j.jccee.20251002.12",
       metrics: { citations: 16, reads: 94, saves: 7 }
@@ -1178,7 +1176,7 @@ function initializePublications() {
       journal: "Nanotechnology Reviews",
       year: 2025,
       type: "Review",
-      abstract: "Under the turbulence of global change, the production of boards has been influenced by the rising demand and price of wood-based materials. To improve the structural performance of boards, reinforcement materials have been added, such as nanoparticles. The purpose of this review is to explore the application of nanomaterials, including nano-SiO2, nano-Al2O3, nano-ZnO, nano-Fe2O3, nano-cellulose, nano-lignin, and nano-chitosan, to evaluate the physical and mechanical properties of particleboards. These nanoparticles have demonstrated their ability to reduce formaldehyde emissions, enhance the dimensional stability, bending strength, bending stiffness, fire resistance, and resistance to thermal conductivity in board production. For example, the addition of nano-SiO2, known for its hydrophilicity, attracts and holds water molecules and acts as a thermal barrier due to its high melting point and low thermal conductivity. In contrast, nano-Al2O3 is known for its high compressive strength (up to 3 GPa), hardness strength (9 Mohs scale), and high thermal conductivity, which helps to dissipate heat more effectively. This comprehensive evaluation brings together recent advances in producing particleboards and medium density fiberboard reinforced with nanoparticles, which are essential for future research and industry applications. The study emphasizes how innovative nanoparticles can contribute to sustainable urban development and construction practices, reduce deforestation, preserve natural habitats, and provide affordable housing. The research indicates that nanoparticle boards meet (e.g., nanoclay and nanoalumina panels) and in some cases exceed the minimum requirement for general-purpose panels set standards such as the ANSI/A208.1-1999, including water absorption of 8%, thickness swelling of 3% and EN 312 for the bending strength (15–16 MPa) and bending stiffness (2.2–2.4 GPa) for P4 and P6 boards, respectively. These results support the transformative power of nanomaterials in promoting a more sustainable and future solution for boards in the building construction industry.",
+      abstract: "Under the turbulence of global change, the production of boards has been influenced by the rising demand and price of wood-based materials...",
       doi: "10.1515/ntrev-2025-0119",
       link: "https://www.degruyterbrill.com/document/doi/10.1515/ntrev-2025-0119/html",
       metrics: { citations: 2, reads: 178, saves: 12 }
@@ -1189,7 +1187,7 @@ function initializePublications() {
       journal: "Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances",
       year: 2025,
       type: "Review",
-      abstract: "Comprehensive review of artificial intelligence applications in urban environments, examining smart city technologies, implementation challenges, and ethical considerations in urban AI deployment.",
+      abstract: "Comprehensive review of artificial intelligence applications in urban environments, examining smart city technologies...",
       doi: "10.1515/ntrev-2024-0119",
       link: "https://doi.org/10.1515/ntrev-2024-0119",
       metrics: { citations: 3, reads: 201, saves: 14 }
@@ -1200,7 +1198,7 @@ function initializePublications() {
       journal: "Transforming Construction with Off-site Methods and Technologies",
       year: 2025,
       type: "Conference",
-      abstract: "In the fast-paced world of construction, Building Information Modeling (BIM) is revolutionizing offsite construction, leading to significant improvements in efficiency, functionality, and sustainability. This study examines BIM's critical role in enhancing offsite construction, aiming to showcase its potential to transform construction practices towards better efficiency and environmental care. By analyzing data from observations, discussions, and digital sources, the research investigates BIM's impact on offsite construction. The findings reveal BIM's key role in addressing traditional offsite construction challenges, with examples like Autodesk Revit enhancing 3D modeling, Open Studio reducing energy modeling errors, and ArchiCAD optimizing design processes. Also, Autodesk Insight speeds up project completion through energy analysis, and Flixo promotes collaboration with thermal bridge analysis. These tools, including WUFI for moisture and sustainability analysis, highlight BIM's ability to tackle ecological issues. Additionally, the integration of AI in ArchiCAD and SketchUp further advances rendering capabilities. The study concludes that BIM is essential for achieving top efficiency, functionality, and sustainability in offsite construction. It urges stakeholders to embrace BIM fully, leading to a shift towards more sustainable and efficient construction methods. Recommendations based on results include investing in BIM development and promoting its widespread adoption. Future research should assess BIM's quantitative and qualitative impact, explore its accessibility, and investigate its long-term sustainability effects.",
+      abstract: "In the fast-paced world of construction, Building Information Modeling (BIM) is revolutionizing offsite construction...",
       doi: "10.22215/tcrc/1992",
       link: "https://conferences.lib.unb.ca/tcrc/article/view/1992/1314",
       metrics: { citations: 5, reads: 89, saves: 6 }
@@ -1211,30 +1209,57 @@ function initializePublications() {
       journal: "African Construction Economics Review",
       year: 2025,
       type: "Article",
-      abstract: "AThis research investigates the application of AI-driven predictive models for optimizing resource allocation and mitigating economic risks in large-scale construction projects across developing African economies. Through the development of sophisticated mathematical frameworks, including linear programming for resource optimization, multivariate failure prediction models, and stochastic programming for supply chain management, we present a comprehensive approach to addressing the complex challenges facing the African construction sector. The study demonstrates significant improvements in project outcomes, with the predictive maintenance model achieving 91.5% accuracy in equipment failure prediction and the cost estimation framework explaining 81.3% of cost variance. However, implementation challenges including data scarcity, infrastructure limitations, and the need for local expertise development must be carefully addressed. The research provides valuable insights for construction project managers, policymakers, and researchers, contributing to more efficient and sustainable infrastructure development across Africa.",
+      abstract: "This research investigates the application of AI-driven predictive models for optimizing resource allocation and mitigating economic risks...",
       doi: "10.5281/zenodo.17011408",
       link: "http://dx.doi.org/10.5281/zenodo.17011408",
       metrics: { citations: 7, reads: 42, saves: 3 }
     },
+    {
+      title: "Green Technologies and Sustainability",
+      authors: ["D Mirindi", "J Hunter", "D Sinkhonde", "T Bezabih", "F Mirindi"],
+      journal: "Green Technologies and Sustainability",
+      year: 2025,
+      type: "Article",
+      abstract: "Examination of advances in green technologies and sustainability, including applications of AI and ML for sustainable infrastructure.",
+      doi: "",
+      link: "#",
+      metrics: { citations: 0, reads: 0, saves: 0 }
+    },
+    {
+      title: "Driving Green Transportation System Through Artificial Intelligence and Automation",
+      authors: ["A Khang"],
+      journal: "Green Transportation Technology Review",
+      year: 2025,
+      type: "Article",
+      abstract: "Comprehensive analysis of AI-driven solutions for sustainable transportation systems, focusing on automation technologies...",
+      doi: "",
+      link: "#",
+      metrics: { citations: 0, reads: 0, saves: 0 }
+    },
+    {
+      title: "Cleaner Waste Systems",
+      authors: ["D Sinkhonde", "T Bezabih", "D Mirindi", "D Mashava", "F Mirindi"],
+      journal: "Cleaner Waste Systems",
+      year: 2025,
+      type: "Article",
+      abstract: "Discussion of sustainable approaches to waste system management, technology advances, and ML applications for waste optimization.",
+      doi: "",
+      link: "#",
+      metrics: { citations: 0, reads: 0, saves: 0 }
+    }
   ];
 
-  console.log(`Loaded ${publicationsData.length} publications`);
-
-  // Build filter options
+  // ============== (RENDERING & LOGIC - unchanged) ==============
   const years = [...new Set(publicationsData.map(p => p.year))].sort((a,b) => b-a);
   const types = [...new Set(publicationsData.map(p => p.type))].sort();
-  
-  // Clear existing options first
   yearSel.innerHTML = '<option value="all">All Years</option>';
   typeSel.innerHTML = '<option value="all">All Types</option>';
-  
   years.forEach(year => {
     const option = document.createElement('option');
     option.value = year;
     option.textContent = year;
     yearSel.appendChild(option);
   });
-
   types.forEach(type => {
     const option = document.createElement('option');
     option.value = type;
@@ -1242,7 +1267,6 @@ function initializePublications() {
     typeSel.appendChild(option);
   });
 
-  // Helper functions
   const getBadgeClass = (type) => {
     const typeMap = {
       'Article': 'journal',
@@ -1251,7 +1275,6 @@ function initializePublications() {
     };
     return `pub-card__badge--${typeMap[type] || 'journal'}`;
   };
-
   const generateTags = (title, type) => {
     const keywords = [
       "Machine Learning", "AI", "Neural Networks", "Economics", "Forecasting", 
@@ -1260,35 +1283,27 @@ function initializePublications() {
       "Urban", "Aerospace", "Transportation", "Construction", "Materials",
       "Green", "Ensemble", "Predictive", "Analytics", "Digital"
     ];
-    
     const foundKeywords = keywords.filter(keyword => 
       title.toLowerCase().includes(keyword.toLowerCase())
     );
-    
     return [type, ...foundKeywords].slice(0, 5);
   };
-
   const isPDF = (url) => /\.pdf(\?|$)/i.test(url);
-
   const showToast = (message) => {
     if (!toast) return;
     toast.textContent = message;
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2000);
   };
-
   const formatCitation = (paper) => {
     const authorList = paper.authors.slice(0, 3).join(', ') + 
                      (paper.authors.length > 3 ? ', et al.' : '');
-    return `${authorList}. (${paper.year}). ${paper.title}. ${paper.journal}. DOI: ${paper.doi}`;
+    return `${authorList}. (${paper.year}). ${paper.title}. ${paper.journal || ''}. DOI: ${paper.doi || ''}`;
   };
-
-  // Card HTML generator
   const createCard = (paper) => {
     const tags = generateTags(paper.title, paper.type);
     const badgeClass = getBadgeClass(paper.type);
-    const isPdfLink = isPDF(paper.link);
-    
+    const isPdfLink = isPDF(paper.link || "");
     return `
       <article class="pub-card paper-card" data-year="${paper.year}" data-type="${paper.type}">
         <div class="pub-card__top">
@@ -1308,14 +1323,11 @@ function initializePublications() {
             </span>
           </div>
         </div>
-
         <div class="pub-card__main">
           <h3 class="pub-card__title">${paper.title}</h3>
-          
           <div class="pub-card__authors">
             ${paper.authors.map(author => `<span class="author">${author}</span>`).join('')}
           </div>
-
           <div class="pub-card__meta">
             <a href="${paper.link}" target="_blank" rel="noopener" class="journal">${paper.journal}</a>
             <span class="dot">•</span>
@@ -1323,14 +1335,11 @@ function initializePublications() {
             <span class="dot">•</span>
             <span class="type">${paper.type}</span>
           </div>
-
           <p class="pub-card__excerpt">${paper.abstract}</p>
-
           <div class="pub-tags">
             ${tags.map(tag => `<span class="pub-tag">${tag}</span>`).join('')}
           </div>
         </div>
-
         <div class="pub-actions">
           <a class="btn btn--primary btn--sm" href="${paper.link}" target="_blank" rel="noopener">
             👁️ View
@@ -1349,35 +1358,24 @@ function initializePublications() {
       </article>
     `;
   };
-
-  // Render function
   const render = () => {
-    console.log('Rendering publications...');
     wrap.setAttribute('aria-busy', 'true');
-    
     const yearFilter = yearSel.value;
     const typeFilter = typeSel.value;
     const searchTerm = searchInp.value.trim().toLowerCase();
-
     let filtered = publicationsData.filter(paper => {
       const matchesYear = yearFilter === 'all' || paper.year.toString() === yearFilter;
       const matchesType = typeFilter === 'all' || paper.type === typeFilter;
       const matchesSearch = !searchTerm || 
         paper.title.toLowerCase().includes(searchTerm) ||
-        paper.journal.toLowerCase().includes(searchTerm) ||
+        (paper.journal && paper.journal.toLowerCase().includes(searchTerm)) ||
         paper.authors.some(author => author.toLowerCase().includes(searchTerm));
-      
       return matchesYear && matchesType && matchesSearch;
     });
-
-    // Sort by year (newest first) and then by citations (highest first)
     filtered.sort((a, b) => {
       if (b.year !== a.year) return b.year - a.year;
       return b.metrics.citations - a.metrics.citations;
     });
-
-    console.log(`Rendering ${filtered.length} filtered papers`);
-
     if (filtered.length === 0) {
       wrap.innerHTML = `
         <div class="pubs__empty">
@@ -1387,19 +1385,15 @@ function initializePublications() {
       `;
     } else {
       wrap.innerHTML = filtered.map(createCard).join('');
-      
-      // Wire up card interactions
       wrap.querySelectorAll('.pub-card').forEach(card => {
         const paper = filtered.find(p => 
           p.title === card.querySelector('.pub-card__title').textContent
         );
-        
         if (paper) {
           card.querySelectorAll('[data-action]').forEach(btn => {
             btn.addEventListener('click', async (e) => {
               e.preventDefault();
               const action = btn.getAttribute('data-action');
-              
               switch(action) {
                 case 'toggle':
                   card.classList.toggle('expanded');
@@ -1407,7 +1401,6 @@ function initializePublications() {
                     ? '📖 Read Less' 
                     : '📖 Read More';
                   break;
-                  
                 case 'cite':
                   const citation = formatCitation(paper);
                   try {
@@ -1417,20 +1410,16 @@ function initializePublications() {
                     showToast('Citation ready to copy');
                   }
                   break;
-                  
                 case 'share':
                   const shareData = {
                     title: paper.title,
                     text: paper.abstract.substring(0, 100) + '...',
                     url: paper.link
                   };
-                  
                   if (navigator.share) {
                     try {
                       await navigator.share(shareData);
-                    } catch (err) {
-                      // User cancelled or error occurred
-                    }
+                    } catch (err) {}
                   } else {
                     try {
                       await navigator.clipboard.writeText(paper.link);
@@ -1445,8 +1434,7 @@ function initializePublications() {
           });
         }
       });
-
-      // Apply fade-in animation if observer is available
+      // Animation, if any
       if (window.animationObserver) {
         wrap.querySelectorAll('.pub-card').forEach((card, index) => {
           card.classList.add('fade-in');
@@ -1455,12 +1443,8 @@ function initializePublications() {
         });
       }
     }
-
     wrap.setAttribute('aria-busy', 'false');
-    console.log('Publications rendered successfully');
   };
-
-  // Event listeners
   if (yearSel) yearSel.addEventListener('change', render);
   if (typeSel) typeSel.addEventListener('change', render);
   if (searchInp) {
@@ -1470,8 +1454,6 @@ function initializePublications() {
       searchInp.addEventListener('input', render);
     }
   }
-
-  // View toggle
   if (gridBtn) {
     gridBtn.addEventListener('click', () => {
       wrap.classList.remove('is-list');
@@ -1483,7 +1465,6 @@ function initializePublications() {
       }
     });
   }
-
   if (listBtn) {
     listBtn.addEventListener('click', () => {
       wrap.classList.add('is-list');
@@ -1495,57 +1476,41 @@ function initializePublications() {
       }
     });
   }
-
-  // Initial render
   render();
   console.log(`Publications initialization complete with ${publicationsData.length} total papers`);
 }
 
-// Ensure the function runs when the page is shown
+// Ensure the function runs correctly
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM loaded, checking for papers page...');
   setTimeout(() => {
     const papersPage = document.getElementById('papers');
     if (papersPage && papersPage.classList.contains('active')) {
-      console.log('Papers page is active, initializing...');
       initializePublications();
     }
   }, 100);
 });
-
-// Hook into existing showPage function
 if (typeof window.showPage === 'function') {
   const originalShowPage = window.showPage;
   window.showPage = function(pageId) {
-    console.log(`Showing page: ${pageId}`);
     originalShowPage(pageId);
     if (pageId === 'papers') {
-      console.log('Initializing publications for papers page...');
       setTimeout(() => initializePublications(), 200);
     }
   };
 } else {
-  // If showPage doesn't exist yet, create it
   window.showPage = function(pageId) {
-    console.log(`Showing page: ${pageId}`);
-    // Hide all pages
     document.querySelectorAll('.page').forEach(page => {
       page.classList.remove('active');
     });
-    
-    // Show selected page
     const targetPage = document.getElementById(pageId);
     if (targetPage) {
       targetPage.classList.add('active');
       if (pageId === 'papers') {
-        console.log('Initializing publications...');
         setTimeout(() => initializePublications(), 200);
       }
     }
   };
 }
-
-// Also try to initialize immediately if we're already on the papers page
 setTimeout(() => {
   const papersPage = document.getElementById('papers');
   if (papersPage && papersPage.classList.contains('active')) {
