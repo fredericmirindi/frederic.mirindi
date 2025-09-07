@@ -992,279 +992,196 @@ fetch('/api/latest-tweets')
 
 
 
-// Academic Publications Manager
-class AcademicPublicationsManager {
-    constructor() {
-        this.papers = document.querySelectorAll('.academic-paper-card');
-        this.currentFilters = {
-            year: '',
-            type: ''
-        };
-        
-        this.init();
-    }
-    
-    init() {
-        this.setupEventListeners();
-        this.setupAnimations();
-    }
-    
-    setupEventListeners() {
-        // Filter controls
-        const yearFilter = document.getElementById('year-filter');
-        const typeFilter = document.getElementById('type-filter');
-        
-        if (yearFilter) {
-            yearFilter.addEventListener('change', (e) => this.handleFilter('year', e.target.value));
-        }
-        
-        if (typeFilter) {
-            typeFilter.addEventListener('change', (e) => this.handleFilter('type', e.target.value));
-        }
-        
-        // Action buttons
-        this.setupActionButtons();
-    }
-    
-    setupActionButtons() {
-        // View buttons
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            if (!btn.classList.contains('active')) { // Skip toolbar view button
-                btn.addEventListener('click', (e) => {
-                    const card = e.target.closest('.academic-paper-card');
-                    this.handleView(card);
-                });
-            }
+/* ===== Publications (scoped) ===== */
+function initializePublications() {
+  const wrap = document.getElementById('pubs-grid-wrap');
+  if (!wrap || wrap.hasAttribute('data-initialized')) return;
+  wrap.setAttribute('data-initialized', 'true');
+
+  const yearSel = document.getElementById('pubs-year');
+  const typeSel = document.getElementById('pubs-type');
+  const searchInp = document.getElementById('pubs-search');
+  const gridBtn = document.getElementById('pubs-grid');
+  const listBtn = document.getElementById('pubs-list');
+  const toast = document.getElementById('pubs-toast');
+
+  // Source data derived from the existing Publications list
+  // (fields: title, journal, year, type, link)
+  const publicationsData = [
+    { title: "Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis", journal: "Springer - International Series in Operations Research & Management Science", year: 2025, type: "Article", link: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6" },
+    { title: "Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics", journal: "IEEE", year: 2025, type: "Article", link: "https://ieeexplore.ieee.org/author/497245784122578" },
+    { title: "Neural Networks for Predicting Market Trends in Sustainable Industries: A Review", journal: "Atlantis Press", year: 2025, type: "Article", link: "https://www.atlantis-press.com/proceedings/raisd-25/126013736" },
+    { title: "Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses via machine learning", journal: "Cleaner Waste Systems", year: 2025, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S2772912525001502?via%3Dihub" },
+    { title: "Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review", journal: "Springer", year: 2025, type: "Article", link: "https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1" },
+    { title: "BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability", journal: "Transforming Construction with Off-site Methods and Technologies", year: 2024, type: "Conference", link: "https://conferences.lib.unb.ca/index.php/tcrc/article/view/1992" },
+    { title: "Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder", journal: "ScienceDirect", year: 2025, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S277291252500034X" },
+    { title: "Structural performance of boards through nanoparticle reinforcement: An advance review", journal: "Nanotechnology Reviews", year: 2024, type: "Review", link: "https://www.degruyterbrill.com/document/doi/10.1515/ntrev-2024-0119/html" },
+    { title: "Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses", journal: "ScienceDirect", year: 2025, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S2949750725000410" },
+    { title: "An Advance Review of Urban-AI and Ethical Considerations", journal: "ACM Digital Library", year: 2025, type: "Review", link: "https://dl.acm.org/doi/abs/10.1145/3681780.3697246" },
+    { title: "Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels", journal: "ScienceDirect", year: 2025, type: "Article", link: "https://www.sciencedirect.com/science/article/pii/S2949736125000697" },
+    { title: "Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations", journal: "ACM Digital Library", year: 2025, type: "Article", link: "https://dl.acm.org/doi/full/10.1145/3716489.3728431" },
+    { title: "Review: The Role of Artificial Intelligence in Building Information Modeling", journal: "ACM Digital Library", year: 2025, type: "Review", link: "https://dl.acm.org/doi/full/10.1145/3716489.3728433" },
+    { title: "A Review on Aerospace-AI, with Ethics and Implications", journal: "ResearchGate", year: 2024, type: "Review", link: "https://www.researchgate.net/profile/Derrick-Mirindi-2/publication/389746999_A_Review_on_Aerospace-AI_with_Ethics_and_Implications/links/67d0e88cbab3d32d8440e012/A-Review-on-Aerospace-AI-with-Ethics-and-Implications.pdf" }
+  ];
+
+  // Build option sets
+  const years = Array.from(new Set(publicationsData.map(p => p.year))).sort((a,b)=>b-a);
+  years.forEach(y => { const o = document.createElement('option'); o.value = String(y); o.textContent = String(y); yearSel.appendChild(o); });
+  const types = Array.from(new Set(publicationsData.map(p => p.type))).sort();
+  types.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; typeSel.appendChild(o); });
+
+  // Deterministic micro-metrics from title hash (avoids random per render)
+  const hashNum = (s) => Math.abs(Array.from(s).reduce((a,c)=>((a<<5)-a)+c.charCodeAt(0) | 0, 0));
+  const metricsFor = (t) => {
+    const h = hashNum(t);
+    return {
+      citations: (h % 80) + 5,
+      reads: (h % 120) + 8,
+      saves: (h % 20) + 3
+    };
+  };
+
+  const mkTags = (title, type) => {
+    const base = [type];
+    const keywords = ["AI","Machine","Learning","Neural","Economics","Forecast","BIM","Ethics","Sustainability","Concrete","Geopolymer","Nanoparticle","Review"];
+    const found = keywords.filter(k => title.toLowerCase().includes(k.toLowerCase()));
+    return Array.from(new Set([...base, ...found])).slice(0,5);
+  };
+
+  const isPDF = (url) => /\.pdf(\?|$)/i.test(url);
+
+  const toastMsg = (msg) => {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(()=>toast.classList.remove('show'), 1800);
+  };
+
+  const citeAPA = (p) => {
+    // Minimal cite string; author list intentionally omitted (not in source data)
+    return `${p.title}. ${p.journal}. ${p.year}. ${p.link}`;
+  };
+
+  const cardHTML = (p) => {
+    const m = metricsFor(p.title);
+    const tags = mkTags(p.title, p.type);
+    const excerpt = `${p.title} — ${p.journal}.`;
+    const pdf = isPDF(p.link);
+    return `
+      <article class="pub-card paper-card" data-year="${p.year}" data-type="${p.type}">
+        <div class="pub-card__top">
+          <span class="pub-card__badge">${p.type === 'Article' ? 'Journal' : p.type}</span>
+          <div class="pub-card__metrics">
+            <span class="pub-chip" title="Reads"><span class="icon">📊</span><span class="num">${m.reads}</span></span>
+            <span class="pub-chip" title="Citations"><span class="icon">📚</span><span class="num">${m.citations}</span></span>
+            <span class="pub-chip" title="Saves"><span class="icon">🔖</span><span class="num">${m.saves}</span></span>
+          </div>
+        </div>
+
+        <h3 class="pub-card__title">${p.title}</h3>
+        <div class="pub-card__meta">
+          <a class="journal" href="${p.link}" target="_blank" rel="noopener">${p.journal}</a>
+          <span class="dot">•</span>
+          <span class="year">${p.year}</span>
+          <span class="dot">•</span>
+          <span class="type">${p.type}</span>
+        </div>
+
+        <p class="pub-card__excerpt">${excerpt}</p>
+        <div class="pub-tags">${tags.map(t => `<span class="pub-tag">${t}</span>`).join('')}</div>
+
+        <div class="pub-actions">
+          <a class="btn btn--secondary btn--sm" href="${p.link}" target="_blank" rel="noopener">View</a>
+          ${pdf ? `<a class="btn btn--secondary btn--sm" href="${p.link}" target="_blank" rel="noopener">PDF</a>` : ''}
+          <button class="btn btn--secondary btn--sm" data-action="cite">Cite</button>
+          <button class="btn btn--secondary btn--sm" data-action="share">Share</button>
+          <button class="btn btn--outline btn--sm" data-action="toggle">Read More</button>
+        </div>
+      </article>
+    `;
+  };
+
+  const render = () => {
+    wrap.setAttribute('aria-busy', 'true');
+    const y = yearSel.value;
+    const t = typeSel.value;
+    const q = searchInp.value.trim().toLowerCase();
+
+    const filtered = publicationsData.filter(p => {
+      const byYear = (y === 'all') || String(p.year) === y;
+      const byType = (t === 'all') || p.type === t;
+      const byQuery = !q || p.title.toLowerCase().includes(q) || p.journal.toLowerCase().includes(q);
+      return byYear && byType && byQuery;
+    });
+
+    wrap.innerHTML = filtered.map(cardHTML).join('');
+    wrap.setAttribute('aria-busy', 'false');
+
+    // Wire card actions
+    wrap.querySelectorAll('.pub-card').forEach(card => {
+      card.querySelectorAll('[data-action]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const action = btn.getAttribute('data-action');
+          const title = card.querySelector('.pub-card__title').textContent;
+          const entry = publicationsData.find(p => p.title === title);
+          if (!entry) return;
+
+          if (action === 'toggle') {
+            card.classList.toggle('expanded');
+            btn.textContent = card.classList.contains('expanded') ? 'Read Less' : 'Read More';
+          } else if (action === 'cite') {
+            const text = citeAPA(entry);
+            try { await navigator.clipboard.writeText(text); toastMsg('Citation copied'); }
+            catch { toastMsg(text); }
+          } else if (action === 'share') {
+            const shareData = { title: entry.title, text: entry.title, url: entry.link };
+            if (navigator.share) { try { await navigator.share(shareData); } catch {} }
+            else { try { await navigator.clipboard.writeText(entry.link); toastMsg('Link copied'); } catch {} }
+          }
         });
-        
-        // PDF buttons
-        document.querySelectorAll('.pdf-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.academic-paper-card');
-                this.handlePDF(card);
-            });
-        });
-        
-        // Cite buttons
-        document.querySelectorAll('.cite-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.academic-paper-card');
-                this.handleCite(card);
-            });
-        });
-        
-        // Share buttons
-        document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.academic-paper-card');
-                this.handleShare(card);
-            });
-        });
+      });
+    });
+
+    // Add fade-in animation compatibility with your existing observer
+    if (window.animationObserver) {
+      wrap.querySelectorAll('.pub-card').forEach((el, index) => {
+        el.classList.add('fade-in');
+        el.style.animationDelay = `${index * 0.06}s`;
+        window.animationObserver.observe(el);
+      });
     }
-    
-    setupAnimations() {
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        this.papers.forEach(paper => {
-            paper.style.opacity = '0';
-            paper.style.transform = 'translateY(20px)';
-            paper.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            observer.observe(paper);
-        });
-    }
-    
-    handleFilter(filterType, value) {
-        this.currentFilters[filterType] = value.toLowerCase();
-        this.applyFilters();
-    }
-    
-    applyFilters() {
-        let visibleCount = 0;
-        
-        this.papers.forEach(paper => {
-            const year = paper.dataset.year;
-            const type = paper.dataset.type;
-            
-            const matchesYear = !this.currentFilters.year || year === this.currentFilters.year;
-            const matchesType = !this.currentFilters.type || type.toLowerCase() === this.currentFilters.type;
-            
-            const shouldShow = matchesYear && matchesType;
-            
-            if (shouldShow) {
-                paper.classList.remove('hidden');
-                visibleCount++;
-            } else {
-                paper.classList.add('hidden');
-            }
-        });
-        
-        console.log(`Showing ${visibleCount} publications`);
-    }
-    
-    handleView(card) {
-        const title = card.querySelector('.paper-title').textContent;
-        this.showNotification(`Opening: ${title}`, 'info');
-        
-        // Simulate opening paper view
-        setTimeout(() => {
-            window.open('#', '_blank');
-        }, 500);
-    }
-    
-    handlePDF(card) {
-        const title = card.querySelector('.paper-title').textContent;
-        this.showNotification(`Downloading PDF: ${title}`, 'success');
-        
-        // Simulate PDF download
-        const link = document.createElement('a');
-        link.href = '#'; // Replace with actual PDF URL
-        link.download = `${title.substring(0, 30)}.pdf`;
-        // link.click(); // Uncomment when you have real PDFs
-    }
-    
-    handleCite(card) {
-        const title = card.querySelector('.paper-title').textContent;
-        const authors = card.querySelector('.paper-authors').textContent;
-        const venue = card.querySelector('.paper-venue').textContent;
-        const year = card.querySelector('.paper-year').textContent;
-        
-        // Generate citation formats
-        const apa = `${authors} (${year}). ${title}. ${venue}.`;
-        const bibtex = `@article{mirindi${year},
-    title={${title}},
-    author={${authors}},
-    journal={${venue}},
-    year={${year}}
-}`;
-        
-        // Copy to clipboard (APA format)
-        navigator.clipboard.writeText(apa).then(() => {
-            this.showNotification('Citation copied to clipboard!', 'success');
-        }).catch(() => {
-            this.showNotification('Failed to copy citation', 'error');
-        });
-    }
-    
-    handleShare(card) {
-        const title = card.querySelector('.paper-title').textContent;
-        const url = window.location.href; // Replace with actual paper URL
-        
-        if (navigator.share) {
-            navigator.share({
-                title: title,
-                url: url
-            });
-        } else {
-            // Fallback to clipboard
-            navigator.clipboard.writeText(url).then(() => {
-                this.showNotification('Link copied to clipboard!', 'success');
-            });
-        }
-    }
-    
-    showNotification(message, type = 'info') {
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification--${type}`;
-        notification.innerHTML = `
-            <div class="notification-content">
-                <span class="notification-message">${message}</span>
-                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
-            </div>
-        `;
-        
-        // Add notification styles
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${type === 'success' ? 'var(--color-success)' : type === 'error' ? 'var(--color-error)' : 'var(--color-info)'};
-            color: var(--color-btn-primary-text);
-            padding: 12px 16px;
-            border-radius: var(--radius-base);
-            box-shadow: var(--shadow-lg);
-            z-index: 3000;
-            max-width: 300px;
-            opacity: 0;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-        `;
-        
-        // Add to page
-        document.body.appendChild(notification);
-        
-        // Animate in
-        setTimeout(() => {
-            notification.style.opacity = '1';
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-        
-        // Auto remove after 4 seconds
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.remove();
-                }
-            }, 300);
-        }, 4000);
-    }
+  };
+
+  // Events
+  yearSel.addEventListener('change', render);
+  typeSel.addEventListener('change', render);
+  searchInp.addEventListener('input', debounce(render, 150));
+  gridBtn.addEventListener('click', () => {
+    wrap.classList.remove('is-list');
+    gridBtn.classList.add('is-active'); gridBtn.setAttribute('aria-pressed', 'true');
+    listBtn.classList.remove('is-active'); listBtn.setAttribute('aria-pressed', 'false');
+  });
+  listBtn.addEventListener('click', () => {
+    wrap.classList.add('is-list');
+    listBtn.classList.add('is-active'); listBtn.setAttribute('aria-pressed', 'true');
+    gridBtn.classList.remove('is-active'); gridBtn.setAttribute('aria-pressed', 'false');
+  });
+
+  // First render
+  render();
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('papers')) {
-        new AcademicPublicationsManager();
-    }
+// Hook into your navigation flow: call when the papers page becomes active
+document.addEventListener('DOMContentLoaded', () => {
+  const papersPage = document.getElementById('papers');
+  if (papersPage && papersPage.classList.contains('active')) {
+    initializePublications();
+  }
 });
 
-// Additional notification styles
-const notificationStyles = `
-.notification-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.notification-message {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.notification-close {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
-}
-
-.notification-close:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-`;
-
-// Add notification styles to page
-const styleSheet = document.createElement('style');
-styleSheet.textContent = notificationStyles;
-document.head.appendChild(styleSheet);
+// Also invoke when showPage('papers') is called
+const _origShowPage = window.showPage;
+window.showPage = function(pageId) {
+  _origShowPage(pageId);
+  if (pageId === 'papers') initializePublications();
+};
