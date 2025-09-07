@@ -991,521 +991,409 @@ fetch('/api/latest-tweets')
 
 
 
-// Enhanced Publications Page JavaScript
-
-document.addEventListener('DOMContentLoaded', function() {
-    initializePublicationsPage();
-});
-
-function initializePublicationsPage() {
-    initializeSearch();
-    initializeFilters();
-    initializeCitations();
-    initializeTagFiltering();
-    initializeLoadingStates();
-}
-
-// Search Functionality
-function initializeSearch() {
-    const searchInput = document.getElementById('publicationSearch');
-    const searchBtn = document.getElementById('searchBtn');
-    
-    if (searchInput) {
-        let searchTimeout;
+// Publications Enhancement JavaScript
+class PublicationsManager {
+    constructor() {
+        this.papers = document.querySelectorAll('.enhanced-card');
+        this.currentView = 'grid';
+        this.currentFilters = {
+            year: '',
+            type: '',
+            topic: '',
+            search: ''
+        };
         
-        searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                performSearch(this.value.trim());
-            }, 300);
-        });
+        this.init();
+    }
+    
+    init() {
+        this.setupEventListeners();
+        this.setupAnimations();
+        this.updateStats();
+        this.setupTopicCloud();
+        this.setupTimeline();
+    }
+    
+    setupEventListeners() {
+        // Filter controls
+        const yearFilter = document.getElementById('year-filter');
+        const typeFilter = document.getElementById('type-filter');
+        const topicFilter = document.getElementById('topic-filter');
+        const searchInput = document.getElementById('search-publications');
+        const clearFilters = document.getElementById('clear-filters');
         
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                performSearch(this.value.trim());
-            }
-        });
-    }
-    
-    if (searchBtn) {
-        searchBtn.addEventListener('click', function() {
-            const query = searchInput.value.trim();
-            performSearch(query);
-        });
-    }
-}
-
-function performSearch(query) {
-    const papers = document.querySelectorAll('.paper-card.enhanced');
-    const noResults = document.getElementById('noResults');
-    let visibleCount = 0;
-    
-    // Show loading state
-    showLoadingState(true);
-    
-    setTimeout(() => {
-        papers.forEach(paper => {
-            if (query === '') {
-                // Show all papers if search is empty
-                paper.classList.remove('hidden');
-                visibleCount++;
-            } else {
-                // Search in title, journal, abstract, and tags
-                const title = paper.querySelector('.paper-title').textContent.toLowerCase();
-                const journal = paper.querySelector('.journal').textContent.toLowerCase();
-                const abstract = paper.querySelector('.paper-abstract')?.textContent.toLowerCase() || '';
-                const tags = Array.from(paper.querySelectorAll('.tag'))
-                    .map(tag => tag.textContent.toLowerCase())
-                    .join(' ');
-                
-                const searchContent = `${title} ${journal} ${abstract} ${tags}`;
-                
-                if (searchContent.includes(query.toLowerCase())) {
-                    paper.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    paper.classList.add('hidden');
-                }
-            }
-        });
-        
-        // Show/hide no results message
-        if (noResults) {
-            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-        
-        showLoadingState(false);
-        
-        // Animate visible papers
-        animateVisiblePapers();
-        
-    }, 300);
-}
-
-// Filter Functionality
-function initializeFilters() {
-    const yearFilter = document.getElementById('yearFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const clearFiltersBtn = document.getElementById('clearFilters');
-    
-    if (yearFilter) {
-        yearFilter.addEventListener('change', applyFilters);
-    }
-    
-    if (typeFilter) {
-        typeFilter.addEventListener('change', applyFilters);
-    }
-    
-    if (clearFiltersBtn) {
-        clearFiltersBtn.addEventListener('click', clearAllFilters);
-    }
-}
-
-function applyFilters() {
-    const yearFilter = document.getElementById('yearFilter')?.value || '';
-    const typeFilter = document.getElementById('typeFilter')?.value || '';
-    const papers = document.querySelectorAll('.paper-card.enhanced');
-    const noResults = document.getElementById('noResults');
-    let visibleCount = 0;
-    
-    showLoadingState(true);
-    
-    setTimeout(() => {
-        papers.forEach(paper => {
-            const paperYear = paper.getAttribute('data-year') || '';
-            const paperType = paper.getAttribute('data-type') || '';
-            
-            const yearMatch = !yearFilter || paperYear === yearFilter;
-            const typeMatch = !typeFilter || paperType === typeFilter;
-            
-            if (yearMatch && typeMatch) {
-                paper.classList.remove('hidden');
-                visibleCount++;
-            } else {
-                paper.classList.add('hidden');
-            }
-        });
-        
-        // Show/hide no results message
-        if (noResults) {
-            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-        
-        showLoadingState(false);
-        animateVisiblePapers();
-        
-    }, 200);
-}
-
-function clearAllFilters() {
-    // Clear all filter inputs
-    const yearFilter = document.getElementById('yearFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const searchInput = document.getElementById('publicationSearch');
-    
-    if (yearFilter) yearFilter.value = '';
-    if (typeFilter) typeFilter.value = '';
-    if (searchInput) searchInput.value = '';
-    
-    // Show all papers
-    const papers = document.querySelectorAll('.paper-card.enhanced');
-    const noResults = document.getElementById('noResults');
-    
-    papers.forEach(paper => {
-        paper.classList.remove('hidden');
-    });
-    
-    if (noResults) {
-        noResults.style.display = 'none';
-    }
-    
-    showNotification('All filters cleared', 'success');
-    animateVisiblePapers();
-}
-
-// Citation Functionality
-function initializeCitations() {
-    const citationModal = document.getElementById('citationModal');
-    const citationModalClose = document.getElementById('citationModalClose');
-    const citationFormat = document.getElementById('citationFormat');
-    const citationText = document.getElementById('citationText');
-    const copyCitationBtn = document.getElementById('copyCitation');
-    
-    let currentCitation = '';
-    
-    // Handle cite button clicks
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('cite-btn') || e.target.closest('.cite-btn')) {
-            e.preventDefault();
-            const citeBtn = e.target.classList.contains('cite-btn') ? e.target : e.target.closest('.cite-btn');
-            currentCitation = citeBtn.getAttribute('data-citation') || '';
-            
-            if (currentCitation) {
-                showCitationModal(currentCitation);
-            }
-        }
-    });
-    
-    // Close modal
-    if (citationModalClose) {
-        citationModalClose.addEventListener('click', hideCitationModal);
-    }
-    
-    // Close modal on backdrop click
-    if (citationModal) {
-        citationModal.addEventListener('click', function(e) {
-            if (e.target === citationModal) {
-                hideCitationModal();
-            }
-        });
-    }
-    
-    // Format change
-    if (citationFormat) {
-        citationFormat.addEventListener('change', function() {
-            updateCitationFormat(currentCitation, this.value);
-        });
-    }
-    
-    // Copy citation
-    if (copyCitationBtn) {
-        copyCitationBtn.addEventListener('click', function() {
-            const textToCopy = citationText.value;
-            
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    showNotification('Citation copied to clipboard', 'success');
-                }).catch(() => {
-                    fallbackCopy(textToCopy);
-                });
-            } else {
-                fallbackCopy(textToCopy);
-            }
-        });
-    }
-    
-    // ESC key to close modal
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && citationModal?.classList.contains('active')) {
-            hideCitationModal();
-        }
-    });
-}
-
-function showCitationModal(citation) {
-    const citationModal = document.getElementById('citationModal');
-    const citationFormat = document.getElementById('citationFormat');
-    
-    if (citationModal) {
-        updateCitationFormat(citation, citationFormat?.value || 'apa');
-        citationModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function hideCitationModal() {
-    const citationModal = document.getElementById('citationModal');
-    
-    if (citationModal) {
-        citationModal.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-function updateCitationFormat(citation, format) {
-    const citationText = document.getElementById('citationText');
-    
-    if (!citationText || !citation) return;
-    
-    let formattedCitation = citation;
-    
-    // Basic format conversion (you can enhance this)
-    switch (format) {
-        case 'apa':
-            formattedCitation = citation;
-            break;
-        case 'mla':
-            // Convert to MLA format (simplified)
-            formattedCitation = citation.replace(/\(\d{4}\)/, '').replace(/\. /, ', ') + '.';
-            break;
-        case 'chicago':
-            // Convert to Chicago format (simplified)
-            formattedCitation = citation.replace(/\(\d{4}\)/, '').replace(/\. /, '. ');
-            break;
-    }
-    
-    citationText.value = formattedCitation;
-}
-
-function fallbackCopy(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    
-    try {
-        document.execCommand('copy');
-        showNotification('Citation copied to clipboard', 'success');
-    } catch (err) {
-        showNotification('Failed to copy citation', 'error');
-    }
-    
-    document.body.removeChild(textArea);
-}
-
-// Tag Filtering
-function initializeTagFiltering() {
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('tag')) {
-            const tagText = e.target.textContent.trim().toLowerCase();
-            filterByTag(tagText);
-        }
-    });
-}
-
-function filterByTag(tagName) {
-    const papers = document.querySelectorAll('.paper-card.enhanced');
-    const noResults = document.getElementById('noResults');
-    let visibleCount = 0;
-    
-    // Clear other filters
-    const yearFilter = document.getElementById('yearFilter');
-    const typeFilter = document.getElementById('typeFilter');
-    const searchInput = document.getElementById('publicationSearch');
-    
-    if (yearFilter) yearFilter.value = '';
-    if (typeFilter) typeFilter.value = '';
-    if (searchInput) searchInput.value = '';
-    
-    showLoadingState(true);
-    
-    setTimeout(() => {
-        papers.forEach(paper => {
-            const tags = Array.from(paper.querySelectorAll('.tag'))
-                .map(tag => tag.textContent.trim().toLowerCase());
-            
-            if (tags.includes(tagName)) {
-                paper.classList.remove('hidden');
-                visibleCount++;
-            } else {
-                paper.classList.add('hidden');
-            }
-        });
-        
-        // Show/hide no results message
-        if (noResults) {
-            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-        
-        showLoadingState(false);
-        animateVisiblePapers();
-        
-        showNotification(`Filtering by tag: ${tagName}`, 'info');
-        
-    }, 200);
-}
-
-// Loading States
-function initializeLoadingStates() {
-    // Add loading states for external links
-    document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[href^="http"]');
-        if (link && link.target === '_blank') {
-            showNotification('Opening publication...', 'info');
-        }
-    });
-}
-
-function showLoadingState(show) {
-    const papersList = document.getElementById('papersList');
-    
-    if (papersList) {
-        if (show) {
-            papersList.classList.add('loading');
-        } else {
-            papersList.classList.remove('loading');
-        }
-    }
-}
-
-function animateVisiblePapers() {
-    const visiblePapers = document.querySelectorAll('.paper-card.enhanced:not(.hidden)');
-    
-    visiblePapers.forEach((paper, index) => {
-        paper.style.animationDelay = `${index * 0.1}s`;
-        paper.style.animation = 'none';
-        
-        // Trigger reflow
-        paper.offsetHeight;
-        
-        paper.style.animation = 'fadeInUp 0.5s ease-out forwards';
-    });
-}
-
-// Notification System
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification--${type}`;
-    notification.textContent = message;
-    
-    // Style the notification
-    Object.assign(notification.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        padding: '12px 20px',
-        borderRadius: '8px',
-        color: 'white',
-        fontWeight: '500',
-        fontSize: '14px',
-        zIndex: '9999',
-        transform: 'translateX(100%)',
-        transition: 'transform 0.3s ease',
-        maxWidth: '300px',
-        wordWrap: 'break-word'
-    });
-    
-    // Set background color based on type
-    const colors = {
-        success: 'var(--color-success)',
-        error: 'var(--color-error)',
-        warning: 'var(--color-warning)',
-        info: 'var(--color-primary)'
-    };
-    notification.style.backgroundColor = colors[type] || colors.info;
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Auto remove after 3 seconds
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 3000);
-}
-
-// Keyboard Navigation
-document.addEventListener('keydown', function(e) {
-    // Ctrl/Cmd + F to focus search
-    if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-        e.preventDefault();
-        const searchInput = document.getElementById('publicationSearch');
+        if (yearFilter) yearFilter.addEventListener('change', (e) => this.handleFilter('year', e.target.value));
+        if (typeFilter) typeFilter.addEventListener('change', (e) => this.handleFilter('type', e.target.value));
+        if (topicFilter) topicFilter.addEventListener('change', (e) => this.handleFilter('topic', e.target.value));
         if (searchInput) {
-            searchInput.focus();
-            searchInput.select();
+            searchInput.addEventListener('input', debounce((e) => this.handleFilter('search', e.target.value), 300));
         }
+        if (clearFilters) clearFilters.addEventListener('click', () => this.clearAllFilters());
+        
+        // View controls
+        const gridView = document.getElementById('grid-view');
+        const listView = document.getElementById('list-view');
+        const timelineView = document.getElementById('timeline-view');
+        
+        if (gridView) gridView.addEventListener('click', () => this.setView('grid'));
+        if (listView) listView.addEventListener('click', () => this.setView('list'));
+        if (timelineView) timelineView.addEventListener('click', () => this.setView('timeline'));
+        
+        // Citation buttons
+        document.querySelectorAll('.cite-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const title = e.target.closest('.cite-btn').dataset.title;
+                this.showCitationModal(title);
+            });
+        });
+        
+        // Share buttons
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = e.target.closest('.enhanced-card');
+                const title = card.querySelector('h3').textContent;
+                const url = card.querySelector('.btn--primary').href;
+                this.sharePublication(title, url);
+            });
+        });
+        
+        // Topic cloud interactions
+        document.querySelectorAll('.topic-tag').forEach(tag => {
+            tag.addEventListener('click', (e) => {
+                const topic = e.target.textContent;
+                document.getElementById('topic-filter').value = topic;
+                this.handleFilter('topic', topic);
+            });
+        });
     }
     
-    // Escape to clear search
-    if (e.key === 'Escape') {
-        const searchInput = document.getElementById('publicationSearch');
-        if (searchInput && document.activeElement === searchInput) {
-            searchInput.value = '';
-            performSearch('');
-            searchInput.blur();
-        }
+    setupAnimations() {
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${Array.from(this.papers).indexOf(entry.target) * 0.1}s`;
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        this.papers.forEach(paper => observer.observe(paper));
     }
-});
-
-// Statistics Update
-function updatePublicationStats() {
-    const totalPapers = document.querySelectorAll('.paper-card.enhanced').length;
-    const visiblePapers = document.querySelectorAll('.paper-card.enhanced:not(.hidden)').length;
     
-    // Update stats if they exist
-    const statNumber = document.querySelector('.stat-item .stat-number');
-    if (statNumber && statNumber.textContent === '14') {
-        statNumber.textContent = visiblePapers.toString();
+    handleFilter(filterType, value) {
+        this.currentFilters[filterType] = value.toLowerCase();
+        this.applyFilters();
+        this.updateStats();
     }
-}
-
-// Intersection Observer for Performance
-function initializeIntersectionObserver() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    
+    applyFilters() {
+        let visibleCount = 0;
+        
+        this.papers.forEach(paper => {
+            const year = paper.dataset.year;
+            const type = paper.dataset.type;
+            const topics = paper.dataset.topics.toLowerCase();
+            const title = paper.querySelector('h3').textContent.toLowerCase();
+            const abstract = paper.querySelector('.paper-abstract p')?.textContent.toLowerCase() || '';
+            
+            const matchesYear = !this.currentFilters.year || year === this.currentFilters.year;
+            const matchesType = !this.currentFilters.type || type.toLowerCase() === this.currentFilters.type;
+            const matchesTopic = !this.currentFilters.topic || topics.includes(this.currentFilters.topic);
+            const matchesSearch = !this.currentFilters.search || 
+                title.includes(this.currentFilters.search) || 
+                abstract.includes(this.currentFilters.search);
+            
+            const shouldShow = matchesYear && matchesType && matchesTopic && matchesSearch;
+            
+            if (shouldShow) {
+                paper.classList.remove('hidden');
+                visibleCount++;
+                this.highlightSearchTerms(paper);
+            } else {
+                paper.classList.add('hidden');
             }
         });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
+        
+        // Update results count
+        this.showResultsCount(visibleCount);
+    }
     
-    document.querySelectorAll('.paper-card.enhanced').forEach(card => {
-        observer.observe(card);
+    highlightSearchTerms(paper) {
+        if (!this.currentFilters.search) return;
+        
+        const elements = paper.querySelectorAll('h3, .paper-abstract p');
+        elements.forEach(el => {
+            const text = el.textContent;
+            const regex = new RegExp(`(${this.currentFilters.search})`, 'gi');
+            el.innerHTML = text.replace(regex, '<span class="highlight">$1</span>');
+        });
+    }
+    
+    clearAllFilters() {
+        this.currentFilters = { year: '', type: '', topic: '', search: '' };
+        
+        document.getElementById('year-filter').value = '';
+        document.getElementById('type-filter').value = '';
+        document.getElementById('topic-filter').value = '';
+        document.getElementById('search-publications').value = '';
+        
+        this.papers.forEach(paper => {
+            paper.classList.remove('hidden');
+            // Remove highlights
+            const highlighted = paper.querySelectorAll('.highlight');
+            highlighted.forEach(el => {
+                el.outerHTML = el.textContent;
+            });
+        });
+        
+        this.updateStats();
+    }
+    
+    setView(viewType) {
+        this.currentView = viewType;
+        const container = document.getElementById('publications-container');
+        
+        // Update button states
+        document.querySelectorAll('.view-controls .btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(`${viewType}-view`).classList.add('active');
+        
+        // Update container classes
+        container.className = 'publications-container';
+        container.classList.add(`${viewType}-view`);
+        
+        // Animate transition
+        container.style.opacity = '0';
+        setTimeout(() => {
+            container.style.opacity = '1';
+        }, 150);
+    }
+    
+    updateStats() {
+        const visiblePapers = Array.from(this.papers).filter(paper => !paper.classList.contains('hidden'));
+        const totalPubs = visiblePapers.length;
+        const recentPubs = visiblePapers.filter(paper => parseInt(paper.dataset.year) >= 2024).length;
+        const aiPubs = visiblePapers.filter(paper => 
+            paper.dataset.topics.toLowerCase().includes('ai') || 
+            paper.dataset.topics.toLowerCase().includes('machine learning')
+        ).length;
+        
+        // Animate counter updates
+        this.animateCounter('total-publications', totalPubs);
+        this.animateCounter('recent-publications', recentPubs);
+        this.animateCounter('ai-publications', aiPubs);
+    }
+    
+    animateCounter(elementId, targetValue) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        const startValue = parseInt(element.textContent) || 0;
+        const duration = 500;
+        const startTime = performance.now();
+        
+        const updateCounter = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
+            
+            element.textContent = currentValue + (targetValue > 20 ? '+' : '');
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        };
+        
+        requestAnimationFrame(updateCounter);
+    }
+    
+    setupTopicCloud() {
+        const topics = document.querySelectorAll('.topic-tag');
+        topics.forEach(topic => {
+            const weight = parseInt(topic.dataset.weight);
+            topic.style.fontSize = `${0.8 + weight * 0.2}rem`;
+            topic.style.opacity = `${0.6 + weight * 0.1}`;
+        });
+    }
+    
+    setupTimeline() {
+        const timelineYears = document.querySelectorAll('.timeline-year');
+        timelineYears.forEach((year, index) => {
+            setTimeout(() => {
+                year.style.opacity = '1';
+                year.style.transform = 'translateX(0)';
+            }, index * 200);
+            
+            year.style.opacity = '0';
+            year.style.transform = 'translateX(-20px)';
+            year.style.transition = 'all 0.5s ease';
+        });
+    }
+    
+    showCitationModal(title) {
+        const modal = document.getElementById('citation-modal');
+        
+        // Generate citations
+        const apa = `Mirindi, F. (2025). ${title}. Journal Name.`;
+        const ieee = `F. Mirindi, "${title}," Journal Name, 2025.`;
+        const bibtex = `@article{mirindi2025,
+    title={${title}},
+    author={Mirindi, Frederic},
+    year={2025},
+    journal={Journal Name}
+}`;
+        
+        document.getElementById('apa-citation').textContent = apa;
+        document.getElementById('ieee-citation').textContent = ieee;
+        document.getElementById('bibtex-citation').textContent = bibtex;
+        
+        modal.classList.add('active');
+    }
+    
+    sharePublication(title, url) {
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                url: url
+            });
+        } else {
+            // Fallback to clipboard
+            navigator.clipboard.writeText(url).then(() => {
+                this.showNotification('Link copied to clipboard!');
+            });
+        }
+    }
+    
+    showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--color-success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 3000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.opacity = '1';
+            notification.style.transform = 'translateY(0)';
+        }, 100);
+        
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transform = 'translateY(-20px)';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+    
+    showResultsCount(count) {
+        let counter = document.getElementById('results-counter');
+        if (!counter) {
+            counter = document.createElement('div');
+            counter.id = 'results-counter';
+            counter.style.cssText = `
+                text-align: center;
+                margin: 20px 0;
+                font-weight: 500;
+                color: var(--color-text-secondary);
+            `;
+            document.querySelector('.papers-list').parentNode.insertBefore(counter, document.querySelector('.papers-list'));
+        }
+        
+        counter.textContent = `Showing ${count} publications`;
+    }
+}
+
+// Citation modal functions
+function closeCitationModal() {
+    document.getElementById('citation-modal').classList.remove('active');
+}
+
+function copyCitation(format) {
+    const citationText = document.getElementById(`${format}-citation`).textContent;
+    navigator.clipboard.writeText(citationText).then(() => {
+        // Show success feedback
+        const btn = event.target;
+        const originalText = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.style.background = 'var(--color-success)';
+        
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+        }, 2000);
     });
 }
 
-// Initialize on page load
+// Utility function for debouncing search
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(initializeIntersectionObserver, 500);
+    // Initialize publications manager when the papers page is active
+    if (document.getElementById('papers')) {
+        new PublicationsManager();
+    }
+    
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        const modal = document.getElementById('citation-modal');
+        if (modal && e.target === modal) {
+            closeCitationModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeCitationModal();
+        }
+    });
 });
 
-// Export functions for global access
-window.PublicationsPage = {
-    performSearch,
-    applyFilters,
-    clearAllFilters,
-    showCitationModal,
-    filterByTag,
-    showNotification,
-    updatePublicationStats
-};
+// CSS for animations (add to your existing CSS)
+const additionalStyles = `
+.animate-in {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+`;
+
+// Add additional styles to the page
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
