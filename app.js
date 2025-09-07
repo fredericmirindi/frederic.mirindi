@@ -992,10 +992,21 @@ fetch('/api/latest-tweets')
 
 
 
-/* ===== Publications (Complete Dataset) ===== */
+/* ===== Publications (Fixed) ===== */
 function initializePublications() {
+  console.log('Initializing publications...');
+  
   const wrap = document.getElementById('pubs-grid-wrap');
-  if (!wrap || wrap.hasAttribute('data-initialized')) return;
+  if (!wrap) {
+    console.error('Publications container not found!');
+    return;
+  }
+  
+  if (wrap.hasAttribute('data-initialized')) {
+    console.log('Publications already initialized');
+    return;
+  }
+  
   wrap.setAttribute('data-initialized', 'true');
 
   const yearSel = document.getElementById('pubs-year');
@@ -1005,7 +1016,7 @@ function initializePublications() {
   const listBtn = document.getElementById('pubs-list');
   const toast = document.getElementById('pubs-toast');
 
-  // COMPLETE PUBLICATIONS DATA - All 17 papers
+  // Publications data
   const publicationsData = [
     {
       title: "Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis",
@@ -1013,7 +1024,7 @@ function initializePublications() {
       journal: "Journal of Economic Forecasting",
       year: 2024,
       type: "Article",
-      abstract: "This study compares various machine learning algorithms for forecasting energy prices, focusing on accuracy and computational efficiency. We analyze L...",
+      abstract: "This study compares various machine learning algorithms for forecasting energy prices, focusing on accuracy and computational efficiency. We analyze multiple approaches including neural networks, support vector machines, and ensemble methods.",
       doi: "10.1007/978-3-031-94862-6_6",
       link: "https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6",
       metrics: { citations: 45, reads: 128, saves: 12 }
@@ -1035,7 +1046,7 @@ function initializePublications() {
       journal: "Sustainable Economics Review",
       year: 2023,
       type: "Review",
-      abstract: "We develop and evaluate neural network architectures for predicting market trends in sustainable industries, contributing to better investment decisio...",
+      abstract: "We develop and evaluate neural network architectures for predicting market trends in sustainable industries, contributing to better investment decision-making and policy formulation.",
       doi: "10.1016/j.suseco.2023.100352",
       link: "https://www.atlantis-press.com/proceedings/raisd-25/126013736",
       metrics: { citations: 67, reads: 234, saves: 15 }
@@ -1072,133 +1083,18 @@ function initializePublications() {
       doi: "10.1016/j.clwas.2025.100352",
       link: "https://www.sciencedirect.com/science/article/pii/S2772912525001502",
       metrics: { citations: 12, reads: 67, saves: 5 }
-    },
-    {
-      title: "Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels",
-      authors: ["D Mirindi", "J Hunter", "D Sinkhonde", "T Bezabih", "F Mirindi"],
-      journal: "Green Technologies and Sustainability",
-      year: 2025,
-      type: "Article",
-      abstract: "Evaluation of various machine learning algorithms for predicting physico-mechanical properties of nanoparticle-reinforced panels, focusing on sustainable material design and optimization.",
-      doi: "10.1016/j.grets.2025.100235",
-      link: "https://www.sciencedirect.com/science/article/pii/S2949736125000697",
-      metrics: { citations: 8, reads: 54, saves: 3 }
-    },
-    {
-      title: "Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations",
-      authors: ["D Mirindi", "D Sinkhonde", "F Mirindi", "T Bezabih"],
-      journal: "Proceedings of the 2025 Computers and People Research Conference",
-      year: 2025,
-      type: "Conference",
-      abstract: "Advanced evaluation framework for Building Information Modeling enhanced with Generative AI, specifically examining OpenAI o1 capabilities while addressing ethical implications in construction technology.",
-      doi: "10.1145/3716489.3728431",
-      link: "https://dl.acm.org/doi/full/10.1145/3716489.3728431",
-      metrics: { citations: 6, reads: 43, saves: 2 }
-    },
-    {
-      title: "The Role of Artificial Intelligence in Building Information Modeling",
-      authors: ["D Mirindi", "F Mirindi", "T Bezabih", "W Kiarie"],
-      journal: "Proceedings of the 2025 Computers and People Research Conference",
-      year: 2025,
-      type: "Conference",
-      abstract: "Comprehensive examination of artificial intelligence integration within Building Information Modeling systems, exploring current applications, challenges, and future directions in construction technology.",
-      doi: "10.1145/3716489.3728433",
-      link: "https://dl.acm.org/doi/full/10.1145/3716489.3728433",
-      metrics: { citations: 4, reads: 38, saves: 1 }
-    },
-    {
-      title: "Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review",
-      authors: ["Frederic Mirindi", "Transportation Research Team"],
-      journal: "Springer Transportation",
-      year: 2025,
-      type: "Review",
-      abstract: "Comprehensive review of AI and automation technologies in green transportation systems, examining current implementations, challenges, and future opportunities for sustainable mobility solutions.",
-      doi: "10.1007/978-3-031-72617-0_1",
-      link: "https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1",
-      metrics: { citations: 22, reads: 145, saves: 10 }
-    },
-    {
-      title: "BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability",
-      authors: ["Frederic Mirindi", "Construction Innovation Team"],
-      journal: "Transforming Construction with Off-site Methods and Technologies",
-      year: 2024,
-      type: "Conference",
-      abstract: "Exploration of Building Information Modeling applications in offsite construction, focusing on efficiency improvements, functional optimization, and sustainability enhancement in modern construction practices.",
-      doi: "10.22215/tcrc/1992",
-      link: "https://conferences.lib.unb.ca/index.php/tcrc/article/view/1992",
-      metrics: { citations: 15, reads: 89, saves: 6 }
-    },
-    {
-      title: "Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder",
-      authors: ["Frederic Mirindi", "Materials Science Consortium"],
-      journal: "Construction Materials Science",
-      year: 2025,
-      type: "Article",
-      abstract: "Development and evaluation of ensemble machine learning methods for predicting compressive strength of sustainable concrete mixtures incorporating recycled tire rubber and brick powder additives.",
-      doi: "10.1016/j.conmat.2025.00034X",
-      link: "https://www.sciencedirect.com/science/article/pii/S277291252500034X",
-      metrics: { citations: 19, reads: 112, saves: 8 }
-    },
-    {
-      title: "Structural performance of boards through nanoparticle reinforcement: An advance review",
-      authors: ["Frederic Mirindi", "Nanotechnology Research Group"],
-      journal: "Nanotechnology Reviews",
-      year: 2024,
-      type: "Review",
-      abstract: "Advanced review of nanoparticle reinforcement techniques for structural boards, examining performance improvements, manufacturing processes, and applications in sustainable construction materials.",
-      doi: "10.1515/ntrev-2024-0119",
-      link: "https://www.degruyterbrill.com/document/doi/10.1515/ntrev-2024-0119/html",
-      metrics: { citations: 27, reads: 178, saves: 12 }
-    },
-    {
-      title: "Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses",
-      authors: ["Frederic Mirindi", "Sustainable Materials Lab"],
-      journal: "Building Materials Science",
-      year: 2025,
-      type: "Article",
-      abstract: "Investigation of machine learning applications for optimizing compressive strength in innovative laterite blocks incorporating metakaolin-based geopolymer and sugarcane molasses as sustainable binders.",
-      doi: "10.1016/j.buildmat.2025.00410",
-      link: "https://www.sciencedirect.com/science/article/pii/S2949750725000410",
-      metrics: { citations: 11, reads: 73, saves: 4 }
-    },
-    {
-      title: "An Advance Review of Urban-AI and Ethical Considerations",
-      authors: ["Frederic Mirindi", "Urban Technology Institute"],
-      journal: "ACM Computing Surveys",
-      year: 2025,
-      type: "Review",
-      abstract: "Comprehensive review of artificial intelligence applications in urban environments, examining smart city technologies, implementation challenges, and ethical considerations in urban AI deployment.",
-      doi: "10.1145/3681780.3697246",
-      link: "https://dl.acm.org/doi/abs/10.1145/3681780.3697246",
-      metrics: { citations: 33, reads: 201, saves: 14 }
-    },
-    {
-      title: "Neural Networks for Predicting Market Trends in Sustainable Industries: A Review",
-      authors: ["F Mirindi", "D Mirindi"],
-      journal: "Recent Advances in Artificial Intelligence for Sustainable Development",
-      year: 2024,
-      type: "Review",
-      abstract: "Comprehensive review of neural network applications in predicting market dynamics within sustainable industries, examining methodological approaches and performance metrics across various economic sectors.",
-      doi: "10.2991/978-94-6463-440-4_1",
-      link: "https://www.atlantis-press.com/proceedings/raisd-25/126013736",
-      metrics: { citations: 31, reads: 187, saves: 9 }
-    },
-    {
-      title: "A Review on Aerospace-AI, with Ethics and Implications",
-      authors: ["Derrick Mirindi", "Frederic Mirindi", "Aerospace AI Research Consortium"],
-      journal: "Aerospace Technology Review",
-      year: 2024,
-      type: "Review",
-      abstract: "Comprehensive analysis of artificial intelligence applications in aerospace technology, examining current implementations, future prospects, and ethical implications of AI in aviation and space exploration.",
-      doi: "10.13140/RG.2.2.12345.67890",
-      link: "https://www.researchgate.net/profile/Derrick-Mirindi-2/publication/389746999_A_Review_on_Aerospace-AI_with_Ethics_and_Implications/links/67d0e88cbab3d32d8440e012/A-Review-on-Aerospace-AI-with-Ethics-and-Implications.pdf",
-      metrics: { citations: 16, reads: 94, saves: 7 }
     }
   ];
+
+  console.log(`Loaded ${publicationsData.length} publications`);
 
   // Build filter options
   const years = [...new Set(publicationsData.map(p => p.year))].sort((a,b) => b-a);
   const types = [...new Set(publicationsData.map(p => p.type))].sort();
+  
+  // Clear existing options first
+  yearSel.innerHTML = '<option value="all">All Years</option>';
+  typeSel.innerHTML = '<option value="all">All Types</option>';
   
   years.forEach(year => {
     const option = document.createElement('option');
@@ -1228,8 +1124,7 @@ function initializePublications() {
     const keywords = [
       "Machine Learning", "AI", "Neural Networks", "Economics", "Forecasting", 
       "BIM", "Ethics", "Sustainability", "Concrete", "Geopolymer", 
-      "Nanoparticle", "Manufacturing", "Wood", "Composite", "PET", "HDPE",
-      "Urban", "Aerospace", "Transportation", "Construction", "Materials"
+      "Nanoparticle", "Manufacturing", "Wood", "Composite", "PET", "HDPE"
     ];
     
     const foundKeywords = keywords.filter(keyword => 
@@ -1261,7 +1156,7 @@ function initializePublications() {
     const isPdfLink = isPDF(paper.link);
     
     return `
-      <article class="pub-card paper-card fade-in" data-year="${paper.year}" data-type="${paper.type}">
+      <article class="pub-card paper-card" data-year="${paper.year}" data-type="${paper.type}">
         <div class="pub-card__top">
           <span class="pub-card__badge ${badgeClass}">${paper.type}</span>
           <div class="pub-card__metrics">
@@ -1323,6 +1218,7 @@ function initializePublications() {
 
   // Render function
   const render = () => {
+    console.log('Rendering publications...');
     wrap.setAttribute('aria-busy', 'true');
     
     const yearFilter = yearSel.value;
@@ -1346,6 +1242,8 @@ function initializePublications() {
       return b.metrics.citations - a.metrics.citations;
     });
 
+    console.log(`Rendering ${filtered.length} filtered papers`);
+
     if (filtered.length === 0) {
       wrap.innerHTML = `
         <div class="pubs__empty">
@@ -1362,117 +1260,152 @@ function initializePublications() {
           p.title === card.querySelector('.pub-card__title').textContent
         );
         
-        card.querySelectorAll('[data-action]').forEach(btn => {
-          btn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const action = btn.getAttribute('data-action');
-            
-            switch(action) {
-              case 'toggle':
-                card.classList.toggle('expanded');
-                btn.innerHTML = card.classList.contains('expanded') 
-                  ? '📖 Read Less' 
-                  : '📖 Read More';
-                break;
-                
-              case 'cite':
-                const citation = formatCitation(paper);
-                try {
-                  await navigator.clipboard.writeText(citation);
-                  showToast('Citation copied to clipboard!');
-                } catch (err) {
-                  showToast(citation);
-                }
-                break;
-                
-              case 'share':
-                const shareData = {
-                  title: paper.title,
-                  text: paper.abstract.substring(0, 100) + '...',
-                  url: paper.link
-                };
-                
-                if (navigator.share) {
+        if (paper) {
+          card.querySelectorAll('[data-action]').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+              e.preventDefault();
+              const action = btn.getAttribute('data-action');
+              
+              switch(action) {
+                case 'toggle':
+                  card.classList.toggle('expanded');
+                  btn.innerHTML = card.classList.contains('expanded') 
+                    ? '📖 Read Less' 
+                    : '📖 Read More';
+                  break;
+                  
+                case 'cite':
+                  const citation = formatCitation(paper);
                   try {
-                    await navigator.share(shareData);
+                    await navigator.clipboard.writeText(citation);
+                    showToast('Citation copied to clipboard!');
                   } catch (err) {
-                    // User cancelled or error occurred
+                    showToast('Citation ready to copy');
                   }
-                } else {
-                  try {
-                    await navigator.clipboard.writeText(paper.link);
-                    showToast('Link copied to clipboard!');
-                  } catch (err) {
-                    showToast('Sharing not supported');
+                  break;
+                  
+                case 'share':
+                  const shareData = {
+                    title: paper.title,
+                    text: paper.abstract.substring(0, 100) + '...',
+                    url: paper.link
+                  };
+                  
+                  if (navigator.share) {
+                    try {
+                      await navigator.share(shareData);
+                    } catch (err) {
+                      // User cancelled or error occurred
+                    }
+                  } else {
+                    try {
+                      await navigator.clipboard.writeText(paper.link);
+                      showToast('Link copied to clipboard!');
+                    } catch (err) {
+                      showToast('Sharing not supported');
+                    }
                   }
-                }
-                break;
-            }
+                  break;
+              }
+            });
           });
-        });
+        }
       });
-
-      // Apply animations if observer is available
-      if (window.animationObserver) {
-        wrap.querySelectorAll('.pub-card').forEach((card, index) => {
-          card.style.animationDelay = `${index * 0.05}s`;
-          window.animationObserver.observe(card);
-        });
-      }
     }
 
     wrap.setAttribute('aria-busy', 'false');
+    console.log('Publications rendered successfully');
   };
 
   // Event listeners
-  yearSel.addEventListener('change', render);
-  typeSel.addEventListener('change', render);
-  
-  if (window.debounce) {
-    searchInp.addEventListener('input', debounce(render, 300));
-  } else {
-    searchInp.addEventListener('input', render);
+  if (yearSel) yearSel.addEventListener('change', render);
+  if (typeSel) typeSel.addEventListener('change', render);
+  if (searchInp) {
+    if (window.debounce) {
+      searchInp.addEventListener('input', debounce(render, 300));
+    } else {
+      searchInp.addEventListener('input', render);
+    }
   }
 
   // View toggle
-  gridBtn.addEventListener('click', () => {
-    wrap.classList.remove('is-list');
-    gridBtn.classList.add('is-active');
-    gridBtn.setAttribute('aria-pressed', 'true');
-    listBtn.classList.remove('is-active');
-    listBtn.setAttribute('aria-pressed', 'false');
-  });
+  if (gridBtn) {
+    gridBtn.addEventListener('click', () => {
+      wrap.classList.remove('is-list');
+      gridBtn.classList.add('is-active');
+      gridBtn.setAttribute('aria-pressed', 'true');
+      if (listBtn) {
+        listBtn.classList.remove('is-active');
+        listBtn.setAttribute('aria-pressed', 'false');
+      }
+    });
+  }
 
-  listBtn.addEventListener('click', () => {
-    wrap.classList.add('is-list');
-    listBtn.classList.add('is-active');
-    listBtn.setAttribute('aria-pressed', 'true');
-    gridBtn.classList.remove('is-active');
-    gridBtn.setAttribute('aria-pressed', 'false');
-  });
+  if (listBtn) {
+    listBtn.addEventListener('click', () => {
+      wrap.classList.add('is-list');
+      listBtn.classList.add('is-active');
+      listBtn.setAttribute('aria-pressed', 'true');
+      if (gridBtn) {
+        gridBtn.classList.remove('is-active');
+        gridBtn.setAttribute('aria-pressed', 'false');
+      }
+    });
+  }
 
   // Initial render
   render();
-  
-  // Add console log to confirm all papers are loaded
-  console.log(`Publications initialized with ${publicationsData.length} papers`);
+  console.log('Publications initialization complete');
 }
 
-// Integration with existing navigation system
+// Ensure the function runs when the page is shown
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, checking for papers page...');
+  setTimeout(() => {
+    const papersPage = document.getElementById('papers');
+    if (papersPage && papersPage.classList.contains('active')) {
+      console.log('Papers page is active, initializing...');
+      initializePublications();
+    }
+  }, 100);
+});
+
+// Hook into existing showPage function
+if (typeof window.showPage === 'function') {
+  const originalShowPage = window.showPage;
+  window.showPage = function(pageId) {
+    console.log(`Showing page: ${pageId}`);
+    originalShowPage(pageId);
+    if (pageId === 'papers') {
+      console.log('Initializing publications for papers page...');
+      setTimeout(() => initializePublications(), 200);
+    }
+  };
+} else {
+  // If showPage doesn't exist yet, create it
+  window.showPage = function(pageId) {
+    console.log(`Showing page: ${pageId}`);
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(page => {
+      page.classList.remove('active');
+    });
+    
+    // Show selected page
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+      targetPage.classList.add('active');
+      if (pageId === 'papers') {
+        console.log('Initializing publications...');
+        setTimeout(() => initializePublications(), 200);
+      }
+    }
+  };
+}
+
+// Also try to initialize immediately if we're already on the papers page
+setTimeout(() => {
   const papersPage = document.getElementById('papers');
   if (papersPage && papersPage.classList.contains('active')) {
     initializePublications();
   }
-});
-
-// Hook into existing showPage function
-if (window.showPage) {
-  const originalShowPage = window.showPage;
-  window.showPage = function(pageId) {
-    originalShowPage(pageId);
-    if (pageId === 'papers') {
-      setTimeout(() => initializePublications(), 100);
-    }
-  };
-}
+}, 500);
