@@ -2601,3 +2601,379 @@ select.form-control {
 
 
 
+
+
+
+/* Academic Publications Styling */
+.publications-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-16) var(--space-20);
+    background: var(--color-surface);
+    border-radius: var(--radius-base);
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-24);
+    box-shadow: var(--shadow-xs);
+}
+
+.toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-16);
+}
+
+.toolbar-left label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    margin-right: var(--space-8);
+}
+
+.filter-select {
+    padding: var(--space-6) var(--space-12);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-background);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    min-width: 120px;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-hover);
+}
+
+.toolbar-right .view-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding: var(--space-8) var(--space-16);
+    background: var(--color-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.toolbar-right .view-btn.active {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+    border-color: var(--color-primary);
+}
+
+.toolbar-right .view-btn:hover {
+    background: var(--color-primary-hover);
+    color: var(--color-btn-primary-text);
+}
+
+/* Academic Publications Grid */
+.academic-publications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: var(--space-20);
+    margin-bottom: var(--space-32);
+}
+
+/* Academic Paper Card */
+.academic-paper-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 0;
+    transition: all var(--duration-normal) var(--ease-standard);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    box-shadow: var(--shadow-sm);
+}
+
+.academic-paper-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+}
+
+/* Paper Type Badge */
+.paper-type-badge {
+    position: absolute;
+    top: var(--space-12);
+    left: var(--space-16);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.journal-badge {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+}
+
+.conference-badge {
+    background: var(--color-success);
+    color: var(--color-btn-primary-text);
+}
+
+.review-badge {
+    background: var(--color-warning);
+    color: var(--color-btn-primary-text);
+}
+
+/* Paper Metrics */
+.paper-metrics {
+    position: absolute;
+    top: var(--space-12);
+    right: var(--space-16);
+    display: flex;
+    gap: var(--space-8);
+}
+
+.paper-metrics .metric {
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+/* Paper Content */
+.paper-content {
+    padding: var(--space-20) var(--space-16) var(--space-16) var(--space-16);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.paper-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--space-8);
+    margin-top: var(--space-16); /* Account for badges */
+}
+
+.paper-authors {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    font-weight: var(--font-weight-medium);
+}
+
+.paper-venue {
+    font-size: var(--font-size-sm);
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: var(--space-2);
+}
+
+.paper-year {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-12);
+}
+
+.paper-summary {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-normal);
+    margin-bottom: var(--space-12);
+    flex: 1;
+}
+
+/* Paper Tags */
+.paper-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+}
+
+.paper-tags .tag {
+    background: var(--color-secondary);
+    color: var(--color-text);
+    padding: var(--space-2) var(--space-6);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border: 1px solid var(--color-border);
+}
+
+/* Paper Actions */
+.paper-actions {
+    display: flex;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-background);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.action-btn {
+    flex: 1;
+    padding: var(--space-10) var(--space-8);
+    border: none;
+    background: transparent;
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-standard);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    border-right: 1px solid var(--color-border);
+}
+
+.action-btn:last-child {
+    border-right: none;
+}
+
+.action-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+.action-btn:active {
+    background: var(--color-secondary-active);
+}
+
+/* Specific button styling */
+.view-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-btn-primary-text);
+}
+
+.pdf-btn:hover {
+    background: var(--color-error);
+    color: var(--color-btn-primary-text);
+}
+
+.cite-btn:hover {
+    background: var(--color-warning);
+    color: var(--color-btn-primary-text);
+}
+
+.share-btn:hover {
+    background: var(--color-success);
+    color: var(--color-btn-primary-text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .publications-toolbar {
+        flex-direction: column;
+        gap: var(--space-16);
+        align-items: stretch;
+    }
+    
+    .toolbar-left {
+        justify-content: space-between;
+    }
+    
+    .academic-publications-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-16);
+    }
+    
+    .paper-metrics {
+        position: static;
+        justify-content: flex-end;
+        margin-bottom: var(--space-8);
+    }
+    
+    .paper-title {
+        margin-top: var(--space-8);
+    }
+    
+    .paper-actions {
+        flex-wrap: wrap;
+    }
+    
+    .action-btn {
+        flex: 1 1 50%;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .academic-paper-card {
+        min-height: auto;
+    }
+    
+    .paper-content {
+        padding: var(--space-12);
+    }
+    
+    .paper-title {
+        font-size: var(--font-size-md);
+    }
+    
+    .paper-tags .tag {
+        font-size: var(--font-size-xs);
+        padding: var(--space-1) var(--space-4);
+    }
+    
+    .action-btn {
+        padding: var(--space-8) var(--space-4);
+        font-size: var(--font-size-xs);
+    }
+    
+    .toolbar-left {
+        flex-direction: column;
+        gap: var(--space-8);
+    }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+    .paper-metrics .metric {
+        background: var(--color-surface);
+    }
+}
+
+[data-color-scheme="dark"] .paper-metrics .metric {
+    background: var(--color-surface);
+}
+
+/* Animation for loading */
+.academic-paper-card.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.academic-paper-card {
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hidden state for filtering */
+.academic-paper-card.hidden {
+    display: none;
+}
+
+
+
