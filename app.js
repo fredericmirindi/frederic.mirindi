@@ -991,16 +991,14 @@ fetch('/api/latest-tweets')
 
 
 
-// Publications Enhancement JavaScript
-class PublicationsManager {
+
+// Academic Publications Manager
+class AcademicPublicationsManager {
     constructor() {
-        this.papers = document.querySelectorAll('.enhanced-card');
-        this.currentView = 'grid';
+        this.papers = document.querySelectorAll('.academic-paper-card');
         this.currentFilters = {
             year: '',
-            type: '',
-            topic: '',
-            search: ''
+            type: ''
         };
         
         this.init();
@@ -1009,60 +1007,57 @@ class PublicationsManager {
     init() {
         this.setupEventListeners();
         this.setupAnimations();
-        this.updateStats();
-        this.setupTopicCloud();
-        this.setupTimeline();
     }
     
     setupEventListeners() {
         // Filter controls
         const yearFilter = document.getElementById('year-filter');
         const typeFilter = document.getElementById('type-filter');
-        const topicFilter = document.getElementById('topic-filter');
-        const searchInput = document.getElementById('search-publications');
-        const clearFilters = document.getElementById('clear-filters');
         
-        if (yearFilter) yearFilter.addEventListener('change', (e) => this.handleFilter('year', e.target.value));
-        if (typeFilter) typeFilter.addEventListener('change', (e) => this.handleFilter('type', e.target.value));
-        if (topicFilter) topicFilter.addEventListener('change', (e) => this.handleFilter('topic', e.target.value));
-        if (searchInput) {
-            searchInput.addEventListener('input', debounce((e) => this.handleFilter('search', e.target.value), 300));
+        if (yearFilter) {
+            yearFilter.addEventListener('change', (e) => this.handleFilter('year', e.target.value));
         }
-        if (clearFilters) clearFilters.addEventListener('click', () => this.clearAllFilters());
         
-        // View controls
-        const gridView = document.getElementById('grid-view');
-        const listView = document.getElementById('list-view');
-        const timelineView = document.getElementById('timeline-view');
+        if (typeFilter) {
+            typeFilter.addEventListener('change', (e) => this.handleFilter('type', e.target.value));
+        }
         
-        if (gridView) gridView.addEventListener('click', () => this.setView('grid'));
-        if (listView) listView.addEventListener('click', () => this.setView('list'));
-        if (timelineView) timelineView.addEventListener('click', () => this.setView('timeline'));
+        // Action buttons
+        this.setupActionButtons();
+    }
+    
+    setupActionButtons() {
+        // View buttons
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            if (!btn.classList.contains('active')) { // Skip toolbar view button
+                btn.addEventListener('click', (e) => {
+                    const card = e.target.closest('.academic-paper-card');
+                    this.handleView(card);
+                });
+            }
+        });
         
-        // Citation buttons
+        // PDF buttons
+        document.querySelectorAll('.pdf-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const card = e.target.closest('.academic-paper-card');
+                this.handlePDF(card);
+            });
+        });
+        
+        // Cite buttons
         document.querySelectorAll('.cite-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const title = e.target.closest('.cite-btn').dataset.title;
-                this.showCitationModal(title);
+                const card = e.target.closest('.academic-paper-card');
+                this.handleCite(card);
             });
         });
         
         // Share buttons
         document.querySelectorAll('.share-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.enhanced-card');
-                const title = card.querySelector('h3').textContent;
-                const url = card.querySelector('.btn--primary').href;
-                this.sharePublication(title, url);
-            });
-        });
-        
-        // Topic cloud interactions
-        document.querySelectorAll('.topic-tag').forEach(tag => {
-            tag.addEventListener('click', (e) => {
-                const topic = e.target.textContent;
-                document.getElementById('topic-filter').value = topic;
-                this.handleFilter('topic', topic);
+                const card = e.target.closest('.academic-paper-card');
+                this.handleShare(card);
             });
         });
     }
@@ -1070,21 +1065,27 @@ class PublicationsManager {
     setupAnimations() {
         // Intersection Observer for scroll animations
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = `${Array.from(this.papers).indexOf(entry.target) * 0.1}s`;
-                    entry.target.classList.add('animate-in');
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
                 }
             });
         }, { threshold: 0.1 });
         
-        this.papers.forEach(paper => observer.observe(paper));
+        this.papers.forEach(paper => {
+            paper.style.opacity = '0';
+            paper.style.transform = 'translateY(20px)';
+            paper.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            observer.observe(paper);
+        });
     }
     
     handleFilter(filterType, value) {
         this.currentFilters[filterType] = value.toLowerCase();
         this.applyFilters();
-        this.updateStats();
     }
     
     applyFilters() {
@@ -1093,164 +1094,71 @@ class PublicationsManager {
         this.papers.forEach(paper => {
             const year = paper.dataset.year;
             const type = paper.dataset.type;
-            const topics = paper.dataset.topics.toLowerCase();
-            const title = paper.querySelector('h3').textContent.toLowerCase();
-            const abstract = paper.querySelector('.paper-abstract p')?.textContent.toLowerCase() || '';
             
             const matchesYear = !this.currentFilters.year || year === this.currentFilters.year;
             const matchesType = !this.currentFilters.type || type.toLowerCase() === this.currentFilters.type;
-            const matchesTopic = !this.currentFilters.topic || topics.includes(this.currentFilters.topic);
-            const matchesSearch = !this.currentFilters.search || 
-                title.includes(this.currentFilters.search) || 
-                abstract.includes(this.currentFilters.search);
             
-            const shouldShow = matchesYear && matchesType && matchesTopic && matchesSearch;
+            const shouldShow = matchesYear && matchesType;
             
             if (shouldShow) {
                 paper.classList.remove('hidden');
                 visibleCount++;
-                this.highlightSearchTerms(paper);
             } else {
                 paper.classList.add('hidden');
             }
         });
         
-        // Update results count
-        this.showResultsCount(visibleCount);
+        console.log(`Showing ${visibleCount} publications`);
     }
     
-    highlightSearchTerms(paper) {
-        if (!this.currentFilters.search) return;
+    handleView(card) {
+        const title = card.querySelector('.paper-title').textContent;
+        this.showNotification(`Opening: ${title}`, 'info');
         
-        const elements = paper.querySelectorAll('h3, .paper-abstract p');
-        elements.forEach(el => {
-            const text = el.textContent;
-            const regex = new RegExp(`(${this.currentFilters.search})`, 'gi');
-            el.innerHTML = text.replace(regex, '<span class="highlight">$1</span>');
-        });
-    }
-    
-    clearAllFilters() {
-        this.currentFilters = { year: '', type: '', topic: '', search: '' };
-        
-        document.getElementById('year-filter').value = '';
-        document.getElementById('type-filter').value = '';
-        document.getElementById('topic-filter').value = '';
-        document.getElementById('search-publications').value = '';
-        
-        this.papers.forEach(paper => {
-            paper.classList.remove('hidden');
-            // Remove highlights
-            const highlighted = paper.querySelectorAll('.highlight');
-            highlighted.forEach(el => {
-                el.outerHTML = el.textContent;
-            });
-        });
-        
-        this.updateStats();
-    }
-    
-    setView(viewType) {
-        this.currentView = viewType;
-        const container = document.getElementById('publications-container');
-        
-        // Update button states
-        document.querySelectorAll('.view-controls .btn').forEach(btn => btn.classList.remove('active'));
-        document.getElementById(`${viewType}-view`).classList.add('active');
-        
-        // Update container classes
-        container.className = 'publications-container';
-        container.classList.add(`${viewType}-view`);
-        
-        // Animate transition
-        container.style.opacity = '0';
+        // Simulate opening paper view
         setTimeout(() => {
-            container.style.opacity = '1';
-        }, 150);
+            window.open('#', '_blank');
+        }, 500);
     }
     
-    updateStats() {
-        const visiblePapers = Array.from(this.papers).filter(paper => !paper.classList.contains('hidden'));
-        const totalPubs = visiblePapers.length;
-        const recentPubs = visiblePapers.filter(paper => parseInt(paper.dataset.year) >= 2024).length;
-        const aiPubs = visiblePapers.filter(paper => 
-            paper.dataset.topics.toLowerCase().includes('ai') || 
-            paper.dataset.topics.toLowerCase().includes('machine learning')
-        ).length;
+    handlePDF(card) {
+        const title = card.querySelector('.paper-title').textContent;
+        this.showNotification(`Downloading PDF: ${title}`, 'success');
         
-        // Animate counter updates
-        this.animateCounter('total-publications', totalPubs);
-        this.animateCounter('recent-publications', recentPubs);
-        this.animateCounter('ai-publications', aiPubs);
+        // Simulate PDF download
+        const link = document.createElement('a');
+        link.href = '#'; // Replace with actual PDF URL
+        link.download = `${title.substring(0, 30)}.pdf`;
+        // link.click(); // Uncomment when you have real PDFs
     }
     
-    animateCounter(elementId, targetValue) {
-        const element = document.getElementById(elementId);
-        if (!element) return;
+    handleCite(card) {
+        const title = card.querySelector('.paper-title').textContent;
+        const authors = card.querySelector('.paper-authors').textContent;
+        const venue = card.querySelector('.paper-venue').textContent;
+        const year = card.querySelector('.paper-year').textContent;
         
-        const startValue = parseInt(element.textContent) || 0;
-        const duration = 500;
-        const startTime = performance.now();
-        
-        const updateCounter = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const currentValue = Math.floor(startValue + (targetValue - startValue) * progress);
-            
-            element.textContent = currentValue + (targetValue > 20 ? '+' : '');
-            
-            if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-            }
-        };
-        
-        requestAnimationFrame(updateCounter);
-    }
-    
-    setupTopicCloud() {
-        const topics = document.querySelectorAll('.topic-tag');
-        topics.forEach(topic => {
-            const weight = parseInt(topic.dataset.weight);
-            topic.style.fontSize = `${0.8 + weight * 0.2}rem`;
-            topic.style.opacity = `${0.6 + weight * 0.1}`;
-        });
-    }
-    
-    setupTimeline() {
-        const timelineYears = document.querySelectorAll('.timeline-year');
-        timelineYears.forEach((year, index) => {
-            setTimeout(() => {
-                year.style.opacity = '1';
-                year.style.transform = 'translateX(0)';
-            }, index * 200);
-            
-            year.style.opacity = '0';
-            year.style.transform = 'translateX(-20px)';
-            year.style.transition = 'all 0.5s ease';
-        });
-    }
-    
-    showCitationModal(title) {
-        const modal = document.getElementById('citation-modal');
-        
-        // Generate citations
-        const apa = `Mirindi, F. (2025). ${title}. Journal Name.`;
-        const ieee = `F. Mirindi, "${title}," Journal Name, 2025.`;
-        const bibtex = `@article{mirindi2025,
+        // Generate citation formats
+        const apa = `${authors} (${year}). ${title}. ${venue}.`;
+        const bibtex = `@article{mirindi${year},
     title={${title}},
-    author={Mirindi, Frederic},
-    year={2025},
-    journal={Journal Name}
+    author={${authors}},
+    journal={${venue}},
+    year={${year}}
 }`;
         
-        document.getElementById('apa-citation').textContent = apa;
-        document.getElementById('ieee-citation').textContent = ieee;
-        document.getElementById('bibtex-citation').textContent = bibtex;
-        
-        modal.classList.add('active');
+        // Copy to clipboard (APA format)
+        navigator.clipboard.writeText(apa).then(() => {
+            this.showNotification('Citation copied to clipboard!', 'success');
+        }).catch(() => {
+            this.showNotification('Failed to copy citation', 'error');
+        });
     }
     
-    sharePublication(title, url) {
+    handleShare(card) {
+        const title = card.querySelector('.paper-title').textContent;
+        const url = window.location.href; // Replace with actual paper URL
+        
         if (navigator.share) {
             navigator.share({
                 title: title,
@@ -1259,141 +1167,104 @@ class PublicationsManager {
         } else {
             // Fallback to clipboard
             navigator.clipboard.writeText(url).then(() => {
-                this.showNotification('Link copied to clipboard!');
+                this.showNotification('Link copied to clipboard!', 'success');
             });
         }
     }
     
-    showNotification(message) {
+    showNotification(message, type = 'info') {
+        // Create notification element
         const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
+        notification.className = `notification notification--${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <span class="notification-message">${message}</span>
+                <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
+        
+        // Add notification styles
         notification.style.cssText = `
             position: fixed;
             top: 20px;
             right: 20px;
-            background: var(--color-success);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
+            background: ${type === 'success' ? 'var(--color-success)' : type === 'error' ? 'var(--color-error)' : 'var(--color-info)'};
+            color: var(--color-btn-primary-text);
+            padding: 12px 16px;
+            border-radius: var(--radius-base);
+            box-shadow: var(--shadow-lg);
             z-index: 3000;
+            max-width: 300px;
             opacity: 0;
-            transform: translateY(-20px);
+            transform: translateX(100%);
             transition: all 0.3s ease;
         `;
         
+        // Add to page
         document.body.appendChild(notification);
         
+        // Animate in
         setTimeout(() => {
             notification.style.opacity = '1';
-            notification.style.transform = 'translateY(0)';
+            notification.style.transform = 'translateX(0)';
         }, 100);
         
+        // Auto remove after 4 seconds
         setTimeout(() => {
             notification.style.opacity = '0';
-            notification.style.transform = 'translateY(-20px)';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 300);
+        }, 4000);
     }
-    
-    showResultsCount(count) {
-        let counter = document.getElementById('results-counter');
-        if (!counter) {
-            counter = document.createElement('div');
-            counter.id = 'results-counter';
-            counter.style.cssText = `
-                text-align: center;
-                margin: 20px 0;
-                font-weight: 500;
-                color: var(--color-text-secondary);
-            `;
-            document.querySelector('.papers-list').parentNode.insertBefore(counter, document.querySelector('.papers-list'));
-        }
-        
-        counter.textContent = `Showing ${count} publications`;
-    }
-}
-
-// Citation modal functions
-function closeCitationModal() {
-    document.getElementById('citation-modal').classList.remove('active');
-}
-
-function copyCitation(format) {
-    const citationText = document.getElementById(`${format}-citation`).textContent;
-    navigator.clipboard.writeText(citationText).then(() => {
-        // Show success feedback
-        const btn = event.target;
-        const originalText = btn.textContent;
-        btn.textContent = 'Copied!';
-        btn.style.background = 'var(--color-success)';
-        
-        setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-        }, 2000);
-    });
-}
-
-// Utility function for debouncing search
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
 }
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize publications manager when the papers page is active
     if (document.getElementById('papers')) {
-        new PublicationsManager();
+        new AcademicPublicationsManager();
     }
-    
-    // Close modal when clicking outside
-    document.addEventListener('click', function(e) {
-        const modal = document.getElementById('citation-modal');
-        if (modal && e.target === modal) {
-            closeCitationModal();
-        }
-    });
-    
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeCitationModal();
-        }
-    });
 });
 
-// CSS for animations (add to your existing CSS)
-const additionalStyles = `
-.animate-in {
-    animation: slideInUp 0.6s ease-out forwards;
+// Additional notification styles
+const notificationStyles = `
+.notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.notification-message {
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.notification {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.notification-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.notification-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 `;
 
-// Add additional styles to the page
+// Add notification styles to page
 const styleSheet = document.createElement('style');
-styleSheet.textContent = additionalStyles;
+styleSheet.textContent = notificationStyles;
 document.head.appendChild(styleSheet);
