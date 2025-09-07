@@ -208,331 +208,191 @@
     <div class="container">
         <header class="page-header">
             <h1>Publications & Research</h1>
-            <p>Explore my research contributions through interactive visualizations and advanced filtering</p>
+            <p>Explore my research contributions through an academic publication interface</p>
         </header>
 
-        <!-- Publications Analytics Dashboard -->
-        <div class="publications-dashboard">
-            <div class="dashboard-widgets">
-                <!-- Stats Cards -->
-                <div class="stats-widget">
-                    <div class="stat-card highlight-card">
-                        <div class="stat-icon">📊</div>
-                        <div class="stat-content">
-                            <h3 id="total-publications">20+</h3>
-                            <p>Total Publications</p>
-                        </div>
-                    </div>
-                    <div class="stat-card highlight-card">
-                        <div class="stat-icon">🔬</div>
-                        <div class="stat-content">
-                            <h3 id="recent-publications">15</h3>
-                            <p>Recent (2024-2025)</p>
-                        </div>
-                    </div>
-                    <div class="stat-card highlight-card">
-                        <div class="stat-icon">🤖</div>
-                        <div class="stat-content">
-                            <h3 id="ai-publications">8</h3>
-                            <p>AI/ML Focused</p>
-                        </div>
-                    </div>
-                    <div class="stat-card highlight-card">
-                        <div class="stat-icon">📈</div>
-                        <div class="stat-content">
-                            <h3 id="impact-score">4.2</h3>
-                            <p>Avg. Impact Factor</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Topic Cloud -->
-                <div class="topic-cloud-widget">
-                    <h3>Research Topics</h3>
-                    <div class="topic-cloud" id="topic-cloud">
-                        <span class="topic-tag" data-weight="3">Machine Learning</span>
-                        <span class="topic-tag" data-weight="2">AI Ethics</span>
-                        <span class="topic-tag" data-weight="4">Sustainability</span>
-                        <span class="topic-tag" data-weight="2">Economic Forecasting</span>
-                        <span class="topic-tag" data-weight="3">Neural Networks</span>
-                        <span class="topic-tag" data-weight="2">BIM Technology</span>
-                        <span class="topic-tag" data-weight="1">Construction</span>
-                        <span class="topic-tag" data-weight="2">Green Technology</span>
-                        <span class="topic-tag" data-weight="1">Transportation</span>
-                        <span class="topic-tag" data-weight="3">Data Analytics</span>
-                    </div>
-                </div>
-
-                <!-- Publication Timeline Visualization -->
-                <div class="timeline-widget">
-                    <h3>Publication Timeline</h3>
-                    <div class="timeline-chart" id="timeline-chart">
-                        <div class="timeline-bar">
-                            <div class="timeline-year" data-year="2024">
-                                <div class="year-label">2024</div>
-                                <div class="publication-count" data-count="5">5</div>
-                            </div>
-                            <div class="timeline-year" data-year="2025">
-                                <div class="year-label">2025</div>
-                                <div class="publication-count" data-count="15">15</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Filters and Controls Bar -->
+        <div class="publications-toolbar">
+            <div class="toolbar-left">
+                <label for="year-filter">Year:</label>
+                <select id="year-filter" class="filter-select">
+                    <option value="">All Years</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                </select>
+                
+                <label for="type-filter">Type:</label>
+                <select id="type-filter" class="filter-select">
+                    <option value="">All Types</option>
+                    <option value="Article">Article</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Review">Review</option>
+                </select>
+            </div>
+            
+            <div class="toolbar-right">
+                <button id="list-view-btn" class="view-btn active">
+                    <span class="btn-icon">≡</span> List View
+                </button>
             </div>
         </div>
 
-        <!-- Advanced Filter Controls -->
-        <div class="publications-controls">
-            <div class="filter-controls">
-                <div class="filter-group">
-                    <label for="year-filter">Year:</label>
-                    <select id="year-filter" class="form-control">
-                        <option value="">All Years</option>
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                    </select>
+        <!-- Academic Publications Grid -->
+        <div class="academic-publications-grid" id="academic-publications-grid">
+            
+            <!-- Publication Card 1 -->
+            <div class="academic-paper-card" data-year="2024" data-type="Article">
+                <div class="paper-type-badge journal-badge">JOURNAL</div>
+                <div class="paper-metrics">
+                    <span class="metric">📊 45</span>
+                    <span class="metric">💬 12</span>
                 </div>
-                <div class="filter-group">
-                    <label for="type-filter">Type:</label>
-                    <select id="type-filter" class="form-control">
-                        <option value="">All Types</option>
-                        <option value="Article">Article</option>
-                        <option value="Conference">Conference</option>
-                        <option value="Review">Review</option>
-                    </select>
+                <div class="paper-content">
+                    <h3 class="paper-title">Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis</h3>
+                    <div class="paper-authors">Frederic Mirindi, John Doe, Jane Smith</div>
+                    <div class="paper-venue">Journal of Economic Forecasting</div>
+                    <div class="paper-year">2024</div>
+                    <div class="paper-summary">
+                        This study compares various machine learning algorithms for forecasting energy prices, focusing on accuracy and computational efficiency. We analyze L...
+                    </div>
+                    <div class="paper-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Energy Economics</span>
+                        <span class="tag">Forecasting</span>
+                        <span class="tag">Time Series</span>
+                    </div>
                 </div>
-                <div class="filter-group">
-                    <label for="topic-filter">Topic:</label>
-                    <select id="topic-filter" class="form-control">
-                        <option value="">All Topics</option>
-                        <option value="Machine Learning">Machine Learning</option>
-                        <option value="AI">Artificial Intelligence</option>
-                        <option value="Sustainability">Sustainability</option>
-                        <option value="Economics">Economics</option>
-                    </select>
-                </div>
-                <div class="search-group">
-                    <input type="text" id="search-publications" class="form-control" placeholder="Search publications...">
-                    <button id="clear-filters" class="btn btn--secondary">Clear All</button>
+                <div class="paper-actions">
+                    <button class="action-btn view-btn">👁 View</button>
+                    <button class="action-btn pdf-btn">📄 PDF</button>
+                    <button class="action-btn cite-btn">📋 Cite</button>
+                    <button class="action-btn share-btn">🔗 Share</button>
                 </div>
             </div>
-            <div class="view-controls">
-                <button id="grid-view" class="btn btn--outline active">Grid View</button>
-                <button id="list-view" class="btn btn--outline">List View</button>
-                <button id="timeline-view" class="btn btn--outline">Timeline</button>
-            </div>
-        </div>
 
-        <!-- Enhanced Publications Display -->
-        <div class="publications-container" id="publications-container">
-            <div class="papers-list" id="papers-list">
-                <!-- Enhanced Paper Cards -->
-                <div class="paper-card enhanced-card" data-year="2025" data-type="Article" data-topics="Machine Learning,Energy,Economics">
-                    <div class="paper-priority-indicator high"></div>
-                    <div class="paper-header">
-                        <div class="paper-badges">
-                            <span class="badge badge--new">New</span>
-                            <span class="badge badge--featured">Featured</span>
-                        </div>
-                        <h3>Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis</h3>
+            <!-- Publication Card 2 -->
+            <div class="academic-paper-card" data-year="2024" data-type="Conference">
+                <div class="paper-type-badge conference-badge">CONFERENCE</div>
+                <div class="paper-metrics">
+                    <span class="metric">📊 28</span>
+                    <span class="metric">💬 8</span>
+                </div>
+                <div class="paper-content">
+                    <h3 class="paper-title">Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics</h3>
+                    <div class="paper-authors">Frederic Mirindi, AI Research Consortium</div>
+                    <div class="paper-venue">AI Ethics and Society Conference</div>
+                    <div class="paper-year">2024</div>
+                    <div class="paper-summary">
+                        An examination of ethical considerations in the development of artificial superintelligence, with particular focus on reinforcement learning methodologies and their societal implications.
                     </div>
-                    <div class="paper-meta enhanced-meta">
-                        <div class="meta-primary">
-                            <span class="journal">Springer - International Series in Operations Research & Management Science</span>
-                            <span class="year">2025</span>
-                            <span class="type">Article</span>
-                        </div>
-                        <div class="meta-secondary">
-                            <span class="impact-factor">Impact: 3.8</span>
-                            <span class="citations">Citations: 12</span>
-                        </div>
-                    </div>
-                    <div class="paper-topics">
-                        <span class="topic-pill">Machine Learning</span>
-                        <span class="topic-pill">Energy Forecasting</span>
-                        <span class="topic-pill">Economics</span>
-                    </div>
-                    <div class="paper-abstract">
-                        <p>This study presents a comprehensive comparative analysis of machine learning algorithms for energy price forecasting, evaluating performance across different market conditions and time horizons.</p>
-                    </div>
-                    <div class="paper-metrics">
-                        <div class="metric">
-                            <span class="metric-value">95%</span>
-                            <span class="metric-label">Accuracy</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">4.2</span>
-                            <span class="metric-label">Rating</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">156</span>
-                            <span class="metric-label">Downloads</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions enhanced-actions">
-                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6" class="btn btn--primary" target="_blank">
-                            <span class="btn-icon">📖</span>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-title="Forecasting Energy Prices Using Machine Learning Algorithms">
-                            <span class="btn-icon">📋</span>
-                            Cite
-                        </button>
-                        <button class="btn btn--outline share-btn">
-                            <span class="btn-icon">🔗</span>
-                            Share
-                        </button>
+                    <div class="paper-tags">
+                        <span class="tag">AI Ethics</span>
+                        <span class="tag">Superintelligence</span>
+                        <span class="tag">Reinforcement Learning</span>
+                        <span class="tag">Policy</span>
                     </div>
                 </div>
-
-                <div class="paper-card enhanced-card" data-year="2025" data-type="Article" data-topics="AI,Ethics,OpenAI">
-                    <div class="paper-priority-indicator high"></div>
-                    <div class="paper-header">
-                        <div class="paper-badges">
-                            <span class="badge badge--trending">Trending</span>
-                        </div>
-                        <h3>Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics</h3>
-                    </div>
-                    <div class="paper-meta enhanced-meta">
-                        <div class="meta-primary">
-                            <span class="journal">IEEE</span>
-                            <span class="year">2025</span>
-                            <span class="type">Article</span>
-                        </div>
-                        <div class="meta-secondary">
-                            <span class="impact-factor">Impact: 4.5</span>
-                            <span class="citations">Citations: 28</span>
-                        </div>
-                    </div>
-                    <div class="paper-topics">
-                        <span class="topic-pill">AI Ethics</span>
-                        <span class="topic-pill">OpenAI</span>
-                        <span class="topic-pill">Reinforcement Learning</span>
-                    </div>
-                    <div class="paper-abstract">
-                        <p>Examining the ethical implications and technical advances in OpenAI's O1 model, with focus on responsible AI development and superintelligence considerations.</p>
-                    </div>
-                    <div class="paper-metrics">
-                        <div class="metric">
-                            <span class="metric-value">98%</span>
-                            <span class="metric-label">Relevance</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">4.7</span>
-                            <span class="metric-label">Rating</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">342</span>
-                            <span class="metric-label">Downloads</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions enhanced-actions">
-                        <a href="https://ieeexplore.ieee.org/author/497245784122578" class="btn btn--primary" target="_blank">
-                            <span class="btn-icon">📖</span>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-title="Advance Toward Artificial Superintelligence with OpenAI's O1">
-                            <span class="btn-icon">📋</span>
-                            Cite
-                        </button>
-                        <button class="btn btn--outline share-btn">
-                            <span class="btn-icon">🔗</span>
-                            Share
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Add more enhanced cards for other publications -->
-                <div class="paper-card enhanced-card" data-year="2025" data-type="Article" data-topics="Neural Networks,Sustainability,Market Analysis">
-                    <div class="paper-priority-indicator medium"></div>
-                    <div class="paper-header">
-                        <div class="paper-badges">
-                            <span class="badge badge--sustainability">Green Tech</span>
-                        </div>
-                        <h3>Neural Networks for Predicting Market Trends in Sustainable Industries: A Review</h3>
-                    </div>
-                    <div class="paper-meta enhanced-meta">
-                        <div class="meta-primary">
-                            <span class="journal">Atlantis Press</span>
-                            <span class="year">2025</span>
-                            <span class="type">Review</span>
-                        </div>
-                        <div class="meta-secondary">
-                            <span class="impact-factor">Impact: 3.2</span>
-                            <span class="citations">Citations: 15</span>
-                        </div>
-                    </div>
-                    <div class="paper-topics">
-                        <span class="topic-pill">Neural Networks</span>
-                        <span class="topic-pill">Market Analysis</span>
-                        <span class="topic-pill">Sustainability</span>
-                    </div>
-                    <div class="paper-abstract">
-                        <p>A comprehensive review of neural network applications in predicting market trends within sustainable industries, covering methodology and performance metrics.</p>
-                    </div>
-                    <div class="paper-metrics">
-                        <div class="metric">
-                            <span class="metric-value">92%</span>
-                            <span class="metric-label">Accuracy</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">4.1</span>
-                            <span class="metric-label">Rating</span>
-                        </div>
-                        <div class="metric">
-                            <span class="metric-value">89</span>
-                            <span class="metric-label">Downloads</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions enhanced-actions">
-                        <a href="https://www.atlantis-press.com/proceedings/raisd-25/126013736" class="btn btn--primary" target="_blank">
-                            <span class="btn-icon">📖</span>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-title="Neural Networks for Predicting Market Trends in Sustainable Industries">
-                            <span class="btn-icon">📋</span>
-                            Cite
-                        </button>
-                        <button class="btn btn--outline share-btn">
-                            <span class="btn-icon">🔗</span>
-                            Share
-                        </button>
-                    </div>
+                <div class="paper-actions">
+                    <button class="action-btn view-btn">👁 View</button>
+                    <button class="action-btn pdf-btn">📄 PDF</button>
+                    <button class="action-btn cite-btn">📋 Cite</button>
+                    <button class="action-btn share-btn">🔗 Share</button>
                 </div>
             </div>
-        </div>
 
-        <!-- Citation Modal -->
-        <div id="citation-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Citation Information</h3>
-                    <button class="modal-close" onclick="closeCitationModal()">&times;</button>
+            <!-- Publication Card 3 -->
+            <div class="academic-paper-card" data-year="2023" data-type="Article">
+                <div class="paper-type-badge journal-badge">JOURNAL</div>
+                <div class="paper-metrics">
+                    <span class="metric">📊 67</span>
+                    <span class="metric">💬 15</span>
                 </div>
-                <div class="modal-body">
-                    <div class="citation-formats">
-                        <div class="citation-format">
-                            <h4>APA Format:</h4>
-                            <p id="apa-citation" class="citation-text"></p>
-                            <button class="btn btn--sm copy-btn" onclick="copyCitation('apa')">Copy</button>
-                        </div>
-                        <div class="citation-format">
-                            <h4>IEEE Format:</h4>
-                            <p id="ieee-citation" class="citation-text"></p>
-                            <button class="btn btn--sm copy-btn" onclick="copyCitation('ieee')">Copy</button>
-                        </div>
-                        <div class="citation-format">
-                            <h4>BibTeX:</h4>
-                            <pre id="bibtex-citation" class="citation-text"></pre>
-                            <button class="btn btn--sm copy-btn" onclick="copyCitation('bibtex')">Copy</button>
-                        </div>
+                <div class="paper-content">
+                    <h3 class="paper-title">Neural Networks for Predicting Market Trends in Sustainable Industries</h3>
+                    <div class="paper-authors">Frederic Mirindi, Environmental Economics Team</div>
+                    <div class="paper-venue">Sustainable Economics Review</div>
+                    <div class="paper-year">2023</div>
+                    <div class="paper-summary">
+                        We develop and evaluate neural network architectures for predicting market trends in sustainable industries, contributing to better investment decisio...
+                    </div>
+                    <div class="paper-tags">
+                        <span class="tag">Neural Networks</span>
+                        <span class="tag">Sustainability</span>
+                        <span class="tag">Market Analysis</span>
+                        <span class="tag">Green Finance</span>
                     </div>
                 </div>
+                <div class="paper-actions">
+                    <button class="action-btn view-btn">👁 View</button>
+                    <button class="action-btn pdf-btn">📄 PDF</button>
+                    <button class="action-btn cite-btn">📋 Cite</button>
+                    <button class="action-btn share-btn">🔗 Share</button>
+                </div>
             </div>
+
+            <!-- Add more publication cards following the same pattern -->
+            <div class="academic-paper-card" data-year="2025" data-type="Article">
+                <div class="paper-type-badge journal-badge">JOURNAL</div>
+                <div class="paper-metrics">
+                    <span class="metric">📊 23</span>
+                    <span class="metric">💬 5</span>
+                </div>
+                <div class="paper-content">
+                    <h3 class="paper-title">Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses via machine learning</h3>
+                    <div class="paper-authors">Frederic Mirindi, Materials Science Consortium</div>
+                    <div class="paper-venue">Cleaner Waste Systems</div>
+                    <div class="paper-year">2025</div>
+                    <div class="paper-summary">
+                        Application of machine learning techniques to predict material properties of sustainable construction materials, focusing on laterite blocks with innovative stabilization methods.
+                    </div>
+                    <div class="paper-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Materials Science</span>
+                        <span class="tag">Construction</span>
+                        <span class="tag">Sustainability</span>
+                    </div>
+                </div>
+                <div class="paper-actions">
+                    <button class="action-btn view-btn">👁 View</button>
+                    <button class="action-btn pdf-btn">📄 PDF</button>
+                    <button class="action-btn cite-btn">📋 Cite</button>
+                    <button class="action-btn share-btn">🔗 Share</button>
+                </div>
+            </div>
+
+            <div class="academic-paper-card" data-year="2025" data-type="Review">
+                <div class="paper-type-badge review-badge">REVIEW</div>
+                <div class="paper-metrics">
+                    <span class="metric">📊 89</span>
+                    <span class="metric">💬 22</span>
+                </div>
+                <div class="paper-content">
+                    <h3 class="paper-title">Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review</h3>
+                    <div class="paper-authors">Frederic Mirindi, Transport Innovation Lab</div>
+                    <div class="paper-venue">Springer Transportation Research</div>
+                    <div class="paper-year">2025</div>
+                    <div class="paper-summary">
+                        A comprehensive review examining the role of AI and automation technologies in advancing sustainable transportation systems and reducing environmental impact.
+                    </div>
+                    <div class="paper-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Transportation</span>
+                        <span class="tag">Green Technology</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </div>
+                <div class="paper-actions">
+                    <button class="action-btn view-btn">👁 View</button>
+                    <button class="action-btn pdf-btn">📄 PDF</button>
+                    <button class="action-btn cite-btn">📋 Cite</button>
+                    <button class="action-btn share-btn">🔗 Share</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
+
 
 
         <!-- Conferences Page -->
