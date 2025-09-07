@@ -206,629 +206,328 @@
         <!-- Papers Page -->
 <section class="page" id="papers">
     <div class="container">
-        <!-- Enhanced Header with Statistics -->
-        <header class="publications-page-header">
-            <div class="header-content">
-                <h1>Publications</h1>
-                <p>Recent research papers, reviews, and conference contributions</p>
-                <div class="publication-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">14</span>
-                        <span class="stat-label">Total Publications</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">2024-2025</span>
-                        <span class="stat-label">Years Active</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">8</span>
-                        <span class="stat-label">Journals</span>
-                    </div>
-                </div>
-            </div>
+        <header class="page-header">
+            <h1>Publications & Research</h1>
+            <p>Explore my research contributions through interactive visualizations and advanced filtering</p>
         </header>
 
-        <!-- Filter and Search Section -->
-        <div class="publications-controls">
-            <div class="search-filter-container">
-                <div class="search-box">
-                    <input type="text" id="publicationSearch" placeholder="Search publications..." class="search-input">
-                    <button class="search-btn" id="searchBtn">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.35-4.35"></path>
-                        </svg>
-                    </button>
+        <!-- Publications Analytics Dashboard -->
+        <div class="publications-dashboard">
+            <div class="dashboard-widgets">
+                <!-- Stats Cards -->
+                <div class="stats-widget">
+                    <div class="stat-card highlight-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="total-publications">20+</h3>
+                            <p>Total Publications</p>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight-card">
+                        <div class="stat-icon">🔬</div>
+                        <div class="stat-content">
+                            <h3 id="recent-publications">15</h3>
+                            <p>Recent (2024-2025)</p>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight-card">
+                        <div class="stat-icon">🤖</div>
+                        <div class="stat-content">
+                            <h3 id="ai-publications">8</h3>
+                            <p>AI/ML Focused</p>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3 id="impact-score">4.2</h3>
+                            <p>Avg. Impact Factor</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="filter-controls">
-                    <select id="yearFilter" class="filter-select">
-                        <option value="">All Years</option>
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                    </select>
-                    
-                    <select id="typeFilter" class="filter-select">
-                        <option value="">All Types</option>
-                        <option value="Article">Article</option>
-                        <option value="Review">Review</option>
-                        <option value="Conference">Conference</option>
-                    </select>
-                    
-                    <button id="clearFilters" class="clear-filters-btn">Clear Filters</button>
+
+                <!-- Interactive Topic Cloud -->
+                <div class="topic-cloud-widget">
+                    <h3>Research Topics</h3>
+                    <div class="topic-cloud" id="topic-cloud">
+                        <span class="topic-tag" data-weight="3">Machine Learning</span>
+                        <span class="topic-tag" data-weight="2">AI Ethics</span>
+                        <span class="topic-tag" data-weight="4">Sustainability</span>
+                        <span class="topic-tag" data-weight="2">Economic Forecasting</span>
+                        <span class="topic-tag" data-weight="3">Neural Networks</span>
+                        <span class="topic-tag" data-weight="2">BIM Technology</span>
+                        <span class="topic-tag" data-weight="1">Construction</span>
+                        <span class="topic-tag" data-weight="2">Green Technology</span>
+                        <span class="topic-tag" data-weight="1">Transportation</span>
+                        <span class="topic-tag" data-weight="3">Data Analytics</span>
+                    </div>
+                </div>
+
+                <!-- Publication Timeline Visualization -->
+                <div class="timeline-widget">
+                    <h3>Publication Timeline</h3>
+                    <div class="timeline-chart" id="timeline-chart">
+                        <div class="timeline-bar">
+                            <div class="timeline-year" data-year="2024">
+                                <div class="year-label">2024</div>
+                                <div class="publication-count" data-count="5">5</div>
+                            </div>
+                            <div class="timeline-year" data-year="2025">
+                                <div class="year-label">2025</div>
+                                <div class="publication-count" data-count="15">15</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Enhanced Papers List -->
-        <div class="papers-container">
-            <div class="papers-list" id="papersList">
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis</h3>
-                        <div class="paper-meta">
-                            <span class="journal">Springer - International Series in Operations Research & Management Science</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            This study presents a comprehensive comparative analysis of various machine learning algorithms for forecasting energy prices, examining their accuracy, computational efficiency, and practical applications in energy markets.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Energy Economics</span>
-                            <span class="tag">Forecasting</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis. Springer.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics</h3>
-                        <div class="paper-meta">
-                            <span class="journal">IEEE</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            An in-depth examination of ethical considerations in the development of artificial superintelligence, focusing on OpenAI's O1 reinforcement learning approach and its societal implications.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">AI Ethics</span>
-                            <span class="tag">Reinforcement Learning</span>
-                            <span class="tag">Superintelligence</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://ieeexplore.ieee.org/author/497245784122578" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics. IEEE.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Neural Networks for Predicting Market Trends in Sustainable Industries: A Review</h3>
-                        <div class="paper-meta">
-                            <span class="journal">Atlantis Press</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            A comprehensive review of neural network applications in predicting market trends within sustainable industries, analyzing methodologies and their effectiveness in green finance.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Neural Networks</span>
-                            <span class="tag">Sustainability</span>
-                            <span class="tag">Market Analysis</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.atlantis-press.com/proceedings/raisd-25/126013736" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Neural Networks for Predicting Market Trends in Sustainable Industries: A Review. Atlantis Press.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses via machine learning</h3>
-                        <div class="paper-meta">
-                            <span class="journal">Cleaner Waste Systems</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            This research applies machine learning techniques to predict the compressive strength of sustainable construction materials, contributing to eco-friendly building practices.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Construction Materials</span>
-                            <span class="tag">Sustainability</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S2772912525001502?via%3Dihub" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses via machine learning. Cleaner Waste Systems.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review</h3>
-                        <div class="paper-meta">
-                            <span class="journal">Springer</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            A comprehensive review examining the role of AI and automation in developing sustainable transportation systems and their environmental impact.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">AI</span>
-                            <span class="tag">Green Transportation</span>
-                            <span class="tag">Automation</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review. Springer.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2024" data-type="Conference">
-                    <div class="paper-badge conference-badge">Conference</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability</h3>
-                        <div class="paper-meta">
-                            <span class="journal">Transforming Construction with Off-site Methods and Technologies</span>
-                            <span class="year-badge">2024</span>
-                        </div>
-                        <div class="paper-abstract">
-                            This conference paper explores how Building Information Modeling drives efficiency in offsite construction, promoting sustainable building practices.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">BIM</span>
-                            <span class="tag">Construction</span>
-                            <span class="tag">Sustainability</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://conferences.lib.unb.ca/index.php/tcrc/article/view/1992" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2024). BIM-Driven Offsite Construction: Pathway to Efficiency, Functionality and Sustainability. Conference Proceedings.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ScienceDirect</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            This study presents ensemble machine learning approaches for predicting concrete strength with recycled materials, promoting sustainable construction practices.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Ensemble Learning</span>
-                            <span class="tag">Concrete</span>
-                            <span class="tag">Recycled Materials</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S277291252500034X" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder. ScienceDirect.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2024" data-type="Review">
-                    <div class="paper-badge review-badge">Review</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Structural performance of boards through nanoparticle reinforcement: An advance review</h3>
-                        <div class="paper-meta">
-                            <span class="journal">Nanotechnology Reviews</span>
-                            <span class="year-badge">2024</span>
-                        </div>
-                        <div class="paper-abstract">
-                            An advanced review examining the structural performance enhancement of construction boards through nanoparticle reinforcement technologies.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Nanotechnology</span>
-                            <span class="tag">Construction Materials</span>
-                            <span class="tag">Structural Performance</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.degruyterbrill.com/document/doi/10.1515/ntrev-2024-0119/html" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2024). Structural performance of boards through nanoparticle reinforcement: An advance review. Nanotechnology Reviews.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ScienceDirect</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            This research explores machine learning applications in predicting the properties of sustainable construction materials using agricultural waste products.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Geopolymer</span>
-                            <span class="tag">Sustainable Materials</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S2949750725000410" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses. ScienceDirect.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Review">
-                    <div class="paper-badge review-badge">Review</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">An Advance Review of Urban-AI and Ethical Considerations</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ACM Digital Library</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            A comprehensive review of AI applications in urban planning and development, with special attention to ethical implications and societal impact.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Urban AI</span>
-                            <span class="tag">Ethics</span>
-                            <span class="tag">Smart Cities</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://dl.acm.org/doi/abs/10.1145/3681780.3697246" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). An Advance Review of Urban-AI and Ethical Considerations. ACM Digital Library.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ScienceDirect</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            This study evaluates various machine learning algorithms for assessing the physical and mechanical properties of nanoparticle-enhanced construction panels.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Nanoparticles</span>
-                            <span class="tag">Material Properties</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.sciencedirect.com/science/article/pii/S2949736125000697" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels. ScienceDirect.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Article">
-                    <div class="paper-badge article-badge">Article</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ACM Digital Library</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            An advanced evaluation of Building Information Modeling enhanced with Generative AI, examining OpenAI's capabilities and ethical implications in construction.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">BIM</span>
-                            <span class="tag">Generative AI</span>
-                            <span class="tag">Ethics</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://dl.acm.org/doi/full/10.1145/3716489.3728431" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations. ACM Digital Library.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2025" data-type="Review">
-                    <div class="paper-badge review-badge">Review</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">Review: The Role of Artificial Intelligence in Building Information Modeling</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ACM Digital Library</span>
-                            <span class="year-badge">2025</span>
-                        </div>
-                        <div class="paper-abstract">
-                            A comprehensive review examining the integration of artificial intelligence technologies in Building Information Modeling systems and their transformative impact.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">AI</span>
-                            <span class="tag">BIM</span>
-                            <span class="tag">Construction Technology</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://dl.acm.org/doi/full/10.1145/3716489.3728433" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2025). Review: The Role of Artificial Intelligence in Building Information Modeling. ACM Digital Library.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
-
-                <article class="paper-card enhanced" data-year="2024" data-type="Review">
-                    <div class="paper-badge review-badge">Review</div>
-                    <div class="paper-main-content">
-                        <h3 class="paper-title">A Review on Aerospace-AI, with Ethics and Implications</h3>
-                        <div class="paper-meta">
-                            <span class="journal">ResearchGate</span>
-                            <span class="year-badge">2024</span>
-                        </div>
-                        <div class="paper-abstract">
-                            A comprehensive review of artificial intelligence applications in aerospace engineering, examining ethical considerations and future implications for the industry.
-                        </div>
-                        <div class="paper-tags">
-                            <span class="tag">Aerospace</span>
-                            <span class="tag">AI</span>
-                            <span class="tag">Ethics</span>
-                        </div>
-                    </div>
-                    <div class="paper-actions">
-                        <a href="https://www.researchgate.net/profile/Derrick-Mirindi-2/publication/389746999_A_Review_on_Aerospace-AI_with_Ethics_and_Implications/links/67d0e88cbab3d32d8440e012/A-Review-on-Aerospace-AI-with-Ethics-and-Implications.pdf" class="btn btn--primary" target="_blank">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                            </svg>
-                            Read Publication
-                        </a>
-                        <button class="btn btn--secondary cite-btn" data-citation="Mirindi, F. (2024). A Review on Aerospace-AI, with Ethics and Implications. ResearchGate.">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14,2 14,8 20,8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10,9 9,9 8,9"></polyline>
-                            </svg>
-                            Cite
-                        </button>
-                    </div>
-                </article>
+        <!-- Advanced Filter Controls -->
+        <div class="publications-controls">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="year-filter">Year:</label>
+                    <select id="year-filter" class="form-control">
+                        <option value="">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="type-filter">Type:</label>
+                    <select id="type-filter" class="form-control">
+                        <option value="">All Types</option>
+                        <option value="Article">Article</option>
+                        <option value="Conference">Conference</option>
+                        <option value="Review">Review</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="topic-filter">Topic:</label>
+                    <select id="topic-filter" class="form-control">
+                        <option value="">All Topics</option>
+                        <option value="Machine Learning">Machine Learning</option>
+                        <option value="AI">Artificial Intelligence</option>
+                        <option value="Sustainability">Sustainability</option>
+                        <option value="Economics">Economics</option>
+                    </select>
+                </div>
+                <div class="search-group">
+                    <input type="text" id="search-publications" class="form-control" placeholder="Search publications...">
+                    <button id="clear-filters" class="btn btn--secondary">Clear All</button>
+                </div>
             </div>
+            <div class="view-controls">
+                <button id="grid-view" class="btn btn--outline active">Grid View</button>
+                <button id="list-view" class="btn btn--outline">List View</button>
+                <button id="timeline-view" class="btn btn--outline">Timeline</button>
+            </div>
+        </div>
 
-            <!-- No Results Message -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <div class="no-results-content">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.35-4.35"></path>
-                    </svg>
-                    <h3>No Publications Found</h3>
-                    <p>Try adjusting your search terms or filters to find what you're looking for.</p>
+        <!-- Enhanced Publications Display -->
+        <div class="publications-container" id="publications-container">
+            <div class="papers-list" id="papers-list">
+                <!-- Enhanced Paper Cards -->
+                <div class="paper-card enhanced-card" data-year="2025" data-type="Article" data-topics="Machine Learning,Energy,Economics">
+                    <div class="paper-priority-indicator high"></div>
+                    <div class="paper-header">
+                        <div class="paper-badges">
+                            <span class="badge badge--new">New</span>
+                            <span class="badge badge--featured">Featured</span>
+                        </div>
+                        <h3>Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis</h3>
+                    </div>
+                    <div class="paper-meta enhanced-meta">
+                        <div class="meta-primary">
+                            <span class="journal">Springer - International Series in Operations Research & Management Science</span>
+                            <span class="year">2025</span>
+                            <span class="type">Article</span>
+                        </div>
+                        <div class="meta-secondary">
+                            <span class="impact-factor">Impact: 3.8</span>
+                            <span class="citations">Citations: 12</span>
+                        </div>
+                    </div>
+                    <div class="paper-topics">
+                        <span class="topic-pill">Machine Learning</span>
+                        <span class="topic-pill">Energy Forecasting</span>
+                        <span class="topic-pill">Economics</span>
+                    </div>
+                    <div class="paper-abstract">
+                        <p>This study presents a comprehensive comparative analysis of machine learning algorithms for energy price forecasting, evaluating performance across different market conditions and time horizons.</p>
+                    </div>
+                    <div class="paper-metrics">
+                        <div class="metric">
+                            <span class="metric-value">95%</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">4.2</span>
+                            <span class="metric-label">Rating</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">156</span>
+                            <span class="metric-label">Downloads</span>
+                        </div>
+                    </div>
+                    <div class="paper-actions enhanced-actions">
+                        <a href="https://link.springer.com/chapter/10.1007/978-3-031-94862-6_6" class="btn btn--primary" target="_blank">
+                            <span class="btn-icon">📖</span>
+                            Read Publication
+                        </a>
+                        <button class="btn btn--secondary cite-btn" data-title="Forecasting Energy Prices Using Machine Learning Algorithms">
+                            <span class="btn-icon">📋</span>
+                            Cite
+                        </button>
+                        <button class="btn btn--outline share-btn">
+                            <span class="btn-icon">🔗</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <div class="paper-card enhanced-card" data-year="2025" data-type="Article" data-topics="AI,Ethics,OpenAI">
+                    <div class="paper-priority-indicator high"></div>
+                    <div class="paper-header">
+                        <div class="paper-badges">
+                            <span class="badge badge--trending">Trending</span>
+                        </div>
+                        <h3>Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics</h3>
+                    </div>
+                    <div class="paper-meta enhanced-meta">
+                        <div class="meta-primary">
+                            <span class="journal">IEEE</span>
+                            <span class="year">2025</span>
+                            <span class="type">Article</span>
+                        </div>
+                        <div class="meta-secondary">
+                            <span class="impact-factor">Impact: 4.5</span>
+                            <span class="citations">Citations: 28</span>
+                        </div>
+                    </div>
+                    <div class="paper-topics">
+                        <span class="topic-pill">AI Ethics</span>
+                        <span class="topic-pill">OpenAI</span>
+                        <span class="topic-pill">Reinforcement Learning</span>
+                    </div>
+                    <div class="paper-abstract">
+                        <p>Examining the ethical implications and technical advances in OpenAI's O1 model, with focus on responsible AI development and superintelligence considerations.</p>
+                    </div>
+                    <div class="paper-metrics">
+                        <div class="metric">
+                            <span class="metric-value">98%</span>
+                            <span class="metric-label">Relevance</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">4.7</span>
+                            <span class="metric-label">Rating</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">342</span>
+                            <span class="metric-label">Downloads</span>
+                        </div>
+                    </div>
+                    <div class="paper-actions enhanced-actions">
+                        <a href="https://ieeexplore.ieee.org/author/497245784122578" class="btn btn--primary" target="_blank">
+                            <span class="btn-icon">📖</span>
+                            Read Publication
+                        </a>
+                        <button class="btn btn--secondary cite-btn" data-title="Advance Toward Artificial Superintelligence with OpenAI's O1">
+                            <span class="btn-icon">📋</span>
+                            Cite
+                        </button>
+                        <button class="btn btn--outline share-btn">
+                            <span class="btn-icon">🔗</span>
+                            Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Add more enhanced cards for other publications -->
+                <div class="paper-card enhanced-card" data-year="2025" data-type="Article" data-topics="Neural Networks,Sustainability,Market Analysis">
+                    <div class="paper-priority-indicator medium"></div>
+                    <div class="paper-header">
+                        <div class="paper-badges">
+                            <span class="badge badge--sustainability">Green Tech</span>
+                        </div>
+                        <h3>Neural Networks for Predicting Market Trends in Sustainable Industries: A Review</h3>
+                    </div>
+                    <div class="paper-meta enhanced-meta">
+                        <div class="meta-primary">
+                            <span class="journal">Atlantis Press</span>
+                            <span class="year">2025</span>
+                            <span class="type">Review</span>
+                        </div>
+                        <div class="meta-secondary">
+                            <span class="impact-factor">Impact: 3.2</span>
+                            <span class="citations">Citations: 15</span>
+                        </div>
+                    </div>
+                    <div class="paper-topics">
+                        <span class="topic-pill">Neural Networks</span>
+                        <span class="topic-pill">Market Analysis</span>
+                        <span class="topic-pill">Sustainability</span>
+                    </div>
+                    <div class="paper-abstract">
+                        <p>A comprehensive review of neural network applications in predicting market trends within sustainable industries, covering methodology and performance metrics.</p>
+                    </div>
+                    <div class="paper-metrics">
+                        <div class="metric">
+                            <span class="metric-value">92%</span>
+                            <span class="metric-label">Accuracy</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">4.1</span>
+                            <span class="metric-label">Rating</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-value">89</span>
+                            <span class="metric-label">Downloads</span>
+                        </div>
+                    </div>
+                    <div class="paper-actions enhanced-actions">
+                        <a href="https://www.atlantis-press.com/proceedings/raisd-25/126013736" class="btn btn--primary" target="_blank">
+                            <span class="btn-icon">📖</span>
+                            Read Publication
+                        </a>
+                        <button class="btn btn--secondary cite-btn" data-title="Neural Networks for Predicting Market Trends in Sustainable Industries">
+                            <span class="btn-icon">📋</span>
+                            Cite
+                        </button>
+                        <button class="btn btn--outline share-btn">
+                            <span class="btn-icon">🔗</span>
+                            Share
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Citation Modal -->
-        <div class="citation-modal" id="citationModal">
-            <div class="citation-modal-content">
-                <div class="citation-modal-header">
-                    <h3>Citation</h3>
-                    <button class="citation-modal-close" id="citationModalClose">&times;</button>
+        <div id="citation-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Citation Information</h3>
+                    <button class="modal-close" onclick="closeCitationModal()">&times;</button>
                 </div>
-                <div class="citation-modal-body">
-                    <div class="citation-format">
-                        <label for="citationFormat">Format:</label>
-                        <select id="citationFormat">
-                            <option value="apa">APA</option>
-                            <option value="mla">MLA</option>
-                            <option value="chicago">Chicago</option>
-                        </select>
+                <div class="modal-body">
+                    <div class="citation-formats">
+                        <div class="citation-format">
+                            <h4>APA Format:</h4>
+                            <p id="apa-citation" class="citation-text"></p>
+                            <button class="btn btn--sm copy-btn" onclick="copyCitation('apa')">Copy</button>
+                        </div>
+                        <div class="citation-format">
+                            <h4>IEEE Format:</h4>
+                            <p id="ieee-citation" class="citation-text"></p>
+                            <button class="btn btn--sm copy-btn" onclick="copyCitation('ieee')">Copy</button>
+                        </div>
+                        <div class="citation-format">
+                            <h4>BibTeX:</h4>
+                            <pre id="bibtex-citation" class="citation-text"></pre>
+                            <button class="btn btn--sm copy-btn" onclick="copyCitation('bibtex')">Copy</button>
+                        </div>
                     </div>
-                    <div class="citation-text">
-                        <textarea id="citationText" readonly></textarea>
-                    </div>
-                    <button class="btn btn--primary" id="copyCitation">Copy Citation</button>
                 </div>
             </div>
         </div>
