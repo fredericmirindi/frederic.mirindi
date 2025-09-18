@@ -406,18 +406,56 @@
         </section>
 
 
- <!-- Blog Page -->
-
-
-    <section class="page" id="blog">
+ <!-- Enhanced Blog Page -->
+<section class="page" id="blog">
   <div class="container">
     <div class="page-header">
       <h1>Blog</h1>
-      <p>
-        To access my latest blog publications and analyses, please visit:
-      </p>
+      <p>Deep insights into AI, economics, and the future of economic analysis</p>
     </div>
 
+    <!-- Featured Blog Post -->
+    <div class="card" style="margin-bottom: 2rem; border: 2px solid var(--color-primary); background: linear-gradient(135deg, rgba(31, 184, 205, 0.05), rgba(79, 172, 254, 0.05));">
+      <div class="card__body">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px; color: var(--color-primary);">
+          <span style="font-size: 1.5em;">🧠</span>
+          <span style="font-size: 0.9em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Featured Article</span>
+        </div>
+        
+        <h2 style="margin: 0 0 12px 0; color: var(--color-text);">
+          <a href="deep-analysis.html" style="text-decoration: none; color: inherit; transition: color 0.3s ease;" 
+             onmouseover="this.style.color='var(--color-primary)'" 
+             onmouseout="this.style.color='inherit'">
+            Deep Analysis: The Neural Revolution in Economic Modeling
+          </a>
+        </h2>
+        
+        <p style="color: var(--color-text-secondary); line-height: 1.6; margin: 12px 0;">
+          Exploring how deep neural networks are fundamentally transforming economic analysis, 
+          moving beyond traditional econometric limitations to unlock unprecedented forecasting 
+          capabilities and policy insights. Discover the latest research showing 85% improvements 
+          in forecasting accuracy.
+        </p>
+        
+        <div style="display: flex; align-items: center; gap: 16px; margin: 16px 0; flex-wrap: wrap;">
+          <div style="display: flex; align-items: center; gap: 8px; color: var(--color-text-secondary); font-size: 0.9em;">
+            <span>📅</span>
+            <span>September 17, 2025</span>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: var(--color-primary); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em; font-weight: 500;">Deep Learning</span>
+            <span style="background: var(--color-primary); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em; font-weight: 500;">Economic Modeling</span>
+            <span style="background: var(--color-primary); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.8em; font-weight: 500;">AI Research</span>
+          </div>
+        </div>
+        
+        <a href="deep-analysis.html" class="btn btn--primary" style="margin-top: 12px;">
+          Read Full Analysis →
+        </a>
+      </div>
+    </div>
+
+    <!-- External Blog Link -->
     <div class="card" style="padding-bottom: 2.5rem;">
       <div class="card__body">
         <div style="text-align: center; margin-bottom: 1.8rem;">
@@ -432,33 +470,98 @@
 
         <div class="research-grid">
           <div class="research-card">
-            <h3>Deep Analysis</h3>
-            <p>Economic trends, market dynamics, and policy implications.</p>
+            <h3>💹 Market Analysis</h3>
+            <p>Comprehensive analysis of financial markets, cryptocurrency trends, and economic indicators using AI-powered insights.</p>
           </div>
           <div class="research-card">
-            <h3>Featured Articles</h3>
-            <p>Digital finance, market volatility, sustainability, macroeconomics, AI impacts on labor markets, and global supply chains.</p>
+            <h3>🤖 AI Economics</h3>
+            <p>Exploring the intersection of artificial intelligence and economics, including automation's impact on labor markets and economic theory.</p>
           </div>
           <div class="research-card">
-            <h3>Popular Topics</h3>
-            <p>CBDCs, inflation, AI economics, climate finance, cryptocurrency, market volatility, supply chain, and green economy.</p>
+            <h3>🌍 Global Policy</h3>
+            <p>Analysis of international economic policies, trade dynamics, and their implications for global economic stability.</p>
           </div>
           <div class="research-card">
-            <h3>Main Sections</h3>
-            <p>Economics, Analysis, Markets, Policy, Insights, and About.</p>
+            <h3>📊 Data-Driven Insights</h3>
+            <p>Evidence-based economic analysis utilizing machine learning models and advanced statistical techniques for economic forecasting.</p>
           </div>
           <div class="research-card">
-            <h3>Resources</h3>
-            <p>Newsletter, Archive, Research, and Contact information.</p>
+            <h3>🏛️ Central Banking</h3>
+            <p>Analysis of monetary policy, inflation dynamics, and central bank communications using natural language processing.</p>
           </div>
           <div class="research-card">
-            <h3>Transparency</h3>
-            <p>Authorship and methodology details, plus privacy policy.</p>
+            <h3>🔬 Research Methods</h3>
+            <p>Innovative methodologies combining traditional econometrics with modern machine learning approaches for robust economic analysis.</p>
           </div>
         </div>
         
         <div style="margin-top:1.6rem;color:#646d74;font-style:italic;text-align:center;">
-          The site serves as a modern economics and policy analysis platform, offering both current insights and in-depth articles.
+          The platform serves as a modern economics and policy analysis hub, offering both current insights and in-depth research articles.
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Archive Section -->
+    <div class="card" style="margin-top:2rem;">
+      <div class="card__body">
+        <h2 style="text-align:center; color:var(--color-primary);margin-bottom:1em;">📚 Blog Archive</h2>
+        
+        <div style="display: grid; gap: 16px;">
+          <!-- Deep Analysis Post -->
+          <div style="border: 1px solid var(--color-border); border-radius: 8px; padding: 16px; transition: all 0.3s ease;" 
+               onmouseover="this.style.borderColor='var(--color-primary)'; this.style.transform='translateY(-2px)';" 
+               onmouseout="this.style.borderColor='var(--color-border)'; this.style.transform='translateY(0)';">
+            <div style="display: flex; align-items: flex-start; gap: 16px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0 0 8px 0;">
+                  <a href="deep-analysis.html" style="text-decoration: none; color: var(--color-text); transition: color 0.3s ease;"
+                     onmouseover="this.style.color='var(--color-primary)'" 
+                     onmouseout="this.style.color='var(--color-text)'">
+                    Deep Analysis: The Neural Revolution in Economic Modeling
+                  </a>
+                </h3>
+                <p style="color: var(--color-text-secondary); margin: 8px 0; font-size: 0.9em; line-height: 1.5;">
+                  How deep neural networks are revolutionizing economic analysis and forecasting beyond traditional econometric methods.
+                </p>
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 0.8em; color: var(--color-text-secondary);">
+                  <span>🗓️ Sept 17, 2025</span>
+                  <span>•</span>
+                  <span>🔬 Research</span>
+                  <span>•</span>
+                  <span>🧠 AI & Economics</span>
+                </div>
+              </div>
+              <div style="font-size: 2em; opacity: 0.7;">🚀</div>
+            </div>
+          </div>
+          
+          <!-- Digital Feminism Post -->
+          <div style="border: 1px solid var(--color-border); border-radius: 8px; padding: 16px; transition: all 0.3s ease;" 
+               onmouseover="this.style.borderColor='var(--color-primary)'; this.style.transform='translateY(-2px)';" 
+               onmouseout="this.style.borderColor='var(--color-border)'; this.style.transform='translateY(0)';">
+            <div style="display: flex; align-items: flex-start; gap: 16px;">
+              <div style="flex: 1;">
+                <h3 style="margin: 0 0 8px 0;">
+                  <a href="digital-feminism.html" style="text-decoration: none; color: var(--color-text); transition: color 0.3s ease;"
+                     onmouseover="this.style.color='var(--color-primary)'" 
+                     onmouseout="this.style.color='var(--color-text)'">
+                    Digital Feminism: Intersectionality and Activism in the Age of Social Media
+                  </a>
+                </h3>
+                <p style="color: var(--color-text-secondary); margin: 8px 0; font-size: 0.9em; line-height: 1.5;">
+                  Exploring how social media has transformed feminist activism from localized movements to globally networked campaigns.
+                </p>
+                <div style="display: flex; align-items: center; gap: 12px; font-size: 0.8em; color: var(--color-text-secondary);">
+                  <span>🗓️ Jan 22, 2025</span>
+                  <span>•</span>
+                  <span>🎓 Academic</span>
+                  <span>•</span>
+                  <span>📱 Digital Society</span>
+                </div>
+              </div>
+              <div style="font-size: 2em; opacity: 0.7;">🌐</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
