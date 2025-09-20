@@ -8,6 +8,8 @@
     <meta name="description" content="Leading researcher specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting and policy analysis.">
     <meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi">
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -59,15 +61,16 @@
 <main class="main-content">
   <section class="page active" id="home">
     <div class="hero-section" style="position: relative; overflow: hidden;">
+      <!-- AI/ML Background Canvas -->
+      <canvas id="aiCanvas" class="ai-background-canvas"></canvas>
+      
+      <!-- Keep existing animated shapes -->
       <div class="hero-background"></div>
-      <!-- Animated Floating Shapes (intense + 3D) -->
       <div class="floating-shape shape-1"></div>
       <div class="floating-shape shape-2"></div>
       <div class="floating-shape shape-3"></div>
       <div class="floating-shape shape-4"></div>
       <div class="floating-shape shape-5"></div>
-      <!-- End Animated Shapes -->
-          
   
       <div class="container">
         <div class="hero-content">
@@ -119,8 +122,12 @@
                   <img src="frederic.mirindi.jpg" alt="Frederic Mirindi" class="profile-photo">
                 </div>
               </div>
-              <div class="profile-status">
-                <span class="status status--success">Open for Collaboration</span>
+              <!-- Enhanced Consultation Section -->
+              <div class="consultation-section">
+                <button id="consultationBtn" class="consultation-btn">
+                  <i class="fas fa-handshake"></i>
+                  Open to Consultation
+                </button>
               </div>
             </div>
           </div>
@@ -128,82 +135,92 @@
       </div>
     </div>
 
- <div class="highlights-section">
-                <div class="container">
-                    <h2>Key Achievements</h2>
-                    <div class="highlights-grid">
-                        <div class="highlight-card">
-                            <h3>20+</h3>
-                            <p>Published Papers</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>25+</h3>
-                            <p>Conference Presentations</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>15+</h3>
-                            <p>AI Models Developed</p>
-                        </div>
-                        <div class="highlight-card">
-                            <h3>5+</h3>
-                            <p>Years Experience</p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Email Modal -->
+    <div id="emailModal" class="email-modal hidden">
+      <div class="email-content">
+        <span class="close-modal">&times;</span>
+        <h3>Let's Connect!</h3>
+        <p>Reach out for collaboration opportunities:</p>
+        <div class="email-display">
+          <i class="fas fa-envelope"></i>
+          <span id="emailText">frederic.mirindi@umanitoba.ca</span>
+          <button id="copyEmailBtn" class="copy-btn">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Continue with rest of home page content... -->
+    <div class="highlights-section">
+      <div class="container">
+        <h2>Key Achievements</h2>
+        <div class="highlights-grid">
+          <div class="highlight-card">
+            <h3>20+</h3>
+            <p>Published Papers</p>
+          </div>
+          <div class="highlight-card">
+            <h3>25+</h3>
+            <p>Conference Presentations</p>
+          </div>
+          <div class="highlight-card">
+            <h3>15+</h3>
+            <p>AI Models Developed</p>
+          </div>
+          <div class="highlight-card">
+            <h3>5+</h3>
+            <p>Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Cards: Only for Home Page, after Key Achievements and before Footnote -->
+    <section class="widget-responsive-section">
+      <div class="container">
+        <div class="widget-cards-row">
+          <!-- Local Time Card -->
+          <div class="widget-card widget-time">
+            <div class="widget-card-icon" aria-hidden="true">🕓</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Local Time</div>
+              <div class="widget-time-main" id="watch-time">11:28</div>
+              <div class="widget-card-secondary">Winnipeg, MB</div>
+              <div class="widget-card-caption">Synchronized with Winnipeg local time.</div>
             </div>
-
-                    <!-- Info Cards: Only for Home Page, after Key Achievements and before Footnote -->
-            <section class="widget-responsive-section">
-                <div class="container">
-              <div class="widget-cards-row">
-                <!-- Local Time Card -->
-                <div class="widget-card widget-time">
-                  <div class="widget-card-icon" aria-hidden="true">🕓</div>
-                  <div class="widget-card-content">
-                    <div class="widget-card-title">Local Time</div>
-                    <div class="widget-time-main" id="watch-time">11:28</div>
-                    <div class="widget-card-secondary">Winnipeg, MB</div>
-                    <div class="widget-card-caption">Synchronized with Winnipeg local time.</div>
-                  
-                  </div>
-                </div>
-                <!-- Weather Card -->
-                <div class="widget-card widget-weather">
-                  <div class="widget-card-icon" aria-hidden="true">🌤️</div>
-                  <div class="widget-card-content">
-                    <div class="widget-card-title">Weather</div>
-                    <div class="widget-weather-main">
-                      <span class="widget-weather-icon" id="weather-icon">☀️</span>
-                      <span class="widget-weather-temp" id="weather-temp">25°C</span>
-                    </div>
-                    <div class="widget-weather-desc" id="weather-desc">Sunny</div>
-                    <div class="widget-card-secondary">Winnipeg, MB</div>
-                    <div class="widget-card-caption">Weather auto-updates every 10 min.</div>
-                    
-                  </div>
-                </div>
-                <!-- Quote Card -->
-                <div class="widget-card widget-quote">
-                  <div class="widget-card-icon" aria-hidden="true">💡</div>
-                  <div class="widget-card-content">
-                    <div class="widget-card-title">Quote of the Day</div>
-                    <div class="widget-quote-main" id="fact-box">
-                      "Economics is the study of how society manages its scarce resources."
-                    </div>
-
-                    <div class="widget-card-caption">Discover fresh economic wisdom each day!</div>
-                  </div>
-                </div>
+          </div>
+          <!-- Weather Card -->
+          <div class="widget-card widget-weather">
+            <div class="widget-card-icon" aria-hidden="true">🌤️</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Weather</div>
+              <div class="widget-weather-main">
+                <span class="widget-weather-icon" id="weather-icon">☀️</span>
+                <span class="widget-weather-temp" id="weather-temp">25°C</span>
               </div>
-                    </div>
-            </section>
-            </section>
+              <div class="widget-weather-desc" id="weather-desc">Sunny</div>
+              <div class="widget-card-secondary">Winnipeg, MB</div>
+              <div class="widget-card-caption">Weather auto-updates every 10 min.</div>
+            </div>
+          </div>
+          <!-- Quote Card -->
+          <div class="widget-card widget-quote">
+            <div class="widget-card-icon" aria-hidden="true">💡</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Quote of the Day</div>
+              <div class="widget-quote-main" id="fact-box">
+                "Economics is the study of how society manages its scarce resources."
+              </div>
+              <div class="widget-card-caption">Discover fresh economic wisdom each day!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
 
-
-    
-      
-
-        <!-- Papers Page -->
+    <!-- Papers Page -->
 <section class="page" id="papers">
   <div class="container">
     <header class="page-header">
@@ -245,10 +262,6 @@
     <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
   </div>
 </section>
-
-
-
-
 
         <!-- Conferences Page -->
         <section class="page" id="conferences">
@@ -484,11 +497,6 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
-
-
-
-        
-
         <!-- About Page -->
 <section class="page" id="about">
     <div class="container">
@@ -608,17 +616,8 @@
     <span class="topic-tag">Business Processes</span>
   </div>
 </div>
-
-
-
-
-
-                        
                     </div>
-                    
-                    <!-- Course Schedule -->
-                  
-                
+                </div>
 
                 <div class="skills-section">
                     <h3>Technical Skills</h3>
@@ -725,8 +724,7 @@
         </div>
     </div>
 
- 
-    <!-- Footer -->
+ <!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
