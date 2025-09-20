@@ -1163,23 +1163,8 @@ select.form-control {
     text-align: center;
     margin-bottom: var(--space-32);
     font-size: var(--font-size-3xl);
-    /* Make Key Achievements title cyan/blue-green */
-    color: #00CED1;
-}
-
-/* Dark mode for Key Achievements title */
-@media (prefers-color-scheme: dark) {
-  .highlights-section h2 {
-    color: #00FFFF;
-  }
-}
-
-[data-color-scheme="dark"] .highlights-section h2 {
-  color: #00FFFF;
-}
-
-[data-color-scheme="light"] .highlights-section h2 {
-  color: #00CED1;
+    /* Make Key Achievements title muted teal (same as other section titles) */
+    color: var(--color-primary);
 }
 
 .highlights-grid {
@@ -1201,213 +1186,17 @@ select.form-control {
     transform: translateY(-5px);
 }
 
-/* Make highlight card numbers cyan instead of primary color */
+/* Change highlight card numbers to muted teal (same as section titles) */
 .highlight-card h3 {
     font-size: var(--font-size-4xl);
-    /* Cyan color for light mode */
-    color: #00CED1;
+    /* Use same color as section titles - muted teal */
+    color: var(--color-primary);
     margin-bottom: var(--space-8);
-}
-
-/* Dark mode cyan for highlight numbers */
-@media (prefers-color-scheme: dark) {
-  .highlight-card h3 {
-    color: #00FFFF;
-  }
-}
-
-[data-color-scheme="dark"] .highlight-card h3 {
-  color: #00FFFF;
-}
-
-[data-color-scheme="light"] .highlight-card h3 {
-  color: #00CED1;
 }
 
 .highlight-card p {
     color: var(--color-text-secondary);
     margin: 0;
-}
-
-/* Institutional Affiliations Section */
-.institutional-section {
-    padding: var(--space-32) 0;
-    background: var(--color-background);
-    position: relative;
-}
-
-/* Remove the top border line as requested */
-.institutional-section::before {
-    display: none;
-}
-
-.institutional-section h2 {
-    text-align: center;
-    margin-bottom: var(--space-32);
-    font-size: var(--font-size-3xl);
-    color: var(--color-primary);
-    position: relative;
-}
-
-/* Remove the decorative line under the title as requested */
-.institutional-section h2::after {
-    display: none;
-}
-
-.institutions-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--space-24);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.institution-card {
-    background: var(--color-surface);
-    border-radius: var(--radius-lg);
-    padding: var(--space-24);
-    border: 1px solid var(--color-card-border);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--duration-normal) var(--ease-standard);
-    position: relative;
-    overflow: hidden;
-}
-
-.institution-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-success));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform var(--duration-normal) var(--ease-standard);
-}
-
-.institution-card:hover::before {
-    transform: scaleX(1);
-}
-
-.institution-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary);
-}
-
-/* Updated institution icon to support logos */
-.institution-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-success));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto var(--space-16);
-    font-size: var(--font-size-2xl);
-    color: var(--color-btn-primary-text);
-    box-shadow: 0 4px 12px rgba(33, 128, 141, 0.3);
-    overflow: hidden;
-}
-
-/* Support for logo images inside icon */
-.institution-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-/* Fallback styling when using text/emoji */
-.institution-icon:not(:has(img)) {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-success));
-}
-
-.institution-name {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text);
-    text-align: center;
-    margin-bottom: var(--space-12);
-    line-height: var(--line-height-tight);
-}
-
-.institution-location {
-    text-align: center;
-    color: var(--color-text-secondary);
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--space-12);
-    font-style: italic;
-}
-
-.institution-type {
-    display: inline-block;
-    background: var(--color-secondary);
-    color: var(--color-primary);
-    padding: var(--space-4) var(--space-12);
-    border-radius: var(--radius-full);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-medium);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin: 0 auto;
-    display: block;
-    width: fit-content;
-}
-
-/* Special styling for different institution types */
-.institution-card.university .institution-icon {
-    background: linear-gradient(135deg, #1e40af, #3b82f6);
-}
-
-.institution-card.college .institution-icon {
-    background: linear-gradient(135deg, #059669, #10b981);
-}
-
-.institution-card.consortium .institution-icon {
-    background: linear-gradient(135deg, #dc2626, #ef4444);
-}
-
-.institution-card.francophone .institution-icon {
-    background: linear-gradient(135deg, #7c3aed, #a855f7);
-}
-
-/* Responsive design for institutional section */
-@media (max-width: 768px) {
-    .institutions-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-16);
-    }
-    
-    .institutional-section {
-        padding: var(--space-24) 0;
-    }
-    
-    .institution-card {
-        padding: var(--space-16);
-    }
-    
-    .institution-icon {
-        width: 50px;
-        height: 50px;
-        font-size: var(--font-size-xl);
-    }
-    
-    .institution-name {
-        font-size: var(--font-size-lg);
-    }
-}
-
-@media (max-width: 480px) {
-    .institutional-section h2 {
-        font-size: var(--font-size-2xl);
-    }
-    
-    .institutions-grid {
-        gap: var(--space-12);
-    }
 }
 
 /* Page Headers */
@@ -2778,6 +2567,7 @@ select.form-control {
   position: relative;
   isolation: isolate;
   transition: box-shadow .25s;
+  overflow: hidden;
 }
 
 /* Widget Section Title */
@@ -2790,29 +2580,31 @@ select.form-control {
   letter-spacing: var(--letter-spacing-tight);
 }
 
-/* Dark mode for widget section title */
-@media (prefers-color-scheme: dark) {
-  .widget-section-title {
-    color: var(--color-primary);
-  }
-}
-
-[data-color-scheme="dark"] .widget-section-title {
-  color: var(--color-primary);
-}
-
-[data-color-scheme="light"] .widget-section-title {
-  color: var(--color-primary);
-}
-
+/* Widget Cards Row with Right-to-Left Scrolling Animation */
 .widget-cards-row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: var(--widget-gap);
   margin: 0 auto;
-  max-width: 1120px;
-  width: 96%;
+  max-width: none;
+  width: max-content;
+  /* Right-to-left scrolling animation */
+  animation: scrollWidgets 60s linear infinite;
+  /* Pause animation on hover */
+  animation-play-state: running;
+}
+
+.widget-cards-row:hover {
+  animation-play-state: paused;
+}
+
+/* Scrolling animation keyframes */
+@keyframes scrollWidgets {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .widget-card {
@@ -2821,20 +2613,16 @@ select.form-control {
   align-items: flex-start;
   background: var(--color-surface, #fff);
   border-radius: var(--radius-lg, 12px);
-  min-width: 0;
-  max-width: 340px;
-  width: 100%;
+  min-width: 320px;
+  max-width: 320px;
+  width: 320px;
   padding: 24px 28px 23px 24px;
   transition: box-shadow .18s, transform .16s;
   border: 1.5px solid var(--color-card-border, #ececec);
   box-shadow: 0 2px 7px 0 var(--color-card-border, #ececec);
   position: relative;
   margin: 0;
-}
-
-.widget-card:not(:last-child) {
-  /* For mobile: bottom margin when stacked */
-  margin-bottom: 0;
+  flex-shrink: 0;
 }
 
 .widget-card:hover {
@@ -2982,6 +2770,7 @@ select.form-control {
   outline: none;
 }
 
+/* Mobile and Tablet - Disable animation and show normal layout */
 @media (max-width: 900px) {
   .widget-cards-row {
     flex-direction: column;
@@ -2989,10 +2778,13 @@ select.form-control {
     width: 99vw;
     padding: 0 6vw;
     max-width: 100vw;
+    animation: none !important;
+    transform: none !important;
   }
   .widget-card {
     max-width: 99vw;
     width: 100%;
+    min-width: unset;
     margin: 0 auto 8px auto;
     padding-left: 14px;
     padding-right: 14px;
@@ -3009,6 +2801,7 @@ select.form-control {
     border-radius: 0;
     background: var(--color-background, #fcfcf9);
     box-shadow: 0 2px 12px rgba(33,128,141,0.07);
+    overflow: visible;
   }
   .widget-cards-row {
     flex-direction: column;
@@ -3016,6 +2809,8 @@ select.form-control {
     width: 100vw;
     max-width: 100vw;
     padding: 0 2vw;
+    animation: none !important;
+    transform: none !important;
   }
   .widget-card {
     flex-direction: row;
