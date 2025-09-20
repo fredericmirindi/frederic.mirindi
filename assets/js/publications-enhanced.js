@@ -16,6 +16,14 @@ class PublicationsShowcase {
             hIndex: 0,
             totalReads: 0
         };
+        // AI Background for Publications page
+        this.aiCanvasPublications = null;
+        this.aiCtxPublications = null;
+        this.nodesPublications = [];
+        this.connectionsPublications = [];
+        this.particlesPublications = [];
+        this.animationIdPublications = null;
+        
         this.init();
     }
 
@@ -24,11 +32,197 @@ class PublicationsShowcase {
         this.initializeEventListeners();
         this.initializeCategoryFilters();
         this.updateResearchStats();
-        this.initializeResearchTimeline();
+        this.initializePublicationsAIBackground();
+    }
+
+    // Initialize AI Background for Publications page (same as Home page)
+    initializePublicationsAIBackground() {
+        this.aiCanvasPublications = document.getElementById('aiCanvasPublications');
+        if (!this.aiCanvasPublications) return;
+        
+        this.aiCtxPublications = this.aiCanvasPublications.getContext('2d');
+        this.resizePublicationsCanvas();
+        
+        this.createPublicationsNodes();
+        this.createPublicationsConnections();
+        this.createPublicationsParticles();
+        
+        this.animatePublicationsBackground();
+        
+        window.addEventListener('resize', () => {
+            this.resizePublicationsCanvas();
+            this.createPublicationsNodes();
+            this.createPublicationsConnections();
+        });
+    }
+
+    resizePublicationsCanvas() {
+        if (!this.aiCanvasPublications) return;
+        
+        const rect = this.aiCanvasPublications.parentElement.getBoundingClientRect();
+        this.aiCanvasPublications.width = rect.width;
+        this.aiCanvasPublications.height = rect.height;
+    }
+
+    createPublicationsNodes() {
+        if (!this.aiCanvasPublications) return;
+        
+        this.nodesPublications = [];
+        const nodeCount = Math.min(Math.floor((this.aiCanvasPublications.width * this.aiCanvasPublications.height) / 15000), 50);
+        
+        for (let i = 0; i < nodeCount; i++) {
+            this.nodesPublications.push({
+                x: Math.random() * this.aiCanvasPublications.width,
+                y: Math.random() * this.aiCanvasPublications.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                radius: Math.random() * 3 + 2,
+                opacity: Math.random() * 0.5 + 0.3,
+                pulsePhase: Math.random() * Math.PI * 2,
+                connections: 0
+            });
+        }
+    }
+
+    createPublicationsConnections() {
+        this.connectionsPublications = [];
+        const maxDistance = 150;
+        
+        for (let i = 0; i < this.nodesPublications.length; i++) {
+            for (let j = i + 1; j < this.nodesPublications.length; j++) {
+                const dx = this.nodesPublications[i].x - this.nodesPublications[j].x;
+                const dy = this.nodesPublications[i].y - this.nodesPublications[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < maxDistance) {
+                    this.connectionsPublications.push({
+                        nodeA: i,
+                        nodeB: j,
+                        strength: 1 - (distance / maxDistance),
+                        pulsePhase: Math.random() * Math.PI * 2
+                    });
+                    this.nodesPublications[i].connections++;
+                    this.nodesPublications[j].connections++;
+                }
+            }
+        }
+    }
+
+    createPublicationsParticles() {
+        this.particlesPublications = [];
+        const particleCount = Math.min(Math.floor(this.aiCanvasPublications.width / 20), 30);
+        
+        for (let i = 0; i < particleCount; i++) {
+            this.particlesPublications.push({
+                x: Math.random() * this.aiCanvasPublications.width,
+                y: Math.random() * this.aiCanvasPublications.height,
+                vx: (Math.random() - 0.5) * 1,
+                vy: (Math.random() - 0.5) * 1,
+                size: Math.random() * 2 + 1,
+                opacity: Math.random() * 0.4 + 0.2,
+                life: Math.random() * 100 + 50
+            });
+        }
+    }
+
+    animatePublicationsBackground() {
+        if (!this.aiCanvasPublications || !this.aiCtxPublications) return;
+        
+        this.aiCtxPublications.clearRect(0, 0, this.aiCanvasPublications.width, this.aiCanvasPublications.height);
+        
+        const time = Date.now() * 0.001;
+        
+        // Update and draw connections
+        this.aiCtxPublications.strokeStyle = 'rgba(0, 255, 136, 0.3)';
+        this.connectionsPublications.forEach(conn => {
+            const nodeA = this.nodesPublications[conn.nodeA];
+            const nodeB = this.nodesPublications[conn.nodeB];
+            
+            if (!nodeA || !nodeB) return;
+            
+            const pulse = Math.sin(time * 2 + conn.pulsePhase) * 0.5 + 0.5;
+            const opacity = conn.strength * 0.4 * pulse;
+            
+            this.aiCtxPublications.globalAlpha = opacity;
+            this.aiCtxPublications.lineWidth = 1 + pulse;
+            this.aiCtxPublications.beginPath();
+            this.aiCtxPublications.moveTo(nodeA.x, nodeA.y);
+            this.aiCtxPublications.lineTo(nodeB.x, nodeB.y);
+            this.aiCtxPublications.stroke();
+        });
+        
+        // Update and draw nodes
+        this.nodesPublications.forEach((node, i) => {
+            // Update position
+            node.x += node.vx;
+            node.y += node.vy;
+            
+            // Bounce off edges
+            if (node.x <= 0 || node.x >= this.aiCanvasPublications.width) node.vx *= -1;
+            if (node.y <= 0 || node.y >= this.aiCanvasPublications.height) node.vy *= -1;
+            
+            // Keep within bounds
+            node.x = Math.max(0, Math.min(this.aiCanvasPublications.width, node.x));
+            node.y = Math.max(0, Math.min(this.aiCanvasPublications.height, node.y));
+            
+            // Calculate pulse based on connections
+            const connectionFactor = Math.min(node.connections / 5, 1);
+            const pulse = Math.sin(time * 3 + node.pulsePhase) * 0.3 + 0.7;
+            const finalRadius = node.radius * (1 + connectionFactor * 0.5) * pulse;
+            
+            // Draw node
+            const gradient = this.aiCtxPublications.createRadialGradient(node.x, node.y, 0, node.x, node.y, finalRadius * 2);
+            gradient.addColorStop(0, `rgba(0, 255, 136, ${node.opacity * pulse})`);
+            gradient.addColorStop(0.5, `rgba(50, 184, 198, ${node.opacity * 0.6 * pulse})`);
+            gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+            
+            this.aiCtxPublications.fillStyle = gradient;
+            this.aiCtxPublications.globalAlpha = 1;
+            this.aiCtxPublications.beginPath();
+            this.aiCtxPublications.arc(node.x, node.y, finalRadius * 2, 0, Math.PI * 2);
+            this.aiCtxPublications.fill();
+            
+            // Draw core
+            this.aiCtxPublications.fillStyle = `rgba(255, 255, 255, ${node.opacity * pulse})`;
+            this.aiCtxPublications.beginPath();
+            this.aiCtxPublications.arc(node.x, node.y, finalRadius * 0.3, 0, Math.PI * 2);
+            this.aiCtxPublications.fill();
+        });
+        
+        // Update and draw particles
+        this.particlesPublications.forEach((particle, i) => {
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            particle.life--;
+            
+            // Reset particle when it dies
+            if (particle.life <= 0) {
+                particle.x = Math.random() * this.aiCanvasPublications.width;
+                particle.y = Math.random() * this.aiCanvasPublications.height;
+                particle.life = Math.random() * 100 + 50;
+            }
+            
+            // Wrap around edges
+            if (particle.x < 0) particle.x = this.aiCanvasPublications.width;
+            if (particle.x > this.aiCanvasPublications.width) particle.x = 0;
+            if (particle.y < 0) particle.y = this.aiCanvasPublications.height;
+            if (particle.y > this.aiCanvasPublications.height) particle.y = 0;
+            
+            // Draw particle
+            const alpha = (particle.life / 100) * particle.opacity;
+            this.aiCtxPublications.fillStyle = `rgba(100, 255, 200, ${alpha})`;
+            this.aiCtxPublications.globalAlpha = alpha;
+            this.aiCtxPublications.beginPath();
+            this.aiCtxPublications.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            this.aiCtxPublications.fill();
+        });
+        
+        this.aiCtxPublications.globalAlpha = 1;
+        this.animationIdPublications = requestAnimationFrame(() => this.animatePublicationsBackground());
     }
 
     loadPublicationsData() {
-        // Use the existing publications data from app.js but with enhanced metrics
+        // Enhanced publications data with detailed metrics
         this.publicationsData = [
             {
                 title: "Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres",
@@ -153,6 +347,36 @@ class PublicationsShowcase {
         ];
         
         this.filteredData = [...this.publicationsData];
+        this.populateFilterOptions();
+        this.renderPublications();
+    }
+
+    populateFilterOptions() {
+        // Populate year filter
+        const yearSelect = document.getElementById('pubs-year');
+        if (yearSelect) {
+            const years = [...new Set(this.publicationsData.map(p => p.year))].sort((a, b) => b - a);
+            yearSelect.innerHTML = '<option value="all">All Years</option>';
+            years.forEach(year => {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            });
+        }
+
+        // Populate type filter
+        const typeSelect = document.getElementById('pubs-type');
+        if (typeSelect) {
+            const types = [...new Set(this.publicationsData.map(p => p.type))].sort();
+            typeSelect.innerHTML = '<option value="all">All Types</option>';
+            types.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                typeSelect.appendChild(option);
+            });
+        }
     }
 
     initializeEventListeners() {
@@ -239,12 +463,6 @@ class PublicationsShowcase {
         this.updateStatElement('total-citations', stats.totalCitations + '+');
         this.updateStatElement('h-index', stats.hIndex);
         this.updateStatElement('total-reads', this.formatNumber(stats.totalReads) + '+');
-
-        // Update impact analytics
-        this.updateStatElement('recent-citations', Math.floor(stats.totalCitations * 0.6));
-        this.updateStatElement('collaboration-index', new Set(this.publicationsData.flatMap(p => p.authors)).size - 1);
-        this.updateStatElement('journal-count', new Set(this.publicationsData.map(p => p.journal)).size);
-        this.updateStatElement('countries-reached', 8); // Based on international collaborations
     }
 
     calculateHIndex() {
@@ -522,42 +740,6 @@ class PublicationsShowcase {
         }
     }
 
-    initializeResearchTimeline() {
-        // Create animated research timeline for better visualization
-        const timelineContainer = document.querySelector('.research-timeline');
-        if (!timelineContainer) return;
-        
-        // Group papers by year
-        const papersByYear = this.publicationsData.reduce((acc, paper) => {
-            if (!acc[paper.year]) acc[paper.year] = [];
-            acc[paper.year].push(paper);
-            return acc;
-        }, {});
-        
-        const years = Object.keys(papersByYear).sort((a, b) => b - a);
-        
-        // Animate timeline on scroll
-        this.initializeTimelineAnimation(years);
-    }
-
-    initializeTimelineAnimation(years) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '50px'
-        });
-
-        // Observe timeline elements
-        document.querySelectorAll('.timeline-year, .impact-card, .collaborator-card').forEach(el => {
-            observer.observe(el);
-        });
-    }
-
     showToast(message) {
         const toast = document.getElementById('pubs-toast');
         if (!toast) return;
@@ -580,6 +762,13 @@ class PublicationsShowcase {
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
         };
+    }
+
+    // Cleanup method
+    destroy() {
+        if (this.animationIdPublications) {
+            cancelAnimationFrame(this.animationIdPublications);
+        }
     }
 }
 
@@ -618,77 +807,12 @@ if (typeof window.showPage === 'function') {
     };
 }
 
-// Additional enhancement: Auto-update research metrics
-class ResearchMetricsTracker {
-    constructor() {
-        this.metricsUpdateInterval = null;
-        this.init();
-    }
-    
-    init() {
-        this.startMetricsTracking();
-    }
-    
-    startMetricsTracking() {
-        // Simulate real-time metrics updates (in real implementation, this would connect to APIs)
-        this.metricsUpdateInterval = setInterval(() => {
-            this.updateLiveMetrics();
-        }, 30000); // Update every 30 seconds
-    }
-    
-    updateLiveMetrics() {
-        // Simulate small incremental changes in metrics
-        const elements = {
-            'recent-citations': { min: 45, max: 52, current: 47 },
-            'total-reads': { min: 2400, max: 2600, current: 2500 }
-        };
-        
-        Object.keys(elements).forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                const data = elements[id];
-                const change = Math.random() > 0.7 ? (Math.random() > 0.5 ? 1 : -1) : 0;
-                const newValue = Math.max(data.min, Math.min(data.max, data.current + change));
-                
-                if (newValue !== data.current) {
-                    element.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        element.textContent = id === 'total-reads' ? this.formatNumber(newValue) + '+' : newValue;
-                        element.style.transform = 'scale(1)';
-                        data.current = newValue;
-                    }, 200);
-                }
-            }
-        });
-    }
-    
-    formatNumber(num) {
-        if (num >= 1000) {
-            return (num / 1000).toFixed(1) + 'K';
-        }
-        return num.toString();
-    }
-    
-    destroy() {
-        if (this.metricsUpdateInterval) {
-            clearInterval(this.metricsUpdateInterval);
-        }
-    }
-}
-
-// Initialize metrics tracker
-let metricsTracker;
-document.addEventListener('DOMContentLoaded', () => {
-    metricsTracker = new ResearchMetricsTracker();
-});
-
 // Clean up on page unload
 window.addEventListener('beforeunload', () => {
-    if (metricsTracker) {
-        metricsTracker.destroy();
+    if (publicationsShowcase) {
+        publicationsShowcase.destroy();
     }
 });
 
 // Export for global access
 window.PublicationsShowcase = PublicationsShowcase;
-window.ResearchMetricsTracker = ResearchMetricsTracker;
