@@ -801,6 +801,21 @@ select.form-control {
     overflow: hidden;
 }
 
+/* AI/ML Background Canvas */
+.ai-background-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, 
+    rgba(15, 15, 35, 0.95) 0%, 
+    rgba(25, 25, 45, 0.9) 30%,
+    rgba(35, 35, 55, 0.85) 70%, 
+    rgba(45, 45, 65, 0.8) 100%);
+}
+
 .hero-background {
     position: absolute;
     top: 0;
@@ -818,6 +833,7 @@ select.form-control {
     gap: var(--space-32);
     align-items: center;
     width: 100%;
+    z-index: 1;
 }
 
 .hero-title {
@@ -890,8 +906,189 @@ select.form-control {
     font-weight: var(--font-weight-bold);
 }
 
-.profile-status {
-    margin-top: var(--space-16);
+/* Consultation Section Styles */
+.consultation-section {
+  text-align: center;
+  margin-top: var(--space-20);
+}
+
+.consultation-btn {
+  background: linear-gradient(45deg, #00ff88, #00cc6a);
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.consultation-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.consultation-btn:hover::before {
+  left: 100%;
+}
+
+.consultation-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5);
+  background: linear-gradient(45deg, #00cc6a, #00ff88);
+}
+
+.consultation-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+.consultation-btn i {
+  font-size: 20px;
+}
+
+/* Email Modal Styles */
+.email-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.email-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.email-content {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  max-width: 500px;
+  width: 90%;
+  border: 2px solid #00ff88;
+  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  color: #00ff88;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.close-modal:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.email-content h3 {
+  color: #00ff88;
+  margin-bottom: 15px;
+  font-size: 24px;
+}
+
+.email-content p {
+  color: #ffffff;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.email-display {
+  background: rgba(0, 255, 136, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  border: 1px solid #00ff88;
+  position: relative;
+}
+
+.email-display i {
+  color: #00ff88;
+  font-size: 20px;
+}
+
+#emailText {
+  color: #ffffff;
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+}
+
+.copy-btn {
+  background: #00ff88;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.copy-btn:hover {
+  background: #00cc6a;
+  transform: scale(1.1);
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
 }
 
 /* Highlights Section */
@@ -1600,6 +1797,22 @@ select.form-control {
         flex-direction: column;
         align-items: center;
     }
+
+    /* Email Modal Responsive */
+    .email-content {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    .email-display {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .consultation-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1630,6 +1843,20 @@ select.form-control {
 
     .result-metrics {
         grid-template-columns: 1fr;
+    }
+
+    .consultation-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+    }
+
+    .email-content {
+        padding: 20px 15px;
+    }
+
+    #emailText {
+        font-size: 14px;
     }
 }
 
