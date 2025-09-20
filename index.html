@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Economics AI Chatbot CSS -->
+    <link rel="stylesheet" href="assets/css/economics-chatbot.css">
+    
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -739,60 +745,6 @@
         </div>
     </div>
 
-<!-- Professional Floating Chatbot (Notion-style) -->
-<div id="chatbot-fab" aria-label="Open AI Economics & Math Expert" role="button" tabindex="0">
-  <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-    <circle cx="16" cy="16" r="15" fill="#ffffff" fill-opacity="0.95"/>
-    <!-- AI Brain Icon -->
-    <path d="M12 8C10.3431 8 9 9.34315 9 11C9 11.7956 9.31607 12.5587 9.87868 13.1213C9.31607 13.6839 9 14.447 9 15.2426C9 16.899 10.3431 18.2426 12 18.2426H20C21.6569 18.2426 23 16.899 23 15.2426C23 14.447 22.6839 13.6839 22.1213 13.1213C22.6839 12.5587 23 11.7956 23 11C23 9.34315 21.6569 8 20 8H12Z" fill="#238C8C"/>
-    <!-- Neural connections -->
-    <circle cx="13" cy="11" r="1" fill="#ffffff"/>
-    <circle cx="19" cy="11" r="1" fill="#ffffff"/>
-    <circle cx="16" cy="14" r="1" fill="#ffffff"/>
-    <path d="M13 11L16 14L19 11" stroke="#ffffff" stroke-width="0.8" stroke-linecap="round"/>
-  </svg>
-</div>
-
-<!-- Professional Chatbot Modal Interface -->
-<div id="chatbot-modal" class="chatbot-modal hidden" role="dialog" aria-modal="true" aria-labelledby="chatbot-title">
-  <div class="chatbot-header">
-    <div class="chatbot-title-section">
-      <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <circle cx="16" cy="16" r="15" fill="#ffffff" fill-opacity="0.2"/>
-        <path d="M12 8C10.3431 8 9 9.34315 9 11C9 11.7956 9.31607 12.5587 9.87868 13.1213C9.31607 13.6839 9 14.447 9 15.2426C9 16.899 10.3431 18.2426 12 18.2426H20C21.6569 18.2426 23 16.899 23 15.2426C23 14.447 22.6839 13.6839 22.1213 13.1213C22.6839 12.5587 23 11.7956 23 11C23 9.34315 21.6569 8 20 8H12Z" fill="#ffffff"/>
-      </svg>
-      <span id="chatbot-title">AI Economics & Math Expert</span>
-    </div>
-    <button id="chatbot-close" aria-label="Close chatbot" title="Close">&times;</button>
-  </div>
-  
-  <div class="chatbot-messages" id="chatbot-messages">
-    <div class="bot-welcome-message">
-      <div class="bot-avatar">🧠</div>
-      <div class="welcome-content">
-        <p><strong>Hello! I'm your AI Economics & Math Expert.</strong></p>
-        <p>I can help you with:</p>
-        <div class="capabilities-grid">
-          <span class="capability-tag">📊 Economic Theories</span>
-          <span class="capability-tag">🧮 Math Calculations</span>
-          <span class="capability-tag">📈 Financial Formulas</span>
-          <span class="capability-tag">🎯 Research Methods</span>
-        </div>
-        <p class="example-text">Try: "What is GDP?" or "Calculate 2^8 + sqrt(144)"</p>
-      </div>
-    </div>
-  </div>
-  
-  <form id="chatbot-form" class="chatbot-input-area" autocomplete="off">
-    <input id="chatbot-input" type="text" placeholder="Ask about economics, math, or enter a formula..." autocomplete="off" maxlength="500" />
-    <button type="submit" aria-label="Send message" title="Send">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-        <path d="M2 12L22 2L13 11L22 22L2 12Z" fill="currentColor"/>
-      </svg>
-    </button>
-  </form>
-</div>
-
  <!-- Footer -->
 <footer class="footer">
     <div class="container">
@@ -869,8 +821,10 @@
     </div>
 </footer>
 
-
-
+    <!-- Original app.js -->
     <script src="app.js"></script>
+    
+    <!-- Economics AI Chatbot JavaScript -->
+    <script src="assets/js/economics-chatbot.js"></script>
 </body>
 </html>
