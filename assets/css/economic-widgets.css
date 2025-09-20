@@ -1,0 +1,461 @@
+/* =====================================================
+   INNOVATIVE ECONOMIC WIDGETS - PROFESSIONAL STYLING
+   ===================================================== */
+
+/* =====================================================
+   ECONOMIC CALENDAR WIDGET
+   ===================================================== */
+
+.widget-economic-calendar .widget-calendar-events {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.widget-economic-calendar .event-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--economics-hover, #f8f9fa);
+  border-radius: 8px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.widget-economic-calendar .event-item:hover {
+  transform: translateX(2px);
+  background: var(--economics-bg, #ffffff);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.widget-economic-calendar .event-item.high-impact {
+  border-left-color: #e74c3c;
+}
+
+.widget-economic-calendar .event-item.medium-impact {
+  border-left-color: #f39c12;
+}
+
+.widget-economic-calendar .event-item.low-impact {
+  border-left-color: #27ae60;
+}
+
+.widget-economic-calendar .event-time {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--economics-text, #333);
+  min-width: 40px;
+}
+
+.widget-economic-calendar .event-title {
+  flex: 1;
+  margin: 0 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--economics-text, #333);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.widget-economic-calendar .event-impact {
+  font-size: 12px;
+}
+
+/* =====================================================
+   MARKET SENTIMENT WIDGET
+   ===================================================== */
+
+.widget-market-sentiment .sentiment-gauge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.widget-market-sentiment .gauge-container {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  overflow: hidden;
+}
+
+.widget-market-sentiment .gauge-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg,
+    #e74c3c 0deg 60deg,
+    #f39c12 60deg 120deg,
+    #27ae60 120deg 180deg
+  );
+  transition: transform 0.5s ease;
+}
+
+.widget-market-sentiment .gauge-center {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.widget-market-sentiment .sentiment-value {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--economics-primary, #238C8C);
+  line-height: 1;
+}
+
+.widget-market-sentiment .sentiment-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--economics-text, #333);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.widget-market-sentiment .sentiment-indicators {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.widget-market-sentiment .indicator {
+  flex: 1;
+  text-align: center;
+  padding: 6px 8px;
+  background: var(--economics-hover, #f8f9fa);
+  border-radius: 6px;
+}
+
+.widget-market-sentiment .indicator-label {
+  display: block;
+  font-size: 9px;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.widget-market-sentiment .indicator-value {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.widget-market-sentiment .indicator-value.bullish {
+  color: #27ae60;
+}
+
+.widget-market-sentiment .indicator-value.bearish {
+  color: #e74c3c;
+}
+
+.widget-market-sentiment .indicator-value.neutral {
+  color: #f39c12;
+}
+
+/* =====================================================
+   INTEREST RATES WIDGET
+   ===================================================== */
+
+.widget-interest-rates .rates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.widget-interest-rates .rate-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--economics-hover, #f8f9fa);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.widget-interest-rates .rate-item:hover {
+  background: var(--economics-bg, #ffffff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.widget-interest-rates .country-flag {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.widget-interest-rates .rate-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.widget-interest-rates .rate-country {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--economics-text, #333);
+  line-height: 1.2;
+}
+
+.widget-interest-rates .rate-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--economics-primary, #238C8C);
+  line-height: 1;
+}
+
+.widget-interest-rates .rate-change {
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 16px;
+  text-align: center;
+}
+
+.widget-interest-rates .rate-change.up {
+  color: #27ae60;
+}
+
+.widget-interest-rates .rate-change.down {
+  color: #e74c3c;
+}
+
+.widget-interest-rates .rate-change.unchanged {
+  color: #95a5a6;
+}
+
+/* =====================================================
+   ECONOMIC INDICATORS WIDGET
+   ===================================================== */
+
+.widget-economic-indicators .indicators-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.widget-economic-indicators .indicator-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 6px;
+  background: var(--economics-hover, #f8f9fa);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.widget-economic-indicators .indicator-item:hover {
+  background: var(--economics-bg, #ffffff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.widget-economic-indicators .indicator-name {
+  font-size: 10px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.widget-economic-indicators .indicator-value {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.widget-economic-indicators .indicator-value.positive {
+  color: #27ae60;
+}
+
+.widget-economic-indicators .indicator-value.negative {
+  color: #e74c3c;
+}
+
+.widget-economic-indicators .indicator-value.neutral {
+  color: #f39c12;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN FOR NEW WIDGETS
+   ===================================================== */
+
+@media (max-width: 768px) {
+  .widget-economic-calendar .event-title {
+    font-size: 10px;
+  }
+  
+  .widget-market-sentiment .gauge-container {
+    width: 100px;
+    height: 50px;
+  }
+  
+  .widget-market-sentiment .gauge-fill {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .widget-market-sentiment .sentiment-value {
+    font-size: 20px;
+  }
+  
+  .widget-interest-rates .rate-country,
+  .widget-economic-indicators .indicator-name {
+    font-size: 9px;
+  }
+  
+  .widget-interest-rates .rate-value {
+    font-size: 12px;
+  }
+  
+  .widget-economic-indicators .indicator-value {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .widget-cards-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .widget-economic-calendar .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .widget-market-sentiment .sentiment-indicators {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .widget-economic-indicators .indicators-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+/* =====================================================
+   DARK MODE SUPPORT
+   ===================================================== */
+
+[data-color-scheme="dark"] .widget-economic-calendar .event-item,
+[data-color-scheme="dark"] .widget-interest-rates .rate-item,
+[data-color-scheme="dark"] .widget-economic-indicators .indicator-item,
+[data-color-scheme="dark"] .widget-market-sentiment .indicator {
+  background: #2d2d2d;
+  color: #ffffff;
+}
+
+[data-color-scheme="dark"] .widget-economic-calendar .event-item:hover,
+[data-color-scheme="dark"] .widget-interest-rates .rate-item:hover,
+[data-color-scheme="dark"] .widget-economic-indicators .indicator-item:hover {
+  background: #3d3d3d;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+[data-color-scheme="dark"] .widget-economic-calendar .event-time,
+[data-color-scheme="dark"] .widget-economic-calendar .event-title,
+[data-color-scheme="dark"] .widget-interest-rates .rate-country,
+[data-color-scheme="dark"] .widget-market-sentiment .sentiment-label {
+  color: #ffffff;
+}
+
+[data-color-scheme="dark"] .widget-market-sentiment .indicator-label,
+[data-color-scheme="dark"] .widget-economic-indicators .indicator-name {
+  color: #cccccc;
+}
+
+/* =====================================================
+   ANIMATION ENHANCEMENTS
+   ===================================================== */
+
+.widget-economic-calendar .event-item,
+.widget-interest-rates .rate-item,
+.widget-economic-indicators .indicator-item {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.widget-economic-calendar .event-item:nth-child(1) { animation-delay: 0.1s; }
+.widget-economic-calendar .event-item:nth-child(2) { animation-delay: 0.2s; }
+.widget-economic-calendar .event-item:nth-child(3) { animation-delay: 0.3s; }
+
+.widget-interest-rates .rate-item:nth-child(1) { animation-delay: 0.1s; }
+.widget-interest-rates .rate-item:nth-child(2) { animation-delay: 0.2s; }
+.widget-interest-rates .rate-item:nth-child(3) { animation-delay: 0.3s; }
+
+.widget-economic-indicators .indicator-item:nth-child(1) { animation-delay: 0.1s; }
+.widget-economic-indicators .indicator-item:nth-child(2) { animation-delay: 0.2s; }
+.widget-economic-indicators .indicator-item:nth-child(3) { animation-delay: 0.3s; }
+.widget-economic-indicators .indicator-item:nth-child(4) { animation-delay: 0.4s; }
+
+.widget-market-sentiment .sentiment-gauge {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* =====================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ===================================================== */
+
+.widget-economic-calendar .event-item,
+.widget-interest-rates .rate-item,
+.widget-economic-indicators .indicator-item,
+.widget-market-sentiment .indicator {
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.widget-economic-calendar .event-item:focus,
+.widget-interest-rates .rate-item:focus,
+.widget-economic-indicators .indicator-item:focus {
+  box-shadow: 0 0 0 2px var(--economics-accent, #00ff88);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .widget-economic-calendar .event-item,
+  .widget-interest-rates .rate-item,
+  .widget-economic-indicators .indicator-item {
+    border: 2px solid var(--economics-primary, #238C8C);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .widget-economic-calendar .event-item,
+  .widget-interest-rates .rate-item,
+  .widget-economic-indicators .indicator-item,
+  .widget-market-sentiment .sentiment-gauge,
+  .widget-market-sentiment .gauge-fill {
+    animation: none;
+    transition: none;
+  }
+}
