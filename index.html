@@ -17,6 +17,9 @@
     <!-- Economic Widgets CSS -->
     <link rel="stylesheet" href="assets/css/economic-widgets.css">
     
+    <!-- Publications Showcase CSS -->
+    <link rel="stylesheet" href="assets/css/publications-showcase.css">
+    
     <!-- Profile Links White Text CSS (CRITICAL - Must be last for proper override) -->
     <link rel="stylesheet" href="assets/css/profile-links-white.css">
     
@@ -372,48 +375,142 @@
     </section>
   </section>
 
-    <!-- Papers Page -->
-<section class="page" id="papers">
-  <div class="container">
-    <header class="page-header">
-      <h1>Publications</h1>
-      <p>Recent research papers, reviews, and conference contributions</p>
-
-      <!-- Toolbar -->
-      <div class="pubs__toolbar" role="region" aria-label="Publications filters">
-        <div class="pubs__filters">
-          <label class="form-label sr-only" for="pubs-year">Year</label>
-          <select id="pubs-year" class="form-control pubs__select">
-            <option value="all">All Years</option>
-          </select>
-
-          <label class="form-label sr-only" for="pubs-type">Type</label>
-          <select id="pubs-type" class="form-control pubs__select">
-            <option value="all">All Types</option>
-          </select>
-
-          <label class="form-label sr-only" for="pubs-search">Search</label>
-          <input id="pubs-search" class="form-control pubs__search" placeholder="Search title or journal" autocomplete="off" />
-        </div>
-
-        <div class="pubs__view" role="group" aria-label="View toggle">
-          <button id="pubs-grid" class="btn btn--secondary pubs__view-btn is-active" aria-pressed="true">
-            <span class="view-icon">⊞</span> Grid
-          </button>
-          <button id="pubs-list" class="btn btn--secondary pubs__view-btn" aria-pressed="false">
-            <span class="view-icon">☰</span> List View
-          </button>
+    <!-- COMPLETELY REDESIGNED PUBLICATIONS PAGE -->
+    <section class="page" id="papers">
+      <!-- Hero Section with Research Impact Stats -->
+      <div class="publications-hero">
+        <div class="container">
+          <div class="page-header" style="text-align: center; color: white; position: relative; z-index: 2;">
+            <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px;">Research Publications</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95; max-width: 600px; margin: 0 auto 40px;">Innovative research at the intersection of artificial intelligence, economics, and sustainable technology</p>
+          </div>
+          
+          <!-- Research Impact Statistics -->
+          <div class="research-stats">
+            <div class="stat-card">
+              <span class="stat-number" id="total-papers">20+</span>
+              <span class="stat-label">Published Papers</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" id="total-citations">150+</span>
+              <span class="stat-label">Total Citations</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" id="h-index">12</span>
+              <span class="stat-label">H-Index</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" id="total-reads">2.5K+</span>
+              <span class="stat-label">Total Reads</span>
+            </div>
+          </div>
         </div>
       </div>
-    </header>
 
-    <!-- Cards container (rendered by JS) -->
-    <div id="pubs-grid-wrap" class="pubs__grid" aria-live="polite" aria-busy="false"></div>
+      <div class="container">
+        <!-- Research Categories Filter -->
+        <div class="research-categories">
+          <div class="category-filter active" data-category="all">
+            <span class="category-icon">📚</span>
+            <div class="category-name">All Research</div>
+            <div class="category-count" id="count-all">20</div>
+          </div>
+          <div class="category-filter" data-category="ai-ml">
+            <span class="category-icon">🤖</span>
+            <div class="category-name">AI & Machine Learning</div>
+            <div class="category-count" id="count-ai">12</div>
+          </div>
+          <div class="category-filter" data-category="economics">
+            <span class="category-icon">📈</span>
+            <div class="category-name">Economics & Finance</div>
+            <div class="category-count" id="count-econ">5</div>
+          </div>
+          <div class="category-filter" data-category="sustainability">
+            <span class="category-icon">🌱</span>
+            <div class="category-name">Sustainability</div>
+            <div class="category-count" id="count-sustain">8</div>
+          </div>
+        </div>
 
-    <!-- Simple toast for copy/share feedback -->
-    <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
-  </div>
-</section>
+        <!-- Advanced Search and Filtering -->
+        <div class="pubs__toolbar" role="region" aria-label="Publications filters">
+          <div class="pubs__filters">
+            <select id="pubs-year" class="form-control pubs__select">
+              <option value="all">All Years</option>
+            </select>
+            <select id="pubs-type" class="form-control pubs__select">
+              <option value="all">All Types</option>
+            </select>
+            <input id="pubs-search" class="form-control pubs__search" placeholder="Search publications..." autocomplete="off" />
+          </div>
+          <div class="pubs__view" role="group" aria-label="View toggle">
+            <button id="pubs-grid" class="btn pubs__view-btn is-active" aria-pressed="true">
+              <span class="view-icon">⊞</span> Grid View
+            </button>
+            <button id="pubs-list" class="btn pubs__view-btn" aria-pressed="false">
+              <span class="view-icon">☰</span> List View
+            </button>
+          </div>
+        </div>
+
+        <!-- Research Impact Dashboard -->
+        <div class="impact-dashboard">
+          <h2 class="impact-title">Research Impact Analytics</h2>
+          <div class="impact-grid">
+            <div class="impact-card">
+              <span class="impact-metric" id="recent-citations">47</span>
+              <span class="impact-label">Recent Citations</span>
+            </div>
+            <div class="impact-card">
+              <span class="impact-metric" id="collaboration-index">15</span>
+              <span class="impact-label">Collaborators</span>
+            </div>
+            <div class="impact-card">
+              <span class="impact-metric" id="journal-count">12</span>
+              <span class="impact-label">Journals</span>
+            </div>
+            <div class="impact-card">
+              <span class="impact-metric" id="countries-reached">8</span>
+              <span class="impact-label">Countries</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collaborative Research Network -->
+        <div class="collaboration-network">
+          <h2 class="network-title">Research Collaboration Network</h2>
+          <p style="color: #6c757d; margin-bottom: 30px;">Interdisciplinary partnerships driving innovation in AI and Economics</p>
+          <div class="collaborators-grid">
+            <div class="collaborator-card">
+              <div class="collaborator-name">D. Mirindi</div>
+              <div class="collaboration-count">12 papers</div>
+            </div>
+            <div class="collaborator-card">
+              <div class="collaborator-name">D. Sinkhonde</div>
+              <div class="collaboration-count">8 papers</div>
+            </div>
+            <div class="collaborator-card">
+              <div class="collaborator-name">T. Bezabih</div>
+              <div class="collaboration-count">6 papers</div>
+            </div>
+            <div class="collaborator-card">
+              <div class="collaborator-name">J. Hunter</div>
+              <div class="collaboration-count">4 papers</div>
+            </div>
+            <div class="collaborator-card">
+              <div class="collaborator-name">A. Khang</div>
+              <div class="collaboration-count">2 papers</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publications Grid (Enhanced) -->
+        <div id="pubs-grid-wrap" class="pubs__grid" aria-live="polite" aria-busy="false"></div>
+
+        <!-- Toast notifications -->
+        <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </section>
 
         <!-- Conferences Page -->
         <section class="page" id="conferences">
