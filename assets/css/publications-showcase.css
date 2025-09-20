@@ -1,9 +1,148 @@
 /* =====================================================
-   PROFESSIONAL PUBLICATIONS SHOWCASE - 2025 DESIGN
-   Modern Research Portfolio Display (Updated)
+   PUBLICATIONS PAGE - MATCHING HOME PAGE DESIGN
+   Same Structure, Centered Layout, No Profile Image
    ===================================================== */
 
-/* Remove the separate publications-hero styles since we're using the same background as Home page */
+/* Publications Hero Section - Same as Home but Centered */
+#papers .hero-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+#papers .hero-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+/* Publications Centered Text (No Right Side Image) */
+#papers .hero-text.publications-centered {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  color: white;
+  width: 100%;
+}
+
+#papers .hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+#papers .hero-subtitle {
+  font-size: 1.5rem;
+  color: #1fb8cd;
+  font-weight: 600;
+  margin-bottom: 25px;
+  opacity: 1;
+}
+
+#papers .hero-description {
+  font-size: 1.2rem;
+  color: white;
+  line-height: 1.7;
+  margin-bottom: 35px;
+  opacity: 0.9;
+}
+
+#papers .hero-description strong {
+  color: #1fb8cd;
+  font-weight: 700;
+}
+
+/* Publications Buttons - Same Style as Home */
+#papers .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+#papers .research-profile-link {
+  color: white !important;
+  border: 2px solid white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#papers .research-profile-link:hover {
+  background: white;
+  color: #238C8C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+/* Publications Statistics Grid - Professional Display */
+.publications-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stat-block {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.stat-block:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: white;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #1fb8cd;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  opacity: 0.95;
+}
+
+/* AI Canvas for Publications - Same as Home */
+#aiCanvasPublications {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
 
 /* =====================================================
    MODERN PUBLICATION CARDS
@@ -524,6 +663,31 @@
    ===================================================== */
 
 @media (max-width: 768px) {
+  #papers .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  #papers .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  #papers .hero-description {
+    font-size: 1.1rem;
+  }
+  
+  .publications-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .stat-block {
+    padding: 20px 15px;
+  }
+  
+  .stat-number {
+    font-size: 2.2rem;
+  }
+  
   .research-categories {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -554,6 +718,14 @@
 }
 
 @media (max-width: 480px) {
+  #papers .hero-title {
+    font-size: 2rem;
+  }
+  
+  .publications-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
   .research-categories {
     grid-template-columns: 1fr;
   }
@@ -581,6 +753,11 @@
     right: 20px;
     left: 20px;
     text-align: center;
+  }
+  
+  #papers .hero-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -700,123 +877,5 @@
   .pub-card__excerpt {
     -webkit-line-clamp: unset;
     overflow: visible;
-  }
-}
-
-/* =====================================================
-   SPECIAL STYLING FOR PUBLICATIONS IN HERO SECTION
-   ===================================================== */
-
-/* When Publications page uses the same hero background as Home */
-#papers .hero-section {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-}
-
-#papers .hero-content {
-  width: 100%;
-}
-
-#papers .hero-text {
-  text-align: center;
-  color: white;
-}
-
-#papers .hero-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: white;
-}
-
-#papers .hero-subtitle {
-  font-size: 1.4rem;
-  opacity: 0.9;
-  margin-bottom: 20px;
-  color: white;
-}
-
-#papers .hero-description {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  opacity: 0.85;
-  max-width: 800px;
-  margin: 0 auto 40px;
-  color: white;
-}
-
-/* Research stats in hero section */
-#papers .research-stats .stat-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-#papers .research-stats .stat-card:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-#papers .research-stats .stat-number {
-  font-size: 2rem;
-  font-weight: 800;
-  color: white;
-  display: block;
-  margin-bottom: 5px;
-}
-
-#papers .research-stats .stat-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: white;
-}
-
-/* Ensure the AI canvas works for Publications page */
-#aiCanvasPublications {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* Responsive adjustments for Publications hero */
-@media (max-width: 768px) {
-  #papers .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  #papers .hero-subtitle {
-    font-size: 1.2rem;
-  }
-  
-  #papers .research-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  
-  #papers .research-stats .stat-number {
-    font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #papers .hero-title {
-    font-size: 2rem;
-  }
-  
-  #papers .research-stats {
-    grid-template-columns: 1fr;
   }
 }
