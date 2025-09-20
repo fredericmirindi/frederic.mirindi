@@ -375,84 +375,50 @@
     </section>
   </section>
 
-    <!-- PUBLICATIONS PAGE - CLEAN LAYOUT WITH #262827 TEXT COLOR -->
+    <!-- SIMPLIFIED PUBLICATIONS PAGE - MINIMAL HERO WITH IMPROVED SEARCH -->
     <section class="page" id="papers">
-      <!-- Hero Section with SAME BACKGROUND as Home Page -->
-      <div class="hero-section" style="position: relative; overflow: hidden;">
-        <!-- AI/ML Background Canvas (Same as Home) -->
-        <canvas id="aiCanvasPublications" class="ai-background-canvas"></canvas>
-        
-        <!-- Same animated shapes as Home page -->
-        <div class="hero-background"></div>
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-        <div class="floating-shape shape-5"></div>
-    
+      <!-- Minimal Hero Section - Only Title -->
+      <div class="publications-minimal-hero">
         <div class="container">
-          <div class="hero-content">
-            <!-- CENTERED VERSION - CLEAN LAYOUT WITH #262827 COLOR -->
-            <div class="hero-text publications-centered">
-              <h1 class="hero-title">
-                <span class="typing-text">Research Publications</span>
-              </h1>
-              <p class="hero-subtitle" style="color: #262827; font-weight: 600;">AI-Driven Economic Analysis & Sustainable Technology</p>
-              <p class="hero-description" style="color: #262827; font-weight: 500;">
-                Innovative research at the intersection of artificial intelligence, economics, and sustainable technology. 
-                Explore cutting-edge publications that advance the field through interdisciplinary collaboration and 
-                methodological innovation. My research interests include 
-                <span style="color: #262827; font-weight: 700;">International Economics</span>, 
-                <span style="color: #262827; font-weight: 700;">Macroeconomics</span>, and 
-                <span style="color: #262827; font-weight: 700;">Game Theory</span>.
-              </p>
-            </div>
-          </div>
+          <h1 class="publications-main-title">Research Publications</h1>
         </div>
       </div>
 
       <div class="container">
-        <!-- Research Categories Filter -->
-        <div class="research-categories" style="margin-top: 60px;">
-          <div class="category-filter active" data-category="all">
-            <span class="category-icon">📚</span>
-            <div class="category-name">All Research</div>
-            <div class="category-count" id="count-all">8</div>
-          </div>
-          <div class="category-filter" data-category="ai-ml">
-            <span class="category-icon">🤖</span>
-            <div class="category-name">AI & Machine Learning</div>
-            <div class="category-count" id="count-ai">6</div>
-          </div>
-          <div class="category-filter" data-category="economics">
-            <span class="category-icon">📈</span>
-            <div class="category-name">Economics & Finance</div>
-            <div class="category-count" id="count-econ">3</div>
-          </div>
-          <div class="category-filter" data-category="sustainability">
-            <span class="category-icon">🌱</span>
-            <div class="category-name">Sustainability</div>
-            <div class="category-count" id="count-sustain">4</div>
-          </div>
-        </div>
-
-        <!-- Advanced Search and Filtering -->
-        <div class="pubs__toolbar" role="region" aria-label="Publications filters">
-          <div class="pubs__filters">
-            <select id="pubs-year" class="form-control pubs__select">
+        <!-- IMPROVED Search and Filtering Interface -->
+        <div class="publications-search-interface">
+          <div class="search-filters-row">
+            <select id="pubs-year" class="modern-select">
               <option value="all">All Years</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
             </select>
-            <select id="pubs-type" class="form-control pubs__select">
+            <select id="pubs-type" class="modern-select">
               <option value="all">All Types</option>
+              <option value="journal">Journal Article</option>
+              <option value="conference">Conference Paper</option>
+              <option value="book">Book Chapter</option>
+              <option value="review">Review Article</option>
             </select>
-            <input id="pubs-search" class="form-control pubs__search" placeholder="Search publications..." autocomplete="off" />
+            <div class="search-input-container">
+              <i class="fas fa-search search-icon"></i>
+              <input 
+                id="pubs-search" 
+                class="modern-search-input" 
+                type="search"
+                placeholder="Search publications by title, author, or keyword..." 
+                autocomplete="off"
+              />
+            </div>
           </div>
-          <div class="pubs__view" role="group" aria-label="View toggle">
-            <button id="pubs-grid" class="btn pubs__view-btn is-active" aria-pressed="true">
-              <span class="view-icon">⊞</span> Grid View
+          <div class="view-controls">
+            <button id="pubs-grid" class="view-btn active" data-view="grid">
+              <i class="fas fa-th"></i> Grid View
             </button>
-            <button id="pubs-list" class="btn pubs__view-btn" aria-pressed="false">
-              <span class="view-icon">☰</span> List View
+            <button id="pubs-list" class="view-btn" data-view="list">
+              <i class="fas fa-list"></i> List View
             </button>
           </div>
         </div>
