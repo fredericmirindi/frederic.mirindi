@@ -5,7 +5,7 @@
 
 /* Minimal Publications Hero - BRIGHT TEAL BACKGROUND */
 .publications-minimal-hero {
-  background: #1fb8cd;
+  background: #1fb8cd !important;
   padding: 40px 0;
   text-align: center;
   position: relative;
@@ -15,7 +15,7 @@
 .publications-main-title {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #ffffff !important;
   margin: 0;
   letter-spacing: -0.5px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -27,7 +27,7 @@
 
 /* Conferences Hero - IDENTICAL TO PUBLICATIONS */
 .conferences-minimal-hero {
-  background: #1fb8cd;
+  background: #1fb8cd !important;
   padding: 40px 0;
   text-align: center;
   position: relative;
@@ -37,7 +37,7 @@
 .conferences-main-title {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #ffffff !important;
   margin: 0;
   letter-spacing: -0.5px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -53,22 +53,29 @@
 
 /* =====================================================
    RESEARCH AREAS PAGE - SAME BRIGHT TEAL BACKGROUND
+   FORCE OVERRIDE WITH !important
    ===================================================== */
 
-/* Research Areas Hero - IDENTICAL TO PUBLICATIONS */
-.research-minimal-hero {
-  background: #1fb8cd;
-  padding: 40px 0;
-  text-align: center;
+/* Research Areas Hero - IDENTICAL TO PUBLICATIONS - FORCE OVERRIDE */
+.research-minimal-hero,
+#research .research-minimal-hero,
+section#research .research-minimal-hero {
+  background: #1fb8cd !important;
+  background-color: #1fb8cd !important;
+  padding: 40px 0 !important;
+  text-align: center !important;
   position: relative;
   overflow: hidden;
+  width: 100% !important;
 }
 
-.research-main-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0;
+.research-main-title,
+#research .research-main-title,
+section#research .research-main-title {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
   letter-spacing: -0.5px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
@@ -79,6 +86,24 @@
   text-align: center;
   margin: 30px 0;
   font-style: italic;
+}
+
+/* Override any page-header styles that might conflict */
+#research .page-header,
+section#research .page-header {
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#research .page-header h1,
+section#research .page-header h1 {
+  display: none !important;
+}
+
+#research .page-header p,
+section#research .page-header p {
+  display: none !important;
 }
 
 /* =====================================================
@@ -495,7 +520,7 @@
   .publications-main-title,
   .conferences-main-title,
   .research-main-title {
-    font-size: 2.2rem;
+    font-size: 2.2rem !important;
   }
   
   .publications-search-interface {
@@ -529,13 +554,13 @@
   .publications-minimal-hero,
   .conferences-minimal-hero,
   .research-minimal-hero {
-    padding: 30px 0;
+    padding: 30px 0 !important;
   }
   
   .publications-main-title,
   .conferences-main-title,
   .research-main-title {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
   }
   
   .publications-search-interface {
