@@ -177,7 +177,7 @@
   --status-bg-opacity: 0.15;
   --status-border-opacity: 0.25;
   --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
 
   /* RGB versions for dark mode */
   --color-success-rgb: 50, 184, 198;
@@ -906,60 +906,92 @@ select.form-control {
     font-weight: var(--font-weight-bold);
 }
 
-/* Consultation Section Styles */
-.consultation-section {
+/* Collaboration Section Styles - Blue-Green/Cyan */
+.collaboration-section {
   text-align: center;
   margin-top: var(--space-20);
 }
 
-.consultation-btn {
-  background: linear-gradient(45deg, #00ff88, #00cc6a);
-  border: none;
-  padding: 15px 30px;
-  border-radius: 50px;
-  color: white;
+.collaboration-text {
+  background: linear-gradient(45deg, #00CED1, #20B2AA, #48D1CC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 18px;
   font-weight: 600;
+  margin: 0;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 2px solid #00CED1;
+  background-color: rgba(0, 206, 209, 0.1);
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  display: inline-block;
   position: relative;
   overflow: hidden;
+  letter-spacing: 0.5px;
+  text-transform: none;
 }
 
-.consultation-btn::before {
+.collaboration-text::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(0, 206, 209, 0.3), transparent);
+  transition: left 0.5s ease;
+  z-index: -1;
 }
 
-.consultation-btn:hover::before {
+.collaboration-text:hover::before {
   left: 100%;
 }
 
-.consultation-btn:hover {
+.collaboration-text:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.5);
-  background: linear-gradient(45deg, #00cc6a, #00ff88);
+  box-shadow: 0 8px 25px rgba(0, 206, 209, 0.4);
+  border-color: #48D1CC;
+  background-color: rgba(72, 209, 204, 0.15);
 }
 
-.consultation-btn:active {
+.collaboration-text:active {
   transform: translateY(0);
-  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 206, 209, 0.3);
 }
 
-.consultation-btn i {
-  font-size: 20px;
+/* Dark mode adjustments for collaboration text */
+@media (prefers-color-scheme: dark) {
+  .collaboration-text {
+    background: linear-gradient(45deg, #00FFFF, #40E0D0, #00CED1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    border-color: #00FFFF;
+    background-color: rgba(0, 255, 255, 0.1);
+  }
+  
+  .collaboration-text:hover {
+    border-color: #40E0D0;
+    background-color: rgba(64, 224, 208, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+  }
+}
+
+[data-color-scheme="dark"] .collaboration-text {
+  background: linear-gradient(45deg, #00FFFF, #40E0D0, #00CED1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border-color: #00FFFF;
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+[data-color-scheme="dark"] .collaboration-text:hover {
+  border-color: #40E0D0;
+  background-color: rgba(64, 224, 208, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
 }
 
 /* Email Modal Styles */
@@ -993,8 +1025,8 @@ select.form-control {
   position: relative;
   max-width: 500px;
   width: 90%;
-  border: 2px solid #00ff88;
-  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+  border: 2px solid #00CED1;
+  box-shadow: 0 20px 40px rgba(0, 206, 209, 0.3);
   animation: modalSlideIn 0.3s ease;
 }
 
@@ -1014,7 +1046,7 @@ select.form-control {
   top: 15px;
   right: 20px;
   font-size: 24px;
-  color: #00ff88;
+  color: #00CED1;
   cursor: pointer;
   transition: color 0.3s ease;
   background: none;
@@ -1033,7 +1065,7 @@ select.form-control {
 }
 
 .email-content h3 {
-  color: #00ff88;
+  color: #00CED1;
   margin-bottom: 15px;
   font-size: 24px;
 }
@@ -1045,19 +1077,19 @@ select.form-control {
 }
 
 .email-display {
-  background: rgba(0, 255, 136, 0.1);
+  background: rgba(0, 206, 209, 0.1);
   padding: 20px;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 15px;
-  border: 1px solid #00ff88;
+  border: 1px solid #00CED1;
   position: relative;
 }
 
 .email-display i {
-  color: #00ff88;
+  color: #00CED1;
   font-size: 20px;
 }
 
@@ -1071,7 +1103,7 @@ select.form-control {
 }
 
 .copy-btn {
-  background: #00ff88;
+  background: #00CED1;
   border: none;
   padding: 10px 15px;
   border-radius: 8px;
@@ -1083,7 +1115,7 @@ select.form-control {
 }
 
 .copy-btn:hover {
-  background: #00cc6a;
+  background: #20B2AA;
   transform: scale(1.1);
 }
 
@@ -1798,6 +1830,12 @@ select.form-control {
         align-items: center;
     }
 
+    /* Collaboration text responsive */
+    .collaboration-text {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
     /* Email Modal Responsive */
     .email-content {
         padding: 30px 20px;
@@ -1807,11 +1845,6 @@ select.form-control {
     .email-display {
         flex-direction: column;
         gap: 10px;
-    }
-
-    .consultation-btn {
-        padding: 12px 25px;
-        font-size: 16px;
     }
 }
 
@@ -1845,10 +1878,10 @@ select.form-control {
         grid-template-columns: 1fr;
     }
 
-    .consultation-btn {
-        padding: 10px 20px;
+    .collaboration-text {
         font-size: 14px;
-        letter-spacing: 0.5px;
+        padding: 8px 16px;
+        letter-spacing: 0.3px;
     }
 
     .email-content {
@@ -2366,6 +2399,26 @@ select.form-control {
 
 
 
+/* Hero name styling - Clean version without vertical line */
+.hero-nom-clean {
+  color: var(--color-primary, #14b8c8);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.5px;
+  line-height: 1.14;
+  display: inline-block;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  position: relative;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+/* Remove the ::after pseudo-element that creates the line */
+.hero-nom-clean::after {
+  display: none;
+}
+
+/* Keep the original hero-nom for backward compatibility */
 .hero-nom {
   color: var(--color-primary, #14b8c8);
   font-weight: 700;
@@ -2389,11 +2442,15 @@ select.form-control {
 }
 
 @media (max-width: 600px) {
+  .hero-nom-clean {
+    font-size: 1.2rem;
+  }
   .hero-nom {
     font-size: 1.2rem;
   }
   .hero-nom::after { height: 3px; }
 }
+
 
 
 
