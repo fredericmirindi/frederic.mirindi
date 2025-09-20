@@ -86,7 +86,7 @@
               Find below my research on ResearchGate, Google Scholar, and ORCID. 
             </p>
             <div class="hero-buttons">
-              <a class="btn btn--outline" 
+              <a class="btn btn--outline research-profile-link" 
                  href="https://www.researchgate.net/profile/Frederic-Mirindi" 
                  target="_blank" 
                  rel="noopener">
@@ -95,7 +95,7 @@
                      style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" />
                 ResearchGate Profile
               </a>
-              <a class="btn btn--outline" 
+              <a class="btn btn--outline research-profile-link" 
                  href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" 
                  target="_blank" 
                  rel="noopener">
@@ -104,7 +104,7 @@
                      style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" />
                 Google Scholar Profile
               </a>
-              <a class="btn btn--outline" 
+              <a class="btn btn--outline research-profile-link" 
                  href="https://orcid.org/0009-0001-1798-9914" 
                  target="_blank" 
                  rel="noopener">
@@ -122,9 +122,9 @@
                   <img src="frederic.mirindi.jpg" alt="Frederic Mirindi" class="profile-photo">
                 </div>
               </div>
-              <!-- Collaboration Section with Cyan Color -->
+              <!-- Collaboration Section with Cyan Color and Reduced Size -->
               <div class="collaboration-section">
-                <p id="collaborationText" class="collaboration-text">
+                <p id="collaborationText" class="collaboration-text collaboration-text-small">
                   Open for Collaboration
                 </p>
               </div>
@@ -738,6 +738,49 @@
             </div>
         </div>
     </div>
+
+<!-- Economics Chatbot -->
+<div id="chatbot-container" class="chatbot-container">
+    <div id="chat-button" class="chat-button">
+        <i class="fas fa-calculator"></i>
+        <span class="chat-button-text">Economics Assistant</span>
+    </div>
+    
+    <div id="chat-interface" class="chat-interface hidden">
+        <div class="chat-header">
+            <h3><i class="fas fa-calculator"></i> Economics & Math Assistant</h3>
+            <button id="chat-minimize" class="chat-minimize">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button id="chat-close" class="chat-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot-message">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hello! I'm your Economics & Math Assistant. I can help you with:</p>
+                    <ul>
+                        <li>Mathematical calculations (algebra, calculus, statistics)</li>
+                        <li>Economics theories and concepts</li>
+                        <li>Economic formulas and computations</li>
+                        <li>Research methodology questions</li>
+                    </ul>
+                    <p>Try asking me something like "What is GDP?" or "Calculate 2^8 + sqrt(144)"</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <input type="text" id="chat-input" class="chat-input" placeholder="Ask about economics or math..." maxlength="500">
+            <button id="chat-send" class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
  <!-- Footer -->
 <footer class="footer">
