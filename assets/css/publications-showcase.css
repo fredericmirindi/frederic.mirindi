@@ -1,11 +1,11 @@
 /* =====================================================
-   PUBLICATIONS PAGE - MINIMAL HERO & MODERN SEARCH
-   Only Title, Reduced Height, Improved Search UI
+   PUBLICATIONS PAGE - BRIGHT TEAL BACKGROUND
+   Only Title, Reduced Height, Teal Background
    ===================================================== */
 
-/* Minimal Publications Hero - Only Title, Compact Height */
+/* Minimal Publications Hero - BRIGHT TEAL BACKGROUND */
 .publications-minimal-hero {
-  background: linear-gradient(135deg, #0c1629 0%, #1a2332 50%, #0f1b2d 100%);
+  background: #1fb8cd;
   padding: 40px 0;
   text-align: center;
   position: relative;
