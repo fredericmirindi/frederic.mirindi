@@ -12,6 +12,14 @@ const pages = document.querySelectorAll('.page');
 const navLinks = document.querySelectorAll('.nav-link');
 const footnoteModal = document.getElementById('footnote-modal');
 
+// AI Background variables
+let aiCanvas;
+let aiCtx;
+let nodes = [];
+let connections = [];
+let particles = [];
+let animationId;
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
@@ -21,10 +29,312 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCharts();
     initializeForms();
     initializeFootnotes();
+    initializeConsultation();
+    initializeAIBackground();
     
     // Set initial page
     showPage('home');
 });
+
+// AI/ML Background Animation
+function initializeAIBackground() {
+    aiCanvas = document.getElementById('aiCanvas');
+    if (!aiCanvas) return;
+    
+    aiCtx = aiCanvas.getContext('2d');
+    resizeAICanvas();
+    
+    createNodes();
+    createConnections();
+    createParticles();
+    
+    animateAIBackground();
+    
+    window.addEventListener('resize', () => {
+        resizeAICanvas();
+        createNodes();
+        createConnections();
+    });
+}
+
+function resizeAICanvas() {
+    if (!aiCanvas) return;
+    
+    const rect = aiCanvas.parentElement.getBoundingClientRect();
+    aiCanvas.width = rect.width;
+    aiCanvas.height = rect.height;
+}
+
+function createNodes() {
+    if (!aiCanvas) return;
+    
+    nodes = [];
+    const nodeCount = Math.min(Math.floor((aiCanvas.width * aiCanvas.height) / 15000), 50);
+    
+    for (let i = 0; i < nodeCount; i++) {
+        nodes.push({
+            x: Math.random() * aiCanvas.width,
+            y: Math.random() * aiCanvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 3 + 2,
+            opacity: Math.random() * 0.5 + 0.3,
+            pulsePhase: Math.random() * Math.PI * 2,
+            connections: 0
+        });
+    }
+}
+
+function createConnections() {
+    connections = [];
+    const maxDistance = 150;
+    
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < maxDistance) {
+                connections.push({
+                    nodeA: i,
+                    nodeB: j,
+                    strength: 1 - (distance / maxDistance),
+                    pulsePhase: Math.random() * Math.PI * 2
+                });
+                nodes[i].connections++;
+                nodes[j].connections++;
+            }
+        }
+    }
+}
+
+function createParticles() {
+    particles = [];
+    const particleCount = Math.min(Math.floor(aiCanvas.width / 20), 30);
+    
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * aiCanvas.width,
+            y: Math.random() * aiCanvas.height,
+            vx: (Math.random() - 0.5) * 1,
+            vy: (Math.random() - 0.5) * 1,
+            size: Math.random() * 2 + 1,
+            opacity: Math.random() * 0.4 + 0.2,
+            life: Math.random() * 100 + 50
+        });
+    }
+}
+
+function animateAIBackground() {
+    if (!aiCanvas || !aiCtx) return;
+    
+    aiCtx.clearRect(0, 0, aiCanvas.width, aiCanvas.height);
+    
+    const time = Date.now() * 0.001;
+    
+    // Update and draw connections
+    aiCtx.strokeStyle = 'rgba(0, 255, 136, 0.3)';
+    connections.forEach(conn => {
+        const nodeA = nodes[conn.nodeA];
+        const nodeB = nodes[conn.nodeB];
+        
+        if (!nodeA || !nodeB) return;
+        
+        const pulse = Math.sin(time * 2 + conn.pulsePhase) * 0.5 + 0.5;
+        const opacity = conn.strength * 0.4 * pulse;
+        
+        aiCtx.globalAlpha = opacity;
+        aiCtx.lineWidth = 1 + pulse;
+        aiCtx.beginPath();
+        aiCtx.moveTo(nodeA.x, nodeA.y);
+        aiCtx.lineTo(nodeB.x, nodeB.y);
+        aiCtx.stroke();
+    });
+    
+    // Update and draw nodes
+    nodes.forEach((node, i) => {
+        // Update position
+        node.x += node.vx;
+        node.y += node.vy;
+        
+        // Bounce off edges
+        if (node.x <= 0 || node.x >= aiCanvas.width) node.vx *= -1;
+        if (node.y <= 0 || node.y >= aiCanvas.height) node.vy *= -1;
+        
+        // Keep within bounds
+        node.x = Math.max(0, Math.min(aiCanvas.width, node.x));
+        node.y = Math.max(0, Math.min(aiCanvas.height, node.y));
+        
+        // Calculate pulse based on connections
+        const connectionFactor = Math.min(node.connections / 5, 1);
+        const pulse = Math.sin(time * 3 + node.pulsePhase) * 0.3 + 0.7;
+        const finalRadius = node.radius * (1 + connectionFactor * 0.5) * pulse;
+        
+        // Draw node
+        const gradient = aiCtx.createRadialGradient(node.x, node.y, 0, node.x, node.y, finalRadius * 2);
+        gradient.addColorStop(0, `rgba(0, 255, 136, ${node.opacity * pulse})`);
+        gradient.addColorStop(0.5, `rgba(50, 184, 198, ${node.opacity * 0.6 * pulse})`);
+        gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+        
+        aiCtx.fillStyle = gradient;
+        aiCtx.globalAlpha = 1;
+        aiCtx.beginPath();
+        aiCtx.arc(node.x, node.y, finalRadius * 2, 0, Math.PI * 2);
+        aiCtx.fill();
+        
+        // Draw core
+        aiCtx.fillStyle = `rgba(255, 255, 255, ${node.opacity * pulse})`;
+        aiCtx.beginPath();
+        aiCtx.arc(node.x, node.y, finalRadius * 0.3, 0, Math.PI * 2);
+        aiCtx.fill();
+    });
+    
+    // Update and draw particles
+    particles.forEach((particle, i) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        particle.life--;
+        
+        // Reset particle when it dies
+        if (particle.life <= 0) {
+            particle.x = Math.random() * aiCanvas.width;
+            particle.y = Math.random() * aiCanvas.height;
+            particle.life = Math.random() * 100 + 50;
+        }
+        
+        // Wrap around edges
+        if (particle.x < 0) particle.x = aiCanvas.width;
+        if (particle.x > aiCanvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = aiCanvas.height;
+        if (particle.y > aiCanvas.height) particle.y = 0;
+        
+        // Draw particle
+        const alpha = (particle.life / 100) * particle.opacity;
+        aiCtx.fillStyle = `rgba(100, 255, 200, ${alpha})`;
+        aiCtx.globalAlpha = alpha;
+        aiCtx.beginPath();
+        aiCtx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        aiCtx.fill();
+    });
+    
+    aiCtx.globalAlpha = 1;
+    animationId = requestAnimationFrame(animateAIBackground);
+}
+
+// Consultation functionality
+function initializeConsultation() {
+    const consultationBtn = document.getElementById('consultationBtn');
+    const emailModal = document.getElementById('emailModal');
+    const closeModal = document.querySelector('.close-modal');
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const emailText = document.getElementById('emailText');
+    
+    if (consultationBtn && emailModal) {
+        consultationBtn.addEventListener('click', () => {
+            emailModal.classList.remove('hidden');
+            emailModal.classList.add('show');
+        });
+    }
+    
+    if (closeModal && emailModal) {
+        closeModal.addEventListener('click', () => {
+            emailModal.classList.remove('show');
+            setTimeout(() => {
+                emailModal.classList.add('hidden');
+            }, 300);
+        });
+    }
+    
+    // Close modal when clicking outside
+    if (emailModal) {
+        emailModal.addEventListener('click', (e) => {
+            if (e.target === emailModal) {
+                emailModal.classList.remove('show');
+                setTimeout(() => {
+                    emailModal.classList.add('hidden');
+                }, 300);
+            }
+        });
+    }
+    
+    // Copy email functionality
+    if (copyEmailBtn && emailText) {
+        copyEmailBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(emailText.textContent);
+                
+                // Visual feedback
+                const originalText = copyEmailBtn.innerHTML;
+                copyEmailBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyEmailBtn.style.background = '#00ff88';
+                
+                setTimeout(() => {
+                    copyEmailBtn.innerHTML = originalText;
+                    copyEmailBtn.style.background = '#00ff88';
+                }, 2000);
+                
+                // Show toast notification
+                showToast('Email copied to clipboard!');
+                
+            } catch (err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = emailText.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                showToast('Email copied to clipboard!');
+            }
+        });
+    }
+    
+    // Close modal with escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && emailModal && emailModal.classList.contains('show')) {
+            emailModal.classList.remove('show');
+            setTimeout(() => {
+                emailModal.classList.add('hidden');
+            }, 300);
+        }
+    });
+}
+
+function showToast(message) {
+    // Create toast element if it doesn't exist
+    let toast = document.querySelector('.consultation-toast');
+    if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'consultation-toast';
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+        `;
+        document.body.appendChild(toast);
+    }
+    
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(-50%) translateY(20px)';
+    }, 3000);
+}
 
 // Theme Management
 function initializeTheme() {
@@ -741,9 +1051,12 @@ function debounce(func, wait) {
 
 // Performance optimization
 window.addEventListener('beforeunload', function() {
-    // Clean up observers
+    // Clean up observers and animations
     if (animationObserver) {
         animationObserver.disconnect();
+    }
+    if (animationId) {
+        cancelAnimationFrame(animationId);
     }
 });
 
@@ -814,12 +1127,12 @@ setInterval(updateWinnipegWeather, 10 * 60 * 1000); // every 10 minutes
 
 // ----------- ECONOMIC FACTS / QUOTES WIDGET -----------
 const econFacts = [
-    "Canada’s S&P/TSX is among the world’s top 10 largest stock exchanges.",
+    "Canada's S&P/TSX is among the world's top 10 largest stock exchanges.",
     "The Consumer Price Index (CPI) measures the average change in prices paid by consumers for goods and services.",
     "AI in economics enables better policy simulations and more accurate forecasting.",
     "\"In the middle of difficulty lies opportunity.\" — Albert Einstein",
     "Central banks use interest rates to regulate inflation and stimulate or cool the economy.",
-    "Gross Domestic Product (GDP) is the broadest quantitative measure of a nation’s total economic activity.",
+    "Gross Domestic Product (GDP) is the broadest quantitative measure of a nation's total economic activity.",
     "Elasticity measures how much demand or supply responds to changes in price.",
     "\"Economics is the study of how society manages its scarce resources.\" — Gregory Mankiw",
     "Scarcity is the basic economic problem that arises because resources are limited and wants are unlimited.",
@@ -833,7 +1146,7 @@ const econFacts = [
     "A bull market is characterized by rising asset prices, while a bear market features falling prices.",
     "Trade deficits occur when a country imports more goods and services than it exports.",
     "The law of supply and demand is the foundation of market economies.",
-    "The World Bank’s mission is to reduce global poverty by providing financial and technical assistance.",
+    "The World Bank's mission is to reduce global poverty by providing financial and technical assistance.",
     "Market equilibrium occurs where the quantity demanded equals quantity supplied.",
     "Marginal cost is the increase in total cost from producing one more unit.",
     "Productivity growth is a key driver of long-term economic prosperity.",
@@ -843,7 +1156,7 @@ const econFacts = [
     "Bonds are considered lower-risk investments but typically offer lower returns than stocks.",
     "Sustainable economic growth meets present needs without compromising future generations.",
     "A budget deficit occurs when government expenditures exceed revenues.",
-    "The invisible hand describes how individuals’ pursuit of self-interest can benefit society — Adam Smith.",
+    "The invisible hand describes how individuals' pursuit of self-interest can benefit society — Adam Smith.",
     "Progressive taxes charge a higher percentage as income increases; regressive taxes do the opposite.",
     "BRICS refers to the emerging economies: Brazil, Russia, India, China, and South Africa.",
     "The Federal Reserve is the central bank of the United States.",
@@ -857,14 +1170,14 @@ const econFacts = [
     "Stagflation describes a period of high inflation and high unemployment.",
     "Public goods are non-excludable and non-rivalrous, like clean air or national defense.",
     "GDP per capita divides total economic output by the population to measure average living standards.",
-    "\"The four most dangerous words in investing are: ‘This time it’s different.’\" — Sir John Templeton",
+    "\"The four most dangerous words in investing are: 'This time it's different.'\" — Sir John Templeton",
     "Real GDP is adjusted for inflation, while nominal GDP is not.",
-    "An exchange rate is the price of one country’s currency in terms of another’s.",
+    "An exchange rate is the price of one country's currency in terms of another's.",
     "Purchasing Power Parity (PPP) compares costs of a standard basket of goods across countries.",
     "The Gini coefficient measures income inequality within a nation.",
     "Entrepreneurs drive innovation and job creation in modern economies.",
     "Labor force participation measures the percentage of people either working or actively seeking work.",
-    "The Great Depression was the world’s worst economic downturn, starting in 1929.",
+    "The Great Depression was the world's worst economic downturn, starting in 1929.",
     "Hyperinflation is extremely rapid, excessive, and out-of-control price increases.",
     "A monopoly exists when a single company or group owns all or nearly all of the market for a given product or service.",
     "Perfect competition describes a market with many buyers and sellers and no barriers to entry.",
@@ -874,7 +1187,7 @@ const econFacts = [
     "Economic sanctions restrict trade and financial transactions for political reasons.",
     "Interest rates affect consumer spending, borrowing, and investment throughout the economy.",
     "Venture capital funds high-growth startups in exchange for equity ownership.",
-    "A stock’s dividend is a portion of the company’s earnings paid to shareholders.",
+    "A stock's dividend is a portion of the company's earnings paid to shareholders.",
     "The yield curve plots interest rates of bonds with different maturities and can signal recession.",
     "Austerity denotes government policies aimed at reducing public sector debt.",
     "Financial markets allocate resources and facilitate trade between savers and borrowers.",
@@ -887,15 +1200,15 @@ const econFacts = [
     "The gold standard linked a country's currency to a fixed amount of gold.",
     "Index funds passively track a specific index and often offer lower fees to investors.",
     "A soft landing refers to a gradual slowdown in economic growth, avoiding a recession.",
-    "Debt-to-GDP ratio is used to compare a country’s public debt to its economic output.",
+    "Debt-to-GDP ratio is used to compare a country's public debt to its economic output.",
     "The balance of payments records all transactions between a country and the rest of the world.",
     "Capital flight describes large-scale exit of financial assets from a country.",
     "A trade war is a situation where countries impose tariffs or restrictions against each other.",
     "Liquidity describes how easily assets can be converted to cash.",
     "\"The stock market is filled with individuals who know the price of everything, but the value of nothing.\" — Philip Fisher",
-    "Product differentiation makes a product stand out from competitors’ offerings.",
+    "Product differentiation makes a product stand out from competitors' offerings.",
     "Emerging markets are nations with social or business activity in the process of rapid growth.",
-    "Market capitalization is the total value of a company’s shares of stock.",
+    "Market capitalization is the total value of a company's shares of stock.",
     "Shadow banking occurs outside the traditional banking system and is less regulated.",
     "A supply shock is an unexpected event that changes the supply of a product or commodity.",
     "The efficient market hypothesis states that asset prices reflect all available information.",
@@ -904,12 +1217,12 @@ const econFacts = [
     "A trade surplus happens when exports exceed imports.",
     "Digital currencies like Bitcoin challenge traditional financial systems.",
     "Green bonds finance projects with environmental benefits.",
-    "“Economics is extremely useful as a form of employment for economists.” — John Kenneth Galbraith",
+    "\"Economics is extremely useful as a form of employment for economists.\" — John Kenneth Galbraith",
     "Seigniorage is the profit made by a government issuing currency.",
     "Poverty lines define the minimum income needed to meet basic needs.",
     "Network effects mean a product becomes more valuable as more people use it.",
     "Microfinance provides financial services to low-income individuals or groups.",
-    "“The curious task of economics is to demonstrate to men how little they really know about what they imagine they can design.” — F.A. Hayek",
+    "\"The curious task of economics is to demonstrate to men how little they really know about what they imagine they can design.\" — F.A. Hayek",
     "Sunk cost is money already spent and cannot be recovered.",
     "Devaluation reduces the value of a currency relative to others.",
     "The green economy aims to reduce environmental risks and ecological scarcities.",
@@ -990,8 +1303,6 @@ fetch('/api/latest-tweets')
 
 
 
-
-
 /* ===== Publications (Complete - All Papers) ===== */
 function initializePublications() {
   console.log('Initializing publications...');
@@ -1021,7 +1332,7 @@ function initializePublications() {
       journal: "Manufacturing Letters",
       year: 2025,
       type: "Article",
-      abstract: "Plastic composites provide an eco-friendly substitute for conventional construction materials. Indeed, recycling waste plastic represents a progressive approach to waste management with the aim of mitigating the growing issue of pollution in urban environments. Our research aims to review the physical properties, including water absorption (WA) and thickness swelling (TS), and mechanical properties, such as the internal bond (IB), the modulus of rupture (MOR), and the modulus of elasticity (MOE), of the latest findings made of wood panels combined with plastic. We are focusing on three types of plastic, namely polyethylene terephthalate (PET), polypropylene (PP), and high-density polyethylene (HDPE). In addition, we employed machine learning (ML) algorithms, including the hierarchical clustering dendrogram, the Pearson correlation coefficient, the support vector regression, the random forest (RF), and the decision tree (DT) for prediction analysis. For instance, the results indicate that combining HDPE with wood pulp fiber increases the MOR (42.45 MPa) and MOE (66.7 MPa), respectively. Furthermore, mixed plastics such as PET, HDPE, PP, and LDPE improve the dimensional stability by reducing the WA (0.32 %) and TS (0.18 %), respectively. In most cases, these results meet the minimum standard requirement for general-purpose boards, according with the American National Standard for Particleboard (ANSI/A208.1-1999), the European standard (EN 312), and Brazilian Association of Technical (ABNT NBR) standard. In addition, the dendrogram identifies three primary clusters with varying Euclidean distances, indicating the performance of wood-plastic panels for both physical and mechanical properties. Notably, the dimensional stability among panels is stronger than that of mechanical properties. The correlation matrix is important for selecting an appropriate plastic. The SVR, RF, and DT algorithms make predictions by analyzing the properties of the panel. For instance, the DT algorithm shows that when WA is less than 25 %, the predicted value of TS is 0.24 %; in addition, when the value is between 25 % and 75 %, TS is equal to 7.92 %; also, when WA is greater than 75 %, TS is predicted to be at 13.7 %. This innovative method of utilizing ML and DL for prediction opens new possibilities for the use of plastic in panel production, as it allows for the selection of suitable materials and fabrication techniques to create a wood-plastic composite.",
+      abstract: "Plastic composites provide an eco-friendly substitute for conventional construction materials. Indeed, recycling waste plastic represents a progressive approach to waste management with the aim of mitigating the growing issue of pollution in urban environments. Our research aims to review the physical properties, including water absorption (WA) and thickness swelling (TS), and mechanical properties, such as the internal bond (IB), the modulus of rupture (MOR), and the modulus of elasticity (MOE), of the latest findings made of wood panels combined with plastic. We are focusing on three types of plastic, namely polyethylene terephthalate (PET), polypropylene (PP), and high-density polyethylene (HDPE). In addition, we employed machine learning (ML) algorithms, including the hierarchical clustering dendrogram, the Pearson correlation coefficient, the support vector regression, the random forest (RF), and the decision tree (DT) for prediction analysis. For instance, the results indicate that combining HDPE with wood pulp fiber increases the MOR (42.45 MPa) and MOE (66.7 MPa), respectively. Furthermore, mixed plastics such as PET, HDPE, PP, and LDPE improve the dimensional stability by reducing the WA (0.32 %) and TS (0.18 %), respectively. In most cases, these results meet the minimum standard requirement for general-purpose boards, according with the American National Standard for Particleboard (ANSI/A208.1-1999), the European standard (EN 312), and Brazilian Association of Technical (ABNT NBR) standard. In addition, the dendrogram identifies three primary clusters with varying Euclidean distances, indicating the performance of wood-plastic panels for both physical and mechanical properties. Notably, the dimensional stability among panels is stronger than that of mechanical properties. The correlation matrix is important for selecting an appropriate plastic. The SVR, RF, and DT algorithms make predictions by analyzing the properties of the panel. For instance, the DT algorithm shows that when WA is less than 25 %, the predicted value of TS is 0.24 %; in addition, when the value is between 25 % and 75 %, TS is equal to 7.92 %; also, when WA is greater than 75 %, TS is predicted to be at 13.7 %. This innovative method of utilizing ML and DL for prediction opens new possibilities for the use of plastic in panel production, as it allows for the selection of suitable materials and fabrication techniques to create a wood-plastic composite.",
       doi: "10.1016/j.mfglet.2025.24-35",
       link: "https://www.sciencedirect.com/science/article/pii/S2213846325000288",
       metrics: { citations: 0, reads: 92, saves: 7 }
@@ -1032,7 +1343,7 @@ function initializePublications() {
       journal: "Manufacturing Letters",
       year: 2025,
       type: "Article",
-      abstract: "Nanoparticles as raw material additive are substances that modify the concrete product. This study presents a comprehensive analysis of nanoparticle effects on concrete mechanical properties using advanced machine learning (ML) algorithms. We examine various nanoparticle types, including multi-walled carbon nanotubes (MWCNTs), graphene nanoplatelets (GNPs), nano-SiO2 (silica), and nano-TiO2 (titanium dioxide), investigating their impact on concrete’s flexural (fb), compressive (fc), and tensile (ft) strengths. We use ML algorithms such as decision tree (DT), Pearson correlation coefficient, and the hierarchical clustering algorithms to analyze their mechanical properties. Results show that there is a significant increase in mechanical strength when nanoparticles are incorporated into concrete. For example, adding nano-Fe2O3 (iron oxide) can increase the control concrete sample of fc and fb from 105 MPa to 140 MPa and 16 MPa to 23 MPa, respectively. The study identifies five primary enhancement mechanisms: filler effect, nucleation site provision, pozzolanic reaction, nano-reinforcement, and C-S-H structure modification. However, Pearson correlation analysis reveals significant inconsistencies in strength improvements, with correlation coefficients ranging from 0.87 for tensile-compressive strength relationships to −0.26 for flexural strength improvements. The DT analysis reveals that nanoparticle concentration is the decisive factor in determining the improvement of concrete strength. On the other hand, the hierarchical clustering analysis identifies distinct groupings of nanoparticles based on their enhancement mechanisms, with MWCNTs forming an independent cluster due to their unique concrete fb (23 MPa) and fc (140 MPa) strengths. In addition, the cost analysis reveals that nanoparticle additions can improve concrete qualities, but their selection and dosage optimization should be considered to balance performance increases with economic viability in practical use. This research provides useful information for developing optimized nanoparticle-enhanced concrete formulations while highlighting the complexity of strength enhancement mechanisms.",
+      abstract: "Nanoparticles as raw material additive are substances that modify the concrete product. This study presents a comprehensive analysis of nanoparticle effects on concrete mechanical properties using advanced machine learning (ML) algorithms. We examine various nanoparticle types, including multi-walled carbon nanotubes (MWCNTs), graphene nanoplatelets (GNPs), nano-SiO2 (silica), and nano-TiO2 (titanium dioxide), investigating their impact on concrete's flexural (fb), compressive (fc), and tensile (ft) strengths. We use ML algorithms such as decision tree (DT), Pearson correlation coefficient, and the hierarchical clustering algorithms to analyze their mechanical properties. Results show that there is a significant increase in mechanical strength when nanoparticles are incorporated into concrete. For example, adding nano-Fe2O3 (iron oxide) can increase the control concrete sample of fc and fb from 105 MPa to 140 MPa and 16 MPa to 23 MPa, respectively. The study identifies five primary enhancement mechanisms: filler effect, nucleation site provision, pozzolanic reaction, nano-reinforcement, and C-S-H structure modification. However, Pearson correlation analysis reveals significant inconsistencies in strength improvements, with correlation coefficients ranging from 0.87 for tensile-compressive strength relationships to −0.26 for flexural strength improvements. The DT analysis reveals that nanoparticle concentration is the decisive factor in determining the improvement of concrete strength. On the other hand, the hierarchical clustering analysis identifies distinct groupings of nanoparticles based on their enhancement mechanisms, with MWCNTs forming an independent cluster due to their unique concrete fb (23 MPa) and fc (140 MPa) strengths. In addition, the cost analysis reveals that nanoparticle additions can improve concrete qualities, but their selection and dosage optimization should be considered to balance performance increases with economic viability in practical use. This research provides useful information for developing optimized nanoparticle-enhanced concrete formulations while highlighting the complexity of strength enhancement mechanisms.",
       doi: "10.1016/j.mfglet.2025.07.001",
       link: "https://doi.org/10.1016/j.mfglet.2025.07.001",
       metrics: { citations: 1, reads: 25, saves: 11 }
@@ -1054,7 +1365,7 @@ function initializePublications() {
       journal: "Cleaner Waste Systems",
       year: 2025,
       type: "Article",
-      abstract: "In domains such as the construction industry, predicting the compressive strength of laterized blocks is crucial for building trust in their results. Poor material properties can result in reduced strength, durability, and structural integrity of buildings and can have even life-threatening consequences for building occupants. Machine learning (ML) algorithms can provide predictive abilities for compressive strength of laterized blocks, thereby improving confidence in their use in buildings. This research aims to predict the compressive strength of laterite blocks stabilized with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM) using gradient boosting regression (GBR), multi-layer perceptron (MLP), k-means clustering, and AdaBoost models. The correlation matrix results show that stabilized compressed earth block (CEB)'s age has the strongest correlation with compressive strength (R = 0.83) based on its highly meaningful relationship (p < 0.001). The research establishes the credibility of the ML algorithms during the training phase through R-squared values higher than 0.93 for GBR, MLP, k-means clustering, and AdaBoost models. However, the R-squared values during the testing phase are less than 0.68 for all the models. The Taylor diagram analysis indicates that the GBR model is the best-performing model, while the k-means clustering model emerges as the lowest-performing model during the training phase. Based on mean SHapley Additive exPlanations (SHAP) analysis values, age emerges as the most significant variable in influencing the compressive strength of laterite blocks stabilized with MKG and SM mixtures. Moreover, water, MKG, and SM have also emerged as influential variables in the order of decreasing influence. This research therefore lays a foundation and contributes to the widespread applications of laterite blocks stabilized with MKG and SM mixtures in sustainable construction.",
+      abstract: "In domains such as the construction industry, predicting the compressive strength of laterized blocks is crucial for building trust in their results. Poor material properties can result in reduced strength, durability, and structural integrity of buildings and can have even life-threatening consequences for building occupants. Machine learning (ML) algorithms can provide predictive abilities for compressive strength of laterized blocks, thereby improving confidence in their use in buildings. This research aims to predict the compressive strength of laterite blocks stabilized with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM) using gradient boosting regression (GBR), multi-layer perceptron (MLP), k-means clustering, and AdaBoost models. The correlation matrix results show that stabilized compressed earth block (CEB)'s age has the strongest correlation with compressive strength (R = 0.83) based on its highly meaningful relationship (p < 0.001). The research establishes the credibility of the ML algorithms during the training phase through R-squared values higher than 0.93 for GBR, MLP, k-means clustering, and AdaBoost models. However, the R-squared values during the testing phase are less than 0.68 for all the models. The Taylor diagram analysis indicates that the GBR model is the best-performing model, while the k-means clustering model emerges as the lowest-performing model during the training phase. Based on mean SHapley Additive exPlanations (SHAP) analysis values, age emerges as the most significant variable in influencing the compressive strength of laterite blocks stabilized with MKG and SM mixtures. Moreover, water, MKG, and SM have also emerged as influential variables in the order of decreasing influence. This research therefore lays a foundation and contributes to the widespread applications of laterite blocks stabilized with MKG and SM mixtures in sustainable construction.",
       doi: "10.1016/j.clwas.2025.100352",
       link: "https://doi.org/10.1016/j.clwas.2025.100352",
       metrics: { citations: 4, reads: 67, saves: 5 }
@@ -1121,7 +1432,7 @@ function initializePublications() {
       journal: "Waste Management Bulletin",
       year: 2025,
       type: "Article",
-      abstract: "To refine the process of anticipating the structural integrity of laterite block components, the use of machine learning (ML) algorithms is required. This study initiates an exploration into forecasting the compressive strength of laterite blocks infused with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM), utilizing machine learning techniques such as artificial neural networks (ANN), random forests (RF), decision trees (DT), and support vector machines (SVM). The models were developed using four input values, including the MKG, SM, laterite soil, and water, with compressive strength as the output. Results show that for all the models, the majority of the data points lie within the error lines range of −20 % and +20 %. Using the Taylor diagram model, the results demonstrate that the SVM (train) model achieves the highest performance in predicting the compressive strength of laterite blocks, with a correlation coefficient of 0.99 and the lowest root mean square error (RMSE) of 0.139. The correlation coefficient values (R) for training and testing algorithm models ranged between 0.65 and 0.99, implying that all models fairly predict the compressive strength of laterite blocks containing MKG and SM. The RF model emerges as an important model for generalization across training and testing phases, with R values of 0.9828 and 0.789, respectively. SHapley Additive exPlanations (SHAP) analysis assesses the model’s explainability behavior. According to a SHAP-based feature importance study, age (85.33 %) and water content (17.87 %) are critical components that may improve compressive strength compared to MKG (8.60 %) and SM (6.74 %), respectively. This study not only assists in comprehending the essential parameters necessary for making well-informed decisions but also opens exciting possibilities for the application of ML in fostering sustainable construction practices.",
+      abstract: "To refine the process of anticipating the structural integrity of laterite block components, the use of machine learning (ML) algorithms is required. This study initiates an exploration into forecasting the compressive strength of laterite blocks infused with metakaolin-based geopolymer (MKG) and sugarcane molasses (SM), utilizing machine learning techniques such as artificial neural networks (ANN), random forests (RF), decision trees (DT), and support vector machines (SVM). The models were developed using four input values, including the MKG, SM, laterite soil, and water, with compressive strength as the output. Results show that for all the models, the majority of the data points lie within the error lines range of −20 % and +20 %. Using the Taylor diagram model, the results demonstrate that the SVM (train) model achieves the highest performance in predicting the compressive strength of laterite blocks, with a correlation coefficient of 0.99 and the lowest root mean square error (RMSE) of 0.139. The correlation coefficient values (R) for training and testing algorithm models ranged between 0.65 and 0.99, implying that all models fairly predict the compressive strength of laterite blocks containing MKG and SM. The RF model emerges as an important model for generalization across training and testing phases, with R values of 0.9828 and 0.789, respectively. SHapley Additive exPlanations (SHAP) analysis assesses the model's explainability behavior. According to a SHAP-based feature importance study, age (85.33 %) and water content (17.87 %) are critical components that may improve compressive strength compared to MKG (8.60 %) and SM (6.74 %), respectively. This study not only assists in comprehending the essential parameters necessary for making well-informed decisions but also opens exciting possibilities for the application of ML in fostering sustainable construction practices.",
       doi: "10.1016/j.wmb.2025.100212",
       link: "https://www.sciencedirect.com/science/article/pii/S2949750725000410",
       metrics: { citations: 4, reads: 73, saves: 4 }
@@ -1132,7 +1443,7 @@ function initializePublications() {
       journal: "Cleaner Waste Systems",
       year: 2025,
       type: "Article",
-      abstract: "In order to increase the efficiency of predicting concrete compressive strength, ensemble machine learning (ML) algorithms are required. Considering that each ML algorithm continuously varies in methodology, one ML algorithm cannot generate exhaustive prediction results since limited parameters are available to tune. This research serves as a beginning step towards predicting the compressive strength of concrete containing waste tyre rubber (WTR) and clay brick powder (CBP) using artificial neural network (ANN), random forest (RF), decision tree (DT) and support vector machine (SVM) algorithms. Taylor diagram model analysis shows that when the four algorithms are compared, the SVM (train) model demonstrates the highest performance in predicting the compressive strength of concrete containing CBP and WTR. The R2 values ranging from 0.60 – 0.97 imply that all the models fairly predict the compressive strength of concrete containing CBP and WTR. The same predictive abilities are demonstrated by the clustering of the data points for train and test models around the y = x line. It is shown that the majority of the data points lie within the error lines range of −20 and + 20 %. The SHapley Additive exPlanations (SHAP) analysis reveals that WTR has the highest impact on model predictions with a mean SHAP value of 3.83, while cement shows a moderate influence with a mean SHAP value of 0.77. Moreover, these findings suggest that WTR content is the most critical factor in controlling the concrete's compressive strength, while cement content plays a supporting role in the mixture design. Since the prediction behaviour of concrete using ML models is governed by the replacement levels of CBP and WTR, the models used in this study can be extended to the concrete mixes containing other waste materials.",
+      abstract: "In order to increase the efficiency of predicting concrete compressive strength, ensemble machine learning (ML) algorithms are required. Considering that each ML algorithm continuously varies in methodology, one ML algorithm cannot generate exhaustive prediction results since limited parameters are available to tune. This research serves as a beginning step towards predicting the compressive strength of concrete containing waste tyre rubber (WTR) and clay brick powder (CBP) using artificial neural network (ANN), random forest (RF), decision tree (DT) and support vector machine (SVM) algorithms. Taylor diagram model analysis shows that when the four algorithms are compared, the SVM (train) model demonstrates the highest performance in predicting the compressive strength of concrete containing CBP and WTR. The R2 values ranging from 0.60 – 0.97 imply that all the models fairly predict the compressive strength of concrete containing CBP and WTR. The same predictive abilities are demonstrated by the clustering of the data points for train and test models around the y = x line. It is shown that the majority of the data points lie within the error lines range of −20 and + 20 %. The SHapley Additive exPlanations (SHAP) analysis reveals that WTR has the highest impact on model predictions with a mean SHAP value of 3.83, while cement shows a moderate influence with a mean SHAP value of 0.77. Moreover, these findings suggest that WTR content is the most critical factor in controlling the concrete's compressive strength, while cement content plays a supporting role in the mixture design. Since the prediction behaviour of concrete using ML models is governed by the replacement levels of CBP and WTR, the models used in this study can be extended to the concrete mixes containing other waste materials.",
       doi: "10.1016/j.clwas.2025.100236",
       link: "https://doi.org/10.1016/j.clwas.2025.100236",
       metrics: { citations: 6, reads: 112, saves: 8 }
@@ -1187,7 +1498,7 @@ function initializePublications() {
       journal: "Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances",
       year: 2025,
       type: "Review",
-      abstract: "Under the turbulence of global change, the production of boards has been influenced by the rising demand and price of wood-based materials. To improve the structural performance of boards, reinforcement materials have been added, such as nanoparticles. The purpose of this review is to explore the application of nanomaterials, including nano-SiO2, nano-Al2O3, nano-ZnO, nano-Fe2O3, nano-cellulose, nano-lignin, and nano-chitosan, to evaluate the physical and mechanical properties of particleboards. These nanoparticles have demonstrated their ability to reduce formaldehyde emissions, enhance the dimensional stability, bending strength, bending stiffness, fire resistance, and resistance to thermal conductivity in board production. For example, the addition of nano-SiO2, known for its hydrophilicity, attracts and holds water molecules and acts as a thermal barrier due to its high melting point and low thermal conductivity. In contrast, nano-Al2O3 is known for its high compressive strength (up to 3 GPa), hardness strength (9 Mohs scale), and high thermal conductivity, which helps to dissipate heat more effectively. This comprehensive evaluation brings together recent advances in producing particleboards and medium density fiberboard reinforced with nanoparticles, which are essential for future research and industry applications. The study emphasizes how innovative nanoparticles can contribute to sustainable urban development and construction practices, reduce deforestation, preserve natural habitats, and provide affordable housing. The research indicates that nanoparticle boards meet (e.g., nanoclay and nanoalumina panels) and in some cases exceed the minimum requirement for general-purpose panels set standards such as the ANSI/A208.1-1999, including water absorption of 8%, thickness swelling of 3% and EN 312 for the bending strength (15–16 MPa) and bending stiffness (2.2–2.4 GPa) for P4 and P6 boards, respectively. These results support the transformative power of nanomaterials in promoting a more sustainable and future solution for boards in the building construction industry.",
+      abstract: "Under the turbulence of global change, the production of boards has been influenced by the rising demand and price of wood-based materials. To improve the structural performance of boards, reinforcement materials have been added, such as nanoparticles. The purpose of this review is to explore the application of nanomaterials, including nano-SiO2, nano-Al2O3, nano-ZnO, nano-Fe2O3, nano-cellulose, nano-lignin, and nano-chitosan, to evaluate the physical and mechanical properties of particleboards. These nanoparticles have demonstrated their ability to reduce formaldehyde emissions, enhance the dimensional stability, bending strength, bending stiffness, fire resistance, and resistance to thermal conductivity in board production. For example, the addition of nano-SiO2, known for its hydrophilicity, attracts and holds water molecules and acts as a thermal barrier due to its high melting point and low thermal conductivity. In contrast, nano-Al2O3 is known for its high compressive strength (up to 3 GPa), hardness strength (9 Mohs scale), and high thermal conductivity, which helps to dissipate heat more effectively. This comprehensive evaluation brings together recent advances in producing particleboards and medium density fiberboard reinforced with nanoparticles, which are essential for future research and industry applications. The study emphasizes how innovative nanoparticles can contribute to sustainable urban development and construction practices, reduce deforestation, preserve natural habitats, and provide affordable housing. The research indicates that nanoparticle boards meet (e.g., nanoclay and nanoalumina panels) and in some cases exceed the minimum requirement for general-purpose panels set standards such as the ANSI/A208.1-1999, including water absorption of 8%, thickness swelling of 3% and EN 312 for the bending strength (15–16 MPa) and bending stiffness (2.2–2.4 GPa) for P4 and P6 boards, respectively. These results support the transformative power of nanomaterials in promoting a more sustainable and future solution for boards in the building construction industry.",
       doi: "10.1515/ntrev-2024-0119",
       link: "https://doi.org/10.1515/ntrev-2024-0119",
       metrics: { citations: 3, reads: 201, saves: 14 }
