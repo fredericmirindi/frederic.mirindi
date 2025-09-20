@@ -375,7 +375,7 @@
     </section>
   </section>
 
-    <!-- REDESIGNED PUBLICATIONS PAGE WITH SAME BACKGROUND AS HOME PAGE -->
+    <!-- PUBLICATIONS PAGE WITH EXACT SAME STRUCTURE AS HOME BUT CENTERED -->
     <section class="page" id="papers">
       <!-- Hero Section with SAME BACKGROUND as Home Page -->
       <div class="hero-section" style="position: relative; overflow: hidden;">
@@ -392,35 +392,65 @@
     
         <div class="container">
           <div class="hero-content">
-            <div class="hero-text" style="text-align: center; color: white;">
+            <!-- CENTERED VERSION - NO RIGHT SIDE IMAGE -->
+            <div class="hero-text publications-centered">
               <h1 class="hero-title">
                 <span class="typing-text">Research Publications</span>
               </h1>
               <p class="hero-subtitle">AI-Driven Economic Analysis & Sustainable Technology</p>
-              <p class="hero-description" style="max-width: 900px; margin: 0 auto 30px;">
+              <p class="hero-description">
                 Innovative research at the intersection of artificial intelligence, economics, and sustainable technology. 
                 Explore cutting-edge publications that advance the field through interdisciplinary collaboration and 
                 methodological innovation. My research interests include <strong>International Economics</strong>, 
                 <strong>Macroeconomics</strong>, and <strong>Game Theory</strong>.
               </p>
+              <div class="hero-buttons">
+                <a class="btn btn--outline research-profile-link" 
+                   href="https://www.researchgate.net/profile/Frederic-Mirindi" 
+                   target="_blank" 
+                   rel="noopener">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg" 
+                       alt="ResearchGate icon" 
+                       style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" />
+                  ResearchGate Profile
+                </a>
+                <a class="btn btn--outline research-profile-link" 
+                   href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" 
+                   target="_blank" 
+                   rel="noopener">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/250px-Google_Scholar_logo.svg.png" 
+                       alt="Google Scholar icon" 
+                       style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" />
+                  Google Scholar Profile
+                </a>
+                <a class="btn btn--outline research-profile-link" 
+                   href="https://orcid.org/0009-0001-1798-9914" 
+                   target="_blank" 
+                   rel="noopener">
+                  <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" 
+                       alt="ORCID iD icon" 
+                       style="vertical-align:middle; margin-right:6px;" />
+                  ORCID Profile
+                </a>
+              </div>
               
-              <!-- Research Impact Statistics in Hero Style (Updated Numbers) -->
-              <div class="research-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                <div class="stat-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
-                  <span class="stat-number" id="total-papers" style="font-size: 2.5rem; font-weight: 800; color: white; display: block; margin-bottom: 8px;">8+</span>
-                  <span class="stat-label" style="font-size: 0.95rem; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white;">Published Papers</span>
+              <!-- Research Statistics Centered -->
+              <div class="publications-stats-grid">
+                <div class="stat-block">
+                  <span class="stat-number" id="total-papers">8+</span>
+                  <span class="stat-label">PUBLISHED PAPERS</span>
                 </div>
-                <div class="stat-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
-                  <span class="stat-number" id="total-citations" style="font-size: 2.5rem; font-weight: 800; color: white; display: block; margin-bottom: 8px;">145+</span>
-                  <span class="stat-label" style="font-size: 0.95rem; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white;">Total Citations</span>
+                <div class="stat-block">
+                  <span class="stat-number" id="total-citations">145+</span>
+                  <span class="stat-label">TOTAL CITATIONS</span>
                 </div>
-                <div class="stat-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
-                  <span class="stat-number" id="h-index" style="font-size: 2.5rem; font-weight: 800; color: white; display: block; margin-bottom: 8px;">7</span>
-                  <span class="stat-label" style="font-size: 0.95rem; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white;">H-Index</span>
+                <div class="stat-block">
+                  <span class="stat-number" id="h-index">7</span>
+                  <span class="stat-label">H-INDEX</span>
                 </div>
-                <div class="stat-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 16px; padding: 25px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease;">
-                  <span class="stat-number" id="total-reads" style="font-size: 2.5rem; font-weight: 800; color: white; display: block; margin-bottom: 8px;">1.3K+</span>
-                  <span class="stat-label" style="font-size: 0.95rem; opacity: 0.9; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white;">Total Reads</span>
+                <div class="stat-block">
+                  <span class="stat-number" id="total-reads">1.3K+</span>
+                  <span class="stat-label">TOTAL READS</span>
                 </div>
               </div>
             </div>
