@@ -11,10 +11,10 @@ class PublicationsShowcase {
         this.currentView = 'grid';
         this.activeCategory = 'all';
         this.stats = {
-            totalPapers: 0,
-            totalCitations: 0,
-            hIndex: 0,
-            totalReads: 0
+            totalPapers: 8,
+            totalCitations: 145,
+            hIndex: 7,
+            totalReads: 1300
         };
         // AI Background for Publications page
         this.aiCanvasPublications = null;
@@ -222,7 +222,7 @@ class PublicationsShowcase {
     }
 
     loadPublicationsData() {
-        // Enhanced publications data with detailed metrics
+        // Updated publications data with accurate counts (8 papers)
         this.publicationsData = [
             {
                 title: "Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres",
@@ -450,32 +450,19 @@ class PublicationsShowcase {
     }
 
     updateResearchStats() {
-        // Calculate real statistics from publications data
+        // Use the correct statistics provided by the user
         const stats = {
-            totalPapers: this.publicationsData.length,
-            totalCitations: this.publicationsData.reduce((sum, paper) => sum + paper.metrics.citations, 0),
-            totalReads: this.publicationsData.reduce((sum, paper) => sum + paper.metrics.reads, 0),
-            hIndex: this.calculateHIndex()
+            totalPapers: 8,
+            totalCitations: 145,
+            hIndex: 7,
+            totalReads: 1300
         };
 
-        // Update DOM elements
-        this.updateStatElement('total-papers', stats.totalPapers + '+');
-        this.updateStatElement('total-citations', stats.totalCitations + '+');
-        this.updateStatElement('h-index', stats.hIndex);
-        this.updateStatElement('total-reads', this.formatNumber(stats.totalReads) + '+');
-    }
-
-    calculateHIndex() {
-        const citations = this.publicationsData.map(p => p.metrics.citations).sort((a, b) => b - a);
-        let hIndex = 0;
-        
-        for (let i = 0; i < citations.length; i++) {
-            if (citations[i] >= i + 1) {
-                hIndex = i + 1;
-            }
-        }
-        
-        return hIndex;
+        // Update DOM elements with correct values
+        this.updateStatElement('total-papers', '8+');
+        this.updateStatElement('total-citations', '145+');
+        this.updateStatElement('h-index', '7');
+        this.updateStatElement('total-reads', '1.3K+');
     }
 
     updateStatElement(id, value) {
