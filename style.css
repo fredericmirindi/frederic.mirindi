@@ -1160,6 +1160,23 @@ select.form-control {
     text-align: center;
     margin-bottom: var(--space-32);
     font-size: var(--font-size-3xl);
+    /* Make Key Achievements title cyan/blue-green */
+    color: #00CED1;
+}
+
+/* Dark mode for Key Achievements title */
+@media (prefers-color-scheme: dark) {
+  .highlights-section h2 {
+    color: #00FFFF;
+  }
+}
+
+[data-color-scheme="dark"] .highlights-section h2 {
+  color: #00FFFF;
+}
+
+[data-color-scheme="light"] .highlights-section h2 {
+  color: #00CED1;
 }
 
 .highlights-grid {
@@ -1199,18 +1216,9 @@ select.form-control {
     position: relative;
 }
 
+/* Remove the top border line as requested */
 .institutional-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--color-primary) 20%, 
-        var(--color-primary) 80%, 
-        transparent 100%);
+    display: none;
 }
 
 .institutional-section h2 {
@@ -1221,16 +1229,9 @@ select.form-control {
     position: relative;
 }
 
+/* Remove the decorative line under the title as requested */
 .institutional-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-success));
-    border-radius: 2px;
+    display: none;
 }
 
 .institutions-grid {
@@ -1275,6 +1276,7 @@ select.form-control {
     border-color: var(--color-primary);
 }
 
+/* Updated institution icon to support logos */
 .institution-icon {
     width: 60px;
     height: 60px;
@@ -1287,6 +1289,20 @@ select.form-control {
     font-size: var(--font-size-2xl);
     color: var(--color-btn-primary-text);
     box-shadow: 0 4px 12px rgba(33, 128, 141, 0.3);
+    overflow: hidden;
+}
+
+/* Support for logo images inside icon */
+.institution-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Fallback styling when using text/emoji */
+.institution-icon:not(:has(img)) {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-success));
 }
 
 .institution-name {
@@ -2454,7 +2470,6 @@ select.form-control {
 
 
 
-
 /* Blog Main Header */
 .blog-header {
   background: linear-gradient(90deg, var(--color-primary), #43e97b 100%);
@@ -2643,12 +2658,6 @@ select.form-control {
   }
   .hero-nom::after { height: 3px; }
 }
-
-
-
-
-
-
 
 
 
@@ -3015,8 +3024,6 @@ select.form-control {
 
 
 
-
-
 @media (max-width: 600px) {
   .widget-responsive-section {
     /* removes unnecessary horizontal scroll from widget section */
@@ -3048,14 +3055,6 @@ select.form-control {
     box-sizing: border-box;
   }
 }
-
-
-
-
-
-
-
-
 
 
 
