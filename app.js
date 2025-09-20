@@ -224,17 +224,32 @@ function animateAIBackground() {
 
 // Consultation functionality
 function initializeConsultation() {
+    // Updated to handle both button (if exists) and collaboration text
     const consultationBtn = document.getElementById('consultationBtn');
+    const collaborationText = document.getElementById('collaborationText');
     const emailModal = document.getElementById('emailModal');
     const closeModal = document.querySelector('.close-modal');
     const copyEmailBtn = document.getElementById('copyEmailBtn');
     const emailText = document.getElementById('emailText');
     
-    if (consultationBtn && emailModal) {
-        consultationBtn.addEventListener('click', () => {
+    // Function to show modal
+    const showModal = () => {
+        if (emailModal) {
             emailModal.classList.remove('hidden');
             emailModal.classList.add('show');
-        });
+        }
+    };
+    
+    // Add click handler to consultation button (if exists)
+    if (consultationBtn) {
+        consultationBtn.addEventListener('click', showModal);
+    }
+    
+    // Add click handler to collaboration text
+    if (collaborationText) {
+        collaborationText.addEventListener('click', showModal);
+        // Make it look clickable
+        collaborationText.style.cursor = 'pointer';
     }
     
     if (closeModal && emailModal) {
