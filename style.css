@@ -867,7 +867,8 @@ select.form-control {
     font-size: var(--font-size-4xl);
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--space-16);
-    color: var(--color-text);
+    /* Force white color regardless of theme */
+    color: #ffffff !important;
 }
 
 .typing-text {
@@ -876,6 +877,8 @@ select.form-control {
     border-right: 3px solid var(--color-primary);
     white-space: nowrap;
     animation: typing 3s steps(20) infinite;
+    /* Force white color regardless of theme */
+    color: #ffffff !important;
 }
 
 @keyframes typing {
@@ -1198,10 +1201,27 @@ select.form-control {
     transform: translateY(-5px);
 }
 
+/* Make highlight card numbers cyan instead of primary color */
 .highlight-card h3 {
     font-size: var(--font-size-4xl);
-    color: var(--color-primary);
+    /* Cyan color for light mode */
+    color: #00CED1;
     margin-bottom: var(--space-8);
+}
+
+/* Dark mode cyan for highlight numbers */
+@media (prefers-color-scheme: dark) {
+  .highlight-card h3 {
+    color: #00FFFF;
+  }
+}
+
+[data-color-scheme="dark"] .highlight-card h3 {
+  color: #00FFFF;
+}
+
+[data-color-scheme="light"] .highlight-card h3 {
+  color: #00CED1;
 }
 
 .highlight-card p {
@@ -2760,6 +2780,31 @@ select.form-control {
   transition: box-shadow .25s;
 }
 
+/* Widget Section Title */
+.widget-section-title {
+  text-align: center;
+  margin-bottom: var(--space-24);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Dark mode for widget section title */
+@media (prefers-color-scheme: dark) {
+  .widget-section-title {
+    color: var(--color-primary);
+  }
+}
+
+[data-color-scheme="dark"] .widget-section-title {
+  color: var(--color-primary);
+}
+
+[data-color-scheme="light"] .widget-section-title {
+  color: var(--color-primary);
+}
+
 .widget-cards-row {
   display: flex;
   flex-wrap: wrap;
@@ -2884,6 +2929,36 @@ select.form-control {
   min-height: 38px;
 }
 
+/* Cryptocurrency Widget Specific Styling */
+.widget-crypto-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 0;
+}
+
+.widget-crypto-price {
+  font-size: 1.14rem;
+  color: var(--color-primary, #21808d);
+  font-weight: var(--font-weight-bold, 600);
+  letter-spacing: .01em;
+  font-family: 'Fira Mono', 'Segoe UI Mono', monospace;
+}
+
+.widget-crypto-change {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-medium, 500);
+  margin-top: 3px;
+}
+
+.crypto-positive {
+  color: #00C851; /* Green for positive */
+}
+
+.crypto-negative {
+  color: #FF4444; /* Red for negative */
+}
+
 .widget-details-btn {
   margin-top: 9px;
   padding: 7px 19px 7px 11px;
@@ -2961,7 +3036,7 @@ select.form-control {
     font-size: 0.97rem;
     margin-bottom: 2px;
   }
-  .widget-time-main, .widget-weather-temp {
+  .widget-time-main, .widget-weather-temp, .widget-crypto-price {
     font-size: 1em;
   }
   .widget-weather-icon {
@@ -2982,7 +3057,7 @@ select.form-control {
     font-size: 0.93rem;
     min-height: 28px;
   }
-  .widget-card-secondary, .widget-weather-desc {
+  .widget-card-secondary, .widget-weather-desc, .widget-crypto-change {
     font-size: .89rem;
   }
 }
