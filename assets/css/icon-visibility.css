@@ -1,0 +1,200 @@
+/* Icon Visibility CSS - Ensures all icons are visible in both light and dark themes */
+
+/* ===== UNIVERSAL ICON PRESERVATION ===== */
+
+/* Academic Icons - Always preserve original colors */
+.footer-academic-icon,
+.research-profile-link img,
+.btn img,
+.academic-icon {
+    /* Preserve original colors */
+    color: initial !important;
+    fill: initial !important;
+    
+    /* Remove any color filters */
+    filter: none !important;
+    -webkit-filter: none !important;
+    
+    /* Ensure full opacity */
+    opacity: 1 !important;
+    
+    /* Ensure proper display */
+    display: inline-block !important;
+}
+
+/* Social Media Icons - Theme-aware with proper contrast */
+.footer-social-icon {
+    width: 22px !important;
+    height: 22px !important;
+    display: inline-block !important;
+    transition: all 0.3s ease;
+}
+
+/* ===== THEME-SPECIFIC ICON VISIBILITY ===== */
+
+/* Dark Theme - Ensure icons are visible on dark backgrounds */
+[data-theme="dark"] .footer-social-icon,
+body.dark-theme .footer-social-icon,
+@media (prefers-color-scheme: dark) {
+    .footer-social-icon {
+        /* Add subtle background for better visibility */
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        padding: 2px;
+    }
+}
+
+/* Light Theme - Ensure icons are visible on light backgrounds */
+[data-theme="light"] .footer-social-icon,
+body.light-theme .footer-social-icon,
+@media (prefers-color-scheme: light) {
+    .footer-social-icon {
+        /* Add subtle background for better definition */
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+        padding: 2px;
+    }
+}
+
+/* Auto-detect system preference */
+@media (prefers-color-scheme: dark) {
+    .footer-social-icon {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        padding: 2px;
+    }
+    
+    .footer-academic-icon {
+        /* Subtle glow for academic icons in dark mode */
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .footer-social-icon {
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+        padding: 2px;
+    }
+    
+    .footer-academic-icon {
+        /* Subtle shadow for academic icons in light mode */
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+    }
+}
+
+/* ===== HERO SECTION ACADEMIC ICONS ===== */
+
+/* Hero section research profile buttons */
+.hero-buttons .research-profile-link {
+    color: white !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .research-profile-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-buttons .research-profile-link img {
+    /* Ensure hero academic icons are always visible */
+    filter: none !important;
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    padding: 1px;
+}
+
+/* ===== HOVER EFFECTS ===== */
+
+.footer-social-icon:hover,
+.footer-academic-icon:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme hover effects */
+[data-theme="dark"] .footer-social-icon:hover,
+[data-theme="dark"] .footer-academic-icon:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* ===== ACCESSIBILITY & PERFORMANCE ===== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .footer-social-icon,
+    .footer-academic-icon,
+    .research-profile-link {
+        transition: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .footer-social-icon,
+    .footer-academic-icon {
+        border: 1px solid currentColor;
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+    .footer-social-icon,
+    .footer-academic-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .research-profile-link img {
+        width: 18px !important;
+        height: 18px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-social-icon,
+    .footer-academic-icon {
+        width: 18px !important;
+        height: 18px !important;
+    }
+    
+    .research-profile-link img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+/* ===== FORCED COLOR SCHEMES ===== */
+
+/* Windows High Contrast mode */
+@media (forced-colors: active) {
+    .footer-social-icon,
+    .footer-academic-icon,
+    .research-profile-link img {
+        forced-color-adjust: none;
+        filter: none !important;
+    }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+    .footer-social-icon,
+    .footer-academic-icon,
+    .research-profile-link img {
+        /* Ensure icons print properly */
+        filter: none !important;
+        background: none !important;
+        box-shadow: none !important;
+    }
+}
