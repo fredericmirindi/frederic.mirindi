@@ -1,7 +1,187 @@
 /* =====================================================
    INNOVATIVE ECONOMIC WIDGETS - PROFESSIONAL STYLING
    Enhanced for Canadian Market Data
+   FIXED LAYOUT - NO HORIZONTAL MOVEMENT
    ===================================================== */
+
+/* =====================================================
+   FIXED WIDGET LAYOUT SYSTEM - PREVENTS MOVEMENT
+   ===================================================== */
+
+.widget-responsive-section {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, rgba(35, 140, 140, 0.05) 0%, rgba(31, 184, 205, 0.05) 100%);
+  position: relative;
+}
+
+.widget-section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--economics-primary, #238C8C);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.widget-cards-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  /* FIXED: Prevent horizontal reordering */
+  grid-auto-flow: row;
+  place-items: stretch;
+  /* FIXED: Stable positioning */
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.widget-card {
+  /* FIXED: Static positioning prevents drift */
+  position: static;
+  display: flex;
+  flex-direction: column;
+  background: var(--economics-bg, rgba(255, 255, 255, 0.95));
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(35, 140, 140, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  /* FIXED: Controlled transforms - vertical only */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center center;
+  /* FIXED: Prevent width changes */
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  /* FIXED: No horizontal transforms */
+  will-change: transform;
+}
+
+.widget-card:hover {
+  /* FIXED: Only vertical movement allowed */
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(35, 140, 140, 0.15);
+  /* NO horizontal transforms */
+}
+
+.widget-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* FIXED: Prevent content from affecting layout */
+  overflow: hidden;
+}
+
+.widget-card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+  /* FIXED: Prevent icon movement */
+  position: static;
+}
+
+.widget-card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--economics-text, #333);
+  margin-bottom: 1rem;
+  text-align: center;
+  /* FIXED: Prevent text reflow issues */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =====================================================
+   RESPONSIVE BREAKPOINTS - FIXED LAYOUT
+   ===================================================== */
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+  .widget-cards-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .widget-cards-row {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .widget-cards-row {
+    /* FIXED: 2 columns, no reordering */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    /* Maintain order */
+    grid-auto-flow: row;
+  }
+  
+  .widget-card {
+    min-height: 180px;
+  }
+  
+  .widget-card-title {
+    font-size: 1rem;
+    /* Allow wrapping on smaller screens */
+    white-space: normal;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .widget-cards-row {
+    /* FIXED: Single column stack, no horizontal movement */
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    /* Ensure vertical stacking only */
+    grid-auto-flow: row;
+  }
+  
+  .widget-card {
+    min-height: 160px;
+    padding: 1.25rem;
+    /* FIXED: Prevent mobile sliding */
+    transform: none !important;
+  }
+  
+  .widget-card:hover {
+    /* FIXED: Minimal movement on mobile */
+    transform: translateY(-4px);
+  }
+  
+  .widget-section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .widget-responsive-section {
+    padding: 2rem 0;
+  }
+  
+  .widget-cards-row {
+    gap: 0.75rem;
+  }
+  
+  .widget-card {
+    padding: 1rem;
+    min-height: 140px;
+  }
+  
+  .widget-card-title {
+    font-size: 0.9rem;
+  }
+}
 
 /* =====================================================
    ENHANCED BITCOIN WIDGET - CANADIAN FOCUS
@@ -9,18 +189,21 @@
 
 .widget-crypto .widget-crypto-main {
   margin: 12px 0;
+  text-align: center;
 }
 
 .widget-crypto .widget-crypto-price {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--economics-primary, #238C8C);
   line-height: 1.2;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
 .widget-crypto .widget-crypto-change {
   margin-top: 6px;
-  font-size: 12px;
+  font-size: 0.9rem;
   font-weight: 600;
 }
 
@@ -55,9 +238,9 @@
 .widget-economic-calendar .widget-calendar-events {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   margin: 12px 0;
-  max-height: 200px;
+  max-height: 180px;
   overflow-y: auto;
   padding-right: 4px;
 }
@@ -79,18 +262,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 12px;
+  padding: 6px 10px;
   background: var(--economics-hover, #f8f9fa);
-  border-radius: 8px;
+  border-radius: 6px;
   border-left: 3px solid transparent;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
+  /* FIXED: Prevent horizontal sliding */
+  transform: none;
 }
 
 .widget-economic-calendar .event-item:hover {
-  transform: translateX(2px);
+  /* FIXED: Minimal movement only */
   background: var(--economics-bg, #ffffff);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* NO horizontal transforms */
 }
 
 .widget-economic-calendar .event-item.high-impact {
@@ -109,20 +295,20 @@
 }
 
 .widget-economic-calendar .event-time {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--economics-text, #333);
-  min-width: 40px;
+  min-width: 35px;
   background: rgba(255, 255, 255, 0.8);
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 2px 4px;
+  border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .widget-economic-calendar .event-title {
   flex: 1;
-  margin: 0 8px;
-  font-size: 10px;
+  margin: 0 6px;
+  font-size: 9px;
   font-weight: 500;
   color: var(--economics-text, #333);
   white-space: nowrap;
@@ -131,12 +317,12 @@
 }
 
 .widget-economic-calendar .event-impact {
-  font-size: 14px;
+  font-size: 12px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
 .widget-economic-calendar .event-value {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   color: var(--economics-primary, #238C8C);
   background: rgba(255, 255, 255, 0.9);
@@ -159,23 +345,23 @@
 
 .widget-market-sentiment .gauge-container {
   position: relative;
-  width: 120px;
-  height: 60px;
+  width: 100px;
+  height: 50px;
   overflow: hidden;
-  border-radius: 60px 60px 0 0;
+  border-radius: 50px 50px 0 0;
   background: linear-gradient(90deg, #e74c3c 0%, #f39c12 50%, #27ae60 100%);
-  padding: 3px;
+  padding: 2px;
 }
 
 .widget-market-sentiment .gauge-container::before {
   content: '';
   position: absolute;
-  top: 3px;
-  left: 3px;
-  right: 3px;
-  bottom: -3px;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: -2px;
   background: var(--economics-bg, #ffffff);
-  border-radius: 57px 57px 0 0;
+  border-radius: 48px 48px 0 0;
 }
 
 .widget-market-sentiment .gauge-fill {
@@ -183,19 +369,19 @@
   top: 50%;
   left: 50%;
   width: 2px;
-  height: 40px;
+  height: 30px;
   background: #333;
   transform-origin: bottom center;
   transform: translate(-50%, -100%) rotate(-90deg);
-  transition: transform 0.8s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
   z-index: 10;
   border-radius: 2px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .widget-market-sentiment .gauge-center {
   position: absolute;
-  top: 45px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -204,7 +390,7 @@
 
 .widget-market-sentiment .sentiment-value {
   display: block;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   color: var(--economics-primary, #238C8C);
   line-height: 1;
@@ -213,11 +399,11 @@
 
 .widget-market-sentiment .sentiment-label {
   display: block;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 600;
   color: var(--economics-text, #333);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   margin-top: 2px;
 }
 
@@ -236,38 +422,38 @@
 .widget-market-sentiment .sentiment-indicators {
   display: flex;
   justify-content: space-between;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 4px;
+  margin-top: 10px;
 }
 
 .widget-market-sentiment .indicator {
   flex: 1;
   text-align: center;
-  padding: 6px 4px;
+  padding: 4px 2px;
   background: var(--economics-hover, #f8f9fa);
-  border-radius: 6px;
+  border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: all 0.2s ease;
 }
 
 .widget-market-sentiment .indicator:hover {
   background: var(--economics-bg, #ffffff);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  /* FIXED: No horizontal movement */
 }
 
 .widget-market-sentiment .indicator-label {
   display: block;
-  font-size: 8px;
+  font-size: 7px;
   color: #666;
   margin-bottom: 2px;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .widget-market-sentiment .indicator-value {
   display: block;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
 }
 
@@ -292,7 +478,7 @@
   flex-direction: column;
   gap: 6px;
   margin: 12px 0;
-  max-height: 180px;
+  max-height: 160px;
   overflow-y: auto;
 }
 
@@ -309,23 +495,23 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 6px 8px;
   background: var(--economics-hover, #f8f9fa);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
 }
 
 .widget-interest-rates .rate-item:hover {
   background: var(--economics-bg, #ffffff);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* FIXED: No horizontal movement */
 }
 
 .widget-interest-rates .country-flag {
-  font-size: 16px;
-  margin-right: 8px;
+  font-size: 14px;
+  margin-right: 6px;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
 
@@ -336,16 +522,16 @@
 }
 
 .widget-interest-rates .rate-country {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   color: var(--economics-text, #333);
   line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .widget-interest-rates .rate-value {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--economics-primary, #238C8C);
   line-height: 1.1;
@@ -353,9 +539,9 @@
 }
 
 .widget-interest-rates .rate-change {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  min-width: 20px;
+  min-width: 16px;
   text-align: center;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
 }
@@ -379,7 +565,7 @@
 .widget-economic-indicators .indicators-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
   margin: 12px 0;
 }
 
@@ -387,11 +573,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px 8px;
+  padding: 8px 6px;
   background: var(--economics-hover, #f8f9fa);
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -415,22 +601,22 @@
 
 .widget-economic-indicators .indicator-item:hover {
   background: var(--economics-bg, #ffffff);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* FIXED: No horizontal movement */
 }
 
 .widget-economic-indicators .indicator-name {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 600;
   color: #666;
   margin-bottom: 4px;
   line-height: 1.2;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
 }
 
 .widget-economic-indicators .indicator-value {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   line-height: 1;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -449,7 +635,75 @@
 }
 
 /* =====================================================
-   REAL-TIME UPDATE ANIMATIONS
+   TIME AND WEATHER WIDGETS - FIXED
+   ===================================================== */
+
+.widget-time .widget-time-main,
+.widget-weather .widget-weather-main,
+.widget-quote .widget-quote-main {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.widget-time .widget-time-main {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--economics-primary, #238C8C);
+  font-family: 'Courier New', monospace;
+}
+
+.widget-weather .widget-weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.widget-weather .widget-weather-icon {
+  font-size: 1.5rem;
+}
+
+.widget-weather .widget-weather-temp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--economics-primary, #238C8C);
+}
+
+.widget-weather .widget-weather-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 4px;
+}
+
+.widget-quote .widget-quote-main {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--economics-text, #333);
+  line-height: 1.4;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+}
+
+.widget-card-secondary {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.widget-card-caption {
+  font-size: 0.75rem;
+  color: #888;
+  text-align: center;
+  margin-top: 6px;
+  font-style: italic;
+}
+
+/* =====================================================
+   REAL-TIME UPDATE ANIMATIONS - FIXED
    ===================================================== */
 
 .widget-card.updating {
@@ -490,90 +744,20 @@
 }
 
 /* =====================================================
-   RESPONSIVE DESIGN FOR NEW WIDGETS
-   ===================================================== */
-
-@media (max-width: 768px) {
-  .widget-economic-calendar .event-title {
-    font-size: 9px;
-  }
-  
-  .widget-economic-calendar .event-time {
-    font-size: 10px;
-    min-width: 35px;
-  }
-  
-  .widget-market-sentiment .gauge-container {
-    width: 100px;
-    height: 50px;
-  }
-  
-  .widget-market-sentiment .gauge-center {
-    top: 38px;
-  }
-  
-  .widget-market-sentiment .sentiment-value {
-    font-size: 18px;
-  }
-  
-  .widget-interest-rates .rate-country,
-  .widget-economic-indicators .indicator-name {
-    font-size: 8px;
-  }
-  
-  .widget-interest-rates .rate-value {
-    font-size: 11px;
-  }
-  
-  .widget-economic-indicators .indicator-value {
-    font-size: 11px;
-  }
-  
-  .widget-crypto .widget-crypto-price {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .widget-cards-row {
-    grid-template-columns: 1fr 1fr;
-  }
-  
-  .widget-economic-calendar .event-item {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    padding: 6px 8px;
-  }
-  
-  .widget-economic-calendar .event-time {
-    align-self: flex-end;
-  }
-  
-  .widget-market-sentiment .sentiment-indicators {
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .widget-economic-indicators .indicators-grid {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-  
-  .widget-interest-rates .rate-item {
-    padding: 6px 8px;
-  }
-}
-
-/* =====================================================
    DARK MODE SUPPORT - ENHANCED
    ===================================================== */
+
+[data-color-scheme="dark"] .widget-card {
+  background: rgba(45, 45, 45, 0.95);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
 
 [data-color-scheme="dark"] .widget-economic-calendar .event-item,
 [data-color-scheme="dark"] .widget-interest-rates .rate-item,
 [data-color-scheme="dark"] .widget-economic-indicators .indicator-item,
 [data-color-scheme="dark"] .widget-market-sentiment .indicator {
-  background: #2d2d2d;
+  background: #3d3d3d;
   border-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
 }
@@ -590,13 +774,7 @@
   background: rgba(39, 174, 96, 0.15);
 }
 
-[data-color-scheme="dark"] .widget-economic-calendar .event-item:hover,
-[data-color-scheme="dark"] .widget-interest-rates .rate-item:hover,
-[data-color-scheme="dark"] .widget-economic-indicators .indicator-item:hover {
-  background: #3d3d3d;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-}
-
+[data-color-scheme="dark"] .widget-card-title,
 [data-color-scheme="dark"] .widget-economic-calendar .event-time,
 [data-color-scheme="dark"] .widget-economic-calendar .event-title,
 [data-color-scheme="dark"] .widget-interest-rates .rate-country,
@@ -611,22 +789,24 @@
 }
 
 [data-color-scheme="dark"] .widget-market-sentiment .indicator-label,
-[data-color-scheme="dark"] .widget-economic-indicators .indicator-name {
+[data-color-scheme="dark"] .widget-economic-indicators .indicator-name,
+[data-color-scheme="dark"] .widget-card-secondary,
+[data-color-scheme="dark"] .widget-card-caption {
   color: #cccccc;
 }
 
 [data-color-scheme="dark"] .widget-market-sentiment .gauge-container::before {
-  background: #2d2d2d;
+  background: #3d3d3d;
 }
 
 /* =====================================================
-   ANIMATION ENHANCEMENTS
+   ANIMATION ENHANCEMENTS - CONTROLLED
    ===================================================== */
 
 .widget-economic-calendar .event-item,
 .widget-interest-rates .rate-item,
 .widget-economic-indicators .indicator-item {
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.4s ease forwards;
   opacity: 0;
 }
 
@@ -648,17 +828,17 @@
 .widget-economic-indicators .indicator-item:nth-child(4) { animation-delay: 0.4s; }
 
 .widget-market-sentiment .sentiment-gauge {
-  animation: fadeIn 0.8s ease forwards;
+  animation: fadeIn 0.6s ease forwards;
 }
 
 .widget-crypto .widget-crypto-main {
-  animation: slideIn 0.6s ease forwards;
+  animation: slideIn 0.5s ease forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -674,11 +854,11 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: scale(1);
   }
 }
 
@@ -691,7 +871,7 @@
 .widget-economic-indicators .indicator-item,
 .widget-market-sentiment .indicator {
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .widget-economic-calendar .event-item:focus,
@@ -716,6 +896,7 @@
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
+  .widget-card,
   .widget-economic-calendar .event-item,
   .widget-interest-rates .rate-item,
   .widget-economic-indicators .indicator-item {
@@ -729,6 +910,7 @@
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+  .widget-card,
   .widget-economic-calendar .event-item,
   .widget-interest-rates .rate-item,
   .widget-economic-indicators .indicator-item,
@@ -737,6 +919,10 @@
   .widget-crypto .widget-crypto-main {
     animation: none;
     transition: none;
+  }
+  
+  .widget-card:hover {
+    transform: none;
   }
   
   .widget-card.updating::after {
@@ -803,4 +989,28 @@
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
+}
+
+/* =====================================================
+   CONTAINER STABILITY - PREVENT LAYOUT SHIFT
+   ===================================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  /* FIXED: Stable width calculations */
+  box-sizing: border-box;
+  /* FIXED: Prevent container shifting */
+  position: relative;
+}
+
+/* FIXED: Ensure no transform inheritance */
+* {
+  box-sizing: border-box;
+}
+
+/* FIXED: Prevent any unintended horizontal scrolling */
+body {
+  overflow-x: hidden;
 }
