@@ -523,9 +523,9 @@
             </div>
         </section>
 
-        <!-- RESEARCH PAGE WITH BRIGHT TEAL BACKGROUND -->
+        <!-- RESEARCH PAGE WITH 3 ENHANCED INTERACTIVE WIDGETS -->
         <section class="page" id="research">
-            <!-- Research Hero Section - SAME AS PUBLICATIONS -->
+            <!-- Research Hero Section - SAME AS CONFERENCES -->
             <div class="research-minimal-hero">
                 <div class="container">
                     <h1 class="research-main-title">Research Areas</h1>
@@ -535,59 +535,218 @@
             <div class="container">
                 <p class="research-subtitle">Exploring the intersection of artificial intelligence and economic analysis</p>
                 
-                <div class="research-grid">
-                    <div class="research-card">
-                        <h3>AI-Powered Economic Forecasting</h3>
-                        <p>Development of machine learning models for accurate economic predictions and trend analysis</p>
-                        <div class="research-applications">
-                            <span class="tag">GDP Forecasting</span>
-                            <span class="tag">Market Analysis</span>
-                            <span class="tag">Risk Assessment</span>
+                <!-- 3 ENHANCED RESEARCH WIDGETS -->
+                <div class="research-widgets-grid">
+                    <!-- 1. AI-POWERED ECONOMIC FORECASTING WIDGET -->
+                    <div class="research-widget enhanced-widget">
+                        <div class="widget-header">
+                            <div class="widget-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h3>AI-Powered Economic Forecasting</h3>
+                            <p class="widget-description">Machine learning models for real-time economic predictions and trend analysis</p>
                         </div>
-                        <div class="research-demo">
-                            <canvas id="forecast-chart" width="300" height="200"></canvas>
+                        
+                        <div class="widget-content">
+                            <!-- Real-time Forecast Display -->
+                            <div class="forecast-dashboard">
+                                <div class="forecast-metric">
+                                    <span class="metric-label">GDP Growth Forecast</span>
+                                    <span class="metric-value" id="gdp-forecast">+2.8%</span>
+                                    <span class="confidence-interval">±0.3%</span>
+                                </div>
+                                <div class="forecast-metric">
+                                    <span class="metric-label">Inflation Prediction</span>
+                                    <span class="metric-value" id="inflation-forecast">3.1%</span>
+                                    <span class="confidence-interval">±0.2%</span>
+                                </div>
+                                <div class="forecast-metric">
+                                    <span class="metric-label">Model Accuracy</span>
+                                    <span class="metric-value accuracy" id="model-accuracy">94.7%</span>
+                                    <span class="confidence-interval">R² = 0.947</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Interactive Chart -->
+                            <div class="chart-container">
+                                <canvas id="forecast-chart" width="400" height="200"></canvas>
+                            </div>
+                            
+                            <!-- Forecast Controls -->
+                            <div class="forecast-controls">
+                                <select id="forecast-timeframe" class="widget-select">
+                                    <option value="1">1 Month</option>
+                                    <option value="3" selected>3 Months</option>
+                                    <option value="6">6 Months</option>
+                                    <option value="12">12 Months</option>
+                                </select>
+                                <button id="run-forecast" class="widget-btn widget-btn-primary">
+                                    <i class="fas fa-play"></i> Generate Forecast
+                                </button>
+                            </div>
+                            
+                            <!-- Loading Animation -->
+                            <div id="forecast-loading" class="loading-animation hidden">
+                                <div class="loading-bar">
+                                    <div class="loading-progress"></div>
+                                </div>
+                                <span class="loading-text">Processing economic data...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="widget-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Time Series</span>
+                            <span class="tag">Economic Indicators</span>
+                            <span class="tag">Predictive Analytics</span>
                         </div>
                     </div>
                     
-                    <div class="research-card">
-                        <h3>Automated Policy Analysis</h3>
-                        <p>Using AI to evaluate economic policy impacts and optimize decision-making processes</p>
-                        <div class="research-applications">
+                    <!-- 2. AUTOMATED POLICY ANALYSIS WIDGET -->
+                    <div class="research-widget enhanced-widget">
+                        <div class="widget-header">
+                            <div class="widget-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <h3>Automated Policy Analysis</h3>
+                            <p class="widget-description">AI-driven evaluation of economic policy impacts and optimization models</p>
+                        </div>
+                        
+                        <div class="widget-content">
+                            <!-- Policy Input Section -->
+                            <div class="policy-input-section">
+                                <label class="input-label">Policy Type</label>
+                                <select id="policy-type" class="widget-select">
+                                    <option value="fiscal">Fiscal Policy</option>
+                                    <option value="monetary">Monetary Policy</option>
+                                    <option value="trade">Trade Policy</option>
+                                    <option value="regulatory">Regulatory Policy</option>
+                                </select>
+                                
+                                <label class="input-label">Policy Magnitude</label>
+                                <div class="slider-container">
+                                    <input type="range" id="policy-magnitude" class="policy-slider" min="0" max="100" value="50">
+                                    <div class="slider-labels">
+                                        <span>Low Impact</span>
+                                        <span>High Impact</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Policy Impact Dashboard -->
+                            <div class="policy-impact-dashboard">
+                                <div class="impact-metric">
+                                    <span class="impact-label">GDP Impact</span>
+                                    <span class="impact-value positive" id="gdp-impact">+1.2%</span>
+                                </div>
+                                <div class="impact-metric">
+                                    <span class="impact-label">Employment Effect</span>
+                                    <span class="impact-value positive" id="employment-impact">+0.8%</span>
+                                </div>
+                                <div class="impact-metric">
+                                    <span class="impact-label">Inflation Risk</span>
+                                    <span class="impact-value neutral" id="inflation-impact">+0.3%</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Bar for Analysis -->
+                            <div class="analysis-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="policy-progress" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text" id="policy-status">Ready to analyze</span>
+                            </div>
+                            
+                            <!-- Policy Analysis Button -->
+                            <button id="analyze-policy" class="widget-btn widget-btn-secondary">
+                                <i class="fas fa-chart-bar"></i> Analyze Policy Impact
+                            </button>
+                        </div>
+                        
+                        <div class="widget-tags">
                             <span class="tag">Policy Simulation</span>
                             <span class="tag">Impact Assessment</span>
-                            <span class="tag">Optimization Models</span>
-                        </div>
-                        <div class="policy-simulator">
-                            <button class="btn btn--secondary simulate-btn">Run Policy Simulation</button>
-                            <div class="simulation-result"></div>
+                            <span class="tag">Optimization</span>
+                            <span class="tag">Economic Modeling</span>
                         </div>
                     </div>
                     
-                    <div class="research-card">
-                        <h3>Natural Language Processing in Economics</h3>
-                        <p>Applying NLP techniques to analyze economic texts, reports, and market sentiment</p>
-                        <div class="research-applications">
+                    <!-- 3. NATURAL LANGUAGE PROCESSING WIDGET -->
+                    <div class="research-widget enhanced-widget">
+                        <div class="widget-header">
+                            <div class="widget-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h3>Natural Language Processing in Economics</h3>
+                            <p class="widget-description">Advanced NLP for economic text analysis, sentiment detection, and insight extraction</p>
+                        </div>
+                        
+                        <div class="widget-content">
+                            <!-- Text Input Area -->
+                            <div class="nlp-input-section">
+                                <label class="input-label">Enter Economic Text for Analysis</label>
+                                <textarea 
+                                    id="economic-text-input" 
+                                    class="nlp-textarea" 
+                                    placeholder="Paste economic reports, news articles, or research papers here for AI-powered analysis..."
+                                    rows="4"
+                                ></textarea>
+                            </div>
+                            
+                            <!-- Analysis Results Dashboard -->
+                            <div class="nlp-results-dashboard">
+                                <div class="sentiment-analysis">
+                                    <h4>Sentiment Analysis</h4>
+                                    <div class="sentiment-meter">
+                                        <div class="sentiment-bar">
+                                            <div class="sentiment-fill" id="sentiment-fill" style="width: 78%"></div>
+                                        </div>
+                                        <div class="sentiment-labels">
+                                            <span>Bearish</span>
+                                            <span class="sentiment-score" id="sentiment-score">78% Bullish</span>
+                                            <span>Bullish</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="key-insights">
+                                    <h4>Key Economic Insights</h4>
+                                    <div id="nlp-insights" class="insights-list">
+                                        <div class="insight-item">
+                                            <i class="fas fa-lightbulb"></i>
+                                            <span>Click 'Analyze Text' to extract insights</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="keyword-extraction">
+                                    <h4>Economic Keywords</h4>
+                                    <div id="economic-keywords" class="keywords-container">
+                                        <span class="keyword-tag">inflation</span>
+                                        <span class="keyword-tag">GDP</span>
+                                        <span class="keyword-tag">market</span>
+                                        <span class="keyword-tag">growth</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Analysis Button -->
+                            <button id="analyze-text" class="widget-btn widget-btn-primary">
+                                <i class="fas fa-brain"></i> Analyze Economic Text
+                            </button>
+                            
+                            <!-- Processing Animation -->
+                            <div id="nlp-processing" class="processing-animation hidden">
+                                <div class="processing-spinner"></div>
+                                <span class="processing-text">Processing text with AI models...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="widget-tags">
+                            <span class="tag">Natural Language Processing</span>
                             <span class="tag">Sentiment Analysis</span>
                             <span class="tag">Text Mining</span>
-                            <span class="tag">Report Generation</span>
-                        </div>
-                        <div class="nlp-demo">
-                            <textarea class="form-control" placeholder="Enter economic text for analysis..."></textarea>
-                            <button class="btn btn--primary analyze-btn">Analyze Sentiment</button>
-                            <div class="sentiment-result"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="research-card">
-                        <h3>Algorithmic Trading Systems</h3>
-                        <p>Development of AI-driven trading algorithms and market prediction systems</p>
-                        <div class="research-applications">
-                            <span class="tag">Trading Algorithms</span>
-                            <span class="tag">Risk Management</span>
-                            <span class="tag">Portfolio Optimization</span>
-                        </div>
-                        <div class="trading-demo">
-                            <canvas id="trading-chart" width="300" height="200"></canvas>
+                            <span class="tag">Economic Keywords</span>
                         </div>
                     </div>
                 </div>
@@ -988,5 +1147,8 @@
     
     <!-- Economics AI Chatbot JavaScript -->
     <script src="assets/js/economics-chatbot.js"></script>
+    
+    <!-- Research Widgets JavaScript -->
+    <script src="assets/js/research-widgets.js"></script>
 </body>
 </html>
