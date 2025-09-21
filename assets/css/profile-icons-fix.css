@@ -26,6 +26,32 @@
   opacity: 1 !important;
 }
 
+/* Footer Academic Icons - Maintain Original Colors */
+.footer-academic-icon {
+  /* Prevent icons from inheriting any color overrides */
+  color: initial !important;
+  fill: initial !important;
+  
+  /* Remove any filters that might change colors */
+  filter: none !important;
+  -webkit-filter: none !important;
+  
+  /* Ensure proper display */
+  display: inline-block !important;
+  
+  /* Maintain size and opacity */
+  width: 22px !important;
+  height: 22px !important;
+  opacity: 1 !important;
+  
+  /* Add subtle hover effect */
+  transition: transform 0.2s ease;
+}
+
+.footer-academic-icon:hover {
+  transform: translateY(-1px);
+}
+
 /* Specific fixes for ORCID icon size */
 .research-profile-link img[src*="orcid"],
 .btn img[src*="orcid"] {
@@ -55,7 +81,8 @@
 /* Dark mode compatibility */
 @media (prefers-color-scheme: dark) {
   .research-profile-link img,
-  .btn img {
+  .btn img,
+  .footer-academic-icon {
     /* Ensure icons stay colored in dark mode */
     filter: none !important;
     -webkit-filter: none !important;
@@ -63,7 +90,8 @@
 }
 
 [data-color-scheme="dark"] .research-profile-link img,
-[data-color-scheme="dark"] .btn img {
+[data-color-scheme="dark"] .btn img,
+[data-color-scheme="dark"] .footer-academic-icon {
   /* Ensure icons stay colored in manual dark mode */
   filter: none !important;
   -webkit-filter: none !important;
