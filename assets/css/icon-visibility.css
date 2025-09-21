@@ -32,6 +32,33 @@
 
 /* ===== THEME-SPECIFIC ICON VISIBILITY ===== */
 
+/* Light Theme - Enhanced visibility for academic icons */
+[data-theme="light"] .footer-academic-icon,
+body.light-theme .footer-academic-icon,
+@media (prefers-color-scheme: light) {
+    .footer-academic-icon {
+        /* Strong dark border for contrast */
+        border: 1px solid rgba(0, 0, 0, 0.3) !important;
+        border-radius: 4px !important;
+        padding: 2px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        /* Add subtle shadow for definition */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    }
+}
+
+/* Light Theme - Social media icons */
+[data-theme="light"] .footer-social-icon,
+body.light-theme .footer-social-icon,
+@media (prefers-color-scheme: light) {
+    .footer-social-icon {
+        /* Add subtle background for better definition */
+        background: rgba(0, 0, 0, 0.05);
+        border-radius: 3px;
+        padding: 2px;
+    }
+}
+
 /* Dark Theme - Ensure icons are visible on dark backgrounds */
 [data-theme="dark"] .footer-social-icon,
 body.dark-theme .footer-social-icon,
@@ -44,44 +71,48 @@ body.dark-theme .footer-social-icon,
     }
 }
 
-/* Light Theme - Ensure icons are visible on light backgrounds */
-[data-theme="light"] .footer-social-icon,
-body.light-theme .footer-social-icon,
+[data-theme="dark"] .footer-academic-icon,
+body.dark-theme .footer-academic-icon,
+@media (prefers-color-scheme: dark) {
+    .footer-academic-icon {
+        /* Subtle glow for academic icons in dark mode */
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.2) !important;
+        border-radius: 3px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+}
+
+/* Auto-detect system preference - Light Mode */
 @media (prefers-color-scheme: light) {
+    .footer-academic-icon {
+        /* Strong visibility in light mode */
+        border: 1px solid rgba(0, 0, 0, 0.3) !important;
+        border-radius: 4px !important;
+        padding: 2px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+    }
+    
     .footer-social-icon {
-        /* Add subtle background for better definition */
         background: rgba(0, 0, 0, 0.05);
         border-radius: 3px;
         padding: 2px;
     }
 }
 
-/* Auto-detect system preference */
+/* Auto-detect system preference - Dark Mode */
 @media (prefers-color-scheme: dark) {
+    .footer-academic-icon {
+        /* Subtle glow for academic icons in dark mode */
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.2) !important;
+        border-radius: 3px !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+    
     .footer-social-icon {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 3px;
         padding: 2px;
-    }
-    
-    .footer-academic-icon {
-        /* Subtle glow for academic icons in dark mode */
-        box-shadow: 0 0 4px rgba(255, 255, 255, 0.1);
-        border-radius: 2px;
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    .footer-social-icon {
-        background: rgba(0, 0, 0, 0.05);
-        border-radius: 3px;
-        padding: 2px;
-    }
-    
-    .footer-academic-icon {
-        /* Subtle shadow for academic icons in light mode */
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-        border-radius: 2px;
     }
 }
 
@@ -118,13 +149,43 @@ body.light-theme .footer-social-icon,
 .footer-social-icon:hover,
 .footer-academic-icon:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+/* Light theme hover effects */
+[data-theme="light"] .footer-academic-icon:hover,
+body.light-theme .footer-academic-icon:hover,
+@media (prefers-color-scheme: light) {
+    .footer-academic-icon:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+        border-color: rgba(0, 0, 0, 0.5) !important;
+    }
 }
 
 /* Dark theme hover effects */
 [data-theme="dark"] .footer-social-icon:hover,
-[data-theme="dark"] .footer-academic-icon:hover {
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+[data-theme="dark"] .footer-academic-icon:hover,
+body.dark-theme .footer-social-icon:hover,
+body.dark-theme .footer-academic-icon:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* ===== FORCED VISIBILITY FALLBACKS ===== */
+
+/* Ensure academic icons are ALWAYS visible regardless of theme detection issues */
+.footer-academic-icon {
+    /* Base visibility styles that work in all scenarios */
+    outline: 1px solid rgba(128, 128, 128, 0.3) !important;
+    background: rgba(240, 240, 240, 0.8) !important;
+    border-radius: 4px !important;
+    padding: 2px !important;
+}
+
+/* Override for dark themes */
+body[data-theme="dark"] .footer-academic-icon,
+html[data-theme="dark"] .footer-academic-icon {
+    outline: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ===== ACCESSIBILITY & PERFORMANCE ===== */
@@ -142,7 +203,7 @@ body.light-theme .footer-social-icon,
 @media (prefers-contrast: high) {
     .footer-social-icon,
     .footer-academic-icon {
-        border: 1px solid currentColor;
+        border: 2px solid currentColor !important;
     }
 }
 
@@ -196,5 +257,6 @@ body.light-theme .footer-social-icon,
         filter: none !important;
         background: none !important;
         box-shadow: none !important;
+        border: 1px solid #000 !important;
     }
 }
