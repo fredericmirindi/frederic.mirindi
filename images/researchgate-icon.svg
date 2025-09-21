@@ -1,12 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-  <!-- ResearchGate background circle -->
-  <circle cx="12" cy="12" r="12" fill="#00D0A3"/>
-  <!-- White RG text -->
-  <g fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="8" text-anchor="middle">
-    <text x="8.5" y="16">R</text>
-    <text x="15.5" y="16">G</text>
+  <!-- ResearchGate official teal background circle -->
+  <circle cx="12" cy="12" r="12" fill="#00D0B4"/>
+  <!-- White RG text - official style -->
+  <g fill="white" font-family="Arial Black, sans-serif" font-weight="900" font-size="9" text-anchor="middle">
+    <text x="8.5" y="15.5">R</text>
+    <text x="15.5" y="15.5">G</text>
   </g>
-  <!-- Additional design element -->
-  <path d="M6 8 L18 8 L18 10 L6 10 Z" fill="white"/>
-  <path d="M10 6 L14 6 L14 8 L10 8 Z" fill="white"/>
 </svg>
