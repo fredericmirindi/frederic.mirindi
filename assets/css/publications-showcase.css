@@ -107,6 +107,132 @@ section#research .page-header p {
 }
 
 /* =====================================================
+   BLOG PAGE - SAME BRIGHT TEAL BACKGROUND
+   ===================================================== */
+
+/* Blog Hero - IDENTICAL TO CONFERENCES */
+.blog-minimal-hero,
+#blog .blog-minimal-hero,
+section#blog .blog-minimal-hero {
+  background: #1fb8cd !important;
+  background-color: #1fb8cd !important;
+  padding: 40px 0 !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+.blog-main-title,
+#blog .blog-main-title,
+section#blog .blog-main-title {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.blog-subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 30px 0;
+  font-style: italic;
+}
+
+/* Override any page-header styles for Blog */
+#blog .page-header,
+section#blog .page-header {
+  display: none !important;
+}
+
+/* =====================================================
+   ABOUT PAGE - SAME BRIGHT TEAL BACKGROUND
+   ===================================================== */
+
+/* About Hero - IDENTICAL TO CONFERENCES */
+.about-minimal-hero,
+#about .about-minimal-hero,
+section#about .about-minimal-hero {
+  background: #1fb8cd !important;
+  background-color: #1fb8cd !important;
+  padding: 40px 0 !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+.about-main-title,
+#about .about-main-title,
+section#about .about-main-title {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 30px 0;
+  font-style: italic;
+}
+
+/* Override any page-header styles for About */
+#about .page-header,
+section#about .page-header {
+  display: none !important;
+}
+
+/* =====================================================
+   CONTACT PAGE - SAME BRIGHT TEAL BACKGROUND
+   ===================================================== */
+
+/* Contact Hero - IDENTICAL TO CONFERENCES */
+.contact-minimal-hero,
+#contact .contact-minimal-hero,
+section#contact .contact-minimal-hero {
+  background: #1fb8cd !important;
+  background-color: #1fb8cd !important;
+  padding: 40px 0 !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+.contact-main-title,
+#contact .contact-main-title,
+section#contact .contact-main-title {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 30px 0;
+  font-style: italic;
+}
+
+/* Override any page-header styles for Contact */
+#contact .page-header,
+section#contact .page-header {
+  display: none !important;
+}
+
+/* =====================================================
    MODERN PUBLICATIONS SEARCH INTERFACE
    ===================================================== */
 
@@ -435,6 +561,90 @@ section#research .page-header p {
 }
 
 /* =====================================================
+   ABOUT PAGE - SAME BRIGHT TEAL BACKGROUND
+   ===================================================== */
+
+/* About Hero - IDENTICAL TO CONFERENCES */
+.about-minimal-hero,
+#about .about-minimal-hero,
+section#about .about-minimal-hero {
+  background: #1fb8cd !important;
+  background-color: #1fb8cd !important;
+  padding: 40px 0 !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+.about-main-title,
+#about .about-main-title,
+section#about .about-main-title {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 30px 0;
+  font-style: italic;
+}
+
+/* Override any page-header styles for About */
+#about .page-header,
+section#about .page-header {
+  display: none !important;
+}
+
+/* =====================================================
+   CONTACT PAGE - SAME BRIGHT TEAL BACKGROUND
+   ===================================================== */
+
+/* Contact Hero - IDENTICAL TO CONFERENCES */
+.contact-minimal-hero,
+#contact .contact-minimal-hero,
+section#contact .contact-minimal-hero {
+  background: #1fb8cd !important;
+  background-color: #1fb8cd !important;
+  padding: 40px 0 !important;
+  text-align: center !important;
+  position: relative;
+  overflow: hidden;
+  width: 100% !important;
+}
+
+.contact-main-title,
+#contact .contact-main-title,
+section#contact .contact-main-title {
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-subtitle {
+  color: #6c757d;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 30px 0;
+  font-style: italic;
+}
+
+/* Override any page-header styles for Contact */
+#contact .page-header,
+section#contact .page-header {
+  display: none !important;
+}
+
+/* =====================================================
    TOAST NOTIFICATIONS
    ===================================================== */
 
@@ -519,7 +729,10 @@ section#research .page-header p {
 @media (max-width: 768px) {
   .publications-main-title,
   .conferences-main-title,
-  .research-main-title {
+  .research-main-title,
+  .blog-main-title,
+  .about-main-title,
+  .contact-main-title {
     font-size: 2.2rem !important;
   }
   
@@ -553,13 +766,19 @@ section#research .page-header p {
 @media (max-width: 480px) {
   .publications-minimal-hero,
   .conferences-minimal-hero,
-  .research-minimal-hero {
+  .research-minimal-hero,
+  .blog-minimal-hero,
+  .about-minimal-hero,
+  .contact-minimal-hero {
     padding: 30px 0 !important;
   }
   
   .publications-main-title,
   .conferences-main-title,
-  .research-main-title {
+  .research-main-title,
+  .blog-main-title,
+  .about-main-title,
+  .contact-main-title {
     font-size: 1.8rem !important;
   }
   
