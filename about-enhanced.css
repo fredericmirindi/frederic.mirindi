@@ -1,15 +1,17 @@
 /* ===== ENHANCED ABOUT PAGE STYLES ===== */
 
-/* About Minimal Hero */
+/* About Minimal Hero - Updated to match Publications/Blog style */
 .about-minimal-hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(33, 128, 141, 0.8) 100%);
-    color: var(--color-btn-primary-text);
+    background: linear-gradient(135deg, #1db7cc 0%, rgba(29, 183, 204, 0.8) 100%);
+    color: #ffffff;
     padding: 48px 0 28px 0;
     text-align: center;
-    border-bottom-left-radius: var(--radius-lg);
-    border-bottom-right-radius: var(--radius-lg);
     position: relative;
     overflow: hidden;
+    width: 100%;
+    margin: 0;
+    /* Remove border radius to match Publications/Blog flat style */
+    box-shadow: 0 3px 12px rgba(20, 20, 30, 0.15);
 }
 
 .about-minimal-hero::before {
@@ -776,7 +778,7 @@
     margin: 0;
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design - Fixed Margins */
 @media (max-width: 1024px) {
     .about-content-enhanced {
         grid-template-columns: 300px 1fr;
@@ -792,10 +794,32 @@
     }
 }
 
+/* CRITICAL MOBILE FIXES - Match Home page margins exactly */
 @media (max-width: 768px) {
+    /* Hero section - match Publications/Blog flat style */
+    .about-minimal-hero {
+        margin: 0 -20px; /* Pull to screen edges on mobile */
+        border-radius: 0; /* Remove all border radius like Publications */
+        padding: 32px 20px; /* Consistent with Publications */
+        font-size: 2.2rem;
+        width: calc(100vw);
+        box-shadow: 0 2px 8px rgba(24, 24, 36, 0.12);
+    }
+    
+    .about-main-title {
+        font-size: 2.2rem;
+    }
+    
+    /* Container margins - match Home page exactly */
+    .container {
+        margin: 0 20px !important;
+        padding: 0 !important;
+    }
+    
     .about-content-enhanced {
         grid-template-columns: 1fr;
         gap: var(--space-20);
+        margin: 20px 0;
     }
     
     .about-profile-enhanced {
@@ -818,19 +842,27 @@
     .research-areas-grid {
         grid-template-columns: 1fr;
     }
-    
-    .about-main-title {
-        font-size: 2.2rem;
-    }
 }
 
 @media (max-width: 480px) {
+    /* Even smaller mobile - match Home page */
     .about-minimal-hero {
-        padding: 32px 0 20px 0;
+        margin: 0 -15px; /* Match small mobile margins */
+        padding: 25px 15px;
+        width: calc(100vw);
     }
     
     .about-main-title {
         font-size: 1.8rem;
+    }
+    
+    /* Container margins for small mobile */
+    .container {
+        margin: 0 15px !important;
+    }
+    
+    .about-content-enhanced {
+        margin: 15px 0;
     }
     
     .profile-image-large {
@@ -871,7 +903,7 @@
 /* Dark Mode Enhancements */
 @media (prefers-color-scheme: dark) {
     .about-minimal-hero {
-        background: linear-gradient(135deg, var(--color-primary) 0%, rgba(50, 184, 198, 0.8) 100%);
+        background: linear-gradient(135deg, #1db7cc 0%, rgba(29, 183, 204, 0.8) 100%);
     }
     
     .position-card.highlight {
@@ -884,7 +916,7 @@
 }
 
 [data-color-scheme="dark"] .about-minimal-hero {
-    background: linear-gradient(135deg, var(--color-primary) 0%, rgba(50, 184, 198, 0.8) 100%);
+    background: linear-gradient(135deg, #1db7cc 0%, rgba(29, 183, 204, 0.8) 100%);
 }
 
 [data-color-scheme="dark"] .position-card.highlight {
