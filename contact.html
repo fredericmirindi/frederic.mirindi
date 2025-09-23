@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frédéric Mirindi - Contact</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <meta name="description" content="Contact information for Frédéric Mirindi.">
+    <meta name="keywords" content="Contact, Email, Phone, Frederic Mirindi">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Economics AI Chatbot CSS -->
+    <link rel="stylesheet" href="assets/css/economics-chatbot.css">
+    
+    <!-- Economic Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/economic-widgets.css">
+    
+    <!-- Publications Showcase CSS -->
+    <link rel="stylesheet" href="assets/css/publications-showcase.css">
+    
+    <!-- Research Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/research-widgets.css">
+    
+    <!-- Profile Links White Text CSS -->
+    <link rel="stylesheet" href="assets/css/profile-links-white.css">
+    
+    <!-- Profile Icons Fix CSS (CRITICAL - Must be last to override other styles) -->
+    <link rel="stylesheet" href="assets/css/profile-icons-fix.css">
+    
+    <!-- Icon Visibility CSS - Theme-aware icon display (MUST be after profile-icons-fix) -->
+    <link rel="stylesheet" href="assets/css/icon-visibility.css">
+    
+    <!-- CRITICAL: Footer Icons Fix - MUST BE LAST TO OVERRIDE ALL OTHER STYLES -->
+    <link rel="stylesheet" href="assets/css/footer-icons-fix.css">
+    
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <span class="hero-nom-clean">Frédéric Mirindi</span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="home.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="research.html" class="nav-link">Publications</a>
+            </li>
+            <li class="nav-item">
+                <a href="conference.html" class="nav-link">Conferences</a>
+            </li>
+            <li class="nav-item">
+                <a href="research.html" class="nav-link">Research</a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html" class="nav-link">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </li>
+        </ul>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <button class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- CONTACT PAGE WITH BRIGHT TEAL BACKGROUND -->
+    <section class="page active" id="contact">
+        <!-- Contact Hero Section -->
+        <div class="contact-minimal-hero">
+            <div class="container">
+                <h1 class="contact-main-title">Contact</h1>
+            </div>
+        </div>
+        
+        <div class="container">
+            <p class="contact-subtitle">Get in touch for research collaboration or consultation</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>frederic.mirindi@umanitoba.ca</p>
+                        <p>frederic.mirindi@boothuc.ca</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <p>+1 (204) 298-4337</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Office</h3>
+                        <p>290 Vaughan St, Winnipeg, MB R3B 2N8</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Office Hours</h3>
+                        <p>Mondays & Fridays, 8:00-10:00 AM</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Subject</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footnotes Modal -->
+<div class="footnote-modal" id="footnote-modal">
+    <div class="footnote-content">
+        <div class="footnote-header">
+            <h3>Citations & References</h3>
+            <button class="footnote-close">&times;</button>
+        </div>
+        <div class="footnote-body">
+            <p>Citation information and academic references will be displayed here.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Frédéric Mirindi</h4>
+                <p>PhD Candidate - Economics &amp; Econometrics</p>
+                <p>Founder - ThinkBit Edge Corp.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="research.html">Publications</a></li>
+                    <li><a href="conference.html">Conferences</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>frederic.mirindi@umanitoba.ca</p>
+                <p>+1 (204) 298-4337</p>
+                <div style="margin-top:10px; display:flex; gap:15px; align-items:center;">
+                    <!-- LinkedIn Icon - Using Local Image File -->
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener" title="LinkedIn" style="display:inline-flex;align-items:center;">
+                        <img src="images/linkedin-icon.svg" alt="LinkedIn" style="width:24px;height:24px;" class="footer-social-icon">
+                    </a>
+
+                    <!-- X (Twitter) Icon - Using Local Image File -->
+                    <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener" title="X (formerly Twitter)" style="display:inline-flex;align-items:center;">
+                        <img src="images/x-icon.svg" alt="X" style="width:24px;height:24px;" class="footer-social-icon">
+                    </a>
+
+                    <!-- ResearchGate Icon - Using Local Colored SVG -->
+                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener" title="ResearchGate" style="display:inline-flex;align-items:center;">
+                        <img src="images/researchgate-icon.svg" alt="ResearchGate" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+
+                    <!-- Google Scholar Icon - Using Local Colored SVG -->
+                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener" title="Google Scholar" style="display:inline-flex;align-items:center;">
+                        <img src="images/google-scholar-icon.svg" alt="Google Scholar" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+
+                    <!-- ORCID Icon - Using Local Colored SVG -->
+                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener" title="ORCID" style="display:inline-flex;align-items:center;">
+                        <img src="images/orcid-icon.svg" alt="ORCID iD" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2020 Frédéric Mirindi. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Original app.js -->
+<script src="app.js"></script>
+
+<!-- Enhanced Publications JavaScript -->
+<script src="assets/js/publications-enhanced.js"></script>
+
+<!-- Economics AI Chatbot JavaScript -->
+<script src="assets/js/economics-chatbot.js"></script>
+
+<!-- Advanced Research Widgets JavaScript -->
+<script src="assets/js/research-widgets-expert.js"></script>
+</body>
+</html>
