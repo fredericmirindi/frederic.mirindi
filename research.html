@@ -608,16 +608,400 @@
     </div>
 </footer>
 
-<!-- Original app.js -->
-<script src="app.js"></script>
+<!-- Research page specific JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTheme();
+    initializeNavigation();
+    initializePublications();
+    initializeResearchWidgets();
+});
 
-<!-- Enhanced Publications JavaScript -->
-<script src="assets/js/publications-enhanced.js"></script>
+// Theme management
+function initializeTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    let isDarkMode = localStorage.getItem('theme') === 'dark' || 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    document.documentElement.setAttribute('data-color-scheme', isDarkMode ? 'dark' : 'light');
+    updateThemeIcon();
 
-<!-- Economics AI Chatbot JavaScript -->
-<script src="assets/js/economics-chatbot.js"></script>
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+}
 
-<!-- Advanced Research Widgets JavaScript -->
-<script src="assets/js/research-widgets-expert.js"></script>
+function toggleTheme() {
+    const isDarkMode = document.documentElement.getAttribute('data-color-scheme') === 'dark';
+    const newTheme = isDarkMode ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-color-scheme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon();
+}
+
+function updateThemeIcon() {
+    const icon = document.querySelector('#theme-toggle .theme-icon');
+    if (icon) {
+        const isDark = document.documentElement.getAttribute('data-color-scheme') === 'dark';
+        icon.textContent = isDark ? '☀️' : '🌙';
+    }
+}
+
+// Mobile navigation
+function initializeNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+}
+
+// Publications functionality
+function initializePublications() {
+    const yearFilter = document.getElementById('pubs-year');
+    const typeFilter = document.getElementById('pubs-type');
+    const searchInput = document.getElementById('pubs-search');
+    const gridView = document.getElementById('pubs-grid');
+    const listView = document.getElementById('pubs-list');
+    const publicationsGrid = document.getElementById('pubs-grid-wrap');
+    
+    // Sample publications data
+    const publications = [
+        {
+            id: 1,
+            title: "Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms",
+            authors: ["Frederic Mirindi"],
+            year: 2025,
+            type: "conference",
+            venue: "MARBLE 2025",
+            status: "published",
+            abstract: "This paper presents a novel game-theoretic framework for adaptive proof-of-stake governance mechanisms...",
+            tags: ["Blockchain", "Game Theory", "Consensus"],
+            link: "https://www.marble-conference.org/programme-2025"
+        },
+        {
+            id: 2,
+            title: "Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms",
+            authors: ["Frederic Mirindi"],
+            year: 2025,
+            type: "conference",
+            venue: "Canadian Economics Association",
+            status: "published",
+            abstract: "An econometric analysis of how family size affects child development outcomes in Sub-Saharan Africa...",
+            tags: ["Development Economics", "Social Norms", "Econometrics"],
+            link: "https://www.economics.ca/event-6029611"
+        },
+        {
+            id: 3,
+            title: "Digital Feminism: Intersectionality and Activism in the Age of Social Media",
+            authors: ["Frederic Mirindi"],
+            year: 2025,
+            type: "conference",
+            venue: "University of Warwick",
+            status: "published",
+            abstract: "This research examines the intersection of digital platforms and feminist activism...",
+            tags: ["Digital Feminism", "Social Media", "Intersectionality"],
+            link: "https://warwick.ac.uk/fac/soc/sociology/research/gender/calendar/graduateseminars202425/session3/"
+        },
+        {
+            id: 4,
+            title: "From Rubber to Cobalt: Evolving Patterns of Resource Exploitation in the DRC",
+            authors: ["Frederic Mirindi"],
+            year: 2024,
+            type: "conference",
+            venue: "University of Oxford",
+            status: "published",
+            abstract: "A historical analysis of resource exploitation patterns in the Democratic Republic of Congo...",
+            tags: ["Economic History", "Resource Economics", "Africa"],
+            link: "https://talks.ox.ac.uk/talks/persons/id/dcd41ec3-2797-42ad-bbef-5ab6ad55770d?format=txt"
+        },
+        {
+            id: 5,
+            title: "Hybrid Machine Learning Approaches for Enhancing Human-Agent Interaction",
+            authors: ["Frederic Mirindi"],
+            year: 2023,
+            type: "conference",
+            venue: "HAI 2023",
+            status: "published",
+            abstract: "A comprehensive review of hybrid machine learning approaches in human-agent interaction systems...",
+            tags: ["Machine Learning", "Human-Agent Interaction", "AI"],
+            link: "https://sites.google.com/view/theorisehai/contributions"
+        }
+    ];
+    
+    let filteredPublications = publications;
+    let currentView = 'grid';
+    
+    function renderPublications(pubsToRender) {
+        if (!publicationsGrid) return;
+        
+        if (pubsToRender.length === 0) {
+            publicationsGrid.innerHTML = '<div class="no-results">No publications found matching your criteria.</div>';
+            return;
+        }
+        
+        const pubsHTML = pubsToRender.map(pub => {
+            if (currentView === 'grid') {
+                return `
+                    <div class="publication-card">
+                        <div class="pub-header">
+                            <span class="pub-type ${pub.type}">${pub.type.charAt(0).toUpperCase() + pub.type.slice(1)}</span>
+                            <span class="pub-year">${pub.year}</span>
+                        </div>
+                        <h3 class="pub-title">${pub.title}</h3>
+                        <p class="pub-authors">${pub.authors.join(', ')}</p>
+                        <p class="pub-venue">${pub.venue}</p>
+                        <p class="pub-abstract">${pub.abstract}</p>
+                        <div class="pub-tags">
+                            ${pub.tags.map(tag => `<span class="pub-tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="pub-actions">
+                            <a href="${pub.link}" target="_blank" class="btn btn--primary btn--small">View</a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="publication-list-item">
+                        <div class="pub-list-content">
+                            <div class="pub-list-header">
+                                <h3 class="pub-title">${pub.title}</h3>
+                                <div class="pub-meta">
+                                    <span class="pub-type ${pub.type}">${pub.type}</span>
+                                    <span class="pub-year">${pub.year}</span>
+                                </div>
+                            </div>
+                            <p class="pub-authors">${pub.authors.join(', ')}</p>
+                            <p class="pub-venue">${pub.venue}</p>
+                            <div class="pub-tags">
+                                ${pub.tags.map(tag => `<span class="pub-tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="pub-list-actions">
+                            <a href="${pub.link}" target="_blank" class="btn btn--primary btn--small">View</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }).join('');
+        
+        publicationsGrid.innerHTML = pubsHTML;
+        publicationsGrid.className = currentView === 'grid' ? 'pubs__grid' : 'pubs__list';
+    }
+    
+    function filterPublications() {
+        const year = yearFilter ? yearFilter.value : 'all';
+        const type = typeFilter ? typeFilter.value : 'all';
+        const search = searchInput ? searchInput.value.toLowerCase() : '';
+        
+        filteredPublications = publications.filter(pub => {
+            const matchesYear = year === 'all' || pub.year.toString() === year;
+            const matchesType = type === 'all' || pub.type === type;
+            const matchesSearch = search === '' || 
+                pub.title.toLowerCase().includes(search) ||
+                pub.authors.some(author => author.toLowerCase().includes(search)) ||
+                pub.tags.some(tag => tag.toLowerCase().includes(search)) ||
+                pub.venue.toLowerCase().includes(search);
+            
+            return matchesYear && matchesType && matchesSearch;
+        });
+        
+        renderPublications(filteredPublications);
+    }
+    
+    // Event listeners
+    if (yearFilter) {
+        yearFilter.addEventListener('change', filterPublications);
+    }
+    
+    if (typeFilter) {
+        typeFilter.addEventListener('change', filterPublications);
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', filterPublications);
+    }
+    
+    if (gridView) {
+        gridView.addEventListener('click', () => {
+            currentView = 'grid';
+            gridView.classList.add('active');
+            if (listView) listView.classList.remove('active');
+            renderPublications(filteredPublications);
+        });
+    }
+    
+    if (listView) {
+        listView.addEventListener('click', () => {
+            currentView = 'list';
+            listView.classList.add('active');
+            if (gridView) gridView.classList.remove('active');
+            renderPublications(filteredPublications);
+        });
+    }
+    
+    // Initial render
+    renderPublications(publications);
+}
+
+// Research widgets functionality
+function initializeResearchWidgets() {
+    initializeSliders();
+    initializeButtons();
+    initializeTabs();
+    initializeCharts();
+}
+
+function initializeSliders() {
+    const sliders = [
+        { id: 'learning-rate', displayId: 'lr-value', format: (val) => parseFloat(val).toFixed(4) },
+        { id: 'sequence-length', displayId: 'seq-value', format: (val) => val },
+        { id: 'regularization', displayId: 'reg-value', format: (val) => parseFloat(val).toFixed(3) },
+        { id: 'max-seq-length', displayId: 'seq-len-val', format: (val) => val },
+        { id: 'attention-heads', displayId: 'att-heads-val', format: (val) => val },
+        { id: 'temperature', displayId: 'temp-val', format: (val) => parseFloat(val).toFixed(1) }
+    ];
+    
+    sliders.forEach(slider => {
+        const element = document.getElementById(slider.id);
+        const display = document.getElementById(slider.displayId);
+        
+        if (element && display) {
+            element.addEventListener('input', (e) => {
+                display.textContent = slider.format(e.target.value);
+            });
+        }
+    });
+}
+
+function initializeButtons() {
+    const buttons = [
+        'train-model', 'validate-model', 'export-results', 'hyperparameter-tune',
+        'deep-analyze', 'compare-documents', 'generate-summary', 'export-nlp-results'
+    ];
+    
+    buttons.forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        if (button) {
+            button.addEventListener('click', () => {
+                // Add loading state
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                button.disabled = true;
+                
+                // Simulate processing
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.disabled = false;
+                    showToast(`${buttonId.replace('-', ' ')} completed successfully!`);
+                }, 2000);
+            });
+        }
+    });
+}
+
+function initializeTabs() {
+    // Chart tabs
+    const chartTabs = document.querySelectorAll('.chart-tab');
+    chartTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            chartTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            updateChart(tab.dataset.chart);
+        });
+    });
+    
+    // NLP tabs
+    const nlpTabs = document.querySelectorAll('.nlp-tab');
+    const nlpPanels = document.querySelectorAll('.nlp-panel');
+    
+    nlpTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetPanel = tab.dataset.nlp;
+            
+            nlpTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            nlpPanels.forEach(panel => {
+                panel.classList.remove('active');
+                if (panel.id === `${targetPanel}-panel`) {
+                    panel.classList.add('active');
+                }
+            });
+        });
+    });
+}
+
+function initializeCharts() {
+    const canvas = document.getElementById('advanced-forecast-chart');
+    if (!canvas) return;
+    
+    const ctx = canvas.getContext('2d');
+    
+    // Sample data for the chart
+    const chartData = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+            label: 'Forecast',
+            data: [2.1, 2.3, 2.7, 2.5, 2.8, 3.1],
+            borderColor: '#00ff88',
+            backgroundColor: 'rgba(0, 255, 136, 0.1)',
+            tension: 0.4
+        }]
+    };
+    
+    new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                }
+            }
+        }
+    });
+}
+
+function updateChart(chartType) {
+    // Update chart based on selected tab
+    console.log(`Updating chart to: ${chartType}`);
+}
+
+function showToast(message) {
+    const toast = document.getElementById('pubs-toast');
+    if (toast) {
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+}
+</script>
 </body>
 </html>
