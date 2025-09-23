@@ -1,92 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Frédéric Mirindi</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
-<meta name="description" content="Leading researcher specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting and policy analysis."/>
-<meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi"/>
-<link rel="stylesheet" href="style.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-<link rel="stylesheet" href="assets/css/economics-chatbot.css"/>
-<link rel="stylesheet" href="assets/css/economic-widgets.css"/>
-<link rel="stylesheet" href="assets/css/publications-showcase.css"/>
-<link rel="stylesheet" href="assets/css/research-widgets.css"/>
-<link rel="stylesheet" href="assets/css/profile-links-white.css"/>
-<link rel="stylesheet" href="assets/css/profile-icons-fix.css"/>
-<link rel="stylesheet" href="assets/css/icon-visibility.css"/>
-<link rel="stylesheet" href="assets/css/footer-icons-fix.css"/>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Frédéric Mirindi</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+    <meta name="description" content="Leading researcher specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting and policy analysis."/>
+    <meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi"/>
+    <link rel="stylesheet" href="style.css"/>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <!-- Economics AI Chatbot CSS -->
+    <link rel="stylesheet" href="assets/css/economics-chatbot.css"/>
+    <!-- Economic Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/economic-widgets.css"/>
+    <!-- Publications Showcase CSS -->
+    <link rel="stylesheet" href="assets/css/publications-showcase.css"/>
+    <!-- Research Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/research-widgets.css"/>
+    <!-- Profile Links White Text CSS -->
+    <link rel="stylesheet" href="assets/css/profile-links-white.css"/>
+    <!-- Profile Icons Fix CSS (CRITICAL - Must be last to override other styles) -->
+    <link rel="stylesheet" href="assets/css/profile-icons-fix.css"/>
+    <!-- Icon Visibility CSS - Theme-aware icon display (MUST be after profile-icons-fix) -->
+    <link rel="stylesheet" href="assets/css/icon-visibility.css"/>
+    <!-- CRITICAL: Footer Icons Fix - MUST BE LAST TO OVERRIDE ALL OTHER STYLES -->
+    <link rel="stylesheet" href="assets/css/footer-icons-fix.css"/>
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<nav class="navbar" id="navbar">
-<div class="nav-container">
-<div class="nav-brand"><span class="hero-nom-clean">Frédéric Mirindi</span></div>
-<ul class="nav-menu" id="nav-menu">
-<li class="nav-item"><a class="nav-link active" data-page="home" href="#home">Home</a></li>
-<li class="nav-item"><a class="nav-link" data-page="papers" href="#papers">Publications</a></li>
-<li class="nav-item"><a class="nav-link" data-page="conferences" href="#conferences">Conferences</a></li>
-<li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
-<li class="nav-item"><a class="nav-link" data-page="blog" href="#blog">Blog</a></li>
-<li class="nav-item"><a class="nav-link" data-page="about" href="#about">About</a></li>
-<li class="nav-item"><a class="nav-link" data-page="contact" href="#contact">Contact</a></li>
-</ul>
-<div class="nav-controls">
-<button aria-label="Toggle theme" class="theme-toggle" id="theme-toggle"><span class="theme-icon">🌙</span></button>
-<button class="nav-toggle" id="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-</div>
-</div>
-</nav>
-<main class="main-content">
-<section class="page active" id="home">
-<div class="hero-section" style="position: relative; overflow: hidden;">
-<canvas class="ai-background-canvas" id="aiCanvas"></canvas>
-<div class="hero-background"></div>
-<div class="floating-shape shape-1"></div>
-<div class="floating-shape shape-2"></div>
-<div class="floating-shape shape-3"></div>
-<div class="floating-shape shape-4"></div>
-<div class="floating-shape shape-5"></div>
-<div class="container">
-<div class="hero-content">
-<div class="hero-text">
-<h1 class="hero-title"><span class="typing-text">Frédéric Mirindi</span></h1>
-<p class="hero-subtitle">PhD Candidate - Economics &amp; Econometrics</p>
-<p class="hero-subtitle">Founder - ThinkBit Edge Corp.</p>
-<p class="hero-description">Leading researcher specializing in artificial intelligence applications in economic analysis, with extensive experience in machine learning models for economic forecasting and policy analysis. Find below my research on ResearchGate, Google Scholar, and ORCID.</p>
-<div class="hero-buttons">
-<a class="btn btn--outline research-profile-link" href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener"><img alt="ResearchGate icon" style="vertical-align:middle; width:20px; height:20px; margin-right:8px;"/>ResearchGate Profile</a>
-<a class="btn btn--outline research-profile-link" href="https://scholar.google.com/citations?hl=fr&amp;user=K5--CxAAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener"><img alt="Google Scholar icon" style="vertical-align:middle; width:20px; height:20px; margin-right:8px;"/>Google Scholar Profile</a>
-<a class="btn btn--outline research-profile-link" href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener"><img alt="ORCID iD icon" style="vertical-align:middle; width:16px; height:16px; margin-right:6px;"/>ORCID Profile</a>
-</div>
-</div>
-<div class="hero-image">
-<div class="profile-container">
-<div class="profile-image"><div class="circle"><img alt="Frederic Mirindi" class="profile-photo"/></div></div>
-<div class="collaboration-section"><p class="collaboration-text collaboration-text-small" id="collaborationText">Open for Collaboration</p></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<div class="email-modal hidden" id="emailModal"><div class="email-content"><span class="close-modal">×</span><h3>Let's Connect!</h3><p>Reach out for collaboration opportunities:</p><div class="email-display"><i class="fas fa-envelope"></i><span id="emailText">frederic.mirindi@umanitoba.ca</span><button class="copy-btn" id="copyEmailBtn"><i class="fas fa-copy"></i></button></div></div></div>
-<div class="highlights-section"><div class="container"><h2 class="widget-section-title">Key Achievements</h2><div class="highlights-grid"><div class="highlight-card">20+<br/>Published Papers</div><div class="highlight-card">25+<br/>Conference Presentations</div><div class="highlight-card">15+<br/>AI Models Developed</div><div class="highlight-card">5+<br/>Years Experience</div></div></div></div>
-<section class="widget-responsive-section"><div class="container"><h2 class="widget-section-title">Live Information Dashboard</h2><div class="widget-cards-row">
-<div class="widget-card widget-time"><div aria-hidden="true" class="widget-card-icon">🕓</div><div class="widget-card-content"><div class="widget-card-title">Local Time</div><div class="widget-time-main" id="watch-time">11:28</div><div class="widget-card-secondary">Winnipeg, MB</div><div class="widget-card-caption">Synchronized with Winnipeg local time.</div></div></div>
-<div class="widget-card widget-weather"><div aria-hidden="true" class="widget-card-icon">🌤️</div><div class="widget-card-content"><div class="widget-card-title">Weather</div><div class="widget-weather-main"><span class="widget-weather-icon" id="weather-icon">☀️</span><span class="widget-weather-temp" id="weather-temp">25°C</span></div><div class="widget-weather-desc" id="weather-desc">Sunny</div><div class="widget-card-secondary">Winnipeg, MB</div><div class="widget-card-caption">Weather auto-updates every 10 min.</div></div></div>
-<div class="widget-card widget-quote"><div aria-hidden="true" class="widget-card-icon">💡</div><div class="widget-card-content"><div class="widget-card-title">Quote of the Day</div><div class="widget-quote-main" id="fact-box">"Economics is the study of how society manages its scarce resources."</div><div class="widget-card-caption">Discover fresh economic wisdom each day!</div></div></div>
-<div class="widget-card widget-crypto"><div aria-hidden="true" class="widget-card-icon">₿</div><div class="widget-card-content"><div class="widget-card-title">Bitcoin Price</div><div class="widget-crypto-main"><span class="widget-crypto-price" id="crypto-price">$65,420</span></div><div class="widget-crypto-change" id="crypto-change"><span class="crypto-positive">+2.34% (24h)</span></div><div class="widget-card-secondary">Live Market Data</div><div class="widget-card-caption">Updated every 5 minutes from CoinGecko API.</div></div></div>
-</div>
-<div class="widget-cards-row" style="margin-top: 20px;">
-<div class="widget-card widget-economic-calendar"><div aria-hidden="true" class="widget-card-icon">📅</div><div class="widget-card-content"><div class="widget-card-title">Economic Calendar</div><div class="widget-calendar-events" id="economic-events"><div class="event-item high-impact"><span class="event-time">09:30</span><span class="event-title">US CPI (YoY)</span><span class="event-impact">🔴</span></div><div class="event-item medium-impact"><span class="event-time">11:00</span><span class="event-title">CAD Retail Sales</span><span class="event-impact">🟡</span></div><div class="event-item low-impact"><span class="event-time">14:15</span><span class="event-title">USD Fed Speech</span><span class="event-impact">🟢</span></div></div><div class="widget-card-secondary">Today's Key Events</div><div class="widget-card-caption">Track market-moving economic releases in real-time.</div></div></div>
-<div class="widget-card widget-market-sentiment"><div aria-hidden="true" class="widget-card-icon">📈</div><div class="widget-card-content"><div class="widget-card-title">Market Sentiment</div><div class="sentiment-gauge" id="sentiment-gauge"><div class="gauge-container"><div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);"></div><div class="gauge-center"><span class="sentiment-value" id="sentiment-value">72</span><span class="sentiment-label">Bullish</span></div></div></div><div class="sentiment-indicators"><div class="indicator"><span class="indicator-label">Fear &amp; Greed:</span><span class="indicator-value bullish" id="fear-greed">72</span></div><div class="indicator"><span class="indicator-label">VIX:</span><span class="indicator-value neutral" id="vix-value">18.5</span></div></div><div class="widget-card-secondary">Global Markets</div><div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div></div></div>
-<div class="widget-card widget-interest-rates"><div aria-hidden="true" class="widget-card-icon">🏦</div><div class="widget-card-content"><div class="widget-card-title">Central Bank Rates</div><div class="rates-list" id="interest-rates"><div class="rate-item"><span class="country-flag">🇺🇸</span><span class="rate-info"><span class="rate-country">Fed Fund Rate</span><span class="rate-value">5.25%</span></span><span class="rate-change unchanged">-</span></div><div class="rate-item"><span class="country-flag">🇨🇦</span><span class="rate-info"><span class="rate-country">BoC Rate</span><span class="rate-value">4.75%</span></span><span class="rate-change down">▼</span></div><div class="rate-item"><span class="country-flag">🇪🇺</span><span class="rate-info"><span class="rate-country">ECB Rate</span><span class="rate-value">4.25%</span></span><span class="rate-change unchanged">-</span></div></div><div class="widget-card-secondary">Key Central Banks</div><div class="widget-card-caption">Monitor global monetary policy changes.</div></div></div>
-<div class="widget-card widget-economic-indicators"><div aria-hidden="true" class="widget-card-icon">📊</div><div class="widget-card-content"><div class="widget-card-title">Key Indicators</div><div class="indicators-grid" id="economic-indicators"><div class="indicator-item"><span class="indicator-name">GDP Growth</span><span class="indicator-value positive">+2.1%</span></div><div class="indicator-item"><span class="indicator-name">Inflation Rate</span><span class="indicator-value neutral">3.2%</span></div><div class="indicator-item"><span class="indicator-name">Unemployment</span><span class="indicator-value positive">3.7%</span></div><div class="indicator-item"><span class="indicator-name">Job Growth</span><span class="indicator-value positive">+187K</span></div></div><div class="widget-card-secondary">US Economy</div><div class="widget-card-caption">Real-time economic health monitoring.</div></div></div>
-</div></div></section>
-<!-- Publications -->
-<section class="page" id="papers"><div class="publications-minimal-hero"><div class="container"><h1 class="publications-main-title">Research Publications</h1></div></div><div class="container"><div class="publications-search-interface"><div class="search-filters-row"><select class="modern-select" id="pubs-year"><option value="all">All Years</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option></select><select class="modern-select" id="pubs-type"><option value="all">All Types</option><option value="journal">Journal Article</option><option value="conference">Conference Paper</option><option value="book">Book Chapter</option><option value="review">Review Article</option></select><div class="search-input-container"><i class="fas fa-search search-icon"></i><input class="modern-search-input" id="pubs-search" type="search" placeholder="Search publications by title, author, or keyword..." autocomplete="off"/></div></div><div class="view-controls"><button class="view-btn active" id="pubs-grid" data-view="grid"><i class="fas fa-th"></i> Grid View</button><button class="view-btn" id="pubs-list" data-view="list"><i class="fas fa-list"></i> List View</button></div></div><div class="pubs__grid" id="pubs-grid-wrap" aria-live="polite" aria-busy="false"></div><div class="pubs__toast" id="pubs-toast" role="status" aria-live="polite" aria-atomic="true"></div></div></section>
-<section class="page" id="conferences"><div class="conferences-minimal-hero"><div class="container"><h1 class="conferences-main-title">Conferences &amp; Events</h1></div></div><div class="container"><p class="conferences-subtitle">Speaking engagements and conference presentations</p><div class="conferences-timeline">
-<div class="conference-card"><div class="conference-date"><span class="month">Jul</span><span class="day">3</span><span class="year">2025</span></div><div class="conference-content">MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economy<p class="conference-location">Athens, Greece</p><p class="conference-role">Speaker</p><p class="conference-topic">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</p><a class="btn btn--primary conference-link" href="https://www.marble-conference.org/programme-2025" target="_blank">Event Details</a></div></div>
-<div class="conference-card"><div class="conference-date"><span class="month">May</span><span class="day">31</span><span class="year">2025</span></div><div class="conference-content">59th Annual Meetings of the Canadian Economics Association<p class="conference-location">Université du Québec à Montréal</p><p class="conference-role">Speaker</p><p class="conference-topic">Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms</p><a class="btn btn--primary conference-link" href="https://www.economics.ca/event-6029611" target="_blank">Event Details</a></div></div>
-<div class="conference-card"><div class="conference-date"><span class="month">Jan</span><span class="day">22</span><span class="year">2025</span></div><div class="conference-content">Graduate Seminar Series, Centre for the Study of Women
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="hero-nom-clean">Frédéric Mirindi</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a class="nav-link active" data-page="home" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" data-page="papers" href="#papers">Publications</a></li>
+                <li class="nav-item"><a class="nav-link" data-page="conferences" href="#conferences">Conferences</a></li>
+                <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+                <li class="nav-item"><a class="nav-link" data-page="blog" href="#blog">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" data-page="about" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" data-page="contact" href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button aria-label="Toggle theme" class="theme-toggle" id="theme-toggle"><span class="theme-icon">🌙</span></button>
+                <button class="nav-toggle" id="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="page active" id="home">
+        <div class="hero-section" style="position: relative; overflow: hidden;">
+          <!-- AI/ML Background Canvas -->
+          <canvas class="ai-background-canvas" id="aiCanvas"></canvas>
+          <!-- Keep existing animated shapes -->
+          <div class="hero-background"></div>
+          <div class="floating-shape shape-1"></div>
+          <div class="floating-shape shape-2"></div>
+          <div class="floating-shape shape-3"></div>
+          <div class="floating-shape shape-4"></div>
+          <div class="floating-shape shape-5"></div>
+
+          <div class="container">
+            <div class="hero-content">
+              <div class="hero-text">
+                <h1 class="hero-title"><span class="typing-text">Frédéric Mirindi</span></h1>
+                <p class="hero-subtitle">PhD Candidate - Economics &amp; Econometrics</p>
+                <p class="hero-subtitle">Founder - ThinkBit Edge Corp.</p>
+                <p class="hero-description">
+                  Leading researcher specializing in artificial intelligence applications in economic analysis,
+                  with extensive experience in machine learning models for economic forecasting and policy analysis.
+                  Find below my research on ResearchGate, Google Scholar, and ORCID.
+                </p>
+                <div class="hero-buttons">
+                  <a class="btn btn--outline research-profile-link" href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener">
+                    <img alt="ResearchGate icon" style="vertical-align:middle; width:20px; height:20px; margin-right:8px;"/>
+                    ResearchGate Profile
+                  </a>
+                  <a class="btn btn--outline research-profile-link" href="https://scholar.google.com/citations?hl=fr&amp;user=K5--CxAAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener">
+                    <img alt="Google Scholar icon" style="vertical-align:middle; width:20px; height:20px; margin-right:8px;"/>
+                    Google Scholar Profile
+                  </a>
+                  <a class="btn btn--outline research-profile-link" href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener">
+                    <img alt="ORCID iD icon" style="vertical-align:middle; width:16px; height:16px; margin-right:6px;"/>
+                    ORCID Profile
+                  </a>
+                </div>
+              </div>
+              <div class="hero-image">
+                <div class="profile-container">
+                  <div class="profile-image">
+                    <div class="circle">
+                      <img class="profile-photo" alt="Frederic Mirindi"/>
+                    </div>
+                  </div>
+                  <!-- Collaboration Section with Reduced Size -->
+                  <div class="collaboration-section">
+                    <p class="collaboration-text collaboration-text-small" id="collaborationText">Open for Collaboration</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email Modal -->
+        <div id="emailModal" class="email-modal hidden">
+          <div class="email-content">
+            <span class="close-modal">×</span>
+            Let's Connect!
+            Reach out for collaboration opportunities:
+            <div class="email-display">
+              <i class="fas fa-envelope"></i>
+              <span id="emailText">frederic.mirindi@umanitoba.ca</span>
+              <button id="copyEmailBtn" class="copy-btn"><i class="fas fa-copy"></i></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="highlights-section">
+          <div class="container">
+            <h2 class="widget-section-title">Key Achievements</h2>
+            <div class="highlights-grid">
+              <div class="highlight-card">20+<br/>Published Papers</div>
+              <div class="highlight-card">25+<br/>Conference Presentations</div>
+              <div class="highlight-card">15+<br/>AI Models Developed</div>
+              <div class="highlight-card">5+<br/>Years Experience</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Information Dashboard -->
+        <section class="widget-responsive-section">
+          <div class="container">
+            <h2 class="widget-section-title">Live Information Dashboard</h2>
+            <!-- Row 1 -->
+            <div class="widget-cards-row">
+              <div class="widget-card widget-time">
+                <div class="widget-card-icon" aria-hidden="true">🕓</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Local Time</div>
+                  <div id="watch-time" class="widget-time-main">11:28</div>
+                  <div class="widget-card-secondary">Winnipeg, MB</div>
+                  <div class="widget-card-caption">Synchronized with Winnipeg local time.</div>
+                </div>
+              </div>
+              <div class="widget-card widget-weather">
+                <div class="widget-card-icon" aria-hidden="true">🌤️</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Weather</div>
+                  <div class="widget-weather-main">
+                    <span id="weather-icon" class="widget-weather-icon">☀️</span>
+                    <span id="weather-temp" class="widget-weather-temp">25°C</span>
+                  </div>
+                  <div id="weather-desc" class="widget-weather-desc">Sunny</div>
+                  <div class="widget-card-secondary">Winnipeg, MB</div>
+                  <div class="widget-card-caption">Weather auto-updates every 10 min.</div>
+                </div>
+              </div>
+              <div class="widget-card widget-quote">
+                <div class="widget-card-icon" aria-hidden="true">💡</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Quote of the Day</div>
+                  <div id="fact-box" class="widget-quote-main">"Economics is the study of how society manages its scarce resources."</div>
+                  <div class="widget-card-caption">Discover fresh economic wisdom each day!</div>
+                </div>
+              </div>
+              <div class="widget-card widget-crypto">
+                <div class="widget-card-icon" aria-hidden="true">₿</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Bitcoin Price</div>
+                  <div class="widget-crypto-main"><span id="crypto-price" class="widget-crypto-price">$65,420</span></div>
+                  <div id="crypto-change" class="widget-crypto-change"><span class="crypto-positive">+2.34% (24h)</span></div>
+                  <div class="widget-card-secondary">Live Market Data</div>
+                  <div class="widget-card-caption">Updated every 5 minutes from CoinGecko API.</div>
+                </div>
+              </div>
+            </div>
+            <!-- Row 2 -->
+            <div class="widget-cards-row" style="margin-top:20px;">
+              <div class="widget-card widget-economic-calendar">
+                <div class="widget-card-icon" aria-hidden="true">📅</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Economic Calendar</div>
+                  <div id="economic-events" class="widget-calendar-events">
+                    <div class="event-item high-impact"><span class="event-time">09:30</span><span class="event-title">US CPI (YoY)</span><span class="event-impact">🔴</span></div>
+                    <div class="event-item medium-impact"><span class="event-time">11:00</span><span class="event-title">CAD Retail Sales</span><span class="event-impact">🟡</span></div>
+                    <div class="event-item low-impact"><span class="event-time">14:15</span><span class="event-title">USD Fed Speech</span><span class="event-impact">🟢</span></div>
+                  </div>
+                  <div class="widget-card-secondary">Today's Key Events</div>
+                  <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
+                </div>
+              </div>
+              <div class="widget-card widget-market-sentiment">
+                <div class="widget-card-icon" aria-hidden="true">📈</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Market Sentiment</div>
+                  <div id="sentiment-gauge" class="sentiment-gauge">
+                    <div class="gauge-container">
+                      <div id="gauge-fill" class="gauge-fill" style="transform: rotate(45deg);"></div>
+                      <div class="gauge-center">
+                        <span id="sentiment-value" class="sentiment-value">72</span>
+                        <span class="sentiment-label">Bullish</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="sentiment-indicators">
+                    <div class="indicator"><span class="indicator-label">Fear &amp; Greed:</span><span id="fear-greed" class="indicator-value bullish">72</span></div>
+                    <div class="indicator"><span class="indicator-label">VIX:</span><span id="vix-value" class="indicator-value neutral">18.5</span></div>
+                  </div>
+                  <div class="widget-card-secondary">Global Markets</div>
+                  <div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div>
+                </div>
+              </div>
+              <div class="widget-card widget-interest-rates">
+                <div class="widget-card-icon" aria-hidden="true">🏦</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Central Bank Rates</div>
+                  <div id="interest-rates" class="rates-list">
+                    <div class="rate-item"><span class="country-flag">🇺🇸</span><span class="rate-info"><span class="rate-country">Fed Fund Rate</span><span class="rate-value">5.25%</span></span><span class="rate-change unchanged">-</span></div>
+                    <div class="rate-item"><span class="country-flag">🇨🇦</span><span class="rate-info"><span class="rate-country">BoC Rate</span><span class="rate-value">4.75%</span></span><span class="rate-change down">▼</span></div>
+                    <div class="rate-item"><span class="country-flag">🇪🇺</span><span class="rate-info"><span class="rate-country">ECB Rate</span><span class="rate-value">4.25%</span></span><span class="rate-change unchanged">-</span></div>
+                  </div>
+                  <div class="widget-card-secondary">Key Central Banks</div>
+                  <div class="widget-card-caption">Monitor global monetary policy changes.</div>
+                </div>
+              </div>
+              <div class="widget-card widget-economic-indicators">
+                <div class="widget-card-icon" aria-hidden="true">📊</div>
+                <div class="widget-card-content">
+                  <div class="widget-card-title">Key Indicators</div>
+                  <div id="economic-indicators" class="indicators-grid">
+                    <div class="indicator-item"><span class="indicator-name">GDP Growth</span><span class="indicator-value positive">+2.1%</span></div>
+                    <div class="indicator-item"><span class="indicator-name">Inflation Rate</span><span class="indicator-value neutral">3.2%</span></div>
+                    <div class="indicator-item"><span class="indicator-name">Unemployment</span><span class="indicator-value positive">3.7%</span></div>
+                    <div class="indicator-item"><span class="indicator-name">Job Growth</span><span class="indicator-value positive">+187K</span></div>
+                  </div>
+                  <div class="widget-card-secondary">US Economy</div>
+                  <div class="widget-card-caption">Real-time economic health monitoring.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Publications -->
+      <section class="page" id="papers">
+        <div class="publications-minimal-hero"><div class="container"><h1 class="publications-main-title">Research Publications</h1></div></div>
+        <div class="container">
+          <div class="publications-search-interface">
+            <div class="search-filters-row">
+              <select id="pubs-year" class="modern-select">
+                <option value="all">All Years</option>
+                <option
