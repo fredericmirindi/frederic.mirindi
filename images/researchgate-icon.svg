@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- ResearchGate official teal background circle -->
+  <circle cx="12" cy="12" r="12" fill="#00D0B4"/>
+  <!-- White RG text - official style -->
+  <g fill="white" font-family="Arial Black, sans-serif" font-weight="900" font-size="9" text-anchor="middle">
+    <text x="8.5" y="15.5">R</text>
+    <text x="15.5" y="15.5">G</text>
+  </g>
+</svg>
