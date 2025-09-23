@@ -1,200 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frédéric Mirindi</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <meta name="description" content="Leading researcher specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting and policy analysis.">
-    <meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi">
-    <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Economics AI Chatbot CSS -->
-    <link rel="stylesheet" href="assets/css/economics-chatbot.css">
-    
-    <!-- Economic Widgets CSS -->
-    <link rel="stylesheet" href="assets/css/economic-widgets.css">
-    
-    <!-- Publications Showcase CSS -->
-    <link rel="stylesheet" href="assets/css/publications-showcase.css">
-    
-    <!-- Research Widgets CSS -->
-    <link rel="stylesheet" href="assets/css/research-widgets.css">
-    
-    <!-- Profile Links White Text CSS -->
-    <link rel="stylesheet" href="assets/css/profile-links-white.css">
-    
-    <!-- Profile Icons Fix CSS (CRITICAL - Must be last to override other styles) -->
-    <link rel="stylesheet" href="assets/css/profile-icons-fix.css">
-    
-    <!-- Icon Visibility CSS - Theme-aware icon display (MUST be after profile-icons-fix) -->
-    <link rel="stylesheet" href="assets/css/icon-visibility.css">
-    
-    <!-- CRITICAL: Footer Icons Fix - MUST BE LAST TO OVERRIDE ALL OTHER STYLES -->
-    <link rel="stylesheet" href="assets/css/footer-icons-fix.css">
-    
-    <!-- Chart.js for data visualizations -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Frédéric Mirindi</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"/>
+<meta name="description" content="Leading researcher specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting and policy analysis."/>
+<meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<link rel="stylesheet" href="assets/css/economics-chatbot.css"/>
+<link rel="stylesheet" href="assets/css/economic-widgets.css"/>
+<link rel="stylesheet" href="assets/css/publications-showcase.css"/>
+<link rel="stylesheet" href="assets/css/research-widgets.css"/>
+<link rel="stylesheet" href="assets/css/profile-links-white.css"/>
+<link rel="stylesheet" href="assets/css/profile-icons-fix.css"/>
+<link rel="stylesheet" href="assets/css/icon-visibility.css"/>
+<link rel="stylesheet" href="assets/css/footer-icons-fix.css"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="hero-nom-clean">Frédéric Mirindi</span>
-            </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active" data-page="home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#papers" class="nav-link" data-page="papers">Publications</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#conferences" class="nav-link" data-page="conferences">Conferences</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#research" class="nav-link" data-page="research">Research</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
-                </li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Home Section -->
-        <section id="home" class="section active">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <h1 class="hero-title">Frédéric Mirindi</h1>
-                    <p class="hero-subtitle">AI Researcher in Economic Analysis</p>
-                    <p class="hero-description">
-                        Leading researcher specializing in artificial intelligence applications in economic analysis, 
-                        machine learning models for economic forecasting and policy analysis.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Publications Section -->
-        <section id="papers" class="section">
-            <div class="container">
-                <h2>Publications</h2>
-                <div class="publications-grid">
-                    <!-- Publications content will be loaded here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Conferences Section -->
-        <section id="conferences" class="section">
-            <div class="container">
-                <h2>Conferences</h2>
-                <div class="conferences-grid">
-                    <!-- Conferences content will be loaded here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Section -->
-        <section id="research" class="section">
-            <div class="container">
-                <h2>Research</h2>
-                <div class="research-widgets">
-                    <!-- Research widgets will be loaded here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Contact</h2>
-                <div class="contact-content">
-                    <!-- Contact information will be loaded here -->
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Economics AI Chatbot -->
-    <div id="economika-chatbot" class="chatbot-container">
-        <!-- Floating Action Button -->
-        <button id="chatbot-fab" class="chatbot-fab" aria-label="Open Economika AI Assistant">
-            <i class="fas fa-robot"></i>
-        </button>
-
-        <!-- Chat Window -->
-        <div id="chat-window" class="chat-window">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <i class="fas fa-robot chat-icon"></i>
-                    <div>
-                        <h3>Economika AI</h3>
-                        <span class="chat-status">Economics Research Assistant</span>
-                    </div>
-                </div>
-                <button id="minimize-chat" class="minimize-btn" aria-label="Minimize chat">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
-
-            <div class="chat-messages" id="chat-messages">
-                <div class="message bot-message">
-                    <div class="message-content">
-                        <p>Hello! I'm Economika, your AI assistant for economic research and analysis. I can help you with:</p>
-                        <ul>
-                            <li>Economic theory and concepts</li>
-                            <li>Data analysis and interpretation</li>
-                            <li>Research methodology</li>
-                            <li>Publication insights</li>
-                        </ul>
-                        <p>How can I assist you today?</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="chat-input-container">
-                <div class="chat-input-wrapper">
-                    <input 
-                        type="text" 
-                        id="chat-input" 
-                        placeholder="Ask me about economics, AI, or research..."
-                        aria-label="Chat input"
-                    >
-                    <button id="send-message" class="send-btn" aria-label="Send message">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/economics-chatbot.js"></script>
-    <script src="assets/js/research-widgets.js"></script>
-    <script src="assets/js/publications-showcase.js"></script>
-    
-    <!-- Initialize chatbot -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize the economics chatbot
-            if (typeof EconomicsChatbot !== 'undefined') {
-                const chatbot = new EconomicsChatbot();
-                chatbot.init();
-            }
-        });
-    </script>
-</body>
-</html>
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<div class="nav-brand"><span class="hero-nom-clean">Frédéric Mirindi</span></div>
+<ul class="nav-menu" id="nav-menu">
+<li class="nav-item"><a class="nav-link active" data-page="home" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" data-page="papers" href="#papers">Publications</a></li>
+<li class="nav-item"><a class="nav-link" data-page="conferences" href="#conferences">Conferences</a></li>
+<li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+<li class="nav-item"><a class="nav-link" data-page="blog" href="#blog">Blog</a></li>
+<li class="nav-item"><a class="nav-link" data-page="about" href="#about">About</a></li>
+<li class="nav-item"><a class="nav-link" data-page="contact" href="#contact">Contact</a></li>
+</ul>
+<div class="nav-controls">
+<button aria-label="Toggle theme" class="theme-toggle" id="theme-toggle"><span class="theme-icon">🌙</span></button>
+<button class="nav-toggle" id="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+</div>
+</div>
+</nav>
+<main class="main-content">
+<section class="page active" id="home">
+<div class="hero-section" style="position: relative; overflow: hidden;">
+<canvas class="ai-background-canvas" id="aiCanvas"></canvas>
+<div class="hero-background"></div>
+<div class="floating-shape shape-1"></div>
+<div class="floating-shape shape-2"></div>
+<div class="floating-shape shape-3"></div>
+<div class="floating-shape shape-4"></div>
+<div class="floating-shape shape-5"></div>
+<div class="container">
+<div class="hero-content">
+<div class="hero-text">
+<h1 class="hero-title"><span class="typing-text">Frédéric Mirindi</span></h1>
+<p class="hero-subtitle">PhD Candidate - Economics &amp; Econometrics</p>
+<p class="hero-subtitle">Founder - ThinkBit Edge Corp.</p>
+<p class="hero-description">Leading researcher specializing in artificial intelligence applications in economic analysis, with extensive experience in machine learning models for economic forecasting and policy analysis. Find below my research on ResearchGate, Google Scholar, and ORCID.</p>
+<div class="hero-buttons">
+<a class="btn btn--outline research-profile-link" href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener"><img alt="ResearchGate icon" style="vertical-align:middle; width:20px; height:20px; margin-right:8px;"/>ResearchGate Profile</a>
+<a class="btn btn--outline research-profile-link" href="https://scholar.google.com/citations?hl=fr&amp;user=K5--CxAAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener"><img alt="Google Scholar icon" style="vertical-align:middle; width:20px; height:20px; margin-right:8px;"/>Google Scholar Profile</a>
+<a class="btn btn--outline research-profile-link" href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener"><img alt="ORCID iD icon" style="vertical-align:middle; width:16px; height:16px; margin-right:6px;"/>ORCID Profile</a>
+</div>
+</div>
+<div class="hero-image">
+<div class="profile-container">
+<div class="profile-image"><div class="circle"><img alt="Frederic Mirindi" class="profile-photo"/></div></div>
+<div class="collaboration-section"><p class="collaboration-text collaboration-text-small" id="collaborationText">Open for Collaboration</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="email-modal hidden" id="emailModal"><div class="email-content"><span class="close-modal">×</span><h3>Let's Connect!</h3><p>Reach out for collaboration opportunities:</p><div class="email-display"><i class="fas fa-envelope"></i><span id="emailText">frederic.mirindi@umanitoba.ca</span><button class="copy-btn" id="copyEmailBtn"><i class="fas fa-copy"></i></button></div></div></div>
+<div class="highlights-section"><div class="container"><h2 class="widget-section-title">Key Achievements</h2><div class="highlights-grid"><div class="highlight-card">20+<br/>Published Papers</div><div class="highlight-card">25+<br/>Conference Presentations</div><div class="highlight-card">15+<br/>AI Models Developed</div><div class="highlight-card">5+<br/>Years Experience</div></div></div></div>
+<section class="widget-responsive-section"><div class="container"><h2 class="widget-section-title">Live Information Dashboard</h2><div class="widget-cards-row">
+<div class="widget-card widget-time"><div aria-hidden="true" class="widget-card-icon">🕓</div><div class="widget-card-content"><div class="widget-card-title">Local Time</div><div class="widget-time-main" id="watch-time">11:28</div><div class="widget-card-secondary">Winnipeg, MB</div><div class="widget-card-caption">Synchronized with Winnipeg local time.</div></div></div>
+<div class="widget-card widget-weather"><div aria-hidden="true" class="widget-card-icon">🌤️</div><div class="widget-card-content"><div class="widget-card-title">Weather</div><div class="widget-weather-main"><span class="widget-weather-icon" id="weather-icon">☀️</span><span class="widget-weather-temp" id="weather-temp">25°C</span></div><div class="widget-weather-desc" id="weather-desc">Sunny</div><div class="widget-card-secondary">Winnipeg, MB</div><div class="widget-card-caption">Weather auto-updates every 10 min.</div></div></div>
+<div class="widget-card widget-quote"><div aria-hidden="true" class="widget-card-icon">💡</div><div class="widget-card-content"><div class="widget-card-title">Quote of the Day</div><div class="widget-quote-main" id="fact-box">"Economics is the study of how society manages its scarce resources."</div><div class="widget-card-caption">Discover fresh economic wisdom each day!</div></div></div>
+<div class="widget-card widget-crypto"><div aria-hidden="true" class="widget-card-icon">₿</div><div class="widget-card-content"><div class="widget-card-title">Bitcoin Price</div><div class="widget-crypto-main"><span class="widget-crypto-price" id="crypto-price">$65,420</span></div><div class="widget-crypto-change" id="crypto-change"><span class="crypto-positive">+2.34% (24h)</span></div><div class="widget-card-secondary">Live Market Data</div><div class="widget-card-caption">Updated every 5 minutes from CoinGecko API.</div></div></div>
+</div>
+<div class="widget-cards-row" style="margin-top: 20px;">
+<div class="widget-card widget-economic-calendar"><div aria-hidden="true" class="widget-card-icon">📅</div><div class="widget-card-content"><div class="widget-card-title">Economic Calendar</div><div class="widget-calendar-events" id="economic-events"><div class="event-item high-impact"><span class="event-time">09:30</span><span class="event-title">US CPI (YoY)</span><span class="event-impact">🔴</span></div><div class="event-item medium-impact"><span class="event-time">11:00</span><span class="event-title">CAD Retail Sales</span><span class="event-impact">🟡</span></div><div class="event-item low-impact"><span class="event-time">14:15</span><span class="event-title">USD Fed Speech</span><span class="event-impact">🟢</span></div></div><div class="widget-card-secondary">Today's Key Events</div><div class="widget-card-caption">Track market-moving economic releases in real-time.</div></div></div>
+<div class="widget-card widget-market-sentiment"><div aria-hidden="true" class="widget-card-icon">📈</div><div class="widget-card-content"><div class="widget-card-title">Market Sentiment</div><div class="sentiment-gauge" id="sentiment-gauge"><div class="gauge-container"><div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);"></div><div class="gauge-center"><span class="sentiment-value" id="sentiment-value">72</span><span class="sentiment-label">Bullish</span></div></div></div><div class="sentiment-indicators"><div class="indicator"><span class="indicator-label">Fear &amp; Greed:</span><span class="indicator-value bullish" id="fear-greed">72</span></div><div class="indicator"><span class="indicator-label">VIX:</span><span class="indicator-value neutral" id="vix-value">18.5</span></div></div><div class="widget-card-secondary">Global Markets</div><div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div></div></div>
+<div class="widget-card widget-interest-rates"><div aria-hidden="true" class="widget-card-icon">🏦</div><div class="widget-card-content"><div class="widget-card-title">Central Bank Rates</div><div class="rates-list" id="interest-rates"><div class="rate-item"><span class="country-flag">🇺🇸</span><span class="rate-info"><span class="rate-country">Fed Fund Rate</span><span class="rate-value">5.25%</span></span><span class="rate-change unchanged">-</span></div><div class="rate-item"><span class="country-flag">🇨🇦</span><span class="rate-info"><span class="rate-country">BoC Rate</span><span class="rate-value">4.75%</span></span><span class="rate-change down">▼</span></div><div class="rate-item"><span class="country-flag">🇪🇺</span><span class="rate-info"><span class="rate-country">ECB Rate</span><span class="rate-value">4.25%</span></span><span class="rate-change unchanged">-</span></div></div><div class="widget-card-secondary">Key Central Banks</div><div class="widget-card-caption">Monitor global monetary policy changes.</div></div></div>
+<div class="widget-card widget-economic-indicators"><div aria-hidden="true" class="widget-card-icon">📊</div><div class="widget-card-content"><div class="widget-card-title">Key Indicators</div><div class="indicators-grid" id="economic-indicators"><div class="indicator-item"><span class="indicator-name">GDP Growth</span><span class="indicator-value positive">+2.1%</span></div><div class="indicator-item"><span class="indicator-name">Inflation Rate</span><span class="indicator-value neutral">3.2%</span></div><div class="indicator-item"><span class="indicator-name">Unemployment</span><span class="indicator-value positive">3.7%</span></div><div class="indicator-item"><span class="indicator-name">Job Growth</span><span class="indicator-value positive">+187K</span></div></div><div class="widget-card-secondary">US Economy</div><div class="widget-card-caption">Real-time economic health monitoring.</div></div></div>
+</div></div></section>
+<!-- Publications -->
+<section class="page" id="papers"><div class="publications-minimal-hero"><div class="container"><h1 class="publications-main-title">Research Publications</h1></div></div><div class="container"><div class="publications-search-interface"><div class="search-filters-row"><select class="modern-select" id="pubs-year"><option value="all">All Years</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option></select><select class="modern-select" id="pubs-type"><option value="all">All Types</option><option value="journal">Journal Article</option><option value="conference">Conference Paper</option><option value="book">Book Chapter</option><option value="review">Review Article</option></select><div class="search-input-container"><i class="fas fa-search search-icon"></i><input class="modern-search-input" id="pubs-search" type="search" placeholder="Search publications by title, author, or keyword..." autocomplete="off"/></div></div><div class="view-controls"><button class="view-btn active" id="pubs-grid" data-view="grid"><i class="fas fa-th"></i> Grid View</button><button class="view-btn" id="pubs-list" data-view="list"><i class="fas fa-list"></i> List View</button></div></div><div class="pubs__grid" id="pubs-grid-wrap" aria-live="polite" aria-busy="false"></div><div class="pubs__toast" id="pubs-toast" role="status" aria-live="polite" aria-atomic="true"></div></div></section>
+<section class="page" id="conferences"><div class="conferences-minimal-hero"><div class="container"><h1 class="conferences-main-title">Conferences &amp; Events</h1></div></div><div class="container"><p class="conferences-subtitle">Speaking engagements and conference presentations</p><div class="conferences-timeline">
+<div class="conference-card"><div class="conference-date"><span class="month">Jul</span><span class="day">3</span><span class="year">2025</span></div><div class="conference-content">MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economy<p class="conference-location">Athens, Greece</p><p class="conference-role">Speaker</p><p class="conference-topic">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</p><a class="btn btn--primary conference-link" href="https://www.marble-conference.org/programme-2025" target="_blank">Event Details</a></div></div>
+<div class="conference-card"><div class="conference-date"><span class="month">May</span><span class="day">31</span><span class="year">2025</span></div><div class="conference-content">59th Annual Meetings of the Canadian Economics Association<p class="conference-location">Université du Québec à Montréal</p><p class="conference-role">Speaker</p><p class="conference-topic">Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms</p><a class="btn btn--primary conference-link" href="https://www.economics.ca/event-6029611" target="_blank">Event Details</a></div></div>
+<div class="conference-card"><div class="conference-date"><span class="month">Jan</span><span class="day">22</span><span class="year">2025</span></div><div class="conference-content">Graduate Seminar Series, Centre for the Study of Women
