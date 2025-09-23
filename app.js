@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize economic widgets
     initializeEconomicWidgets();
     
-    // Set initial page
-    showPage('home');
+    // Hash navigation will handle initial page display
 });
 
 // AI/ML Background Animation
@@ -383,30 +382,31 @@ function updateThemeIcon() {
     icon.textContent = isDarkMode ? '☀️' : '🌙';
 }
 
-// Navigation
+// Navigation - UPDATED FOR HASH-BASED NAVIGATION
 function initializeNavigation() {
     // Mobile menu toggle
     navToggle.addEventListener('click', function() {
         navMenu.classList.toggle('active');
     });
 
-    // Page navigation
+    // Page navigation - UPDATED FOR HASH NAVIGATION
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const page = this.getAttribute('data-page');
-            showPage(page);
+            // Update URL hash instead of just showing page
+            window.location.hash = page;
             
             // Close mobile menu
             navMenu.classList.remove('active');
         });
     });
 
-    // Hero buttons navigation
+    // Hero buttons navigation - UPDATED FOR HASH NAVIGATION
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn') && e.target.hasAttribute('data-page')) {
             const page = e.target.getAttribute('data-page');
-            showPage(page);
+            window.location.hash = page;
         }
     });
 
@@ -418,8 +418,29 @@ function initializeNavigation() {
             navbar.classList.remove('scrolled');
         }
     });
+
+    // NEW: Hash change listener
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // NEW: Handle initial page load
+    window.addEventListener('load', handleInitialLoad);
 }
 
+// NEW: Handle hash changes (when user clicks navigation or uses browser back/forward)
+function handleHashChange() {
+    const hash = window.location.hash.substring(1); // Remove the '#'
+    const page = hash || 'home'; // Default to 'home' if no hash
+    showPage(page);
+}
+
+// NEW: Handle initial page load with hash
+function handleInitialLoad() {
+    const hash = window.location.hash.substring(1); // Remove the '#'
+    const page = hash || 'home'; // Default to 'home' if no hash
+    showPage(page);
+}
+
+// UPDATED: Modify existing showPage function
 function showPage(pageId) {
     // Hide all pages
     pages.forEach(page => {
@@ -435,6 +456,13 @@ function showPage(pageId) {
         // Trigger any page-specific initialization
         if (pageId === 'ai-implementation') {
             initializeAIToolsPage();
+        }
+        
+        // NEW: Initialize publications when papers page is shown
+        if (pageId === 'papers') {
+            setTimeout(() => {
+                initializePublications();
+            }, 100);
         }
     }
 
@@ -1617,16 +1645,6 @@ function initializePublications() {
   render();
   console.log(`Publications initialization complete with ${publicationsData.length} papers`);
 }
-
-// Ensure publications load correctly
-document.addEventListener('DOMContentLoaded', () => {
-  setTimeout(() => {
-    const papersPage = document.getElementById('papers');
-    if (papersPage && papersPage.classList.contains('active')) {
-      initializePublications();
-    }
-  }, 100);
-});
 
 // Performance optimization
 window.addEventListener('beforeunload', function() {
