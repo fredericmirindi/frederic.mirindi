@@ -2570,11 +2570,11 @@ select.form-control {
   overflow: hidden;
 }
 
-/* Widget Section Title */
+/* Widget Section Title - REDUCED SIZE */
 .widget-section-title {
   text-align: center;
   margin-bottom: var(--space-24);
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
   letter-spacing: var(--letter-spacing-tight);
