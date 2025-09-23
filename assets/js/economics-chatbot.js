@@ -2,7 +2,7 @@
  * Economika - AI Economics Assistant - Professional Implementation
  * Specialized AI assistant for Microeconomics, Macroeconomics, Economic History, Econometrics, and Statistics
  * Author: Frédéric Mirindi
- * Version: 2.0.0
+ * Version: 2.1.0 - Now with Famous Economists Database
  */
 
 (function() {
@@ -11,7 +11,7 @@
     // Global configuration
     const CONFIG = {
         name: 'Economika',
-        version: '2.0.0',
+        version: '2.1.0',
         maxMessages: 100,
         typingDelay: 1200,
         animationDelay: 300,
@@ -20,6 +20,192 @@
             primary: '#238C8C',
             secondary: '#1fb8cd',
             accent: '#00ff88'
+        }
+    };
+
+    // Famous Economists Database
+    const FAMOUS_ECONOMISTS = {
+        'adam smith': {
+            name: "Adam Smith (1723-1790)",
+            description: "Scottish philosopher and economist, known as the 'Father of Modern Economics' and author of 'The Wealth of Nations'.",
+            keyContributions: [
+                "Invisible Hand theory - market self-regulation",
+                "Division of labor and specialization",
+                "Free trade and laissez-faire economics",
+                "Theory of Moral Sentiments"
+            ],
+            famousQuote: "It is not from the benevolence of the butcher, the brewer, or the baker that we expect our dinner, but from their regard to their own interest.",
+            majorWorks: ["The Wealth of Nations (1776)", "The Theory of Moral Sentiments (1759)"],
+            school: "Classical Economics",
+            field: "Microeconomics, Political Economy"
+        },
+        'john maynard keynes': {
+            name: "John Maynard Keynes (1883-1946)",
+            description: "British economist whose ideas fundamentally changed macroeconomic theory and government economic policy.",
+            keyContributions: [
+                "Keynesian economics - government intervention",
+                "Liquidity preference theory",
+                "Multiplier effect",
+                "General Theory of Employment, Interest and Money"
+            ],
+            famousQuote: "In the long run we are all dead.",
+            majorWorks: ["The General Theory of Employment, Interest and Money (1936)", "A Treatise on Money (1930)"],
+            school: "Keynesian Economics",
+            field: "Macroeconomics, Monetary Theory"
+        },
+        'milton friedman': {
+            name: "Milton Friedman (1912-2006)",
+            description: "American economist and Nobel Prize winner, leading advocate of free-market capitalism and monetarism.",
+            keyContributions: [
+                "Monetarism - money supply control",
+                "Natural rate of unemployment",
+                "Permanent income hypothesis",
+                "School choice advocacy"
+            ],
+            famousQuote: "Inflation is always and everywhere a monetary phenomenon.",
+            majorWorks: ["A Monetary History of the United States (1963)", "Free to Choose (1980)"],
+            school: "Chicago School, Monetarism",
+            field: "Macroeconomics, Monetary Policy"
+        },
+        'karl marx': {
+            name: "Karl Marx (1818-1883)",
+            description: "German philosopher and economist who developed the theory of communism and critiqued capitalism.",
+            keyContributions: [
+                "Labor theory of value",
+                "Class struggle analysis",
+                "Surplus value theory",
+                "Historical materialism"
+            ],
+            famousQuote: "The philosophers have only interpreted the world in various ways; the point is to change it.",
+            majorWorks: ["Das Kapital (1867)", "The Communist Manifesto (1848)"],
+            school: "Marxian Economics",
+            field: "Political Economy, Economic History"
+        },
+        'david ricardo': {
+            name: "David Ricardo (1772-1823)",
+            description: "British economist known for his theory of comparative advantage and contributions to classical economics.",
+            keyContributions: [
+                "Comparative advantage theory",
+                "Iron law of wages",
+                "Ricardian equivalence",
+                "Rent theory"
+            ],
+            famousQuote: "The interest of the landlords is always opposed to the interest of every other class in the community.",
+            majorWorks: ["On the Principles of Political Economy and Taxation (1817)"],
+            school: "Classical Economics",
+            field: "International Trade, Public Finance"
+        },
+        'alfred marshall': {
+            name: "Alfred Marshall (1842-1924)",
+            description: "British economist who developed many foundational microeconomic concepts and authored 'Principles of Economics'.",
+            keyContributions: [
+                "Supply and demand curves",
+                "Price elasticity of demand",
+                "Consumer and producer surplus",
+                "Marginal utility theory"
+            ],
+            famousQuote: "Economics is a study of mankind in the ordinary business of life.",
+            majorWorks: ["Principles of Economics (1890)"],
+            school: "Neoclassical Economics",
+            field: "Microeconomics, Market Theory"
+        },
+        'joseph schumpeter': {
+            name: "Joseph Schumpeter (1883-1950)",
+            description: "Austrian-American economist known for his work on innovation, entrepreneurship, and economic development.",
+            keyContributions: [
+                "Creative destruction theory",
+                "Innovation and entrepreneurship",
+                "Business cycle theory",
+                "Economic development theory"
+            ],
+            famousQuote: "The fundamental impulse that sets and keeps the capitalist engine in motion comes from the new consumers' goods, the new methods of production or transportation, the new markets, the new forms of industrial organization that capitalist enterprise creates.",
+            majorWorks: ["The Theory of Economic Development (1911)", "Capitalism, Socialism and Democracy (1942)"],
+            school: "Austrian School",
+            field: "Economic Development, Innovation"
+        },
+        'paul samuelson': {
+            name: "Paul Samuelson (1915-2009)",
+            description: "American economist and Nobel Prize winner who made fundamental contributions to economic theory and popularized economics education.",
+            keyContributions: [
+                "Revealed preference theory",
+                "Stolper-Samuelson theorem",
+                "Modern portfolio theory",
+                "Economics textbook standardization"
+            ],
+            famousQuote: "Economics never was a dismal science. It should be a realistic science.",
+            majorWorks: ["Economics: An Introductory Analysis (1948)", "Foundations of Economic Analysis (1947)"],
+            school: "Neoclassical Synthesis",
+            field: "Mathematical Economics, Trade Theory"
+        },
+        'friedrich hayek': {
+            name: "Friedrich Hayek (1899-1992)",
+            description: "Austrian-British economist and Nobel Prize winner, advocate of free-market capitalism and critic of central planning.",
+            keyContributions: [
+                "Knowledge problem in economics",
+                "Spontaneous order theory",
+                "Austrian business cycle theory",
+                "Anti-socialist calculation argument"
+            ],
+            famousQuote: "The curious task of economics is to demonstrate to men how little they really know about what they imagine they can design.",
+            majorWorks: ["The Road to Serfdom (1944)", "The Use of Knowledge in Society (1945)"],
+            school: "Austrian School",
+            field: "Political Economy, Knowledge Theory"
+        },
+        'gary becker': {
+            name: "Gary Becker (1930-2014)",
+            description: "American economist and Nobel Prize winner who applied economic analysis to human behavior and social issues.",
+            keyContributions: [
+                "Human capital theory",
+                "Economic analysis of discrimination",
+                "Economics of crime and punishment",
+                "Family economics"
+            ],
+            famousQuote: "The economic approach is a comprehensive one that is applicable to all human behavior.",
+            majorWorks: ["Human Capital (1964)", "The Economics of Discrimination (1957)"],
+            school: "Chicago School",
+            field: "Labor Economics, Social Economics"
+        },
+        'thomas malthus': {
+            name: "Thomas Malthus (1766-1834)",
+            description: "British economist known for his theory on population growth and its relationship to food supply.",
+            keyContributions: [
+                "Malthusian population theory",
+                "Geometric vs arithmetic growth",
+                "Demographic transition theory",
+                "Say's law critique"
+            ],
+            famousQuote: "Population, when unchecked, increases in a geometrical ratio. Subsistence increases only in an arithmetical ratio.",
+            majorWorks: ["An Essay on the Principle of Population (1798)"],
+            school: "Classical Economics",
+            field: "Population Economics, Development"
+        },
+        'jean-baptiste say': {
+            name: "Jean-Baptiste Say (1767-1832)",
+            description: "French economist known for Say's Law and contributions to classical economic theory.",
+            keyContributions: [
+                "Say's Law (supply creates demand)",
+                "Entrepreneurship theory",
+                "Three factors of production",
+                "Market equilibrium theory"
+            ],
+            famousQuote: "Supply creates its own demand.",
+            majorWorks: ["A Treatise on Political Economy (1803)"],
+            school: "Classical Economics",
+            field: "Macroeconomics, Entrepreneurship"
+        },
+        'irving fisher': {
+            name: "Irving Fisher (1867-1947)",
+            description: "American economist who contributed to monetary theory, capital theory, and econometrics.",
+            keyContributions: [
+                "Quantity theory of money",
+                "Fisher equation (real vs nominal interest)",
+                "Debt-deflation theory",
+                "Index number theory"
+            ],
+            famousQuote: "The stock market has reached what looks like a permanently high plateau.",
+            majorWorks: ["The Theory of Interest (1930)", "The Money Illusion (1928)"],
+            school: "Neoclassical Economics",
+            field: "Monetary Theory, Financial Economics"
         }
     };
 
@@ -155,6 +341,26 @@
             formula: "Nash Equilibrium: No player can improve payoff by unilaterally changing strategy",
             explanation: "Applications include oligopoly behavior, auction design, and policy analysis",
             examples: ["Prisoner's dilemma", "Cournot competition", "Auction mechanisms", "Bargaining theory"]
+        },
+        
+        // Economic Schools of Thought
+        'keynesian economics': {
+            definition: "Economic theory developed by John Maynard Keynes emphasizing government intervention to stabilize economic fluctuations.",
+            formula: "Aggregate Demand = C + I + G + (X - M), with focus on government spending (G)",
+            explanation: "Advocates for active fiscal and monetary policy to address unemployment and economic downturns",
+            examples: ["New Deal programs", "Economic stimulus packages", "Counter-cyclical policy", "Liquidity trap theory"]
+        },
+        'classical economics': {
+            definition: "Economic school founded by Adam Smith emphasizing free markets, minimal government intervention, and self-regulating economies.",
+            formula: "Say's Law: Supply creates its own demand",
+            explanation: "Believes markets naturally tend toward full employment equilibrium through price flexibility",
+            examples: ["Invisible hand theory", "Laissez-faire policy", "Free trade advocacy", "Gold standard support"]
+        },
+        'chicago school': {
+            definition: "Economic school emphasizing free-market solutions, rational expectations, and minimal government regulation.",
+            formula: "Efficient Market Hypothesis: Prices reflect all available information",
+            explanation: "Associated with Milton Friedman, Gary Becker, and emphasis on mathematical economic models",
+            examples: ["Monetarism", "Deregulation advocacy", "School choice programs", "Market efficiency theory"]
         }
     };
 
@@ -307,16 +513,16 @@
                             <span class="economics-capability-tag">📉 Statistics</span>
                             <span class="economics-capability-tag">🧮 Calculations</span>
                         </div>
-                        <p class="economics-example-text">Try: "Explain microeconomics" or "What is regression analysis?"</p>
+                        <p class="economics-example-text">Try: "Adam Smith" or "What is regression analysis?"</p>
                     </div>
                 </div>
             </div>
             
             <div class="economics-quick-actions" id="economics-quick-actions">
+                <button class="economics-quick-action" data-question="Adam Smith">Adam Smith</button>
+                <button class="economics-quick-action" data-question="John Maynard Keynes">Keynes</button>
+                <button class="economics-quick-action" data-question="Milton Friedman">Friedman</button>
                 <button class="economics-quick-action" data-question="What is microeconomics?">Microeconomics</button>
-                <button class="economics-quick-action" data-question="Explain macroeconomics">Macroeconomics</button>
-                <button class="economics-quick-action" data-question="What is econometrics?">Econometrics</button>
-                <button class="economics-quick-action" data-question="Economic history importance">Economic History</button>
                 <button class="economics-quick-action" data-question="Statistical analysis methods">Statistics</button>
                 <button class="economics-quick-action" data-question="Show economic data">Charts</button>
             </div>
@@ -334,7 +540,7 @@
                 <input 
                     id="economics-chatbot-input" 
                     type="text" 
-                    placeholder="Ask about microeconomics, macroeconomics, econometrics, statistics, or economic history..." 
+                    placeholder="Ask about economists, theories, calculations, or economic history..." 
                     autocomplete="off" 
                     maxlength="500"
                 />
@@ -513,10 +719,22 @@
     }
 
     /**
-     * Enhanced message processing with expanded knowledge base
+     * Enhanced message processing with famous economists and expanded knowledge base
      */
     function processMessage(message) {
         const lowerMessage = message.toLowerCase();
+        
+        // Check for famous economists first
+        for (const [key, economist] of Object.entries(FAMOUS_ECONOMISTS)) {
+            if (lowerMessage.includes(key) || 
+                lowerMessage.includes(economist.name.toLowerCase()) ||
+                (key.includes(' ') && key.split(' ').some(name => lowerMessage.includes(name)))) {
+                
+                return {
+                    text: `**${economist.name}**\n\n**${economist.description}**\n\n**Key Contributions:**\n• ${economist.keyContributions.join('\n• ')}\n\n**Famous Quote:**\n*"${economist.famousQuote}"*\n\n**Major Works:**\n• ${economist.majorWorks.join('\n• ')}\n\n**School of Thought:** ${economist.school}\n**Field:** ${economist.field}`
+                };
+            }
+        }
         
         // Check for economic concepts (expanded)
         for (const [key, concept] of Object.entries(ECONOMICS_KB)) {
@@ -556,6 +774,8 @@
 
         // Enhanced field-specific responses
         const fieldResponses = {
+            'economists': 'I can tell you about famous economists like Adam Smith, John Maynard Keynes, Milton Friedman, Karl Marx, and many others. Just ask about any economist by name!',
+            'famous economists': 'I can tell you about famous economists like Adam Smith, John Maynard Keynes, Milton Friedman, Karl Marx, David Ricardo, Alfred Marshall, Joseph Schumpeter, Paul Samuelson, Friedrich Hayek, Gary Becker, Thomas Malthus, Jean-Baptiste Say, and Irving Fisher. Who interests you?',
             'microeconomics': 'Microeconomics focuses on individual economic units like consumers, firms, and markets. I can help with supply and demand, market structures, consumer choice theory, elasticity, and firm behavior. What specific microeconomic concept interests you?',
             'macroeconomics': 'Macroeconomics studies the economy as a whole, including GDP, inflation, unemployment, and economic growth. I can explain fiscal policy, monetary policy, business cycles, and international economics. What macro topic would you like to explore?',
             'econometrics': 'Econometrics applies statistical methods to economic data for testing theories and forecasting. I can help with regression analysis, hypothesis testing, time series analysis, and model specification. What econometric technique interests you?',
@@ -564,7 +784,7 @@
             'regression': 'Regression analysis examines relationships between variables. I can explain OLS, multiple regression, assumptions, hypothesis testing, and model diagnostics. What aspect of regression would you like to understand?',
             'correlation': 'Correlation measures the strength of linear relationships between variables. I can explain correlation coefficients, causation vs correlation, and statistical significance. What correlation concept interests you?',
             'market failure': 'Market failures occur when free markets don\'t allocate resources efficiently. I can explain externalities, public goods, information asymmetry, and policy solutions. What type of market failure would you like to explore?',
-            'help': 'I can help you with:\n\n**Core Fields:**\n• Microeconomics (supply/demand, elasticity, market structures)\n• Macroeconomics (GDP, inflation, policy)\n• Economic History (Great Depression, Industrial Revolution)\n• Econometrics (regression, hypothesis testing)\n• Statistics (correlation, probability, sampling)\n\n**Calculations:**\n• Financial mathematics\n• Statistical analysis\n• Economic formulas\n\n**Data Visualization:**\n• Economic charts and trends\n• Statistical graphs\n\nWhat specific area interests you?'
+            'help': 'I can help you with:\n\n**Famous Economists:**\n• Adam Smith, Keynes, Friedman, Marx, and many others\n\n**Core Fields:**\n• Microeconomics (supply/demand, elasticity, market structures)\n• Macroeconomics (GDP, inflation, policy)\n• Economic History (Great Depression, Industrial Revolution)\n• Econometrics (regression, hypothesis testing)\n• Statistics (correlation, probability, sampling)\n\n**Calculations:**\n• Financial mathematics\n• Statistical analysis\n• Economic formulas\n\n**Data Visualization:**\n• Economic charts and trends\n• Statistical graphs\n\nWhat specific area interests you?'
         };
 
         for (const [keyword, response] of Object.entries(fieldResponses)) {
@@ -575,7 +795,7 @@
 
         // Enhanced default response
         return {
-            text: "Hello! I'm Economika, your specialized AI assistant for economics and statistics. I can help you with:\n\n**📊 Microeconomics:** Supply & demand, market structures, consumer choice\n**🌐 Macroeconomics:** GDP, inflation, monetary & fiscal policy\n**📚 Economic History:** Great Depression, Industrial Revolution, policy evolution\n**📈 Econometrics:** Regression analysis, hypothesis testing, forecasting\n**📉 Statistics:** Correlation, probability, data analysis\n**🧮 Calculations:** Financial math, statistical computations\n\nTry asking about any of these topics! For example:\n• \"What is price elasticity?\"\n• \"Explain the Great Depression\"\n• \"How does regression analysis work?\""
+            text: "Hello! I'm Economika, your specialized AI assistant for economics and statistics. I can help you with:\n\n**👨‍🎓 Famous Economists:** Adam Smith, Keynes, Friedman, Marx, and many others\n**📊 Microeconomics:** Supply & demand, market structures, consumer choice\n**🌐 Macroeconomics:** GDP, inflation, monetary & fiscal policy\n**📚 Economic History:** Great Depression, Industrial Revolution, policy evolution\n**📈 Econometrics:** Regression analysis, hypothesis testing, forecasting\n**📉 Statistics:** Correlation, probability, data analysis\n**🧮 Calculations:** Financial math, statistical computations\n\nTry asking about any of these topics! For example:\n• \"Who was Adam Smith?\"\n• \"What is price elasticity?\"\n• \"Explain the Great Depression\"\n• \"How does regression analysis work?\""
         };
     }
 
