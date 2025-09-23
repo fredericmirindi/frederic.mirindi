@@ -59,10 +59,10 @@
                     <a href="#research" class="nav-link" data-page="research">Research</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#blog" class="nav-link" data-page="blog">Blog</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
                 </li>
             </ul>
-            <div class="nav-toggle" id="nav-toggle">
+            <div class="hamburger" id="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -71,194 +71,130 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <!-- Loading Screen -->
-        <div id="loading-screen">
-            <div class="loading-content">
-                <div class="loading-spinner"></div>
-                <p>Loading...</p>
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Frédéric Mirindi</h1>
+                    <p class="hero-subtitle">AI Researcher in Economic Analysis</p>
+                    <p class="hero-description">
+                        Leading researcher specializing in artificial intelligence applications in economic analysis, 
+                        machine learning models for economic forecasting and policy analysis.
+                    </p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper">
-            <!-- Pages will be dynamically loaded here -->
-        </div>
+        <!-- Publications Section -->
+        <section id="papers" class="section">
+            <div class="container">
+                <h2>Publications</h2>
+                <div class="publications-grid">
+                    <!-- Publications content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Conferences Section -->
+        <section id="conferences" class="section">
+            <div class="container">
+                <h2>Conferences</h2>
+                <div class="conferences-grid">
+                    <!-- Conferences content will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <div class="container">
+                <h2>Research</h2>
+                <div class="research-widgets">
+                    <!-- Research widgets will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-content">
+                    <!-- Contact information will be loaded here -->
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Economic Indicator Widgets -->
-    <div class="economic-widgets-container">
-        <!-- Economic Indicators -->
-        <div class="economic-widget" id="gdp-widget">
-            <div class="widget-header">
-                <h3><i class="fas fa-chart-line"></i> Global GDP Growth</h3>
-                <span class="widget-value" id="gdp-value">Loading...</span>
-            </div>
-            <div class="widget-chart">
-                <canvas id="gdp-chart"></canvas>
-            </div>
-        </div>
+    <!-- Economics AI Chatbot -->
+    <div id="economika-chatbot" class="chatbot-container">
+        <!-- Floating Action Button -->
+        <button id="chatbot-fab" class="chatbot-fab" aria-label="Open Economika AI Assistant">
+            <i class="fas fa-robot"></i>
+        </button>
 
-        <div class="economic-widget" id="inflation-widget">
-            <div class="widget-header">
-                <h3><i class="fas fa-percentage"></i> Inflation Rate</h3>
-                <span class="widget-value" id="inflation-value">Loading...</span>
-            </div>
-            <div class="widget-chart">
-                <canvas id="inflation-chart"></canvas>
-            </div>
-        </div>
-
-        <div class="economic-widget" id="unemployment-widget">
-            <div class="widget-header">
-                <h3><i class="fas fa-users"></i> Unemployment</h3>
-                <span class="widget-value" id="unemployment-value">Loading...</span>
-            </div>
-            <div class="widget-chart">
-                <canvas id="unemployment-chart"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <!-- Research Progress Widgets -->
-    <div class="research-widgets-container">
-        <div class="research-widget" id="publications-counter">
-            <div class="widget-icon">
-                <i class="fas fa-file-alt"></i>
-            </div>
-            <div class="widget-content">
-                <h3>Publications</h3>
-                <span class="counter" data-target="25">0</span>
-            </div>
-        </div>
-
-        <div class="research-widget" id="citations-counter">
-            <div class="widget-icon">
-                <i class="fas fa-quote-right"></i>
-            </div>
-            <div class="widget-content">
-                <h3>Citations</h3>
-                <span class="counter" data-target="150">0</span>
-            </div>
-        </div>
-
-        <div class="research-widget" id="projects-counter">
-            <div class="widget-icon">
-                <i class="fas fa-project-diagram"></i>
-            </div>
-            <div class="widget-content">
-                <h3>Research Projects</h3>
-                <span class="counter" data-target="8">0</span>
-            </div>
-        </div>
-
-        <div class="research-widget" id="impact-score">
-            <div class="widget-icon">
-                <i class="fas fa-star"></i>
-            </div>
-            <div class="widget-content">
-                <h3>Impact Score</h3>
-                <span class="score">8.7/10</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Economics AI Chatbot Floating Action Button -->
-    <div id="chatbot-fab" class="chatbot-fab" title="Ask Economics AI Assistant">
-        <i class="fas fa-robot"></i>
-    </div>
-
-    <!-- Economics AI Chatbot Modal -->
-    <div id="chatbot-modal" class="chatbot-modal">
-        <div class="chatbot-container">
-            <div class="chatbot-header">
-                <div class="chatbot-title">
-                    <i class="fas fa-robot"></i>
-                    <span>Economics AI Assistant</span>
+        <!-- Chat Window -->
+        <div id="chat-window" class="chat-window">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <i class="fas fa-robot chat-icon"></i>
+                    <div>
+                        <h3>Economika AI</h3>
+                        <span class="chat-status">Economics Research Assistant</span>
+                    </div>
                 </div>
-                <button id="chatbot-close" class="chatbot-close">
-                    <i class="fas fa-times"></i>
+                <button id="minimize-chat" class="minimize-btn" aria-label="Minimize chat">
+                    <i class="fas fa-minus"></i>
                 </button>
             </div>
-            <div class="chatbot-messages" id="chatbot-messages">
+
+            <div class="chat-messages" id="chat-messages">
                 <div class="message bot-message">
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
                     <div class="message-content">
-                        <p>Hello! I'm your Economics AI Assistant. I can help you with economic theories, data analysis, policy discussions, and research insights. What would you like to explore today?</p>
+                        <p>Hello! I'm Economika, your AI assistant for economic research and analysis. I can help you with:</p>
+                        <ul>
+                            <li>Economic theory and concepts</li>
+                            <li>Data analysis and interpretation</li>
+                            <li>Research methodology</li>
+                            <li>Publication insights</li>
+                        </ul>
+                        <p>How can I assist you today?</p>
                     </div>
                 </div>
             </div>
-            <div class="chatbot-input-container">
-                <input type="text" id="chatbot-input" placeholder="Ask about economics, policies, or research..." maxlength="500">
-                <button id="chatbot-send" class="chatbot-send-btn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-            <div class="chatbot-suggestions">
-                <button class="suggestion-btn" data-query="What are the latest economic indicators?">Latest Economic Indicators</button>
-                <button class="suggestion-btn" data-query="Explain monetary policy impacts">Monetary Policy</button>
-                <button class="suggestion-btn" data-query="Tell me about AI in economics">AI in Economics</button>
+
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="chat-input" 
+                        placeholder="Ask me about economics, AI, or research..."
+                        aria-label="Chat input"
+                    >
+                    <button id="send-message" class="send-btn" aria-label="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#papers" class="nav-link" data-page="papers">Publications</a></li>
-                    <li><a href="#conferences" class="nav-link" data-page="conferences">Conferences</a></li>
-                    <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
-                    <li><a href="#blog" class="nav-link" data-page="blog">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>frederic.mirindi@umanitoba.ca</p>
-                <p>+1 (204) 298-4337</p>
-                <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
-                    <!-- LinkedIn Icon - Using Local Image File -->
-                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener" title="LinkedIn" style="display: inline-flex; align-items: center;">
-                        <img src="images/linkedin-icon.svg" alt="LinkedIn" style="width: 24px; height: 24px;" class="footer-social-icon">
-                    </a>
-                    <!-- X (Twitter) Icon - Using Local Image File -->
-                    <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener" title="X (formerly Twitter)" style="display: inline-flex; align-items: center;">
-                        <img src="images/x-icon.svg" alt="X" style="width: 24px; height: 24px;" class="footer-social-icon">
-                    </a>
-                    <!-- ResearchGate Icon - Using Local Colored SVG -->
-                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener" title="ResearchGate" style="display: inline-flex; align-items: center;">
-                        <img src="images/researchgate-icon.svg" alt="ResearchGate" style="width: 24px; height: 24px;" class="footer-academic-icon">
-                    </a>
-                    <!-- Google Scholar Icon - Using Local Colored SVG -->
-                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener" title="Google Scholar" style="display: inline-flex; align-items: center;">
-                        <img src="images/google-scholar-icon.svg" alt="Google Scholar" style="width: 24px; height: 24px;" class="footer-academic-icon">
-                    </a>
-                    <!-- ORCID Icon - Using Local Colored SVG -->
-                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener" title="ORCID" style="display: inline-flex; align-items: center;">
-                        <img src="images/orcid-icon.svg" alt="ORCID iD" style="width: 24px; height: 24px;" class="footer-academic-icon">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2020 Frédéric Mirindi. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Original app.js -->
-    <script src="app.js"></script>
-    
-    <!-- Enhanced Publications JavaScript -->
-    <script src="assets/js/publications-enhanced.js"></script>
-    
-    <!-- Economics AI Chatbot JavaScript -->
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
     <script src="assets/js/economics-chatbot.js"></script>
+    <script src="assets/js/research-widgets.js"></script>
+    <script src="assets/js/publications-showcase.js"></script>
     
-    <!-- Advanced Research Widgets JavaScript -->
-    <script src="assets/js/research-widgets-expert.js"></script>
+    <!-- Initialize chatbot -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the economics chatbot
+            if (typeof EconomicsChatbot !== 'undefined') {
+                const chatbot = new EconomicsChatbot();
+                chatbot.init();
+            }
+        });
+    </script>
 </body>
 </html>
