@@ -1,8 +1,8 @@
 /**
- * Economics AI Chatbot - Professional Implementation
- * Specialized AI assistant for Economics, Finance, and Mathematical calculations
+ * Economika - AI Economics Assistant - Professional Implementation
+ * Specialized AI assistant for Microeconomics, Macroeconomics, Economic History, Econometrics, and Statistics
  * Author: Frédéric Mirindi
- * Version: 1.0.0
+ * Version: 2.0.0
  */
 
 (function() {
@@ -10,12 +10,12 @@
 
     // Global configuration
     const CONFIG = {
-        name: 'Economics AI Assistant',
-        version: '1.0.0',
+        name: 'Economika',
+        version: '2.0.0',
         maxMessages: 100,
         typingDelay: 1200,
         animationDelay: 300,
-        storageKey: 'economics-chat-history',
+        storageKey: 'economika-chat-history',
         theme: {
             primary: '#238C8C',
             secondary: '#1fb8cd',
@@ -23,48 +23,142 @@
         }
     };
 
-    // Economics Knowledge Base
+    // Enhanced Economics Knowledge Base with expanded fields
     const ECONOMICS_KB = {
-        // Basic Economic Concepts
-        'gdp': {
-            definition: "Gross Domestic Product (GDP) is the total monetary value of all finished goods and services produced within a country's borders in a specific time period.",
-            formula: "GDP = C + I + G + (X - M)",
-            explanation: "Where C = Consumption, I = Investment, G = Government Spending, X = Exports, M = Imports",
-            examples: ["US GDP in 2023 was approximately $25.46 trillion", "GDP per capita = GDP / Population"]
+        // Microeconomics
+        'microeconomics': {
+            definition: "Microeconomics is the branch of economics that studies individual economic units, including consumers, firms, and markets, focusing on how they make decisions and interact.",
+            formula: "Utility Maximization: MU/P = λ (marginal utility per dollar)",
+            explanation: "Core concepts include supply and demand, elasticity, market structures, consumer choice, and firm behavior",
+            examples: ["Consumer choice theory", "Price discrimination", "Market efficiency", "Game theory applications"]
         },
-        'inflation': {
-            definition: "Inflation is the rate at which the general level of prices for goods and services rises, eroding purchasing power.",
-            formula: "Inflation Rate = ((CPI_current - CPI_previous) / CPI_previous) × 100",
-            explanation: "Measured using Consumer Price Index (CPI) or other price indices",
-            examples: ["If CPI rises from 100 to 103, inflation rate = 3%", "Target inflation rate in many countries is around 2%"]
+        'supply and demand': {
+            definition: "The fundamental economic model explaining price determination through the interaction of supply (producers' willingness to sell) and demand (consumers' willingness to buy).",
+            formula: "Equilibrium: Qd = Qs, where Qd is quantity demanded and Qs is quantity supplied",
+            explanation: "Market equilibrium occurs where supply and demand curves intersect",
+            examples: ["Housing market dynamics", "Labor market wages", "Commodity pricing"]
         },
         'elasticity': {
             definition: "Price elasticity of demand measures how responsive demand is to changes in price.",
             formula: "PED = (% Change in Quantity Demanded) / (% Change in Price)",
             explanation: "Elastic if |PED| > 1, Inelastic if |PED| < 1, Unit elastic if |PED| = 1",
-            examples: ["Luxury goods tend to be elastic", "Necessities tend to be inelastic"]
+            examples: ["Luxury goods tend to be elastic", "Necessities tend to be inelastic", "Cross-price elasticity between substitutes"]
         },
-        'supply': {
-            definition: "Supply is the quantity of a product that producers are willing and able to offer at various prices.",
-            formula: "Qs = f(P, Pr, T, N, E)",
-            explanation: "Where P=Price, Pr=Resource prices, T=Technology, N=Number of sellers, E=Expectations",
-            examples: ["Law of supply: as price increases, quantity supplied increases"]
+        
+        // Macroeconomics
+        'macroeconomics': {
+            definition: "Macroeconomics studies the economy as a whole, focusing on aggregate variables like GDP, inflation, unemployment, and economic growth.",
+            formula: "Aggregate Demand: AD = C + I + G + (X - M)",
+            explanation: "Examines economy-wide phenomena and government policy impacts on economic performance",
+            examples: ["Business cycles", "Fiscal policy effects", "International trade impacts", "Economic growth models"]
         },
-        'demand': {
-            definition: "Demand is the quantity of a product that consumers are willing and able to purchase at various prices.",
-            formula: "Qd = f(P, I, Pr, T, E, N)",
-            explanation: "Where P=Price, I=Income, Pr=Related prices, T=Tastes, E=Expectations, N=Number of buyers",
-            examples: ["Law of demand: as price increases, quantity demanded decreases"]
+        'gdp': {
+            definition: "Gross Domestic Product (GDP) is the total monetary value of all finished goods and services produced within a country's borders in a specific time period.",
+            formula: "GDP = C + I + G + (X - M)",
+            explanation: "Where C = Consumption, I = Investment, G = Government Spending, X = Exports, M = Imports",
+            examples: ["US GDP in 2023 was approximately $25.46 trillion", "GDP per capita = GDP / Population", "Real vs Nominal GDP"]
+        },
+        'inflation': {
+            definition: "Inflation is the rate at which the general level of prices for goods and services rises, eroding purchasing power.",
+            formula: "Inflation Rate = ((CPI_current - CPI_previous) / CPI_previous) × 100",
+            explanation: "Measured using Consumer Price Index (CPI) or other price indices. Central banks typically target 2% inflation.",
+            examples: ["If CPI rises from 100 to 103, inflation rate = 3%", "Hyperinflation in Germany (1920s)", "Deflation in Japan (1990s)"]
+        },
+        'unemployment': {
+            definition: "Unemployment rate measures the percentage of the labor force that is jobless and actively seeking employment.",
+            formula: "Unemployment Rate = (Unemployed / Labor Force) × 100",
+            explanation: "Types include frictional, structural, cyclical, and seasonal unemployment",
+            examples: ["Natural rate of unemployment (NAIRU)", "Phillips Curve relationship", "Full employment concept"]
         },
         'monetary policy': {
-            definition: "Monetary policy involves managing money supply and interest rates to achieve macroeconomic objectives.",
+            definition: "Monetary policy involves managing money supply and interest rates to achieve macroeconomic objectives like price stability and full employment.",
             formula: "Money Supply × Velocity = Price Level × Real Output (MV = PY)",
-            explanation: "Central banks use tools like interest rates, reserve requirements, and open market operations",
-            examples: ["Lowering interest rates stimulates economic growth", "Raising rates helps control inflation"]
+            explanation: "Central banks use tools like interest rates, reserve requirements, and quantitative easing",
+            examples: ["Federal Reserve policy rates", "European Central Bank operations", "Bank of Canada rate decisions"]
+        },
+        'fiscal policy': {
+            definition: "Fiscal policy refers to government spending and taxation decisions aimed at influencing economic activity.",
+            formula: "Budget Balance = Government Revenue - Government Expenditure",
+            explanation: "Expansionary fiscal policy increases spending/cuts taxes; contractionary does the opposite",
+            examples: ["Economic stimulus packages", "Automatic stabilizers", "Debt-to-GDP ratios"]
+        },
+        
+        // Economic History
+        'economic history': {
+            definition: "Economic history examines how economies have evolved over time, studying past economic events, policies, and their long-term impacts.",
+            formula: "Historical Analysis = Economic Data + Institutional Context + Policy Evolution",
+            explanation: "Combines historical methodology with economic analysis to understand economic development patterns",
+            examples: ["Industrial Revolution impacts", "Great Depression causes", "Post-WWII economic boom", "Development of financial markets"]
+        },
+        'great depression': {
+            definition: "The Great Depression (1929-1939) was the worst economic downturn in modern history, characterized by massive unemployment and deflation.",
+            formula: "Economic Contraction = ΔReal GDP + ΔEmployment + ΔPrice Level",
+            explanation: "Caused by stock market crash, bank failures, and policy mistakes; led to Keynesian economics development",
+            examples: ["25% unemployment rate", "Bank runs and failures", "New Deal programs", "Gold standard abandonment"]
+        },
+        'industrial revolution': {
+            definition: "The Industrial Revolution (1760-1840) marked the transition from agricultural to industrial economies through mechanization and technological innovation.",
+            formula: "Productivity Growth = Technological Change + Capital Accumulation + Labor Specialization",
+            explanation: "Transformed production methods, urbanization patterns, and living standards globally",
+            examples: ["Steam engine invention", "Factory system development", "Railroad expansion", "Labor movement emergence"]
+        },
+        
+        // Econometrics
+        'econometrics': {
+            definition: "Econometrics applies statistical and mathematical methods to economic data to test economic theories and forecast future trends.",
+            formula: "Y = β₀ + β₁X₁ + β₂X₂ + ... + βₙXₙ + ε (Multiple regression model)",
+            explanation: "Combines economic theory, mathematics, and statistics to analyze economic relationships",
+            examples: ["OLS regression", "Time series analysis", "Panel data models", "Instrumental variables"]
+        },
+        'regression analysis': {
+            definition: "Regression analysis is a statistical method for examining relationships between a dependent variable and one or more independent variables.",
+            formula: "Y = α + βX + ε, where Y is dependent, X is independent, β is slope, α is intercept, ε is error term",
+            explanation: "Used to estimate causal relationships, make predictions, and test economic hypotheses",
+            examples: ["Demand function estimation", "Production function analysis", "Wage determination studies"]
+        },
+        'hypothesis testing': {
+            definition: "Hypothesis testing is a statistical procedure for determining whether sample data provides sufficient evidence to reject a null hypothesis.",
+            formula: "t-statistic = (β̂ - β₀) / SE(β̂), where β̂ is estimated coefficient and SE is standard error",
+            explanation: "Uses p-values and confidence intervals to assess statistical significance of economic relationships",
+            examples: ["Testing market efficiency", "Evaluating policy effectiveness", "Comparing economic models"]
+        },
+        
+        // Statistics
+        'statistics': {
+            definition: "Statistics involves collecting, analyzing, interpreting, and presenting numerical data to understand economic phenomena and inform decision-making.",
+            formula: "Sample Mean: x̄ = Σxᵢ/n; Standard Deviation: s = √[Σ(xᵢ-x̄)²/(n-1)]",
+            explanation: "Fundamental tool for empirical analysis in economics, including descriptive and inferential statistics",
+            examples: ["Economic indicators", "Survey methodology", "Probability distributions", "Sampling techniques"]
+        },
+        'correlation': {
+            definition: "Correlation measures the strength and direction of linear relationship between two variables.",
+            formula: "Correlation coefficient: r = Σ[(xᵢ-x̄)(yᵢ-ȳ)] / √[Σ(xᵢ-x̄)²Σ(yᵢ-ȳ)²]",
+            explanation: "Ranges from -1 to +1; positive values indicate positive relationship, negative values indicate inverse relationship",
+            examples: ["Income and consumption correlation", "Education and wages", "Inflation and interest rates"]
+        },
+        'probability': {
+            definition: "Probability theory provides the mathematical foundation for dealing with uncertainty in economic analysis and decision-making.",
+            formula: "P(A) = Number of favorable outcomes / Total number of possible outcomes",
+            explanation: "Essential for risk analysis, financial modeling, and econometric inference",
+            examples: ["Expected utility theory", "Portfolio risk analysis", "Insurance mathematics", "Game theory payoffs"]
+        },
+        
+        // Additional key concepts
+        'market failure': {
+            definition: "Market failure occurs when free markets fail to allocate resources efficiently, leading to welfare losses.",
+            formula: "Deadweight Loss = ½ × |ΔQ| × |ΔP| (for price distortions)",
+            explanation: "Causes include externalities, public goods, information asymmetry, and market power",
+            examples: ["Environmental pollution", "Healthcare markets", "Education provision", "Natural monopolies"]
+        },
+        'game theory': {
+            definition: "Game theory analyzes strategic interactions between rational decision-makers, widely used in microeconomics and industrial organization.",
+            formula: "Nash Equilibrium: No player can improve payoff by unilaterally changing strategy",
+            explanation: "Applications include oligopoly behavior, auction design, and policy analysis",
+            examples: ["Prisoner's dilemma", "Cournot competition", "Auction mechanisms", "Bargaining theory"]
         }
     };
 
-    // Economic Data for Visualizations
+    // Enhanced Economic Data for Visualizations
     const ECONOMIC_DATA = {
         gdp_growth: {
             labels: ['2019', '2020', '2021', '2022', '2023', '2024'],
@@ -83,10 +177,16 @@
             data: [3.7, 3.6, 3.8, 3.7, 3.9, 4.0],
             title: 'Unemployment Rate (%)',
             color: '#00ff88'
+        },
+        interest_rates: {
+            labels: ['2020', '2021', '2022', '2023', '2024'],
+            data: [0.25, 0.50, 2.50, 5.25, 5.00],
+            title: 'Federal Fund Rate (%)',
+            color: '#FF6B6B'
         }
     };
 
-    // Mathematical Functions
+    // Enhanced Mathematical Functions
     const MATH_FUNCTIONS = {
         compound_interest: (P, r, t, n = 1) => {
             return P * Math.pow(1 + r/n, n*t);
@@ -104,6 +204,28 @@
         },
         inflation_rate: (current_cpi, previous_cpi) => {
             return ((current_cpi - previous_cpi) / previous_cpi) * 100;
+        },
+        correlation: (x, y) => {
+            const n = x.length;
+            const sumX = x.reduce((a, b) => a + b, 0);
+            const sumY = y.reduce((a, b) => a + b, 0);
+            const meanX = sumX / n;
+            const meanY = sumY / n;
+            
+            let numerator = 0, sumXSq = 0, sumYSq = 0;
+            for (let i = 0; i < n; i++) {
+                numerator += (x[i] - meanX) * (y[i] - meanY);
+                sumXSq += Math.pow(x[i] - meanX, 2);
+                sumYSq += Math.pow(y[i] - meanY, 2);
+            }
+            
+            return numerator / Math.sqrt(sumXSq * sumYSq);
+        },
+        standard_deviation: (arr) => {
+            const n = arr.length;
+            const mean = arr.reduce((a, b) => a + b, 0) / n;
+            const variance = arr.reduce((sum, x) => sum + Math.pow(x - mean, 2), 0) / (n - 1);
+            return Math.sqrt(variance);
         }
     };
 
@@ -119,16 +241,16 @@
     let elements = {};
 
     /**
-     * Initialize the Economics AI Chatbot
+     * Initialize Economika Chatbot
      */
     function initEconomicsChatbot() {
-        console.log('🤖 Initializing Economics AI Chatbot v' + CONFIG.version);
+        console.log('🤖 Initializing Economika v' + CONFIG.version);
         
         createChatbotElements();
         bindEventHandlers();
         loadChatHistory();
         
-        console.log('✅ Economics AI Chatbot initialized successfully');
+        console.log('✅ Economika initialized successfully');
     }
 
     /**
@@ -139,7 +261,7 @@
         const fab = document.createElement('div');
         fab.id = 'economics-chatbot-fab';
         fab.className = 'economics-chatbot-fab';
-        fab.setAttribute('aria-label', 'Open Economics AI Assistant');
+        fab.setAttribute('aria-label', 'Open Economika AI Assistant');
         fab.setAttribute('role', 'button');
         fab.setAttribute('tabindex', '0');
         
@@ -166,7 +288,7 @@
                     <svg viewBox="0 0 24 24" fill="none">
                         <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <span id="economics-chatbot-title">Economics AI Assistant</span>
+                    <span id="economics-chatbot-title">Economika</span>
                 </div>
                 <button id="economics-chatbot-close" aria-label="Close chatbot" title="Close">&times;</button>
             </div>
@@ -175,23 +297,27 @@
                 <div class="economics-bot-welcome-message">
                     <div class="economics-bot-avatar">🧠</div>
                     <div class="economics-welcome-content">
-                        <p><strong>Hello! I'm your Economics AI Assistant.</strong></p>
+                        <p><strong>Hello! I'm Economika, your AI Economics Assistant.</strong></p>
                         <p>I specialize in:</p>
                         <div class="economics-capabilities-grid">
-                            <span class="economics-capability-tag">📊 Economic Theory</span>
+                            <span class="economics-capability-tag">📊 Microeconomics</span>
+                            <span class="economics-capability-tag">🌐 Macroeconomics</span>
+                            <span class="economics-capability-tag">📚 Economic History</span>
+                            <span class="economics-capability-tag">📈 Econometrics</span>
+                            <span class="economics-capability-tag">📉 Statistics</span>
                             <span class="economics-capability-tag">🧮 Calculations</span>
-                            <span class="economics-capability-tag">📈 Data Analysis</span>
-                            <span class="economics-capability-tag">💰 Finance</span>
                         </div>
-                        <p class="economics-example-text">Try: "What is GDP?" or "Calculate compound interest"</p>
+                        <p class="economics-example-text">Try: "Explain microeconomics" or "What is regression analysis?"</p>
                     </div>
                 </div>
             </div>
             
             <div class="economics-quick-actions" id="economics-quick-actions">
-                <button class="economics-quick-action" data-question="What is GDP?">GDP</button>
-                <button class="economics-quick-action" data-question="Explain inflation">Inflation</button>
-                <button class="economics-quick-action" data-question="Price elasticity">Elasticity</button>
+                <button class="economics-quick-action" data-question="What is microeconomics?">Microeconomics</button>
+                <button class="economics-quick-action" data-question="Explain macroeconomics">Macroeconomics</button>
+                <button class="economics-quick-action" data-question="What is econometrics?">Econometrics</button>
+                <button class="economics-quick-action" data-question="Economic history importance">Economic History</button>
+                <button class="economics-quick-action" data-question="Statistical analysis methods">Statistics</button>
                 <button class="economics-quick-action" data-question="Show economic data">Charts</button>
             </div>
             
@@ -208,7 +334,7 @@
                 <input 
                     id="economics-chatbot-input" 
                     type="text" 
-                    placeholder="Ask about economics, calculations, or data..." 
+                    placeholder="Ask about microeconomics, macroeconomics, econometrics, statistics, or economic history..." 
                     autocomplete="off" 
                     maxlength="500"
                 />
@@ -387,30 +513,38 @@
     }
 
     /**
-     * Process user message and generate response
+     * Enhanced message processing with expanded knowledge base
      */
     function processMessage(message) {
         const lowerMessage = message.toLowerCase();
         
-        // Check for economic concepts
+        // Check for economic concepts (expanded)
         for (const [key, concept] of Object.entries(ECONOMICS_KB)) {
-            if (lowerMessage.includes(key)) {
+            if (lowerMessage.includes(key) || (key.includes(' ') && key.split(' ').every(word => lowerMessage.includes(word)))) {
+                const chartMap = {
+                    'gdp': 'gdp_growth',
+                    'inflation': 'inflation_rate',
+                    'unemployment': 'unemployment',
+                    'monetary policy': 'interest_rates',
+                    'interest': 'interest_rates'
+                };
+                
                 return {
-                    text: `**${concept.definition}**\n\n**Formula:** ${concept.formula}\n\n**Explanation:** ${concept.explanation}\n\n**Examples:**\n• ${concept.examples.join('\n• ')}`,
-                    chart: key === 'gdp' ? 'gdp_growth' : key === 'inflation' ? 'inflation_rate' : null
+                    text: `**${concept.definition}**\n\n**Formula/Model:** ${concept.formula}\n\n**Explanation:** ${concept.explanation}\n\n**Examples:**\n• ${concept.examples.join('\n• ')}`,
+                    chart: chartMap[key] || null
                 };
             }
         }
 
-        // Check for calculations
+        // Enhanced calculation handling
         if (lowerMessage.includes('calculate') || lowerMessage.includes('compute')) {
             return handleCalculation(message);
         }
 
-        // Check for chart requests
-        if (lowerMessage.includes('chart') || lowerMessage.includes('graph') || lowerMessage.includes('data')) {
+        // Enhanced chart requests
+        if (lowerMessage.includes('chart') || lowerMessage.includes('graph') || lowerMessage.includes('data') || lowerMessage.includes('visualization')) {
             return {
-                text: "Here are some key economic indicators:",
+                text: "Here are key economic indicators across different areas of economics:",
                 chart: 'gdp_growth'
             };
         }
@@ -420,52 +554,63 @@
             return handleMathExpression(message);
         }
 
-        // Default responses based on keywords
-        const responses = {
-            'hello': 'Hello! I\'m here to help with economics, finance, and mathematical calculations. What would you like to explore?',
-            'help': 'I can help you with:\n• Economic concepts (GDP, inflation, elasticity)\n• Financial calculations\n• Economic data visualization\n• Mathematical formulas\n\nWhat specific topic interests you?',
-            'policy': 'Economic policy involves government decisions on spending, taxation, and regulation to influence the economy. Would you like to know about fiscal policy, monetary policy, or trade policy?',
-            'market': 'Markets are where buyers and sellers interact to exchange goods and services. I can explain market structures, supply and demand, or market failures. What specific aspect interests you?'
+        // Enhanced field-specific responses
+        const fieldResponses = {
+            'microeconomics': 'Microeconomics focuses on individual economic units like consumers, firms, and markets. I can help with supply and demand, market structures, consumer choice theory, elasticity, and firm behavior. What specific microeconomic concept interests you?',
+            'macroeconomics': 'Macroeconomics studies the economy as a whole, including GDP, inflation, unemployment, and economic growth. I can explain fiscal policy, monetary policy, business cycles, and international economics. What macro topic would you like to explore?',
+            'econometrics': 'Econometrics applies statistical methods to economic data for testing theories and forecasting. I can help with regression analysis, hypothesis testing, time series analysis, and model specification. What econometric technique interests you?',
+            'statistics': 'Statistics provides the foundation for economic analysis through data collection, analysis, and interpretation. I can explain descriptive statistics, probability theory, sampling methods, and statistical inference. What statistical concept would you like to learn?',
+            'economic history': 'Economic history examines how economies evolved over time, studying past events like the Great Depression, Industrial Revolution, and policy developments. I can discuss historical economic patterns and their modern relevance. What historical period interests you?',
+            'regression': 'Regression analysis examines relationships between variables. I can explain OLS, multiple regression, assumptions, hypothesis testing, and model diagnostics. What aspect of regression would you like to understand?',
+            'correlation': 'Correlation measures the strength of linear relationships between variables. I can explain correlation coefficients, causation vs correlation, and statistical significance. What correlation concept interests you?',
+            'market failure': 'Market failures occur when free markets don\'t allocate resources efficiently. I can explain externalities, public goods, information asymmetry, and policy solutions. What type of market failure would you like to explore?',
+            'help': 'I can help you with:\n\n**Core Fields:**\n• Microeconomics (supply/demand, elasticity, market structures)\n• Macroeconomics (GDP, inflation, policy)\n• Economic History (Great Depression, Industrial Revolution)\n• Econometrics (regression, hypothesis testing)\n• Statistics (correlation, probability, sampling)\n\n**Calculations:**\n• Financial mathematics\n• Statistical analysis\n• Economic formulas\n\n**Data Visualization:**\n• Economic charts and trends\n• Statistical graphs\n\nWhat specific area interests you?'
         };
 
-        for (const [keyword, response] of Object.entries(responses)) {
+        for (const [keyword, response] of Object.entries(fieldResponses)) {
             if (lowerMessage.includes(keyword)) {
                 return { text: response };
             }
         }
 
-        // Default response
+        // Enhanced default response
         return {
-            text: "I'd be happy to help you with economics, finance, or mathematical questions! Try asking about:\n\n• **Economic concepts**: GDP, inflation, elasticity\n• **Calculations**: compound interest, present value\n• **Data visualization**: economic charts and trends\n• **Formulas**: economic and financial equations\n\nWhat would you like to explore?"
+            text: "Hello! I'm Economika, your specialized AI assistant for economics and statistics. I can help you with:\n\n**📊 Microeconomics:** Supply & demand, market structures, consumer choice\n**🌐 Macroeconomics:** GDP, inflation, monetary & fiscal policy\n**📚 Economic History:** Great Depression, Industrial Revolution, policy evolution\n**📈 Econometrics:** Regression analysis, hypothesis testing, forecasting\n**📉 Statistics:** Correlation, probability, data analysis\n**🧮 Calculations:** Financial math, statistical computations\n\nTry asking about any of these topics! For example:\n• \"What is price elasticity?\"\n• \"Explain the Great Depression\"\n• \"How does regression analysis work?\""
         };
     }
 
     /**
-     * Handle calculation requests
+     * Enhanced calculation handling
      */
     function handleCalculation(message) {
         const lowerMessage = message.toLowerCase();
         
-        if (lowerMessage.includes('compound interest')) {
-            return {
-                text: "**Compound Interest Formula:**\n\nA = P(1 + r/n)^(nt)\n\nWhere:\n• A = Final amount\n• P = Principal\n• r = Annual interest rate\n• n = Times compounded per year\n• t = Time in years\n\n**Example:** $1,000 at 5% for 10 years compounded annually = $1,628.89"
-            };
-        }
+        const calculationTypes = {
+            'compound interest': {
+                text: "**Compound Interest Formula:**\n\nA = P(1 + r/n)^(nt)\n\nWhere:\n• A = Final amount\n• P = Principal ($)\n• r = Annual interest rate (decimal)\n• n = Times compounded per year\n• t = Time in years\n\n**Example:** $1,000 at 5% compounded annually for 10 years:\nA = 1000(1 + 0.05/1)^(1×10) = $1,628.89\n\n**Applications:** Savings accounts, investments, loan calculations"
+            },
+            'present value': {
+                text: "**Present Value Formula:**\n\nPV = FV / (1 + r)^t\n\nWhere:\n• PV = Present Value\n• FV = Future Value\n• r = Discount rate (decimal)\n• t = Time periods\n\n**Example:** What's $1,000 in 5 years worth today at 6% discount?\nPV = 1000 / (1.06)^5 = $747.26\n\n**Applications:** Investment valuation, bond pricing, capital budgeting"
+            },
+            'elasticity': {
+                text: "**Price Elasticity of Demand Formula:**\n\nPED = (% Change in Quantity) / (% Change in Price)\n\n**Alternative:** PED = (ΔQ/Q₁) / (ΔP/P₁)\n\n**Interpretation:**\n• |PED| > 1: Elastic (responsive to price)\n• |PED| < 1: Inelastic (less responsive)\n• |PED| = 1: Unit elastic\n\n**Example:** Price ↑10%, Quantity ↓20% → PED = -2 (elastic)\n\n**Applications:** Pricing strategy, tax policy, market analysis"
+            },
+            'correlation': {
+                text: "**Correlation Coefficient Formula:**\n\nr = Σ[(xᵢ-x̄)(yᵢ-ȳ)] / √[Σ(xᵢ-x̄)²Σ(yᵢ-ȳ)²]\n\n**Interpretation:**\n• r = +1: Perfect positive correlation\n• r = 0: No linear correlation\n• r = -1: Perfect negative correlation\n\n**Example:** Income and consumption typically show r ≈ 0.8-0.9\n\n**Applications:** Economic forecasting, risk analysis, variable relationships"
+            },
+            'standard deviation': {
+                text: "**Standard Deviation Formula:**\n\ns = √[Σ(xᵢ-x̄)²/(n-1)]\n\nWhere:\n• s = Sample standard deviation\n• xᵢ = Individual values\n• x̄ = Sample mean\n• n = Sample size\n\n**Interpretation:** Measures variability around the mean\n\n**Applications:** Risk measurement, quality control, economic volatility analysis"
+            }
+        };
         
-        if (lowerMessage.includes('present value')) {
-            return {
-                text: "**Present Value Formula:**\n\nPV = FV / (1 + r)^t\n\nWhere:\n• PV = Present Value\n• FV = Future Value\n• r = Discount rate\n• t = Time periods\n\n**Example:** $1,000 in 5 years at 6% discount rate = $747.26 today"
-            };
-        }
-        
-        if (lowerMessage.includes('elasticity')) {
-            return {
-                text: "**Price Elasticity of Demand:**\n\nPED = (% Change in Quantity) / (% Change in Price)\n\n**Interpretation:**\n• |PED| > 1: Elastic (responsive to price)\n• |PED| < 1: Inelastic (less responsive)\n• |PED| = 1: Unit elastic\n\n**Example:** If price increases 10% and quantity decreases 20%, PED = -2 (elastic)"
-            };
+        for (const [key, calc] of Object.entries(calculationTypes)) {
+            if (lowerMessage.includes(key)) {
+                return calc;
+            }
         }
         
         return {
-            text: "I can help calculate:\n• Compound interest\n• Present value\n• Price elasticity\n• GDP components\n• Inflation rates\n\nPlease specify which calculation you need!"
+            text: "I can help calculate:\n\n**Financial:**\n• Compound interest\n• Present value\n• Future value\n• Annuities\n\n**Economic:**\n• Price elasticity\n• GDP components\n• Inflation rates\n• Market indices\n\n**Statistical:**\n• Correlation coefficients\n• Standard deviation\n• Regression parameters\n• Confidence intervals\n\nPlease specify which calculation you need!"
         };
     }
 
@@ -477,28 +622,33 @@
             /\d+\s*[+\-*/]\s*\d+/,
             /\d+\s*\^\s*\d+/,
             /sqrt\(\d+\)/,
-            /log\(\d+\)/
+            /log\(\d+\)/,
+            /\d+!/, // factorial
+            /\b\d+\.\d+\b/ // decimals
         ];
         
         return mathPatterns.some(pattern => pattern.test(message));
     }
 
     /**
-     * Handle mathematical expressions
+     * Handle mathematical expressions with enhanced capabilities
      */
     function handleMathExpression(message) {
         try {
-            // Simple math evaluation (secure for basic operations)
+            // Enhanced math evaluation (secure for basic operations)
             let expression = message
                 .replace(/\^/g, '**')
-                .replace(/sqrt\((\d+)\)/g, 'Math.sqrt($1)')
-                .replace(/log\((\d+)\)/g, 'Math.log($1)')
+                .replace(/sqrt\((\d+(?:\.\d+)?)\)/g, 'Math.sqrt($1)')
+                .replace(/log\((\d+(?:\.\d+)?)\)/g, 'Math.log($1)')
+                .replace(/sin\((\d+(?:\.\d+)?)\)/g, 'Math.sin($1)')
+                .replace(/cos\((\d+(?:\.\d+)?)\)/g, 'Math.cos($1)')
+                .replace(/tan\((\d+(?:\.\d+)?)\)/g, 'Math.tan($1)')
                 .replace(/[^0-9+\-*/.() ]/g, '');
             
-            if (expression) {
+            if (expression && expression.length > 0) {
                 const result = Function('"use strict"; return (' + expression + ')')();
                 return {
-                    text: `**Calculation Result:**\n\n${message} = **${result}**\n\n*Note: For complex financial calculations, please specify the type (compound interest, present value, etc.)*`
+                    text: `**Mathematical Calculation:**\n\n${message} = **${typeof result === 'number' ? result.toFixed(6).replace(/\.?0+$/, '') : result}**\n\n*For complex economic or statistical calculations, please specify the type (e.g., elasticity, correlation, present value).*`
                 };
             }
         } catch (e) {
@@ -506,12 +656,12 @@
         }
         
         return {
-            text: "I can help with mathematical calculations! For accurate results, please use formats like:\n• 2 + 2\n• 5 * 10\n• sqrt(144)\n• 2^8\n\nOr ask for specific economic calculations like compound interest or elasticity."
+            text: "I can help with mathematical calculations! Try formats like:\n\n**Basic Math:**\n• 2 + 2\n• 5 * 10\n• sqrt(144)\n• 2^8\n\n**Economic Functions:**\n• Compound interest calculations\n• Elasticity formulas\n• Statistical measures\n\n**Advanced:**\n• Regression analysis\n• Correlation coefficients\n• Probability calculations\n\nWhat calculation do you need help with?"
         };
     }
 
     /**
-     * Add chart to conversation
+     * Add chart to conversation with enhanced styling
      */
     function addChart(chartType) {
         const chartContainer = document.createElement('div');
@@ -542,7 +692,7 @@
     }
 
     /**
-     * Create chart using Chart.js
+     * Create enhanced chart using Chart.js
      */
     function createChart(canvas, chartType) {
         const data = ECONOMIC_DATA[chartType];
@@ -556,9 +706,13 @@
                     data: data.data,
                     borderColor: data.color,
                     backgroundColor: data.color + '20',
-                    borderWidth: 2,
+                    borderWidth: 3,
                     fill: true,
-                    tension: 0.3
+                    tension: 0.4,
+                    pointBackgroundColor: data.color,
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
                 }]
             },
             options: {
@@ -567,19 +721,44 @@
                 plugins: {
                     legend: {
                         display: false
+                    },
+                    title: {
+                        display: true,
+                        text: data.title,
+                        font: {
+                            size: 14,
+                            weight: 'bold'
+                        }
                     }
                 },
                 scales: {
                     y: {
                         beginAtZero: false,
                         grid: {
-                            color: '#e1e8ed'
+                            color: '#e1e8ed',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            font: {
+                                size: 11
+                            }
                         }
                     },
                     x: {
                         grid: {
-                            color: '#e1e8ed'
+                            color: '#e1e8ed',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            font: {
+                                size: 11
+                            }
                         }
+                    }
+                },
+                elements: {
+                    point: {
+                        hoverRadius: 8
                     }
                 }
             }
@@ -587,7 +766,7 @@
     }
 
     /**
-     * Draw simple chart fallback
+     * Draw enhanced simple chart fallback
      */
     function drawSimpleChart(canvas, chartType) {
         const ctx = canvas.getContext('2d');
@@ -595,7 +774,7 @@
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.strokeStyle = data.color;
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 3;
         
         const padding = 40;
         const width = canvas.width - 2 * padding;
@@ -603,8 +782,9 @@
         
         const maxValue = Math.max(...data.data);
         const minValue = Math.min(...data.data);
-        const valueRange = maxValue - minValue;
+        const valueRange = maxValue - minValue || 1; // Avoid division by zero
         
+        // Draw chart line
         ctx.beginPath();
         data.data.forEach((value, index) => {
             const x = padding + (index / (data.data.length - 1)) * width;
@@ -618,16 +798,29 @@
         });
         ctx.stroke();
         
-        // Add data points
+        // Add enhanced data points
         ctx.fillStyle = data.color;
         data.data.forEach((value, index) => {
             const x = padding + (index / (data.data.length - 1)) * width;
             const y = padding + height - ((value - minValue) / valueRange) * height;
             
             ctx.beginPath();
-            ctx.arc(x, y, 4, 0, 2 * Math.PI);
+            ctx.arc(x, y, 5, 0, 2 * Math.PI);
             ctx.fill();
+            
+            // Add white border to points
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.strokeStyle = data.color;
+            ctx.lineWidth = 3;
         });
+        
+        // Add title
+        ctx.fillStyle = '#333333';
+        ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(data.title, canvas.width / 2, 20);
     }
 
     /**
@@ -680,14 +873,6 @@
             if (stored) {
                 const history = JSON.parse(stored);
                 chatState.messages = history.messages || [];
-                
-                // Optionally restore messages to UI
-                // (commented out to keep welcome message prominent)
-                /*
-                history.messages.forEach(msg => {
-                    addMessage(msg.text, msg.sender);
-                });
-                */
             }
         } catch (e) {
             console.warn('Could not load chat history:', e);
@@ -703,8 +888,8 @@
         initEconomicsChatbot();
     }
 
-    // Export for global access (optional)
-    window.EconomicsChatbot = {
+    // Export for global access
+    window.Economika = {
         open: openChatbot,
         close: closeChatbot,
         toggle: toggleChatbot,
