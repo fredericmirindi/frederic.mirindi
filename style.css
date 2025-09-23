@@ -2574,7 +2574,7 @@ select.form-control {
 .widget-section-title {
   text-align: center;
   margin-bottom: var(--space-24);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
   letter-spacing: var(--letter-spacing-tight);
