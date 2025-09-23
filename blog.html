@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frédéric Mirindi - Blog</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <meta name="description" content="Blog and economic insights by Frédéric Mirindi.">
+    <meta name="keywords" content="Blog, Economics, Analysis, Frederic Mirindi">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Economics AI Chatbot CSS -->
+    <link rel="stylesheet" href="assets/css/economics-chatbot.css">
+    
+    <!-- Economic Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/economic-widgets.css">
+    
+    <!-- Publications Showcase CSS -->
+    <link rel="stylesheet" href="assets/css/publications-showcase.css">
+    
+    <!-- Research Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/research-widgets.css">
+    
+    <!-- Profile Links White Text CSS -->
+    <link rel="stylesheet" href="assets/css/profile-links-white.css">
+    
+    <!-- Profile Icons Fix CSS (CRITICAL - Must be last to override other styles) -->
+    <link rel="stylesheet" href="assets/css/profile-icons-fix.css">
+    
+    <!-- Icon Visibility CSS - Theme-aware icon display (MUST be after profile-icons-fix) -->
+    <link rel="stylesheet" href="assets/css/icon-visibility.css">
+    
+    <!-- CRITICAL: Footer Icons Fix - MUST BE LAST TO OVERRIDE ALL OTHER STYLES -->
+    <link rel="stylesheet" href="assets/css/footer-icons-fix.css">
+    
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <span class="hero-nom-clean">Frédéric Mirindi</span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="home.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="research.html" class="nav-link">Publications</a>
+            </li>
+            <li class="nav-item">
+                <a href="conference.html" class="nav-link">Conferences</a>
+            </li>
+            <li class="nav-item">
+                <a href="research.html" class="nav-link">Research</a>
+            </li>
+            <li class="nav-item">
+                <a href="blog.html" class="nav-link active">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link">Contact</a>
+            </li>
+        </ul>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <button class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- BLOG PAGE WITH BRIGHT TEAL BACKGROUND -->
+    <section class="page active" id="blog">
+        <!-- Blog Hero Section -->
+        <div class="blog-minimal-hero">
+            <div class="container">
+                <h1 class="blog-main-title">Blog</h1>
+            </div>
+        </div>
+        
+        <div class="container">
+            <p class="blog-subtitle">To access my latest blog publications and analyses, please visit:</p>
+
+            <div class="card" style="padding-bottom: 2.5rem;">
+                <div class="card__body">
+                    <div style="text-align: center; margin-bottom: 1.8rem;">
+                        <a class="btn btn--outline" 
+                           href=" "
+                           target="_blank"
+                           rel="noopener"
+                           style="font-size: 1.5rem; padding: 0.75rem 2.5rem; font-weight: 600;">
+                            Fredenomics – Economic Insights for the Modern World
+                        </a>
+                    </div>
+
+                    <div class="research-grid">
+                        <div class="research-card">
+                            <h3>Deep Analysis</h3>
+                            <p>Economic trends, market dynamics, and policy implications.</p>
+                        </div>
+                        <div class="research-card">
+                            <h3>Featured Articles</h3>
+                            <p>Digital finance, market volatility, sustainability, macroeconomics, AI impacts on labor markets, and global supply chains.</p>
+                        </div>
+                        <div class="research-card">
+                            <h3>Popular Topics</h3>
+                            <p>CBDCs, inflation, AI economics, climate finance, cryptocurrency, market volatility, supply chain, and green economy.</p>
+                        </div>
+                        <div class="research-card">
+                            <h3>Main Sections</h3>
+                            <p>Economics, Analysis, Markets, Policy, Insights, and About.</p>
+                        </div>
+                        <div class="research-card">
+                            <h3>Resources</h3>
+                            <p>Newsletter, Archive, Research, and Contact information.</p>
+                        </div>
+                        <div class="research-card">
+                            <h3>Transparency</h3>
+                            <p>Authorship and methodology details, plus privacy policy.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top:1.6rem;color:#646d74;font-style:italic;text-align:center;">
+                        The site serves as a modern economics and policy analysis platform, offering both current insights and in-depth articles.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Tweets Section -->
+            <div class="card" style="margin-top:2rem; padding-bottom: 2.5rem;">
+                <div class="card__body">
+                    <h2 style="text-align:center; color:var(--color-primary);margin-bottom:1em;">Latest Tweets</h2>
+                    <!-- Twitter Embedded Timeline Widget -->
+                    <a class="twitter-timeline"
+                       data-width="100%"
+                       data-height="400"
+                       href="https://twitter.com/MirindiFrederic?ref_src=twsrc%5Etfw">
+                       Tweets by MirindiFrederic
+                    </a>
+                </div>
+            </div>
+            <!-- End Latest Tweets Section -->
+        </div>
+    </section>
+</main>
+
+<!-- Load Twitter Widget JS -->
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<!-- Footnotes Modal -->
+<div class="footnote-modal" id="footnote-modal">
+    <div class="footnote-content">
+        <div class="footnote-header">
+            <h3>Citations & References</h3>
+            <button class="footnote-close">&times;</button>
+        </div>
+        <div class="footnote-body">
+            <p>Citation information and academic references will be displayed here.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Frédéric Mirindi</h4>
+                <p>PhD Candidate - Economics &amp; Econometrics</p>
+                <p>Founder - ThinkBit Edge Corp.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="research.html">Publications</a></li>
+                    <li><a href="conference.html">Conferences</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>frederic.mirindi@umanitoba.ca</p>
+                <p>+1 (204) 298-4337</p>
+                <div style="margin-top:10px; display:flex; gap:15px; align-items:center;">
+                    <!-- LinkedIn Icon - Using Local Image File -->
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener" title="LinkedIn" style="display:inline-flex;align-items:center;">
+                        <img src="images/linkedin-icon.svg" alt="LinkedIn" style="width:24px;height:24px;" class="footer-social-icon">
+                    </a>
+
+                    <!-- X (Twitter) Icon - Using Local Image File -->
+                    <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener" title="X (formerly Twitter)" style="display:inline-flex;align-items:center;">
+                        <img src="images/x-icon.svg" alt="X" style="width:24px;height:24px;" class="footer-social-icon">
+                    </a>
+
+                    <!-- ResearchGate Icon - Using Local Colored SVG -->
+                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener" title="ResearchGate" style="display:inline-flex;align-items:center;">
+                        <img src="images/researchgate-icon.svg" alt="ResearchGate" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+
+                    <!-- Google Scholar Icon - Using Local Colored SVG -->
+                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener" title="Google Scholar" style="display:inline-flex;align-items:center;">
+                        <img src="images/google-scholar-icon.svg" alt="Google Scholar" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+
+                    <!-- ORCID Icon - Using Local Colored SVG -->
+                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener" title="ORCID" style="display:inline-flex;align-items:center;">
+                        <img src="images/orcid-icon.svg" alt="ORCID iD" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2020 Frédéric Mirindi. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Original app.js -->
+<script src="app.js"></script>
+
+<!-- Enhanced Publications JavaScript -->
+<script src="assets/js/publications-enhanced.js"></script>
+
+<!-- Economics AI Chatbot JavaScript -->
+<script src="assets/js/economics-chatbot.js"></script>
+
+<!-- Advanced Research Widgets JavaScript -->
+<script src="assets/js/research-widgets-expert.js"></script>
+</body>
+</html>
