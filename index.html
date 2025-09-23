@@ -41,7 +41,6 @@
 <body>
 
 <!-- Navigation -->
-
 <nav class="navbar" id="navbar">
     <div class="nav-container">
         <div class="nav-brand">
@@ -49,25 +48,25 @@
         </div>
         <ul class="nav-menu" id="nav-menu">
             <li class="nav-item">
-                <a href="#home" class="nav-link active" data-page="home">Home</a>
+                <a href="home.html" class="nav-link active">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#papers" class="nav-link" data-page="papers">Publications</a>
+                <a href="research.html" class="nav-link">Publications</a>
             </li>
             <li class="nav-item">
-                <a href="#conferences" class="nav-link" data-page="conferences">Conferences</a>
+                <a href="conference.html" class="nav-link">Conferences</a>
             </li>
             <li class="nav-item">
-                <a href="#research" class="nav-link" data-page="research">Research</a>
+                <a href="research.html" class="nav-link">Research</a>
             </li>
             <li class="nav-item">
-                <a href="#blog" class="nav-link" data-page="blog">Blog</a>
+                <a href="blog.html" class="nav-link">Blog</a>
             </li>
             <li class="nav-item">
-                <a href="#about" class="nav-link" data-page="about">About</a>
+                <a href="about.html" class="nav-link">About</a>
             </li>
             <li class="nav-item">
-                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </li>
         </ul>
         <div class="nav-controls">
@@ -82,7 +81,6 @@
         </div>
     </div>
 </nav>
-
 
 <!-- Main Content -->
 <main class="main-content">
@@ -386,864 +384,22 @@
       </div>
     </section>
   </section>
+</main>
 
-    <!-- SIMPLIFIED PUBLICATIONS PAGE - MINIMAL HERO WITH IMPROVED SEARCH -->
-    <section class="page" id="papers">
-      <!-- Minimal Hero Section - Only Title -->
-      <div class="publications-minimal-hero">
-        <div class="container">
-          <h1 class="publications-main-title">Research Publications</h1>
-        </div>
-      </div>
-
-      <div class="container">
-        <!-- IMPROVED Search and Filtering Interface -->
-        <div class="publications-search-interface">
-          <div class="search-filters-row">
-            <select id="pubs-year" class="modern-select">
-              <option value="all">All Years</option>
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-            </select>
-            <select id="pubs-type" class="modern-select">
-              <option value="all">All Types</option>
-              <option value="journal">Journal Article</option>
-              <option value="conference">Conference Paper</option>
-              <option value="book">Book Chapter</option>
-              <option value="review">Review Article</option>
-            </select>
-            <div class="search-input-container">
-              <i class="fas fa-search search-icon"></i>
-              <input 
-                id="pubs-search" 
-                class="modern-search-input" 
-                type="search"
-                placeholder="Search publications by title, author, or keyword..." 
-                autocomplete="off"
-              />
-            </div>
-          </div>
-          <div class="view-controls">
-            <button id="pubs-grid" class="view-btn active" data-view="grid">
-              <i class="fas fa-th"></i> Grid View
-            </button>
-            <button id="pubs-list" class="view-btn" data-view="list">
-              <i class="fas fa-list"></i> List View
-            </button>
-          </div>
-        </div>
-
-        <!-- Publications Grid (Enhanced) -->
-        <div id="pubs-grid-wrap" class="pubs__grid" aria-live="polite" aria-busy="false"></div>
-
-        <!-- Toast notifications -->
-        <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
-      </div>
-    </section>
-
-        <!-- CONFERENCES PAGE WITH BRIGHT TEAL BACKGROUND -->
-        <section class="page" id="conferences">
-            <!-- Conferences Hero Section - SAME AS PUBLICATIONS -->
-            <div class="conferences-minimal-hero">
-                <div class="container">
-                    <h1 class="conferences-main-title">Conferences & Events</h1>
-                </div>
-            </div>
-            
-            <div class="container">
-                <p class="conferences-subtitle">Speaking engagements and conference presentations</p>
-                
-                <div class="conferences-timeline">
-                    <div class="conference-card">
-                        <div class="conference-date">
-                            <span class="month">Jul</span>
-                            <span class="day">3</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="conference-content">
-                            <h3>MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economy</h3>
-                            <p class="conference-location">Athens, Greece</p>
-                            <p class="conference-role">Speaker</p>
-                            <p class="conference-topic">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</p>
-                            <a href="https://www.marble-conference.org/programme-2025" class="btn btn--primary conference-link" target="_blank">Event Details</a>
-                        </div>
-                    </div>
-                    
-                    <div class="conference-card">
-                        <div class="conference-date">
-                            <span class="month">May</span>
-                            <span class="day">31</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="conference-content">
-                            <h3>59th Annual Meetings of the Canadian Economics Association</h3>
-                            <p class="conference-location">Université du Québec à Montréal</p>
-                            <p class="conference-role">Speaker</p>
-                            <p class="conference-topic">Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms</p>
-                            <a href="https://www.economics.ca/event-6029611" class="btn btn--primary conference-link" target="_blank">Event Details</a>
-                        </div>
-                    </div>
-                    
-                    <div class="conference-card">
-                        <div class="conference-date">
-                            <span class="month">Jan</span>
-                            <span class="day">22</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="conference-content">
-                            <h3>Graduate Seminar Series, Centre for the Study of Women and Gender</h3>
-                            <p class="conference-location">University of Warwick</p>
-                            <p class="conference-role">Presenter</p>
-                            <p class="conference-topic">Digital Feminism: Intersectionality and Activism in the Age of Social Media</p>
-                            <a href="https://warwick.ac.uk/fac/soc/sociology/research/gender/calendar/graduateseminars202425/session3/" class="btn btn--primary conference-link" target="_blank">View Slides</a>
-                        </div>
-                    </div>
-                    
-                    <div class="conference-card">
-                        <div class="conference-date">
-                            <span class="month">Nov</span>
-                            <span class="day">27</span>
-                            <span class="year">24</span>
-                        </div>
-                        <div class="conference-content">
-                            <h3>Graduate Seminars in Economic and Social History</h3>
-                            <p class="conference-location">University of Oxford</p>
-                            <p class="conference-role">Presenter</p>
-                            <p class="conference-topic">From Rubber to Cobalt: Evolving Patterns of Resource Exploitation and Social Impact in the Democratic Republic of Congo</p>
-                            <a href="https://talks.ox.ac.uk/talks/persons/id/dcd41ec3-2797-42ad-bbef-5ab6ad55770d?format=txt" class="btn btn--primary conference-link" target="_blank">Workshop Materials</a>
-                        </div>
-                    </div>
-
-                        <div class="conference-card">
-                        <div class="conference-date">
-                            <span class="month">Nov</span>
-                            <span class="day">05</span>
-                            <span class="year">2023</span>
-                        </div>
-                        <div class="conference-content">
-                            <h3>TheoriseHAI Workshop, 12th International Conference on Human-Agent Interaction (HAI)</h3>
-                            <p class="conference-location">Swansea, UK</p>
-                            <p class="conference-role">Presenter</p>
-                            <p class="conference-topic">A Review of Hybrid Machine Learning Approaches for Enhancing Human-Agent Interaction</p>
-                            <a href="https://sites.google.com/view/theorisehai/contributions" class="btn btn--primary conference-link" target="_blank">Workshop Materials</a>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESEARCH PAGE - EXPERT-LEVEL INTERACTIVE WIDGETS -->
-        <section class="page" id="research">
-            <!-- Research Hero Section -->
-            <div class="research-minimal-hero">
-                <div class="container">
-                    <h1 class="research-main-title">Research Areas</h1>
-                </div>
-            </div>
-            
-            <div class="container">
-                <p class="research-subtitle">Advanced AI-Economics Research Platform - Interactive Expert Tools</p>
-                
-                <!-- EXPERT-LEVEL 3 RESEARCH WIDGETS -->
-                <div class="research-widgets-grid">
-                    <!-- 1. ADVANCED AI ECONOMIC FORECASTING SYSTEM -->
-                    <div class="research-widget expert-widget">
-                        <div class="widget-header">
-                            <div class="widget-icon">
-                                <i class="fas fa-brain"></i>
-                            </div>
-                            <h3>AI-Powered Economic Forecasting System</h3>
-                            <p class="widget-description">Advanced ensemble machine learning models with real-time parameter tuning</p>
-                        </div>
-                        
-                        <div class="widget-content">
-                            <!-- Expert Model Configuration Panel -->
-                            <div class="expert-controls-panel">
-                                <div class="control-group">
-                                    <label class="expert-label">Model Architecture</label>
-                                    <select id="model-architecture" class="expert-select">
-                                        <option value="lstm">LSTM Neural Network</option>
-                                        <option value="transformer" selected>Transformer + Attention</option>
-                                        <option value="ensemble">Ensemble (Random Forest + LSTM)</option>
-                                        <option value="gru">GRU with Regularization</option>
-                                        <option value="hybrid">Hybrid CNN-LSTM</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="expert-label">Learning Rate: <span id="lr-value">0.001</span></label>
-                                    <input type="range" id="learning-rate" class="expert-slider" min="0.0001" max="0.1" step="0.0001" value="0.001">
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="expert-label">Sequence Length: <span id="seq-value">30</span></label>
-                                    <input type="range" id="sequence-length" class="expert-slider" min="10" max="100" value="30">
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="expert-label">Regularization (λ): <span id="reg-value">0.01</span></label>
-                                    <input type="range" id="regularization" class="expert-slider" min="0" max="0.1" step="0.001" value="0.01">
-                                </div>
-                            </div>
-                            
-                            <!-- Advanced Forecast Dashboard -->
-                            <div class="advanced-forecast-dashboard">
-                                <div class="forecast-metrics-grid">
-                                    <div class="advanced-metric">
-                                        <div class="metric-header">
-                                            <i class="fas fa-chart-line"></i>
-                                            <span class="metric-title">GDP Forecast</span>
-                                        </div>
-                                        <div class="metric-value-large" id="advanced-gdp">+2.847%</div>
-                                        <div class="metric-details">
-                                            <span class="confidence-band">CI: [2.523%, 3.171%]</span>
-                                            <span class="p-value">p-value: 0.0023</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="advanced-metric">
-                                        <div class="metric-header">
-                                            <i class="fas fa-fire"></i>
-                                            <span class="metric-title">Inflation Rate</span>
-                                        </div>
-                                        <div class="metric-value-large" id="advanced-inflation">3.142%</div>
-                                        <div class="metric-details">
-                                            <span class="confidence-band">CI: [2.891%, 3.393%]</span>
-                                            <span class="p-value">p-value: 0.0011</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="advanced-metric">
-                                        <div class="metric-header">
-                                            <i class="fas fa-bullseye"></i>
-                                            <span class="metric-title">Model Performance</span>
-                                        </div>
-                                        <div class="performance-metrics">
-                                            <div class="perf-item">
-                                                <span class="perf-label">RMSE:</span>
-                                                <span class="perf-value" id="rmse-value">0.0847</span>
-                                            </div>
-                                            <div class="perf-item">
-                                                <span class="perf-label">MAE:</span>
-                                                <span class="perf-value" id="mae-value">0.0623</span>
-                                            </div>
-                                            <div class="perf-item">
-                                                <span class="perf-label">R²:</span>
-                                                <span class="perf-value" id="r2-value">0.9471</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Interactive Multi-Chart System -->
-                            <div class="chart-system">
-                                <div class="chart-tabs">
-                                    <button class="chart-tab active" data-chart="forecast">Forecast</button>
-                                    <button class="chart-tab" data-chart="residuals">Residuals</button>
-                                    <button class="chart-tab" data-chart="features">Feature Importance</button>
-                                    <button class="chart-tab" data-chart="correlation">Correlation Matrix</button>
-                                </div>
-                                <div class="chart-container-advanced">
-                                    <canvas id="advanced-forecast-chart" width="500" height="300"></canvas>
-                                </div>
-                            </div>
-                            
-                            <!-- Expert Controls -->
-                            <div class="expert-actions">
-                                <div class="action-group">
-                                    <button id="train-model" class="expert-btn expert-btn-primary">
-                                        <i class="fas fa-cogs"></i> Train Model
-                                    </button>
-                                    <button id="validate-model" class="expert-btn expert-btn-secondary">
-                                        <i class="fas fa-check-double"></i> Cross-Validate
-                                    </button>
-                                    <button id="export-results" class="expert-btn expert-btn-tertiary">
-                                        <i class="fas fa-download"></i> Export Results
-                                    </button>
-                                </div>
-                                <div class="action-group">
-                                    <button id="hyperparameter-tune" class="expert-btn expert-btn-warning">
-                                        <i class="fas fa-sliders-h"></i> Auto-Tune Hyperparameters
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="expert-tags">
-                            <span class="expert-tag">Deep Learning</span>
-                            <span class="expert-tag">Time Series</span>
-                            <span class="expert-tag">Hyperparameter Tuning</span>
-                            <span class="expert-tag">Cross-Validation</span>
-                            <span class="expert-tag">Feature Engineering</span>
-                        </div>
-                    </div>
-                    
-                    <!-- 3. ADVANCED NLP ECONOMIC INTELLIGENCE SYSTEM -->
-                    <div class="research-widget expert-widget">
-                        <div class="widget-header">
-                            <div class="widget-icon">
-                                <i class="fas fa-language"></i>
-                            </div>
-                            <h3>Economic Intelligence NLP System</h3>
-                            <p class="widget-description">Advanced transformer-based economic text analysis with multi-dimensional sentiment scoring</p>
-                        </div>
-                        
-                        <div class="widget-content">
-                            <!-- Expert NLP Configuration -->
-                            <div class="nlp-expert-config">
-                                <div class="nlp-tabs">
-                                    <button class="nlp-tab active" data-nlp="analysis">Text Analysis</button>
-                                    <button class="nlp-tab" data-nlp="models">Model Config</button>
-                                    <button class="nlp-tab" data-nlp="export">Export Results</button>
-                                </div>
-                                
-                                <div class="nlp-panel active" id="analysis-panel">
-                                    <!-- Advanced Text Input with File Upload -->
-                                    <div class="text-input-advanced">
-                                        <div class="input-options">
-                                            <button class="input-option active" data-input="text">Text Input</button>
-                                            <button class="input-option" data-input="file">Upload Document</button>
-                                            <button class="input-option" data-input="url">Analyze URL</button>
-                                        </div>
-                                        
-                                        <div class="input-area" id="text-input-area">
-                                            <textarea 
-                                                id="expert-text-input" 
-                                                class="expert-textarea" 
-                                                placeholder="Paste Fed minutes, ECB reports, economic research papers, or financial news for advanced AI analysis..."
-                                                rows="6"
-                                            ></textarea>
-                                            <div class="text-stats">
-                                                <span id="word-count">Words: 0</span>
-                                                <span id="char-count">Characters: 0</span>
-                                                <span id="econ-terms">Economic Terms: 0</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="input-area hidden" id="file-input-area">
-                                            <div class="file-drop-zone">
-                                                <i class="fas fa-cloud-upload-alt"></i>
-                                                <p>Drop PDF, DOCX, or TXT files here</p>
-                                                <input type="file" id="file-upload" accept=".pdf,.docx,.txt,.rtf" multiple>
-                                                <button class="upload-btn">Browse Files</button>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="input-area hidden" id="url-input-area">
-                                            <input type="url" id="url-input" class="expert-url-input" placeholder="https://www.federalreserve.gov/newsevents/...">
-                                            <button id="fetch-url" class="expert-btn expert-btn-secondary">
-                                                <i class="fas fa-globe"></i> Fetch Content
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="nlp-panel" id="models-panel">
-                                    <div class="model-config-grid">
-                                        <div class="config-item">
-                                            <label class="config-label">Base Model</label>
-                                            <select id="nlp-base-model" class="expert-select">
-                                                <option value="bert-base">BERT-Base-Uncased</option>
-                                                <option value="roberta" selected>RoBERTa-Large</option>
-                                                <option value="finbert">FinBERT (Financial)</option>
-                                                <option value="econbert">EconBERT (Economics)</option>
-                                                <option value="distilbert">DistilBERT (Fast)</option>
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="config-item">
-                                            <label class="config-label">Max Sequence Length: <span id="seq-len-val">512</span></label>
-                                            <input type="range" id="max-seq-length" class="expert-slider" min="128" max="1024" step="64" value="512">
-                                        </div>
-                                        
-                                        <div class="config-item">
-                                            <label class="config-label">Attention Heads: <span id="att-heads-val">12</span></label>
-                                            <input type="range" id="attention-heads" class="expert-slider" min="4" max="16" value="12">
-                                        </div>
-                                        
-                                        <div class="config-item">
-                                            <label class="config-label">Temperature: <span id="temp-val">0.7</span></label>
-                                            <input type="range" id="temperature" class="expert-slider" min="0.1" max="2.0" step="0.1" value="0.7">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="nlp-panel" id="export-panel">
-                                    <div class="export-options">
-                                        <h4>Export Analysis Results</h4>
-                                        <div class="export-formats">
-                                            <label class="export-checkbox">
-                                                <input type="checkbox" id="export-json" checked>
-                                                <span class="checkmark"></span>
-                                                JSON (Structured Data)
-                                            </label>
-                                            <label class="export-checkbox">
-                                                <input type="checkbox" id="export-csv">
-                                                <span class="checkmark"></span>
-                                                CSV (Sentiment Scores)
-                                            </label>
-                                            <label class="export-checkbox">
-                                                <input type="checkbox" id="export-report">
-                                                <span class="checkmark"></span>
-                                                PDF Report
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Advanced Analysis Dashboard -->
-                            <div class="nlp-expert-dashboard">
-                                <div class="dashboard-row">
-                                    <!-- Multi-dimensional Sentiment Analysis -->
-                                    <div class="sentiment-advanced">
-                                        <h4>Multi-Dimensional Sentiment</h4>
-                                        <div class="sentiment-dimensions">
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Overall Economic</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="overall-sentiment" style="width: 74%"></div>
-                                                </div>
-                                                <span class="dim-value">74% Optimistic</span>
-                                            </div>
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Market Outlook</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="market-sentiment" style="width: 82%"></div>
-                                                </div>
-                                                <span class="dim-value">82% Bullish</span>
-                                            </div>
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Policy Confidence</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="policy-sentiment" style="width: 67%"></div>
-                                                </div>
-                                                <span class="dim-value">67% Supportive</span>
-                                            </div>
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Risk Assessment</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="risk-sentiment" style="width: 43%"></div>
-                                                </div>
-                                                <span class="dim-value">43% Risk Averse</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="dashboard-row">
-                                    <!-- Entity Recognition & Classification -->
-                                    <div class="entity-recognition">
-                                        <h4>Named Entity Recognition</h4>
-                                        <div class="entity-categories">
-                                            <div class="entity-category">
-                                                <span class="category-title">Organizations</span>
-                                                <div class="entity-list" id="org-entities">
-                                                    <span class="entity-tag org">Federal Reserve</span>
-                                                    <span class="entity-tag org">World Bank</span>
-                                                </div>
-                                            </div>
-                                            <div class="entity-category">
-                                                <span class="category-title">Economic Indicators</span>
-                                                <div class="entity-list" id="indicator-entities">
-                                                    <span class="entity-tag indicator">GDP</span>
-                                                    <span class="entity-tag indicator">CPI</span>
-                                                    <span class="entity-tag indicator">Unemployment</span>
-                                                </div>
-                                            </div>
-                                            <div class="entity-category">
-                                                <span class="category-title">Geographic</span>
-                                                <div class="entity-list" id="geo-entities">
-                                                    <span class="entity-tag geo">United States</span>
-                                                    <span class="entity-tag geo">Canada</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="dashboard-row">
-                                    <!-- Topic Modeling & Classification -->
-                                    <div class="topic-modeling">
-                                        <h4>Topic Classification (LDA)</h4>
-                                        <div class="topic-distribution">
-                                            <div class="topic-item">
-                                                <span class="topic-label">Monetary Policy</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 35%"></div>
-                                                </div>
-                                                <span class="topic-weight">35.2%</span>
-                                            </div>
-                                            <div class="topic-item">
-                                                <span class="topic-label">Market Analysis</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 28%"></div>
-                                                </div>
-                                                <span class="topic-weight">27.8%</span>
-                                            </div>
-                                            <div class="topic-item">
-                                                <span class="topic-label">Economic Indicators</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 23%"></div>
-                                                </div>
-                                                <span class="topic-weight">22.6%</span>
-                                            </div>
-                                            <div class="topic-item">
-                                                <span class="topic-label">Global Trade</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 14%"></div>
-                                                </div>
-                                                <span class="topic-weight">14.4%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Expert NLP Controls -->
-                            <div class="nlp-expert-controls">
-                                <button id="deep-analyze" class="expert-btn expert-btn-primary">
-                                    <i class="fas fa-brain"></i> Deep Semantic Analysis
-                                </button>
-                                <button id="compare-documents" class="expert-btn expert-btn-secondary">
-                                    <i class="fas fa-balance-scale"></i> Document Comparison
-                                </button>
-                                <button id="generate-summary" class="expert-btn expert-btn-tertiary">
-                                    <i class="fas fa-compress"></i> AI Summary
-                                </button>
-                                <button id="export-nlp-results" class="expert-btn expert-btn-warning">
-                                    <i class="fas fa-download"></i> Export Analysis
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <div class="expert-tags">
-                            <span class="expert-tag">Transformer Models</span>
-                            <span class="expert-tag">Named Entity Recognition</span>
-                            <span class="expert-tag">Topic Modeling</span>
-                            <span class="expert-tag">Semantic Analysis</span>
-                            <span class="expert-tag">Document Intelligence</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- BLOG PAGE WITH BRIGHT TEAL BACKGROUND -->
-        <section class="page" id="blog">
-            <!-- Blog Hero Section -->
-            <div class="blog-minimal-hero">
-                <div class="container">
-                    <h1 class="blog-main-title">Blog</h1>
-                </div>
-            </div>
-            
-            <div class="container">
-                <p class="blog-subtitle">To access my latest blog publications and analyses, please visit:</p>
-
-                <div class="card" style="padding-bottom: 2.5rem;">
-                    <div class="card__body">
-                        <div style="text-align: center; margin-bottom: 1.8rem;">
-                            <a class="btn btn--outline" 
-                               href=" "
-                               target="_blank"
-                               rel="noopener"
-                               style="font-size: 1.5rem; padding: 0.75rem 2.5rem; font-weight: 600;">
-                                Fredenomics – Economic Insights for the Modern World
-                            </a>
-                        </div>
-
-                        <div class="research-grid">
-                            <div class="research-card">
-                                <h3>Deep Analysis</h3>
-                                <p>Economic trends, market dynamics, and policy implications.</p>
-                            </div>
-                            <div class="research-card">
-                                <h3>Featured Articles</h3>
-                                <p>Digital finance, market volatility, sustainability, macroeconomics, AI impacts on labor markets, and global supply chains.</p>
-                            </div>
-                            <div class="research-card">
-                                <h3>Popular Topics</h3>
-                                <p>CBDCs, inflation, AI economics, climate finance, cryptocurrency, market volatility, supply chain, and green economy.</p>
-                            </div>
-                            <div class="research-card">
-                                <h3>Main Sections</h3>
-                                <p>Economics, Analysis, Markets, Policy, Insights, and About.</p>
-                            </div>
-                            <div class="research-card">
-                                <h3>Resources</h3>
-                                <p>Newsletter, Archive, Research, and Contact information.</p>
-                            </div>
-                            <div class="research-card">
-                                <h3>Transparency</h3>
-                                <p>Authorship and methodology details, plus privacy policy.</p>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top:1.6rem;color:#646d74;font-style:italic;text-align:center;">
-                            The site serves as a modern economics and policy analysis platform, offering both current insights and in-depth articles.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Latest Tweets Section -->
-                <div class="card" style="margin-top:2rem; padding-bottom: 2.5rem;">
-                    <div class="card__body">
-                        <h2 style="text-align:center; color:var(--color-primary);margin-bottom:1em;">Latest Tweets</h2>
-                        <!-- Twitter Embedded Timeline Widget -->
-                        <a class="twitter-timeline"
-                           data-width="100%"
-                           data-height="400"
-                           href="https://twitter.com/MirindiFrederic?ref_src=twsrc%5Etfw">
-                           Tweets by MirindiFrederic
-                        </a>
-                    </div>
-                </div>
-                <!-- End Latest Tweets Section -->
-            </div>
-        </section>
-        <!-- Load Twitter Widget JS -->
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-        <!-- ABOUT PAGE WITH BRIGHT TEAL BACKGROUND -->
-        <section class="page" id="about">
-            <!-- About Hero Section -->
-            <div class="about-minimal-hero">
-                <div class="container">
-                    <h1 class="about-main-title">About</h1>
-                </div>
-            </div>
-            
-            <div class="container">
-                <p class="about-subtitle">Biography and Professional Background</p>
-                
-                <div class="about-content">
-                    <div class="about-profile">
-                        <div class="profile-image-large">
-                            <div class="circle">
-                                <img src="frederic.mirindi.jpg" alt="Frederic Mirindi" class="profile-photo">
-                            </div>
-                        </div>
-                        <div class="profile-info">
-                            <h2>Frederic Mirindi, PhD Candidate</h2>
-                            <p class="title">PhD Candidate in Economics & Econometrics</p>
-                            <p class="affiliation">
-                                Lecturer - 
-                                <a href="https://boothuc.ca/about/our-people/staff-and-faculty-directory/view-staff/122/frdric-mirindi/" target="_blank" rel="noopener">
-                                    Booth University College
-                                </a>
-                            </p>
-                            <p class="affiliation">Founder - ThinkBit Edge</p>
-                        </div>
-                    </div>
-                    
-                    <div class="about-details">
-                        <div class="bio-section">
-                            <h3>Biography</h3>
-                            <p>Frederic Mirindi is a PhD Candidate in Economics & Econometrics at the University of Manitoba. He is a leading researcher specializing in artificial intelligence applications in economic analysis. With extensive experience in machine learning models for economic forecasting and policy analysis, he has pioneered innovative approaches to understanding economic phenomena through computational methods.</p>
-                        </div>
-
-                        <div class="expertise-section">
-                            <h3>Areas of Expertise</h3>
-                            <div class="expertise-grid">
-                                <div class="expertise-item">Artificial Intelligence</div>
-                                <div class="expertise-item">Economic Modeling</div>
-                                <div class="expertise-item">Machine Learning</div>
-                                <div class="expertise-item">Policy Analysis</div>
-                                <div class="expertise-item">Econometrics</div>
-                                <div class="expertise-item">Data Science</div>
-                            </div>
-                        </div>
-
-                        <!-- Courses I Teach Section -->
-                        <div class="teaching-section">
-                            <h3>Courses I Teach at Booth University College</h3>
-                            <p class="courses-intro">As a Lecturer at Booth University College, I teach foundational courses that bridge economic theory with practical applications and research methodologies.</p>
-                            
-                            <div class="courses-grid">
-                                <div class="course-card">
-                                    <div class="course-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <h4>Introduction to Microeconomics</h4>
-                                    <div class="course-code">ECO110</div>
-                                    <p class="course-description">
-                                        Fundamental principles of microeconomic theory including supply and demand, market structures, consumer behavior, and firm decision-making. Students learn to analyze individual economic units and their interactions in various market environments.
-                                    </p>
-                                    <div class="course-topics">
-                                        <span class="topic-tag">Market Analysis</span>
-                                        <span class="topic-tag">Consumer Theory</span>
-                                        <span class="topic-tag">Price Elasticity</span>
-                                        <span class="topic-tag">Market Failures</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="course-card">
-                                    <div class="course-icon">
-                                        <i class="fas fa-calculator"></i>
-                                    </div>
-                                    <h4>Applied Mathematics</h4>
-                                    <div class="course-code">MAT150</div>
-                                    <p class="course-description">
-                                        Mathematical methods and applications in economics and business contexts. Coverage includes calculus, linear algebra, optimization techniques, and statistical foundations essential for economic modeling and analysis.
-                                    </p>
-                                    <div class="course-topics">
-                                        <span class="topic-tag">Calculus</span>
-                                        <span class="topic-tag">Optimization</span>
-                                        <span class="topic-tag">Linear Algebra</span>
-                                        <span class="topic-tag">Statistical Methods</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="course-card">
-                                    <div class="course-icon">
-                                        <i class="fas fa-search"></i>
-                                    </div>
-                                    <h4>Research Methods</h4>
-                                    <div class="course-code">BHS200</div>
-                                    <p class="course-description">
-                                        Comprehensive introduction to quantitative and qualitative research methodologies in economics and social sciences. Students learn data collection, analysis techniques, research design, and academic writing skills.
-                                    </p>
-                                    <div class="course-topics">
-                                        <span class="topic-tag">Data Collection</span>
-                                        <span class="topic-tag">Statistical Analysis</span>
-                                        <span class="topic-tag">Research Design</span>
-                                        <span class="topic-tag">Academic Writing</span>
-                                    </div>
-                                </div>
-
-                                <div class="course-card">
-                                    <div class="course-icon">
-                                        <i class="fas fa-database"></i>
-                                    </div>
-                                    <h4>Business Information Systems</h4>
-                                    <div class="course-code">BUS270</div>
-                                    <p class="course-description">
-                                        Fundamental concepts of information systems in business contexts, focusing on how technology supports organizational strategy, decision-making, and operations. Students explore system design, data management, and the role of IT in modern organizations.
-                                    </p>
-                                    <div class="course-topics">
-                                        <span class="topic-tag">Information Systems</span>
-                                        <span class="topic-tag">Data Management</span>
-                                        <span class="topic-tag">IT Strategy</span>
-                                        <span class="topic-tag">Business Processes</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="skills-section">
-                            <h3>Technical Skills</h3>
-                            <div class="skills-grid">
-                                <div class="skill-item">
-                                    <span class="skill-name">Python</span>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">R</span>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Machine Learning</span>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress" style="width: 95%"></div>
-                                    </div>
-                                </div>
-                                <div class="skill-item">
-                                    <span class="skill-name">Econometrics</span>
-                                    <div class="skill-bar">
-                                        <div class="skill-progress" style="width: 88%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT PAGE WITH BRIGHT TEAL BACKGROUND -->
-        <section class="page" id="contact">
-            <!-- Contact Hero Section -->
-            <div class="contact-minimal-hero">
-                <div class="container">
-                    <h1 class="contact-main-title">Contact</h1>
-                </div>
-            </div>
-            
-            <div class="container">
-                <p class="contact-subtitle">Get in touch for research collaboration or consultation</p>
-                
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <h3>Email</h3>
-                            <p>frederic.mirindi@umanitoba.ca</p>
-                            <p>frederic.mirindi@boothuc.ca</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Phone</h3>
-                            <p>+1 (204) 298-4337</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Office</h3>
-                            <p>290 Vaughan St, Winnipeg, MB R3B 2N8</p>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Office Hours</h3>
-                            <p>Mondays & Fridays, 8:00-10:00 AM</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-form">
-                        <h3>Send a Message</h3>
-                        <form id="contact-form">
-                            <div class="form-group">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Subject</label>
-                                <input type="text" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Message</label>
-                                <textarea class="form-control" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn--primary">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-   
 <!-- Footnotes Modal -->
-    <div class="footnote-modal" id="footnote-modal">
-        <div class="footnote-content">
-            <div class="footnote-header">
-                <h3>Citations & References</h3>
-                <button class="footnote-close">&times;</button>
-            </div>
-            <div class="footnote-body">
-                <p>Citation information and academic references will be displayed here.</p>
-            </div>
+<div class="footnote-modal" id="footnote-modal">
+    <div class="footnote-content">
+        <div class="footnote-header">
+            <h3>Citations & References</h3>
+            <button class="footnote-close">&times;</button>
+        </div>
+        <div class="footnote-body">
+            <p>Citation information and academic references will be displayed here.</p>
         </div>
     </div>
+</div>
 
- <!-- Footer -->
+<!-- Footer -->
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -1255,10 +411,10 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#papers" class="nav-link" data-page="papers">Publications</a></li>
-                    <li><a href="#conferences" class="nav-link" data-page="conferences">Conferences</a></li>
-                    <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
-                    <li><a href="#blog" class="nav-link" data-page="blog">Blog</a></li>
+                    <li><a href="research.html">Publications</a></li>
+                    <li><a href="conference.html">Conferences</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1299,16 +455,294 @@
     </div>
 </footer>
 
-    <!-- Original app.js -->
-    <script src="app.js"></script>
+<!-- Modified app.js - Remove SPA navigation for index.html -->
+<script>
+// Only load basic functionality for index.html, no SPA routing
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTheme();
+    initializeNavigation();
+    initializeInteractiveElements();
+    initializeAIBackground();
+    initializeEconomicWidgets();
+});
+
+// Basic theme toggle
+function initializeTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    let isDarkMode = localStorage.getItem('theme') === 'dark' || 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    <!-- Enhanced Publications JavaScript -->
-    <script src="assets/js/publications-enhanced.js"></script>
+    document.documentElement.setAttribute('data-color-scheme', isDarkMode ? 'dark' : 'light');
+    updateThemeIcon();
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+}
+
+function toggleTheme() {
+    const isDarkMode = document.documentElement.getAttribute('data-color-scheme') === 'dark';
+    const newTheme = isDarkMode ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-color-scheme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon();
+}
+
+function updateThemeIcon() {
+    const icon = document.querySelector('#theme-toggle .theme-icon');
+    if (icon) {
+        const isDark = document.documentElement.getAttribute('data-color-scheme') === 'dark';
+        icon.textContent = isDark ? '☀️' : '🌙';
+    }
+}
+
+// Basic mobile menu
+function initializeNavigation() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
     
-    <!-- Economics AI Chatbot JavaScript -->
-    <script src="assets/js/economics-chatbot.js"></script>
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+}
+
+// Interactive elements for the home page
+function initializeInteractiveElements() {
+    initializeConsultation();
+}
+
+function initializeConsultation() {
+    const collaborationText = document.getElementById('collaborationText');
+    const emailModal = document.getElementById('emailModal');
+    const closeModal = document.querySelector('.close-modal');
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    const emailText = document.getElementById('emailText');
     
-    <!-- Advanced Research Widgets JavaScript -->
-    <script src="assets/js/research-widgets-expert.js"></script>
+    if (collaborationText && emailModal) {
+        collaborationText.style.cursor = 'pointer';
+        collaborationText.addEventListener('click', () => {
+            emailModal.classList.remove('hidden');
+            emailModal.classList.add('show');
+        });
+    }
+    
+    if (closeModal && emailModal) {
+        closeModal.addEventListener('click', () => {
+            emailModal.classList.remove('show');
+            setTimeout(() => emailModal.classList.add('hidden'), 300);
+        });
+    }
+    
+    if (copyEmailBtn && emailText) {
+        copyEmailBtn.addEventListener('click', async () => {
+            try {
+                await navigator.clipboard.writeText(emailText.textContent);
+                const originalHTML = copyEmailBtn.innerHTML;
+                copyEmailBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyEmailBtn.style.background = '#00ff88';
+                setTimeout(() => {
+                    copyEmailBtn.innerHTML = originalHTML;
+                    copyEmailBtn.style.background = '';
+                }, 2000);
+            } catch (err) {
+                console.log('Clipboard not available');
+            }
+        });
+    }
+}
+
+// AI Background Animation
+function initializeAIBackground() {
+    const aiCanvas = document.getElementById('aiCanvas');
+    if (!aiCanvas) return;
+    
+    const ctx = aiCanvas.getContext('2d');
+    let nodes = [];
+    let animationId;
+    
+    function resizeCanvas() {
+        const rect = aiCanvas.parentElement.getBoundingClientRect();
+        aiCanvas.width = rect.width;
+        aiCanvas.height = rect.height;
+    }
+    
+    function createNodes() {
+        nodes = [];
+        const nodeCount = Math.min(Math.floor((aiCanvas.width * aiCanvas.height) / 15000), 30);
+        
+        for (let i = 0; i < nodeCount; i++) {
+            nodes.push({
+                x: Math.random() * aiCanvas.width,
+                y: Math.random() * aiCanvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                radius: Math.random() * 3 + 2,
+                opacity: Math.random() * 0.5 + 0.3
+            });
+        }
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, aiCanvas.width, aiCanvas.height);
+        
+        nodes.forEach(node => {
+            node.x += node.vx;
+            node.y += node.vy;
+            
+            if (node.x <= 0 || node.x >= aiCanvas.width) node.vx *= -1;
+            if (node.y <= 0 || node.y >= aiCanvas.height) node.vy *= -1;
+            
+            const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 2);
+            gradient.addColorStop(0, `rgba(0, 255, 136, ${node.opacity})`);
+            gradient.addColorStop(1, 'rgba(0, 255, 136, 0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        
+        animationId = requestAnimationFrame(animate);
+    }
+    
+    resizeCanvas();
+    createNodes();
+    animate();
+    
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        createNodes();
+    });
+}
+
+// Economic Widgets
+function initializeEconomicWidgets() {
+    updateWinnipegTime();
+    updateWinnipegWeather();
+    updateBitcoinPrice();
+    updateEconomicCalendar();
+    updateMarketSentiment();
+    updateCentralBankRates();
+    updateEconomicIndicators();
+    displayRandomFact();
+    
+    setInterval(updateWinnipegTime, 1000);
+    setInterval(updateWinnipegWeather, 10 * 60 * 1000);
+    setInterval(updateBitcoinPrice, 5 * 60 * 1000);
+    setInterval(updateEconomicCalendar, 60 * 60 * 1000);
+    setInterval(updateMarketSentiment, 15 * 60 * 1000);
+    setInterval(updateCentralBankRates, 30 * 60 * 1000);
+    setInterval(updateEconomicIndicators, 30 * 60 * 1000);
+    setInterval(displayRandomFact, 30 * 60 * 1000);
+}
+
+// Widget functions (simplified versions)
+function updateWinnipegTime() {
+    const watchSpan = document.getElementById('watch-time');
+    if (watchSpan) {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString("en-CA", { hour12: false, timeZone: "America/Winnipeg" });
+        watchSpan.textContent = timeString;
+    }
+}
+
+async function updateWinnipegWeather() {
+    const tempSpan = document.getElementById('weather-temp');
+    const descSpan = document.getElementById('weather-desc');
+    const iconSpan = document.getElementById('weather-icon');
+    if (!tempSpan || !descSpan || !iconSpan) return;
+
+    try {
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=49.8951&longitude=-97.1384&current_weather=true');
+        const data = await response.json();
+        const temp = Math.round(data.current_weather.temperature);
+        const code = data.current_weather.weathercode;
+
+        let description = "Clear", icon = "☀️";
+        if (code >= 51 && code < 70) { icon = "🌧️"; description = "Rain"; }
+        else if (code >= 71 && code < 80) { icon = "❄️"; description = "Snow"; }
+        else if (code === 0) { icon = "☀️"; description = "Sunny"; }
+        else if (code > 2 && code < 5) { icon = "⛅"; description = "Partly Cloudy"; }
+
+        tempSpan.textContent = temp + "°C";
+        descSpan.textContent = description;
+        iconSpan.textContent = icon;
+    } catch (error) {
+        tempSpan.textContent = "22°C";
+        descSpan.textContent = "Partly Cloudy";
+        iconSpan.textContent = "⛅";
+    }
+}
+
+async function updateBitcoinPrice() {
+    const priceElement = document.getElementById('crypto-price');
+    const changeElement = document.getElementById('crypto-change');
+    if (!priceElement || !changeElement) return;
+    
+    try {
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=cad&include_24hr_change=true');
+        const data = await response.json();
+        const btcData = data.bitcoin;
+        
+        if (btcData) {
+            const price = btcData.cad;
+            const change24h = btcData.cad_24h_change;
+            
+            priceElement.textContent = `CA$${price.toLocaleString('en-CA', { maximumFractionDigits: 0 })}`;
+            
+            const changePercent = change24h.toFixed(2);
+            const changeClass = change24h >= 0 ? 'crypto-positive' : 'crypto-negative';
+            const changeSymbol = change24h >= 0 ? '+' : '';
+            
+            changeElement.innerHTML = `<span class="${changeClass}">${changeSymbol}${changePercent}% (24h)</span>`;
+        }
+    } catch (error) {
+        priceElement.textContent = 'CA$163,000';
+        changeElement.innerHTML = '<span class="crypto-neutral">Data unavailable</span>';
+    }
+}
+
+// Simplified widget update functions
+function updateEconomicCalendar() {
+    const container = document.getElementById('economic-events');
+    if (container) {
+        // Keep existing content or update with simple data
+    }
+}
+
+function updateMarketSentiment() {
+    const sentimentValue = document.getElementById('sentiment-value');
+    if (sentimentValue) {
+        const sentiment = Math.round(Math.random() * 40 + 50);
+        sentimentValue.textContent = sentiment;
+    }
+}
+
+function updateCentralBankRates() {
+    // Keep existing rates display
+}
+
+function updateEconomicIndicators() {
+    // Keep existing indicators display
+}
+
+const econFacts = [
+    "Canada's Bank of Canada cut rates to 2.50% in September 2025.",
+    "Canadian unemployment reached 7.1% in August 2025.",
+    "Canada's inflation rate is 1.9% as of August 2025.",
+    "Economics is the study of how society manages its scarce resources.",
+    "AI in economics enables better policy simulations and forecasting."
+];
+
+function displayRandomFact() {
+    const factBox = document.getElementById('fact-box');
+    if (factBox) {
+        const index = Math.floor(Math.random() * econFacts.length);
+        factBox.textContent = econFacts[index];
+    }
+}
+</script>
 </body>
 </html>
