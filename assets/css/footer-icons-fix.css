@@ -1,0 +1,119 @@
+/* CRITICAL FIX: Footer Academic Icons Visibility in Light Theme */
+
+/* ===== FORCE ACADEMIC ICONS VISIBILITY ===== */
+
+/* Target all academic icons specifically in footer */
+.footer-section .footer-academic-icon,
+footer .footer-academic-icon,
+.footer img[src*="researchgate-icon"],
+.footer img[src*="google-scholar-icon"], 
+.footer img[src*="orcid-icon"],
+img[alt*="ResearchGate"],
+img[alt*="Google Scholar"],
+img[alt*="ORCID"] {
+    /* Force visibility and size */
+    display: inline-block !important;
+    width: 24px !important;
+    height: 24px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    
+    /* Strong border for light theme visibility */
+    border: 2px solid #333 !important;
+    border-radius: 6px !important;
+    padding: 2px !important;
+    
+    /* White background for contrast */
+    background: rgba(255, 255, 255, 0.95) !important;
+    
+    /* Strong shadow */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+    
+    /* Remove any filters */
+    filter: none !important;
+    -webkit-filter: none !important;
+    
+    /* Spacing */
+    margin: 0 4px !important;
+    vertical-align: middle !important;
+}
+
+/* Light theme specific overrides */
+body:not([data-theme="dark"]) .footer-academic-icon,
+body:not([data-theme="dark"]) img[src*="researchgate-icon"],
+body:not([data-theme="dark"]) img[src*="google-scholar-icon"],
+body:not([data-theme="dark"]) img[src*="orcid-icon"],
+body[data-theme="light"] .footer-academic-icon,
+[data-theme="light"] .footer-academic-icon,
+@media (prefers-color-scheme: light) {
+    .footer-academic-icon,
+    img[src*="researchgate-icon"],
+    img[src*="google-scholar-icon"],
+    img[src*="orcid-icon"] {
+        /* Ultra-strong visibility for light theme */
+        border: 2px solid #000 !important;
+        background: rgba(255, 255, 255, 1) !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+        outline: 1px solid #666 !important;
+    }
+}
+
+/* Hover effects for better interaction */
+.footer-academic-icon:hover,
+img[src*="researchgate-icon"]:hover,
+img[src*="google-scholar-icon"]:hover,
+img[src*="orcid-icon"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Fallback for any missed academic icons */
+footer a[href*="researchgate"] img,
+footer a[href*="scholar.google"] img,
+footer a[href*="orcid.org"] img {
+    display: inline-block !important;
+    width: 24px !important;
+    height: 24px !important;
+    opacity: 1 !important;
+    border: 2px solid #333 !important;
+    border-radius: 6px !important;
+    background: white !important;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+    margin: 0 4px !important;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .footer-academic-icon,
+body[data-theme="dark"] .footer-academic-icon,
+@media (prefers-color-scheme: dark) {
+    .footer-academic-icon,
+    img[src*="researchgate-icon"],
+    img[src*="google-scholar-icon"],
+    img[src*="orcid-icon"] {
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.2) !important;
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .footer-academic-icon,
+    img[src*="researchgate-icon"],
+    img[src*="google-scholar-icon"],
+    img[src*="orcid-icon"] {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-academic-icon,
+    img[src*="researchgate-icon"],
+    img[src*="google-scholar-icon"],
+    img[src*="orcid-icon"] {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
