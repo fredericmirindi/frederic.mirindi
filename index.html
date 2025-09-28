@@ -392,7 +392,7 @@
     </section>
   </section>
 
-    <!-- SIMPLIFIED PUBLICATIONS PAGE - MINIMAL HERO WITH IMPROVED SEARCH -->
+    <!-- SIMPLIFIED PUBLICATIONS PAGE - LIST VIEW ONLY -->
     <section class="page" id="papers">
       <!-- Minimal Hero Section - Only Title -->
       <div class="publications-minimal-hero">
@@ -430,18 +430,16 @@
               />
             </div>
           </div>
+          <!-- REMOVED Grid View button, only List View -->
           <div class="view-controls">
-            <button id="pubs-list" class="view-btn" data-view="grid">
-              <i class="fas fa-list"></i> Grid View
-            </button>
-            <button id="pubs-list" class="view-btn" data-view="list">
+            <button id="pubs-list" class="view-btn active" data-view="list">
               <i class="fas fa-list"></i> List View
             </button>
           </div>
         </div>
 
-        <!-- Publications Grid (Enhanced) -->
-        <div id="pubs-grid-wrap" class="pubs__grid" aria-live="polite" aria-busy="false"></div>
+        <!-- Publications Grid (Enhanced) - DEFAULT TO LIST VIEW -->
+        <div id="pubs-grid-wrap" class="pubs__grid is-list" aria-live="polite" aria-busy="false"></div>
 
         <!-- Toast notifications -->
         <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
