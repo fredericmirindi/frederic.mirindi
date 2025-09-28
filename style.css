@@ -1192,7 +1192,8 @@ select.form-control {
 .highlights-section h2 {
     text-align: center;
     margin-bottom: var(--space-32);
-    font-size: var(--font-size-3xl);
+    /* UPDATED: Changed from var(--font-size-3xl) to var(--font-size-2xl) to match Live Information Dashboard */
+    font-size: var(--font-size-2xl);
     /* Make Key Achievements title muted teal (same as other section titles) */
     color: var(--color-primary);
 }
@@ -2586,7 +2587,7 @@ select.form-control {
 
 .widget-responsive-section {
   --widget-gap: 32px;
-  background: var(--color-background, #fcfcf9);
+  background: var(--color-surface);
   border-radius: var(--radius-lg, 12px);
   box-shadow: 0 8px 44px rgba(33,128,141,0.07);
   margin: 0 auto;
@@ -2827,7 +2828,7 @@ select.form-control {
     margin-bottom: 8px;
     padding: 5px 0;
     border-radius: 0;
-    background: var(--color-background, #fcfcf9);
+    background: var(--color-surface);
     box-shadow: 0 2px 12px rgba(33,128,141,0.07);
     overflow: visible;
   }
@@ -2897,7 +2898,7 @@ select.form-control {
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   .widget-responsive-section {
-    background: var(--color-background, #232337);
+    background: var(--color-surface);
     box-shadow: 0 8px 44px rgba(22,24,34,0.20);
   }
   .widget-card {
