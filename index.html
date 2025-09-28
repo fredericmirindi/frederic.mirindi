@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frédéric Mirindi</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <meta name="description" content="Leading researcher specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting and policy analysis.">
+    <meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Economics AI Chatbot CSS -->
+    <link rel="stylesheet" href="assets/css/economics-chatbot.css">
+    
+    <!-- Economic Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/economic-widgets.css">
+    
+    <!-- Publications Showcase CSS -->
+    <link rel="stylesheet" href="assets/css/publications-showcase.css">
+    
+    <!-- Research Widgets CSS -->
+    <link rel="stylesheet" href="assets/css/research-widgets.css">
+    
+    <!-- Profile Links White Text CSS -->
+    <link rel="stylesheet" href="assets/css/profile-links-white.css">
+    
+    <!-- Profile Icons Fix CSS (CRITICAL - Must be last to override other styles) -->
+    <link rel="stylesheet" href="assets/css/profile-icons-fix.css">
+    
+    <!-- Icon Visibility CSS - Theme-aware icon display (MUST be after profile-icons-fix) -->
+    <link rel="stylesheet" href="assets/css/icon-visibility.css">
+    
+    <!-- CRITICAL: Footer Icons Fix - MUST BE LAST TO OVERRIDE ALL OTHER STYLES -->
+    <link rel="stylesheet" href="assets/css/footer-icons-fix.css">
+    
+    <!-- Chart.js for data visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <span class="hero-nom-clean">Frédéric Mirindi</span>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item">
+                <a href="#home" class="nav-link active" data-page="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#papers" class="nav-link" data-page="papers">Publications</a>
+            </li>
+            <li class="nav-item">
+                <a href="#conferences" class="nav-link" data-page="conferences">Conferences</a>
+            </li>
+            <li class="nav-item">
+                <a href="#research" class="nav-link" data-page="research">Research</a>
+            </li>
+            <li class="nav-item">
+                <a href="#blog" class="nav-link" data-page="blog">Blog</a>
+            </li>
+            <li class="nav-item">
+                <a href="#about" class="nav-link" data-page="about">About</a>
+            </li>
+            <li class="nav-item">
+                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+            </li>
+        </ul>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <button class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Main Content -->
+<main class="main-content">
+  <section class="page active" id="home">
+    <div class="hero-section" style="position: relative; overflow: hidden;">
+      <!-- AI/ML Background Canvas -->
+      <canvas id="aiCanvas" class="ai-background-canvas"></canvas>
+      
+      <!-- Keep existing animated shapes -->
+      <div class="hero-background"></div>
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+      <div class="floating-shape shape-4"></div>
+      <div class="floating-shape shape-5"></div>
+  
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              <span class="typing-text">Frédéric Mirindi</span>
+            </h1>
+            <p class="hero-subtitle">PhD Candidate - Economics & Econometrics</p>
+            <p class="hero-subtitle">Founder - ThinkBit Edge Corp.</p>
+            <p class="hero-description">
+            <p class="hero-description">
+            Distinguished PhD Candidate at the University of Manitoba and active researcher at Université de Saint-Boniface 
+            and Booth University College. Leading specialist in Machine Learning applications for economic analysis, 
+            with extensive expertise in deep learning models for economic forecasting and policy analysis. 
+            Former collaborator with the African Economic Research Consortium (AERC), contributing to the development of innovative economic 
+            policies tailored to African markets and contexts. Explore my comprehensive research portfolio below through ResearchGate, Google Scholar, and ORCID.
+            </p>
+ 
+            </p>
+            <div class="hero-buttons">
+              <a class="btn btn--outline research-profile-link" 
+                 href="https://www.researchgate.net/profile/Frederic-Mirindi" 
+                 target="_blank" 
+                 rel="noopener">
+                <img src="images/researchgate-icon.svg" 
+                     alt="ResearchGate icon" 
+                     style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" />
+                ResearchGate Profile
+              </a>
+              <a class="btn btn--outline research-profile-link" 
+                 href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" 
+                 target="_blank" 
+                 rel="noopener">
+                <img src="images/google-scholar-icon.svg" 
+                     alt="Google Scholar icon" 
+                     style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" />
+                Google Scholar Profile
+              </a>
+              <a class="btn btn--outline research-profile-link" 
+                 href="https://orcid.org/0009-0001-1798-9914" 
+                 target="_blank" 
+                 rel="noopener">
+                <img src="images/orcid-icon.svg" 
+                     alt="ORCID iD icon" 
+                     style="vertical-align:middle; width:16px; height:16px; margin-right:6px;" />
+                ORCID Profile
+              </a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="profile-container">
+              <div class="profile-image">
+                <div class="circle">
+                  <img src="frederic.mirindi.jpg" alt="Frederic Mirindi" class="profile-photo">
+                </div>
+              </div>
+              <!-- Collaboration Section with Reduced Size -->
+              <div class="collaboration-section">
+                <p id="collaborationText" class="collaboration-text collaboration-text-small">
+                  Open for Collaboration
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="email-modal hidden">
+      <div class="email-content">
+        <span class="close-modal">&times;</span>
+        <h3>Let's Connect!</h3>
+        <p>Reach out for collaboration opportunities:</p>
+        <div class="email-display">
+          <i class="fas fa-envelope"></i>
+          <span id="emailText">frederic.mirindi@umanitoba.ca</span>
+          <button id="copyEmailBtn" class="copy-btn">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Continue with rest of home page content... -->
+    <div class="highlights-section">
+      <div class="container">
+        <h2 class="widget-section-title">Key Achievements</h2>
+        <div class="highlights-grid">
+          <div class="highlight-card">
+            <h3>15+</h3>
+            <p>Published Papers</p>
+          </div>
+          <div class="highlight-card">
+            <h3>13+</h3>
+            <p>Conference Presentations</p>
+          </div>
+          <div class="highlight-card">
+            <h3>15+</h3>
+            <p>AI Models Developed</p>
+          </div>
+          <div class="highlight-card">
+            <h3>5+</h3>
+            <p>Years Experience</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Information Dashboard Section with Title and Scrolling Animation -->
+    <section class="widget-responsive-section">
+      <div class="container">
+        <h2 class="widget-section-title">Live Information Dashboard</h2>
+        
+        <!-- First Row - Existing Widgets -->
+        <div class="widget-cards-row">
+          <!-- Local Time Card -->
+          <div class="widget-card widget-time">
+            <div class="widget-card-icon" aria-hidden="true">🕓</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Local Time</div>
+              <div class="widget-time-main" id="watch-time">11:28</div>
+              <div class="widget-card-secondary">Winnipeg, MB</div>
+              <div class="widget-card-caption">Synchronized with Winnipeg local time.</div>
+            </div>
+          </div>
+          <!-- Weather Card -->
+          <div class="widget-card widget-weather">
+            <div class="widget-card-icon" aria-hidden="true">🌤️</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Weather</div>
+              <div class="widget-weather-main">
+                <span class="widget-weather-icon" id="weather-icon">☀️</span>
+                <span class="widget-weather-temp" id="weather-temp">25°C</span>
+              </div>
+              <div class="widget-weather-desc" id="weather-desc">Sunny</div>
+              <div class="widget-card-secondary">Winnipeg, MB</div>
+              <div class="widget-card-caption">Weather auto-updates every 10 min.</div>
+            </div>
+          </div>
+          <!-- Quote Card -->
+          <div class="widget-card widget-quote">
+            <div class="widget-card-icon" aria-hidden="true">💡</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Quote of the Day</div>
+              <div class="widget-quote-main" id="fact-box">
+                "Economics is the study of how society manages its scarce resources."
+              </div>
+              <div class="widget-card-caption">Discover fresh economic wisdom each day!</div>
+            </div>
+          </div>
+          <!-- Cryptocurrency Bitcoin Card -->
+          <div class="widget-card widget-crypto">
+            <div class="widget-card-icon" aria-hidden="true">₿</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Bitcoin Price</div>
+              <div class="widget-crypto-main">
+                <span class="widget-crypto-price" id="crypto-price">$65,420</span>
+              </div>
+              <div class="widget-crypto-change" id="crypto-change">
+                <span class="crypto-positive">+2.34% (24h)</span>
+              </div>
+              <div class="widget-card-secondary">Live Market Data</div>
+              <div class="widget-card-caption">Updated every 5 minutes from CoinGecko API.</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Second Row - NEW INNOVATIVE ECONOMIC WIDGETS -->
+        <div class="widget-cards-row" style="margin-top: 20px;">
+          <!-- Economic Calendar Widget -->
+          <div class="widget-card widget-economic-calendar">
+            <div class="widget-card-icon" aria-hidden="true">📅</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Economic Calendar</div>
+              <div class="widget-calendar-events" id="economic-events">
+                <div class="event-item high-impact">
+                  <span class="event-time">09:30</span>
+                  <span class="event-title">US CPI (YoY)</span>
+                  <span class="event-impact">🔴</span>
+                </div>
+                <div class="event-item medium-impact">
+                  <span class="event-time">11:00</span>
+                  <span class="event-title">CAD Retail Sales</span>
+                  <span class="event-impact">🟡</span>
+                </div>
+                <div class="event-item low-impact">
+                  <span class="event-time">14:15</span>
+                  <span class="event-title">USD Fed Speech</span>
+                  <span class="event-impact">🟢</span>
+                </div>
+              </div>
+              <div class="widget-card-secondary">Today's Key Events</div>
+              <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
+            </div>
+          </div>
+          
+          <!-- Global Market Sentiment Tracker -->
+          <div class="widget-card widget-market-sentiment">
+            <div class="widget-card-icon" aria-hidden="true">📈</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Market Sentiment</div>
+              <div class="sentiment-gauge" id="sentiment-gauge">
+                <div class="gauge-container">
+                  <div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);"></div>
+                  <div class="gauge-center">
+                    <span class="sentiment-value" id="sentiment-value">72</span>
+                    <span class="sentiment-label">Bullish</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sentiment-indicators">
+                <div class="indicator">
+                  <span class="indicator-label">Fear & Greed:</span>
+                  <span class="indicator-value bullish" id="fear-greed">72</span>
+                </div>
+                <div class="indicator">
+                  <span class="indicator-label">VIX:</span>
+                  <span class="indicator-value neutral" id="vix-value">18.5</span>
+                </div>
+              </div>
+              <div class="widget-card-secondary">Global Markets</div>
+              <div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div>
+            </div>
+          </div>
+          
+          <!-- Interest Rates Monitor -->
+          <div class="widget-card widget-interest-rates">
+            <div class="widget-card-icon" aria-hidden="true">🏦</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Central Bank Rates</div>
+              <div class="rates-list" id="interest-rates">
+                <div class="rate-item">
+                  <span class="country-flag">🇺🇸</span>
+                  <span class="rate-info">
+                    <span class="rate-country">Fed Fund Rate</span>
+                    <span class="rate-value">5.25%</span>
+                  </span>
+                  <span class="rate-change unchanged">-</span>
+                </div>
+                <div class="rate-item">
+                  <span class="country-flag">🇨🇦</span>
+                  <span class="rate-info">
+                    <span class="rate-country">BoC Rate</span>
+                    <span class="rate-value">4.75%</span>
+                  </span>
+                  <span class="rate-change down">▼</span>
+                </div>
+                <div class="rate-item">
+                  <span class="country-flag">🇪🇺</span>
+                  <span class="rate-info">
+                    <span class="rate-country">ECB Rate</span>
+                    <span class="rate-value">4.25%</span>
+                  </span>
+                  <span class="rate-change unchanged">-</span>
+                </div>
+              </div>
+              <div class="widget-card-secondary">Key Central Banks</div>
+              <div class="widget-card-caption">Monitor global monetary policy changes.</div>
+            </div>
+          </div>
+          
+          <!-- Economic Indicators Tracker -->
+          <div class="widget-card widget-economic-indicators">
+            <div class="widget-card-icon" aria-hidden="true">📊</div>
+            <div class="widget-card-content">
+              <div class="widget-card-title">Key Indicators</div>
+              <div class="indicators-grid" id="economic-indicators">
+                <div class="indicator-item">
+                  <span class="indicator-name">GDP Growth</span>
+                  <span class="indicator-value positive">+2.1%</span>
+                </div>
+                <div class="indicator-item">
+                  <span class="indicator-name">Inflation Rate</span>
+                  <span class="indicator-value neutral">3.2%</span>
+                </div>
+                <div class="indicator-item">
+                  <span class="indicator-name">Unemployment</span>
+                  <span class="indicator-value positive">3.7%</span>
+                </div>
+                <div class="indicator-item">
+                  <span class="indicator-name">Job Growth</span>
+                  <span class="indicator-value positive">+187K</span>
+                </div>
+              </div>
+              <div class="widget-card-secondary">US Economy</div>
+              <div class="widget-card-caption">Real-time economic health monitoring.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+    <!-- SIMPLIFIED PUBLICATIONS PAGE - MINIMAL HERO WITH IMPROVED SEARCH -->
+    <section class="page" id="papers">
+      <!-- Minimal Hero Section - Only Title -->
+      <div class="publications-minimal-hero">
+        <div class="container">
+          <h1 class="publications-main-title">Research Publications</h1>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- IMPROVED Search and Filtering Interface -->
+        <div class="publications-search-interface">
+          <div class="search-filters-row">
+            <select id="pubs-year" class="modern-select">
+              <option value="all">All Years</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+              <option value="2022">2022</option>
+            </select>
+            <select id="pubs-type" class="modern-select">
+              <option value="all">All Types</option>
+              <option value="journal">Journal Article</option>
+              <option value="conference">Conference Paper</option>
+              <option value="book">Book Chapter</option>
+              <option value="review">Review Article</option>
+            </select>
+            <div class="search-input-container">
+              <i class="fas fa-search search-icon"></i>
+              <input 
+                id="pubs-search" 
+                class="modern-search-input" 
+                type="search"
+                placeholder="Search publications by title, author, or keyword..." 
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="view-controls">
+            <button id="pubs-grid" class="view-btn active" data-view="grid">
+              <i class="fas fa-th"></i> Grid View
+            </button>
+            <button id="pubs-list" class="view-btn" data-view="list">
+              <i class="fas fa-list"></i> List View
+            </button>
+          </div>
+        </div>
+
+        <!-- Publications Grid (Enhanced) -->
+        <div id="pubs-grid-wrap" class="pubs__grid" aria-live="polite" aria-busy="false"></div>
+
+        <!-- Toast notifications -->
+        <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </section>
+
+        <!-- CONFERENCES PAGE WITH BRIGHT TEAL BACKGROUND -->
+        <section class="page" id="conferences">
+            <!-- Conferences Hero Section - SAME AS PUBLICATIONS -->
+            <div class="conferences-minimal-hero">
+                <div class="container">
+                    <h1 class="conferences-main-title">Conferences & Events</h1>
+                </div>
+            </div>
+            
+            <div class="container">
+                <p class="conferences-subtitle">Speaking engagements and conference presentations</p>
+                
+                <div class="conferences-timeline">
+                    <div class="conference-card">
+                        <div class="conference-date">
+                            <span class="month">Jul</span>
+                            <span class="day">3</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="conference-content">
+                            <h3>MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economy</h3>
+                            <p class="conference-location">Athens, Greece</p>
+                            <p class="conference-role">Speaker</p>
+                            <p class="conference-topic">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</p>
+                            <a href="https://www.marble-conference.org/programme-2025" class="btn btn--primary conference-link" target="_blank">Event Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="conference-card">
+                        <div class="conference-date">
+                            <span class="month">May</span>
+                            <span class="day">31</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="conference-content">
+                            <h3>59th Annual Meetings of the Canadian Economics Association</h3>
+                            <p class="conference-location">Université du Québec à Montréal</p>
+                            <p class="conference-role">Speaker</p>
+                            <p class="conference-topic">Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms</p>
+                            <a href="https://www.economics.ca/event-6029611" class="btn btn--primary conference-link" target="_blank">Event Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="conference-card">
+                        <div class="conference-date">
+                            <span class="month">Jan</span>
+                            <span class="day">22</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="conference-content">
+                            <h3>Graduate Seminar Series, Centre for the Study of Women and Gender</h3>
+                            <p class="conference-location">University of Warwick</p>
+                            <p class="conference-role">Presenter</p>
+                            <p class="conference-topic">Digital Feminism: Intersectionality and Activism in the Age of Social Media</p>
+                            <a href="https://warwick.ac.uk/fac/soc/sociology/research/gender/calendar/graduateseminars202425/session3/" class="btn btn--primary conference-link" target="_blank">View Slides</a>
+                        </div>
+                    </div>
+                    
+                    <div class="conference-card">
+                        <div class="conference-date">
+                            <span class="month">Nov</span>
+                            <span class="day">27</span>
+                            <span class="year">24</span>
+                        </div>
+                        <div class="conference-content">
+                            <h3>Graduate Seminars in Economic and Social History</h3>
+                            <p class="conference-location">University of Oxford</p>
+                            <p class="conference-role">Presenter</p>
+                            <p class="conference-topic">From Rubber to Cobalt: Evolving Patterns of Resource Exploitation and Social Impact in the Democratic Republic of Congo</p>
+                            <a href="https://talks.ox.ac.uk/talks/persons/id/dcd41ec3-2797-42ad-bbef-5ab6ad55770d?format=txt" class="btn btn--primary conference-link" target="_blank">Workshop Materials</a>
+                        </div>
+                    </div>
+
+                        <div class="conference-card">
+                        <div class="conference-date">
+                            <span class="month">Nov</span>
+                            <span class="day">05</span>
+                            <span class="year">2023</span>
+                        </div>
+                        <div class="conference-content">
+                            <h3>TheoriseHAI Workshop, 12th International Conference on Human-Agent Interaction (HAI)</h3>
+                            <p class="conference-location">Swansea, UK</p>
+                            <p class="conference-role">Presenter</p>
+                            <p class="conference-topic">A Review of Hybrid Machine Learning Approaches for Enhancing Human-Agent Interaction</p>
+                            <a href="https://sites.google.com/view/theorisehai/contributions" class="btn btn--primary conference-link" target="_blank">Workshop Materials</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH PAGE - EXPERT-LEVEL INTERACTIVE WIDGETS -->
+        <section class="page" id="research">
+            <!-- Research Hero Section -->
+            <div class="research-minimal-hero">
+                <div class="container">
+                    <h1 class="research-main-title">Research Areas</h1>
+                </div>
+            </div>
+            
+            <div class="container">
+                <p class="research-subtitle">Advanced AI-Economics Research Platform - Interactive Expert Tools</p>
+                
+                <!-- EXPERT-LEVEL 3 RESEARCH WIDGETS -->
+                <div class="research-widgets-grid">
+                    <!-- 1. ADVANCED AI ECONOMIC FORECASTING SYSTEM -->
+                    <div class="research-widget expert-widget">
+                        <div class="widget-header">
+                            <div class="widget-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>AI-Powered Economic Forecasting System</h3>
+                            <p class="widget-description">Advanced ensemble machine learning models with real-time parameter tuning</p>
+                        </div>
+                        
+                        <div class="widget-content">
+                            <!-- Expert Model Configuration Panel -->
+                            <div class="expert-controls-panel">
+                                <div class="control-group">
+                                    <label class="expert-label">Model Architecture</label>
+                                    <select id="model-architecture" class="expert-select">
+                                        <option value="lstm">LSTM Neural Network</option>
+                                        <option value="transformer" selected>Transformer + Attention</option>
+                                        <option value="ensemble">Ensemble (Random Forest + LSTM)</option>
+                                        <option value="gru">GRU with Regularization</option>
+                                        <option value="hybrid">Hybrid CNN-LSTM</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="expert-label">Learning Rate: <span id="lr-value">0.001</span></label>
+                                    <input type="range" id="learning-rate" class="expert-slider" min="0.0001" max="0.1" step="0.0001" value="0.001">
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="expert-label">Sequence Length: <span id="seq-value">30</span></label>
+                                    <input type="range" id="sequence-length" class="expert-slider" min="10" max="100" value="30">
+                                </div>
+                                
+                                <div class="control-group">
+                                    <label class="expert-label">Regularization (λ): <span id="reg-value">0.01</span></label>
+                                    <input type="range" id="regularization" class="expert-slider" min="0" max="0.1" step="0.001" value="0.01">
+                                </div>
+                            </div>
+                            
+                            <!-- Advanced Forecast Dashboard -->
+                            <div class="advanced-forecast-dashboard">
+                                <div class="forecast-metrics-grid">
+                                    <div class="advanced-metric">
+                                        <div class="metric-header">
+                                            <i class="fas fa-chart-line"></i>
+                                            <span class="metric-title">GDP Forecast</span>
+                                        </div>
+                                        <div class="metric-value-large" id="advanced-gdp">+2.847%</div>
+                                        <div class="metric-details">
+                                            <span class="confidence-band">CI: [2.523%, 3.171%]</span>
+                                            <span class="p-value">p-value: 0.0023</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="advanced-metric">
+                                        <div class="metric-header">
+                                            <i class="fas fa-fire"></i>
+                                            <span class="metric-title">Inflation Rate</span>
+                                        </div>
+                                        <div class="metric-value-large" id="advanced-inflation">3.142%</div>
+                                        <div class="metric-details">
+                                            <span class="confidence-band">CI: [2.891%, 3.393%]</span>
+                                            <span class="p-value">p-value: 0.0011</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="advanced-metric">
+                                        <div class="metric-header">
+                                            <i class="fas fa-bullseye"></i>
+                                            <span class="metric-title">Model Performance</span>
+                                        </div>
+                                        <div class="performance-metrics">
+                                            <div class="perf-item">
+                                                <span class="perf-label">RMSE:</span>
+                                                <span class="perf-value" id="rmse-value">0.0847</span>
+                                            </div>
+                                            <div class="perf-item">
+                                                <span class="perf-label">MAE:</span>
+                                                <span class="perf-value" id="mae-value">0.0623</span>
+                                            </div>
+                                            <div class="perf-item">
+                                                <span class="perf-label">R²:</span>
+                                                <span class="perf-value" id="r2-value">0.9471</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Interactive Multi-Chart System -->
+                            <div class="chart-system">
+                                <div class="chart-tabs">
+                                    <button class="chart-tab active" data-chart="forecast">Forecast</button>
+                                    <button class="chart-tab" data-chart="residuals">Residuals</button>
+                                    <button class="chart-tab" data-chart="features">Feature Importance</button>
+                                    <button class="chart-tab" data-chart="correlation">Correlation Matrix</button>
+                                </div>
+                                <div class="chart-container-advanced">
+                                    <canvas id="advanced-forecast-chart" width="500" height="300"></canvas>
+                                </div>
+                            </div>
+                            
+                            <!-- Expert Controls -->
+                            <div class="expert-actions">
+                                <div class="action-group">
+                                    <button id="train-model" class="expert-btn expert-btn-primary">
+                                        <i class="fas fa-cogs"></i> Train Model
+                                    </button>
+                                    <button id="validate-model" class="expert-btn expert-btn-secondary">
+                                        <i class="fas fa-check-double"></i> Cross-Validate
+                                    </button>
+                                    <button id="export-results" class="expert-btn expert-btn-tertiary">
+                                        <i class="fas fa-download"></i> Export Results
+                                    </button>
+                                </div>
+                                <div class="action-group">
+                                    <button id="hyperparameter-tune" class="expert-btn expert-btn-warning">
+                                        <i class="fas fa-sliders-h"></i> Auto-Tune Hyperparameters
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="expert-tags">
+                            <span class="expert-tag">Deep Learning</span>
+                            <span class="expert-tag">Time Series</span>
+                            <span class="expert-tag">Hyperparameter Tuning</span>
+                            <span class="expert-tag">Cross-Validation</span>
+                            <span class="expert-tag">Feature Engineering</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 3. ADVANCED NLP ECONOMIC INTELLIGENCE SYSTEM -->
+                    <div class="research-widget expert-widget">
+                        <div class="widget-header">
+                            <div class="widget-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <h3>Economic Intelligence NLP System</h3>
+                            <p class="widget-description">Advanced transformer-based economic text analysis with multi-dimensional sentiment scoring</p>
+                        </div>
+                        
+                        <div class="widget-content">
+                            <!-- Expert NLP Configuration -->
+                            <div class="nlp-expert-config">
+                                <div class="nlp-tabs">
+                                    <button class="nlp-tab active" data-nlp="analysis">Text Analysis</button>
+                                    <button class="nlp-tab" data-nlp="models">Model Config</button>
+                                    <button class="nlp-tab" data-nlp="export">Export Results</button>
+                                </div>
+                                
+                                <div class="nlp-panel active" id="analysis-panel">
+                                    <!-- Advanced Text Input with File Upload -->
+                                    <div class="text-input-advanced">
+                                        <div class="input-options">
+                                            <button class="input-option active" data-input="text">Text Input</button>
+                                            <button class="input-option" data-input="file">Upload Document</button>
+                                            <button class="input-option" data-input="url">Analyze URL</button>
+                                        </div>
+                                        
+                                        <div class="input-area" id="text-input-area">
+                                            <textarea 
+                                                id="expert-text-input" 
+                                                class="expert-textarea" 
+                                                placeholder="Paste Fed minutes, ECB reports, economic research papers, or financial news for advanced AI analysis..."
+                                                rows="6"
+                                            ></textarea>
+                                            <div class="text-stats">
+                                                <span id="word-count">Words: 0</span>
+                                                <span id="char-count">Characters: 0</span>
+                                                <span id="econ-terms">Economic Terms: 0</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="input-area hidden" id="file-input-area">
+                                            <div class="file-drop-zone">
+                                                <i class="fas fa-cloud-upload-alt"></i>
+                                                <p>Drop PDF, DOCX, or TXT files here</p>
+                                                <input type="file" id="file-upload" accept=".pdf,.docx,.txt,.rtf" multiple>
+                                                <button class="upload-btn">Browse Files</button>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="input-area hidden" id="url-input-area">
+                                            <input type="url" id="url-input" class="expert-url-input" placeholder="https://www.federalreserve.gov/newsevents/...">
+                                            <button id="fetch-url" class="expert-btn expert-btn-secondary">
+                                                <i class="fas fa-globe"></i> Fetch Content
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="nlp-panel" id="models-panel">
+                                    <div class="model-config-grid">
+                                        <div class="config-item">
+                                            <label class="config-label">Base Model</label>
+                                            <select id="nlp-base-model" class="expert-select">
+                                                <option value="bert-base">BERT-Base-Uncased</option>
+                                                <option value="roberta" selected>RoBERTa-Large</option>
+                                                <option value="finbert">FinBERT (Financial)</option>
+                                                <option value="econbert">EconBERT (Economics)</option>
+                                                <option value="distilbert">DistilBERT (Fast)</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="config-item">
+                                            <label class="config-label">Max Sequence Length: <span id="seq-len-val">512</span></label>
+                                            <input type="range" id="max-seq-length" class="expert-slider" min="128" max="1024" step="64" value="512">
+                                        </div>
+                                        
+                                        <div class="config-item">
+                                            <label class="config-label">Attention Heads: <span id="att-heads-val">12</span></label>
+                                            <input type="range" id="attention-heads" class="expert-slider" min="4" max="16" value="12">
+                                        </div>
+                                        
+                                        <div class="config-item">
+                                            <label class="config-label">Temperature: <span id="temp-val">0.7</span></label>
+                                            <input type="range" id="temperature" class="expert-slider" min="0.1" max="2.0" step="0.1" value="0.7">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="nlp-panel" id="export-panel">
+                                    <div class="export-options">
+                                        <h4>Export Analysis Results</h4>
+                                        <div class="export-formats">
+                                            <label class="export-checkbox">
+                                                <input type="checkbox" id="export-json" checked>
+                                                <span class="checkmark"></span>
+                                                JSON (Structured Data)
+                                            </label>
+                                            <label class="export-checkbox">
+                                                <input type="checkbox" id="export-csv">
+                                                <span class="checkmark"></span>
+                                                CSV (Sentiment Scores)
+                                            </label>
+                                            <label class="export-checkbox">
+                                                <input type="checkbox" id="export-report">
+                                                <span class="checkmark"></span>
+                                                PDF Report
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Advanced Analysis Dashboard -->
+                            <div class="nlp-expert-dashboard">
+                                <div class="dashboard-row">
+                                    <!-- Multi-dimensional Sentiment Analysis -->
+                                    <div class="sentiment-advanced">
+                                        <h4>Multi-Dimensional Sentiment</h4>
+                                        <div class="sentiment-dimensions">
+                                            <div class="sentiment-dim">
+                                                <span class="dim-label">Overall Economic</span>
+                                                <div class="sentiment-meter-adv">
+                                                    <div class="meter-fill" id="overall-sentiment" style="width: 74%"></div>
+                                                </div>
+                                                <span class="dim-value">74% Optimistic</span>
+                                            </div>
+                                            <div class="sentiment-dim">
+                                                <span class="dim-label">Market Outlook</span>
+                                                <div class="sentiment-meter-adv">
+                                                    <div class="meter-fill" id="market-sentiment" style="width: 82%"></div>
+                                                </div>
+                                                <span class="dim-value">82% Bullish</span>
+                                            </div>
+                                            <div class="sentiment-dim">
+                                                <span class="dim-label">Policy Confidence</span>
+                                                <div class="sentiment-meter-adv">
+                                                    <div class="meter-fill" id="policy-sentiment" style="width: 67%"></div>
+                                                </div>
+                                                <span class="dim-value">67% Supportive</span>
+                                            </div>
+                                            <div class="sentiment-dim">
+                                                <span class="dim-label">Risk Assessment</span>
+                                                <div class="sentiment-meter-adv">
+                                                    <div class="meter-fill" id="risk-sentiment" style="width: 43%"></div>
+                                                </div>
+                                                <span class="dim-value">43% Risk Averse</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="dashboard-row">
+                                    <!-- Entity Recognition & Classification -->
+                                    <div class="entity-recognition">
+                                        <h4>Named Entity Recognition</h4>
+                                        <div class="entity-categories">
+                                            <div class="entity-category">
+                                                <span class="category-title">Organizations</span>
+                                                <div class="entity-list" id="org-entities">
+                                                    <span class="entity-tag org">Federal Reserve</span>
+                                                    <span class="entity-tag org">World Bank</span>
+                                                </div>
+                                            </div>
+                                            <div class="entity-category">
+                                                <span class="category-title">Economic Indicators</span>
+                                                <div class="entity-list" id="indicator-entities">
+                                                    <span class="entity-tag indicator">GDP</span>
+                                                    <span class="entity-tag indicator">CPI</span>
+                                                    <span class="entity-tag indicator">Unemployment</span>
+                                                </div>
+                                            </div>
+                                            <div class="entity-category">
+                                                <span class="category-title">Geographic</span>
+                                                <div class="entity-list" id="geo-entities">
+                                                    <span class="entity-tag geo">United States</span>
+                                                    <span class="entity-tag geo">Canada</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="dashboard-row">
+                                    <!-- Topic Modeling & Classification -->
+                                    <div class="topic-modeling">
+                                        <h4>Topic Classification (LDA)</h4>
+                                        <div class="topic-distribution">
+                                            <div class="topic-item">
+                                                <span class="topic-label">Monetary Policy</span>
+                                                <div class="topic-bar">
+                                                    <div class="topic-fill" style="width: 35%"></div>
+                                                </div>
+                                                <span class="topic-weight">35.2%</span>
+                                            </div>
+                                            <div class="topic-item">
+                                                <span class="topic-label">Market Analysis</span>
+                                                <div class="topic-bar">
+                                                    <div class="topic-fill" style="width: 28%"></div>
+                                                </div>
+                                                <span class="topic-weight">27.8%</span>
+                                            </div>
+                                            <div class="topic-item">
+                                                <span class="topic-label">Economic Indicators</span>
+                                                <div class="topic-bar">
+                                                    <div class="topic-fill" style="width: 23%"></div>
+                                                </div>
+                                                <span class="topic-weight">22.6%</span>
+                                            </div>
+                                            <div class="topic-item">
+                                                <span class="topic-label">Global Trade</span>
+                                                <div class="topic-bar">
+                                                    <div class="topic-fill" style="width: 14%"></div>
+                                                </div>
+                                                <span class="topic-weight">14.4%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Expert NLP Controls -->
+                            <div class="nlp-expert-controls">
+                                <button id="deep-analyze" class="expert-btn expert-btn-primary">
+                                    <i class="fas fa-brain"></i> Deep Semantic Analysis
+                                </button>
+                                <button id="compare-documents" class="expert-btn expert-btn-secondary">
+                                    <i class="fas fa-balance-scale"></i> Document Comparison
+                                </button>
+                                <button id="generate-summary" class="expert-btn expert-btn-tertiary">
+                                    <i class="fas fa-compress"></i> AI Summary
+                                </button>
+                                <button id="export-nlp-results" class="expert-btn expert-btn-warning">
+                                    <i class="fas fa-download"></i> Export Analysis
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="expert-tags">
+                            <span class="expert-tag">Transformer Models</span>
+                            <span class="expert-tag">Named Entity Recognition</span>
+                            <span class="expert-tag">Topic Modeling</span>
+                            <span class="expert-tag">Semantic Analysis</span>
+                            <span class="expert-tag">Document Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG PAGE WITH BRIGHT TEAL BACKGROUND -->
+        <section class="page" id="blog">
+            <!-- Blog Hero Section -->
+            <div class="blog-minimal-hero">
+                <div class="container">
+                    <h1 class="blog-main-title">Blog</h1>
+                </div>
+            </div>
+            
+            <div class="container">
+                <p class="blog-subtitle">To access my latest blog publications and analyses, please visit:</p>
+
+                <div class="card" style="padding-bottom: 2.5rem;">
+                    <div class="card__body">
+                        <div style="text-align: center; margin-bottom: 1.8rem;">
+                            <a class="btn btn--outline" 
+                               href=" "
+                               target="_blank"
+                               rel="noopener"
+                               style="font-size: 1.5rem; padding: 0.75rem 2.5rem; font-weight: 600;">
+                                Fredenomics – Economic Insights for the Modern World
+                            </a>
+                        </div>
+
+                        <div class="research-grid">
+                            <div class="research-card">
+                                <h3>Deep Analysis</h3>
+                                <p>Economic trends, market dynamics, and policy implications.</p>
+                            </div>
+                            <div class="research-card">
+                                <h3>Featured Articles</h3>
+                                <p>Digital finance, market volatility, sustainability, macroeconomics, AI impacts on labor markets, and global supply chains.</p>
+                            </div>
+                            <div class="research-card">
+                                <h3>Popular Topics</h3>
+                                <p>CBDCs, inflation, AI economics, climate finance, cryptocurrency, market volatility, supply chain, and green economy.</p>
+                            </div>
+                            <div class="research-card">
+                                <h3>Main Sections</h3>
+                                <p>Economics, Analysis, Markets, Policy, Insights, and About.</p>
+                            </div>
+                            <div class="research-card">
+                                <h3>Resources</h3>
+                                <p>Newsletter, Archive, Research, and Contact information.</p>
+                            </div>
+                            <div class="research-card">
+                                <h3>Transparency</h3>
+                                <p>Authorship and methodology details, plus privacy policy.</p>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top:1.6rem;color:#646d74;font-style:italic;text-align:center;">
+                            The site serves as a modern economics and policy analysis platform, offering both current insights and in-depth articles.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Latest Tweets Section -->
+                <div class="card" style="margin-top:2rem; padding-bottom: 2.5rem;">
+                    <div class="card__body">
+                        <h2 style="text-align:center; color:var(--color-primary);margin-bottom:1em;">Latest Tweets</h2>
+                        <!-- Twitter Embedded Timeline Widget -->
+                        <a class="twitter-timeline"
+                           data-width="100%"
+                           data-height="400"
+                           href="https://twitter.com/MirindiFrederic?ref_src=twsrc%5Etfw">
+                           Tweets by MirindiFrederic
+                        </a>
+                    </div>
+                </div>
+                <!-- End Latest Tweets Section -->
+            </div>
+        </section>
+        <!-- Load Twitter Widget JS -->
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+        <!-- ABOUT PAGE WITH BRIGHT TEAL BACKGROUND -->
+        <section class="page" id="about">
+            <!-- About Hero Section -->
+            <div class="about-minimal-hero">
+                <div class="container">
+                    <h1 class="about-main-title">About</h1>
+                </div>
+            </div>
+            
+            <div class="container">
+                <p class="about-subtitle">Biography and Professional Background</p>
+                
+                <div class="about-content">
+                    <div class="about-profile">
+                        <div class="profile-image-large">
+                            <div class="circle">
+                                <img src="frederic.mirindi.jpg" alt="Frederic Mirindi" class="profile-photo">
+                            </div>
+                        </div>
+                        <div class="profile-info">
+                            <h2>Frederic Mirindi, PhD Candidate</h2>
+                            <p class="title">PhD Candidate in Economics & Econometrics</p>
+                            <p class="affiliation">
+                                Lecturer - 
+                                <a href="https://boothuc.ca/about/our-people/staff-and-faculty-directory/view-staff/122/frdric-mirindi/" target="_blank" rel="noopener">
+                                    Booth University College
+                                </a>
+                            </p>
+                            <p class="affiliation">Founder - ThinkBit Edge</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-details">
+                        <div class="bio-section">
+                            <h3>Biography</h3>
+                            <p>Frederic Mirindi is a PhD Candidate in Economics & Econometrics at the University of Manitoba. He is a leading researcher specializing in artificial intelligence applications in economic analysis. With extensive experience in machine learning models for economic forecasting and policy analysis, he has pioneered innovative approaches to understanding economic phenomena through computational methods.</p>
+                        </div>
+
+                        <div class="expertise-section">
+                            <h3>Areas of Expertise</h3>
+                            <div class="expertise-grid">
+                                <div class="expertise-item">Artificial Intelligence</div>
+                                <div class="expertise-item">Economic Modeling</div>
+                                <div class="expertise-item">Machine Learning</div>
+                                <div class="expertise-item">Policy Analysis</div>
+                                <div class="expertise-item">Econometrics</div>
+                                <div class="expertise-item">Data Science</div>
+                            </div>
+                        </div>
+
+                        <!-- Courses I Teach Section -->
+                        <div class="teaching-section">
+                            <h3>Courses I Teach at Booth University College</h3>
+                            <p class="courses-intro">As a Lecturer at Booth University College, I teach foundational courses that bridge economic theory with practical applications and research methodologies.</p>
+                            
+                            <div class="courses-grid">
+                                <div class="course-card">
+                                    <div class="course-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h4>Introduction to Microeconomics</h4>
+                                    <div class="course-code">ECO110</div>
+                                    <p class="course-description">
+                                        Fundamental principles of microeconomic theory including supply and demand, market structures, consumer behavior, and firm decision-making. Students learn to analyze individual economic units and their interactions in various market environments.
+                                    </p>
+                                    <div class="course-topics">
+                                        <span class="topic-tag">Market Analysis</span>
+                                        <span class="topic-tag">Consumer Theory</span>
+                                        <span class="topic-tag">Price Elasticity</span>
+                                        <span class="topic-tag">Market Failures</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="course-card">
+                                    <div class="course-icon">
+                                        <i class="fas fa-calculator"></i>
+                                    </div>
+                                    <h4>Applied Mathematics</h4>
+                                    <div class="course-code">MAT150</div>
+                                    <p class="course-description">
+                                        Mathematical methods and applications in economics and business contexts. Coverage includes calculus, linear algebra, optimization techniques, and statistical foundations essential for economic modeling and analysis.
+                                    </p>
+                                    <div class="course-topics">
+                                        <span class="topic-tag">Calculus</span>
+                                        <span class="topic-tag">Optimization</span>
+                                        <span class="topic-tag">Linear Algebra</span>
+                                        <span class="topic-tag">Statistical Methods</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="course-card">
+                                    <div class="course-icon">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <h4>Research Methods</h4>
+                                    <div class="course-code">BHS200</div>
+                                    <p class="course-description">
+                                        Comprehensive introduction to quantitative and qualitative research methodologies in economics and social sciences. Students learn data collection, analysis techniques, research design, and academic writing skills.
+                                    </p>
+                                    <div class="course-topics">
+                                        <span class="topic-tag">Data Collection</span>
+                                        <span class="topic-tag">Statistical Analysis</span>
+                                        <span class="topic-tag">Research Design</span>
+                                        <span class="topic-tag">Academic Writing</span>
+                                    </div>
+                                </div>
+
+                                <div class="course-card">
+                                    <div class="course-icon">
+                                        <i class="fas fa-database"></i>
+                                    </div>
+                                    <h4>Business Information Systems</h4>
+                                    <div class="course-code">BUS270</div>
+                                    <p class="course-description">
+                                        Fundamental concepts of information systems in business contexts, focusing on how technology supports organizational strategy, decision-making, and operations. Students explore system design, data management, and the role of IT in modern organizations.
+                                    </p>
+                                    <div class="course-topics">
+                                        <span class="topic-tag">Information Systems</span>
+                                        <span class="topic-tag">Data Management</span>
+                                        <span class="topic-tag">IT Strategy</span>
+                                        <span class="topic-tag">Business Processes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skills-section">
+                            <h3>Technical Skills</h3>
+                            <div class="skills-grid">
+                                <div class="skill-item">
+                                    <span class="skill-name">Python</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">R</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Machine Learning</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Econometrics</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE WITH BRIGHT TEAL BACKGROUND -->
+        <section class="page" id="contact">
+            <!-- Contact Hero Section -->
+            <div class="contact-minimal-hero">
+                <div class="container">
+                    <h1 class="contact-main-title">Contact</h1>
+                </div>
+            </div>
+            
+            <div class="container">
+                <p class="contact-subtitle">Get in touch for research collaboration or consultation</p>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h3>Email</h3>
+                            <p>frederic.mirindi@umanitoba.ca</p>
+                            <p>frederic.mirindi@boothuc.ca</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Phone</h3>
+                            <p>+1 (204) 298-4337</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Office</h3>
+                            <p>290 Vaughan St, Winnipeg, MB R3B 2N8</p>
+                        </div>
+                        <div class="contact-item">
+                            <h3>Office Hours</h3>
+                            <p>Mondays & Fridays, 8:00-10:00 AM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send a Message</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-control" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn--primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+   
+<!-- Footnotes Modal -->
+    <div class="footnote-modal" id="footnote-modal">
+        <div class="footnote-content">
+            <div class="footnote-header">
+                <h3>Citations & References</h3>
+                <button class="footnote-close">&times;</button>
+            </div>
+            <div class="footnote-body">
+                <p>Citation information and academic references will be displayed here.</p>
+            </div>
+        </div>
+    </div>
+
+ <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Frédéric Mirindi</h4>
+                <p>PhD Candidate - Economics &amp; Econometrics</p>
+                <p>Founder - ThinkBit Edge Corp.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#papers" class="nav-link" data-page="papers">Publications</a></li>
+                    <li><a href="#conferences" class="nav-link" data-page="conferences">Conferences</a></li>
+                    <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
+                    <li><a href="#blog" class="nav-link" data-page="blog">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>frederic.mirindi@umanitoba.ca</p>
+                <p>+1 (204) 298-4337</p>
+                <div style="margin-top:10px; display:flex; gap:15px; align-items:center;">
+                    <!-- LinkedIn Icon - Using Local Image File -->
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener" title="LinkedIn" style="display:inline-flex;align-items:center;">
+                        <img src="images/linkedin-icon.svg" alt="LinkedIn" style="width:24px;height:24px;" class="footer-social-icon">
+                    </a>
+
+                    <!-- X (Twitter) Icon - Using Local Image File -->
+                    <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener" title="X (formerly Twitter)" style="display:inline-flex;align-items:center;">
+                        <img src="images/x-icon.svg" alt="X" style="width:24px;height:24px;" class="footer-social-icon">
+                    </a>
+
+                    <!-- ResearchGate Icon - Using Local Colored SVG -->
+                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener" title="ResearchGate" style="display:inline-flex;align-items:center;">
+                        <img src="images/researchgate-icon.svg" alt="ResearchGate" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+
+                    <!-- Google Scholar Icon - Using Local Colored SVG -->
+                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener" title="Google Scholar" style="display:inline-flex;align-items:center;">
+                        <img src="images/google-scholar-icon.svg" alt="Google Scholar" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+
+                    <!-- ORCID Icon - Using Local Colored SVG -->
+                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener" title="ORCID" style="display:inline-flex;align-items:center;">
+                        <img src="images/orcid-icon.svg" alt="ORCID iD" style="width:24px;height:24px;" class="footer-academic-icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2020 Frédéric Mirindi. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Original app.js -->
+    <script src="app.js"></script>
+    
+    <!-- Enhanced Publications JavaScript -->
+    <script src="assets/js/publications-enhanced.js"></script>
+    
+    <!-- Economics AI Chatbot JavaScript -->
+    <script src="assets/js/economics-chatbot.js"></script>
+    
+    <!-- Advanced Research Widgets JavaScript -->
+    <script src="assets/js/research-widgets-expert.js"></script>
+</body>
+</html>
