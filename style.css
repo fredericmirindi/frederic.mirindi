@@ -1193,7 +1193,7 @@ select.form-control {
     text-align: center;
     margin-bottom: var(--space-32);
     /* UPDATED: Changed from var(--font-size-2xl) to var(--font-size-3xl) to make it larger */
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
     /* Make Key Achievements title muted teal (same as other section titles) */
     color: var(--color-primary);
 }
