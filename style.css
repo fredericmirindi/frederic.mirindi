@@ -1192,8 +1192,8 @@ select.form-control {
 .highlights-section h2 {
     text-align: center;
     margin-bottom: var(--space-32);
-    /* UPDATED: Changed from var(--font-size-3xl) to var(--font-size-2xl) to match Live Information Dashboard */
-    font-size: var(--font-size-2xl);
+    /* UPDATED: Changed from var(--font-size-2xl) to var(--font-size-3xl) to make it larger */
+    font-size: var(--font-size-3xl);
     /* Make Key Achievements title muted teal (same as other section titles) */
     color: var(--color-primary);
 }
