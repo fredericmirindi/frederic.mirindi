@@ -3319,7 +3319,132 @@ select.form-control {
   color: var(--color-text);
 }
 
-/* Responsive Design */
+/* ===== PUBLICATIONS PAGE MOBILE IMPROVEMENTS ===== */
+
+/* Publications Page Hero Section - Mobile Optimizations */
+.publications-minimal-hero {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  padding: var(--space-32) 0;
+  text-align: center;
+  margin-bottom: var(--space-24);
+}
+
+.publications-main-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin: 0;
+  color: var(--color-btn-primary-text);
+}
+
+/* Publications Search Interface - Mobile First */
+.publications-search-interface {
+  margin-bottom: var(--space-24);
+  padding: var(--space-16);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.search-filters-row {
+  display: flex;
+  gap: var(--space-12);
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-16);
+}
+
+.search-input-container {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-12);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+}
+
+.modern-search-input {
+  width: 100%;
+  padding: var(--space-12) var(--space-12) var(--space-12) var(--space-32);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-base);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.modern-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+.modern-select {
+  padding: var(--space-12);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  min-width: 140px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--select-caret-light);
+  background-repeat: no-repeat;
+  background-position: right var(--space-12) center;
+  background-size: 16px;
+  padding-right: var(--space-32);
+}
+
+.modern-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* View Controls - Centered and Touch-Friendly */
+.view-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-12) var(--space-16);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  min-height: 44px; /* Touch-friendly size */
+}
+
+.view-btn.active {
+  background: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  border-color: var(--color-primary);
+}
+
+.view-btn:hover:not(.active) {
+  background: var(--color-secondary);
+}
+
+/* Mobile Responsive Design */
 @media (max-width: 1024px) { 
   .pubs__grid { 
     grid-template-columns: repeat(2, minmax(0, 1fr)); 
@@ -3327,56 +3452,195 @@ select.form-control {
 }
 
 @media (max-width: 768px) {
-  .pubs__toolbar {
+  /* Publications Page Mobile Layout */
+  .publications-main-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .publications-search-interface {
+    padding: var(--space-12);
+    margin-bottom: var(--space-16);
+  }
+  
+  .search-filters-row {
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-12);
   }
   
-  .pubs__filters {
-    justify-content: center;
-  }
-  
-  .pubs__view {
-    align-self: center;
-  }
-}
-
-@media (max-width: 640px) { 
-  .pubs__grid { 
-    grid-template-columns: 1fr; 
-  } 
-  
-  .pubs__search { 
-    min-width: 0; 
-    width: 100%; 
-  }
-  
-  .pubs__filters {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-8);
-  }
-  
-  .pubs__select {
+  .search-input-container {
     min-width: 0;
+    order: 3; /* Search input goes last on mobile */
   }
   
+  .modern-select {
+    min-width: 0;
+    width: 100%;
+  }
+  
+  .modern-search-input {
+    font-size: var(--font-size-base);
+    padding: var(--space-14) var(--space-12) var(--space-14) var(--space-32);
+    min-height: 48px;
+  }
+  
+  .view-controls {
+    margin-top: var(--space-8);
+  }
+  
+  .view-btn {
+    padding: var(--space-14) var(--space-20);
+    font-size: var(--font-size-base);
+    min-height: 48px;
+  }
+  
+  /* Publications Grid - Single Column on Mobile */
+  .pubs__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+  
+  /* Publication Cards - Mobile Optimized */
+  .pub-card {
+    padding: var(--space-16);
+  }
+  
+  .pub-card__title {
+    font-size: var(--font-size-lg);
+    line-height: 1.3;
+  }
+  
+  .pub-card__authors {
+    font-size: var(--font-size-sm);
+  }
+  
+  .pub-card__meta {
+    font-size: var(--font-size-xs);
+    gap: var(--space-6);
+  }
+  
+  .pub-card__excerpt {
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+  }
+  
+  /* List View Mobile Adjustments */
   .pubs__grid.is-list .pub-card {
     grid-template-columns: 1fr;
     gap: var(--space-12);
+    padding: var(--space-16);
   }
   
-  .pubs__grid.is-list .pub-card__top,
+  .pubs__grid.is-list .pub-card__top {
+    grid-column: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
   .pubs__grid.is-list .pub-actions {
     grid-column: 1;
-  }
-  
-  .pubs__grid.is-list .pub-actions {
     flex-direction: row;
     border-top: 1px solid var(--color-card-border);
     padding-top: var(--space-12);
+    margin-top: var(--space-12);
+    min-width: auto;
   }
+  
+  /* Mobile Badge and Chip Adjustments */
+  .pub-card__badge {
+    font-size: var(--font-size-xs);
+    padding: 2px 8px;
+  }
+  
+  .pub-chip {
+    font-size: var(--font-size-xs);
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra Small Mobile Optimizations */
+  .publications-minimal-hero {
+    padding: var(--space-24) 0;
+  }
+  
+  .publications-main-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .publications-search-interface {
+    padding: var(--space-8);
+    margin: 0 var(--space-8) var(--space-16) var(--space-8);
+  }
+  
+  .search-filters-row {
+    gap: var(--space-8);
+  }
+  
+  .modern-search-input,
+  .modern-select {
+    font-size: var(--font-size-base);
+    padding: var(--space-12);
+    min-height: 44px;
+  }
+  
+  .modern-search-input {
+    padding-left: var(--space-32);
+  }
+  
+  .view-btn {
+    padding: var(--space-12) var(--space-16);
+    font-size: var(--font-size-sm);
+    min-height: 44px;
+  }
+  
+  /* Publication Cards - Extra Small Mobile */
+  .pub-card {
+    padding: var(--space-12);
+    border-radius: var(--radius-base);
+  }
+  
+  .pub-card__title {
+    font-size: var(--font-size-base);
+  }
+  
+  .pub-card__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8);
+  }
+  
+  .pub-card__metrics {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+  
+  .pub-actions {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+  
+  .pub-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Publications Page Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .modern-select {
+    background-image: var(--select-caret-dark);
+  }
+}
+
+[data-color-scheme="dark"] .modern-select {
+  background-image: var(--select-caret-dark);
+}
+
+[data-color-scheme="light"] .modern-select {
+  background-image: var(--select-caret-light);
 }
 
 /* Dark mode enhancements */
@@ -3411,7 +3675,8 @@ select.form-control {
 }
 
 /* Focus styles for accessibility */
-.pubs__view-btn:focus-visible {
+.pubs__view-btn:focus-visible,
+.view-btn:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
@@ -3419,4 +3684,21 @@ select.form-control {
 .pub-card:focus-within {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* Touch improvements for mobile */
+@media (pointer: coarse) {
+  .pub-actions .btn {
+    min-height: 44px;
+    padding: var(--space-12) var(--space-16);
+  }
+  
+  .view-btn {
+    min-height: 48px;
+  }
+  
+  .modern-search-input,
+  .modern-select {
+    min-height: 48px;
+  }
 }
