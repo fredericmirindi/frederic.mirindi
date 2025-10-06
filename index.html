@@ -228,22 +228,8 @@
           <div class="widget-card-context">
             <strong>Why it matters:</strong> Timely releases impact my inflation and unemployment models.
           </div>
-          <div class="widget-calendar-events" id="economic-events">
-            <div class="event-item high-impact">
-              <span class="event-time">09:30</span>
-              <span class="event-title">US CPI (YoY)</span>
-              <span class="event-impact" aria-label="High impact">🔴 High</span>
-            </div>
-            <div class="event-item medium-impact">
-              <span class="event-time">11:00</span>
-              <span class="event-title">CAD Retail Sales</span>
-              <span class="event-impact" aria-label="Medium impact">🟡 Medium</span>
-            </div>
-            <div class="event-item low-impact">
-              <span class="event-time">14:15</span>
-              <span class="event-title">USD Fed Speech</span>
-              <span class="event-impact" aria-label="Low impact">🟢 Low</span>
-            </div>
+          <div class="widget-calendar-events" id="economic-events" aria-live="polite">
+            <!-- Dynamic content populated by JS -->
           </div>
           <div class="widget-card-secondary">Today's Key Events</div>
           <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
@@ -251,7 +237,7 @@
         </div>
       </div>
       
-      <!-- Global Market Sentiment Tracker -->
+      <!-- Market Sentiment Widget -->
       <div class="widget-card widget-market-sentiment">
         <div class="widget-card-icon" aria-hidden="true">📈</div>
         <div class="widget-card-content">
@@ -263,19 +249,19 @@
             <div class="gauge-container">
               <div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);"></div>
               <div class="gauge-center">
-                <span class="sentiment-value" id="sentiment-value">72</span>
-                <span class="sentiment-label">Bullish</span>
+                <span class="sentiment-value" id="sentiment-value" aria-live="polite">52</span>
+                <span class="sentiment-label">NEUTRAL</span>
               </div>
             </div>
           </div>
           <div class="sentiment-indicators">
             <div class="indicator">
-              <span class="indicator-label">Fear &amp; Greed:</span>
-              <span class="indicator-value bullish" id="fear-greed">72 Bullish</span>
+              <span class="indicator-label">FEAR & GREED:</span>
+              <span class="indicator-value" id="fear-greed" aria-live="polite">52</span>
             </div>
             <div class="indicator">
               <span class="indicator-label">VIX:</span>
-              <span class="indicator-value neutral" id="vix-value">18.5 Neutral</span>
+              <span class="indicator-value" id="vix-value" aria-live="polite">17.2</span>
             </div>
           </div>
           <div class="widget-card-secondary">Global Markets</div>
@@ -284,7 +270,7 @@
         </div>
       </div>
       
-      <!-- Interest Rates Monitor -->
+      <!-- Central Bank Rates Widget -->
       <div class="widget-card widget-interest-rates">
         <div class="widget-card-icon" aria-hidden="true">🏦</div>
         <div class="widget-card-content">
@@ -292,31 +278,8 @@
           <div class="widget-card-context">
             <strong>Why it matters:</strong> Policy rates are direct inputs for my monetary shock models.
           </div>
-          <div class="rates-list" id="interest-rates">
-            <div class="rate-item">
-              <span class="country-flag">🇺🇸</span>
-              <span class="rate-info">
-                <span class="rate-country">Fed Fund Rate</span>
-                <span class="rate-value">5.25%</span>
-              </span>
-              <span class="rate-change unchanged" aria-label="No change">-</span>
-            </div>
-            <div class="rate-item">
-              <span class="country-flag">🇨🇦</span>
-              <span class="rate-info">
-                <span class="rate-country">BoC Rate</span>
-                <span class="rate-value">4.75%</span>
-              </span>
-              <span class="rate-change down" aria-label="Rate decreased">▼</span>
-            </div>
-            <div class="rate-item">
-              <span class="country-flag">🇪🇺</span>
-              <span class="rate-info">
-                <span class="rate-country">ECB Rate</span>
-                <span class="rate-value">4.25%</span>
-              </span>
-              <span class="rate-change unchanged" aria-label="No change">-</span>
-            </div>
+          <div class="rates-list" id="interest-rates" aria-live="polite">
+            <!-- Dynamic content populated by JS -->
           </div>
           <div class="widget-card-secondary">Key Central Banks</div>
           <div class="widget-card-caption">Monitor global monetary policy changes.</div>
@@ -324,7 +287,7 @@
         </div>
       </div>
       
-      <!-- Economic Indicators Tracker -->
+      <!-- Key Indicators Widget -->
       <div class="widget-card widget-economic-indicators">
         <div class="widget-card-icon" aria-hidden="true">📊</div>
         <div class="widget-card-content">
@@ -332,23 +295,8 @@
           <div class="widget-card-context">
             <strong>Why it matters:</strong> GDP, inflation and employment metrics form the backbone of my forecasting work.
           </div>
-          <div class="indicators-grid" id="economic-indicators">
-            <div class="indicator-item">
-              <span class="indicator-name">GDP Growth</span>
-              <span class="indicator-value positive">+2.1%</span>
-            </div>
-            <div class="indicator-item">
-              <span class="indicator-name">Inflation Rate</span>
-              <span class="indicator-value neutral">3.2%</span>
-            </div>
-            <div class="indicator-item">
-              <span class="indicator-name">Unemployment</span>
-              <span class="indicator-value positive">3.7%</span>
-            </div>
-            <div class="indicator-item">
-              <span class="indicator-name">Job Growth</span>
-              <span class="indicator-value positive">+187K</span>
-            </div>
+          <div class="indicators-grid" id="economic-indicators" aria-live="polite">
+            <!-- Dynamic content populated by JS -->
           </div>
           <div class="widget-card-secondary">US Economy</div>
           <div class="widget-card-caption">Real-time economic health monitoring.</div>
