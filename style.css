@@ -3702,3 +3702,12 @@ select.form-control {
     min-height: 48px;
   }
 }
+
+
+.nav-brand a:focus,
+.nav-brand a:active,
+.footer-section a:focus,
+.footer-section a:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
