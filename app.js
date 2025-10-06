@@ -1642,3 +1642,271 @@ window.addEventListener('beforeunload', function() {
 window.addEventListener('error', function(e) {
     console.error('Application error:', e.error);
 });
+
+
+
+
+
+
+
+
+
+
+
+// Enhanced Economic Widget Functions
+let economicIntervals = [];
+
+// Utility function for safe DOM updates
+function safeUpdateElement(id, textContent, className = null) {
+    const element = document.getElementById(id);
+    if (element) {
+        element.textContent = textContent;
+        if (className) element.className = className;
+    }
+}
+
+// Clear all economic intervals when leaving Home page
+function clearEconomicIntervals() {
+    economicIntervals.forEach(id => clearInterval(id));
+    economicIntervals = [];
+}
+
+// Enhanced Economic Calendar with real-time feel
+async function updateEconomicCalendarEnhanced() {
+    console.log('Updating enhanced economic calendar...');
+    const calendarContainer = document.getElementById('economic-events');
+    
+    if (!calendarContainer) return;
+    
+    try {
+        // Realistic Canadian economic events with slight variations
+        const events = [
+            {
+                time: '08:30',
+                title: 'CAD Inflation Rate (YoY)',
+                impact: 'high',
+                actual: (1.9 + (Math.random() - 0.5) * 0.2).toFixed(1) + '%'
+            },
+            {
+                time: '12:30',
+                title: 'CAD Unemployment Rate',
+                impact: 'high',
+                actual: (7.1 + (Math.random() - 0.5) * 0.2).toFixed(1) + '%'
+            },
+            {
+                time: '14:00',
+                title: 'BoC Interest Rate Decision',
+                impact: 'high',
+                actual: '2.50%'
+            },
+            {
+                time: '15:30',
+                title: 'CAD Retail Sales (MoM)',
+                impact: 'medium',
+                actual: (-0.8 + (Math.random() - 0.5) * 0.4).toFixed(1) + '%'
+            },
+            {
+                time: '16:45',
+                title: 'US Fed Powell Speech',
+                impact: 'medium',
+                actual: ''
+            }
+        ];
+        
+        const eventsHTML = events.map(event => {
+            const impactText = event.impact === 'high' ? 'High' : 
+                             event.impact === 'medium' ? 'Medium' : 'Low';
+            const impactIcon = event.impact === 'high' ? '🔴' : 
+                             event.impact === 'medium' ? '🟡' : '🟢';
+            
+            return `
+                <div class="event-item ${event.impact}-impact">
+                    <span class="event-time">${event.time}</span>
+                    <span class="event-title">${event.title}</span>
+                    <span class="event-impact" aria-label="${impactText} impact">${impactIcon} ${impactText}</span>
+                    ${event.actual ? `<span class="event-value">${event.actual}</span>` : ''}
+                </div>
+            `;
+        }).join('');
+        
+        calendarContainer.innerHTML = eventsHTML;
+        console.log('Enhanced economic calendar updated');
+        
+    } catch (error) {
+        console.error('Error updating economic calendar:', error);
+    }
+}
+
+// Enhanced Market Sentiment with realistic variations
+async function updateMarketSentimentEnhanced() {
+    console.log('Updating enhanced market sentiment...');
+    
+    try {
+        // Realistic sentiment with slight variations
+        const baseSentiment = 52; // Neutral base
+        const variation = (Math.random() - 0.5) * 10;
+        const currentSentiment = Math.max(30, Math.min(70, baseSentiment + variation));
+        
+        // Update gauge
+        const gaugeFill = document.getElementById('gauge-fill');
+        const sentimentValue = document.getElementById('sentiment-value');
+        const sentimentLabel = document.querySelector('.sentiment-label');
+        
+        if (gaugeFill && sentimentValue) {
+            const rotation = (currentSentiment / 100 * 180) - 90;
+            gaugeFill.style.transform = `rotate(${rotation}deg)`;
+            sentimentValue.textContent = Math.round(currentSentiment);
+            
+            if (sentimentLabel) {
+                const label = currentSentiment > 60 ? 'BULLISH' : 
+                             currentSentiment > 40 ? 'NEUTRAL' : 'BEARISH';
+                sentimentLabel.textContent = label;
+            }
+        }
+        
+        // Update Fear & Greed and VIX with realistic values
+        const fearGreedValue = Math.round(currentSentiment + (Math.random() - 0.5) * 5);
+        const vixValue = (20 - (currentSentiment / 100 * 8) + (Math.random() - 0.5) * 2).toFixed(1);
+        
+        safeUpdateElement('fear-greed', fearGreedValue);
+        safeUpdateElement('vix-value', vixValue);
+        
+        console.log(`Enhanced sentiment updated: ${Math.round(currentSentiment)}%`);
+        
+    } catch (error) {
+        console.error('Error updating enhanced market sentiment:', error);
+    }
+}
+
+// Enhanced Policy Rates with realistic data
+async function updatePolicyRatesEnhanced() {
+    console.log('Updating enhanced policy rates...');
+    const ratesList = document.getElementById('interest-rates');
+    
+    if (!ratesList) return;
+    
+    try {
+        // Realistic current policy rates with slight variations
+        const rates = [
+            { code: 'CA', flag: '🇨🇦', name: 'BOC RATE', value: '2.50%', change: 'down' },
+            { code: 'US', flag: '🇺🇸', name: 'FED FUND RATE', value: '5.25-5.50%', change: 'unchanged' },
+            { code: 'EU', flag: '🇪🇺', name: 'ECB RATE', value: '4.25%', change: 'unchanged' },
+            { code: 'GB', flag: '🇬🇧', name: 'BOE RATE', value: '5.00%', change: 'unchanged' },
+            { code: 'JP', flag: '🇯🇵', name: 'BOJ RATE', value: '0.25%', change: 'unchanged' }
+        ];
+        
+        const ratesHTML = rates.map(rate => {
+            const changeSymbol = rate.change === 'down' ? '▼' : 
+                               rate.change === 'up' ? '▲' : '－';
+            const changeLabel = rate.change === 'down' ? 'Rate decreased' : 
+                              rate.change === 'up' ? 'Rate increased' : 'No change';
+            
+            return `
+                <div class="rate-item">
+                    <span class="country-flag">${rate.flag}</span>
+                    <span class="rate-info">
+                        <span class="rate-country">${rate.name}</span>
+                        <span class="rate-value">${rate.value}</span>
+                    </span>
+                    <span class="rate-change ${rate.change}" aria-label="${changeLabel}">${changeSymbol}</span>
+                </div>
+            `;
+        }).join('');
+        
+        ratesList.innerHTML = ratesHTML;
+        console.log('Enhanced policy rates updated');
+        
+    } catch (error) {
+        console.error('Error updating policy rates:', error);
+    }
+}
+
+// Enhanced Key Indicators with realistic Canadian data
+async function updateKeyIndicatorsEnhanced() {
+    console.log('Updating enhanced key indicators...');
+    const indicatorsGrid = document.getElementById('economic-indicators');
+    
+    if (!indicatorsGrid) return;
+    
+    try {
+        // Realistic Canadian economic indicators with slight variations
+        const indicators = [
+            { name: 'GDP GROWTH', value: (-1.6 + (Math.random() - 0.5) * 0.4).toFixed(1) + '%', type: 'negative' },
+            { name: 'INFLATION RATE', value: (1.9 + (Math.random() - 0.5) * 0.2).toFixed(1) + '%', type: 'neutral' },
+            { name: 'UNEMPLOYMENT', value: (7.1 + (Math.random() - 0.5) * 0.2).toFixed(1) + '%', type: 'negative' },
+            { name: 'BOC RATE', value: '2.50%', type: 'neutral' }
+        ];
+        
+        const indicatorsHTML = indicators.map(indicator => `
+            <div class="indicator-item">
+                <span class="indicator-name">${indicator.name}</span>
+                <span class="indicator-value ${indicator.type}">${indicator.value}</span>
+            </div>
+        `).join('');
+        
+        indicatorsGrid.innerHTML = indicatorsHTML;
+        console.log('Enhanced key indicators updated');
+        
+    } catch (error) {
+        console.error('Error updating key indicators:', error);
+    }
+}
+
+// Initialize enhanced economic widgets
+function initializeEconomicWidgetsEnhanced() {
+    console.log('Initializing enhanced economic widgets...');
+    
+    // Initial updates
+    updateEconomicCalendarEnhanced();
+    updateMarketSentimentEnhanced();
+    updatePolicyRatesEnhanced();
+    updateKeyIndicatorsEnhanced();
+    
+    // Set up intervals for live updates
+    economicIntervals.push(setInterval(updateMarketSentimentEnhanced, 30000)); // 30 seconds
+    economicIntervals.push(setInterval(updateEconomicCalendarEnhanced, 300000)); // 5 minutes
+    economicIntervals.push(setInterval(updatePolicyRatesEnhanced, 1800000)); // 30 minutes
+    economicIntervals.push(setInterval(updateKeyIndicatorsEnhanced, 1800000)); // 30 minutes
+    
+    console.log('Enhanced economic widgets initialized with live updates');
+}
+
+// Modify your existing showPage function to include enhanced widgets
+function showPageEnhanced(pageId) {
+    // Clear existing intervals first
+    clearEconomicIntervals();
+    
+    // Your existing showPage logic here
+    pages.forEach(page => page.classList.remove('active'));
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+        targetPage.classList.add('active');
+        currentPage = pageId;
+        
+        // Initialize enhanced economic widgets when showing home page
+        if (pageId === 'home') {
+            setTimeout(initializeEconomicWidgetsEnhanced, 100); // Small delay to ensure DOM is ready
+        }
+    }
+    
+    // Update navigation
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${pageId}` || 
+            (pageId === 'home' && link.getAttribute('href') === '#home')) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Replace your existing showPage function with the enhanced version
+// Or modify your DOMContentLoaded event listener to use enhanced widgets
+
+
+
+
+
+
+
+
+
