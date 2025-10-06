@@ -1910,3 +1910,30 @@ function showPageEnhanced(pageId) {
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Show correct section based on the hash in the URL when the page loads
+  let initialSection = 'home';
+  if (window.location.hash && window.location.hash.length > 1) {
+    initialSection = window.location.hash.replace('#', '');
+  }
+  showPage(initialSection);
+
+  // Listen for hash changes (when user uses back/forward or clicks anchor links)
+  window.addEventListener('hashchange', function() {
+    let page = window.location.hash.replace('#', '') || 'home';
+    showPage(page);
+  });
+  // ... your other initialization code ...
+});
+
+// In your showPage function, make sure you set the hash for SPA navigation:
+function showPage(pageId) {
+  // ... your existing code to show/hide sections ...
+  if (window.location.hash.replace('#', '') !== pageId) {
+    window.location.hash = '#' + pageId;
+  }
+}
+
+
+
+
