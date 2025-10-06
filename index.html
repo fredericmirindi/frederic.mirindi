@@ -211,196 +211,158 @@
       </div>
     </div>
 
-    <!-- SECTION 2: Economic Analytics Dashboard -->
-    <div class="highlights-section" style="margin-bottom: 4rem;">
-      <div class="container">
-        <h2 class="widget-section-title">Economic Analytics Dashboard</h2>
-        
-        <!-- Economic Analysis Widgets -->
-        <div class="widget-cards-row">
-          <!-- Economic Calendar Widget -->
-          <div class="widget-card widget-economic-calendar">
-            <div class="widget-card-icon" aria-hidden="true">📅</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Economic Calendar</div>
-              <div class="widget-calendar-events" id="economic-events">
-                <div class="event-item high-impact">
-                  <span class="event-time">09:30</span>
-                  <span class="event-title">US CPI (YoY)</span>
-                  <span class="event-impact">🔴</span>
-                </div>
-                <div class="event-item medium-impact">
-                  <span class="event-time">11:00</span>
-                  <span class="event-title">CAD Retail Sales</span>
-                  <span class="event-impact">🟡</span>
-                </div>
-                <div class="event-item low-impact">
-                  <span class="event-time">14:15</span>
-                  <span class="event-title">USD Fed Speech</span>
-                  <span class="event-impact">🟢</span>
-                </div>
-              </div>
-              <div class="widget-card-secondary">Today's Key Events</div>
-              <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
+   <!-- SECTION 2: Economic Analytics Dashboard -->
+<div class="highlights-section" style="margin-bottom: 4rem;">
+  <div class="container">
+    <h2 class="widget-section-title">Research-Driven Economic Analytics</h2>
+    <p class="section-lead" aria-label="Section context">
+      These indicators power my macro forecasting and policy evaluation research, informing how shocks transmit through rates, prices, and labor markets.
+    </p>
+    <div class="widget-cards-row">
+
+      <!-- Economic Calendar Widget -->
+      <div class="widget-card widget-economic-calendar">
+        <div class="widget-card-icon" aria-hidden="true">📅</div>
+        <div class="widget-card-content">
+          <div class="widget-card-title">Economic Calendar</div>
+          <div class="widget-card-context">
+            <strong>Why it matters:</strong> Timely releases impact my inflation and unemployment models.
+          </div>
+          <div class="widget-calendar-events" id="economic-events">
+            <div class="event-item high-impact">
+              <span class="event-time">09:30</span>
+              <span class="event-title">US CPI (YoY)</span>
+              <span class="event-impact" aria-label="High impact">🔴 High</span>
+            </div>
+            <div class="event-item medium-impact">
+              <span class="event-time">11:00</span>
+              <span class="event-title">CAD Retail Sales</span>
+              <span class="event-impact" aria-label="Medium impact">🟡 Medium</span>
+            </div>
+            <div class="event-item low-impact">
+              <span class="event-time">14:15</span>
+              <span class="event-title">USD Fed Speech</span>
+              <span class="event-impact" aria-label="Low impact">🟢 Low</span>
             </div>
           </div>
-          
-          <!-- Global Market Sentiment Tracker -->
-          <div class="widget-card widget-market-sentiment">
-            <div class="widget-card-icon" aria-hidden="true">📈</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Market Sentiment</div>
-              <div class="sentiment-gauge" id="sentiment-gauge">
-                <div class="gauge-container">
-                  <div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);"></div>
-                  <div class="gauge-center">
-                    <span class="sentiment-value" id="sentiment-value">72</span>
-                    <span class="sentiment-label">Bullish</span>
-                  </div>
-                </div>
+          <div class="widget-card-secondary">Today's Key Events</div>
+          <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
+          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+        </div>
+      </div>
+      
+      <!-- Global Market Sentiment Tracker -->
+      <div class="widget-card widget-market-sentiment">
+        <div class="widget-card-icon" aria-hidden="true">📈</div>
+        <div class="widget-card-content">
+          <div class="widget-card-title">Market Sentiment</div>
+          <div class="widget-card-context">
+            <strong>Why it matters:</strong> Sentiment indices inform my asset-price volatility research.
+          </div>
+          <div class="sentiment-gauge" id="sentiment-gauge">
+            <div class="gauge-container">
+              <div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);"></div>
+              <div class="gauge-center">
+                <span class="sentiment-value" id="sentiment-value">72</span>
+                <span class="sentiment-label">Bullish</span>
               </div>
-              <div class="sentiment-indicators">
-                <div class="indicator">
-                  <span class="indicator-label">Fear & Greed:</span>
-                  <span class="indicator-value bullish" id="fear-greed">72</span>
-                </div>
-                <div class="indicator">
-                  <span class="indicator-label">VIX:</span>
-                  <span class="indicator-value neutral" id="vix-value">18.5</span>
-                </div>
-              </div>
-              <div class="widget-card-secondary">Global Markets</div>
-              <div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div>
             </div>
           </div>
-          
-          <!-- Interest Rates Monitor -->
-          <div class="widget-card widget-interest-rates">
-            <div class="widget-card-icon" aria-hidden="true">🏦</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Central Bank Rates</div>
-              <div class="rates-list" id="interest-rates">
-                <div class="rate-item">
-                  <span class="country-flag">🇺🇸</span>
-                  <span class="rate-info">
-                    <span class="rate-country">Fed Fund Rate</span>
-                    <span class="rate-value">5.25%</span>
-                  </span>
-                  <span class="rate-change unchanged">-</span>
-                </div>
-                <div class="rate-item">
-                  <span class="country-flag">🇨🇦</span>
-                  <span class="rate-info">
-                    <span class="rate-country">BoC Rate</span>
-                    <span class="rate-value">4.75%</span>
-                  </span>
-                  <span class="rate-change down">▼</span>
-                </div>
-                <div class="rate-item">
-                  <span class="country-flag">🇪🇺</span>
-                  <span class="rate-info">
-                    <span class="rate-country">ECB Rate</span>
-                    <span class="rate-value">4.25%</span>
-                  </span>
-                  <span class="rate-change unchanged">-</span>
-                </div>
-              </div>
-              <div class="widget-card-secondary">Key Central Banks</div>
-              <div class="widget-card-caption">Monitor global monetary policy changes.</div>
+          <div class="sentiment-indicators">
+            <div class="indicator">
+              <span class="indicator-label">Fear &amp; Greed:</span>
+              <span class="indicator-value bullish" id="fear-greed">72 Bullish</span>
+            </div>
+            <div class="indicator">
+              <span class="indicator-label">VIX:</span>
+              <span class="indicator-value neutral" id="vix-value">18.5 Neutral</span>
             </div>
           </div>
-          
-          <!-- Economic Indicators Tracker -->
-          <div class="widget-card widget-economic-indicators">
-            <div class="widget-card-icon" aria-hidden="true">📊</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Key Indicators</div>
-              <div class="indicators-grid" id="economic-indicators">
-                <div class="indicator-item">
-                  <span class="indicator-name">GDP Growth</span>
-                  <span class="indicator-value positive">+2.1%</span>
-                </div>
-                <div class="indicator-item">
-                  <span class="indicator-name">Inflation Rate</span>
-                  <span class="indicator-value neutral">3.2%</span>
-                </div>
-                <div class="indicator-item">
-                  <span class="indicator-name">Unemployment</span>
-                  <span class="indicator-value positive">3.7%</span>
-                </div>
-                <div class="indicator-item">
-                  <span class="indicator-name">Job Growth</span>
-                  <span class="indicator-value positive">+187K</span>
-                </div>
-              </div>
-              <div class="widget-card-secondary">US Economy</div>
-              <div class="widget-card-caption">Real-time economic health monitoring.</div>
+          <div class="widget-card-secondary">Global Markets</div>
+          <div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div>
+          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+        </div>
+      </div>
+      
+      <!-- Interest Rates Monitor -->
+      <div class="widget-card widget-interest-rates">
+        <div class="widget-card-icon" aria-hidden="true">🏦</div>
+        <div class="widget-card-content">
+          <div class="widget-card-title">Central Bank Rates</div>
+          <div class="widget-card-context">
+            <strong>Why it matters:</strong> Policy rates are direct inputs for my monetary shock models.
+          </div>
+          <div class="rates-list" id="interest-rates">
+            <div class="rate-item">
+              <span class="country-flag">🇺🇸</span>
+              <span class="rate-info">
+                <span class="rate-country">Fed Fund Rate</span>
+                <span class="rate-value">5.25%</span>
+              </span>
+              <span class="rate-change unchanged" aria-label="No change">-</span>
+            </div>
+            <div class="rate-item">
+              <span class="country-flag">🇨🇦</span>
+              <span class="rate-info">
+                <span class="rate-country">BoC Rate</span>
+                <span class="rate-value">4.75%</span>
+              </span>
+              <span class="rate-change down" aria-label="Rate decreased">▼</span>
+            </div>
+            <div class="rate-item">
+              <span class="country-flag">🇪🇺</span>
+              <span class="rate-info">
+                <span class="rate-country">ECB Rate</span>
+                <span class="rate-value">4.25%</span>
+              </span>
+              <span class="rate-change unchanged" aria-label="No change">-</span>
             </div>
           </div>
+          <div class="widget-card-secondary">Key Central Banks</div>
+          <div class="widget-card-caption">Monitor global monetary policy changes.</div>
+          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+        </div>
+      </div>
+      
+      <!-- Economic Indicators Tracker -->
+      <div class="widget-card widget-economic-indicators">
+        <div class="widget-card-icon" aria-hidden="true">📊</div>
+        <div class="widget-card-content">
+          <div class="widget-card-title">Key Indicators</div>
+          <div class="widget-card-context">
+            <strong>Why it matters:</strong> GDP, inflation and employment metrics form the backbone of my forecasting work.
+          </div>
+          <div class="indicators-grid" id="economic-indicators">
+            <div class="indicator-item">
+              <span class="indicator-name">GDP Growth</span>
+              <span class="indicator-value positive">+2.1%</span>
+            </div>
+            <div class="indicator-item">
+              <span class="indicator-name">Inflation Rate</span>
+              <span class="indicator-value neutral">3.2%</span>
+            </div>
+            <div class="indicator-item">
+              <span class="indicator-name">Unemployment</span>
+              <span class="indicator-value positive">3.7%</span>
+            </div>
+            <div class="indicator-item">
+              <span class="indicator-name">Job Growth</span>
+              <span class="indicator-value positive">+187K</span>
+            </div>
+          </div>
+          <div class="widget-card-secondary">US Economy</div>
+          <div class="widget-card-caption">Real-time economic health monitoring.</div>
+          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
         </div>
       </div>
     </div>
 
-    <!-- SECTION 3: Live Information Dashboard -->
-    <div class="highlights-section" style="margin-bottom: 4rem;">
-      <div class="container">
-        <h2 class="widget-section-title">Live Information Dashboard</h2>
-        
-        <!-- First Row - Essential Live Data Widgets -->
-        <div class="widget-cards-row">
-          <!-- Local Time Card -->
-          <div class="widget-card widget-time">
-            <div class="widget-card-icon" aria-hidden="true">🕓</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Local Time</div>
-              <div class="widget-time-main" id="watch-time">11:28</div>
-              <div class="widget-card-secondary">Winnipeg, MB</div>
-              <div class="widget-card-caption">Synchronized with Winnipeg local time.</div>
-            </div>
-          </div>
-          <!-- Weather Card -->
-          <div class="widget-card widget-weather">
-            <div class="widget-card-icon" aria-hidden="true">🌤️</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Weather</div>
-              <div class="widget-weather-main">
-                <span class="widget-weather-icon" id="weather-icon">☀️</span>
-                <span class="widget-weather-temp" id="weather-temp">25°C</span>
-              </div>
-              <div class="widget-weather-desc" id="weather-desc">Sunny</div>
-              <div class="widget-card-secondary">Winnipeg, MB</div>
-              <div class="widget-card-caption">Weather auto-updates every 10 min.</div>
-            </div>
-          </div>
-          <!-- Quote Card -->
-          <div class="widget-card widget-quote">
-            <div class="widget-card-icon" aria-hidden="true">💡</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Quote of the Day</div>
-              <div class="widget-quote-main" id="fact-box">
-                "Economics is the study of how society manages its scarce resources."
-              </div>
-              <div class="widget-card-caption">Discover fresh economic wisdom each day!</div>
-            </div>
-          </div>
-          <!-- Cryptocurrency Bitcoin Card -->
-          <div class="widget-card widget-crypto">
-            <div class="widget-card-icon" aria-hidden="true">₿</div>
-            <div class="widget-card-content">
-              <div class="widget-card-title">Bitcoin Price</div>
-              <div class="widget-crypto-main">
-                <span class="widget-crypto-price" id="crypto-price">$65,420</span>
-              </div>
-              <div class="widget-crypto-change" id="crypto-change">
-                <span class="crypto-positive">+2.34% (24h)</span>
-              </div>
-              <div class="widget-card-secondary">Live Market Data</div>
-              <div class="widget-card-caption">Updated every 5 minutes from CoinGecko API.</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="section-cta">
+      <a class="btn" href="#papers" data-page="papers">See how indicators support my research</a>
     </div>
+  </div>
+</div>
+
 
   </section>  <!-- CRITICAL: Close the home section here -->
  
