@@ -1909,31 +1909,31 @@ function showPageEnhanced(pageId) {
 
 
 
+ 
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Show correct section based on the hash in the URL when the page loads
-  let initialSection = 'home';
-  if (window.location.hash && window.location.hash.length > 1) {
-    initialSection = window.location.hash.replace('#', '');
-  }
-  showPage(initialSection);
+  // Show correct section based on hash (or 'home' by default)
+  const initial = window.location.hash.replace('#', '') || 'home';
+  showPage(initial);
 
-  // Listen for hash changes (when user uses back/forward or clicks anchor links)
+  // Listen for hash changes (browser back/forward or direct anchor)
   window.addEventListener('hashchange', function() {
-    let page = window.location.hash.replace('#', '') || 'home';
+    const page = window.location.hash.replace('#', '') || 'home';
     showPage(page);
   });
-  // ... your other initialization code ...
 });
 
-// In your showPage function, make sure you set the hash for SPA navigation:
+// DO NOT set window.location.hash inside showPage. Only let anchor clicks update hash!
 function showPage(pageId) {
-  // ... your existing code to show/hide sections ...
-  if (window.location.hash.replace('#', '') !== pageId) {
-    window.location.hash = '#' + pageId;
-  }
+  // Hide all
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  // Show page
+  const target = document.getElementById(pageId) || document.getElementById('home');
+  target.classList.add('active');
+  // Update active nav-link styles
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + pageId);
+  });
 }
-
-
 
 
