@@ -57,9 +57,6 @@
                 <a href="#home" class="nav-link active" data-page="home">Home</a>
             </li>
             <li class="nav-item">
-                <a href="#papers" class="nav-link" data-page="papers">Publications</a>
-            </li>
-            <li class="nav-item">
                 <a href="#conferences" class="nav-link" data-page="conferences">Conferences</a>
             </li>
             <li class="nav-item">
@@ -236,7 +233,7 @@
           </div>
           <div class="widget-card-secondary">Today's Key Events</div>
           <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
-          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+          <a class="widget-related-link" href="#research" data-page="research">Related work</a>
         </div>
       </div>
       
@@ -269,7 +266,7 @@
           </div>
           <div class="widget-card-secondary">Global Markets</div>
           <div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div>
-          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+          <a class="widget-related-link" href="#research" data-page="research">Related work</a>
         </div>
       </div>
       
@@ -286,7 +283,7 @@
           </div>
           <div class="widget-card-secondary">Key Central Banks</div>
           <div class="widget-card-caption">Monitor global monetary policy changes.</div>
-          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+          <a class="widget-related-link" href="#research" data-page="research">Related work</a>
         </div>
       </div>
       
@@ -303,13 +300,13 @@
           </div>
           <div class="widget-card-secondary">US Economy</div>
           <div class="widget-card-caption">Real-time economic health monitoring.</div>
-          <a class="widget-related-link" href="#papers" data-page="papers">Related work</a>
+          <a class="widget-related-link" href="#research" data-page="research">Related work</a>
         </div>
       </div>
     </div>
 
     <div class="section-cta">
-      <a class="btn" href="#papers" data-page="papers">See how indicators support my research</a>
+      <a class="btn" href="#research" data-page="research">See how indicators support my research</a>
     </div>
   </div>
 </div>
@@ -317,57 +314,6 @@
 
   </section>  <!-- CRITICAL: Close the home section here -->
  
-
-    <!-- SIMPLIFIED PUBLICATIONS PAGE - LIST VIEW ONLY -->
-    <section class="page" id="papers">
-
-      <!-- Minimal Hero Section - Only Title -->
-      <div class="publications-minimal-hero">
-        <div class="container">
-          <h1 class="publications-main-title">Research Publications</h1>
-        </div>
-      </div>
-
-      <div class="container">
-        <!-- IMPROVED Search and Filtering Interface -->
-        <div class="publications-search-interface">
-          <div class="search-filters-row">
-            <select id="pubs-year" class="modern-select">
-              <option value="all">All Years</option>
-              <option value="2025">2025</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-            </select>
-            <select id="pubs-type" class="modern-select">
-              <option value="all">All Types</option>
-              <option value="journal">Journal Article</option>
-              <option value="conference">Conference Paper</option>
-              <option value="book">Book Chapter</option>
-              <option value="review">Review Article</option>
-            </select>
-            <div class="search-input-container">
-              <i class="fas fa-search search-icon"></i>
-              <input 
-                id="pubs-search" 
-                class="modern-search-input" 
-                type="search"
-                placeholder="Search publications by title, author, or keyword..." 
-                autocomplete="off"
-              />
-            </div>
-          </div>
-          <!-- REMOVED Grid View button, only List View -->
-          
-        </div>
-
-        <!-- Publications Grid (Enhanced) - DEFAULT TO LIST VIEW -->
-        <div id="pubs-grid-wrap" class="pubs__grid is-list" aria-live="polite" aria-busy="false"></div>
-
-        <!-- Toast notifications -->
-        <div id="pubs-toast" class="pubs__toast" role="status" aria-live="polite" aria-atomic="true"></div>
-      </div>
-    </section>
 
         <!-- CONFERENCES PAGE WITH BRIGHT TEAL BACKGROUND -->
         <section class="page" id="conferences">
@@ -461,17 +407,18 @@
             </div>
         </section>
 
-        <!-- RESEARCH PAGE - PUBLICATIONS & INTERACTIVE TOOLS -->
+        <!-- RESEARCH PAGE - UPDATED HEADER TO MATCH CONFERENCES -->
         <section class="page" id="research">
-            <!-- Research Hero Section -->
-            <div class="research-minimal-hero">
+            <!-- Research Hero Section - UNIFIED STYLE -->
+            <div class="conferences-minimal-hero">
                 <div class="container">
-                    <h1 class="research-main-title">Research & Publications</h1>
-                    <p class="research-subtitle">Comprehensive academic portfolio featuring AI-driven economic research and interactive analytical tools</p>
+                    <h1 class="conferences-main-title">Research & Publications</h1>
                 </div>
             </div>
             
             <div class="container">
+                <p class="conferences-subtitle">Comprehensive academic portfolio featuring AI-driven economic research and interactive analytical tools</p>
+                
                 <!-- Research Statistics Dashboard -->
                 <div class="research-stats-dashboard">
                     <div class="stats-grid">
@@ -1593,7 +1540,6 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#papers" class="nav-link" data-page="papers">Publications</a></li>
                     <li><a href="#conferences" class="nav-link" data-page="conferences">Conferences</a></li>
                     <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
                     <li><a href="#blog" class="nav-link" data-page="blog">Blog</a></li>
