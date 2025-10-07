@@ -35,6 +35,9 @@
     <!-- CRITICAL: Footer Icons Fix - MUST BE LAST TO OVERRIDE ALL OTHER STYLES -->
     <link rel="stylesheet" href="assets/css/footer-icons-fix.css">
     
+    <!-- Research Enhanced Styles -->
+    <link rel="stylesheet" href="assets/css/research-enhanced-styles.css">
+    
     <!-- Chart.js for data visualizations -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -192,7 +195,7 @@
         <h2 class="widget-section-title">Key Achievements</h2>
         <div class="highlights-grid">
           <div class="highlight-card">
-            <h3>15+</h3>
+            <h3>30+</h3>
             <p>Published Papers</p>
           </div>
           <div class="highlight-card">
@@ -458,398 +461,790 @@
             </div>
         </section>
 
-        <!-- RESEARCH PAGE - EXPERT-LEVEL INTERACTIVE WIDGETS -->
+        <!-- RESEARCH PAGE - PUBLICATIONS & INTERACTIVE TOOLS -->
         <section class="page" id="research">
             <!-- Research Hero Section -->
             <div class="research-minimal-hero">
                 <div class="container">
-                    <h1 class="research-main-title">Research Areas</h1>
+                    <h1 class="research-main-title">Research & Publications</h1>
+                    <p class="research-subtitle">Comprehensive academic portfolio featuring AI-driven economic research and interactive analytical tools</p>
                 </div>
             </div>
             
             <div class="container">
-                <p class="research-subtitle">Advanced AI-Economics Research Platform - Interactive Expert Tools</p>
-                
-                <!-- EXPERT-LEVEL 3 RESEARCH WIDGETS -->
-                <div class="research-widgets-grid">
-                    <!-- 1. ADVANCED AI ECONOMIC FORECASTING SYSTEM -->
-                    <div class="research-widget expert-widget">
-                        <div class="widget-header">
-                            <div class="widget-icon">
-                                <i class="fas fa-brain"></i>
+                <!-- Research Statistics Dashboard -->
+                <div class="research-stats-dashboard">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-file-alt"></i>
                             </div>
-                            <h3>AI-Powered Economic Forecasting System</h3>
-                            <p class="widget-description">Advanced ensemble machine learning models with real-time parameter tuning</p>
-                        </div>
-                        
-                        <div class="widget-content">
-                            <!-- Expert Model Configuration Panel -->
-                            <div class="expert-controls-panel">
-                                <div class="control-group">
-                                    <label class="expert-label">Model Architecture</label>
-                                    <select id="model-architecture" class="expert-select">
-                                        <option value="lstm">LSTM Neural Network</option>
-                                        <option value="transformer" selected>Transformer + Attention</option>
-                                        <option value="ensemble">Ensemble (Random Forest + LSTM)</option>
-                                        <option value="gru">GRU with Regularization</option>
-                                        <option value="hybrid">Hybrid CNN-LSTM</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="expert-label">Learning Rate: <span id="lr-value">0.001</span></label>
-                                    <input type="range" id="learning-rate" class="expert-slider" min="0.0001" max="0.1" step="0.0001" value="0.001">
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="expert-label">Sequence Length: <span id="seq-value">30</span></label>
-                                    <input type="range" id="sequence-length" class="expert-slider" min="10" max="100" value="30">
-                                </div>
-                                
-                                <div class="control-group">
-                                    <label class="expert-label">Regularization (λ): <span id="reg-value">0.01</span></label>
-                                    <input type="range" id="regularization" class="expert-slider" min="0" max="0.1" step="0.001" value="0.01">
-                                </div>
-                            </div>
-                            
-                            <!-- Advanced Forecast Dashboard -->
-                            <div class="advanced-forecast-dashboard">
-                                <div class="forecast-metrics-grid">
-                                    <div class="advanced-metric">
-                                        <div class="metric-header">
-                                            <i class="fas fa-chart-line"></i>
-                                            <span class="metric-title">GDP Forecast</span>
-                                        </div>
-                                        <div class="metric-value-large" id="advanced-gdp">+2.847%</div>
-                                        <div class="metric-details">
-                                            <span class="confidence-band">CI: [2.523%, 3.171%]</span>
-                                            <span class="p-value">p-value: 0.0023</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="advanced-metric">
-                                        <div class="metric-header">
-                                            <i class="fas fa-fire"></i>
-                                            <span class="metric-title">Inflation Rate</span>
-                                        </div>
-                                        <div class="metric-value-large" id="advanced-inflation">3.142%</div>
-                                        <div class="metric-details">
-                                            <span class="confidence-band">CI: [2.891%, 3.393%]</span>
-                                            <span class="p-value">p-value: 0.0011</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="advanced-metric">
-                                        <div class="metric-header">
-                                            <i class="fas fa-bullseye"></i>
-                                            <span class="metric-title">Model Performance</span>
-                                        </div>
-                                        <div class="performance-metrics">
-                                            <div class="perf-item">
-                                                <span class="perf-label">RMSE:</span>
-                                                <span class="perf-value" id="rmse-value">0.0847</span>
-                                            </div>
-                                            <div class="perf-item">
-                                                <span class="perf-label">MAE:</span>
-                                                <span class="perf-value" id="mae-value">0.0623</span>
-                                            </div>
-                                            <div class="perf-item">
-                                                <span class="perf-label">R²:</span>
-                                                <span class="perf-value" id="r2-value">0.9471</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Interactive Multi-Chart System -->
-                            <div class="chart-system">
-                                <div class="chart-tabs">
-                                    <button class="chart-tab active" data-chart="forecast">Forecast</button>
-                                    <button class="chart-tab" data-chart="residuals">Residuals</button>
-                                    <button class="chart-tab" data-chart="features">Feature Importance</button>
-                                    <button class="chart-tab" data-chart="correlation">Correlation Matrix</button>
-                                </div>
-                                <div class="chart-container-advanced">
-                                    <canvas id="advanced-forecast-chart" width="500" height="300"></canvas>
-                                </div>
-                            </div>
-                            
-                            <!-- Expert Controls -->
-                            <div class="expert-actions">
-                                <div class="action-group">
-                                    <button id="train-model" class="expert-btn expert-btn-primary">
-                                        <i class="fas fa-cogs"></i> Train Model
-                                    </button>
-                                    <button id="validate-model" class="expert-btn expert-btn-secondary">
-                                        <i class="fas fa-check-double"></i> Cross-Validate
-                                    </button>
-                                    <button id="export-results" class="expert-btn expert-btn-tertiary">
-                                        <i class="fas fa-download"></i> Export Results
-                                    </button>
-                                </div>
-                                <div class="action-group">
-                                    <button id="hyperparameter-tune" class="expert-btn expert-btn-warning">
-                                        <i class="fas fa-sliders-h"></i> Auto-Tune Hyperparameters
-                                    </button>
-                                </div>
+                            <div class="stat-content">
+                                <div class="stat-number">30+</div>
+                                <div class="stat-label">Publications</div>
                             </div>
                         </div>
-                        
-                        <div class="expert-tags">
-                            <span class="expert-tag">Deep Learning</span>
-                            <span class="expert-tag">Time Series</span>
-                            <span class="expert-tag">Hyperparameter Tuning</span>
-                            <span class="expert-tag">Cross-Validation</span>
-                            <span class="expert-tag">Feature Engineering</span>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-label">Citations</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">2025</div>
+                                <div class="stat-label">Latest Year</div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Collaborators</div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <!-- 3. ADVANCED NLP ECONOMIC INTELLIGENCE SYSTEM -->
-                    <div class="research-widget expert-widget">
-                        <div class="widget-header">
-                            <div class="widget-icon">
-                                <i class="fas fa-language"></i>
+                </div>
+
+                <!-- Research Navigation Tabs -->
+                <div class="research-navigation">
+                    <div class="research-tabs">
+                        <button class="research-tab active" data-tab="publications">
+                            <i class="fas fa-book"></i>
+                            Publications
+                        </button>
+                        <button class="research-tab" data-tab="tools">
+                            <i class="fas fa-tools"></i>
+                            Research Tools
+                        </button>
+                        <button class="research-tab" data-tab="metrics">
+                            <i class="fas fa-chart-bar"></i>
+                            Impact Metrics
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Publications Section -->
+                <div class="research-content active" id="publications">
+                    <!-- Search and Filter Controls -->
+                    <div class="publications-controls">
+                        <div class="search-filter-row">
+                            <div class="search-input-container">
+                                <i class="fas fa-search search-icon"></i>
+                                <input 
+                                    id="publications-search" 
+                                    class="search-input" 
+                                    type="search"
+                                    placeholder="Search publications by title, author, or keyword..." 
+                                    autocomplete="off"
+                                />
                             </div>
-                            <h3>Economic Intelligence NLP System</h3>
-                            <p class="widget-description">Advanced transformer-based economic text analysis with multi-dimensional sentiment scoring</p>
-                        </div>
-                        
-                        <div class="widget-content">
-                            <!-- Expert NLP Configuration -->
-                            <div class="nlp-expert-config">
-                                <div class="nlp-tabs">
-                                    <button class="nlp-tab active" data-nlp="analysis">Text Analysis</button>
-                                    <button class="nlp-tab" data-nlp="models">Model Config</button>
-                                    <button class="nlp-tab" data-nlp="export">Export Results</button>
-                                </div>
-                                
-                                <div class="nlp-panel active" id="analysis-panel">
-                                    <!-- Advanced Text Input with File Upload -->
-                                    <div class="text-input-advanced">
-                                        <div class="input-options">
-                                            <button class="input-option active" data-input="text">Text Input</button>
-                                            <button class="input-option" data-input="file">Upload Document</button>
-                                            <button class="input-option" data-input="url">Analyze URL</button>
-                                        </div>
-                                        
-                                        <div class="input-area" id="text-input-area">
-                                            <textarea 
-                                                id="expert-text-input" 
-                                                class="expert-textarea" 
-                                                placeholder="Paste Fed minutes, ECB reports, economic research papers, or financial news for advanced AI analysis..."
-                                                rows="6"
-                                            ></textarea>
-                                            <div class="text-stats">
-                                                <span id="word-count">Words: 0</span>
-                                                <span id="char-count">Characters: 0</span>
-                                                <span id="econ-terms">Economic Terms: 0</span>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="input-area hidden" id="file-input-area">
-                                            <div class="file-drop-zone">
-                                                <i class="fas fa-cloud-upload-alt"></i>
-                                                <p>Drop PDF, DOCX, or TXT files here</p>
-                                                <input type="file" id="file-upload" accept=".pdf,.docx,.txt,.rtf" multiple>
-                                                <button class="upload-btn">Browse Files</button>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="input-area hidden" id="url-input-area">
-                                            <input type="url" id="url-input" class="expert-url-input" placeholder="https://www.federalreserve.gov/newsevents/...">
-                                            <button id="fetch-url" class="expert-btn expert-btn-secondary">
-                                                <i class="fas fa-globe"></i> Fetch Content
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="nlp-panel" id="models-panel">
-                                    <div class="model-config-grid">
-                                        <div class="config-item">
-                                            <label class="config-label">Base Model</label>
-                                            <select id="nlp-base-model" class="expert-select">
-                                                <option value="bert-base">BERT-Base-Uncased</option>
-                                                <option value="roberta" selected>RoBERTa-Large</option>
-                                                <option value="finbert">FinBERT (Financial)</option>
-                                                <option value="econbert">EconBERT (Economics)</option>
-                                                <option value="distilbert">DistilBERT (Fast)</option>
-                                            </select>
-                                        </div>
-                                        
-                                        <div class="config-item">
-                                            <label class="config-label">Max Sequence Length: <span id="seq-len-val">512</span></label>
-                                            <input type="range" id="max-seq-length" class="expert-slider" min="128" max="1024" step="64" value="512">
-                                        </div>
-                                        
-                                        <div class="config-item">
-                                            <label class="config-label">Attention Heads: <span id="att-heads-val">12</span></label>
-                                            <input type="range" id="attention-heads" class="expert-slider" min="4" max="16" value="12">
-                                        </div>
-                                        
-                                        <div class="config-item">
-                                            <label class="config-label">Temperature: <span id="temp-val">0.7</span></label>
-                                            <input type="range" id="temperature" class="expert-slider" min="0.1" max="2.0" step="0.1" value="0.7">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="nlp-panel" id="export-panel">
-                                    <div class="export-options">
-                                        <h4>Export Analysis Results</h4>
-                                        <div class="export-formats">
-                                            <label class="export-checkbox">
-                                                <input type="checkbox" id="export-json" checked>
-                                                <span class="checkmark"></span>
-                                                JSON (Structured Data)
-                                            </label>
-                                            <label class="export-checkbox">
-                                                <input type="checkbox" id="export-csv">
-                                                <span class="checkmark"></span>
-                                                CSV (Sentiment Scores)
-                                            </label>
-                                            <label class="export-checkbox">
-                                                <input type="checkbox" id="export-report">
-                                                <span class="checkmark"></span>
-                                                PDF Report
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Advanced Analysis Dashboard -->
-                            <div class="nlp-expert-dashboard">
-                                <div class="dashboard-row">
-                                    <!-- Multi-dimensional Sentiment Analysis -->
-                                    <div class="sentiment-advanced">
-                                        <h4>Multi-Dimensional Sentiment</h4>
-                                        <div class="sentiment-dimensions">
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Overall Economic</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="overall-sentiment" style="width: 74%"></div>
-                                                </div>
-                                                <span class="dim-value">74% Optimistic</span>
-                                            </div>
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Market Outlook</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="market-sentiment" style="width: 82%"></div>
-                                                </div>
-                                                <span class="dim-value">82% Bullish</span>
-                                            </div>
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Policy Confidence</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="policy-sentiment" style="width: 67%"></div>
-                                                </div>
-                                                <span class="dim-value">67% Supportive</span>
-                                            </div>
-                                            <div class="sentiment-dim">
-                                                <span class="dim-label">Risk Assessment</span>
-                                                <div class="sentiment-meter-adv">
-                                                    <div class="meter-fill" id="risk-sentiment" style="width: 43%"></div>
-                                                </div>
-                                                <span class="dim-value">43% Risk Averse</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="dashboard-row">
-                                    <!-- Entity Recognition & Classification -->
-                                    <div class="entity-recognition">
-                                        <h4>Named Entity Recognition</h4>
-                                        <div class="entity-categories">
-                                            <div class="entity-category">
-                                                <span class="category-title">Organizations</span>
-                                                <div class="entity-list" id="org-entities">
-                                                    <span class="entity-tag org">Federal Reserve</span>
-                                                    <span class="entity-tag org">World Bank</span>
-                                                </div>
-                                            </div>
-                                            <div class="entity-category">
-                                                <span class="category-title">Economic Indicators</span>
-                                                <div class="entity-list" id="indicator-entities">
-                                                    <span class="entity-tag indicator">GDP</span>
-                                                    <span class="entity-tag indicator">CPI</span>
-                                                    <span class="entity-tag indicator">Unemployment</span>
-                                                </div>
-                                            </div>
-                                            <div class="entity-category">
-                                                <span class="category-title">Geographic</span>
-                                                <div class="entity-list" id="geo-entities">
-                                                    <span class="entity-tag geo">United States</span>
-                                                    <span class="entity-tag geo">Canada</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="dashboard-row">
-                                    <!-- Topic Modeling & Classification -->
-                                    <div class="topic-modeling">
-                                        <h4>Topic Classification (LDA)</h4>
-                                        <div class="topic-distribution">
-                                            <div class="topic-item">
-                                                <span class="topic-label">Monetary Policy</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 35%"></div>
-                                                </div>
-                                                <span class="topic-weight">35.2%</span>
-                                            </div>
-                                            <div class="topic-item">
-                                                <span class="topic-label">Market Analysis</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 28%"></div>
-                                                </div>
-                                                <span class="topic-weight">27.8%</span>
-                                            </div>
-                                            <div class="topic-item">
-                                                <span class="topic-label">Economic Indicators</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 23%"></div>
-                                                </div>
-                                                <span class="topic-weight">22.6%</span>
-                                            </div>
-                                            <div class="topic-item">
-                                                <span class="topic-label">Global Trade</span>
-                                                <div class="topic-bar">
-                                                    <div class="topic-fill" style="width: 14%"></div>
-                                                </div>
-                                                <span class="topic-weight">14.4%</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Expert NLP Controls -->
-                            <div class="nlp-expert-controls">
-                                <button id="deep-analyze" class="expert-btn expert-btn-primary">
-                                    <i class="fas fa-brain"></i> Deep Semantic Analysis
+                            <div class="filter-controls">
+                                <select id="year-filter" class="filter-select">
+                                    <option value="all">All Years</option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                </select>
+                                <select id="type-filter" class="filter-select">
+                                    <option value="all">All Types</option>
+                                    <option value="journal">Journal Article</option>
+                                    <option value="conference">Conference Paper</option>
+                                    <option value="book">Book Chapter</option>
+                                    <option value="review">Review Article</option>
+                                </select>
+                                <button class="view-toggle-btn active" data-view="grid">
+                                    <i class="fas fa-th"></i>
                                 </button>
-                                <button id="compare-documents" class="expert-btn expert-btn-secondary">
-                                    <i class="fas fa-balance-scale"></i> Document Comparison
-                                </button>
-                                <button id="generate-summary" class="expert-btn expert-btn-tertiary">
-                                    <i class="fas fa-compress"></i> AI Summary
-                                </button>
-                                <button id="export-nlp-results" class="expert-btn expert-btn-warning">
-                                    <i class="fas fa-download"></i> Export Analysis
+                                <button class="view-toggle-btn" data-view="list">
+                                    <i class="fas fa-list"></i>
                                 </button>
                             </div>
                         </div>
-                        
-                        <div class="expert-tags">
-                            <span class="expert-tag">Transformer Models</span>
-                            <span class="expert-tag">Named Entity Recognition</span>
-                            <span class="expert-tag">Topic Modeling</span>
-                            <span class="expert-tag">Semantic Analysis</span>
-                            <span class="expert-tag">Document Intelligence</span>
+                    </div>
+
+                    <!-- Publications Grid -->
+                    <div class="publications-grid" id="publications-grid">
+                        <!-- 2025 Publications -->
+                        <div class="publication-card" data-year="2025" data-type="book">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Book Chapter</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:Zph67rFs4hoC" target="_blank" rel="noopener">
+                                        Advances in Computational Intelligence: 18th International Work-Conference on Artificial Neural Networks, IWANN 2025
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">I Rojas, G Joya, A Catala, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Springer Nature</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:MXK_kJrjxJIC" target="_blank" rel="noopener">
+                                        Prediction of flexural and split tensile strength of waste glass-concrete composite using machine learning algorithms
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, D Sinkhonde, T Bezabih, P Mirindi, O Oshineye, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Green Technologies and Sustainability</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener">
+                                        Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, D Sinkhonde, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Manufacturing Letters 44, 24-35</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:5nxA0vEk-isC" target="_blank" rel="noopener">
+                                        Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, J Hunter, D Sinkhonde, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Manufacturing Letters 44, 1657-1668</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="book">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Book</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:YOwf2qJgpHMC" target="_blank" rel="noopener">
+                                        Machine Learning Technologies on Energy Economics and Finance: Energy and Sustainable Analytics, Volume 1
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">MZ Abedin, W Yong, <strong>F Mirindi</strong> (Editor)</div>
+                                <div class="publication-venue">Springer Nature</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="review">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Review Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:Se3iqnhoufwC" target="_blank" rel="noopener">
+                                        Neural Networks for Predicting Market Trends in Sustainable Industries: A Review
+                                    </a>
+                                </h3>
+                                <div class="publication-authors"><strong>F Mirindi</strong>, D Mirindi</div>
+                                <div class="publication-venue">Recent Advances in Artificial Intelligence for Sustainable Development</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:LkGwnXOMwfcC" target="_blank" rel="noopener">
+                                        Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses via machine learning
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Sinkhonde, D Mirindi, I Dabakuyo, T Bezabih, NDN Moffo, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Cleaner Waste Systems</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:_FxGoFyzp5QC" target="_blank" rel="noopener">
+                                        Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, J Hunter, D Sinkhonde, T Bezabih, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Green Technologies and Sustainability</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        1 Citation
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:ufrVoPGSRksC" target="_blank" rel="noopener">
+                                        Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, D Sinkhonde, <strong>F Mirindi</strong>, T Bezabith</div>
+                                <div class="publication-venue">Proceedings of the 2025 Computers and People Research Conference, 1-8</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        2 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:WF5omc3nYNoC" target="_blank" rel="noopener">
+                                        The Role of Artificial Intelligence in Building Information Modeling
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, <strong>F Mirindi</strong>, T Bezabih, D Sinkhonde, W Kiarie</div>
+                                <div class="publication-venue">Proceedings of the 2025 Computers and People Research Conference, 1-11</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        2 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="book">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Book Chapter</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:hqOjcs7Dif8C" target="_blank" rel="noopener">
+                                        Forecasting Energy Prices Using Machine Learning Algorithms: A Comparative Analysis
+                                    </a>
+                                </h3>
+                                <div class="publication-authors"><strong>F Mirindi</strong>, D Mirindi</div>
+                                <div class="publication-venue">Machine Learning Technologies on Energy Economics and Finance</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:roLk4NBRz8UC" target="_blank" rel="noopener">
+                                        Advance toward Artificial Superintelligence with OpenAI's O1 reinforcement learning and ethics
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, D Sinkhonde, <strong>F Mirindi</strong>, T Bezabith</div>
+                                <div class="publication-venue">2025 6th International Conference on Artificial Intelligence, Robotics</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:eQOLeE2rZwMC" target="_blank" rel="noopener">
+                                        Applications of machine learning algorithms on the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Sinkhonde, D Mirindi, I Dabakuyo, T Bezabih, D Mashava, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Waste Management Bulletin</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        3 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Journal Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:zYLM7Y9cAGgC" target="_blank" rel="noopener">
+                                        Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete containing tyre rubber and brick powder
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Sinkhonde, T Bezabih, D Mirindi, D Mashava, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Cleaner Waste Systems 10</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        9 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="book">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Book Chapter</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:IjCSPb-OGe4C" target="_blank" rel="noopener">
+                                        Artificial Intelligence (AI) and automation for driving green transportation systems: A comprehensive review
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, A Khang, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Driving Green Transportation System Through Artificial Intelligence and Automation</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        13 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="book">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Book</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:KlAtU1dfN6UC" target="_blank" rel="noopener">
+                                        Driving Green Transportation System Through Artificial Intelligence and Automation: Approaches, Technologies and Applications
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">A Khang, <strong>F Mirindi</strong> (Editor)</div>
+                                <div class="publication-venue">Springer Nature</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:_kc_bZDykSQC" target="_blank" rel="noopener">
+                                        SEF-Net: A hybrid deep learning architecture for multi-step forecasting in sustainable energy markets
+                                    </a>
+                                </h3>
+                                <div class="publication-authors"><strong>F Mirindi</strong>, D Mirindi</div>
+                                <div class="publication-venue">Advances in Computational Intelligence: IWANN 2025</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:YsMSGLbcyi4C" target="_blank" rel="noopener">
+                                        A Review on Aerospace-AI, with Ethics and Implications
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, D Sinkhonde, <strong>F Mirindi</strong>, T Bezabih</div>
+                                <div class="publication-venue">Conference Paper</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        1 Citation
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2025" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2025</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:W7OEmFMy1HYC" target="_blank" rel="noopener">
+                                        Navigating the Digital Frontier: Social and Economic Impacts of Digital Transformation on Communication, Language, and Culture
+                                    </a>
+                                </h3>
+                                <div class="publication-authors"><strong>F Mirindi</strong>, D Mirindi</div>
+                                <div class="publication-venue">ASTEEC Conference Proceeding: Social Science</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        New Publication
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2024 Publications -->
+                        <div class="publication-card" data-year="2024" data-type="journal">
+                            <div class="publication-header">
+                                <div class="publication-year">2024</div>
+                                <div class="publication-type">Review Article</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:UeHWp8X0CEIC" target="_blank" rel="noopener">
+                                        Structural performance of boards through nanoparticle reinforcement: An advance review
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, J Hunter, <strong>F Mirindi</strong>, D Sinkhonde, F Yazdandoust</div>
+                                <div class="publication-venue">Nanotechnology Reviews 13(1)</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        3 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2024" data-type="conference">
+                            <div class="publication-header">
+                                <div class="publication-year">2024</div>
+                                <div class="publication-type">Conference Paper</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:qjMakFHDy7sC" target="_blank" rel="noopener">
+                                        An advance review of Urban-AI and ethical considerations
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, D Sinkhonde, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Proceedings of the 2nd ACM SIGSPATIAL International Workshop</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        2 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="publication-card" data-year="2024" data-type="book">
+                            <div class="publication-header">
+                                <div class="publication-year">2024</div>
+                                <div class="publication-type">Book Chapter</div>
+                            </div>
+                            <div class="publication-content">
+                                <h3 class="publication-title">
+                                    <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&cstart=20&pagesize=80&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:2osOgNQ5qMEC" target="_blank" rel="noopener">
+                                        BIM-driven offsite construction: pathway to efficiency, functionality and sustainability
+                                    </a>
+                                </h3>
+                                <div class="publication-authors">D Mirindi, <strong>F Mirindi</strong></div>
+                                <div class="publication-venue">Transforming Construction with Off-site Methods and Technologies</div>
+                                <div class="publication-meta">
+                                    <span class="citation-count">
+                                        <i class="fas fa-quote-right"></i>
+                                        4 Citations
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="load-more-container">
+                        <button class="load-more-btn" id="load-more-btn">
+                            <i class="fas fa-chevron-down"></i>
+                            Load More Publications
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Research Tools Section -->
+                <div class="research-content" id="tools">
+                    <div class="tools-grid">
+                        <!-- AI Forecasting Tool -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <div class="tool-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h3>AI Economic Forecasting</h3>
+                                <p class="tool-description">Advanced machine learning models for economic prediction and analysis</p>
+                            </div>
+                            <div class="tool-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> LSTM Neural Networks</li>
+                                    <li><i class="fas fa-check"></i> Transformer Models</li>
+                                    <li><i class="fas fa-check"></i> Real-time Analytics</li>
+                                    <li><i class="fas fa-check"></i> Custom Indicators</li>
+                                </ul>
+                            </div>
+                            <div class="tool-actions">
+                                <button class="tool-btn primary">Launch Tool</button>
+                                <button class="tool-btn secondary">Learn More</button>
+                            </div>
+                        </div>
+
+                        <!-- NLP Analysis Tool -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <div class="tool-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <h3>Economic Text Analysis</h3>
+                                <p class="tool-description">Natural language processing for economic documents and sentiment analysis</p>
+                            </div>
+                            <div class="tool-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Sentiment Analysis</li>
+                                    <li><i class="fas fa-check"></i> Entity Recognition</li>
+                                    <li><i class="fas fa-check"></i> Topic Modeling</li>
+                                    <li><i class="fas fa-check"></i> Document Intelligence</li>
+                                </ul>
+                            </div>
+                            <div class="tool-actions">
+                                <button class="tool-btn primary">Launch Tool</button>
+                                <button class="tool-btn secondary">Learn More</button>
+                            </div>
+                        </div>
+
+                        <!-- Data Visualization Tool -->
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <div class="tool-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Economic Data Visualization</h3>
+                                <p class="tool-description">Interactive charts and dashboards for economic data exploration</p>
+                            </div>
+                            <div class="tool-features">
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Real-time Charts</li>
+                                    <li><i class="fas fa-check"></i> Custom Dashboards</li>
+                                    <li><i class="fas fa-check"></i> Export Options</li>
+                                    <li><i class="fas fa-check"></i> Mobile Responsive</li>
+                                </ul>
+                            </div>
+                            <div class="tool-actions">
+                                <button class="tool-btn primary">Launch Tool</button>
+                                <button class="tool-btn secondary">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Impact Metrics Section -->
+                <div class="research-content" id="metrics">
+                    <div class="metrics-dashboard">
+                        <div class="metrics-overview">
+                            <h3>Research Impact Overview</h3>
+                            <p>Comprehensive analysis of publication metrics and academic influence</p>
+                        </div>
+
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <h4>Citation Analytics</h4>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value-number">50+</span>
+                                    <span class="value-label">Total Citations</span>
+                                </div>
+                                <div class="metric-trend">
+                                    <i class="fas fa-arrow-up trend-up"></i>
+                                    <span>+25% this year</span>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <i class="fas fa-globe"></i>
+                                    <h4>International Reach</h4>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value-number">15+</span>
+                                    <span class="value-label">Countries</span>
+                                </div>
+                                <div class="metric-trend">
+                                    <i class="fas fa-arrow-up trend-up"></i>
+                                    <span>Growing globally</span>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <i class="fas fa-users"></i>
+                                    <h4>Collaboration Network</h4>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value-number">20+</span>
+                                    <span class="value-label">Co-authors</span>
+                                </div>
+                                <div class="metric-trend">
+                                    <i class="fas fa-arrow-up trend-up"></i>
+                                    <span>Expanding network</span>
+                                </div>
+                            </div>
+
+                            <div class="metric-card">
+                                <div class="metric-header">
+                                    <i class="fas fa-star"></i>
+                                    <h4>H-Index</h4>
+                                </div>
+                                <div class="metric-value">
+                                    <span class="value-number">8</span>
+                                    <span class="value-label">H-Index Score</span>
+                                </div>
+                                <div class="metric-trend">
+                                    <i class="fas fa-arrow-up trend-up"></i>
+                                    <span>Steadily increasing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Publication Timeline Chart -->
+                        <div class="timeline-chart">
+                            <h4>Publication Timeline</h4>
+                            <div class="chart-container">
+                                <canvas id="publication-timeline-chart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- External Profile Links -->
+                        <div class="external-profiles">
+                            <h4>Academic Profiles</h4>
+                            <div class="profile-links">
+                                <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" 
+                                   class="profile-link" target="_blank" rel="noopener">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <span>Google Scholar</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" 
+                                   class="profile-link" target="_blank" rel="noopener">
+                                    <i class="fab fa-researchgate"></i>
+                                    <span>ResearchGate</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://orcid.org/0009-0001-1798-9914" 
+                                   class="profile-link" target="_blank" rel="noopener">
+                                    <i class="fab fa-orcid"></i>
+                                    <span>ORCID</span>
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1253,5 +1648,8 @@
     
     <!-- Advanced Research Widgets JavaScript -->
     <script src="assets/js/research-widgets-expert.js"></script>
+    
+    <!-- Research Enhanced JavaScript -->
+    <script src="assets/js/research-enhanced-script.js"></script>
 </body>
 </html>
