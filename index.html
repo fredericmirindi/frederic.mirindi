@@ -1,1316 +1,904 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frédéric Mirindi - PhD Candidate & AI Economics Researcher</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <meta name="description" content="Leading PhD candidate specializing in artificial intelligence applications in economic analysis, machine learning models for economic forecasting, and policy analysis. Founder of ThinkBit Edge Corp.">
-    <meta name="keywords" content="AI, Economics, Machine Learning, Economic Forecasting, Policy Analysis, Frederic Mirindi, PhD, Econometrics, ThinkBit Edge">
-    <meta name="author" content="Frédéric Mirindi">
-    <meta name="robots" content="index, follow">
+    <title>Frédéric Mirindi | PhD Candidate Economics</title>
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fredericmirindi.com">
-    <meta property="og:title" content="Frédéric Mirindi - PhD Candidate & AI Economics Researcher">
-    <meta property="og:description" content="Leading PhD candidate specializing in artificial intelligence applications in economic analysis and machine learning for economic forecasting.">
-    <meta property="og:image" content="https://fredericmirindi.com/frederic.mirindi.jpg">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://fredericmirindi.com">
-    <meta name="twitter:title" content="Frédéric Mirindi - PhD Candidate & AI Economics Researcher">
-    <meta name="twitter:description" content="Leading PhD candidate specializing in artificial intelligence applications in economic analysis and machine learning for economic forecasting.">
-    <meta name="twitter:image" content="https://fredericmirindi.com/frederic.mirindi.jpg">
-    <meta name="twitter:creator" content="@MirindiFrederic">
-    
-    <!-- Professional CSS Architecture -->
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Enhanced CSS Files -->
-    <link rel="stylesheet" href="assets/css/economics-chatbot.css">
-    <link rel="stylesheet" href="assets/css/economic-widgets.css">
-    <link rel="stylesheet" href="assets/css/publications-showcase.css">
-    <link rel="stylesheet" href="assets/css/research-widgets.css">
-    <link rel="stylesheet" href="assets/css/profile-links-white.css">
-    <link rel="stylesheet" href="assets/css/profile-icons-fix.css">
-    <link rel="stylesheet" href="assets/css/icon-visibility.css">
-    <link rel="stylesheet" href="assets/css/footer-icons-fix.css">
-    <link rel="stylesheet" href="assets/css/research-enhanced-styles.css">
-    
-    <!-- Chart.js for professional data visualizations -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Frédéric Mirindi",
-      "jobTitle": "PhD Candidate in Economics & Econometrics",
-      "affiliation": [
-        {
-          "@type": "Organization",
-          "name": "University of Manitoba"
-        },
-        {
-          "@type": "Organization",
-          "name": "Booth University College"
-        },
-        {
-          "@type": "Organization",
-          "name": "Université de Saint-Boniface"
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        border: "var(--glass-border)",
+                    }
+                }
+            }
         }
-      ],
-      "url": "https://fredericmirindi.com",
-      "image": "https://fredericmirindi.com/frederic.mirindi.jpg",
-      "sameAs": [
-        "https://www.linkedin.com/in/fredericmirindi",
-        "https://x.com/MirindiFrederic",
-        "https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ",
-        "https://www.researchgate.net/profile/Frederic-Mirindi",
-        "https://orcid.org/0009-0001-1798-9914"
-      ],
-      "knowsAbout": ["Artificial Intelligence", "Economics", "Machine Learning", "Economic Forecasting", "Policy Analysis", "Econometrics"]
-    }
     </script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #050505; 
+            --text-main: #ffffff;
+            --text-muted: #a3a3a3;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --accent-color: #22d3ee; 
+            --accent-hover: #06b6d4;
+            --gradient-start: #ffffff;
+            --gradient-end: #22d3ee; 
+        }
+
+        html.light {
+            --bg-color: #fafafa;
+            --text-main: #171717;
+            --text-muted: #525252;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --accent-color: #b45309; 
+            --accent-hover: #78350f;
+            --gradient-start: #171717;
+            --gradient-end: #b45309; 
+        }
+
+        body {
+            font-family: 'Abadi', 'Abadi MT Condensed Light', 'Questrial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            margin: 0;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Abadi', 'Abadi MT Condensed Light', sans-serif;
+            letter-spacing: 0.03em;
+        }
+
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: var(--bg-color); 
+            transition: background-color 0.5s ease;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation & Page Visibility Logic */
+        .nav-link {
+            position: relative;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-main);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* STRICT PAGE HIDING */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .text-accent { color: var(--accent-color); }
+
+        .text-gradient-innovative {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: transparent;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--accent-color);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover::before { transform: scaleX(1); }
+        .btn-primary:hover { color: var(--bg-color); border-color: var(--accent-color); }
+
+        .theme-toggle {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: var(--glass-bg);
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
+    </style>
 </head>
-<body>
+<body class="antialiased">
 
-<!-- Professional Navigation -->
-<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-        <div class="nav-brand">
-            <a href="#home" class="nav-link" data-page="home" aria-label="Home page">
-                <h2 class="hero-nom-clean">Frédéric Mirindi</h2>
-            </a>
-        </div>
-        <ul class="nav-menu" id="nav-menu" role="menubar">
-            <li class="nav-item" role="none">
-                <a href="#home" class="nav-link active" data-page="home" role="menuitem" aria-current="page">Home</a>
-            </li>
-            <li class="nav-item" role="none">
-                <a href="#research" class="nav-link" data-page="research" role="menuitem">Research</a>
-            </li>
-            <li class="nav-item" role="none">
-                <a href="#conferences" class="nav-link" data-page="conferences" role="menuitem">Conferences</a>
-            </li>
-            <li class="nav-item" role="none">
-                <a href="#about" class="nav-link" data-page="about" role="menuitem">About</a>
-            </li>
-            <li class="nav-item" role="none">
-                <a href="#contact" class="nav-link" data-page="contact" role="menuitem">Contact</a>
-            </li>
-            <li class="nav-item" role="none">
-                <a href="#blog" class="nav-link" data-page="blog" role="menuitem">Blog</a>
-            </li>
-        </ul>
-        <div class="nav-controls">
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-icon" aria-hidden="true">🌙</span>
-            </button>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span class="bar" aria-hidden="true"></span>
-                <span class="bar" aria-hidden="true"></span>
-                <span class="bar" aria-hidden="true"></span>
-            </button>
-        </div>
-    </div>
-</nav>
+    <!-- 3D Background -->
+    <div id="canvas-container"></div>
 
-<!-- Main Content -->
-<main class="main-content" role="main">
-  <!-- HOME PAGE -->
-  <section class="page active" id="home" aria-labelledby="hero-title">
-    <div class="hero-section">
-      <!-- Professional AI/ML Background -->
-      <canvas id="aiCanvas" class="ai-background-canvas" aria-hidden="true"></canvas>
-      
-      <!-- Enhanced animated shapes -->
-      <div class="hero-background" aria-hidden="true"></div>
-      <div class="floating-shape shape-1" aria-hidden="true"></div>
-      <div class="floating-shape shape-2" aria-hidden="true"></div>
-      <div class="floating-shape shape-3" aria-hidden="true"></div>
-      <div class="floating-shape shape-4" aria-hidden="true"></div>
-      <div class="floating-shape shape-5" aria-hidden="true"></div>
-  
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 id="hero-title" class="hero-title">
-              <span class="typing-text">Frédéric Mirindi</span>
-            </h1>
-            <p class="hero-subtitle">PhD Candidate - Economics &amp; Econometrics</p>
-            <p class="hero-subtitle">Founder - ThinkBit Edge Corp.</p>
-            <p class="hero-description">
-              Distinguished PhD Candidate at the University of Manitoba and active researcher at Université de Saint-Boniface 
-              and Booth University College. Leading specialist in Machine Learning applications for economic analysis, 
-              with extensive expertise in deep learning models for economic forecasting and policy analysis. 
-              Former collaborator with the African Economic Research Consortium (AERC), contributing to the development of innovative economic 
-              policies tailored to African markets and contexts. Explore my comprehensive research portfolio through ResearchGate, Google Scholar, and ORCID.
-            </p>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 border-b border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-md transition-colors duration-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 cursor-pointer" onclick="navigateTo('home')">
+                    <h1 class="text-2xl font-bold tracking-wider text-[var(--text-main)]">Frédéric Mirindi<span class="text-accent"></span></h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <div class="flex items-baseline space-x-6">
+                        <button onclick="navigateTo('home')" class="nav-link active text-sm font-medium" id="nav-home">Home</button>
+                        <button onclick="navigateTo('research')" class="nav-link text-sm font-medium" id="nav-research">Research</button>
+                        <button onclick="navigateTo('teaching')" class="nav-link text-sm font-medium" id="nav-teaching">Teaching</button>
+                        <button onclick="navigateTo('publications')" class="nav-link text-sm font-medium" id="nav-publications">Publications</button>
+                        <button onclick="navigateTo('blog')" class="nav-link text-sm font-medium" id="nav-blog">Blog</button>
+                        <button onclick="navigateTo('contacts')" class="nav-link text-sm font-medium" id="nav-contacts">Contact</button>
+                    </div>
+                    <button onclick="toggleTheme()" class="theme-toggle ml-4" aria-label="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon" id="theme-icon"></i>
+                    </button>
+                </div>
+                <div class="-mr-2 flex md:hidden items-center gap-4">
+                    <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon" id="theme-icon-mobile"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text-main)] focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)]" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left">Home</button>
+                <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Research</button>
+                <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Teaching</button>
+                <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Publications</button>
+                <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10 min-h-screen">
+        
+        <!-- HOME PAGE -->
+        <section id="home" class="page-section active">
+            <div class="min-h-[calc(100vh-8rem)] flex flex-col justify-center">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="inline-block px-3 py-1 rounded-full border border-[var(--glass-border)] text-[var(--accent-color)] text-xs font-semibold tracking-wide uppercase">
+                            Economics & Econometrics
+                        </div>
+                        <h1 class="text-5xl md:text-6xl font-bold text-[var(--text-main)] leading-tight">
+                            Exploring the Frontiers of <br>
+                            <span class="text-gradient-innovative">Game Theory, Machine Learning & Macroeconometrics.</span>
+                        </h1>
+                        <p class="text-lg text-[var(--text-muted)] max-w-lg leading-relaxed">
+                            <strong class="text-[var(--text-main)]">Frédéric Mirindi</strong> is a <br>
+                            PhD Candidate in Economics and Econometrics at the University of Manitoba.
+                        </p>
+                        <p class="text-[var(--text-muted)] border-l-2 border-[var(--accent-color)] pl-4">
+                            Specializing in time-series analysis, macro-econometric modeling, and predictive analytics for complex market systems.
+                        </p>
+                        <div class="flex space-x-4 pt-4">
+                            <button onclick="navigateTo('research')" class="px-8 py-3 btn-primary rounded-lg font-semibold transition">
+                                View Research
+                            </button>
+                            <button onclick="navigateTo('contacts')" class="px-8 py-3 glass-card text-[var(--text-main)] rounded-lg font-semibold transition hover:bg-[var(--glass-bg)]">
+                                Contact Me
+                            </button>
+                        </div>
+                        
+                        <!-- Social Links with Specific Colors -->
+                        <div class="flex space-x-6 pt-6 text-[var(--text-muted)] items-center">
+                            <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" title="ORCID" style="color: #A6CE39;" class="hover:opacity-80 transition text-3xl">
+                                <i class="fab fa-orcid"></i>
+                            </a>
+                            <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" title="ResearchGate" style="color: #00CCBB;" class="hover:opacity-80 transition text-3xl">
+                                <i class="fab fa-researchgate"></i>
+                            </a>
+                            <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" title="Google Scholar" style="color: #4285F4;" class="hover:opacity-80 transition text-3xl">
+                                <i class="fas fa-graduation-cap"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- 3D Visual Spacer -->
+                    <div class="hidden md:block h-96 flex items-center justify-center"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH PAGE -->
+        <section id="research" class="page-section">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Research Fields</h2>
+                <p class="text-[var(--text-muted)] max-w-2xl mx-auto">My current work bridges the gap between theoretical economic frameworks and rigorous statistical validation.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-12 h-12 border border-[var(--glass-border)] rounded-lg flex items-center justify-center text-[var(--text-main)] mb-6 text-xl group-hover:border-[var(--accent-color)] group-hover:text-[var(--accent-color)] transition-colors">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--text-main)] mb-3">Time Series Econometrics</h3>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                        Developing robust models for non-stationary data, focusing on structural breaks and long-memory processes in financial markets.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-12 h-12 border border-[var(--glass-border)] rounded-lg flex items-center justify-center text-[var(--text-main)] mb-6 text-xl group-hover:border-[var(--accent-color)] group-hover:text-[var(--accent-color)] transition-colors">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--text-main)] mb-3">Macroeconomic Policy</h3>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                        Analyzing the transmission mechanisms of monetary policy shocks in emerging economies using Bayesian VAR approaches.
+                    </p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl group">
+                    <div class="w-12 h-12 border border-[var(--glass-border)] rounded-lg flex items-center justify-center text-[var(--text-main)] mb-6 text-xl group-hover:border-[var(--accent-color)] group-hover:text-[var(--accent-color)] transition-colors">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-[var(--text-main)] mb-3">Computational Economics</h3>
+                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                        Leveraging machine learning techniques to enhance forecasting accuracy for high-dimensional economic datasets.
+                    </p>
+                </div>
+            </div>
             
-            <div class="hero-buttons">
-              <a class="btn btn--primary research-profile-link" 
-                 href="https://www.researchgate.net/profile/Frederic-Mirindi" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 aria-label="View ResearchGate profile">
-                <img src="images/researchgate-icon.svg" 
-                     alt="" 
-                     style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" 
-                     aria-hidden="true" />
-                ResearchGate Profile
-              </a>
-              <a class="btn btn--outline research-profile-link" 
-                 href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 aria-label="View Google Scholar profile">
-                <img src="images/google-scholar-icon.svg" 
-                     alt="" 
-                     style="vertical-align:middle; width:20px; height:20px; margin-right:8px;" 
-                     aria-hidden="true" />
-                Google Scholar Profile
-              </a>
-              <a class="btn btn--outline research-profile-link" 
-                 href="https://orcid.org/0009-0001-1798-9914" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 aria-label="View ORCID profile">
-                <img src="images/orcid-icon.svg" 
-                     alt="" 
-                     style="vertical-align:middle; width:16px; height:16px; margin-right:6px;" 
-                     aria-hidden="true" />
-                ORCID Profile
-              </a>
-            </div>
-          </div>
-          <div class="hero-image">
-            <div class="profile-container">
-              <div class="profile-image">
-                <div class="circle">
-                  <img src="frederic.mirindi.jpg" alt="Frédéric Mirindi, PhD Candidate" class="profile-photo" loading="lazy">
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 text-center">Conferences & Seminars</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Item 1 -->
+                    <div class="glass-card p-6 rounded-xl flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="inline-block px-2 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold">MARBLE 2025</div>
+                            <span class="text-[var(--text-muted)] text-xs italic">July 1–3, 2025</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-[var(--text-main)] mb-2 leading-tight">“Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms.”</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-auto">
+                            <strong>Mirindi, F.</strong><br>
+                            MARBLE2025 – 6th International Conference on Mathematical Research for Blockchain Economics, Amalia Hotel, Athens, Greece.
+                        </p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="glass-card p-6 rounded-xl flex flex-col">
+                        <div class="flex justify-between items-start mb-3">
+                            <div class="inline-block px-2 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-bold">Oxford Seminar</div>
+                            <span class="text-[var(--text-muted)] text-xs italic">November 27, 2024</span>
+                        </div>
+                        <h4 class="text-lg font-semibold text-[var(--text-main)] mb-2 leading-tight">“From Rubber to Cobalt: Evolution of Exploitation Forms and Social Impacts in the Democratic Republic of Congo.”</h4>
+                        <p class="text-[var(--text-muted)] text-sm mt-auto">
+                            <strong>Mirindi, F.</strong><br>
+                            Graduate Seminars in Economic and Social History, University of Oxford.
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <!-- Professional Collaboration Section -->
-              <div class="collaboration-section">
-                <button id="collaborationText" class="collaboration-text" aria-label="Open collaboration contact form">
-                  Open for Collaboration
-                </button>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <!-- Professional Email Modal -->
-    <div id="emailModal" class="email-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-      <div class="email-content">
-        <button class="close-modal" aria-label="Close modal">&times;</button>
-        <h3 id="modal-title">Let's Connect!</h3>
-        <p>Reach out for collaboration opportunities:</p>
-        <div class="email-display">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-          <span id="emailText">frederic.mirindi@umanitoba.ca</span>
-          <button id="copyEmailBtn" class="copy-btn" aria-label="Copy email address">
-            <i class="fas fa-copy" aria-hidden="true"></i> Copy
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Professional Key Achievements Section -->
-    <section class="highlights-section" aria-labelledby="achievements-title">
-      <div class="container">
-        <h2 id="achievements-title" class="widget-section-title">Key Achievements</h2>
-        <div class="highlights-grid">
-          <article class="highlight-card">
-            <h3>14+</h3>
-            <p>Published Papers</p>
-          </article>
-          <article class="highlight-card">
-            <h3>8+</h3>
-            <p>Conference Presentations</p>
-          </article>
-          <article class="highlight-card">
-            <h3>3+</h3>
-            <p>AI Models Developed</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Professional Economic Analytics Dashboard -->
-    <section class="highlights-section" aria-labelledby="analytics-title">
-      <div class="container">
-        <h2 id="analytics-title" class="widget-section-title">Research-Driven Economic Analytics</h2>
-        <p class="section-lead" role="doc-subtitle">
-          These indicators power my macro forecasting and policy evaluation research, informing how shocks transmit through rates, prices, and labor markets.
-        </p>
-        <div class="widget-cards-row" role="group" aria-label="Economic analytics widgets">
-
-          <!-- Economic Calendar Widget -->
-          <article class="widget-card widget-economic-calendar">
-            <div class="widget-card-icon" aria-hidden="true">📅</div>
-            <div class="widget-card-content">
-              <h3 class="widget-card-title">Economic Calendar</h3>
-              <div class="widget-card-context">
-                <strong>Research Impact:</strong> Timely releases impact my inflation and unemployment models.
-              </div>
-              <div class="widget-calendar-events" id="economic-events" aria-live="polite" aria-label="Economic events">
-                <!-- Dynamic content populated by JS -->
-              </div>
-              <div class="widget-card-secondary">Today's Key Events</div>
-              <div class="widget-card-caption">Track market-moving economic releases in real-time.</div>
-              <a class="widget-related-link" href="#research" data-page="research" aria-label="View related research">Related Research</a>
+        <!-- TEACHING PAGE -->
+        <section id="teaching" class="page-section">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Teaching Experience</h2>
+                <p class="text-[var(--text-muted)] max-w-2xl mx-auto">Educating the next generation of economists and mathematicians.</p>
             </div>
-          </article>
-          
-          <!-- Market Sentiment Widget -->
-          <article class="widget-card widget-market-sentiment">
-            <div class="widget-card-icon" aria-hidden="true">📈</div>
-            <div class="widget-card-content">
-              <h3 class="widget-card-title">Market Sentiment</h3>
-              <div class="widget-card-context">
-                <strong>Research Impact:</strong> Sentiment indices inform my asset-price volatility research.
-              </div>
-              <div class="sentiment-gauge" id="sentiment-gauge" aria-label="Market sentiment gauge">
-                <div class="gauge-container">
-                  <div class="gauge-fill" id="gauge-fill" style="transform: rotate(45deg);" aria-hidden="true"></div>
-                  <div class="gauge-center">
-                    <span class="sentiment-value" id="sentiment-value" aria-live="polite">52</span>
-                    <span class="sentiment-label">NEUTRAL</span>
-                  </div>
+
+            <div class="space-y-8 max-w-4xl mx-auto">
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-[var(--accent-color)] relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-[var(--text-main)]">Booth University College</h3>
+                            <p class="text-[var(--accent-color)] font-medium">Sessional Instructor | Winnipeg</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 bg-[var(--glass-bg)] px-4 py-1 rounded-full text-sm text-[var(--text-main)] border border-[var(--glass-border)]">
+                            September 2024 – Present
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
+                                <h4 class="text-[var(--text-main)] font-semibold">ECO110 — Intro to Microeconomics</h4>
+                                <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2024–May 2025 | Class size: 15–25</p>
+                            </div>
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
+                                <h4 class="text-[var(--text-main)] font-semibold">MAT100 — Applied Finite Mathematics</h4>
+                                <p class="text-[var(--text-muted)] text-xs mt-1">Jan 2025–May 2025 | Class size: 15–25</p>
+                            </div>
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
+                                <h4 class="text-[var(--text-main)] font-semibold">BHS 200 — Research Methods</h4>
+                                <p class="text-[var(--text-muted)] text-xs mt-1">Sep 2025–Dec 2025</p>
+                            </div>
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
+                                <h4 class="text-[var(--text-main)] font-semibold">MAT 110 — Calculus</h4>
+                                <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2025–Dec 2025</p>
+                            </div>
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
+                                <h4 class="text-[var(--text-main)] font-semibold">BUS 270 — Business Information Systems</h4>
+                                <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2025–Dec 2025</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="sentiment-indicators" role="group" aria-label="Market sentiment indicators">
-                <div class="indicator">
-                  <span class="indicator-label">FEAR & GREED:</span>
-                  <span class="indicator-value" id="fear-greed" aria-live="polite">52</span>
+
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-[var(--text-muted)] opacity-90">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-[var(--text-main)]">Université de Saint-Boniface</h3>
+                            <p class="text-[var(--text-muted)] font-medium">Instructor | Winnipeg</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 bg-[var(--glass-bg)] px-4 py-1 rounded-full text-sm text-[var(--text-main)] border border-[var(--glass-border)]">
+                            September – December 2025
+                        </div>
+                    </div>
+                    <div class="border border-[var(--glass-border)] p-4 rounded-lg">
+                        <h4 class="text-[var(--text-main)] font-semibold">ECO100 — Introduction to Microeconomics</h4>
+                    </div>
                 </div>
-                <div class="indicator">
-                  <span class="indicator-label">VIX:</span>
-                  <span class="indicator-value" id="vix-value" aria-live="polite">17.2</span>
+
+                <div class="glass-card p-8 rounded-2xl border-l-4 border-[var(--text-muted)] opacity-90">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-[var(--text-main)]">Catholic University of Bukavu</h3>
+                            <p class="text-[var(--text-muted)] font-medium">Sessional Instructor</p>
+                        </div>
+                        <div class="mt-2 md:mt-0 bg-[var(--glass-bg)] px-4 py-1 rounded-full text-sm text-[var(--text-main)] border border-[var(--glass-border)]">
+                            September 2016 – May 2017
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="border border-[var(--glass-border)] p-4 rounded-lg">
+                            <h4 class="text-[var(--text-main)] font-semibold">Macroeconomics</h4>
+                            <p class="text-[var(--text-muted)] text-xs mt-1">Fall 2016 | 132 Undergraduates</p>
+                        </div>
+                        <div class="border border-[var(--glass-border)] p-4 rounded-lg">
+                            <h4 class="text-[var(--text-main)] font-semibold">Quantitative Methods</h4>
+                            <p class="text-[var(--text-muted)] text-xs mt-1">Winter 2017 | 210 Undergraduates</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="widget-card-secondary">Global Markets</div>
-              <div class="widget-card-caption">Real-time sentiment analysis from multiple indicators.</div>
-              <a class="widget-related-link" href="#research" data-page="research" aria-label="View related research">Related Research</a>
             </div>
-          </article>
-          
-          <!-- Central Bank Rates Widget -->
-          <article class="widget-card widget-interest-rates">
-            <div class="widget-card-icon" aria-hidden="true">🏦</div>
-            <div class="widget-card-content">
-              <h3 class="widget-card-title">Central Bank Rates</h3>
-              <div class="widget-card-context">
-                <strong>Research Impact:</strong> Policy rates are direct inputs for my monetary shock models.
-              </div>
-              <div class="rates-list" id="interest-rates" aria-live="polite" aria-label="Central bank interest rates">
-                <!-- Dynamic content populated by JS -->
-              </div>
-              <div class="widget-card-secondary">Key Central Banks</div>
-              <div class="widget-card-caption">Monitor global monetary policy changes.</div>
-              <a class="widget-related-link" href="#research" data-page="research" aria-label="View related research">Related Research</a>
+        </section>
+
+        <!-- PUBLICATIONS PAGE -->
+        <section id="publications" class="page-section">
+             <div class="max-w-5xl mx-auto">
+                <h2 class="text-4xl font-bold text-gradient-innovative mb-10 border-l-4 border-[var(--accent-color)] pl-6">Publications & Proceedings</h2>
+
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 flex items-center gap-2"><i class="far fa-calendar-alt text-[var(--accent-color)]"></i> Forthcoming & 2026</h3>
+                    <div class="space-y-4">
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Optimizing ML algorithms for real-time privacy-preserving patient monitoring in embedded systems</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., Khang, A., & Mirindi, D. (2026)</p>
+                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00027-6</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Integration of AI and AR in medical imaging: A quantitative analysis of workflow optimization</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Khang, A., Mirindi, F., & Mirindi, D. (2026)</p>
+                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00033-1</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Revolutionizing medical imaging and diagnostics through advanced AI and AR technologies</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Mirindi, F., & Khang, A. (2026)</p>
+                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00037-9</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">SEF-Net: A hybrid deep learning architecture for multi-step forecasting in sustainable energy markets</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2026)</p>
+                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Advances in Computational Intelligence, IWANN 2025, LNCS 16009. DOI: 10.1007/978-3-032-02728-3_18</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl border-l-2 border-[var(--text-muted)]">
+                            <h4 class="text-[var(--text-main)] font-semibold">Difference-in-Differences Meets AI: Identification, Representation, and Robust Inference via Learned Counterfactual Dynamics</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F. (2025)</p>
+                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">Proceedings of IEEE BDKCSE 2025 Conference (Forthcoming)</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl border-l-2 border-[var(--text-muted)]">
+                            <h4 class="text-[var(--text-main)] font-semibold">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F. (2025)</p>
+                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economics. Proceedings: Springer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 flex items-center gap-2"><i class="far fa-calendar text-[var(--accent-color)]"></i> 2025</h3>
+                    <div class="space-y-4">
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Hunter, J., Sinkhonde, D., & Mirindi, F. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Manufacturing Letters, 44, 1657–1668. DOI: 10.1016/j.mfglet.2025.07.001</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Sinkhonde, D., Mirindi, F., Dabakuyo, I., Bezabih, T., Nkanpa Moffo, N.D., & Mirindi, F. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Cleaner Waste Systems, 12, 100352. DOI: 10.1016/j.clwas.2025.100352</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Sinkhonde, D., Bezabih, T., Mirindi, D., Mashava, D., & Mirindi, F. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Cleaner Waste Systems, 10, 100236. DOI: 10.1016/j.clwas.2025.100236</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Prediction of flexural and split tensile strength of waste glass-concrete composite using ML algorithms</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Bezabih, T., Mirindi, F., Oshineye, O., & Mirindi, P. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Green Technologies and Sustainability. DOI: 10.1016/j.grets.2025.100275</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., & Mirindi, F. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Manufacturing Letters, 44, 24–35. DOI: 10.1016/j.mfglet.2025.06.007</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Mirindi, F., Maksosa, P., & Mirindi, J. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Green Technologies and Sustainability, 3(4), 100235. DOI: 10.1016/j.grets.2025.100235</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Artificial intelligence and automation for driving green transportation systems: A comprehensive review</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Khang, A., & Mirindi, F. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">In Driving Green Transportation System Through AI and Automation. DOI: 10.1007/978-3-031-72617-0_1</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Forecasting energy prices using machine learning algorithms: A comparative analysis</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">In Machine Learning Technologies on Energy Economics and Finance. DOI: 10.1007/978-3-031-94862-6_6</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Neural networks for predicting market trends in sustainable industries: A review</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of RAISD 2025, 655–670. DOI: 10.2991/978-94-6463-787-8_50</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Mirindi, F., & Bezabih, T. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of the 2025 Computers and People Research Conference. DOI: 10.1145/3716489.3728431</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Review: The role of artificial intelligence in building information modeling</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Mirindi, F., Bezabih, T., Sinkhonde, D., & Kiarie, W. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of the 2025 Computers and People Research Conference. DOI: 10.1145/3716489.3728433</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Advance toward artificial superintelligence with OpenAI’s O1 reinforcement learning and ethics</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Mirindi, F., & Bezabih, T. (2025)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">2025 6th International Conference on AIRC. DOI: 10.1109/AIRC64931.2025.11077494</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-12">
+                    <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 flex items-center gap-2"><i class="far fa-calendar-check text-[var(--accent-color)]"></i> 2024</h3>
+                    <div class="space-y-4">
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">Structural performance of boards through nanoparticle reinforcement: An advance review</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Hunter, J., Mirindi, F., Sinkhonde, D., & Yazdandoust, F. (2024)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Nanotechnology Reviews, 13(1). DOI: 10.1515/ntrev-2024-0119</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">An advance review of urban-AI and ethical considerations</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., & Mirindi, F. (2024)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">ACM Conference Proceedings. DOI: 10.1145/3681780.3697246</p>
+                        </div>
+                        <div class="glass-card p-5 rounded-xl">
+                            <h4 class="text-[var(--text-main)] font-semibold">BIM-driven offsite construction: Pathway to efficiency, functionality and sustainability</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., & Mirindi, F. (2024)</p>
+                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of TCRC 2024. DOI: 10.57922/bdm9ns80</p>
+                        </div>
+                    </div>
+                </div>
+
+             </div>
+        </section>
+
+        <!-- BLOG PAGE -->
+        <section id="blog" class="page-section">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Economic Insights</h2>
+                <p class="text-[var(--text-muted)]">Thoughts on current events through an econometric lens.</p>
             </div>
-          </article>
-          
-          <!-- Key Indicators Widget -->
-          <article class="widget-card widget-economic-indicators">
-            <div class="widget-card-icon" aria-hidden="true">📊</div>
-            <div class="widget-card-content">
-              <h3 class="widget-card-title">Key Indicators</h3>
-              <div class="widget-card-context">
-                <strong>Research Impact:</strong> GDP, inflation and employment metrics form the backbone of my forecasting work.
-              </div>
-              <div class="indicators-grid" id="economic-indicators" aria-live="polite" aria-label="Economic indicators">
-                <!-- Dynamic content populated by JS -->
-              </div>
-              <div class="widget-card-secondary">US Economy</div>
-              <div class="widget-card-caption">Real-time economic health monitoring.</div>
-              <a class="widget-related-link" href="#research" data-page="research" aria-label="View related research">Related Research</a>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <article class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                    <div class="h-48 bg-[var(--glass-bg)] relative overflow-hidden border-b border-[var(--glass-border)]">
+                         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDQwaDQwVjBIMHY0MHptMjAgMjBWMjBoMjB2MjBIMjB6TTAgMjBoMjB2MjBIMFYyMHoiIGZpbGw9IiM4ODg4ODgiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9nPjwvc3ZnPg==')] opacity-50"></div>
+                         <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[var(--bg-color)] bg-[var(--text-main)] px-2 py-1 rounded">Analysis</span>
+                         </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[var(--text-muted)] text-sm mb-2">October 15, 2025</div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Post-COVID Inflation Persistence</h3>
+                        <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
+                            Examining whether recent inflationary trends are truly transitory or structurally embedded using a vector error correction model...
+                        </p>
+                        <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
+                    </div>
+                </article>
+
+                 <article class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                    <div class="h-48 bg-[var(--glass-bg)] relative overflow-hidden border-b border-[var(--glass-border)]">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTI4LDEyOCwxMjgsMC4xKSIvPjwvc3ZnPg==')] opacity-50"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[var(--bg-color)] bg-[var(--text-main)] px-2 py-1 rounded">Coding</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[var(--text-muted)] text-sm mb-2">September 02, 2025</div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">R vs Python for Time Series</h3>
+                        <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
+                            A comparative performance analysis of R's 'forecast' package versus Python's 'statsmodels' library when handling high-frequency financial data.
+                        </p>
+                        <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
+                    </div>
+                </article>
             </div>
-          </article>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contacts" class="page-section">
+            <div class="max-w-2xl mx-auto">
+                <div class="glass-card rounded-2xl p-8 md:p-12">
+                    <h2 class="text-3xl font-bold text-gradient-innovative mb-2">Get in Touch</h2>
+                    <p class="text-[var(--text-muted)] mb-8">Interested in collaboration, data analysis consulting, or discussing economic theory? Send me a message.</p>
+
+                    <form onsubmit="event.preventDefault(); alert('Thank you! This is a demo form.');" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Name</label>
+                                <input type="text" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Email</label>
+                                <input type="email" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="john@example.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Subject</label>
+                            <input type="text" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="Research Collaboration">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="Your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full btn-primary py-4 rounded-lg font-bold">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <div class="mt-10 pt-8 border-t border-[var(--glass-border)] grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-[var(--text-muted)]">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-university text-[var(--text-main)]"></i>
+                            <span>University of Manitoba, Winnipeg, MB</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-[var(--text-main)]"></i>
+                            <span>frederic.mirindi@umanitoba.ca</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="relative z-10 border-t border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-sm mt-auto">
+        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center flex-col md:flex-row">
+            <p class="text-[var(--text-muted)] text-sm">© 2025 Frédéric Mirindi. All rights reserved.</p>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+            </div>
         </div>
+    </footer>
 
-        <div class="section-cta">
-          <a class="btn btn--primary" href="#research" data-page="research" aria-label="Explore detailed research">Explore My Research</a>
-        </div>
-      </div>
-    </section>
-
-  </section>
- 
-  <!-- RESEARCH PAGE -->
-  <section class="page" id="research" aria-labelledby="research-title">
-    <!-- Professional Research Hero Section -->
-    <div class="publications-minimal-hero">
-      <div class="container">
-        <h1 id="research-title" class="publications-main-title">Research & Publications</h1>
-      </div>
-    </div>
-    
-    <div class="container">
-      <p class="section-lead">Comprehensive academic portfolio featuring AI-driven economic research and interactive analytical tools</p>
-      
-      <!-- Research Statistics Dashboard -->
-      <section class="research-stats-dashboard" aria-labelledby="stats-title">
-        <h2 id="stats-title" class="sr-only">Research Statistics</h2>
-        <div class="stats-grid">
-          <article class="stat-item">
-            <div class="stat-icon" aria-hidden="true">
-              <i class="fas fa-file-alt"></i>
-            </div>
-            <div class="stat-content">
-              <div class="stat-number">30+</div>
-              <div class="stat-label">Publications</div>
-            </div>
-          </article>
-          <article class="stat-item">
-            <div class="stat-icon" aria-hidden="true">
-              <i class="fas fa-quote-right"></i>
-            </div>
-            <div class="stat-content">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Citations</div>
-            </div>
-          </article>
-          <article class="stat-item">
-            <div class="stat-icon" aria-hidden="true">
-              <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="stat-content">
-              <div class="stat-number">2025</div>
-              <div class="stat-label">Latest Year</div>
-            </div>
-          </article>
-          <article class="stat-item">
-            <div class="stat-icon" aria-hidden="true">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="stat-content">
-              <div class="stat-number">15+</div>
-              <div class="stat-label">Collaborators</div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Professional Research Navigation -->
-      <nav class="research-navigation" aria-label="Research sections">
-        <div class="research-tabs" role="tablist">
-          <button class="research-tab active" data-tab="publications" role="tab" aria-selected="true" aria-controls="publications-panel">
-            <i class="fas fa-book" aria-hidden="true"></i>
-            Publications
-          </button>
-          <button class="research-tab" data-tab="tools" role="tab" aria-selected="false" aria-controls="tools-panel">
-            <i class="fas fa-tools" aria-hidden="true"></i>
-            Research Tools
-          </button>
-          <button class="research-tab" data-tab="metrics" role="tab" aria-selected="false" aria-controls="metrics-panel">
-            <i class="fas fa-chart-bar" aria-hidden="true"></i>
-            Impact Metrics
-          </button>
-        </div>
-      </nav>
-
-      <!-- Publications Section -->
-      <div class="research-content active" id="publications-panel" role="tabpanel" aria-labelledby="publications-tab">
-        <!-- Professional Search and Filter Controls -->
-        <div class="publications-controls">
-          <div class="search-filter-row">
-            <div class="search-input-container">
-              <i class="fas fa-search search-icon" aria-hidden="true"></i>
-              <input 
-                id="publications-search" 
-                class="search-input form-control" 
-                type="search"
-                placeholder="Search publications by title, author, or keyword..." 
-                autocomplete="off"
-                aria-label="Search publications"
-              />
-            </div>
-            <div class="filter-controls">
-              <label for="year-filter" class="sr-only">Filter by year</label>
-              <select id="year-filter" class="filter-select form-control" aria-label="Filter by publication year">
-                <option value="all">All Years</option>
-                <option value="2025">2025</option>
-                <option value="2024">2024</option>
-                <option value="2023">2023</option>
-                <option value="2022">2022</option>
-              </select>
-              <label for="type-filter" class="sr-only">Filter by type</label>
-              <select id="type-filter" class="filter-select form-control" aria-label="Filter by publication type">
-                <option value="all">All Types</option>
-                <option value="journal">Journal Article</option>
-                <option value="conference">Conference Paper</option>
-                <option value="book">Book Chapter</option>
-                <option value="review">Review Article</option>
-              </select>
-              <div class="view-controls" role="group" aria-label="View options">
-                <button class="view-toggle-btn active" data-view="grid" aria-label="Grid view" aria-pressed="true">
-                  <i class="fas fa-th" aria-hidden="true"></i>
-                </button>
-                <button class="view-toggle-btn" data-view="list" aria-label="List view" aria-pressed="false">
-                  <i class="fas fa-list" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Professional Publications Grid -->
-        <div class="publications-grid" id="publications-grid" role="region" aria-label="Publications list">
-          <!-- 2025 Publications -->
-          <article class="publication-card" data-year="2025" data-type="book">
-            <header class="publication-header">
-              <div class="publication-year">2025</div>
-              <div class="publication-type">Book Chapter</div>
-            </header>
-            <div class="publication-content">
-              <h3 class="publication-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:Zph67rFs4hoC" target="_blank" rel="noopener noreferrer">
-                  Advances in Computational Intelligence: 18th International Work-Conference on Artificial Neural Networks, IWANN 2025
-                </a>
-              </h3>
-              <div class="publication-authors">I Rojas, G Joya, A Catala, <strong>F Mirindi</strong></div>
-              <div class="publication-venue">Springer Nature</div>
-              <div class="publication-meta">
-                <span class="citation-count">
-                  <i class="fas fa-quote-right" aria-hidden="true"></i>
-                  New Publication
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" data-year="2025" data-type="journal">
-            <header class="publication-header">
-              <div class="publication-year">2025</div>
-              <div class="publication-type">Journal Article</div>
-            </header>
-            <div class="publication-content">
-              <h3 class="publication-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:MXK_kJrjxJIC" target="_blank" rel="noopener noreferrer">
-                  Prediction of flexural and split tensile strength of waste glass-concrete composite using machine learning algorithms
-                </a>
-              </h3>
-              <div class="publication-authors">D Mirindi, D Sinkhonde, T Bezabih, P Mirindi, O Oshineye, <strong>F Mirindi</strong></div>
-              <div class="publication-venue">Green Technologies and Sustainability</div>
-              <div class="publication-meta">
-                <span class="citation-count">
-                  <i class="fas fa-quote-right" aria-hidden="true"></i>
-                  New Publication
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" data-year="2025" data-type="journal">
-            <header class="publication-header">
-              <div class="publication-year">2025</div>
-              <div class="publication-type">Journal Article</div>
-            </header>
-            <div class="publication-content">
-              <h3 class="publication-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:8k81kl-MbHgC" target="_blank" rel="noopener noreferrer">
-                  Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres
-                </a>
-              </h3>
-              <div class="publication-authors">D Mirindi, D Sinkhonde, <strong>F Mirindi</strong></div>
-              <div class="publication-venue">Manufacturing Letters 44, 24-35</div>
-              <div class="publication-meta">
-                <span class="citation-count">
-                  <i class="fas fa-quote-right" aria-hidden="true"></i>
-                  New Publication
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" data-year="2025" data-type="journal">
-            <header class="publication-header">
-              <div class="publication-year">2025</div>
-              <div class="publication-type">Journal Article</div>
-            </header>
-            <div class="publication-content">
-              <h3 class="publication-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:5nxA0vEk-isC" target="_blank" rel="noopener noreferrer">
-                  Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties
-                </a>
-              </h3>
-              <div class="publication-authors">D Mirindi, J Hunter, D Sinkhonde, <strong>F Mirindi</strong></div>
-              <div class="publication-venue">Manufacturing Letters 44, 1657-1668</div>
-              <div class="publication-meta">
-                <span class="citation-count">
-                  <i class="fas fa-quote-right" aria-hidden="true"></i>
-                  New Publication
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" data-year="2025" data-type="book">
-            <header class="publication-header">
-              <div class="publication-year">2025</div>
-              <div class="publication-type">Book</div>
-            </header>
-            <div class="publication-content">
-              <h3 class="publication-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:YOwf2qJgpHMC" target="_blank" rel="noopener noreferrer">
-                  Machine Learning Technologies on Energy Economics and Finance: Energy and Sustainable Analytics, Volume 1
-                </a>
-              </h3>
-              <div class="publication-authors">MZ Abedin, W Yong, <strong>F Mirindi</strong> (Editor)</div>
-              <div class="publication-venue">Springer Nature</div>
-              <div class="publication-meta">
-                <span class="citation-count">
-                  <i class="fas fa-quote-right" aria-hidden="true"></i>
-                  New Publication
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article class="publication-card" data-year="2025" data-type="review">
-            <header class="publication-header">
-              <div class="publication-year">2025</div>
-              <div class="publication-type">Review Article</div>
-            </header>
-            <div class="publication-content">
-              <h3 class="publication-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=fr&user=K5--CxAAAAAJ&sortby=pubdate&citation_for_view=K5--CxAAAAAJ:Se3iqnhoufwC" target="_blank" rel="noopener noreferrer">
-                  Neural Networks for Predicting Market Trends in Sustainable Industries: A Review
-                </a>
-              </h3>
-              <div class="publication-authors"><strong>F Mirindi</strong>, D Mirindi</div>
-              <div class="publication-venue">Recent Advances in Artificial Intelligence for Sustainable Development</div>
-              <div class="publication-meta">
-                <span class="citation-count">
-                  <i class="fas fa-quote-right" aria-hidden="true"></i>
-                  New Publication
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Professional Load More Section -->
-        <div class="load-more-container">
-          <button class="load-more-btn btn btn--outline" id="load-more-btn" aria-label="Load more publications">
-            <i class="fas fa-chevron-down" aria-hidden="true"></i>
-            Load More Publications
-          </button>
-        </div>
-      </div>
-
-      <!-- Professional Research Tools Section -->
-      <div class="research-content" id="tools-panel" role="tabpanel" aria-labelledby="tools-tab">
-        <div class="tools-grid">
-          <!-- AI Forecasting Tool -->
-          <article class="tool-card">
-            <header class="tool-header">
-              <div class="tool-icon">
-                <i class="fas fa-brain" aria-hidden="true"></i>
-              </div>
-              <h3>AI Economic Forecasting</h3>
-              <p class="tool-description">Advanced machine learning models for economic prediction and analysis</p>
-            </header>
-            <div class="tool-features">
-              <ul>
-                <li><i class="fas fa-check" aria-hidden="true"></i> LSTM Neural Networks</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Transformer Models</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Real-time Analytics</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Custom Indicators</li>
-              </ul>
-            </div>
-            <div class="tool-actions">
-              <button class="tool-btn btn btn--primary">Launch Tool</button>
-              <button class="tool-btn btn btn--outline">Learn More</button>
-            </div>
-          </article>
-
-          <!-- NLP Analysis Tool -->
-          <article class="tool-card">
-            <header class="tool-header">
-              <div class="tool-icon">
-                <i class="fas fa-language" aria-hidden="true"></i>
-              </div>
-              <h3>Economic Text Analysis</h3>
-              <p class="tool-description">Natural language processing for economic documents and sentiment analysis</p>
-            </header>
-            <div class="tool-features">
-              <ul>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Sentiment Analysis</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Entity Recognition</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Topic Modeling</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Document Intelligence</li>
-              </ul>
-            </div>
-            <div class="tool-actions">
-              <button class="tool-btn btn btn--primary">Launch Tool</button>
-              <button class="tool-btn btn btn--outline">Learn More</button>
-            </div>
-          </article>
-
-          <!-- Data Visualization Tool -->
-          <article class="tool-card">
-            <header class="tool-header">
-              <div class="tool-icon">
-                <i class="fas fa-chart-line" aria-hidden="true"></i>
-              </div>
-              <h3>Economic Data Visualization</h3>
-              <p class="tool-description">Interactive charts and dashboards for economic data exploration</p>
-            </header>
-            <div class="tool-features">
-              <ul>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Real-time Charts</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Custom Dashboards</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Export Options</li>
-                <li><i class="fas fa-check" aria-hidden="true"></i> Mobile Responsive</li>
-              </ul>
-            </div>
-            <div class="tool-actions">
-              <button class="tool-btn btn btn--primary">Launch Tool</button>
-              <button class="tool-btn btn btn--outline">Learn More</button>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <!-- Professional Impact Metrics Section -->
-      <div class="research-content" id="metrics-panel" role="tabpanel" aria-labelledby="metrics-tab">
-        <div class="metrics-dashboard">
-          <div class="metrics-overview">
-            <h3>Research Impact Overview</h3>
-            <p>Comprehensive analysis of publication metrics and academic influence</p>
-          </div>
-
-          <div class="metrics-grid">
-            <article class="metric-card">
-              <header class="metric-header">
-                <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                <h4>Citation Analytics</h4>
-              </header>
-              <div class="metric-value">
-                <span class="value-number">50+</span>
-                <span class="value-label">Total Citations</span>
-              </div>
-              <div class="metric-trend">
-                <i class="fas fa-arrow-up trend-up" aria-hidden="true"></i>
-                <span>+25% this year</span>
-              </div>
-            </article>
-
-            <article class="metric-card">
-              <header class="metric-header">
-                <i class="fas fa-globe" aria-hidden="true"></i>
-                <h4>International Reach</h4>
-              </header>
-              <div class="metric-value">
-                <span class="value-number">15+</span>
-                <span class="value-label">Countries</span>
-              </div>
-              <div class="metric-trend">
-                <i class="fas fa-arrow-up trend-up" aria-hidden="true"></i>
-                <span>Growing globally</span>
-              </div>
-            </article>
-
-            <article class="metric-card">
-              <header class="metric-header">
-                <i class="fas fa-users" aria-hidden="true"></i>
-                <h4>Collaboration Network</h4>
-              </header>
-              <div class="metric-value">
-                <span class="value-number">20+</span>
-                <span class="value-label">Co-authors</span>
-              </div>
-              <div class="metric-trend">
-                <i class="fas fa-arrow-up trend-up" aria-hidden="true"></i>
-                <span>Expanding network</span>
-              </div>
-            </article>
-
-            <article class="metric-card">
-              <header class="metric-header">
-                <i class="fas fa-star" aria-hidden="true"></i>
-                <h4>H-Index</h4>
-              </header>
-              <div class="metric-value">
-                <span class="value-number">8</span>
-                <span class="value-label">H-Index Score</span>
-              </div>
-              <div class="metric-trend">
-                <i class="fas fa-arrow-up trend-up" aria-hidden="true"></i>
-                <span>Steadily increasing</span>
-              </div>
-            </article>
-          </div>
-
-          <!-- Professional Timeline Chart -->
-          <div class="timeline-chart">
-            <h4>Publication Timeline</h4>
-            <div class="chart-container">
-              <canvas id="publication-timeline-chart" aria-label="Publication timeline chart"></canvas>
-            </div>
-          </div>
-
-          <!-- Professional External Profile Links -->
-          <div class="external-profiles">
-            <h4>Academic Profiles</h4>
-            <nav class="profile-links" aria-label="Academic profile links">
-              <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" 
-                 class="profile-link" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar profile">
-                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                <span>Google Scholar</span>
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.researchgate.net/profile/Frederic-Mirindi" 
-                 class="profile-link" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate profile">
-                <i class="fab fa-researchgate" aria-hidden="true"></i>
-                <span>ResearchGate</span>
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-              <a href="https://orcid.org/0009-0001-1798-9914" 
-                 class="profile-link" target="_blank" rel="noopener noreferrer" aria-label="ORCID profile">
-                <i class="fab fa-orcid" aria-hidden="true"></i>
-                <span>ORCID</span>
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONFERENCES PAGE -->
-  <section class="page" id="conferences" aria-labelledby="conferences-title">
-    <!-- Professional Conferences Hero Section -->
-    <div class="conferences-minimal-hero">
-      <div class="container">
-        <h1 id="conferences-title" class="conferences-main-title">Conferences & Events</h1>
-      </div>
-    </div>
-    
-    <div class="container">
-      <p class="section-lead">Speaking engagements and conference presentations showcasing cutting-edge research in AI and economics</p>
-      
-      <div class="conferences-timeline" role="feed" aria-label="Conference presentations timeline">
-        <article class="conference-card">
-          <div class="conference-date">
-            <span class="month">Jul</span>
-            <span class="day">3</span>
-            <span class="year">2025</span>
-          </div>
-          <div class="conference-content">
-            <h3>MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economy</h3>
-            <p class="conference-location">📍 Athens, Greece</p>
-            <p class="conference-role">👤 Speaker</p>
-            <p class="conference-topic">💡 Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</p>
-            <a href="https://www.marble-conference.org/programme-2025" class="btn btn--primary conference-link" target="_blank" rel="noopener noreferrer">Event Details</a>
-          </div>
-        </article>
-        
-        <article class="conference-card">
-          <div class="conference-date">
-            <span class="month">May</span>
-            <span class="day">31</span>
-            <span class="year">2025</span>
-          </div>
-          <div class="conference-content">
-            <h3>59th Annual Meetings of the Canadian Economics Association</h3>
-            <p class="conference-location">📍 Université du Québec à Montréal</p>
-            <p class="conference-role">👤 Speaker</p>
-            <p class="conference-topic">💡 Family Size and Child Outcomes in Sub-Saharan Africa: The Role of Social Norms</p>
-            <a href="https://www.economics.ca/event-6029611" class="btn btn--primary conference-link" target="_blank" rel="noopener noreferrer">Event Details</a>
-          </div>
-        </article>
-        
-        <article class="conference-card">
-          <div class="conference-date">
-            <span class="month">Jan</span>
-            <span class="day">22</span>
-            <span class="year">2025</span>
-          </div>
-          <div class="conference-content">
-            <h3>Graduate Seminar Series, Centre for the Study of Women and Gender</h3>
-            <p class="conference-location">📍 University of Warwick</p>
-            <p class="conference-role">👤 Presenter</p>
-            <p class="conference-topic">💡 Digital Feminism: Intersectionality and Activism in the Age of Social Media</p>
-            <a href="https://warwick.ac.uk/fac/soc/sociology/research/gender/calendar/graduateseminars202425/session3/" class="btn btn--primary conference-link" target="_blank" rel="noopener noreferrer">View Presentation</a>
-          </div>
-        </article>
-        
-        <article class="conference-card">
-          <div class="conference-date">
-            <span class="month">Nov</span>
-            <span class="day">27</span>
-            <span class="year">24</span>
-          </div>
-          <div class="conference-content">
-            <h3>Graduate Seminars in Economic and Social History</h3>
-            <p class="conference-location">📍 University of Oxford</p>
-            <p class="conference-role">👤 Presenter</p>
-            <p class="conference-topic">💡 From Rubber to Cobalt: Evolving Patterns of Resource Exploitation and Social Impact in the Democratic Republic of Congo</p>
-            <a href="https://talks.ox.ac.uk/talks/persons/id/dcd41ec3-2797-42ad-bbef-5ab6ad55770d?format=txt" class="btn btn--primary conference-link" target="_blank" rel="noopener noreferrer">Workshop Materials</a>
-          </div>
-        </article>
-
-        <article class="conference-card">
-          <div class="conference-date">
-            <span class="month">Nov</span>
-            <span class="day">05</span>
-            <span class="year">2023</span>
-          </div>
-          <div class="conference-content">
-            <h3>TheoriseHAI Workshop, 12th International Conference on Human-Agent Interaction (HAI)</h3>
-            <p class="conference-location">📍 Swansea, UK</p>
-            <p class="conference-role">👤 Presenter</p>
-            <p class="conference-topic">💡 A Review of Hybrid Machine Learning Approaches for Enhancing Human-Agent Interaction</p>
-            <a href="https://sites.google.com/view/theorisehai/contributions" class="btn btn--primary conference-link" target="_blank" rel="noopener noreferrer">Workshop Materials</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT PAGE -->
-  <section class="page" id="about" aria-labelledby="about-title">
-    <!-- Professional About Hero Section -->
-    <div class="about-minimal-hero">
-      <div class="container">
-        <h1 id="about-title" class="about-main-title">About</h1>
-      </div>
-    </div>
-    
-    <div class="container">
-      <p class="section-lead">Biography and professional background of a leading researcher in AI-driven economics</p>
-      
-      <div class="about-content">
-        <div class="about-profile">
-          <div class="profile-image-large">
-            <div class="circle">
-              <img src="frederic.mirindi.jpg" alt="Frédéric Mirindi, PhD Candidate" class="profile-photo" loading="lazy">
-            </div>
-          </div>
-          <div class="profile-info">
-            <h2>Frédéric Mirindi, PhD Candidate</h2>
-            <p class="title">PhD Candidate in Economics & Econometrics</p>
-            <p class="affiliation">
-              Lecturer - 
-              <a href="https://boothuc.ca/about/our-people/staff-and-faculty-directory/view-staff/122/frdric-mirindi/" target="_blank" rel="noopener noreferrer">
-                Booth University College
-              </a>
-            </p>
-            <p class="affiliation">Lecturer - Université de Saint-Boniface</p>
-            <p class="affiliation">Founder & CEO - ThinkBit Edge Corp.</p>
-          </div>
-        </div>
-        
-        <div class="about-details">
-          <section class="bio-section">
-            <h3>Professional Biography</h3>
-            <p>Frédéric Mirindi is a distinguished PhD Candidate in Economics & Econometrics at the University of Manitoba, recognized as a leading researcher specializing in artificial intelligence applications in economic analysis. With extensive experience in machine learning models for economic forecasting and policy analysis, he has pioneered innovative approaches to understanding complex economic phenomena through advanced computational methods.</p>
-            <p>As the Founder and CEO of ThinkBit Edge Corporation, Frédéric has bridged the gap between academic research and practical applications, developing cutting-edge AI tools for economic analysis and forecasting that serve both academic and commercial purposes.</p>
-          </section>
-
-          <section class="expertise-section">
-            <h3>Core Areas of Expertise</h3>
-            <div class="expertise-grid">
-              <div class="expertise-item">Artificial Intelligence</div>
-              <div class="expertise-item">Economic Modeling</div>
-              <div class="expertise-item">Machine Learning</div>
-              <div class="expertise-item">Policy Analysis</div>
-              <div class="expertise-item">Econometrics</div>
-              <div class="expertise-item">Data Science</div>
-              <div class="expertise-item">Neural Networks</div>
-              <div class="expertise-item">Economic Forecasting</div>
-            </div>
-          </section>
-
-          <!-- Professional Teaching Section -->
-          <section class="teaching-section">
-            <h3>Academic Teaching Portfolio</h3>
-            <p class="courses-intro">As a dedicated educator at Université de Saint-Boniface and Booth University College, I teach foundational courses that bridge economic theory with practical applications and cutting-edge research methodologies.</p>
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- 1. THEME TOGGLE LOGIC ---
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
             
-            <div class="courses-grid">
-              <article class="course-card">
-                <div class="course-icon">
-                  <i class="fas fa-chart-line" aria-hidden="true"></i>
-                </div>
-                <h4>Introduction to Microeconomics</h4>
-                <div class="course-code">ECON 100 - Université de Saint-Boniface</div>
-                <p class="course-description">
-                  Fundamental principles of microeconomic theory including supply and demand analysis, market structures, consumer behavior theory, and firm decision-making processes. Students develop analytical skills to examine individual economic units and their complex interactions within various market environments.
-                </p>
-                <div class="course-topics">
-                  <span class="topic-tag">Market Analysis</span>
-                  <span class="topic-tag">Consumer Theory</span>
-                  <span class="topic-tag">Price Elasticity</span>
-                  <span class="topic-tag">Market Failures</span>
-                </div>
-              </article>
+            if (html.classList.contains('light')) {
+                // Switch to Dark
+                html.classList.remove('light');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                iconMobile.classList.remove('fa-sun');
+                iconMobile.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+                updateThreeJSTheme('dark');
+            } else {
+                // Switch to Light
+                html.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                iconMobile.classList.remove('fa-moon');
+                iconMobile.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+                updateThreeJSTheme('light');
+            }
+        }
 
-              <article class="course-card">
-                <div class="course-icon">
-                  <i class="fas fa-chart-bar" aria-hidden="true"></i>
-                </div>
-                <h4>Introduction to Microeconomics</h4>
-                <div class="course-code">ECO110 - Booth University College</div>
-                <p class="course-description">
-                  Comprehensive exploration of microeconomic principles focusing on individual decision-making, market mechanisms, and resource allocation. Advanced treatment of consumer choice theory, production economics, and market efficiency with real-world applications.
-                </p>
-                <div class="course-topics">
-                  <span class="topic-tag">Economic Theory</span>
-                  <span class="topic-tag">Resource Allocation</span>
-                  <span class="topic-tag">Market Equilibrium</span>
-                  <span class="topic-tag">Welfare Economics</span>
-                </div>
-              </article>
-              
-              <article class="course-card">
-                <div class="course-icon">
-                  <i class="fas fa-calculator" aria-hidden="true"></i>
-                </div>
-                <h4>Applied Mathematics for Economics</h4>
-                <div class="course-code">MAT150 - Booth University College</div>
-                <p class="course-description">
-                  Advanced mathematical methods and their applications in economics and business contexts. Comprehensive coverage includes calculus, linear algebra, optimization techniques, and statistical foundations essential for sophisticated economic modeling and quantitative analysis.
-                </p>
-                <div class="course-topics">
-                  <span class="topic-tag">Mathematical Economics</span>
-                  <span class="topic-tag">Optimization Theory</span>
-                  <span class="topic-tag">Statistical Methods</span>
-                  <span class="topic-tag">Quantitative Analysis</span>
-                </div>
-              </article>
-              
-              <article class="course-card">
-                <div class="course-icon">
-                  <i class="fas fa-search" aria-hidden="true"></i>
-                </div>
-                <h4>Advanced Research Methods</h4>
-                <div class="course-code">BHS200 - Booth University College</div>
-                <p class="course-description">
-                  Comprehensive introduction to quantitative and qualitative research methodologies in economics and social sciences. Students master data collection techniques, advanced statistical analysis, research design principles, and professional academic writing standards.
-                </p>
-                <div class="course-topics">
-                  <span class="topic-tag">Research Design</span>
-                  <span class="topic-tag">Data Analytics</span>
-                  <span class="topic-tag">Statistical Modeling</span>
-                  <span class="topic-tag">Academic Writing</span>
-                </div>
-              </article>
+        // Init Theme on Load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            toggleTheme(); // Defaults to dark, so this toggles to light
+        }
 
-              <article class="course-card">
-                <div class="course-icon">
-                  <i class="fas fa-database" aria-hidden="true"></i>
-                </div>
-                <h4>Business Information Systems</h4>
-                <div class="course-code">BUS270 - Booth University College</div>
-                <p class="course-description">
-                  Strategic exploration of information systems in modern business environments, focusing on how technology supports organizational strategy, decision-making processes, and operational excellence. Students examine system design, advanced data management, and the transformative role of IT in contemporary organizations.
-                </p>
-                <div class="course-topics">
-                  <span class="topic-tag">Information Architecture</span>
-                  <span class="topic-tag">Data Management</span>
-                  <span class="topic-tag">IT Strategy</span>
-                  <span class="topic-tag">Digital Transformation</span>
-                </div>
-              </article>
-            </div>
-          </section>
+        // --- 2. NAVIGATION LOGIC ---
+        function navigateTo(sectionId) {
+            // Update Content
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            const target = document.getElementById(sectionId);
+            if(target) target.classList.add('active');
 
-          <section class="skills-section">
-            <h3>Technical Proficiencies</h3>
-            <div class="skills-grid">
-              <div class="skill-item">
-                <span class="skill-name">Python & AI/ML</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Python proficiency: 95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">R & Statistical Computing</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="R proficiency: 90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Deep Learning & Neural Networks</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Deep Learning proficiency: 95%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Advanced Econometrics</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Econometrics proficiency: 88%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <span class="skill-name">Economic Forecasting</span>
-                <div class="skill-bar">
-                  <div class="skill-progress" style="width: 92%" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Economic Forecasting proficiency: 92%"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  </section>
+            // Update Buttons
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeBtn = document.getElementById('nav-' + sectionId);
+            if(activeBtn) activeBtn.classList.add('active');
 
-  <!-- CONTACT PAGE -->
-  <section class="page" id="contact" aria-labelledby="contact-title">
-    <!-- Professional Contact Hero Section -->
-    <div class="contact-minimal-hero">
-      <div class="container">
-        <h1 id="contact-title" class="contact-main-title">Contact</h1>
-      </div>
-    </div>
-    
-    <div class="container">
-      <p class="section-lead">Connect for research collaboration, consultation, or academic opportunities</p>
-      
-      <div class="contact-content">
-        <div class="contact-info">
-          <article class="contact-item">
-            <h3><i class="fas fa-envelope" aria-hidden="true"></i> Email Addresses</h3>
-            <p><strong>Primary:</strong> <a href="mailto:frederic.mirindi@umanitoba.ca">frederic.mirindi@umanitoba.ca</a></p>
-            <p><strong>Booth UC:</strong> <a href="mailto:frederic.mirindi@boothuc.ca">frederic.mirindi@boothuc.ca</a></p>
-          </article>
-          
-          <article class="contact-item">
-            <h3><i class="fas fa-phone" aria-hidden="true"></i> Phone</h3>
-            <p><a href="tel:+12042984337">+1 (204) 298-4337</a></p>
-          </article>
-          
-          <article class="contact-item">
-            <h3><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Office Location</h3>
-            <p>290 Vaughan St<br>Winnipeg, MB R3B 2N8<br>Canada</p>
-          </article>
-          
-          <article class="contact-item">
-            <h3><i class="fas fa-clock" aria-hidden="true"></i> Office Hours</h3>
-            <p><strong>Mondays & Fridays:</strong> 8:00-10:00 AM (CDT)</p>
-            <p><em>Or by appointment</em></p>
-          </article>
-        </div>
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+
+            // Adjust Camera Target slightly based on page (Simple effect)
+            moveCameraForSection(sectionId);
+            
+            window.scrollTo(0,0);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- 3. THREE.JS 3D BACKGROUND ---
+        const scene = new THREE.Scene();
+        // Initial Fog (Dark)
+        scene.fog = new THREE.FogExp2(0x050505, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         
-        <div class="contact-form">
-          <h3>Send a Professional Inquiry</h3>
-          <form id="contact-form" novalidate>
-            <div class="form-group">
-              <label class="form-label" for="contact-name">Full Name *</label>
-              <input type="text" id="contact-name" class="form-control" required aria-describedby="name-error">
-              <div id="name-error" class="error-message" role="alert"></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-email">Email Address *</label>
-              <input type="email" id="contact-email" class="form-control" required aria-describedby="email-error">
-              <div id="email-error" class="error-message" role="alert"></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-subject">Subject *</label>
-              <input type="text" id="contact-subject" class="form-control" required aria-describedby="subject-error">
-              <div id="subject-error" class="error-message" role="alert"></div>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="contact-message">Message *</label>
-              <textarea id="contact-message" class="form-control" rows="6" required aria-describedby="message-error" placeholder="Please describe your inquiry, collaboration proposal, or consultation request..."></textarea>
-              <div id="message-error" class="error-message" role="alert"></div>
-            </div>
-            <button type="submit" class="btn btn--primary btn--full-width">
-              <i class="fas fa-paper-plane" aria-hidden="true"></i>
-              Send Professional Inquiry
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-  <!-- BLOG PAGE -->
-  <section class="page" id="blog" aria-labelledby="blog-title">
-    <!-- Professional Blog Hero Section -->
-    <div class="blog-minimal-hero">
-      <div class="container">
-        <h1 id="blog-title" class="blog-main-title">Blog & Insights</h1>
-      </div>
-    </div>
-    
-    <div class="container">
-      <p class="section-lead">To access my latest blog publications, economic analyses, and thought leadership, please visit:</p>
+        // GLOBAL MATERIALS TO UPDATE ON THEME CHANGE
+        let sphereMaterial;
+        let particlesMaterial;
+        let lineMaterial;
 
-      <article class="card" style="padding-bottom: 2.5rem;">
-        <div class="card__body">
-          <div style="text-align: center; margin-bottom: 2rem;">
-            <a class="btn btn--primary btn--lg" 
-               href="https://fredenomics.com"
-               target="_blank"
-               rel="noopener noreferrer"
-               style="font-size: 1.25rem; padding: 1rem 2.5rem;">
-              <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              Fredenomics – Economic Insights for the Modern World
-            </a>
-          </div>
+        // GEOMETRY 1: The "Econometric" Wireframe Globe
+        const geometry = new THREE.IcosahedronGeometry(10, 2);
+        sphereMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0xffffff, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.15
+        });
+        const sphere = new THREE.Mesh(geometry, sphereMaterial);
+        scene.add(sphere);
 
-          <div class="research-grid">
-            <article class="research-card">
-              <h3>Deep Economic Analysis</h3>
-              <p>Comprehensive analysis of economic trends, market dynamics, policy implications, and their interconnected effects on global and local economies.</p>
-            </article>
-            <article class="research-card">
-              <h3>Featured Research Articles</h3>
-              <p>Digital finance evolution, market volatility patterns, sustainability economics, macroeconomic modeling, AI impacts on labor markets, and global supply chain resilience.</p>
-            </article>
-            <article class="research-card">
-              <h3>Trending Topics</h3>
-              <p>Central Bank Digital Currencies (CBDCs), inflation dynamics, AI-driven economics, climate finance mechanisms, cryptocurrency regulation, and green economy transitions.</p>
-            </article>
-            <article class="research-card">
-              <h3>Content Sections</h3>
-              <p>Economics fundamentals, market analysis, policy insights, research methodologies, economic forecasting, and professional commentary.</p>
-            </article>
-            <article class="research-card">
-              <h3>Resources & Tools</h3>
-              <p>Economic newsletters, research archives, analytical tools, academic resources, and professional networking opportunities.</p>
-            </article>
-            <article class="research-card">
-              <h3>Academic Transparency</h3>
-              <p>Detailed authorship information, research methodologies, data sources, peer review processes, and comprehensive privacy policies.</p>
-            </article>
-          </div>
-          
-          <div style="margin-top: 2rem; color: var(--color-text-secondary); font-style: italic; text-align: center; font-size: var(--font-size-base);">
-            Fredenomics serves as a premier platform for modern economic analysis and policy research, offering both current market insights and comprehensive academic articles.
-          </div>
-        </div>
-      </article>
+        // GEOMETRY 2: Data Particles (Stars/Nodes)
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 700;
+        const posArray = new Float32Array(particlesCount * 3);
 
-      <!-- Professional Social Media Integration -->
-      <article class="card" style="margin-top: 2rem; padding-bottom: 2.5rem;">
-        <div class="card__body">
-          <h2 style="text-align: center; color: var(--color-primary); margin-bottom: 1.5rem;">Latest Professional Updates</h2>
-          <div style="text-align: center; background: var(--color-secondary); padding: 2rem; border-radius: var(--radius-lg); border: 2px solid var(--color-border);">
-            <p style="margin-bottom: 1rem; color: var(--color-text);">Follow my latest research updates and professional insights on social media:</p>
-            <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-              <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
-                <i class="fab fa-x-twitter" aria-hidden="true"></i> Follow on X
-              </a>
-              <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" class="btn btn--outline">
-                <i class="fab fa-linkedin" aria-hidden="true"></i> Connect on LinkedIn
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 60; 
+        }
 
-</main>
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.8,
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
 
-<!-- Professional Footer -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <p style="margin-top: var(--space-24); font-style: italic; color: var(--color-primary);">Frédéric Mirindi</p>
-        <p>PhD Candidate - Economics &amp; Econometrics</p>
-        <p>Founder & CEO - ThinkBit Edge Corp.</p>
-        <p style="margin-top: var(--space-16); font-style: italic; color: var(--color-primary);">Leading the future of AI-driven economic analysis</p>
-      </div>
-      <nav class="footer-section" aria-label="Footer navigation">
-        <h4>Quick Navigation</h4>
-        <ul>
-          <li><a href="#research" class="nav-link" data-page="research">Research Portfolio</a></li>
-          <li><a href="#conferences" class="nav-link" data-page="conferences">Speaking Engagements</a></li>
-          <li><a href="#about" class="nav-link" data-page="about">About & Teaching</a></li>
-          <li><a href="#contact" class="nav-link" data-page="contact">Professional Contact</a></li>
-          <li><a href="#blog" class="nav-link" data-page="blog">Blog & Insights</a></li>
-        </ul>
-      </nav>
-      <div class="footer-section">
-        <h4>Professional Contact</h4>
-        <p><a href="mailto:frederic.mirindi@umanitoba.ca">frederic.mirindi@umanitoba.ca</a></p>
-        <p><a href="tel:+12042984337">+1 (204) 298-4337</a></p>
-        <div style="margin-top: var(--space-20); display: flex; gap: var(--space-16); align-items: center; justify-content: flex-start;">
-          <!-- Professional Social Icons -->
-          <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" style="display: inline-flex; align-items: center;" aria-label="LinkedIn profile">
-            <img src="images/linkedin-icon.svg" alt="LinkedIn" style="width: 28px; height: 28px;" class="footer-social-icon">
-          </a>
+        // GEOMETRY 3: Connecting Lines
+        const linesGroup = new THREE.Group();
+        const linesArray = [];
+        
+        for(let i=0; i<5; i++) {
+            const lineGeo = new THREE.BufferGeometry();
+            const points = [];
+            points.push(new THREE.Vector3((Math.random()-0.5)*30, (Math.random()-0.5)*30, (Math.random()-0.5)*30));
+            points.push(new THREE.Vector3((Math.random()-0.5)*30, (Math.random()-0.5)*30, (Math.random()-0.5)*30));
+            lineGeo.setFromPoints(points);
+            lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+            const line = new THREE.Line(lineGeo, lineMaterial);
+            linesGroup.add(line);
+            linesArray.push(line);
+        }
+        scene.add(linesGroup);
 
-          <a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener noreferrer" title="X (Twitter) Profile" style="display: inline-flex; align-items: center;" aria-label="X (Twitter) profile">
-            <img src="images/x-icon.svg" alt="X (Twitter)" style="width: 28px; height: 28px;" class="footer-social-icon">
-          </a>
+        // UPDATE THEME FUNCTION FOR 3D
+        function updateThreeJSTheme(mode) {
+            if (mode === 'light') {
+                // Light Mode Colors (Black/Bronze)
+                scene.fog.color.setHex(0xfafafa);
+                sphereMaterial.color.setHex(0x171717);
+                particlesMaterial.color.setHex(0x171717);
+                linesArray.forEach(l => l.material.color.setHex(0x171717));
+            } else {
+                // Dark Mode Colors (White/Cyan)
+                scene.fog.color.setHex(0x050505);
+                sphereMaterial.color.setHex(0xffffff);
+                particlesMaterial.color.setHex(0xffffff);
+                linesArray.forEach(l => l.material.color.setHex(0xffffff));
+            }
+        }
 
-          <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" rel="noopener noreferrer" title="ResearchGate Profile" style="display: inline-flex; align-items: center;" aria-label="ResearchGate profile">
-            <img src="images/researchgate-icon.svg" alt="ResearchGate" style="width: 28px; height: 28px;" class="footer-academic-icon">
-          </a>
+        // Check initial state for ThreeJS
+        if (savedTheme === 'light') {
+            updateThreeJSTheme('light');
+        }
 
-          <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener noreferrer" title="Google Scholar Profile" style="display: inline-flex; align-items: center;" aria-label="Google Scholar profile">
-            <img src="images/google-scholar-icon.svg" alt="Google Scholar" style="width: 28px; height: 28px;" class="footer-academic-icon">
-          </a>
+        camera.position.z = 20;
 
-          <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" rel="noopener noreferrer" title="ORCID Profile" style="display: inline-flex; align-items: center;" aria-label="ORCID profile">
-            <img src="images/orcid-icon.svg" alt="ORCID iD" style="width: 28px; height: 28px;" class="footer-academic-icon">
-          </a>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h4>Academic Affiliations</h4>
-        <ul>
-          <li><a href="https://umanitoba.ca" target="_blank" rel="noopener noreferrer">University of Manitoba</a></li>
-          <li><a href="https://boothuc.ca" target="_blank" rel="noopener noreferrer">Booth University College</a></li>
-          <li><a href="https://ustboniface.ca" target="_blank" rel="noopener noreferrer">Université de Saint-Boniface</a></li>
-          <li><a href="https://thinkbitedge.com" target="_blank" rel="noopener noreferrer">ThinkBit Edge Corp.</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2020 Frédéric Mirindi. All rights reserved. | <a href="#contact" data-page="contact">Privacy Policy</a> | <a href="#about" data-page="about">Terms of Use</a></p>
-    </div>
-  </div>
-</footer>
+        // Mouse Interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
 
-<!-- Professional Loading Indicator -->
-<div id="loading-indicator" class="loading-complete" role="status" aria-live="polite">
-  <span>✨ Professional redesign complete!</span>
-</div>
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
 
-<!-- Enhanced JavaScript Architecture -->
-<script src="app.js"></script>
-<script src="assets/js/publications-enhanced.js"></script>
-<script src="assets/js/economics-chatbot.js"></script>
-<script src="assets/js/research-widgets-expert.js"></script>
-<script src="assets/js/research-enhanced-script.js"></script>
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
 
-<!-- Professional Analytics (Optional) -->
-<script>
-  // Professional site analytics and performance tracking
-  document.addEventListener('DOMContentLoaded', function() {
-    // Show loading complete indicator
-    setTimeout(() => {
-      const indicator = document.getElementById('loading-indicator');
-      if (indicator) {
-        indicator.classList.add('show');
-        setTimeout(() => {
-          indicator.classList.remove('show');
-        }, 3000);
-      }
-    }, 1000);
-  });
-</script>
+        // Animate based on Section
+        let cameraTargetZ = 20;
+        let cameraTargetX = 0;
 
+        function moveCameraForSection(id) {
+            if(id === 'home') { cameraTargetZ = 20; cameraTargetX = 0; }
+            if(id === 'research') { cameraTargetZ = 25; cameraTargetX = 5; }
+            if(id === 'teaching') { cameraTargetZ = 22; cameraTargetX = -3; }
+            if(id === 'publications') { cameraTargetZ = 25; cameraTargetX = -5; }
+            if(id === 'blog') { cameraTargetZ = 30; cameraTargetX = 0; }
+            if(id === 'contacts') { cameraTargetZ = 15; cameraTargetX = 0; }
+        }
+
+        // ANIMATION LOOP
+        const clock = new THREE.Clock();
+
+        function animate() {
+            const elapsedTime = clock.getElapsedTime();
+
+            targetX = mouseX * 0.001;
+            targetY = mouseY * 0.001;
+
+            // Rotate Sphere
+            sphere.rotation.y += 0.002;
+            sphere.rotation.x += 0.001;
+
+            // Rotate Particles (slower)
+            particlesMesh.rotation.y = -mouseX * 0.00005;
+            particlesMesh.rotation.x = -mouseY * 0.00005;
+
+            // Smooth Camera Movement
+            camera.position.z += (cameraTargetZ - camera.position.z) * 0.05;
+            camera.position.x += (cameraTargetX - camera.position.x) * 0.05;
+            
+            // Subtle Mouse Parallax
+            sphere.rotation.y += 0.05 * (targetX - sphere.rotation.y);
+            sphere.rotation.x += 0.05 * (targetY - sphere.rotation.x);
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Clipboard copy for email (optional utility)
+        function copyEmail() {
+            const el = document.createElement('textarea');
+            el.value = 'frederic.mirindi@umanitoba.ca';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+            alert('Email copied to clipboard!');
+        }
+
+    </script>
 </body>
 </html>
