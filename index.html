@@ -291,6 +291,32 @@
                 <p class="text-[var(--text-muted)] max-w-2xl mx-auto">My current work bridges the gap between theoretical economic frameworks and rigorous statistical validation.</p>
             </div>
 
+            <!-- MOCK DATA VISUALIZATION -->
+            <div class="glass-card p-6 rounded-2xl mb-12 relative overflow-hidden">
+                <div class="flex justify-between items-end mb-4">
+                    <div>
+                        <h3 class="text-lg font-bold text-[var(--text-main)]">Stochastic Volatility Simulation</h3>
+                        <p class="text-xs text-[var(--text-muted)]">Real-time generation of non-stationary time series data.</p>
+                    </div>
+                    <div class="font-mono text-xs text-[var(--accent-color)]">
+                        <span id="simulation-status">Live Model</span> <i class="fas fa-circle text-[8px] animate-pulse"></i>
+                    </div>
+                </div>
+                <!-- SVG Container -->
+                <svg id="econometric-chart" class="w-full h-48" viewBox="0 0 800 200" preserveAspectRatio="none">
+                    <defs>
+                        <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.2"/>
+                            <stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Area Path (Fill) -->
+                    <path id="chart-area" d="" fill="url(#chartGradient)" stroke="none" />
+                    <!-- Line Path (Stroke) -->
+                    <path id="chart-line" d="" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="glass-card p-8 rounded-2xl group">
                     <div class="w-12 h-12 border border-[var(--glass-border)] rounded-lg flex items-center justify-center text-[var(--text-main)] mb-6 text-xl group-hover:border-[var(--accent-color)] group-hover:text-[var(--accent-color)] transition-colors">
@@ -356,9 +382,57 @@
                     </div>
                 </div>
             </div>
+
+            <!-- OPEN DATA & CODE SUBSECTION -->
+            <div class="glass-card p-8 rounded-2xl mb-16 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
+                <!-- Decorative background element -->
+                <div class="absolute right-0 top-0 w-64 h-64 bg-[var(--accent-color)] opacity-5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold text-[var(--text-main)] mb-2 flex items-center gap-3">
+                        <i class="fas fa-database text-[var(--accent-color)]"></i> Open Data & Code
+                    </h3>
+                    <p class="text-[var(--text-muted)] max-w-xl text-sm leading-relaxed">
+                        I am committed to the principles of <strong>reproducible research</strong>. Access replication packages, pre-processed datasets, and custom econometric algorithms for my working papers and publications.
+                    </p>
+                </div>
+                <a href="https://github.com/" target="_blank" class="relative z-10 px-6 py-3 border border-[var(--glass-border)] hover:border-[var(--accent-color)] bg-[var(--bg-color)]/50 text-[var(--text-main)] rounded-lg transition flex items-center gap-3 group-hover:shadow-lg shadow-[var(--accent-color)]/10">
+                    <i class="fab fa-github text-2xl group-hover:text-[var(--accent-color)] transition-colors"></i>
+                    <span class="font-semibold">View Repository</span>
+                </a>
+            </div>
             
             <div class="mt-16">
                 <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 text-center">Conferences & Seminars</h3>
+
+                <!-- CONFERENCE PHOTO CAROUSEL -->
+                <div class="relative w-full max-w-3xl mx-auto h-80 rounded-xl overflow-hidden mb-8 group glass-card border border-[var(--glass-border)]">
+                    <!-- Slide 1: Oxford -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-100" id="slide-0">
+                        <!-- Placeholder image for Oxford - Replace 'src' with your actual photo -->
+                        <img src="https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=1000&auto=format&fit=crop" alt="Oxford Seminar" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm p-4 border-t border-[var(--glass-border)]">
+                            <p class="text-white font-semibold text-sm"><i class="fas fa-university text-[var(--accent-color)] mr-2"></i>University of Oxford Graduate Seminar (2024)</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2: Athens -->
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 opacity-0" id="slide-1">
+                        <!-- Placeholder image for Athens - Replace 'src' with your actual photo -->
+                        <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?q=80&w=1000&auto=format&fit=crop" alt="Athens Conference" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-sm p-4 border-t border-[var(--glass-border)]">
+                            <p class="text-white font-semibold text-sm"><i class="fas fa-globe-europe text-[var(--accent-color)] mr-2"></i>MARBLE 2025 Conference, Athens</p>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--accent-color)] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-white/20">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--accent-color)] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-white/20">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- Item 1 -->
                     <div class="glass-card p-6 rounded-xl flex flex-col">
@@ -703,6 +777,98 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // --- CAROUSEL LOGIC ---
+        let currentSlide = 0;
+        const totalSlides = 2; // Update this if you add more photos
+
+        function changeSlide(direction) {
+            // Hide current
+            document.getElementById(`slide-${currentSlide}`).classList.remove('opacity-100');
+            document.getElementById(`slide-${currentSlide}`).classList.add('opacity-0');
+            
+            // Calculate next
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            
+            // Show next
+            document.getElementById(`slide-${currentSlide}`).classList.remove('opacity-0');
+            document.getElementById(`slide-${currentSlide}`).classList.add('opacity-100');
+        }
+
+        // Auto-rotate carousel every 5 seconds
+        setInterval(() => {
+            // Only rotate if Research page is active to save resources
+            if(document.getElementById('research').classList.contains('active')) {
+                changeSlide(1);
+            }
+        }, 6000);
+
+        // --- CHART ANIMATION LOGIC ---
+        function drawChart() {
+            const svg = document.getElementById('econometric-chart');
+            const linePath = document.getElementById('chart-line');
+            const areaPath = document.getElementById('chart-area');
+            
+            if (!svg || !linePath || !areaPath) return;
+
+            // Generate pseudo-random time series data (Random Walk with Drift)
+            const width = 800;
+            const height = 200;
+            const steps = 100;
+            const stepSize = width / steps;
+            
+            let points = [];
+            let y = height / 2; // Start in middle
+            
+            for (let i = 0; i <= steps; i++) {
+                const x = i * stepSize;
+                // Add some volatility
+                const change = (Math.random() - 0.5) * 30;
+                y += change;
+                
+                // Keep within bounds with some padding
+                y = Math.max(20, Math.min(height - 20, y));
+                
+                points.push({x, y});
+            }
+
+            // Construct SVG Path command
+            // Start command
+            let d = `M ${points[0].x} ${points[0].y}`;
+            
+            // Smooth curve using basic logic or simple lines for financial look
+            // Using simple lines for "jagged" financial look is often more authentic
+            for (let i = 1; i < points.length; i++) {
+                d += ` L ${points[i].x} ${points[i].y}`;
+            }
+
+            // Update Line
+            linePath.setAttribute('d', d);
+
+            // Update Area (close the loop at the bottom)
+            const areaD = `${d} L ${width} ${height} L 0 ${height} Z`;
+            areaPath.setAttribute('d', areaD);
+
+            // Animate Line Drawing
+            const length = linePath.getTotalLength();
+            linePath.style.transition = 'none'; // Reset transition
+            linePath.style.strokeDasharray = length + ' ' + length;
+            linePath.style.strokeDashoffset = length;
+            
+            // Trigger reflow
+            linePath.getBoundingClientRect();
+            
+            // Animate
+            linePath.style.transition = 'stroke-dashoffset 2s ease-in-out';
+            linePath.style.strokeDashoffset = '0';
+            
+            // Fade in area
+            areaPath.style.opacity = '0';
+            areaPath.style.transition = 'opacity 2s ease-in-out';
+            // Trigger reflow
+            areaPath.getBoundingClientRect();
+            areaPath.style.opacity = '1';
+        }
+
         // --- EMAIL LOGIC ---
         function sendEmail(e) {
             e.preventDefault();
@@ -770,6 +936,12 @@
             const mobileMenu = document.getElementById('mobile-menu');
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
+            }
+
+            // Trigger Chart Animation if entering Research page
+            if (sectionId === 'research') {
+                // Small delay to allow section to render
+                setTimeout(drawChart, 100);
             }
 
             // Adjust Camera Target slightly based on page (Simple effect)
