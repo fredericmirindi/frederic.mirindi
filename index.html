@@ -241,32 +241,32 @@
         
         <!-- HOME PAGE -->
         <section id="home" class="page-section active">
-            <div class="min-h-[calc(100vh-8rem)] flex flex-col justify-center">
+            <div class="min-h-[calc(100vh-6rem)] flex flex-col justify-center pt-10 md:pt-0">
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="space-y-6">
+                    <div class="space-y-6 text-center md:text-left">
                         <!-- Removed the Economics & Econometrics badge here -->
-                        <h1 class="text-5xl md:text-6xl font-bold text-[var(--text-main)] leading-tight">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--text-main)] leading-tight">
                             Exploring the Frontiers of <br>
                             <span class="text-gradient-innovative">Game Theory, Machine Learning & Macroeconometrics.</span>
                         </h1>
-                        <p class="text-lg text-[var(--text-muted)] max-w-lg leading-relaxed">
+                        <p class="text-base sm:text-lg text-[var(--text-muted)] max-w-lg leading-relaxed mx-auto md:mx-0">
                             <strong class="text-[var(--text-main)]">Frédéric Mirindi</strong> is a <br>
                             PhD Candidate in Economics and Econometrics at the University of Manitoba.
                         </p>
-                        <p class="text-[var(--text-muted)] border-l-2 border-[var(--accent-color)] pl-4">
+                        <p class="text-sm sm:text-base text-[var(--text-muted)] border-l-2 border-[var(--accent-color)] pl-4 text-left">
                             Specializing in time-series analysis, macro-econometric modeling, and predictive analytics for complex market systems.
                         </p>
-                        <div class="flex space-x-4 pt-4">
-                            <button onclick="navigateTo('research')" class="px-8 py-3 btn-primary rounded-lg font-semibold transition">
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center md:justify-start">
+                            <button onclick="navigateTo('research')" class="px-8 py-3 btn-primary rounded-lg font-semibold transition w-full sm:w-auto">
                                 View Research
                             </button>
-                            <button onclick="navigateTo('contacts')" class="px-8 py-3 glass-card text-[var(--text-main)] rounded-lg font-semibold transition hover:bg-[var(--glass-bg)]">
+                            <button onclick="navigateTo('contacts')" class="px-8 py-3 glass-card text-[var(--text-main)] rounded-lg font-semibold transition hover:bg-[var(--glass-bg)] w-full sm:w-auto">
                                 Contact Me
                             </button>
                         </div>
                         
                         <!-- Social Links with Specific Colors -->
-                        <div class="flex space-x-6 pt-6 text-[var(--text-muted)] items-center">
+                        <div class="flex gap-6 pt-6 text-[var(--text-muted)] items-center justify-center md:justify-start">
                             <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" title="ORCID" style="color: #A6CE39;" class="hover:opacity-80 transition text-3xl">
                                 <i class="fab fa-orcid"></i>
                             </a>
@@ -278,7 +278,7 @@
                             </a>
                         </div>
                     </div>
-                    <!-- 3D Visual Spacer -->
+                    <!-- 3D Visual Spacer (Hidden on mobile to save space) -->
                     <div class="hidden md:block h-96 flex items-center justify-center"></div>
                 </div>
             </div>
