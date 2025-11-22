@@ -813,35 +813,56 @@
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Economic Insights</h2>
                 <p class="text-[var(--text-muted)]">Thoughts on current events through an econometric lens.</p>
             </div>
-            <div class="grid md:grid-cols-2 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 (Updated) -->
                 <article onclick="navigateTo('blog-post-1')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
-                        <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=2940&auto=format&fit=crop" alt="Inflation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/newpope.jpg?raw=true" alt="The Conclave" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                          <div class="absolute bottom-0 left-0 p-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-red-600 px-2 py-1 rounded">Macroeconomics</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-purple-600 px-2 py-1 rounded">Network Science</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <div class="text-[var(--text-muted)] text-sm mb-2">October 15, 2025</div>
-                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Post-COVID Inflation Persistence</h3>
+                        <div class="text-[var(--text-muted)] text-sm mb-2">May 23, 2025</div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Pope and the Algorithm: How Network Analysis Cracked the Conclave</h3>
                         <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
-                            Is the current inflationary epoch merely a transient supply-shock, or have we entered a regime of structural hysteresis?
+                            A new paper models the Vatican not as a divine hierarchy, but as a high-stakes social network, predicting the rise of Pope Leo XIV.
                         </p>
                         <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
                     </div>
                 </article>
-                 <article onclick="navigateTo('blog-post-2')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                
+                <!-- Article 2 -->
+                <article onclick="navigateTo('blog-post-3')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
-                        <img src="https://images.unsplash.com/photo-1555447405-058a1302532e?q=80&w=2940&auto=format&fit=crop" alt="Trade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt2.jpeg?raw=true" alt="African City Street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                          <div class="absolute bottom-0 left-0 p-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-yellow-600 px-2 py-1 rounded">Trade Policy</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-blue-600 px-2 py-1 rounded">Sovereign Debt</span>
                         </div>
                     </div>
                     <div class="p-6">
-                        <div class="text-[var(--text-muted)] text-sm mb-2">November 02, 2025</div>
-                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">Protectionism and the Canadian Pivot</h3>
+                        <div class="text-[var(--text-muted)] text-sm mb-2">November 22, 2025</div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Other Debt Crisis: Africa's Domestic Dilemma</h3>
                         <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
-                            Analyzing the welfare losses and exchange rate pass-through effects of recent US trade barriers on the Canadian economy.
+                            A critical review of the surge in domestic borrowing across Sub-Saharan Africa: crowding out effects and the "doom loop" risks.
+                        </p>
+                        <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article onclick="navigateTo('blog-post-4')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                    <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market1.jpeg?raw=true" alt="African Supermarket Aisle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-green-600 px-2 py-1 rounded">Retail Economics</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[var(--text-muted)] text-sm mb-2">November 18, 2025</div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">Aisle Be There For You: Africa's Retail Revolution</h3>
+                        <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
+                            Local chains are cracking the "missing middle" of African retail where global giants failed. What does this mean for the consumer class?
                         </p>
                         <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
                     </div>
@@ -849,56 +870,149 @@
             </div>
         </section>
 
-        <!-- BLOG POST 1: INFLATION -->
+        <!-- BLOG POST 1: POPE (Updated) -->
         <section id="blog-post-1" class="page-section max-w-4xl mx-auto py-12">
             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
-                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">The Post-COVID Inflation Persistence: Structural Hysteresis or Transitory Shock?</h1>
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">The Pope and the Algorithm: How Network Analysis Cracked the Conclave</h1>
                 <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
-                    <span class="font-semibold">Frédéric Mirindi</span> | October 15, 2025 | Macroeconomics
+                    <span class="font-semibold">Frédéric Mirindi</span> | May 23, 2025 | Network Science
                 </p>
-                <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=2940&auto=format&fit=crop" alt="Inflation Charts" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90">
+                <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/newpope.jpg?raw=true" alt="The Conclave in Sistine Chapel" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90 shadow-lg">
 
                 <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
-                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">T</p>
-                    <p>he global economy is currently navigating a precarious equilibrium. The swift recovery following the pandemic-induced contraction unleashed an inflationary wave whose duration and intensity confounded central bank forecasts. The prevailing narrative—that of "transitory" supply-chain bottlenecks—has increasingly given way to fears of entrenched, secular stagnation accompanied by stubborn price instability.</p>
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">W</p>
+                    <p>hen the College of Cardinals gathers beneath Michelangelo’s frescoes in the Sistine Chapel, the world is told that the Holy Spirit guides their hands. Yet, as the future Pope Benedict XVI once famously quipped, the Spirit’s role is likely "elastic"—preventing total ruin, but leaving plenty of room for human maneuvering. </p>
                     
-                    <p>This analysis employs a Vector Error Correction Model (VECM) applied to harmonized G7 CPI and PPI data to decompose the drivers of this persistence. The central inquiry is whether we are witnessing a temporary deviation from the low-inflation anchor of the last decade, or a structural regime shift driven by de-globalization and labor market hysteresis.</p>
+                    <p>A fascinating new paper, <em>In the Network of the Conclave: Social Network Analysis and the Making of a Pope</em> (Soda, Iorio, & Rizzo), takes this premise literally. By stripping away the incense and theology, the authors model the Vatican not as a divine hierarchy, but as a high-stakes social network. Their findings suggest that while bookmakers and pundits obsess over charisma and geography, the true path to the papacy is paved with "structural holes" and "eigenvector centrality."</p>
 
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Decomposition of Shocks</h2>
-                    <p>Our model isolates two distinct vectors: exogenous supply-side constraints (energy shocks, semiconductor shortages) and endogenous demand-pull factors (fiscal stimulus, excess savings). While 2021-2022 data clearly points to supply dominance, the 2024-2025 residuals indicate a worrying trend: the "stickiness" of core inflation is now primarily driven by service-sector wages and unanchored consumer expectations.</p>
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Invisible Scaffolding of Power</h2>
+                    <p>The central thesis of the paper is that traditional methods of predicting the Pope—analyzing betting markets, press mentions, or public speeches—are fundamentally flawed because they focus on <em>attributes</em> (who the person is) rather than <em>relations</em> (where the person sits).</p>
                     
-                    <div class="my-8 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] italic text-[var(--text-muted)]">
-                        "The Phillips curve, long thought dormant, appears to be re-asserting itself with non-linear convexity in the post-pandemic labor market."
-                    </div>
+                    <p>The authors reconstructed the "relational architecture" of the Vatican using two distinct datasets:</p>
+                    <ul class="list-disc pl-6 space-y-2 text-[var(--text-muted)]">
+                        <li><strong>Co-Membership:</strong> A map of which cardinals sit on the same Vatican committees (dicasteries) together.</li>
+                        <li><strong>Consecration Lines:</strong> A genealogy of who ordained whom, creating a web of spiritual debt and loyalty.</li>
+                    </ul>
 
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Policy Implications</h2>
-                    <p>If inflation is indeed structural, the "soft landing" scenario engineered by the Federal Reserve and the Bank of Canada faces significant headwinds. The data suggests that bringing inflation back to the 2% target may require a higher sacrifice ratio—meaning higher unemployment—than current policy models admit. We must prepare for a period of higher-for-longer interest rates, not as a temporary cyclical tool, but as a necessary corrective to re-anchor long-term price stability.</p>
+                    <p>The resulting network reveals a "multiplex" system of influence. It is not enough to be popular; one must be connected to the <em>right</em> people (Status) and serve as a bridge between disconnected factions (Mediation Power).</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/pope2.PNG?raw=true" alt="Co-Membership Network of Cardinals" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 1: The "Co-Membership Network" illustrating the dense web of institutional affiliations connecting the cardinals.</figcaption>
+                    </figure>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Prevost Paradox: Predicting the "Underdog"</h2>
+                    <p>The paper’s most striking case study revolves around Cardinal Robert F. Prevost. In the run-up to the 2025 Conclave, Prevost was a ghost in the machine of public opinion. Bookmakers gave him a measly <strong>1% probability</strong> of election. He was a relative newcomer with little tenure in the College.</p>
+                    
+                    <p>However, the algorithm told a different story. When the authors ran their structural metrics, Prevost jumped off the page:</p>
+                    <ul class="list-disc pl-6 space-y-2 text-[var(--text-muted)]">
+                        <li><strong>Status:</strong> He ranked #1 in eigenvector centrality, meaning he was connected to the most influential peers.</li>
+                        <li><strong>Mediation:</strong> He ranked high in "betweenness," meaning he could bridge the gap between conservative and liberal blocs.</li>
+                        <li><strong>Coalition Building:</strong> He had the highest capacity to mobilize votes across different communities.</li>
+                    </ul>
+
+                    <p>While the world looked at the loud voices, the network identified the silent keystone. In the paper's analysis, Prevost’s structural dominance made him the <em>de facto</em> strongest candidate, a prediction validated by his selection as "Pope Leo XIV."</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/pope5.PNG?raw=true" alt="Multiplex Network showing Centrality" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 2: The Multiplex Network. Note the size of the node for "R. Prevost," indicating massive centrality despite low public visibility.</figcaption>
+                    </figure>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">A Critique: The Limits of the Map</h2>
+                    <p>While <em>In the Network of the Conclave</em> is a triumph of structural analysis, it is not without its blind spots.</p>
+                    
+                    <p><strong>1. The "Dark Matter" of Informal Ties:</strong> The study relies entirely on formal, public records—who sits on a committee, who ordained whom. It cannot capture the "dark matter" of the Vatican: private dinners, whispered alliances in the hallways of the <em>Domus Sanctae Marthae</em>, or personal animosities. In closed elites, these informal ties often override formal ones.</p>
+                    
+                    <p><strong>2. Static vs. Dynamic:</strong> The paper presents a static snapshot of the network leading up to the vote. However, a conclave is a dynamic, evolving organism. Momentum shifts rapidly after the first ballot. A dynamic model that accounts for how "preference cascades" occur once voting starts would be a necessary evolution of this work.</p>
+                    
+                    <p><strong>3. The Role of Ideology:</strong> The paper touches on doctrinal orientation, but treats it secondary to structure. In reality, theological "red lines" can be insurmountable walls that no amount of "betweenness centrality" can bridge. If the Church is deeply polarized, a central broker might be rejected by <em>both</em> sides as being too compromised, rather than accepted as a unifier.</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/network.JPG?raw=true" alt="Network colored by doctrinal orientation" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 3: The network colored by doctrinal orientation (Red/Blue). While the algorithm predicts bridges, deep ideological divides can sometimes snap them.</figcaption>
+                    </figure>
+
+                    <p>Soda, Iorio, and Rizzo have provided a compelling reminder that in the Vatican, as in corporate boardrooms, power is a function of position. By ignoring the noise of the media and focusing on the signal of the structure, they uncovered what human intuition missed. Future conclave watchers would do well to put down the betting slips and pick up a graph theory textbook.</p>
                 </div>
             </div>
         </section>
 
-        <!-- BLOG POST 2: TARIFFS -->
-        <section id="blog-post-2" class="page-section max-w-4xl mx-auto py-12">
+        <!-- BLOG POST 3: AFRICAN DEBT -->
+        <section id="blog-post-3" class="page-section max-w-4xl mx-auto py-12">
              <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
-                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">Protectionism and the Canadian Pivot: Analyzing Trade Diversion Effects</h1>
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">The Other Debt Crisis: Africa's Domestic Borrowing Dilemma</h1>
                 <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
-                    <span class="font-semibold">Frédéric Mirindi</span> | November 02, 2025 | Trade Policy
+                    <span class="font-semibold">Frédéric Mirindi</span> | November 22, 2025 | Sovereign Debt & Development
                 </p>
-                <img src="https://images.unsplash.com/photo-1555447405-058a1302532e?q=80&w=2940&auto=format&fit=crop" alt="Shipping Containers" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90">
+                <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt2.jpeg?raw=true" alt="African City Street Scene" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90 shadow-lg">
 
                 <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
-                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">C</p>
-                    <p>anada's economic destiny has historically been tethered to the whims of its southern neighbor. The recent turn toward protectionism in Washington represents a profound exogenous shock to this relationship. Tariffs are not merely taxes on imports; they are signals that distort capital allocation and disrupt deeply integrated cross-border supply chains.</p>
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">W</p>
+                    <p>hile the global financial press remains fixated on Chinese infrastructure loans and Eurobond defaults, a more insidious structural shift is occurring within African capital markets. As highlighted in a recent briefing by <em>The Economist</em> ("The other debt crisis," Nov 22, 2025), the composition of African sovereign liabilities has undergone a "major transformation." Domestic borrowing has surged from $150bn in 2010 to nearly $500bn in 2024, now constituting roughly half of all government debt in sub-Saharan Africa.</p>
                     
-                    <p>This briefing examines the "trade diversion" effects currently rippling through the Canadian manufacturing and energy sectors. Using a Gravity Model of Trade augmented with tariff variables, we estimate the elasticity of Canadian exports to recent US duties.</p>
+                    <p>This pivots the conversation from external vulnerability to internal fragility. This article summarizes the key arguments presented by <em>The Economist</em> and offers a critical econometric perspective on the implications for long-run growth.</p>
 
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Exchange Rate Pass-Through</h2>
-                    <p>Conventional wisdom holds that a depreciating Canadian dollar (CAD) buffers exporters against foreign tariffs. However, our GARCH analysis of CAD/USD volatility reveals a breakdown in this relationship. The uncertainty generated by arbitrary tariff schedules has dampened investment more than the weaker currency has stimulated sales. This phenomenon—"elasticity pessimism"—suggests that Canadian exporters are price-takers in a market where political risk now carries a higher premium than price competitiveness.</p>
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The "Original Sin" Trade-off</h2>
+                    <p>Historically, emerging markets suffered from "original sin"—the inability to borrow abroad in their own currency. This exposed them to catastrophic currency mismatches when the dollar strengthened. Domestic borrowing theoretically solves this; liabilities are denominated in the same currency as tax revenues.</p>
+                    <p>However, this safety comes at a steep price. The article notes that interest rates on domestic instruments are typically <strong>three to six percentage points higher</strong> than external concessional financing. Furthermore, maturities are dangerously short. This forces governments into a perpetual cycle of refinancing, diverting colossal sums from productive investment. In Kenya, for instance, one-third of financing needs are consumed by debt service, stifling public expenditure on health and education.</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt1.jpeg?raw=true" alt="Chart: Africa Sovereign Borrowing by Category" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 1: The shifting composition of African sovereign debt (Source: The Economist/Kiel Institute).</figcaption>
+                    </figure>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Domestic "Doom Loop"</h2>
+                    <p>The most alarming structural risk identified is the symbiotic fragility between sovereigns and local banks. In many sub-Saharan nations, banks hold over 20% of their assets in government debt. This creates a "doom loop": if sovereign creditworthiness falters, bank balance sheets collapse; if banks falter, the government loses its primary creditor. This dynamic crowds out the private sector, as banks find it safer and more lucrative to lend to the state than to innovative SMEs, effectively strangling the engine of future growth.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Critical Perspective: A Necessary Evil?</h2>
+                    <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
+                        "While the 'crowding out' critique is robust, it ignores the geopolitical utility of domestic debt. In a world of weaponized dollar diplomacy, deep local markets are a prerequisite for true monetary sovereignty."
+                    </div>
+                    <p>Critically, <em>The Economist</em> perhaps underplays the structural drivers of this shift. The surge in domestic borrowing is not merely a policy error but a rational response to the drying up of international capital flows and the volatility of the Eurobond market. While the costs are high, the alternative—a return to dependency on conditional multilateral loans—carries its own political economy risks.</p>
                     
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Sectoral Decoupling</h2>
-                    <p>The automotive sector faces an existential pivot. With "Buy American" provisions excluding Canadian inputs, the integrated Great Lakes manufacturing ecosystem is fracturing. Conversely, this pressure acts as a catalyst for Canada to aggressively pursue CETA (Europe) and CPTPP (Asia-Pacific) markets. The data is clear: diversification is no longer a luxury strategy, but a prerequisite for sovereign economic stability.</p>
+                    <p>The path forward lies not in curbing domestic issuance, but in <strong>market deepening</strong>. As seen in Nigeria and Tanzania, extending the yield curve to longer maturities can mitigate rollover risk. The goal should be to transform this "crisis" into a catalyst for robust, liquid, and diverse African capital markets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG POST 4: SUPERMARKETS (NEW) -->
+        <section id="blog-post-4" class="page-section max-w-4xl mx-auto py-12">
+             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
+            <div class="glass-card p-8 rounded-2xl">
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">Aisle Be There For You: The Rise of Africa's Local Retail Giants</h1>
+                <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
+                    <span class="font-semibold">Frédéric Mirindi</span> | November 18, 2025 | Development Economics
+                </p>
+                <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market1.jpeg?raw=true" alt="Inside a modern African supermarket" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90 shadow-lg">
+
+                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">T</p>
+                    <p>o walk along the main road in Ruaka, on the outskirts of Nairobi, is to witness a dichotomy that defines modern African commerce. On the street, informal market stalls overflow with vegetables and charcoal. In the distance stands a gleaming mall housing a Carrefour franchise. But bridging this gap is Quickmart, a local Kenyan chain that has rapidly expanded to nearly 60 branches. It represents a quiet revolution: the rise of homegrown retailers filling the "missing middle" where international giants have often stumbled.</p>
+                    
+                    <p>Historically, African retail has been bifurcated. Supermarkets catered to the affluent elite, while the vast majority of the population (purchasing over 70% of food and goods) relied on informal vendors. However, as noted in a recent analysis by <em>The Economist</em>, local chains like Quickmart (Kenya), Marketsquare (Nigeria), and Kazyon (Egypt) are proving that formal retail can successfully compete for the mass market.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Failure of the "Cut-and-Paste" Model</h2>
+                    <p>The retreat of Shoprite from Nigeria in 2021 serves as a cautionary tale. The South African giant struggled with a business model that relied heavily on imported goods and leases priced in dollars. When the naira depreciated, their cost structure collapsed. Ebele Enunwa, CEO of Marketsquare, notes that international chains often sold products "that Nigerians did not know or care about."</p>
+                    
+                    <p>In contrast, local challengers are agile. They locate stores in secondary cities and satellite towns rather than just prestige capitals. They understand that the African consumer is not merely "rising" in a linear fashion but is a strategic shopper navigating high inflation. Quickmart, for example, operates 24-hour branches to serve informal workers and stocks hot takeaways for Nairobi's young professionals.</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market2.jpeg?raw=true" alt="Chart: Modern Retail Market Share Forecast" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 1: Forecasted growth of modern retail market share in key African economies (Source: Boston Consulting Group/The Economist).</figcaption>
+                    </figure>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Redefining the "Consumer Class"</h2>
+                    <p>Investors have long obsessed over the African "middle class," a term that often obscures more than it reveals. Analytics firm Fraym estimates a "consumer class" of 330 million people, yet purchasing power parity (PPP) data shows average incomes in sub-Saharan Africa remain a fraction of those in other emerging markets.</p>
+                    
+                    <p>This reality has forced even e-commerce giants like Jumia to pivot. Moving away from the "Amazon of Africa" narrative targeting elites, Jumia is now delivering practical goods—weed-sprayers, shoes, and blenders—to customers in smaller towns ("up country"). This shift from aspirational luxury to practical utility is the new frontier of African retail.</p>
+
+                    <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
+                        "You can't just look at what Africans have to spend—but <em>how</em> they spend it. The notion of the 'rise of the African middle class' can give you a distorted strategy." — Charles Mwebeiha, Sango Capital.
+                    </div>
+
+                    <p>The success of these local chains suggests that the future of African retail isn't about replacing the informal market entirely, but upgrading it. By offering safety, consistency, and localized products at competitive price points, they are building a uniquely African model of modernity.</p>
                 </div>
             </div>
         </section>
@@ -947,8 +1061,109 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-// ... (OLS Logic remains the same) ...
-// ... (Inflation Logic remains the same) ...
+        // --- APP 1: OLS REGRESSION LOGIC ---
+        function calculateOLS() {
+            const xInput = document.getElementById('ols-x').value;
+            const yInput = document.getElementById('ols-y').value;
+            const resultDiv = document.getElementById('ols-result');
+            const eqSpan = document.getElementById('ols-equation');
+            const r2Span = document.getElementById('ols-r2');
+            const seSpan = document.getElementById('ols-se');
+            const tStatSpan = document.getElementById('ols-tstat');
+            const nSpan = document.getElementById('ols-n');
+
+            try {
+                const x = xInput.split(',').map(val => val.trim()).filter(val => val !== '').map(Number); 
+                const y = yInput.split(',').map(val => val.trim()).filter(val => val !== '').map(Number);
+
+                if (x.some(isNaN) || y.some(isNaN)) throw new Error("NaN detected. Please check your inputs for non-numeric characters.");
+                if (x.length < 2) throw new Error("Insufficient data. Please enter at least two data points.");
+                if (x.length !== y.length) throw new Error(`Data mismatch. X has ${x.length} points, but Y has ${y.length}. They must be equal.`);
+
+                const n = x.length;
+                const sumX = x.reduce((a, b) => a + b, 0);
+                const sumY = y.reduce((a, b) => a + b, 0);
+                const sumXY = x.reduce((sum, xi, i) => sum + xi * y[i], 0);
+                const sumX2 = x.reduce((sum, xi) => sum + xi * xi, 0);
+
+                const denominator = (n * sumX2 - sumX * sumX);
+                if (denominator === 0) throw new Error("Vertical line (undefined slope)");
+
+                const slope = (n * sumXY - sumX * sumY) / denominator;
+                const intercept = (sumY - slope * sumX) / n;
+
+                const yMean = sumY / n;
+                const totalSS = y.reduce((sum, yi) => sum + Math.pow(yi - yMean, 2), 0);
+                const resSS = y.reduce((sum, yi, i) => {
+                    const pred = slope * x[i] + intercept;
+                    return sum + Math.pow(yi - pred, 2);
+                }, 0);
+                
+                let r2 = 0;
+                if(totalSS !== 0) {
+                    r2 = 1 - (resSS / totalSS);
+                } else {
+                    r2 = 1; 
+                }
+
+                const df = n - 2;
+                let stdErr = 0;
+                let tStat = 0;
+
+                if (df > 0) {
+                    const mse = resSS / df;
+                    stdErr = Math.sqrt(mse);
+                    const sxx = denominator / n;
+                    const seSlope = stdErr / Math.sqrt(sxx);
+                    tStat = slope / seSlope;
+                } else {
+                    stdErr = 0;
+                    tStat = (resSS === 0) ? Infinity : 0; 
+                }
+
+                resultDiv.classList.remove('hidden');
+                resultDiv.classList.remove('animate-pulse'); 
+                void resultDiv.offsetWidth; 
+                resultDiv.classList.add('animate-pulse');
+                
+                eqSpan.innerHTML = `y = ${intercept.toFixed(2)} + ${slope.toFixed(2)}x`;
+                r2Span.innerHTML = r2.toFixed(4);
+                seSpan.innerHTML = stdErr.toFixed(4);
+                tStatSpan.innerHTML = isFinite(tStat) ? tStat.toFixed(4) : "Inf";
+                nSpan.innerHTML = n;
+
+            } catch (e) {
+                console.error(e);
+                alert("Error: " + e.message); 
+            }
+        }
+
+        // --- APP 2: INFLATION SIMULATOR LOGIC ---
+        const infAmount = document.getElementById('inf-amount');
+        const infRate = document.getElementById('inf-rate');
+        const infYears = document.getElementById('inf-years');
+        const infYearsVal = document.getElementById('inf-years-val');
+        const infResult = document.getElementById('inf-result');
+        const infLoss = document.getElementById('inf-loss');
+
+        function updateInflation() {
+            const P = parseFloat(infAmount.value) || 0;
+            const r = parseFloat(infRate.value) || 0;
+            const t = parseFloat(infYears.value);
+            
+            if(infYearsVal) infYearsVal.innerText = t;
+
+            const realValue = P / Math.pow((1 + r/100), t);
+            const lossPct = ((P - realValue) / P) * 100;
+
+            if(infResult) infResult.innerText = "$" + realValue.toLocaleString('en-US', {maximumFractionDigits: 2});
+            if(infLoss) infLoss.innerText = isNaN(lossPct) ? "0.0" : lossPct.toFixed(1);
+        }
+
+        if(infAmount && infRate && infYears) {
+            [infAmount, infRate, infYears].forEach(el => el.addEventListener('input', updateInflation));
+            updateInflation(); 
+        }
 
         // --- APP 3: COMPOUND GROWTH LOGIC (UPDATED) ---
         function calculateCompound() {
@@ -1037,10 +1252,6 @@
 
                 barContainer.appendChild(tip);
                 barContainer.appendChild(barTotal); 
-                // We append Principal AFTER Total if we want it to overlay (but total is opaque).
-                // Actually, let's make Total the background bar, and visual distinction is minimal or handled by tooltip for clarity in small spaces.
-                // For better visualization:
-                // Let's just render the Total Bar. The tooltip gives the breakdown.
                 
                 chart.appendChild(barContainer);
             });
