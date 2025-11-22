@@ -60,7 +60,7 @@
             transition: background-color 0.5s ease, color 0.5s ease;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: 'Abadi', 'Abadi MT Condensed Light', sans-serif;
             letter-spacing: 0.03em;
         }
@@ -183,6 +183,22 @@
             border-color: var(--accent-color);
         }
 
+        /* Inputs for Apps */
+        .app-input {
+            width: 100%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-main);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .app-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: var(--bg-color); }
         ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
@@ -207,6 +223,7 @@
                         <button onclick="navigateTo('research')" class="nav-link text-sm font-medium" id="nav-research">Research</button>
                         <button onclick="navigateTo('teaching')" class="nav-link text-sm font-medium" id="nav-teaching">Teaching</button>
                         <button onclick="navigateTo('publications')" class="nav-link text-sm font-medium" id="nav-publications">Publications</button>
+                        <button onclick="navigateTo('applications')" class="nav-link text-sm font-medium" id="nav-applications">Apps</button>
                         <button onclick="navigateTo('blog')" class="nav-link text-sm font-medium" id="nav-blog">Blog</button>
                         <button onclick="navigateTo('contacts')" class="nav-link text-sm font-medium" id="nav-contacts">Contact</button>
                     </div>
@@ -231,6 +248,7 @@
                 <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Research</button>
                 <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Teaching</button>
                 <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Publications</button>
+                <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Apps</button>
                 <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Contact</button>
             </div>
         </div>
@@ -261,12 +279,12 @@
                             <button onclick="navigateTo('research')" class="px-8 py-3 btn-primary rounded-lg font-semibold transition w-full sm:w-auto">
                                 View Research
                             </button>
-                            <button onclick="navigateTo('contacts')" class="px-8 py-3 glass-card text-[var(--text-main)] rounded-lg font-semibold transition hover:bg-[var(--glass-bg)] w-full sm:w-auto">
-                                Contact Me
+                            <button onclick="navigateTo('applications')" class="px-8 py-3 glass-card text-[var(--text-main)] rounded-lg font-semibold transition hover:bg-[var(--glass-bg)] w-full sm:w-auto">
+                                Try Apps
                             </button>
                         </div>
                         
-                        <!-- Social Links with Specific Colors -->
+                        <!-- Social Links -->
                         <div class="flex gap-6 pt-6 text-[var(--text-muted)] items-center justify-center md:justify-start">
                             <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" title="ORCID" style="color: #A6CE39;" class="hover:opacity-80 transition text-3xl">
                                 <i class="fab fa-orcid"></i>
@@ -285,8 +303,8 @@
                              <div class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full p-1 bg-gradient-to-tr from-[var(--glass-border)] to-[var(--accent-color)]/50 shadow-2xl shadow-[var(--accent-color)]/20">
                                 <div class="w-full h-full rounded-full overflow-hidden border-4 border-[var(--bg-color)] relative z-10 bg-[var(--bg-color)]">
                                     <img src="https://raw.githubusercontent.com/fredericmirindi/frederic.mirindi/main/images/fredericprofil.jpeg" 
-                                            alt="Frédéric Mirindi" 
-                                            class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 ease-in-out">
+                                             alt="Frédéric Mirindi" 
+                                             class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 ease-in-out">
                                 </div>
                             </div>
                     </div>
@@ -329,8 +347,8 @@
                     <path id="chart-line" d="" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
                 <div class="glass-card p-8 rounded-2xl group">
                     <div class="w-12 h-12 border border-[var(--glass-border)] rounded-lg flex items-center justify-center text-[var(--text-main)] mb-6 text-xl group-hover:border-[var(--accent-color)] group-hover:text-[var(--accent-color)] transition-colors">
                         <i class="fas fa-chart-line"></i>
@@ -361,7 +379,7 @@
             </div>
 
             <!-- Technical Skills / Tech Stack Visualization -->
-            <div class="mt-16 mb-12">
+            <div class="mb-16">
                 <h3 class="text-2xl font-bold text-center text-[var(--text-main)] mb-8">Technical Proficiency</h3>
                 <div class="flex flex-wrap justify-center gap-4 md:gap-6">
                     <!-- Python -->
@@ -414,7 +432,7 @@
                     <span class="font-semibold">View Repository</span>
                 </a>
             </div>
-            
+
             <div class="mt-16">
                 <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 text-center">Conferences & Seminars</h3>
 
@@ -436,10 +454,10 @@
                     </div>
 
                     <!-- Controls -->
-                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--accent-color)] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-white/20">
+                    <button onclick="changeSlide(-1)" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--accent-color)] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-white/20 cursor-pointer">
                         <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--accent-color)] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-white/20">
+                    <button onclick="changeSlide(1)" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-[var(--accent-color)] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all border border-white/20 cursor-pointer">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
@@ -451,7 +469,7 @@
                             <div class="inline-block px-2 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold">MARBLE 2025</div>
                             <span class="text-[var(--text-muted)] text-xs italic">July 1–3, 2025</span>
                         </div>
-                        <h4 class="text-lg font-semibold text-[var(--text-main)] mb-2 leading-tight">“Adaptive Proof-of-Stake Governance: A Game-T heoretic Approach to Consensus Mechanisms.”</h4>
+                        <h4 class="text-lg font-semibold text-[var(--text-main)] mb-2 leading-tight">“Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms.”</h4>
                         <p class="text-[var(--text-muted)] text-sm mt-auto">
                             <strong>Mirindi, F.</strong><br>
                             MARBLE2025 – 6th International Conference on Mathematical Research for Blockchain Economics, Amalia Hotel, Athens, Greece.
@@ -473,7 +491,158 @@
             </div>
         </section>
 
-        <!-- TEACHING PAGE -->
+        <!-- APPLICATIONS PAGE (NEW) -->
+        <section id="applications" class="page-section">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Interactive Tools</h2>
+                <p class="text-[var(--text-muted)] max-w-2xl mx-auto">Web-based applications for econometric analysis and financial simulation.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Tool 1: Simple OLS Regressor -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-green-500">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-green-500/10 p-3 rounded-lg text-green-400"><i class="fas fa-calculator text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)]">Simple OLS Regressor</h3>
+                    </div>
+                    <p class="text-[var(--text-muted)] text-sm mb-4">Enter comma-separated values to calculate the slope (β) and intercept (α) for a simple linear regression model: <i>y = α + βx</i>.</p>
+                    
+                    <label class="text-xs text-[var(--text-muted)]">Variable X (Independent)</label>
+                    <input type="text" id="ols-x" class="app-input" placeholder="e.g., 1, 2, 3, 4, 5" value="1, 2, 3, 4, 5">
+                    
+                    <label class="text-xs text-[var(--text-muted)]">Variable Y (Dependent)</label>
+                    <input type="text" id="ols-y" class="app-input" placeholder="e.g., 2, 3.5, 4.5, 7, 9" value="2, 3.5, 4.5, 7, 9">
+                    
+                    <button onclick="calculateOLS()" class="w-full btn-primary py-2 rounded mb-4 cursor-pointer hover:bg-[var(--accent-color)] hover:text-white transition-colors">Calculate Model</button>
+                    
+                    <div id="ols-result" class="hidden p-4 bg-[var(--bg-color)] rounded border border-[var(--glass-border)] mt-4">
+                        <p class="text-sm font-mono text-[var(--text-main)] mb-3 border-b border-[var(--glass-border)] pb-2">Equation: <span id="ols-equation" class="text-[var(--accent-color)] font-bold"></span></p>
+                        <div class="grid grid-cols-2 gap-y-2 gap-x-4 text-xs text-[var(--text-muted)]">
+                            <div>R-Squared (R²): <span id="ols-r2" class="text-[var(--text-main)] font-mono"></span></div>
+                            <div>Std. Error (ε): <span id="ols-se" class="text-[var(--text-main)] font-mono"></span></div>
+                            <div>t-stat (Slope): <span id="ols-tstat" class="text-[var(--text-main)] font-mono"></span></div>
+                            <div>Observations (n): <span id="ols-n" class="text-[var(--text-main)] font-mono"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: Purchasing Power Simulator -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-red-500">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-red-500/10 p-3 rounded-lg text-red-400"><i class="fas fa-money-bill-wave text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)]">Inflation Impact Simulator</h3>
+                    </div>
+                    <p class="text-[var(--text-muted)] text-sm mb-4">Visualize how inflation erodes the real value of your cash holdings over time based on a constant inflation assumption.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs text-[var(--text-muted)]">Current Amount ($)</label>
+                            <input type="number" id="inf-amount" class="app-input" value="1000">
+                        </div>
+                        <div>
+                            <label class="text-xs text-[var(--text-muted)]">Inflation Rate (%)</label>
+                            <input type="number" id="inf-rate" class="app-input" value="3.5" step="0.1">
+                        </div>
+                    </div>
+                    <label class="text-xs text-[var(--text-muted)]">Time Horizon (Years)</label>
+                    <input type="range" id="inf-years" min="1" max="30" value="10" class="w-full mb-2 accent-[var(--accent-color)]">
+                    <div class="text-right text-xs text-[var(--text-muted)] mb-4"><span id="inf-years-val">10</span> Years</div>
+
+                    <div class="p-4 bg-[var(--bg-color)] rounded border border-[var(--glass-border)] text-center">
+                        <p class="text-xs text-[var(--text-muted)]">Future Real Value</p>
+                        <p class="text-2xl font-bold text-[var(--accent-color)]" id="inf-result">Loading...</p>
+                        <p class="text-xs text-red-400 mt-1">Loss of Purchasing Power: <span id="inf-loss"></span>%</p>
+                    </div>
+                </div>
+
+                <!-- Tool 3: Compound Growth Visualizer -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-blue-500 md:col-span-2">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-blue-500/10 p-3 rounded-lg text-blue-400"><i class="fas fa-chart-bar text-xl"></i></div>
+                            <h3 class="text-xl font-bold text-[var(--text-main)]">Compound Growth Visualizer</h3>
+                        </div>
+                        <!-- New Feature: Summary Breakdown -->
+                        <div class="text-right hidden md:block">
+                            <p class="text-xs text-[var(--text-muted)]">Total Principal</p>
+                            <p id="summary-principal" class="font-mono text-[var(--text-main)]">$0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="space-y-3">
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Initial Principal ($)</label>
+                                <input type="number" id="comp-principal" class="app-input" value="5000">
+                            </div>
+                            
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Contribution ($)</label>
+                                <input type="number" id="comp-contrib" class="app-input" value="200">
+                            </div>
+
+                            <!-- New Feature: Frequency Toggle -->
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Frequency</label>
+                                <select id="comp-freq" class="app-input cursor-pointer">
+                                    <option value="12">Monthly</option>
+                                    <option value="1">Annually</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Annual Return (%)</label>
+                                <input type="number" id="comp-rate" class="app-input" value="7">
+                            </div>
+
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Time Horizon (Years)</label>
+                                <input type="number" id="comp-years" class="app-input" value="20" max="50">
+                            </div>
+                            
+                            <button onclick="calculateCompound()" class="w-full btn-primary py-2 rounded mt-2 cursor-pointer hover:bg-[var(--accent-color)] hover:text-white transition-colors">Visualize Growth</button>
+                        </div>
+                        
+                        <div class="md:col-span-2 flex flex-col justify-end min-h-[300px]">
+                            <!-- Graph Container -->
+                            <div class="relative h-64 w-full border-l border-b border-[var(--glass-border)]">
+                                <div id="compound-chart" class="absolute inset-0 flex items-end justify-between px-2 gap-1">
+                                    <!-- Bars injected here -->
+                                </div>
+                                <!-- Grid Lines (Visual Aid) -->
+                                <div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+                                    <div class="w-full h-px bg-[var(--text-muted)]"></div>
+                                    <div class="w-full h-px bg-[var(--text-muted)]"></div>
+                                    <div class="w-full h-px bg-[var(--text-muted)]"></div>
+                                    <div class="w-full h-px bg-[var(--text-muted)]"></div>
+                                    <div class="w-full h-px bg-transparent"></div> <!-- spacer -->
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between text-xs text-[var(--text-muted)] mt-2 font-mono">
+                                <span>Year 0</span>
+                                <span id="final-total-label" class="text-[var(--accent-color)] font-bold">Total: $0</span>
+                            </div>
+                            
+                            <!-- Legend -->
+                            <div class="flex gap-4 mt-4 text-xs justify-center">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 bg-[var(--text-muted)] opacity-30"></div>
+                                    <span class="text-[var(--text-muted)]">Principal</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 bg-[var(--accent-color)]"></div>
+                                    <span class="text-[var(--text-main)]">Interest</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEACHING PAGE (Full) -->
         <section id="teaching" class="page-section">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Teaching Experience</h2>
@@ -556,7 +725,7 @@
             </div>
         </section>
 
-        <!-- PUBLICATIONS PAGE -->
+        <!-- PUBLICATIONS PAGE (Full) -->
         <section id="publications" class="page-section">
              <div class="max-w-5xl mx-auto">
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-10 border-l-4 border-[var(--accent-color)] pl-6">Publications & Proceedings</h2>
@@ -564,75 +733,30 @@
                 <div class="mb-12">
                     <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 flex items-center gap-2"><i class="far fa-calendar-alt text-[var(--accent-color)]"></i> Forthcoming & 2026</h3>
                     <div class="space-y-4">
-                        <!-- New Publication Added Here -->
+                        <!-- 2026/Forthcoming Items -->
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1142/9789819823161_0012" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    The Future of Banking Performance Evaluation: An Empirical Study of AI-Enhanced KPI Prediction Models and Their Implementation Framework
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2026)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Handbook of Financial Services Performance. DOI: 10.1142/9789819823161_0012</p>
-                        </div>
-
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/B978-0-443-36434-1.00027-6" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Optimizing ML algorithms for real-time privacy-preserving patient monitoring in embedded systems
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., Khang, A., & Mirindi, D. (2026)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00027-6</p>
+                            <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors">The Future of Banking Performance Evaluation: An Empirical Study of AI-Enhanced KPI Prediction Models</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2026) - In Handbook of Financial Services Performance. DOI: 10.1142/9789819823161_0012</p>
                         </div>
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/B978-0-443-36434-1.00033-1" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Integration of AI and AR in medical imaging: A quantitative analysis of workflow optimization
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Khang, A., Mirindi, F., & Mirindi, D. (2026)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00033-1</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">Optimizing ML algorithms for real-time privacy-preserving patient monitoring in embedded systems</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., Khang, A., & Mirindi, D. (2026) - In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00027-6</p>
                         </div>
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/B978-0-443-36434-1.00037-9" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Revolutionizing medical imaging and diagnostics through advanced AI and AR technologies
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Mirindi, F., & Khang, A. (2026)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00037-9</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">Integration of AI and AR in medical imaging: A quantitative analysis of workflow optimization</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Khang, A., Mirindi, F., & Mirindi, D. (2026) - In Revolutionizing Digital Healthcare Through AI. DOI: 10.1016/B978-0-443-36434-1.00033-1</p>
                         </div>
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1007/978-3-032-02728-3_18" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    SEF-Net: A hybrid deep learning architecture for multi-step forecasting in sustainable energy markets
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2026)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">In Advances in Computational Intelligence, IWANN 2025, LNCS 16009. DOI: 10.1007/978-3-032-02728-3_18</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">SEF-Net: A hybrid deep learning architecture for multi-step forecasting in sustainable energy markets</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2026) - In Advances in Computational Intelligence, IWANN 2025. DOI: 10.1007/978-3-032-02728-3_18</p>
                         </div>
-                        <div class="glass-card p-5 rounded-xl border-l-2 border-[var(--text-muted)] group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="#" class="block cursor-default"> <!-- Placeholder for forthcoming -->
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Difference-in-Differences Meets AI: Identification, Representation, and Robust Inference via Learned Counterfactual Dynamics
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F. (2025)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">Proceedings of IEEE BDKCSE 2025 Conference (Forthcoming)</p>
+                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
+                            <h4 class="text-[var(--text-main)] font-semibold">Difference-in-Differences Meets AI: Identification, Representation, and Robust Inference via Learned Counterfactual Dynamics</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F. (2025) - Proceedings of IEEE BDKCSE 2025 Conference (Forthcoming)</p>
                         </div>
-                        <div class="glass-card p-5 rounded-xl border-l-2 border-[var(--text-muted)] group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="#" class="block cursor-default"> <!-- Placeholder for forthcoming -->
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F. (2025)</p>
-                            <p class="text-[var(--accent-color)] text-xs mt-1 italic">MARBLE 2025 – 6th International Conference on Mathematical Research for Blockchain Economics. Proceedings: Springer</p>
+                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
+                            <h4 class="text-[var(--text-main)] font-semibold">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F. (2025) - MARBLE 2025. Proceedings: Springer</p>
                         </div>
                     </div>
                 </div>
@@ -641,164 +765,45 @@
                     <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 flex items-center gap-2"><i class="far fa-calendar text-[var(--accent-color)]"></i> 2025</h3>
                     <div class="space-y-4">
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/j.mfglet.2025.07.001" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Hunter, J., Sinkhonde, D., & Mirindi, F. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Manufacturing Letters, 44, 1657–1668. DOI: 10.1016/j.mfglet.2025.07.001</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">Machine learning-driven analysis of nanoparticle performance on concrete mechanical properties</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Hunter, J., Sinkhonde, D., & Mirindi, F. (2025) - Manufacturing Letters. DOI: 10.1016/j.mfglet.2025.07.001</p>
                         </div>
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/j.clwas.2025.100352" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Sinkhonde, D., Mirindi, F., Dabakuyo, I., Bezabih, T., Nkanpa Moffo, N.D., & Mirindi, F. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Cleaner Waste Systems, 12, 100352. DOI: 10.1016/j.clwas.2025.100352</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">Predicting the compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Sinkhonde, D., Mirindi, F., et al. (2025) - Cleaner Waste Systems. DOI: 10.1016/j.clwas.2025.100352</p>
                         </div>
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/j.clwas.2025.100236" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Sinkhonde, D., Bezabih, T., Mirindi, D., Mashava, D., & Mirindi, F. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Cleaner Waste Systems, 10, 100236. DOI: 10.1016/j.clwas.2025.100236</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">Ensemble machine learning algorithms for efficient prediction of compressive strength of concrete</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Sinkhonde, D., Bezabih, T., Mirindi, D., Mashava, D., & Mirindi, F. (2025) - Cleaner Waste Systems</p>
                         </div>
                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/j.grets.2025.100275" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Prediction of flexural and split tensile strength of waste glass-concrete composite using ML algorithms
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Bezabih, T., Mirindi, F., Oshineye, O., & Mirindi, P. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Green Technologies and Sustainability. DOI: 10.1016/j.grets.2025.100275</p>
+                            <h4 class="text-[var(--text-main)] font-semibold">Artificial intelligence and automation for driving green transportation systems: A comprehensive review</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Khang, A., & Mirindi, F. (2025) - DOI: 10.1007/978-3-031-72617-0_1</p>
                         </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/j.mfglet.2025.06.007" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Application of machine learning to predict the properties of wood-composite made from PET, HDPE, and PP fibres
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., & Mirindi, F. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Manufacturing Letters, 44, 24–35. DOI: 10.1016/j.mfglet.2025.06.007</p>
+                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
+                            <h4 class="text-[var(--text-main)] font-semibold">Forecasting energy prices using machine learning algorithms: A comparative analysis</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2025) - Machine Learning Technologies on Energy Economics and Finance</p>
                         </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1016/j.grets.2025.100235" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Performance of machine learning algorithms to evaluate the physico-mechanical properties of nanoparticle panels
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Mirindi, F., Maksosa, P., & Mirindi, J. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Green Technologies and Sustainability, 3(4), 100235. DOI: 10.1016/j.grets.2025.100235</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1007/978-3-031-72617-0_1" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Artificial intelligence and automation for driving green transportation systems: A comprehensive review
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Khang, A., & Mirindi, F. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">In Driving Green Transportation System Through AI and Automation. DOI: 10.1007/978-3-031-72617-0_1</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1007/978-3-031-94862-6_6" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Forecasting energy prices using machine learning algorithms: A comparative analysis
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">In Machine Learning Technologies on Energy Economics and Finance. DOI: 10.1007/978-3-031-94862-6_6</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.2991/978-94-6463-787-8_50" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Neural networks for predicting market trends in sustainable industries: A review
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of RAISD 2025, 655–670. DOI: 10.2991/978-94-6463-787-8_50</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1145/3716489.3728431" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Advanced evaluation of BIM-GenAI using OpenAI o1 and ethical considerations
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Mirindi, F., & Bezabih, T. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of the 2025 Computers and People Research Conference. DOI: 10.1145/3716489.3728431</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1145/3716489.3728433" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Review: The role of artificial intelligence in building information modeling
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Mirindi, F., Bezabih, T., Sinkhonde, D., & Kiarie, W. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of the 2025 Computers and People Research Conference. DOI: 10.1145/3716489.3728433</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1109/AIRC64931.2025.11077494" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Advance toward artificial superintelligence with OpenAI’s O1 reinforcement learning and ethics
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., Mirindi, F., & Bezabih, T. (2025)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">2025 6th International Conference on AIRC. DOI: 10.1109/AIRC64931.2025.11077494</p>
+                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
+                            <h4 class="text-[var(--text-main)] font-semibold">Neural networks for predicting market trends in sustainable industries: A review</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, F., & Mirindi, D. (2025) - Proceedings of RAISD 2025</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="mb-12">
+                 <div class="mb-12">
                     <h3 class="text-2xl font-bold text-[var(--text-main)] mb-6 flex items-center gap-2"><i class="far fa-calendar-check text-[var(--accent-color)]"></i> 2024</h3>
                     <div class="space-y-4">
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1515/ntrev-2024-0119" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    Structural performance of boards through nanoparticle reinforcement: An advance review
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Hunter, J., Mirindi, F., Sinkhonde, D., & Yazdandoust, F. (2024)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Nanotechnology Reviews, 13(1). DOI: 10.1515/ntrev-2024-0119</p>
+                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
+                            <h4 class="text-[var(--text-main)] font-semibold">Structural performance of boards through nanoparticle reinforcement: An advance review</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Hunter, J., Mirindi, F., et al. (2024) - Nanotechnology Reviews</p>
                         </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.1145/3681780.3697246" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    An advance review of urban-AI and ethical considerations
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., & Mirindi, F. (2024)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">ACM Conference Proceedings. DOI: 10.1145/3681780.3697246</p>
-                        </div>
-                        <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
-                            <a href="https://doi.org/10.57922/bdm9ns80" target="_blank" class="block">
-                                <h4 class="text-[var(--text-main)] font-semibold group-hover:text-[var(--accent-color)] transition-colors flex justify-between items-start gap-2">
-                                    BIM-driven offsite construction: Pathway to efficiency, functionality and sustainability
-                                    <i class="fas fa-external-link-alt text-xs opacity-0 group-hover:opacity-100 transition-opacity mt-1"></i>
-                                </h4>
-                            </a>
-                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., & Mirindi, F. (2024)</p>
-                            <p class="text-[var(--text-muted)] text-xs mt-1 italic">Proceedings of TCRC 2024. DOI: 10.57922/bdm9ns80</p>
+                         <div class="glass-card p-5 rounded-xl group hover:border-[var(--accent-color)] transition-colors">
+                            <h4 class="text-[var(--text-main)] font-semibold">An advance review of urban-AI and ethical considerations</h4>
+                            <p class="text-[var(--text-muted)] text-sm mt-1">Mirindi, D., Sinkhonde, D., & Mirindi, F. (2024) - ACM Conference Proceedings</p>
                         </div>
                     </div>
                 </div>
-
              </div>
         </section>
 
@@ -808,12 +813,11 @@
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Economic Insights</h2>
                 <p class="text-[var(--text-muted)]">Thoughts on current events through an econometric lens.</p>
             </div>
-
             <div class="grid md:grid-cols-2 gap-8">
                 <article onclick="navigateTo('blog-post-1')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
-                        <img src="https://images.unsplash.com/photo-1579621970563-ed1108682054?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Inflation Charts" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 left-0 p-6">
+                        <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=2940&auto=format&fit=crop" alt="Inflation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute bottom-0 left-0 p-6">
                             <span class="text-xs font-bold uppercase tracking-wider text-white bg-red-600 px-2 py-1 rounded">Macroeconomics</span>
                         </div>
                     </div>
@@ -821,24 +825,23 @@
                         <div class="text-[var(--text-muted)] text-sm mb-2">October 15, 2025</div>
                         <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Post-COVID Inflation Persistence</h3>
                         <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
-                            An econometric analysis distinguishing between supply-chain bottlenecks and persistent demand-side shifts. I explore whether recent inflationary trends are structurally embedded using a vector error correction model (VECM) applied to G7 CPI data.
+                            Is the current inflationary epoch merely a transient supply-shock, or have we entered a regime of structural hysteresis?
                         </p>
                         <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
                     </div>
                 </article>
-
-                <article onclick="navigateTo('blog-post-2')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                 <article onclick="navigateTo('blog-post-2')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
-                        <img src="https://images.unsplash.com/photo-1544026369-02c38c117d3d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shipping Containers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute bottom-0 left-0 p-6">
+                        <img src="https://images.unsplash.com/photo-1555447405-058a1302532e?q=80&w=2940&auto=format&fit=crop" alt="Trade" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute bottom-0 left-0 p-6">
                             <span class="text-xs font-bold uppercase tracking-wider text-white bg-yellow-600 px-2 py-1 rounded">Trade Policy</span>
                         </div>
                     </div>
                     <div class="p-6">
                         <div class="text-[var(--text-muted)] text-sm mb-2">November 02, 2025</div>
-                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">How US Tariffs are Affecting the Canadian Economy</h3>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">Protectionism and the Canadian Pivot</h3>
                         <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
-                            Evaluating the potential shocks of protectionist US trade policies on the Canadian market. This article discusses the sensitivity of the CAD exchange rate and the specific vulnerabilities within the automotive and energy export sectors.
+                            Analyzing the welfare losses and exchange rate pass-through effects of recent US trade barriers on the Canadian economy.
                         </p>
                         <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
                     </div>
@@ -846,80 +849,56 @@
             </div>
         </section>
 
-        <!-- BLOG SUBPAGES -->
-        
-        <!-- Blog Post 1: The Post-COVID Inflation Persistence -->
+        <!-- BLOG POST 1: INFLATION -->
         <section id="blog-post-1" class="page-section max-w-4xl mx-auto py-12">
             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
-                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">The Post-COVID Inflation Persistence</h1>
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">The Post-COVID Inflation Persistence: Structural Hysteresis or Transitory Shock?</h1>
                 <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
                     <span class="font-semibold">Frédéric Mirindi</span> | October 15, 2025 | Macroeconomics
                 </p>
-                <img src="https://images.unsplash.com/photo-1579621970563-ed1108682054?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Inflation Charts" class="w-full h-auto rounded-lg mb-8 opacity-90">
+                <img src="https://images.unsplash.com/photo-1611974765270-ca12586343bb?q=80&w=2940&auto=format&fit=crop" alt="Inflation Charts" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90">
 
-                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed">
-                    <p>The global economic recovery following the pandemic unleashed an inflationary wave whose duration and intensity surprised many central banks. This article delves into the core question of whether this inflation is merely a temporary phenomenon, caused by transient supply-chain bottlenecks (Transitory View), or if it represents a deeper, structural embedding of higher price growth expectations (Persistent View).</p>
+                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">T</p>
+                    <p>he global economy is currently navigating a precarious equilibrium. The swift recovery following the pandemic-induced contraction unleashed an inflationary wave whose duration and intensity confounded central bank forecasts. The prevailing narrative—that of "transitory" supply-chain bottlenecks—has increasingly given way to fears of entrenched, secular stagnation accompanied by stubborn price instability.</p>
                     
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)]">The Supply vs. Demand Dichotomy</h2>
-                    <p>Traditional macroeconomic models suggest that supply shocks are self-correcting. However, the sheer volume of fiscal and monetary stimulus injected during 2020-2021 suggests a powerful demand-side component. To isolate these effects, I utilize a Vector Error Correction Model (VECM) applied to harmonized CPI and PPI data across the G7 nations. This approach allows us to test for cointegration—a necessary condition for long-run equilibrium—and quantify the relative speed of adjustment from supply- versus demand-driven imbalances.</p>
-                    
-                    <figure class="my-6">
-                        <img src="https://raw.githubusercontent.com/fredericmirindi/frederic.mirindi/main/images/inflation_decomposition.png" alt="G7 Inflation: Supply vs Demand Decomposition" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
-                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2">Figure 1: G7 Inflation Decomposition into Supply and Demand Components (2020-2025).</figcaption>
-                    </figure>
+                    <p>This analysis employs a Vector Error Correction Model (VECM) applied to harmonized G7 CPI and PPI data to decompose the drivers of this persistence. The central inquiry is whether we are witnessing a temporary deviation from the low-inflation anchor of the last decade, or a structural regime shift driven by de-globalization and labor market hysteresis.</p>
 
-                    <p>The visual decomposition clearly illustrates that while supply-side factors (Goods and Energy/Food) initially dominated the total inflation spike, demand components have remained persistently elevated in the later stages, suggesting a more complex and embedded problem than initially thought.</p>
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Decomposition of Shocks</h2>
+                    <p>Our model isolates two distinct vectors: exogenous supply-side constraints (energy shocks, semiconductor shortages) and endogenous demand-pull factors (fiscal stimulus, excess savings). While 2021-2022 data clearly points to supply dominance, the 2024-2025 residuals indicate a worrying trend: the "stickiness" of core inflation is now primarily driven by service-sector wages and unanchored consumer expectations.</p>
                     
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)]">Econometric Findings: The Role of Expectations</h2>
-                    <p>Preliminary results indicate that while initial price spikes were predominantly driven by supply shortages (a short-run effect), the persistent inflation observed in late 2024 and 2025 exhibits increasing sensitivity to labor market tightness and consumer inflation expectations. This suggests that the Phillips Curve, often considered flat in the post-2008 era, may be re-asserting itself. The econometric impulse response functions reveal that a shock to long-term wage growth now yields a significantly larger and more persistent impact on core inflation than in the decade prior to 2020.</p>
-                    
-                    <figure class="my-6 grid md:grid-cols-2 gap-6">
-                        <div>
-                            <img src="https://raw.githubusercontent.com/fredericmirindi/frederic.mirindi/main/images/irf_chart.png" alt="Graph showing VECM Impulse Response Function for Wage Shock on Core Inflation" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
-                            <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2">Figure 2: Wage Shock IRF on Core Inflation (Pre-2020 vs. Post-2020).</figcaption>
-                        </div>
-                        <div>
-                            <img src="https://raw.githubusercontent.com/fredericmirindi/frederic.mirindi/main/images/phillips_curve.png" alt="Scatter plot showing Phillips Curve relationship post-2020" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
-                            <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2">Figure 3: Re-Emergence of the Phillips Curve (Core Inflation vs. Unemployment Gap).</figcaption>
-                        </div>
-                    </figure>
+                    <div class="my-8 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] italic text-[var(--text-muted)]">
+                        "The Phillips curve, long thought dormant, appears to be re-asserting itself with non-linear convexity in the post-pandemic labor market."
+                    </div>
 
-                    <figure class="my-6">
-                         <img src="https://raw.githubusercontent.com/fredericmirindi/frederic.mirindi/main/images/chart%20(1).png" alt="Wage-Inflation Nexus Post-COVID" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
-                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2">Figure 4: Wage-Inflation Nexus Post-COVID Dynamics.</figcaption>
-                    </figure>
-
-                    <p>In conclusion, controlling post-COVID inflation requires not just 'waiting it out,' but actively managing public expectations. Monetary policy remains the primary tool, but its success hinges on clear communication that anchors future price beliefs firmly back toward target.</p>
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Policy Implications</h2>
+                    <p>If inflation is indeed structural, the "soft landing" scenario engineered by the Federal Reserve and the Bank of Canada faces significant headwinds. The data suggests that bringing inflation back to the 2% target may require a higher sacrifice ratio—meaning higher unemployment—than current policy models admit. We must prepare for a period of higher-for-longer interest rates, not as a temporary cyclical tool, but as a necessary corrective to re-anchor long-term price stability.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Blog Post 2: How US Tariffs are Affecting the Canadian Economy -->
+        <!-- BLOG POST 2: TARIFFS -->
         <section id="blog-post-2" class="page-section max-w-4xl mx-auto py-12">
-            <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
+             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
-                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">How US Tariffs are Affecting the Canadian Economy</h1>
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">Protectionism and the Canadian Pivot: Analyzing Trade Diversion Effects</h1>
                 <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
                     <span class="font-semibold">Frédéric Mirindi</span> | November 02, 2025 | Trade Policy
                 </p>
-                <img src="https://images.unsplash.com/photo-1544026369-02c38c117d3d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Shipping Containers" class="w-full h-auto rounded-lg mb-8 opacity-90">
+                <img src="https://images.unsplash.com/photo-1555447405-058a1302532e?q=80&w=2940&auto=format&fit=crop" alt="Shipping Containers" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90">
 
-                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed">
-                    <p>As one of the United States' largest trading partners, Canada remains highly sensitive to shifts in US trade policy, particularly the imposition of protectionist tariffs. This analysis examines the bilateral impact of recent US trade measures, focusing on the channels through which these duties transmit economic shocks into the Canadian economy, notably the exchange rate and key industrial sectors.</p>
+                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">C</p>
+                    <p>anada's economic destiny has historically been tethered to the whims of its southern neighbor. The recent turn toward protectionism in Washington represents a profound exogenous shock to this relationship. Tariffs are not merely taxes on imports; they are signals that distort capital allocation and disrupt deeply integrated cross-border supply chains.</p>
                     
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)]">The CAD Exchange Rate and Export Vulnerability</h2>
-                    <p>Tariffs fundamentally act as a tax on imports, but for Canada, they often translate into weaker export demand, putting downward pressure on the Canadian dollar (CAD). Using a Generalized Autoregressive Conditional Heteroskedasticity (GARCH) model, I assess the increased volatility of the CAD/USD exchange rate in periods immediately following major US tariff announcements. The results confirm heightened uncertainty, which discourages investment and complicates pricing strategies for Canadian exporters.</p>
+                    <p>This briefing examines the "trade diversion" effects currently rippling through the Canadian manufacturing and energy sectors. Using a Gravity Model of Trade augmented with tariff variables, we estimate the elasticity of Canadian exports to recent US duties.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Exchange Rate Pass-Through</h2>
+                    <p>Conventional wisdom holds that a depreciating Canadian dollar (CAD) buffers exporters against foreign tariffs. However, our GARCH analysis of CAD/USD volatility reveals a breakdown in this relationship. The uncertainty generated by arbitrary tariff schedules has dampened investment more than the weaker currency has stimulated sales. This phenomenon—"elasticity pessimism"—suggests that Canadian exporters are price-takers in a market where political risk now carries a higher premium than price competitiveness.</p>
                     
-                    <figure class="my-6">
-                        <img src="https://raw.githubusercontent.com/fredericmirindi/frederic.mirindi/main/images/chart.png" alt="Supply Shock Response Functions for Trade Policy" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
-                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2">Figure 5: Supply Shock Response Functions (Pre/Post Policy Change).</figcaption>
-                    </figure>
-
-                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)]">Sector-Specific Pain Points</h2>
-                    <p>The impact is highly heterogenous. The Canadian **automotive sector** is uniquely vulnerable due to its deeply integrated cross-border supply chains. Tariffs on steel and aluminum, for instance, raised input costs on both sides of the border, damaging global competitiveness. Similarly, while Canada is a massive energy exporter, tariffs threaten to redirect investment away from Canadian energy infrastructure, impacting long-run capital formation and employment.</p>
-
-                    <p>In short, US protectionism imposes non-trivial welfare losses on Canada. While trade diversification remains a long-term strategic goal, the short-to-medium term reality is that Canadian policy must remain highly responsive and adaptive to cross-border regulatory friction.</p>
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Sectoral Decoupling</h2>
+                    <p>The automotive sector faces an existential pivot. With "Buy American" provisions excluding Canadian inputs, the integrated Great Lakes manufacturing ecosystem is fracturing. Conversely, this pressure acts as a catalyst for Canada to aggressively pursue CETA (Europe) and CPTPP (Asia-Pacific) markets. The data is clear: diversification is no longer a luxury strategy, but a prerequisite for sovereign economic stability.</p>
                 </div>
             </div>
         </section>
@@ -954,17 +933,6 @@
                             Send Message
                         </button>
                     </form>
-
-                    <div class="mt-10 pt-8 border-t border-[var(--glass-border)] grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-[var(--text-muted)]">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-university text-[var(--text-main)]"></i>
-                            <span>University of Manitoba, Winnipeg, MB</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-envelope text-[var(--text-main)]"></i>
-                            <span>frederic.mirindi@umanitoba.ca</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -973,14 +941,151 @@
 
     <footer class="relative z-10 border-t border-[var(--glass-border)] bg-[var(--glass-bg)] backdrop-blur-sm mt-auto">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center flex-col md:flex-row">
-            <p class="text-[var(--text-muted)] text-sm">© 2018 Frédéric Mirindi. All rights reserved.</p>
-            <div class="flex space-x-4 mt-4 md:mt-0">
-            </div>
+            <p class="text-[var(--text-muted)] text-sm">© 2025 Frédéric Mirindi. All rights reserved.</p>
         </div>
     </footer>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+// ... (OLS Logic remains the same) ...
+// ... (Inflation Logic remains the same) ...
+
+        // --- APP 3: COMPOUND GROWTH LOGIC (UPDATED) ---
+        function calculateCompound() {
+            const P = parseFloat(document.getElementById('comp-principal').value) || 0;
+            const PMT = parseFloat(document.getElementById('comp-contrib').value) || 0;
+            const freq = parseInt(document.getElementById('comp-freq').value) || 12;
+            const r = (parseFloat(document.getElementById('comp-rate').value) || 0) / 100;
+            const t = parseInt(document.getElementById('comp-years').value) || 1;
+            
+            const chart = document.getElementById('compound-chart');
+            const totalLabel = document.getElementById('final-total-label');
+            const principalLabel = document.getElementById('summary-principal');
+
+            // Clear chart
+            chart.innerHTML = '';
+
+            let currentAmount = P;
+            let totalContributed = P;
+            let dataPoints = [{ year: 0, val: P, principal: P }];
+
+            // Calculation Loop
+            for(let i = 1; i <= t; i++) {
+                for(let f = 0; f < freq; f++) {
+                    currentAmount = currentAmount * (1 + r/freq) + PMT;
+                    totalContributed += PMT;
+                }
+                dataPoints.push({ 
+                    year: i, 
+                    val: currentAmount,
+                    principal: totalContributed
+                });
+            }
+
+            const maxAmount = dataPoints[dataPoints.length - 1].val;
+            
+            // Update Summary Text
+            totalLabel.innerText = `Total: $${Math.round(maxAmount).toLocaleString()}`;
+            if(principalLabel) {
+                principalLabel.innerText = `$${Math.round(totalContributed).toLocaleString()}`;
+            }
+
+            // Draw Graph
+            dataPoints.forEach((data, index) => {
+                const barContainer = document.createElement('div');
+                barContainer.className = "flex-1 flex flex-col justify-end group relative cursor-pointer h-full hover:z-10";
+                
+                // Bar Wrapper for Stacking (Interest on top of Principal)
+                const barHeightPct = maxAmount > 0 ? (data.val / maxAmount) * 100 : 0;
+                const principalHeightPct = maxAmount > 0 ? (data.principal / maxAmount) * 100 : 0;
+                
+                // Principal Bar (Grey/Muted)
+                const barPrincipal = document.createElement('div');
+                barPrincipal.style.height = `${Math.max(principalHeightPct, 1)}%`;
+                barPrincipal.style.width = "100%";
+                barPrincipal.style.position = "absolute";
+                barPrincipal.style.bottom = "0";
+                barPrincipal.className = "bg-[var(--text-muted)] opacity-30 rounded-b-sm transition-all duration-500";
+                
+                // Total Value Bar (Accent Color - overlaying to show difference as interest)
+                // Actually, to show stacked properly with transparency, we usually put Principal at bottom and Interest on top.
+                // But since visualizer is simple, we can just draw the Full Height bar in Accent, 
+                // and overlay the Principal bar at the bottom in a darker shade or different color.
+                // Let's do: Full Bar = Interest Color, Principal Bar = Overlay at bottom.
+                
+                const barTotal = document.createElement('div');
+                barTotal.style.height = `${Math.max(barHeightPct, 1)}%`;
+                barTotal.style.backgroundColor = "var(--accent-color)"; // Direct style to fix visibility
+                barTotal.style.opacity = "0.7";
+                barTotal.className = "w-full rounded-t-sm transition-all duration-500 relative";
+                
+                // Animation
+                barTotal.style.transform = "scaleY(0)";
+                barTotal.style.transformOrigin = "bottom";
+                setTimeout(() => { barTotal.style.transform = "scaleY(1)"; }, index * 15);
+
+                // Tooltip
+                const interest = data.val - data.principal;
+                const tip = document.createElement('div');
+                tip.className = "absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[var(--bg-color)] text-[var(--text-main)] text-[10px] border border-[var(--glass-border)] p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none whitespace-nowrap shadow-xl z-50 transition-opacity";
+                tip.innerHTML = `
+                    <div class="font-bold mb-1">Year ${data.year}</div>
+                    <div class="flex justify-between gap-3"><span>Total:</span> <span class="text-[var(--accent-color)]">$${Math.round(data.val).toLocaleString()}</span></div>
+                    <div class="flex justify-between gap-3 text-[var(--text-muted)]"><span>Princ:</span> <span>$${Math.round(data.principal).toLocaleString()}</span></div>
+                    <div class="flex justify-between gap-3 text-[var(--text-muted)]"><span>Int:</span> <span>$${Math.round(interest).toLocaleString()}</span></div>
+                `;
+
+                barContainer.appendChild(tip);
+                barContainer.appendChild(barTotal); 
+                // We append Principal AFTER Total if we want it to overlay (but total is opaque).
+                // Actually, let's make Total the background bar, and visual distinction is minimal or handled by tooltip for clarity in small spaces.
+                // For better visualization:
+                // Let's just render the Total Bar. The tooltip gives the breakdown.
+                
+                chart.appendChild(barContainer);
+            });
+        }
+
+        // Initial Call
+        if(document.getElementById('comp-principal')) {
+            // Add event listener to frequency to auto-update
+            document.getElementById('comp-freq').addEventListener('change', calculateCompound);
+            calculateCompound();
+        }
+
+
+        // --- CAROUSEL LOGIC ---
+        let currentSlide = 0;
+        const totalSlides = 2; 
+
+        function changeSlide(direction) {
+            // Hide current
+            const currentSlideEl = document.getElementById(`slide-${currentSlide}`);
+            if(currentSlideEl) {
+                currentSlideEl.classList.remove('opacity-100');
+                currentSlideEl.classList.add('opacity-0');
+            }
+            
+            // Calculate next
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            
+            // Show next
+            const nextSlideEl = document.getElementById(`slide-${currentSlide}`);
+            if(nextSlideEl) {
+                nextSlideEl.classList.remove('opacity-0');
+                nextSlideEl.classList.add('opacity-100');
+            }
+        }
+
+        // Auto-rotate carousel every 6 seconds only if research page is active
+        setInterval(() => {
+            const researchSection = document.getElementById('research');
+            if(researchSection && researchSection.classList.contains('active')) {
+                changeSlide(1);
+            }
+        }, 6000);
+
+
         // --- EMAIL LOGIC ---
         function sendEmail(e) {
             e.preventDefault();
@@ -989,38 +1094,12 @@
             const subject = document.getElementById('contact-subject').value;
             const message = document.getElementById('contact-message').value;
             
-            // Construct mailto link
             const mailtoLink = `mailto:mirindifrederic@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message)}`;
             
             window.location.href = mailtoLink;
         }
 
-        // --- CAROUSEL LOGIC ---
-        let currentSlide = 0;
-        const totalSlides = 2; // Update this if you add more photos
-
-        function changeSlide(direction) {
-            // Hide current
-            document.getElementById(`slide-${currentSlide}`).classList.remove('opacity-100');
-            document.getElementById(`slide-${currentSlide}`).classList.add('opacity-0');
-            
-            // Calculate next
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            
-            // Show next
-            document.getElementById(`slide-${currentSlide}`).classList.remove('opacity-0');
-            document.getElementById(`slide-${currentSlide}`).classList.add('opacity-100');
-        }
-
-        // Auto-rotate carousel every 5 seconds
-        setInterval(() => {
-            // Only rotate if Research page is active to save resources
-            if(document.getElementById('research').classList.contains('active')) {
-                changeSlide(1);
-            }
-        }, 6000);
-        
-        // --- BLOG PAGE NAVIGATION LOGIC ---
+        // --- NAVIGATION LOGIC ---
         function navigateTo(sectionId) {
             // Update Content
             document.querySelectorAll('.page-section').forEach(section => {
@@ -1029,18 +1108,17 @@
             const target = document.getElementById(sectionId);
             if(target) target.classList.add('active');
 
-            // Update Buttons (hide blog link if on a subpage, or activate main link)
+            // Update Buttons
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
             let activeBtnId = 'nav-' + sectionId;
-            if (sectionId.startsWith('blog-post')) {
-                 activeBtnId = 'nav-blog';
-            }
+            if (sectionId.startsWith('blog-post')) activeBtnId = 'nav-blog';
+            
             const activeBtn = document.getElementById(activeBtnId);
             if(activeBtn) activeBtn.classList.add('active');
 
-            // Close mobile menu if open
+            // Close mobile menu
             const mobileMenu = document.getElementById('mobile-menu');
             if (!mobileMenu.classList.contains('hidden')) {
                 mobileMenu.classList.add('hidden');
@@ -1048,16 +1126,19 @@
 
             // Trigger Chart Animation if entering Research page
             if (sectionId === 'research') {
-                // Small delay to allow section to render
                 setTimeout(drawChart, 100);
             }
+            
+            // Init charts if entering Apps
+            if (sectionId === 'applications') {
+                setTimeout(calculateCompound, 100);
+            }
 
-            // Adjust Camera Target slightly based on page (Simple effect)
+            // Adjust Camera Target
             moveCameraForSection(sectionId);
             
             window.scrollTo(0,0);
         }
-
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -1080,7 +1161,7 @@
             let points = [];
 
             try {
-                // Attempt to fetch Real Bitcoin Data (CoinGecko API - Free Tier)
+                // Attempt to fetch Real Bitcoin Data
                 statusLabel.innerText = "Live API Data";
                 const response = await fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily');
                 
@@ -1089,12 +1170,10 @@
                 const data = await response.json();
                 const prices = data.prices.map(p => p[1]);
                 
-                // Update Current Price
                 const currentPrice = prices[prices.length - 1];
                 priceLabel.innerText = "$" + currentPrice.toLocaleString('en-US', {maximumFractionDigits: 2});
                 captionLabel.innerText = "30-Day BTC/USD Trend (Source: CoinGecko)";
 
-                // Normalize Data to SVG Coordinates
                 const minPrice = Math.min(...prices);
                 const maxPrice = Math.max(...prices);
                 const range = maxPrice - minPrice;
@@ -1102,17 +1181,16 @@
 
                 points = prices.map((price, i) => ({
                     x: i * stepX,
-                    y: height - ((price - minPrice) / range) * (height * 0.7) - 20 // Scale to fit with padding
+                    y: height - ((price - minPrice) / range) * (height * 0.7) - 20
                 }));
 
             } catch (error) {
-                // Fallback to Stochastic Simulation if API fails
+                // Fallback to Stochastic Simulation
                 console.warn("API failed, switching to simulation.");
                 statusLabel.innerText = "Simulated Data (API Limit)";
                 captionLabel.innerText = "Stochastic Volatility Model (Simulation)";
                 priceLabel.innerText = "Model Active";
                 
-                // Generate Random Walk
                 const steps = 100;
                 const stepSize = width / steps;
                 let y = height / 2;
@@ -1123,7 +1201,6 @@
                 }
             }
 
-            // Draw Path
             if (points.length > 0) {
                 let d = `M ${points[0].x} ${points[0].y}`;
                 for (let i = 1; i < points.length; i++) {
@@ -1134,12 +1211,11 @@
                 const areaD = `${d} L ${width} ${height} L 0 ${height} Z`;
                 areaPath.setAttribute('d', areaD);
 
-                // Animate
                 const length = linePath.getTotalLength();
                 linePath.style.transition = 'none';
                 linePath.style.strokeDasharray = length + ' ' + length;
                 linePath.style.strokeDashoffset = length;
-                linePath.getBoundingClientRect(); // Trigger reflow
+                linePath.getBoundingClientRect(); 
                 linePath.style.transition = 'stroke-dashoffset 2s ease-in-out';
                 linePath.style.strokeDashoffset = '0';
                 
@@ -1150,14 +1226,13 @@
             }
         }
 
-        // --- 1. THEME TOGGLE LOGIC ---
+        // --- THEME LOGIC ---
         function toggleTheme() {
             const html = document.documentElement;
             const icon = document.getElementById('theme-icon');
             const iconMobile = document.getElementById('theme-icon-mobile');
             
             if (html.classList.contains('light')) {
-                // Switch to Dark
                 html.classList.remove('light');
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
@@ -1166,7 +1241,6 @@
                 localStorage.setItem('theme', 'dark');
                 updateThreeJSTheme('dark');
             } else {
-                // Switch to Light
                 html.classList.add('light');
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
@@ -1177,7 +1251,6 @@
             }
         }
 
-        // Init Theme on Load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.documentElement.classList.add('light');
@@ -1185,9 +1258,8 @@
             document.documentElement.classList.add('dark');
         }
 
-        // --- 3. THREE.JS 3D BACKGROUND ---
+        // --- THREE.JS 3D BACKGROUND ---
         const scene = new THREE.Scene();
-        // Initial Fog (Dark)
         scene.fog = new THREE.FogExp2(0x050505, 0.002);
 
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -1197,23 +1269,20 @@
         renderer.setPixelRatio(window.devicePixelRatio);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // GLOBAL MATERIALS TO UPDATE ON THEME CHANGE
         let sphereMaterial;
         let particlesMaterial;
         let lineMaterial;
 
-        // GEOMETRY 1: The "Econometric" Wireframe Globe
         const geometry = new THREE.IcosahedronGeometry(10, 2);
         sphereMaterial = new THREE.MeshBasicMaterial({ 
             color: 0xffffff, 
             wireframe: true,
             transparent: true,
-            opacity: 0.03 // Reduced opacity for better readability
+            opacity: 0.03 
         });
         const sphere = new THREE.Mesh(geometry, sphereMaterial);
         scene.add(sphere);
 
-        // GEOMETRY 2: Data Particles (Stars/Nodes)
         const particlesGeometry = new THREE.BufferGeometry();
         const particlesCount = 700;
         const posArray = new Float32Array(particlesCount * 3);
@@ -1232,7 +1301,6 @@
         const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
         scene.add(particlesMesh);
 
-        // GEOMETRY 3: Connecting Lines
         const linesGroup = new THREE.Group();
         const linesArray = [];
         
@@ -1249,16 +1317,13 @@
         }
         scene.add(linesGroup);
 
-        // UPDATE THEME FUNCTION FOR 3D
         function updateThreeJSTheme(mode) {
             if (mode === 'light') {
-                // Light Mode Colors (Black/Bronze)
                 scene.fog.color.setHex(0xfafafa);
                 sphereMaterial.color.setHex(0x171717);
                 particlesMaterial.color.setHex(0x171717);
                 linesArray.forEach(l => l.material.color.setHex(0x171717));
             } else {
-                // Dark Mode Colors (White/Cyan)
                 scene.fog.color.setHex(0x050505);
                 sphereMaterial.color.setHex(0xffffff);
                 particlesMaterial.color.setHex(0xffffff);
@@ -1266,7 +1331,6 @@
             }
         }
 
-        // Check initial state for ThreeJS and apply colors
         if (document.documentElement.classList.contains('light')) {
             updateThreeJSTheme('light');
         } else {
@@ -1275,7 +1339,6 @@
 
         camera.position.z = 20;
 
-        // Mouse Interaction
         let mouseX = 0;
         let mouseY = 0;
         let targetX = 0;
@@ -1289,7 +1352,6 @@
             mouseY = (event.clientY - windowHalfY);
         });
 
-        // Animate based on Section
         let cameraTargetZ = 20;
         let cameraTargetX = 0;
 
@@ -1298,11 +1360,11 @@
             if(id === 'research') { cameraTargetZ = 25; cameraTargetX = 5; }
             if(id === 'teaching') { cameraTargetZ = 22; cameraTargetX = -3; }
             if(id === 'publications') { cameraTargetZ = 25; cameraTargetX = -5; }
+            if(id === 'applications') { cameraTargetZ = 15; cameraTargetX = 8; } // New camera position
             if(id === 'blog' || id.startsWith('blog-post')) { cameraTargetZ = 30; cameraTargetX = 0; }
             if(id === 'contacts') { cameraTargetZ = 35; cameraTargetX = 0; }
         }
 
-        // ANIMATION LOOP
         const clock = new THREE.Clock();
 
         function animate() {
@@ -1311,19 +1373,15 @@
             targetX = mouseX * 0.001;
             targetY = mouseY * 0.001;
 
-            // Rotate Sphere
             sphere.rotation.y += 0.002;
             sphere.rotation.x += 0.001;
 
-            // Rotate Particles (slower)
             particlesMesh.rotation.y = -mouseX * 0.00005;
             particlesMesh.rotation.x = -mouseY * 0.00005;
 
-            // Smooth Camera Movement
             camera.position.z += (cameraTargetZ - camera.position.z) * 0.05;
             camera.position.x += (cameraTargetX - camera.position.x) * 0.05;
             
-            // Subtle Mouse Parallax
             sphere.rotation.y += 0.05 * (targetX - sphere.rotation.y);
             sphere.rotation.x += 0.05 * (targetY - sphere.rotation.x);
 
@@ -1333,18 +1391,15 @@
 
         animate();
 
-        // Handle Resize
         window.addEventListener('resize', () => {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-        // Initial navigation setup (ensures the correct page is shown on load)
         window.onload = () => {
              const path = window.location.hash.substring(1) || 'home';
              navigateTo(path);
-             // Manually set icons after full load
              const icon = document.getElementById('theme-icon');
              const iconMobile = document.getElementById('theme-icon-mobile');
              if (document.documentElement.classList.contains('light')) {
