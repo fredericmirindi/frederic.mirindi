@@ -1613,10 +1613,9 @@
 
         // --- APP 5: MICROECONOMICS QUIZ LOGIC ---
         // Full bank of 40 Questions
-        const questionBank = [
+        const eco110Questions = [
             { q: "If the price of coffee increases, what happens to the demand for tea (a substitute)?", o: ["Demand decreases", "Demand increases", "Quantity demanded decreases", "No change"], c: 1, e: "When the price of a substitute rises, consumers switch to the alternative, shifting demand right." },
-            // ... (include all 40 ECO110 questions here) ...
-             { q: "Which best describes 'Opportunity Cost'?", o: ["Monetary price", "Value of best alternative forgone", "Production cost", "Time taken"], c: 1, e: "Opportunity cost is the value of the next best alternative given up." },
+            { q: "Which best describes 'Opportunity Cost'?", o: ["Monetary price", "Value of best alternative forgone", "Production cost", "Time taken"], c: 1, e: "Opportunity cost is the value of the next best alternative given up." },
             { q: "If a 10% price increase leads to a 20% quantity decrease, demand is:", o: ["Perfectly Inelastic", "Inelastic", "Unit Elastic", "Elastic"], c: 3, e: "Elasticity = |-20%/10%| = 2. Since 2 > 1, demand is elastic." },
             { q: "In perfect competition, firms are:", o: ["Price Makers", "Price Takers", "Monopolists", "Regulated"], c: 1, e: "Competitive firms have no market power and must accept the market price." },
             { q: "A price floor set *above* equilibrium results in:", o: ["Shortage", "Surplus", "Equilibrium", "Black markets"], c: 1, e: "A high price floor causes Quantity Supplied > Quantity Demanded (Surplus)." },
@@ -1689,6 +1688,8 @@
 
         function startQuiz(numQuestions, mode) {
             currentMode = mode;
+            // The issue was likely here: ensuring eco110Questions is defined.
+            // In previous turns, I defined it. Here it is defined above.
             const bank = mode === 'eco110' ? eco110Questions : mat100Questions;
             
             // Randomly select questions
@@ -1699,55 +1700,65 @@
             currentScore = 0;
             isAnswered = false;
             
-            // Update UI based on mode (Need separate IDs for MAT100 if separate section, 
-            // OR simply reuse logic but target different containers. 
-            // Since I created separate HTML containers, I need to target them dynamically.)
-            
             const prefix = mode === 'eco110' ? '' : 'mat-'; // Logic to handle ID prefixes
             
-            document.getElementById(prefix + 'quiz-setup').classList.add('hidden');
-            document.getElementById(prefix + 'quiz-container').classList.remove('hidden');
-            document.getElementById(prefix + 'score-display').style.display = 'block';
-            document.getElementById(prefix + 'quiz-score').innerText = `0 / ${numQuestions}`;
+            // Check if elements exist before accessing classList
+            const setupEl = document.getElementById(prefix + 'quiz-setup');
+            if (setupEl) setupEl.classList.add('hidden');
+            
+            const containerEl = document.getElementById(prefix + 'quiz-container');
+            if (containerEl) containerEl.classList.remove('hidden');
+            
+            const scoreDisplay = document.getElementById(prefix + 'score-display');
+            if (scoreDisplay) scoreDisplay.style.display = 'block';
+            
+            const scoreEl = document.getElementById(prefix + 'quiz-score');
+            if (scoreEl) scoreEl.innerText = `0 / ${numQuestions}`;
             
             loadQuizQuestion(prefix);
         }
 
         function loadQuizQuestion(prefix) {
+            if (currentIndex >= currentQuiz.length) return; // Safety check
             const q = currentQuiz[currentIndex];
-            document.getElementById(prefix + 'quiz-question').innerText = `Q${currentIndex + 1}: ${q.q}`;
+            const questionEl = document.getElementById(prefix + 'quiz-question');
+            if (questionEl) questionEl.innerText = `Q${currentIndex + 1}: ${q.q}`;
             
             // Progress Bar
             const progress = (currentIndex / currentQuiz.length) * 100;
-            document.getElementById(prefix + 'quiz-progress').style.width = `${progress}%`;
+            const progressEl = document.getElementById(prefix + 'quiz-progress');
+            if (progressEl) progressEl.style.width = `${progress}%`;
             
             const optionsDiv = document.getElementById(prefix + 'quiz-options');
-            optionsDiv.innerHTML = '';
-            
-            q.o.forEach((opt, index) => {
-                const btn = document.createElement('button');
-                btn.className = "w-full text-left p-4 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-200 text-base text-[var(--text-muted)] hover:text-[var(--text-main)] group flex items-center gap-3";
-                // Add specific hover colors based on mode
-                if(prefix === 'mat-') {
-                     btn.classList.add('hover:border-blue-500/50', 'hover:bg-blue-500/5');
-                } else {
-                     btn.classList.add('hover:border-orange-500/50', 'hover:bg-orange-500/5');
-                }
+            if (optionsDiv) {
+                optionsDiv.innerHTML = '';
+                q.o.forEach((opt, index) => {
+                    const btn = document.createElement('button');
+                    btn.className = "w-full text-left p-4 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-200 text-base text-[var(--text-muted)] hover:text-[var(--text-main)] group flex items-center gap-3";
+                    if(prefix === 'mat-') {
+                         btn.classList.add('hover:border-blue-500/50', 'hover:bg-blue-500/5');
+                    } else {
+                         btn.classList.add('hover:border-orange-500/50', 'hover:bg-orange-500/5');
+                    }
 
-                btn.innerHTML = `<span class="w-6 h-6 rounded-full border border-[var(--glass-border)] flex items-center justify-center text-xs text-[var(--text-muted)] transition-colors">${String.fromCharCode(65+index)}</span> <span>${opt}</span>`;
-                btn.onclick = () => submitAnswer(index, btn, prefix);
-                optionsDiv.appendChild(btn);
-            });
+                    btn.innerHTML = `<span class="w-6 h-6 rounded-full border border-[var(--glass-border)] flex items-center justify-center text-xs text-[var(--text-muted)] transition-colors">${String.fromCharCode(65+index)}</span> <span>${opt}</span>`;
+                    btn.onclick = () => submitAnswer(index, btn, prefix);
+                    optionsDiv.appendChild(btn);
+                });
+            }
 
             // Reset Feedback
-            document.getElementById(prefix + 'quiz-feedback').classList.add('hidden');
-            const nextBtn = document.getElementById(prefix + 'next-btn');
-            nextBtn.disabled = true;
-            nextBtn.innerText = "Next Question";
-            nextBtn.style.display = 'block'; // Ensure visible
+            const feedbackEl = document.getElementById(prefix + 'quiz-feedback');
+            if (feedbackEl) feedbackEl.classList.add('hidden');
             
-            if(currentIndex === currentQuiz.length - 1) {
-                nextBtn.innerText = "Finish Quiz";
+            const nextBtn = document.getElementById(prefix + 'next-btn');
+            if (nextBtn) {
+                nextBtn.disabled = true;
+                nextBtn.innerText = "Next Question";
+                nextBtn.style.display = 'block'; 
+                if(currentIndex === currentQuiz.length - 1) {
+                    nextBtn.innerText = "Finish Quiz";
+                }
             }
             isAnswered = false;
         }
@@ -1761,27 +1772,37 @@
             const title = document.getElementById(prefix + 'feedback-title');
             const text = document.getElementById(prefix + 'feedback-text');
             const icon = document.getElementById(prefix + 'feedback-icon');
-            const allBtns = document.getElementById(prefix + 'quiz-options').children;
+            const optionsDiv = document.getElementById(prefix + 'quiz-options');
+            const allBtns = optionsDiv ? optionsDiv.children : [];
             
             if (selectedIndex === q.c) {
                 currentScore++;
                 btnElement.classList.add('bg-green-500/20', 'border-green-500');
-                title.innerText = "Correct!";
-                title.className = "font-bold mb-1 text-green-400";
-                icon.innerHTML = '<i class="fas fa-check-circle text-2xl text-green-500"></i>';
-                feedback.className = "p-5 rounded-xl border border-green-500/30 bg-green-900/10 block";
+                if (title) {
+                    title.innerText = "Correct!";
+                    title.className = "font-bold mb-1 text-green-400";
+                }
+                if (icon) icon.innerHTML = '<i class="fas fa-check-circle text-2xl text-green-500"></i>';
+                if (feedback) feedback.className = "p-5 rounded-xl border border-green-500/30 bg-green-900/10 block";
             } else {
                 btnElement.classList.add('bg-red-500/20', 'border-red-500');
-                allBtns[q.c].classList.add('bg-green-500/20', 'border-green-500'); 
-                title.innerText = "Incorrect";
-                title.className = "font-bold mb-1 text-red-400";
-                icon.innerHTML = '<i class="fas fa-times-circle text-2xl text-red-500"></i>';
-                feedback.className = "p-5 rounded-xl border border-red-500/30 bg-red-900/10 block";
+                if (allBtns[q.c]) allBtns[q.c].classList.add('bg-green-500/20', 'border-green-500'); 
+                if (title) {
+                    title.innerText = "Incorrect";
+                    title.className = "font-bold mb-1 text-red-400";
+                }
+                if (icon) icon.innerHTML = '<i class="fas fa-times-circle text-2xl text-red-500"></i>';
+                if (feedback) feedback.className = "p-5 rounded-xl border border-red-500/30 bg-red-900/10 block";
             }
 
-            text.innerText = q.e;
-            document.getElementById(prefix + 'quiz-score').innerText = `${currentScore} / ${currentQuiz.length}`;
-            document.getElementById(prefix + 'next-btn').disabled = false;
+            if (text) text.innerText = q.e;
+            const scoreEl = document.getElementById(prefix + 'quiz-score');
+            if (scoreEl) scoreEl.innerText = `${currentScore} / ${currentQuiz.length}`;
+            
+            const nextBtn = document.getElementById(prefix + 'next-btn');
+            if (nextBtn) nextBtn.disabled = false;
+            
+            if (feedback) feedback.classList.remove('hidden');
         }
 
         function nextQuestion() {
@@ -1791,27 +1812,43 @@
                 loadQuizQuestion(prefix);
             } else {
                 // End Screen
-                document.getElementById(prefix + 'quiz-progress').style.width = `100%`;
-                document.getElementById(prefix + 'quiz-question').innerText = "Practice Complete!";
+                const progressEl = document.getElementById(prefix + 'quiz-progress');
+                if (progressEl) progressEl.style.width = `100%`;
+                
+                const questionEl = document.getElementById(prefix + 'quiz-question');
+                if (questionEl) questionEl.innerText = "Practice Complete!";
+                
                 const colorClass = prefix === 'mat-' ? 'text-blue-400 border-blue-500/30 bg-blue-500/10' : 'text-orange-400 border-orange-500/30 bg-orange-500/10';
                 
-                document.getElementById(prefix + 'quiz-options').innerHTML = `
-                    <div class="text-center p-8 flex flex-col items-center justify-center h-48">
-                        <p class="text-[var(--text-muted)] mb-2 text-sm">Final Score</p>
-                        <p class="text-5xl font-bold text-white mb-4">${currentScore} <span class="text-2xl text-[var(--text-muted)]">/ ${currentQuiz.length}</span></p>
-                        <p class="text-sm ${colorClass} px-4 py-2 rounded-full">${currentScore === currentQuiz.length ? 'Perfect Score! 🌟' : 'Keep Practicing!'} </p>
-                    </div>
-                `;
-                document.getElementById(prefix + 'quiz-feedback').classList.add('hidden');
-                document.getElementById(prefix + 'next-btn').style.display = 'none';
+                const optionsDiv = document.getElementById(prefix + 'quiz-options');
+                if (optionsDiv) {
+                    optionsDiv.innerHTML = `
+                        <div class="text-center p-8 flex flex-col items-center justify-center h-48">
+                            <p class="text-[var(--text-muted)] mb-2 text-sm">Final Score</p>
+                            <p class="text-5xl font-bold text-white mb-4">${currentScore} <span class="text-2xl text-[var(--text-muted)]">/ ${currentQuiz.length}</span></p>
+                            <p class="text-sm ${colorClass} px-4 py-2 rounded-full">${currentScore === currentQuiz.length ? 'Perfect Score! 🌟' : 'Keep Practicing!'} </p>
+                        </div>
+                    `;
+                }
+                
+                const feedbackEl = document.getElementById(prefix + 'quiz-feedback');
+                if (feedbackEl) feedbackEl.classList.add('hidden');
+                
+                const nextBtn = document.getElementById(prefix + 'next-btn');
+                if (nextBtn) nextBtn.style.display = 'none';
             }
         }
 
         function resetQuizSetup() {
             const prefix = currentMode === 'eco110' ? '' : 'mat-';
-            document.getElementById(prefix + 'quiz-setup').classList.remove('hidden');
-            document.getElementById(prefix + 'quiz-container').classList.add('hidden');
-            document.getElementById(prefix + 'score-display').style.display = 'none';
+            const setupEl = document.getElementById(prefix + 'quiz-setup');
+            if (setupEl) setupEl.classList.remove('hidden');
+            
+            const containerEl = document.getElementById(prefix + 'quiz-container');
+            if (containerEl) containerEl.classList.add('hidden');
+            
+            const scoreDisplay = document.getElementById(prefix + 'score-display');
+            if (scoreDisplay) scoreDisplay.style.display = 'none';
         }
 
         // Navigation override/hook
