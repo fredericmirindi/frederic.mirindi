@@ -703,6 +703,7 @@
             </div>
 
             <div class="space-y-8 max-w-4xl mx-auto">
+                <!-- Booth University College -->
                 <div class="glass-card p-8 rounded-2xl border-l-4 border-[var(--accent-color)] relative overflow-hidden">
                     <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
                         <div>
@@ -715,14 +716,19 @@
                     </div>
                     <div class="space-y-4">
                         <div class="grid md:grid-cols-2 gap-4">
-                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors relative group">
                                 <h4 class="text-[var(--text-main)] font-semibold">ECO110 — Introduction to Microeconomics</h4>
                                 <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2024–May 2025 | Class size: 15–25</p>
+                                <!-- New Button for Problem Set -->
+                                <button onclick="navigateTo('eco110-practice')" class="mt-3 w-full bg-[var(--accent-color)]/10 hover:bg-[var(--accent-color)]/20 text-[var(--accent-color)] text-xs py-2 rounded border border-[var(--accent-color)]/20 transition-all flex items-center justify-center gap-2">
+                                    <i class="fas fa-laptop-code"></i> Practice Problem Set
+                                </button>
                             </div>
                             <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
                                 <h4 class="text-[var(--text-main)] font-semibold">MAT100 — Applied Finite Mathematics</h4>
                                 <p class="text-[var(--text-muted)] text-xs mt-1">Jan 2025–May 2025 | Class size: 15–25</p>
                             </div>
+                            <!-- Other courses... -->
                             <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
                                 <h4 class="text-[var(--text-main)] font-semibold">BHS 200 — Research Methods</h4>
                                 <p class="text-[var(--text-muted)] text-xs mt-1">Sep 2025–Dec 2025</p>
@@ -738,7 +744,8 @@
                         </div>
                     </div>
                 </div>
-
+                
+                <!-- Other Teaching Entries ... -->
                 <div class="glass-card p-8 rounded-2xl border-l-4 border-[var(--accent-color)] opacity-90">
                     <div class="flex flex-col md:flex-row md:items-center justify-between mb-6">
                         <div>
@@ -778,7 +785,75 @@
             </div>
         </section>
 
-        <!-- PUBLICATIONS PAGE (Full) -->
+        <!-- NEW: ECO110 PROBLEM SET SUBPAGE -->
+        <section id="eco110-practice" class="page-section max-w-3xl mx-auto py-12">
+            <button onclick="navigateTo('teaching')" class="text-[var(--accent-color)] text-sm mb-6 hover:text-[var(--accent-hover)] transition flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Back to Teaching
+            </button>
+            
+            <div class="glass-card p-8 rounded-2xl border-t-4 border-orange-500">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-[var(--text-main)]">Microeconomics Problem Set</h2>
+                        <p class="text-[var(--text-muted)] text-sm mt-1">Exam Preparation • ECO110</p>
+                    </div>
+                    <div class="text-right" id="score-display" style="display: none;">
+                        <div class="text-xs text-[var(--text-muted)] uppercase tracking-wide">Current Score</div>
+                        <div id="quiz-score" class="text-2xl font-mono font-bold text-[var(--accent-color)]">0 / 0</div>
+                    </div>
+                </div>
+
+                <!-- Setup Screen -->
+                <div id="quiz-setup" class="space-y-6 text-center py-10">
+                    <h3 class="text-xl font-medium text-[var(--text-main)] mb-4">Select Quiz Length</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="startQuiz(5)" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-orange-500 hover:bg-orange-500/10 transition-all text-[var(--text-main)]">5 Questions</button>
+                        <button onclick="startQuiz(10)" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-orange-500 hover:bg-orange-500/10 transition-all text-[var(--text-main)]">10 Questions</button>
+                        <button onclick="startQuiz(20)" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-orange-500 hover:bg-orange-500/10 transition-all text-[var(--text-main)]">20 Questions</button>
+                        <button onclick="startQuiz(40)" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-orange-500 hover:bg-orange-500/10 transition-all text-[var(--text-main)]">40 Questions</button>
+                    </div>
+                    <p class="text-sm text-[var(--text-muted)] mt-4">Questions are randomly selected from the test bank.</p>
+                </div>
+
+                <div id="quiz-container" class="space-y-6 hidden">
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-[var(--glass-border)] rounded-full h-1.5 mb-6">
+                        <div id="quiz-progress" class="bg-orange-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+
+                    <!-- Question Area -->
+                    <div class="min-h-[150px]">
+                        <h4 id="quiz-question" class="text-xl font-medium text-[var(--text-main)] mb-6 leading-relaxed">Loading Question...</h4>
+                        <div id="quiz-options" class="space-y-3">
+                            <!-- Options injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Feedback Area -->
+                    <div id="quiz-feedback" class="hidden p-5 rounded-xl border transition-all duration-500 bg-[var(--glass-bg)] backdrop-blur-md">
+                        <div class="flex items-start gap-3">
+                            <div id="feedback-icon" class="mt-1"></div>
+                            <div>
+                                <p id="feedback-title" class="font-bold mb-1 text-lg"></p>
+                                <p id="feedback-text" class="text-sm text-[var(--text-muted)] leading-relaxed"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex justify-between items-center pt-6 border-t border-[var(--glass-border)]">
+                        <button onclick="resetQuizSetup()" class="text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors flex items-center gap-2">
+                            <i class="fas fa-arrow-left"></i> Quit
+                        </button>
+                        <button id="next-btn" onclick="nextQuestion()" class="btn-primary px-8 py-3 rounded-lg text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
+                            Next Question <i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PUBLICATIONS PAGE -->
         <section id="publications" class="page-section">
              <div class="max-w-5xl mx-auto">
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-10 border-l-4 border-[var(--accent-color)] pl-6">Publications & Proceedings</h2>
@@ -860,14 +935,14 @@
              </div>
         </section>
 
-        <!-- BLOG PAGE -->
+        <!-- BLOG PAGE (Updated: Removed Jumia) -->
         <section id="blog" class="page-section">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Economic Insights</h2>
                 <p class="text-[var(--text-muted)]">Thoughts on current events through an econometric lens.</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Article 1 (Updated) -->
+                <!-- Article 1 -->
                 <article onclick="navigateTo('blog-post-1')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
                         <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/newpope.jpg?raw=true" alt="The Conclave" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -885,25 +960,7 @@
                     </div>
                 </article>
                 
-                <!-- Article 3 -->
-                <article onclick="navigateTo('blog-post-3')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
-                    <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
-                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt2.jpeg?raw=true" alt="African City Street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                         <div class="absolute bottom-0 left-0 p-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-blue-600 px-2 py-1 rounded">Sovereign Debt</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-[var(--text-muted)] text-sm mb-2">November 22, 2025</div>
-                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Other Debt Crisis: Africa's Domestic Dilemma</h3>
-                        <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
-                            A critical review of the surge in domestic borrowing across Sub-Saharan Africa: crowding out effects and the "doom loop" risks.
-                        </p>
-                        <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
-                    </div>
-                </article>
-
-                <!-- Article 4 -->
+                <!-- Article 4 (Now in position 2) -->
                 <article onclick="navigateTo('blog-post-4')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
                         <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market1.jpeg?raw=true" alt="African Supermarket Aisle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -920,10 +977,28 @@
                         <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
                     </div>
                 </article>
+
+                <!-- Article 3 (Now in position 3) -->
+                <article onclick="navigateTo('blog-post-3')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                    <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt2.jpeg?raw=true" alt="African City Street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute bottom-0 left-0 p-6">
+                            <span class="text-xs font-bold uppercase tracking-wider text-white bg-blue-600 px-2 py-1 rounded">Sovereign Debt</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="text-[var(--text-muted)] text-sm mb-2">November 22, 2025</div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Other Debt Crisis: Africa's Domestic Dilemma</h3>
+                        <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
+                            A critical review of the surge in domestic borrowing across Sub-Saharan Africa: crowding out effects and the "doom loop" risks.
+                        </p>
+                        <div class="mt-4 text-[var(--accent-color)] text-sm font-semibold">Read More &rarr;</div>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- BLOG POST 1: POPE (Updated) -->
+        <!-- BLOG POST 1: POPE -->
         <section id="blog-post-1" class="page-section max-w-4xl mx-auto py-12">
             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
@@ -1120,41 +1195,19 @@
     <!-- JAVASCRIPT LOGIC -->
     <script>
         // --- GOOGLE SHEETS INTEGRATION ---
-        // INSTRUCTIONS:
-        // 1. Create a Google Sheet.
-        // 2. Extensions > Apps Script.
-        // 3. Paste the 'doPost' code (ask me if you need it again).
-        // 4. Deploy > Web App > Who has access: "Anyone".
-        // 5. Paste the URL below inside the quotes.
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3AkCj4g5KEHb1HVtrji8obzv7N51nJum4w2rXcbr2QgWKqF-lYnxiLP9E2v6APN6t5Q/exec"; // <--- PASTE YOUR GOOGLE SCRIPT URL HERE
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3AkCj4g5KEHb1HVtrji8obzv7N51nJum4w2rXcbr2QgWKqF-lYnxiLP9E2v6APN6t5Q/exec"; 
 
         function submitToGoogle(e) {
             e.preventDefault();
-            
             const btn = document.getElementById('submit-btn');
             const feedback = document.getElementById('form-feedback');
             const form = document.getElementById('contact-form');
             
-            // Visual Loading State
             const originalText = btn.innerText;
             btn.innerText = "Sending...";
             btn.disabled = true;
             btn.style.opacity = "0.7";
 
-            // If no URL is set, fallback to mailto
-            if (!GOOGLE_SCRIPT_URL) {
-                console.warn("No Google Script URL provided. Falling back to mailto.");
-                sendEmailFallback();
-                // Reset button after a moment
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                    btn.style.opacity = "1";
-                }, 2000);
-                return;
-            }
-
-            // Prepare Data
             const data = new FormData(form);
 
             fetch(GOOGLE_SCRIPT_URL, {
@@ -1162,14 +1215,9 @@
                 body: data
             })
             .then(response => {
-                // Reset Form
                 form.reset();
-                
-                // Success Message
                 feedback.innerText = "Message Sent Successfully!";
                 feedback.className = "text-green-400 bg-green-900/20 border border-green-500/30 block text-center text-sm font-medium p-3 rounded mb-4";
-                
-                // Reset Button
                 btn.innerText = "Sent";
                 setTimeout(() => {
                     btn.innerText = originalText;
@@ -1180,11 +1228,9 @@
             })
             .catch(error => {
                 console.error('Error!', error.message);
-                // Fallback to email if script fails
                 feedback.innerText = "Error connecting to server. Opening email client...";
                 feedback.className = "text-yellow-400 bg-yellow-900/20 border border-yellow-500/30 block text-center text-sm font-medium p-3 rounded mb-4";
                 sendEmailFallback();
-                
                 btn.innerText = originalText;
                 btn.disabled = false;
                 btn.style.opacity = "1";
@@ -1305,7 +1351,7 @@
             updateInflation(); 
         }
 
-        // --- APP 3: COMPOUND GROWTH LOGIC (UPDATED) ---
+        // --- APP 3: COMPOUND GROWTH LOGIC ---
         function calculateCompound() {
             const P = parseFloat(document.getElementById('comp-principal').value) || 0;
             const PMT = parseFloat(document.getElementById('comp-contrib').value) || 0;
@@ -1362,11 +1408,10 @@
                 barPrincipal.style.bottom = "0";
                 barPrincipal.className = "bg-[var(--text-muted)] opacity-30 rounded-b-sm transition-all duration-500";
                 
-                // Total Value Bar (Accent Color - overlaying to show difference as interest)
-                
+                // Total Value Bar (Accent Color)
                 const barTotal = document.createElement('div');
                 barTotal.style.height = `${Math.max(barHeightPct, 1)}%`;
-                barTotal.style.backgroundColor = "var(--accent-color)"; // Direct style to fix visibility
+                barTotal.style.backgroundColor = "var(--accent-color)"; 
                 barTotal.style.opacity = "0.7";
                 barTotal.className = "w-full rounded-t-sm transition-all duration-500 relative";
                 
@@ -1395,11 +1440,9 @@
 
         // Initial Call
         if(document.getElementById('comp-principal')) {
-            // Add event listener to frequency to auto-update
             document.getElementById('comp-freq').addEventListener('change', calculateCompound);
             calculateCompound();
         }
-
 
         // --- APP 4: MONTE CARLO SIMULATOR LOGIC ---
         function runMonteCarlo() {
@@ -1411,7 +1454,6 @@
             const canvas = document.getElementById('mc-canvas');
             const ctx = canvas.getContext('2d');
             
-            // Set canvas resolution
             const dpr = window.devicePixelRatio || 1;
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width * dpr;
@@ -1420,7 +1462,6 @@
             const w = rect.width;
             const h = rect.height;
 
-            // Clear
             ctx.clearRect(0, 0, w, h);
 
             const simulations = 50;
@@ -1428,14 +1469,12 @@
             let maxVal = 0;
             let minVal = Infinity;
             
-            // Store paths
             const paths = [];
 
             for(let s=0; s<simulations; s++) {
                 let path = [P];
                 let currentVal = P;
                 for(let t=1; t<=years; t++) {
-                    // Geometric Brownian Motion approximation: S_t = S_{t-1} * exp((mu - 0.5*sigma^2) + sigma*Z)
                     const u1 = Math.random();
                     const u2 = Math.random();
                     const z = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2); // Box-Muller
@@ -1453,24 +1492,20 @@
                 if(currentVal < minVal) minVal = currentVal;
             }
 
-            // Ensure P is within range for scaling
             if(P > maxVal) maxVal = P;
             if(P < minVal) minVal = P;
 
-            // Sorting final values for percentiles
             finalValues.sort((a,b) => a-b);
             const p05 = finalValues[Math.floor(simulations * 0.05)];
             const p50 = finalValues[Math.floor(simulations * 0.50)];
             const p95 = finalValues[Math.floor(simulations * 0.95)];
 
-            // Update stats
             document.getElementById('mc-worst').innerText = "$" + Math.round(p05).toLocaleString();
             document.getElementById('mc-median').innerText = "$" + Math.round(p50).toLocaleString();
             document.getElementById('mc-best').innerText = "$" + Math.round(p95).toLocaleString();
 
-            // Draw
             const stepX = w / years;
-            const rangeY = maxVal - (minVal * 0.8); // Add some padding at bottom
+            const rangeY = maxVal - (minVal * 0.8); 
             const baselineY = minVal * 0.8;
 
             paths.forEach((path, i) => {
@@ -1483,13 +1518,11 @@
                     ctx.lineTo(x, y);
                 }
                 
-                // Color logic: Highlight median-ish paths more, outliers less opacity
                 ctx.strokeStyle = `rgba(139, 92, 246, ${Math.random() * 0.3 + 0.1})`; // Purple-ish
                 ctx.lineWidth = 1.5;
                 ctx.stroke();
             });
             
-            // Draw Start Line (Principal)
             const startY = h - ((P - baselineY) / rangeY * h);
             ctx.beginPath();
             ctx.moveTo(0, startY);
@@ -1499,8 +1532,163 @@
             ctx.stroke();
         }
 
-        // Init Monte Carlo on app load if visible
         setTimeout(runMonteCarlo, 500);
+
+        // --- APP 5: MICROECONOMICS QUIZ LOGIC ---
+        // Full bank of 40 Questions
+        const questionBank = [
+            { q: "If the price of coffee increases, what happens to the demand for tea (a substitute)?", o: ["Demand decreases", "Demand increases", "Quantity demanded decreases", "No change"], c: 1, e: "When the price of a substitute rises, consumers switch to the alternative, shifting demand right." },
+            { q: "Which best describes 'Opportunity Cost'?", o: ["Monetary price", "Value of best alternative forgone", "Production cost", "Time taken"], c: 1, e: "Opportunity cost is the value of the next best alternative given up." },
+            { q: "If a 10% price increase leads to a 20% quantity decrease, demand is:", o: ["Perfectly Inelastic", "Inelastic", "Unit Elastic", "Elastic"], c: 3, e: "Elasticity = |-20%/10%| = 2. Since 2 > 1, demand is elastic." },
+            { q: "In perfect competition, firms are:", o: ["Price Makers", "Price Takers", "Monopolists", "Regulated"], c: 1, e: "Competitive firms have no market power and must accept the market price." },
+            { q: "A price floor set *above* equilibrium results in:", o: ["Shortage", "Surplus", "Equilibrium", "Black markets"], c: 1, e: "A high price floor causes Quantity Supplied > Quantity Demanded (Surplus)." },
+            { q: "Which cost curve always declines as output increases?", o: ["Marginal Cost", "Average Total Cost", "Average Fixed Cost", "Average Variable Cost"], c: 2, e: "AFC = TFC/Q. Since TFC is constant, increasing Q makes AFC smaller." },
+            { q: "A Production Possibility Frontier (PPF) shows:", o: ["Profit maximization", "Combinations of two goods an economy can produce", "Consumer preferences", "Market equilibrium"], c: 1, e: "The PPF illustrates scarcity and trade-offs between two goods." },
+            { q: "If demand is perfectly inelastic, the elasticity coefficient is:", o: ["0", "1", "Infinity", "Between 0 and 1"], c: 0, e: "Perfectly inelastic demand means quantity doesn't change with price (Vertical line)." },
+            { q: "Marginal Utility is:", o: ["Total satisfaction", "Change in total utility from one more unit", "Utility per dollar", "Average utility"], c: 1, e: "Marginal means 'additional'. It's the extra utility from consuming one more unit." },
+            { q: "In the long run, all costs are:", o: ["Fixed", "Variable", "Sunk", "Marginal"], c: 1, e: "In the long run, firms can adjust all inputs (capital, land), so no costs are fixed." },
+            { q: "A public good is:", o: ["Rival and Excludable", "Non-rival and Excludable", "Rival and Non-excludable", "Non-rival and Non-excludable"], c: 3, e: "Public goods (like national defense) can be used by everyone simultaneously without excluding anyone." },
+            { q: "The Law of Diminishing Returns applies in:", o: ["The Short Run", "The Long Run", "Both", "Neither"], c: 0, e: "It occurs when variable inputs are added to a fixed input (capital), which only exists in the short run." },
+            { q: "If cross-price elasticity is negative, the goods are:", o: ["Substitutes", "Complements", "Inferior", "Normal"], c: 1, e: "Negative cross-elasticity means price of A goes up, quantity of B goes down (e.g., Coffee and Sugar)." },
+            { q: "Consumer Surplus is the area:", o: ["Below demand, above price", "Above supply, below price", "Below demand, above supply", "Below price, above zero"], c: 0, e: "It represents the difference between what consumers are willing to pay and what they actually pay." },
+            { q: "Deadweight Loss is largest when demand is:", o: ["Inelastic", "Elastic", "Perfectly Inelastic", "Unit Elastic"], c: 1, e: "Taxes cause larger distortions (quantity reductions) when consumers are very responsive (elastic) to price changes." },
+            { q: "Which market structure has a kinked demand curve?", o: ["Perfect Competition", "Monopoly", "Oligopoly", "Monopolistic Competition"], c: 2, e: "Oligopolists match price cuts but ignore price hikes, creating a kink." },
+            { q: "If Income Elasticity is positive but less than 1, the good is:", o: ["Luxury", "Normal (Necessity)", "Inferior", "Giffen"], c: 1, e: "Positive means Normal. Less than 1 means expenditure grows slower than income (Necessity)." },
+            { q: "Profit maximization occurs where:", o: ["MR > MC", "MR < MC", "MR = MC", "P = ATC"], c: 2, e: "Firms produce up to the point where the revenue from the last unit equals its cost." },
+            { q: "A negative externality leads to a market quantity that is:", o: ["Too low", "Too high", "Efficient", "Zero"], c: 1, e: "The market ignores the external cost, leading to overproduction compared to the social optimum." },
+            { q: "The Coase Theorem suggests externalities can be solved by:", o: ["Taxes", "Subsidies", "Private bargaining", "Regulation"], c: 2, e: "If property rights are clear and transaction costs low, parties can bargain to an efficient outcome." },
+            { q: "Total Revenue is maximized when demand elasticity is:", o: ["Elastic", "Inelastic", "Unit Elastic", "Zero"], c: 2, e: "At Unit Elasticity (Ed=1), marginal revenue is zero, maximizing total revenue." },
+            { q: "Which is NOT a barrier to entry?", o: ["Patents", "Economies of Scale", "Control of resources", "U-shaped Average Cost"], c: 3, e: "U-shaped average cost is typical for all firms and doesn't prevent entry." },
+            { q: "In Monopolistic Competition, in the long run, firms make:", o: ["Positive Economic Profit", "Zero Economic Profit", "Losses", "Monopoly Profits"], c: 1, e: "Easy entry/exit drives profits to zero (normal profit) in the long run." },
+            { q: "The Gini Coefficient measures:", o: ["Inflation", "Unemployment", "Income Inequality", "GDP Growth"], c: 2, e: "0 is perfect equality, 1 is perfect inequality." },
+            { q: "Moral Hazard occurs when:", o: ["Buyers know more than sellers", "Sellers know more than buyers", "Insured parties take more risks", "Adverse selection happens"], c: 2, e: "After a transaction (like insurance), one party alters behavior because they are protected from risk." },
+            { q: "An indifference curve shows:", o: ["Prices of two goods", "Combinations yielding equal utility", "Maximum production", "Budget constraints"], c: 1, e: "Points on the curve represent bundles that give the consumer the same level of satisfaction." },
+            { q: "The slope of the Budget Line represents:", o: ["Marginal Utility", "Relative Prices", "Income", "Preferences"], c: 1, e: "The slope is -Px/Py, representing the trade-off ratio between goods based on prices." },
+            { q: "If MPL > APL, then:", o: ["APL is rising", "APL is falling", "APL is constant", "MPL is falling"], c: 0, e: "If the marginal unit pulls the average up, the average must be rising." },
+            { q: "Shut-down point in short run is where P equals:", o: ["MC", "ATC", "AVC", "AFC"], c: 2, e: "If Price < AVC, the firm loses more by operating than by shutting down." },
+            { q: "Price discrimination requires:", o: ["Market Power", "Ability to separate markets", "No resale", "All of the above"], c: 3, e: "Firms need power to set prices and must prevent arbitrage." },
+            { q: "A pure public good is:", o: ["Non-rival, Non-excludable", "Rival, Excludable", "Rival, Non-excludable", "Non-rival, Excludable"], c: 0, e: "Definition of pure public good." },
+            { q: "Tragedy of the Commons involves resources that are:", o: ["Excludable, Rival", "Non-excludable, Rival", "Excludable, Non-rival", "Non-excludable, Non-rival"], c: 1, e: "Like fish in the ocean: anyone can take them (non-excludable), but one person's use reduces another's (rival)." },
+            { q: "A tariff usually:", o: ["Increases consumer surplus", "Increases total surplus", "Creates deadweight loss", "Lowers domestic price"], c: 2, e: "Tariffs distort prices, reducing consumption and efficiency." },
+            { q: "The 'invisible hand' concept was introduced by:", o: ["Keynes", "Ricardo", "Smith", "Marx"], c: 2, e: "Adam Smith in 'The Wealth of Nations'." },
+            { q: "If two goods are perfect complements, indifference curves are:", o: ["Linear", "L-shaped", "Concave", "Convex"], c: 1, e: "You consume them in fixed proportions (e.g., left and right shoes)." },
+            { q: "Diminishing Marginal Utility implies demand curves are:", o: ["Upward sloping", "Downward sloping", "Horizontal", "Vertical"], c: 1, e: "As you consume more, you value the next unit less, so you only buy it at a lower price." },
+            { q: "A natural monopoly arises due to:", o: ["Legal barriers", "Economies of Scale", "Network effects", "Collusion"], c: 1, e: "One firm can supply the market at lower ATC than multiple firms." },
+            { q: "Changes in Tastes/Preferences shift the:", o: ["Supply Curve", "Demand Curve", "Both", "Neither"], c: 1, e: "Tastes are a determinant of demand." },
+            { q: "Producer Surplus is area:", o: ["Above supply, below price", "Below supply, above price", "Above demand", "Below demand"], c: 0, e: "Difference between market price and marginal cost." },
+            { q: "Which market structure maximizes Total Surplus?", o: ["Monopoly", "Oligopoly", "Perfect Competition", "Monopsony"], c: 2, e: "Perfect competition achieves allocative efficiency (P=MC)." }
+        ];
+
+        let currentQuiz = [];
+        let currentIndex = 0;
+        let currentScore = 0;
+        let isAnswered = false;
+
+        function startQuiz(numQuestions) {
+            // Randomly select questions
+            const shuffled = [...questionBank].sort(() => 0.5 - Math.random());
+            currentQuiz = shuffled.slice(0, numQuestions);
+            
+            currentIndex = 0;
+            currentScore = 0;
+            isAnswered = false;
+            
+            // Update UI
+            document.getElementById('quiz-setup').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('score-display').style.display = 'block';
+            document.getElementById('quiz-score').innerText = `0 / ${numQuestions}`;
+            
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            const q = currentQuiz[currentIndex];
+            document.getElementById('quiz-question').innerText = `Q${currentIndex + 1}: ${q.q}`;
+            
+            // Progress Bar
+            const progress = (currentIndex / currentQuiz.length) * 100;
+            document.getElementById('quiz-progress').style.width = `${progress}%`;
+            
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
+            
+            q.o.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] hover:border-orange-500/50 hover:bg-orange-500/5 transition-all duration-200 text-base text-[var(--text-muted)] hover:text-[var(--text-main)] group flex items-center gap-3";
+                btn.innerHTML = `<span class="w-6 h-6 rounded-full border border-[var(--glass-border)] flex items-center justify-center text-xs text-[var(--text-muted)] group-hover:border-orange-500 group-hover:text-orange-500 transition-colors">${String.fromCharCode(65+index)}</span> <span>${opt}</span>`;
+                btn.onclick = () => submitAnswer(index, btn);
+                optionsDiv.appendChild(btn);
+            });
+
+            // Reset Feedback
+            document.getElementById('quiz-feedback').classList.add('hidden');
+            document.getElementById('next-btn').disabled = true;
+            document.getElementById('next-btn').innerText = "Next Question";
+            if(currentIndex === currentQuiz.length - 1) {
+                document.getElementById('next-btn').innerText = "Finish Quiz";
+            }
+            isAnswered = false;
+        }
+
+        function submitAnswer(selectedIndex, btnElement) {
+            if (isAnswered) return;
+            isAnswered = true;
+
+            const q = currentQuiz[currentIndex];
+            const feedback = document.getElementById('quiz-feedback');
+            const title = document.getElementById('feedback-title');
+            const text = document.getElementById('feedback-text');
+            const icon = document.getElementById('feedback-icon');
+            const allBtns = document.getElementById('quiz-options').children;
+            
+            if (selectedIndex === q.c) {
+                currentScore++;
+                btnElement.classList.add('bg-green-500/20', 'border-green-500');
+                title.innerText = "Correct!";
+                title.className = "font-bold mb-1 text-green-400";
+                icon.innerHTML = '<i class="fas fa-check-circle text-2xl text-green-500"></i>';
+                feedback.className = "p-5 rounded-xl border border-green-500/30 bg-green-900/10 block";
+            } else {
+                btnElement.classList.add('bg-red-500/20', 'border-red-500');
+                allBtns[q.c].classList.add('bg-green-500/20', 'border-green-500'); // Reveal correct
+                title.innerText = "Incorrect";
+                title.className = "font-bold mb-1 text-red-400";
+                icon.innerHTML = '<i class="fas fa-times-circle text-2xl text-red-500"></i>';
+                feedback.className = "p-5 rounded-xl border border-red-500/30 bg-red-900/10 block";
+            }
+
+            text.innerText = q.e;
+            document.getElementById('quiz-score').innerText = `${currentScore} / ${currentQuiz.length}`;
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        function nextQuestion() {
+            currentIndex++;
+            if (currentIndex < currentQuiz.length) {
+                loadQuizQuestion();
+            } else {
+                // End Screen
+                document.getElementById('quiz-progress').style.width = `100%`;
+                document.getElementById('quiz-question').innerText = "Practice Complete!";
+                document.getElementById('quiz-options').innerHTML = `
+                    <div class="text-center p-8 flex flex-col items-center justify-center h-48">
+                        <p class="text-[var(--text-muted)] mb-2 text-sm">Final Score</p>
+                        <p class="text-5xl font-bold text-white mb-4">${currentScore} <span class="text-2xl text-[var(--text-muted)]">/ ${currentQuiz.length}</span></p>
+                        <button onclick="resetQuizSetup()" class="px-6 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors">Try Another Set</button>
+                    </div>
+                `;
+                document.getElementById('quiz-feedback').classList.add('hidden');
+                document.getElementById('next-btn').style.display = 'none';
+            }
+        }
+
+        function resetQuizSetup() {
+            document.getElementById('quiz-setup').classList.remove('hidden');
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('score-display').style.display = 'none';
+            document.getElementById('next-btn').style.display = 'block';
+        }
 
         // --- CAROUSEL LOGIC ---
         let currentSlide = 0;
@@ -1533,7 +1721,6 @@
             }
         }, 6000);
 
-
         // --- NAVIGATION LOGIC ---
         function navigateTo(sectionId) {
             // Update Content
@@ -1549,6 +1736,7 @@
             });
             let activeBtnId = 'nav-' + sectionId;
             if (sectionId.startsWith('blog-post')) activeBtnId = 'nav-blog';
+            if (sectionId === 'eco110-practice') activeBtnId = 'nav-teaching'; 
             
             const activeBtn = document.getElementById(activeBtnId);
             if(activeBtn) activeBtn.classList.add('active');
@@ -1568,6 +1756,11 @@
             if (sectionId === 'applications') {
                 setTimeout(calculateCompound, 100);
                 setTimeout(runMonteCarlo, 100);
+            }
+            
+            // Reset quiz setup if entering Practice page
+            if (sectionId === 'eco110-practice') {
+                resetQuizSetup();
             }
 
             // Adjust Camera Target
