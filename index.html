@@ -641,6 +641,57 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Tool 4: Monte Carlo Portfolio Simulator (New) -->
+                <div class="glass-card p-8 rounded-2xl border-t-4 border-purple-500 md:col-span-2 mt-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-purple-500/10 p-3 rounded-lg text-purple-400"><i class="fas fa-random text-xl"></i></div>
+                        <h3 class="text-xl font-bold text-[var(--text-main)]">Monte Carlo Portfolio Simulator</h3>
+                    </div>
+                    <p class="text-[var(--text-muted)] text-sm mb-4">Simulate 50 potential market scenarios based on expected return and volatility. See the range of possible outcomes.</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="space-y-3">
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Initial Investment ($)</label>
+                                <input type="number" id="mc-principal" class="app-input" value="10000">
+                            </div>
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Expected Annual Return (%)</label>
+                                <input type="number" id="mc-mean" class="app-input" value="8">
+                            </div>
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Volatility (Std Dev %)</label>
+                                <input type="number" id="mc-vol" class="app-input" value="15">
+                            </div>
+                            <div>
+                                <label class="text-xs text-[var(--text-muted)]">Years</label>
+                                <input type="number" id="mc-years" class="app-input" value="10" max="30">
+                            </div>
+                            <button onclick="runMonteCarlo()" class="w-full btn-primary py-2 rounded mt-2 cursor-pointer hover:bg-purple-500 hover:text-white transition-colors">Run Simulation</button>
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <div class="relative h-64 w-full border-l border-b border-[var(--glass-border)] bg-black/20 rounded p-2 overflow-hidden">
+                                <canvas id="mc-canvas" class="w-full h-full block"></canvas>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 text-center mt-4 text-xs">
+                                <div class="p-2 rounded bg-red-900/20 border border-red-500/30">
+                                    <div class="text-red-400 font-bold">Worst Case (5th %ile)</div>
+                                    <div id="mc-worst" class="font-mono text-[var(--text-main)]">---</div>
+                                </div>
+                                <div class="p-2 rounded bg-gray-800/50 border border-[var(--glass-border)]">
+                                    <div class="text-[var(--text-muted)] font-bold">Median Case</div>
+                                    <div id="mc-median" class="font-mono text-[var(--text-main)]">---</div>
+                                </div>
+                                <div class="p-2 rounded bg-green-900/20 border border-green-500/30">
+                                    <div class="text-green-400 font-bold">Best Case (95th %ile)</div>
+                                    <div id="mc-best" class="font-mono text-[var(--text-main)]">---</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -665,7 +716,7 @@
                     <div class="space-y-4">
                         <div class="grid md:grid-cols-2 gap-4">
                             <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
-                                <h4 class="text-[var(--text-main)] font-semibold">ECO110 — Intro to Microeconomics</h4>
+                                <h4 class="text-[var(--text-main)] font-semibold">ECO110 — Introduction to Microeconomics</h4>
                                 <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2024–May 2025 | Class size: 15–25</p>
                             </div>
                             <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
@@ -834,7 +885,7 @@
                     </div>
                 </article>
                 
-                <!-- Article 2 -->
+                <!-- Article 3 -->
                 <article onclick="navigateTo('blog-post-3')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
                         <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt2.jpeg?raw=true" alt="African City Street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -852,7 +903,7 @@
                     </div>
                 </article>
 
-                <!-- Article 3 -->
+                <!-- Article 4 -->
                 <article onclick="navigateTo('blog-post-4')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
                         <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market1.jpeg?raw=true" alt="African Supermarket Aisle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -1026,26 +1077,31 @@
                     <h2 class="text-3xl font-bold text-gradient-innovative mb-2">Get in Touch</h2>
                     <p class="text-[var(--text-muted)] mb-8">Interested in collaboration, data analysis consulting, or discussing economic theory? Send me a message.</p>
 
-                    <form onsubmit="sendEmail(event)" class="space-y-6">
+                    <!-- Form Updated with ID for JS handling -->
+                    <form id="contact-form" onsubmit="submitToGoogle(event)" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Name</label>
-                                <input type="text" id="contact-name" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="John Doe" required>
+                                <input type="text" name="name" id="contact-name" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="John Doe" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Email</label>
-                                <input type="email" id="contact-email" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="john@example.com" required>
+                                <input type="email" name="email" id="contact-email" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="john@example.com" required>
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Subject</label>
-                            <input type="text" id="contact-subject" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="Research Collaboration" required>
+                            <input type="text" name="subject" id="contact-subject" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="Research Collaboration" required>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-[var(--text-muted)] mb-2">Message</label>
-                            <textarea rows="4" id="contact-message" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="Your message here..." required></textarea>
+                            <textarea name="message" rows="4" id="contact-message" class="w-full bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-lg px-4 py-3 text-[var(--text-main)] focus:outline-none focus:border-[var(--accent-color)] transition" placeholder="Your message here..." required></textarea>
                         </div>
-                        <button type="submit" class="w-full btn-primary py-4 rounded-lg font-bold">
+                        
+                        <!-- Feedback Message Area -->
+                        <div id="form-feedback" class="hidden text-center text-sm font-medium p-3 rounded"></div>
+
+                        <button type="submit" id="submit-btn" class="w-full btn-primary py-4 rounded-lg font-bold transition-all duration-300">
                             Send Message
                         </button>
                     </form>
@@ -1063,6 +1119,88 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        // --- GOOGLE SHEETS INTEGRATION ---
+        // INSTRUCTIONS:
+        // 1. Create a Google Sheet.
+        // 2. Extensions > Apps Script.
+        // 3. Paste the 'doPost' code (ask me if you need it again).
+        // 4. Deploy > Web App > Who has access: "Anyone".
+        // 5. Paste the URL below inside the quotes.
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby3AkCj4g5KEHb1HVtrji8obzv7N51nJum4w2rXcbr2QgWKqF-lYnxiLP9E2v6APN6t5Q/exec"; // <--- PASTE YOUR GOOGLE SCRIPT URL HERE
+
+        function submitToGoogle(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            const feedback = document.getElementById('form-feedback');
+            const form = document.getElementById('contact-form');
+            
+            // Visual Loading State
+            const originalText = btn.innerText;
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+            btn.style.opacity = "0.7";
+
+            // If no URL is set, fallback to mailto
+            if (!GOOGLE_SCRIPT_URL) {
+                console.warn("No Google Script URL provided. Falling back to mailto.");
+                sendEmailFallback();
+                // Reset button after a moment
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                }, 2000);
+                return;
+            }
+
+            // Prepare Data
+            const data = new FormData(form);
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: data
+            })
+            .then(response => {
+                // Reset Form
+                form.reset();
+                
+                // Success Message
+                feedback.innerText = "Message Sent Successfully!";
+                feedback.className = "text-green-400 bg-green-900/20 border border-green-500/30 block text-center text-sm font-medium p-3 rounded mb-4";
+                
+                // Reset Button
+                btn.innerText = "Sent";
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.style.opacity = "1";
+                    feedback.classList.add('hidden');
+                }, 3000);
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                // Fallback to email if script fails
+                feedback.innerText = "Error connecting to server. Opening email client...";
+                feedback.className = "text-yellow-400 bg-yellow-900/20 border border-yellow-500/30 block text-center text-sm font-medium p-3 rounded mb-4";
+                sendEmailFallback();
+                
+                btn.innerText = originalText;
+                btn.disabled = false;
+                btn.style.opacity = "1";
+            });
+        }
+
+        function sendEmailFallback() {
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const subject = document.getElementById('contact-subject').value;
+            const message = document.getElementById('contact-message').value;
+            
+            const mailtoLink = `mailto:mirindifrederic@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message)}`;
+            window.location.href = mailtoLink;
+        }
+
         // --- APP 1: OLS REGRESSION LOGIC ---
         function calculateOLS() {
             const xInput = document.getElementById('ols-x').value;
@@ -1225,10 +1363,6 @@
                 barPrincipal.className = "bg-[var(--text-muted)] opacity-30 rounded-b-sm transition-all duration-500";
                 
                 // Total Value Bar (Accent Color - overlaying to show difference as interest)
-                // Actually, to show stacked properly with transparency, we usually put Principal at bottom and Interest on top.
-                // But since visualizer is simple, we can just draw the Full Height bar in Accent, 
-                // and overlay the Principal bar at the bottom in a darker shade or different color.
-                // Let's do: Full Bar = Interest Color, Principal Bar = Overlay at bottom.
                 
                 const barTotal = document.createElement('div');
                 barTotal.style.height = `${Math.max(barHeightPct, 1)}%`;
@@ -1267,6 +1401,107 @@
         }
 
 
+        // --- APP 4: MONTE CARLO SIMULATOR LOGIC ---
+        function runMonteCarlo() {
+            const P = parseFloat(document.getElementById('mc-principal').value) || 10000;
+            const mean = (parseFloat(document.getElementById('mc-mean').value) || 8) / 100;
+            const vol = (parseFloat(document.getElementById('mc-vol').value) || 15) / 100;
+            const years = parseInt(document.getElementById('mc-years').value) || 10;
+            
+            const canvas = document.getElementById('mc-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas resolution
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            const w = rect.width;
+            const h = rect.height;
+
+            // Clear
+            ctx.clearRect(0, 0, w, h);
+
+            const simulations = 50;
+            const finalValues = [];
+            let maxVal = 0;
+            let minVal = Infinity;
+            
+            // Store paths
+            const paths = [];
+
+            for(let s=0; s<simulations; s++) {
+                let path = [P];
+                let currentVal = P;
+                for(let t=1; t<=years; t++) {
+                    // Geometric Brownian Motion approximation: S_t = S_{t-1} * exp((mu - 0.5*sigma^2) + sigma*Z)
+                    const u1 = Math.random();
+                    const u2 = Math.random();
+                    const z = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2); // Box-Muller
+                    
+                    const drift = mean - (0.5 * vol * vol);
+                    const shock = vol * z;
+                    const ret = Math.exp(drift + shock);
+                    
+                    currentVal = currentVal * ret;
+                    path.push(currentVal);
+                }
+                finalValues.push(currentVal);
+                paths.push(path);
+                if(currentVal > maxVal) maxVal = currentVal;
+                if(currentVal < minVal) minVal = currentVal;
+            }
+
+            // Ensure P is within range for scaling
+            if(P > maxVal) maxVal = P;
+            if(P < minVal) minVal = P;
+
+            // Sorting final values for percentiles
+            finalValues.sort((a,b) => a-b);
+            const p05 = finalValues[Math.floor(simulations * 0.05)];
+            const p50 = finalValues[Math.floor(simulations * 0.50)];
+            const p95 = finalValues[Math.floor(simulations * 0.95)];
+
+            // Update stats
+            document.getElementById('mc-worst').innerText = "$" + Math.round(p05).toLocaleString();
+            document.getElementById('mc-median').innerText = "$" + Math.round(p50).toLocaleString();
+            document.getElementById('mc-best').innerText = "$" + Math.round(p95).toLocaleString();
+
+            // Draw
+            const stepX = w / years;
+            const rangeY = maxVal - (minVal * 0.8); // Add some padding at bottom
+            const baselineY = minVal * 0.8;
+
+            paths.forEach((path, i) => {
+                ctx.beginPath();
+                ctx.moveTo(0, h - ((path[0] - baselineY) / rangeY * h));
+                
+                for(let t=1; t<=years; t++) {
+                    const x = t * stepX;
+                    const y = h - ((path[t] - baselineY) / rangeY * h);
+                    ctx.lineTo(x, y);
+                }
+                
+                // Color logic: Highlight median-ish paths more, outliers less opacity
+                ctx.strokeStyle = `rgba(139, 92, 246, ${Math.random() * 0.3 + 0.1})`; // Purple-ish
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+            });
+            
+            // Draw Start Line (Principal)
+            const startY = h - ((P - baselineY) / rangeY * h);
+            ctx.beginPath();
+            ctx.moveTo(0, startY);
+            ctx.lineTo(w, startY);
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.3)";
+            ctx.setLineDash([5, 5]);
+            ctx.stroke();
+        }
+
+        // Init Monte Carlo on app load if visible
+        setTimeout(runMonteCarlo, 500);
+
         // --- CAROUSEL LOGIC ---
         let currentSlide = 0;
         const totalSlides = 2; 
@@ -1298,19 +1533,6 @@
             }
         }, 6000);
 
-
-        // --- EMAIL LOGIC ---
-        function sendEmail(e) {
-            e.preventDefault();
-            const name = document.getElementById('contact-name').value;
-            const email = document.getElementById('contact-email').value;
-            const subject = document.getElementById('contact-subject').value;
-            const message = document.getElementById('contact-message').value;
-            
-            const mailtoLink = `mailto:mirindifrederic@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message)}`;
-            
-            window.location.href = mailtoLink;
-        }
 
         // --- NAVIGATION LOGIC ---
         function navigateTo(sectionId) {
@@ -1345,6 +1567,7 @@
             // Init charts if entering Apps
             if (sectionId === 'applications') {
                 setTimeout(calculateCompound, 100);
+                setTimeout(runMonteCarlo, 100);
             }
 
             // Adjust Camera Target
