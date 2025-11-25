@@ -215,7 +215,6 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <div class="flex-shrink-0 cursor-pointer" onclick="navigateTo('home')">
-                    <!-- Updated H1 with gradient text class -->
                     <h1 class="text-2xl font-bold tracking-wider text-gradient-innovative">Frédéric Mirindi</h1>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
@@ -346,35 +345,6 @@
                         I am currently leading research projects focused on the <strong>macroeconomic impact of immigration in Manitoba</strong>. My work analyzes labor market integration, fiscal contributions, and the long-term economic resilience provided by newcomer populations in the province.
                     </p>
                 </div>
-            </div>
-
-            <!-- REAL BITCOIN DATA VISUALIZATION -->
-            <div class="glass-card p-6 rounded-2xl mb-12 relative overflow-hidden">
-                <div class="flex justify-between items-end mb-4">
-                    <div>
-                        <h3 class="text-lg font-bold text-[var(--text-main)]">Bitcoin (BTC) Market Dynamics</h3>
-                        <p class="text-xs text-[var(--text-muted)]" id="chart-caption">Fetching real-time market data...</p>
-                    </div>
-                    <div class="text-right">
-                        <div class="font-mono text-lg font-bold text-[var(--accent-color)]" id="btc-price">Loading...</div>
-                        <div class="font-mono text-xs text-[var(--text-muted)]">
-                            <span id="simulation-status">Connecting API</span> <i class="fas fa-circle text-[8px] animate-pulse text-[var(--accent-color)]"></i>
-                        </div>
-                    </div>
-                </div>
-                <!-- SVG Container -->
-                <svg id="econometric-chart" class="w-full h-48" viewBox="0 0 800 200" preserveAspectRatio="none">
-                    <defs>
-                        <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
-                            <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.2"/>
-                            <stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/>
-                        </linearGradient>
-                    </defs>
-                    <!-- Area Path (Fill) -->
-                    <path id="chart-area" d="" fill="url(#chartGradient)" stroke="none" />
-                    <!-- Line Path (Stroke) -->
-                    <path id="chart-line" d="" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 mb-16">
@@ -517,6 +487,42 @@
                         </p>
                     </div>
                 </div>
+                
+                <!-- BITCOIN CHART MOVED HERE -->
+                <div class="glass-card p-6 rounded-2xl mt-12 relative overflow-hidden border-l-4 border-orange-500">
+                    <div class="flex justify-between items-end mb-4">
+                        <div>
+                            <h3 class="text-lg font-bold text-[var(--text-main)] flex items-center gap-2">
+                                <i class="fab fa-bitcoin text-orange-500 text-xl"></i> Bitcoin (BTC) Market Dynamics
+                            </h3>
+                            <p class="text-xs text-[var(--text-muted)]" id="chart-caption">Fetching real-time market data...</p>
+                            <!-- Comment Explaining Relevance -->
+                            <p class="text-xs text-[var(--text-muted)] mt-1 italic">
+                                * Included to demonstrate applied interest in macroeconomic forecasting and high-frequency financial time-series analysis.
+                            </p>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-mono text-lg font-bold text-[var(--accent-color)]" id="btc-price">Loading...</div>
+                            <div class="font-mono text-xs text-[var(--text-muted)]">
+                                <span id="simulation-status">Connecting API</span> <i class="fas fa-circle text-[8px] animate-pulse text-[var(--accent-color)]"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- SVG Container -->
+                    <svg id="econometric-chart" class="w-full h-48" viewBox="0 0 800 200" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                <stop offset="0%" stop-color="var(--accent-color)" stop-opacity="0.2"/>
+                                <stop offset="100%" stop-color="var(--accent-color)" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Area Path (Fill) -->
+                        <path id="chart-area" d="" fill="url(#chartGradient)" stroke="none" />
+                        <!-- Line Path (Stroke) -->
+                        <path id="chart-line" d="" fill="none" stroke="var(--accent-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+
             </div>
         </section>
 
@@ -1162,7 +1168,7 @@
                     </div>
                     <div class="p-6">
                         <div class="text-[var(--text-muted)] text-sm mb-2">November 22, 2025</div>
-                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Other Debt Crisis: Africa's Domestic Borrowing Dilemma</h3>
+                        <h3 class="text-xl font-bold text-[var(--text-main)] group-hover:text-[var(--accent-color)] transition">The Other Debt Crisis: Africa's Domestic Dilemma</h3>
                         <p class="text-[var(--text-muted)] mt-3 text-sm line-clamp-3">
                             A critical review of the surge in domestic borrowing across Sub-Saharan Africa: crowding out effects and the "doom loop" risks.
                         </p>
