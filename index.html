@@ -227,6 +227,14 @@
                         <button onclick="navigateTo('blog')" class="nav-link text-sm font-medium" id="nav-blog">Blog</button>
                         <button onclick="navigateTo('contacts')" class="nav-link text-sm font-medium" id="nav-contacts">Contact</button>
                     </div>
+                    
+                    <!-- Social Icons (Desktop) - X removed -->
+                    <div class="flex items-center gap-3 ml-4 border-l border-[var(--glass-border)] pl-4">
+                        <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-colors text-xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+
                     <button onclick="toggleTheme()" class="theme-toggle ml-4" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon" id="theme-icon"></i>
                     </button>
@@ -249,9 +257,12 @@
                 <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Teaching</button>
                 <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Publications</button>
                 <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Apps</button>
-                <!-- Added Blog Link Here -->
                 <button onclick="navigateTo('blog')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Blog</button>
                 <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Contact</button>
+                <!-- Mobile Socials - X removed -->
+                <div class="flex gap-4 px-3 py-2 mt-2 border-t border-[var(--glass-border)] pt-4">
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--accent-color)] text-xl"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
     </nav>
@@ -733,14 +744,19 @@
                                     <i class="fas fa-calculator"></i> Practice Problem Set
                                 </button>
                             </div>
+                            <!-- MAT110 -->
+                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors relative group">
+                                <h4 class="text-[var(--text-main)] font-semibold">MAT 110 — Calculus</h4>
+                                <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2025–Dec 2025</p>
+                                <!-- New Button for MAT110 Problem Set -->
+                                <button onclick="navigateTo('mat110-practice')" class="mt-3 w-full bg-[var(--accent-color)]/10 hover:bg-[var(--accent-color)]/20 text-[var(--accent-color)] text-xs py-2 rounded border border-[var(--accent-color)]/20 transition-all flex items-center justify-center gap-2">
+                                    <i class="fas fa-square-root-alt"></i> Practice Problem Set
+                                </button>
+                            </div>
                             <!-- Other courses... -->
                             <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
                                 <h4 class="text-[var(--text-main)] font-semibold">BHS 200 — Research Methods</h4>
                                 <p class="text-[var(--text-muted)] text-xs mt-1">Sep 2025–Dec 2025</p>
-                            </div>
-                            <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
-                                <h4 class="text-[var(--text-main)] font-semibold">MAT 110 — Calculus</h4>
-                                <p class="text-[var(--text-muted)] text-xs mt-1">Oct 2025–Dec 2025</p>
                             </div>
                             <div class="border border-[var(--glass-border)] p-4 rounded-lg hover:border-[var(--accent-color)] transition-colors">
                                 <h4 class="text-[var(--text-main)] font-semibold">BUS 270 — Business Information Systems</h4>
@@ -883,8 +899,6 @@
                         <button onclick="startQuiz(5, 'mat100')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-blue-500 hover:bg-blue-500/10 transition-all text-[var(--text-main)]">5 Questions</button>
                         <button onclick="startQuiz(10, 'mat100')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-blue-500 hover:bg-blue-500/10 transition-all text-[var(--text-main)]">10 Questions</button>
                         <button onclick="startQuiz(20, 'mat100')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-blue-500 hover:bg-blue-500/10 transition-all text-[var(--text-main)]">20 Questions</button>
-                         <!-- Only up to 20 for now or duplicate to reach 40 -->
-                        <button onclick="startQuiz(20, 'mat100')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-blue-500 hover:bg-blue-500/10 transition-all text-[var(--text-main)]">40 Questions</button>
                     </div>
                     <p class="text-sm text-[var(--text-muted)] mt-4">Questions cover Sets, Probability, Matrices, and Linear Programming.</p>
                 </div>
@@ -923,6 +937,73 @@
                             <i class="fas fa-arrow-left"></i> Quit
                         </button>
                         <button id="mat-next-btn" onclick="nextQuestion()" class="btn-primary px-8 py-3 rounded-lg text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
+                            Next Question <i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: MAT110 PROBLEM SET SUBPAGE -->
+        <section id="mat110-practice" class="page-section max-w-3xl mx-auto py-12">
+            <button onclick="navigateTo('teaching')" class="text-[var(--accent-color)] text-sm mb-6 hover:text-[var(--accent-hover)] transition flex items-center gap-2">
+                <i class="fas fa-arrow-left"></i> Back to Teaching
+            </button>
+            
+            <div class="glass-card p-8 rounded-2xl border-t-4 border-green-500">
+                <div class="flex items-center justify-between mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-[var(--text-main)]">Calculus Problem Set</h2>
+                        <p class="text-[var(--text-muted)] text-sm mt-1">Exam Preparation • MAT110</p>
+                    </div>
+                    <div class="text-right" id="mat110-score-display" style="display: none;">
+                        <div class="text-xs text-[var(--text-muted)] uppercase tracking-wide">Current Score</div>
+                        <div id="mat110-quiz-score" class="text-2xl font-mono font-bold text-[var(--accent-color)]">0 / 0</div>
+                    </div>
+                </div>
+
+                <!-- Setup Screen -->
+                <div id="mat110-quiz-setup" class="space-y-6 text-center py-10">
+                    <h3 class="text-xl font-medium text-[var(--text-main)] mb-4">Select Quiz Length</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="startQuiz(5, 'mat110')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-green-500 hover:bg-green-500/10 transition-all text-[var(--text-main)]">5 Questions</button>
+                        <button onclick="startQuiz(10, 'mat110')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-green-500 hover:bg-green-500/10 transition-all text-[var(--text-main)]">10 Questions</button>
+                        <button onclick="startQuiz(20, 'mat110')" class="px-6 py-3 rounded-lg border border-[var(--glass-border)] hover:border-green-500 hover:bg-green-500/10 transition-all text-[var(--text-main)]">20 Questions</button>
+                    </div>
+                    <p class="text-sm text-[var(--text-muted)] mt-4">Questions cover Limits, Derivatives, and Integrals.</p>
+                </div>
+
+                <div id="mat110-quiz-container" class="space-y-6 hidden">
+                    <!-- Progress Bar -->
+                    <div class="w-full bg-[var(--glass-border)] rounded-full h-1.5 mb-6">
+                        <div id="mat110-quiz-progress" class="bg-green-500 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                    </div>
+
+                    <!-- Question Area -->
+                    <div class="min-h-[150px]">
+                        <h4 id="mat110-quiz-question" class="text-xl font-medium text-[var(--text-main)] mb-6 leading-relaxed">Loading Question...</h4>
+                        <div id="mat110-quiz-options" class="space-y-3">
+                            <!-- Options injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Feedback Area -->
+                    <div id="mat110-quiz-feedback" class="hidden p-5 rounded-xl border transition-all duration-500 bg-[var(--glass-bg)] backdrop-blur-md">
+                        <div class="flex items-start gap-3">
+                            <div id="mat110-feedback-icon" class="mt-1"></div>
+                            <div>
+                                <p id="mat110-feedback-title" class="font-bold mb-1 text-lg"></p>
+                                <p id="mat110-feedback-text" class="text-sm text-[var(--text-muted)] leading-relaxed"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="flex justify-between items-center pt-6 border-t border-[var(--glass-border)]">
+                        <button onclick="resetQuizSetup()" class="text-xs text-[var(--text-muted)] hover:text-[var(--text-main)] transition-colors flex items-center gap-2">
+                            <i class="fas fa-arrow-left"></i> Quit
+                        </button>
+                        <button id="mat110-next-btn" onclick="nextQuestion()" class="btn-primary px-8 py-3 rounded-lg text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all" disabled>
                             Next Question <i class="fas fa-chevron-right ml-2"></i>
                         </button>
                     </div>
@@ -1228,6 +1309,16 @@
                 <div class="glass-card rounded-2xl p-8 md:p-12">
                     <h2 class="text-3xl font-bold text-gradient-innovative mb-2">Get in Touch</h2>
                     <p class="text-[var(--text-muted)] mb-8">Interested in collaboration, data analysis consulting, or discussing economic theory? Send me a message.</p>
+                    
+                    <!-- NEW: Socials in Contact Form -->
+                    <div class="flex justify-center gap-6 mb-8">
+                        <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] p-3 rounded-full text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-all">
+                            <i class="fab fa-linkedin text-2xl"></i>
+                        </a>
+                        <a href="https://x.com/MirindiFrederic" target="_blank" class="bg-[var(--glass-bg)] border border-[var(--glass-border)] hover:border-[var(--accent-color)] p-3 rounded-full text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-all">
+                            <i class="fab fa-x-twitter text-2xl"></i>
+                        </a>
+                    </div>
 
                     <!-- Form Updated with ID for JS handling -->
                     <form id="contact-form" onsubmit="submitToGoogle(event)" class="space-y-6">
@@ -1428,7 +1519,7 @@
             updateInflation(); 
         }
 
-        // --- APP 3: COMPOUND GROWTH LOGIC ---
+        // --- APP 3: COMPOUND GROWTH LOGIC (UPDATED) ---
         function calculateCompound() {
             const P = parseFloat(document.getElementById('comp-principal').value) || 0;
             const PMT = parseFloat(document.getElementById('comp-contrib').value) || 0;
@@ -1680,17 +1771,41 @@
             // ... (Duplicate or add more to reach 40)
         ];
 
+        const mat110Questions = [
+            { q: "The derivative of f(x) = x^2 is:", o: ["x", "2x", "x^3/3", "2"], c: 1, e: "Power rule: d/dx (x^n) = nx^(n-1)." },
+            { q: "The limit of 1/x as x approaches infinity is:", o: ["Infinity", "1", "0", "Undefined"], c: 2, e: "As the denominator grows infinitely large, the fraction approaches zero." },
+            { q: "The integral of 2x dx is:", o: ["x^2 + C", "2x^2 + C", "x + C", "2"], c: 0, e: "Reverse power rule: integral of x^n is x^(n+1)/(n+1)." },
+            { q: "If f'(x) > 0, the function f(x) is:", o: ["Increasing", "Decreasing", "Constant", "Undefined"], c: 0, e: "A positive derivative indicates a positive slope." },
+            { q: "The derivative of sin(x) is:", o: ["cos(x)", "-cos(x)", "sin(x)", "-sin(x)"], c: 0, e: "Standard derivative." },
+            { q: "A critical point occurs where f'(x) is:", o: ["Positive", "Negative", "Zero or undefined", "Infinity"], c: 2, e: "Critical points are potential local maxima or minima." },
+            { q: "The second derivative f''(x) tells us about:", o: ["Slope", "Concavity", "Intercept", "Domain"], c: 1, e: "Positive f'' means concave up; negative means concave down." },
+            { q: "The chain rule is used for differentiating:", o: ["Sums", "Products", "Composite functions", "Quotients"], c: 2, e: "d/dx f(g(x)) = f'(g(x)) * g'(x)." },
+            { q: "The area under a curve y=f(x) from a to b is given by:", o: ["Derivative", "Definite Integral", "Limit", "Slope"], c: 1, e: "The fundamental theorem of calculus connects integration and area." },
+            { q: "If f(x) is continuous on [a,b], it must have:", o: ["A derivative", "An inverse", "A max and min", "A root"], c: 2, e: "Extreme Value Theorem." },
+            { q: "The derivative of e^x is:", o: ["x*e^(x-1)", "e^x", "ln(x)", "1/x"], c: 1, e: "e^x is its own derivative." },
+            { q: "L'Hopital's Rule is used for limits of the form:", o: ["0/0 or inf/inf", "0/inf", "1/0", "Any limit"], c: 0, e: "Indeterminate forms." },
+            { q: "The slope of the tangent line to y=f(x) at x=c is:", o: ["f(c)", "f'(c)", "f''(c)", "F(c)"], c: 1, e: "Definition of the derivative at a point." },
+            { q: "Integration by parts is based on the:", o: ["Chain Rule", "Product Rule", "Quotient Rule", "Power Rule"], c: 1, e: "Reverse product rule." },
+            { q: "If f''(x) < 0, the graph is:", o: ["Concave Up", "Concave Down", "Increasing", "Decreasing"], c: 1, e: "Downward curvature." },
+            { q: "The derivative of ln(x) is:", o: ["e^x", "1/x", "x", "ln(x)"], c: 1, e: "Standard derivative for x > 0." },
+            { q: "An inflection point is where:", o: ["f'(x) changes sign", "f''(x) changes sign", "f(x) = 0", "f'(x) = 0"], c: 1, e: "Change in concavity." },
+            { q: "The Fundamental Theorem of Calculus relates:", o: ["Limits and Continuity", "Differentiation and Integration", "Algebra and Geometry", "Functions and Relations"], c: 1, e: "It connects the two main branches of calculus." },
+            { q: "Implicit differentiation is used when:", o: ["y is not isolated", "x is constant", "f(x) is linear", "We integrate"], c: 0, e: "When y cannot be explicitly solved for x." },
+            { q: "The average value of f(x) on [a,b] involves:", o: ["1/(b-a) * integral", "b-a * integral", "integral / 2", "derivative at midpoint"], c: 0, e: "Formula for average value." }
+        ];
+
         let currentQuiz = [];
         let currentIndex = 0;
         let currentScore = 0;
         let isAnswered = false;
-        let currentMode = 'eco110'; // 'eco110' or 'mat100'
+        let currentMode = 'eco110'; // 'eco110', 'mat100', 'mat110'
 
         function startQuiz(numQuestions, mode) {
             currentMode = mode;
-            // The issue was likely here: ensuring eco110Questions is defined.
-            // In previous turns, I defined it. Here it is defined above.
-            const bank = mode === 'eco110' ? eco110Questions : mat100Questions;
+            let bank;
+            if (mode === 'eco110') bank = eco110Questions;
+            else if (mode === 'mat100') bank = mat100Questions;
+            else bank = mat110Questions; // mat110
             
             // Randomly select questions
             const shuffled = [...bank].sort(() => 0.5 - Math.random());
@@ -1700,7 +1815,7 @@
             currentScore = 0;
             isAnswered = false;
             
-            const prefix = mode === 'eco110' ? '' : 'mat-'; // Logic to handle ID prefixes
+            const prefix = (mode === 'eco110') ? '' : (mode === 'mat100' ? 'mat-' : 'mat110-'); 
             
             // Check if elements exist before accessing classList
             const setupEl = document.getElementById(prefix + 'quiz-setup');
@@ -1737,6 +1852,8 @@
                     btn.className = "w-full text-left p-4 rounded-lg border border-[var(--glass-border)] bg-[var(--glass-bg)] transition-all duration-200 text-base text-[var(--text-muted)] hover:text-[var(--text-main)] group flex items-center gap-3";
                     if(prefix === 'mat-') {
                          btn.classList.add('hover:border-blue-500/50', 'hover:bg-blue-500/5');
+                    } else if (prefix === 'mat110-') {
+                         btn.classList.add('hover:border-green-500/50', 'hover:bg-green-500/5');
                     } else {
                          btn.classList.add('hover:border-orange-500/50', 'hover:bg-orange-500/5');
                     }
@@ -1806,7 +1923,7 @@
         }
 
         function nextQuestion() {
-            const prefix = currentMode === 'eco110' ? '' : 'mat-';
+            const prefix = (currentMode === 'eco110') ? '' : (currentMode === 'mat100' ? 'mat-' : 'mat110-');
             currentIndex++;
             if (currentIndex < currentQuiz.length) {
                 loadQuizQuestion(prefix);
@@ -1818,7 +1935,9 @@
                 const questionEl = document.getElementById(prefix + 'quiz-question');
                 if (questionEl) questionEl.innerText = "Practice Complete!";
                 
-                const colorClass = prefix === 'mat-' ? 'text-blue-400 border-blue-500/30 bg-blue-500/10' : 'text-orange-400 border-orange-500/30 bg-orange-500/10';
+                let colorClass = 'text-orange-400 border-orange-500/30 bg-orange-500/10';
+                if (prefix === 'mat-') colorClass = 'text-blue-400 border-blue-500/30 bg-blue-500/10';
+                if (prefix === 'mat110-') colorClass = 'text-green-400 border-green-500/30 bg-green-500/10';
                 
                 const optionsDiv = document.getElementById(prefix + 'quiz-options');
                 if (optionsDiv) {
@@ -1840,7 +1959,7 @@
         }
 
         function resetQuizSetup() {
-            const prefix = currentMode === 'eco110' ? '' : 'mat-';
+            const prefix = (currentMode === 'eco110') ? '' : (currentMode === 'mat100' ? 'mat-' : 'mat110-');
             const setupEl = document.getElementById(prefix + 'quiz-setup');
             if (setupEl) setupEl.classList.remove('hidden');
             
@@ -1868,7 +1987,7 @@
             let activeBtnId = 'nav-' + sectionId;
             if (sectionId.startsWith('blog-post')) activeBtnId = 'nav-blog';
             // Keep Teaching active for subpages
-            if (sectionId === 'eco110-practice' || sectionId === 'mat100-practice') activeBtnId = 'nav-teaching'; 
+            if (sectionId === 'eco110-practice' || sectionId === 'mat100-practice' || sectionId === 'mat110-practice') activeBtnId = 'nav-teaching'; 
             
             const activeBtn = document.getElementById(activeBtnId);
             if(activeBtn) activeBtn.classList.add('active');
@@ -1892,6 +2011,10 @@
             }
             if (sectionId === 'mat100-practice') {
                 currentMode = 'mat100';
+                resetQuizSetup();
+            }
+             if (sectionId === 'mat110-practice') {
+                currentMode = 'mat110';
                 resetQuizSetup();
             }
 
