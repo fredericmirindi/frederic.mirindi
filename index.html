@@ -71,9 +71,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -1; /* Ensures background stays behind content */
             background-color: var(--bg-color); 
             transition: background-color 0.5s ease;
+            pointer-events: none; /* Allows clicking through the canvas */
         }
 
         .glass-card {
@@ -207,7 +208,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- 3D Background -->
+    <!-- 3D Background Container -->
     <div id="canvas-container"></div>
 
     <!-- Navigation -->
@@ -259,7 +260,6 @@
                 <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Apps</button>
                 <button onclick="navigateTo('blog')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Blog</button>
                 <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Contact</button>
-                <!-- Mobile Socials - X removed -->
                 <div class="flex gap-4 px-3 py-2 mt-2 border-t border-[var(--glass-border)] pt-4">
                     <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--accent-color)] text-xl"><i class="fab fa-linkedin"></i></a>
                 </div>
@@ -717,7 +717,7 @@
                         <div class="bg-[var(--bg-color)]/50 rounded-xl border border-[var(--glass-border)] p-0 overflow-hidden">
                             <div class="p-4 border-b border-[var(--glass-border)] bg-[var(--glass-bg)] flex justify-between items-center">
                                 <h4 class="text-sm font-bold text-[var(--text-main)]"><i class="fab fa-bitcoin text-orange-500 mr-2"></i> Crypto Assets</h4>
-                                <span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">24H Change</span>
+                                <span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">24H Trend</span>
                             </div>
                             <div id="crypto-list" class="divide-y divide-[var(--glass-border)]">
                                 <!-- Items injected by JS -->
@@ -729,7 +729,7 @@
                         <div class="bg-[var(--bg-color)]/50 rounded-xl border border-[var(--glass-border)] p-0 overflow-hidden">
                              <div class="p-4 border-b border-[var(--glass-border)] bg-[var(--glass-bg)] flex justify-between items-center">
                                 <h4 class="text-sm font-bold text-[var(--text-main)]"><i class="fas fa-robot text-purple-500 mr-2"></i> AI & Tech Equities</h4>
-                                <span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">Live Change</span>
+                                <span class="text-[10px] text-[var(--text-muted)] uppercase tracking-wider">Live Simulation</span>
                             </div>
                             <div id="stock-list" class="divide-y divide-[var(--glass-border)]">
                                 <!-- Items injected by JS -->
@@ -1849,7 +1849,7 @@
 
                     html += `
                         <div class="p-3 flex justify-between items-center hover:bg-[var(--glass-bg)] transition-colors group relative">
-                            <div class="flex items-center gap-3 z-10">
+                            <div class="flex items-center gap-3 z-10 w-1/3">
                                 <div class="w-8 h-8 rounded-full bg-[var(--glass-border)] flex items-center justify-center text-xs font-bold text-[var(--text-muted)]">${coin.sym[0]}</div>
                                 <div>
                                     <div class="font-bold text-sm text-[var(--text-main)]">${coin.name}</div>
@@ -1857,10 +1857,10 @@
                                 </div>
                             </div>
                              <!-- Sparkline Container -->
-                            <div class="absolute left-1/2 -translate-x-1/2 w-20 h-8 opacity-30">
-                                <canvas id="${canvasId}" width="80" height="32"></canvas>
+                            <div class="w-1/3 flex justify-center opacity-60">
+                                <canvas id="${canvasId}" width="60" height="24"></canvas>
                             </div>
-                            <div class="text-right z-10">
+                            <div class="text-right z-10 w-1/3">
                                 <div class="font-mono text-sm text-[var(--text-main)]">$${price.toLocaleString()}</div>
                                 <div class="text-xs ${colorClass} font-medium">${Math.abs(change).toFixed(2)}% <i class="fas ${icon}"></i></div>
                             </div>
@@ -1881,36 +1881,46 @@
         }
 
         // 2. AI Stocks (Simulated Live Data)
+        // Initial Values
         const aiStocks = [
-            { name: 'NVIDIA', sym: 'NVDA', price: 1105.00, change: 2.5 },
-            { name: 'Microsoft', sym: 'MSFT', price: 425.00, change: 0.8 },
-            { name: 'Alphabet', sym: 'GOOGL', price: 175.00, change: -0.4 },
-            { name: 'AMD', sym: 'AMD', price: 165.00, change: 1.2 },
-            { name: 'Palantir', sym: 'PLTR', price: 24.50, change: 3.8 }
+            { name: 'NVIDIA', sym: 'NVDA', price: 1105.00, change: 2.5, history: [] },
+            { name: 'Microsoft', sym: 'MSFT', price: 425.00, change: 0.8, history: [] },
+            { name: 'Alphabet', sym: 'GOOGL', price: 175.00, change: -0.4, history: [] },
+            { name: 'AMD', sym: 'AMD', price: 165.00, change: 1.2, history: [] },
+            { name: 'Palantir', sym: 'PLTR', price: 24.50, change: 3.8, history: [] }
         ];
+
+        // Pre-fill history for sparklines
+        aiStocks.forEach(stock => {
+            let p = stock.price;
+            for(let i=0; i<20; i++) {
+                p = p * (1 + (Math.random() - 0.5) * 0.01);
+                stock.history.push(p);
+            }
+        });
 
         function renderStocks() {
             const container = document.getElementById('stock-list');
             if (!container) return;
             
-            // Only re-render structure if empty, otherwise update values
-            if (container.innerHTML.includes("Connecting")) {
+            // Only re-render structure if empty, otherwise update values in place
+            if (container.innerHTML.includes("Connecting") || container.children.length === 0) {
                  container.innerHTML = '';
                  aiStocks.forEach(stock => {
                     const canvasId = `stock-chart-${stock.sym}`;
                     const html = `
                         <div class="p-3 flex justify-between items-center hover:bg-[var(--glass-bg)] transition-colors relative" id="row-${stock.sym}">
-                            <div class="flex items-center gap-3 z-10">
+                            <div class="flex items-center gap-3 z-10 w-1/3">
                                 <div class="w-8 h-8 rounded-full bg-[var(--glass-border)] flex items-center justify-center text-xs font-bold text-[var(--text-muted)]">${stock.sym[0]}</div>
                                 <div>
                                     <div class="font-bold text-sm text-[var(--text-main)]">${stock.name}</div>
                                     <div class="text-[10px] text-[var(--text-muted)]">${stock.sym}</div>
                                 </div>
                             </div>
-                             <div class="absolute left-1/2 -translate-x-1/2 w-20 h-8 opacity-30">
-                                <canvas id="${canvasId}" width="80" height="32"></canvas>
+                             <div class="w-1/3 flex justify-center opacity-60">
+                                <canvas id="${canvasId}" width="60" height="24"></canvas>
                             </div>
-                            <div class="text-right z-10">
+                            <div class="text-right z-10 w-1/3">
                                 <div class="font-mono text-sm text-[var(--text-main)] flex items-center justify-end gap-2 price-display">
                                     $${stock.price.toFixed(2)}
                                 </div>
@@ -1919,28 +1929,40 @@
                         </div>
                     `;
                     container.innerHTML += html;
-                    drawSparkline(canvasId, stock.change >= 0);
                  });
             }
 
             // Update Values with "Live" Ticks
             aiStocks.forEach(stock => {
+                // Random walk logic
+                const noise = (Math.random() - 0.5) * (stock.price * 0.0015); 
+                stock.price += noise;
+                
+                // Update History for Sparkline
+                stock.history.shift();
+                stock.history.push(stock.price);
+
                 const row = document.getElementById(`row-${stock.sym}`);
                 if (row) {
-                    // Random walk
-                    const noise = (Math.random() - 0.5) * (stock.price * 0.002); 
-                    stock.price += noise;
-                    const isUp = stock.change >= 0; // Keep overall trend direction for color
-                    
                     const priceEl = row.querySelector('.price-display');
                     const changeEl = row.querySelector('.change-display');
                     
                     priceEl.innerText = `$${stock.price.toFixed(2)}`;
                     
+                    // Flash color if price moved significantly this tick
+                    if(Math.abs(noise) > 0.05) {
+                         priceEl.classList.add(noise > 0 ? 'text-green-400' : 'text-red-400');
+                         setTimeout(() => priceEl.classList.remove('text-green-400', 'text-red-400'), 500);
+                    }
+
+                    const isUp = stock.change >= 0;
                     const colorClass = isUp ? 'text-green-400' : 'text-red-400';
                     const icon = isUp ? 'fa-caret-up' : 'fa-caret-down';
-                    changeEl.className = `text-xs font-medium ${colorClass}`;
+                    changeEl.className = `text-xs font-medium ${colorClass} change-display`;
                     changeEl.innerHTML = `${Math.abs(stock.change).toFixed(2)}% <i class="fas ${icon}"></i>`;
+
+                    // Redraw Sparkline
+                    drawLiveSparkline(`stock-chart-${stock.sym}`, stock.history, isUp);
                 }
             });
         }
@@ -1970,7 +1992,33 @@
             }
             
             ctx.strokeStyle = isUp ? '#4ade80' : '#f87171';
-            ctx.lineWidth = 2;
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+        }
+
+        function drawLiveSparkline(canvasId, history, isUp) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+            
+            ctx.clearRect(0,0,w,h);
+            
+            const min = Math.min(...history);
+            const max = Math.max(...history);
+            const range = max - min || 1;
+
+            ctx.beginPath();
+            history.forEach((val, i) => {
+                const x = (i / (history.length - 1)) * w;
+                const y = h - ((val - min) / range) * h;
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            });
+            
+            ctx.strokeStyle = isUp ? '#4ade80' : '#f87171';
+            ctx.lineWidth = 1.5;
             ctx.stroke();
         }
 
@@ -2299,24 +2347,174 @@
         }
 
         // Initial Fetch & Intervals
-        setInterval(renderStocks, 3000);
+        setInterval(renderStocks, 1500);
         setInterval(fetchCryptoData, 60000); 
 
+        // --- 3. THREE.JS 3D BACKGROUND ---
+        // Restored logic
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x050505, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        let sphereMaterial;
+        let particlesMaterial;
+        let lineMaterial;
+
+        const geometry = new THREE.IcosahedronGeometry(10, 2);
+        sphereMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0xffffff, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.03 
+        });
+        const sphere = new THREE.Mesh(geometry, sphereMaterial);
+        scene.add(sphere);
+
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 700;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 60; 
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.8,
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        const linesGroup = new THREE.Group();
+        const linesArray = [];
+        
+        for(let i=0; i<5; i++) {
+            const lineGeo = new THREE.BufferGeometry();
+            const points = [];
+            points.push(new THREE.Vector3((Math.random()-0.5)*30, (Math.random()-0.5)*30, (Math.random()-0.5)*30));
+            points.push(new THREE.Vector3((Math.random()-0.5)*30, (Math.random()-0.5)*30, (Math.random()-0.5)*30));
+            lineGeo.setFromPoints(points);
+            lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.2 });
+            const line = new THREE.Line(lineGeo, lineMaterial);
+            linesGroup.add(line);
+            linesArray.push(line);
+        }
+        scene.add(linesGroup);
+
+        // Fix: Restore camera position
+        camera.position.z = 20;
+        
+        // Fix: Mouse interaction
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
+
+        let cameraTargetZ = 20;
+        let cameraTargetX = 0;
+
+        function moveCameraForSection(id) {
+            if(id === 'home') { cameraTargetZ = 20; cameraTargetX = 0; }
+            if(id === 'research') { cameraTargetZ = 25; cameraTargetX = 5; }
+            if(id === 'teaching') { cameraTargetZ = 22; cameraTargetX = -3; }
+            if(id === 'publications') { cameraTargetZ = 25; cameraTargetX = -5; }
+            if(id === 'applications') { cameraTargetZ = 15; cameraTargetX = 8; } 
+            if(id === 'blog' || id.startsWith('blog-post')) { cameraTargetZ = 30; cameraTargetX = 0; }
+            if(id === 'contacts') { cameraTargetZ = 35; cameraTargetX = 0; }
+        }
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            const elapsedTime = clock.getElapsedTime();
+
+            targetX = mouseX * 0.001;
+            targetY = mouseY * 0.001;
+
+            sphere.rotation.y += 0.002;
+            sphere.rotation.x += 0.001;
+
+            particlesMesh.rotation.y = -mouseX * 0.00005;
+            particlesMesh.rotation.x = -mouseY * 0.00005;
+
+            camera.position.z += (cameraTargetZ - camera.position.z) * 0.05;
+            camera.position.x += (cameraTargetX - camera.position.x) * 0.05;
+            
+            sphere.rotation.y += 0.05 * (targetX - sphere.rotation.y);
+            sphere.rotation.x += 0.05 * (targetY - sphere.rotation.x);
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        // Start loop
+        animate();
+
+        // Resize listener
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+
+        // Theme Helper
+        function updateThreeJSTheme(mode) {
+            if (mode === 'light') {
+                scene.fog.color.setHex(0xfafafa);
+                sphereMaterial.color.setHex(0x171717);
+                particlesMaterial.color.setHex(0x171717);
+                linesArray.forEach(l => l.material.color.setHex(0x171717));
+            } else {
+                scene.fog.color.setHex(0x050505);
+                sphereMaterial.color.setHex(0xffffff);
+                particlesMaterial.color.setHex(0xffffff);
+                linesArray.forEach(l => l.material.color.setHex(0xffffff));
+            }
+        }
+
+        // Initial load logic
         window.onload = () => {
              const path = window.location.hash.substring(1) || 'home';
              navigateTo(path);
+             
+             // Restore theme from local storage or default to dark
+             const savedTheme = localStorage.getItem('theme') || 'dark';
+             const html = document.documentElement;
              const icon = document.getElementById('theme-icon');
              const iconMobile = document.getElementById('theme-icon-mobile');
-             if (document.documentElement.classList.contains('light')) {
+
+             if (savedTheme === 'light') {
+                 html.classList.remove('dark');
+                 html.classList.add('light');
                  icon.classList.remove('fa-moon');
                  icon.classList.add('fa-sun');
                  iconMobile.classList.remove('fa-moon');
                  iconMobile.classList.add('fa-sun');
+                 updateThreeJSTheme('light');
              } else {
+                 html.classList.remove('light');
+                 html.classList.add('dark');
                  icon.classList.remove('fa-sun');
                  icon.classList.add('fa-moon');
                  iconMobile.classList.remove('fa-sun');
                  iconMobile.classList.add('fa-moon');
+                 updateThreeJSTheme('dark');
              }
         };
     </script>
