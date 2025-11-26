@@ -244,23 +244,23 @@
                     <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon" id="theme-icon-mobile"></i>
                     </button>
-                    <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text-main)] focus:outline-none">
+                    <button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text-main)] focus:outline-none">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)]" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left">Home</button>
-                <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Research</button>
-                <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Teaching</button>
-                <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Publications</button>
-                <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Apps</button>
-                <button onclick="navigateTo('blog')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Blog</button>
-                <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Contact</button>
-                <div class="flex gap-4 px-3 py-2 mt-2 border-t border-[var(--glass-border)] pt-4">
+        <div class="md:hidden hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)] absolute w-full left-0 top-20 z-40" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--bg-color)] shadow-lg">
+                <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Home</button>
+                <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Research</button>
+                <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Teaching</button>
+                <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Publications</button>
+                <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Apps</button>
+                <button onclick="navigateTo('blog')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Blog</button>
+                <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Contact</button>
+                <div class="flex gap-4 px-3 py-4 mt-2 border-t border-[var(--glass-border)] pt-4">
                     <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--accent-color)] text-xl"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
@@ -939,6 +939,9 @@
                     <p class="text-sm text-[var(--text-muted)] mt-4">Questions cover Sets, Probability, Matrices, and Linear Programming.</p>
                 </div>
 
+                <!-- Note: Reusing similar IDs but scoped via JS to handle multiple quizzes would be cleaner, 
+                     but for simplicity in this single-file update, I'll use distinct IDs or a shared logic function. 
+                     I will use distinct IDs for the container to be safe. -->
                 <div id="mat-quiz-container" class="space-y-6 hidden">
                     <!-- Progress Bar -->
                     <div class="w-full bg-[var(--glass-border)] rounded-full h-1.5 mb-6">
@@ -1407,7 +1410,7 @@
                     <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
                         "Haiti's poverty is not a failure of governance alone; it is the mathematical result of a century of debt service paid to the very powers that enslaved it."
                     </div>
-                 </div>
+                </div>
             </div>
         </section>
 
