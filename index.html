@@ -71,10 +71,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Ensures background stays behind content */
+            z-index: -1;
             background-color: var(--bg-color); 
             transition: background-color 0.5s ease;
-            pointer-events: none; /* Allows clicking through the canvas */
         }
 
         .glass-card {
@@ -208,7 +207,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- 3D Background Container -->
+    <!-- 3D Background -->
     <div id="canvas-container"></div>
 
     <!-- Navigation -->
@@ -229,14 +228,15 @@
                         <button onclick="navigateTo('contacts')" class="nav-link text-sm font-medium" id="nav-contacts">Contact</button>
                     </div>
                     
-                    <!-- Social Icons (Desktop) - X removed -->
+                    <!-- Social Icons (Desktop) -->
                     <div class="flex items-center gap-3 ml-4 border-l border-[var(--glass-border)] pl-4">
                         <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--accent-color)] transition-colors text-xl">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
 
-                    <button onclick="toggleTheme()" class="theme-toggle ml-4" aria-label="Toggle Dark/Light Mode">
+                    <!-- Theme Toggle Button -->
+                    <button onclick="toggleTheme()" class="theme-toggle ml-4" id="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon" id="theme-icon"></i>
                     </button>
                 </div>
@@ -939,9 +939,6 @@
                     <p class="text-sm text-[var(--text-muted)] mt-4">Questions cover Sets, Probability, Matrices, and Linear Programming.</p>
                 </div>
 
-                <!-- Note: Reusing similar IDs but scoped via JS to handle multiple quizzes would be cleaner, 
-                     but for simplicity in this single-file update, I'll use distinct IDs or a shared logic function. 
-                     I will use distinct IDs for the container to be safe. -->
                 <div id="mat-quiz-container" class="space-y-6 hidden">
                     <!-- Progress Bar -->
                     <div class="w-full bg-[var(--glass-border)] rounded-full h-1.5 mb-6">
@@ -1129,7 +1126,7 @@
              </div>
         </section>
 
-        <!-- BLOG PAGE (Updated: Removed Jumia) -->
+        <!-- BLOG PAGE (Updated Grid Layout) -->
         <section id="blog" class="page-section">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold text-gradient-innovative mb-4">Economic Insights</h2>
@@ -1362,21 +1359,16 @@
 
         <!-- BLOG POST 5: HAITI -->
         <section id="blog-post-5" class="page-section max-w-4xl mx-auto py-12">
-             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
+             <!-- ... existing content ... -->
+            <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
                 <h1 class="text-4xl font-bold text-gradient-innovative mb-4">1er janvier 1804 - L'indépendance d'Haïti | Quand l'histoire fait dates</h1>
+                 <!-- ... content ... -->
                 <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
                     <span class="font-semibold">Frédéric Mirindi</span> | January 1, 2026 | Economic History
                 </p>
-                
-                <!-- Main Header Image -->
-                <div class="relative mb-8">
-                    <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti1.PNG?raw=true" alt="Toussaint Louverture and 1804 Date" class="w-full h-96 object-cover rounded-lg opacity-90 shadow-lg">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg"></div>
-                    <p class="absolute bottom-4 left-4 text-white text-sm italic">Toussaint Louverture: The architect of freedom who never saw it realized.</p>
-                </div>
-
-                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti1.PNG?raw=true" alt="Toussaint Louverture" class="w-full h-96 object-cover rounded-lg opacity-90 shadow-lg">
+                 <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
                     <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">O</p>
                     <p>n January 1, 1804, Jean-Jacques Dessalines declared the independence of Haiti, marking the first time in history that a slave revolt led to the founding of a sovereign state. This event shattered the myth of white supremacy and sent shockwaves through the colonial powers of the Atlantic. However, as the <a href="https://www.youtube.com/watch?v=5XUJg3g3rqw" target="_blank" class="text-[var(--accent-color)] hover:underline">Arte documentary "Quand l'histoire fait dates"</a> vividly illustrates, this freedom came at an exorbitant price—a price that Haiti is, in many ways, still paying today.</p>
                     
@@ -1415,7 +1407,7 @@
                     <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
                         "Haiti's poverty is not a failure of governance alone; it is the mathematical result of a century of debt service paid to the very powers that enslaved it."
                     </div>
-                </div>
+                 </div>
             </div>
         </section>
 
@@ -2476,15 +2468,45 @@
         // Theme Helper
         function updateThreeJSTheme(mode) {
             if (mode === 'light') {
-                scene.fog.color.setHex(0xfafafa);
-                sphereMaterial.color.setHex(0x171717);
-                particlesMaterial.color.setHex(0x171717);
+                if(scene.fog) scene.fog.color.setHex(0xfafafa);
+                if(sphereMaterial) sphereMaterial.color.setHex(0x171717);
+                if(particlesMaterial) particlesMaterial.color.setHex(0x171717);
                 linesArray.forEach(l => l.material.color.setHex(0x171717));
             } else {
-                scene.fog.color.setHex(0x050505);
-                sphereMaterial.color.setHex(0xffffff);
-                particlesMaterial.color.setHex(0xffffff);
+                if(scene.fog) scene.fog.color.setHex(0x050505);
+                if(sphereMaterial) sphereMaterial.color.setHex(0xffffff);
+                if(particlesMaterial) particlesMaterial.color.setHex(0xffffff);
                 linesArray.forEach(l => l.material.color.setHex(0xffffff));
+            }
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            
+            if (html.classList.contains('light')) {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                if(iconMobile) {
+                    iconMobile.classList.remove('fa-sun');
+                    iconMobile.classList.add('fa-moon');
+                }
+                localStorage.setItem('theme', 'dark');
+                updateThreeJSTheme('dark');
+            } else {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                 if(iconMobile) {
+                    iconMobile.classList.remove('fa-moon');
+                    iconMobile.classList.add('fa-sun');
+                }
+                localStorage.setItem('theme', 'light');
+                updateThreeJSTheme('light');
             }
         }
 
@@ -2504,16 +2526,20 @@
                  html.classList.add('light');
                  icon.classList.remove('fa-moon');
                  icon.classList.add('fa-sun');
-                 iconMobile.classList.remove('fa-moon');
-                 iconMobile.classList.add('fa-sun');
+                 if(iconMobile) {
+                     iconMobile.classList.remove('fa-moon');
+                     iconMobile.classList.add('fa-sun');
+                 }
                  updateThreeJSTheme('light');
              } else {
                  html.classList.remove('light');
                  html.classList.add('dark');
                  icon.classList.remove('fa-sun');
                  icon.classList.add('fa-moon');
-                 iconMobile.classList.remove('fa-sun');
-                 iconMobile.classList.add('fa-moon');
+                 if(iconMobile) {
+                    iconMobile.classList.remove('fa-sun');
+                    iconMobile.classList.add('fa-moon');
+                 }
                  updateThreeJSTheme('dark');
              }
         };
