@@ -218,8 +218,8 @@
                     <h1 class="text-2xl font-bold tracking-wider text-gradient-innovative">Frédéric Mirindi</h1>
                 </div>
                 
-                <!-- Desktop Menu (HIDDEN ALWAYS to force mobile menu) -->
-                <div class="hidden items-center space-x-6">
+                <!-- Desktop Menu (Visible on Desktop 'md:flex', Hidden on Mobile 'hidden') -->
+                <div class="hidden md:flex items-center space-x-6">
                     <div class="flex items-baseline space-x-6">
                         <button onclick="navigateTo('home')" class="nav-link active text-sm font-medium" id="nav-home">Home</button>
                         <button onclick="navigateTo('research')" class="nav-link text-sm font-medium" id="nav-research">Research</button>
@@ -243,8 +243,8 @@
                     </button>
                 </div>
 
-                <!-- Mobile Menu Button (Visible ALWAYS now) -->
-                <div class="-mr-2 flex items-center gap-4">
+                <!-- Mobile Menu Button (Visible on Mobile 'flex', Hidden on Desktop 'md:hidden') -->
+                <div class="-mr-2 flex md:hidden items-center gap-4">
                     <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon" id="theme-icon-mobile"></i>
                     </button>
@@ -254,8 +254,8 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu (Removed 'md:hidden' so it works on desktop) -->
-        <div class="hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)] absolute w-full left-0 top-20 z-40" id="mobile-menu">
+        <!-- Mobile Menu (Hidden by default, hidden on desktop 'md:hidden') -->
+        <div class="hidden md:hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)] absolute w-full left-0 top-20 z-40" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--bg-color)] shadow-lg">
                 <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Home</button>
                 <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Research</button>
