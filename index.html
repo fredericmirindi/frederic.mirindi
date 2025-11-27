@@ -244,23 +244,23 @@
                     <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon" id="theme-icon-mobile"></i>
                     </button>
-                    <button onclick="toggleMobileMenu()" id="mobile-menu-btn" class="inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text-main)] focus:outline-none">
+                    <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-[var(--text-muted)] hover:text-[var(--text-main)] focus:outline-none">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)] absolute w-full left-0 top-20 z-40" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--bg-color)] shadow-lg">
-                <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Home</button>
-                <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Research</button>
-                <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Teaching</button>
-                <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Publications</button>
-                <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Apps</button>
-                <button onclick="navigateTo('blog')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Blog</button>
-                <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Contact</button>
-                <div class="flex gap-4 px-3 py-4 mt-2 border-t border-[var(--glass-border)] pt-4">
+        <div class="md:hidden hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)]" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left">Home</button>
+                <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Research</button>
+                <button onclick="navigateTo('teaching')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Teaching</button>
+                <button onclick="navigateTo('publications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Publications</button>
+                <button onclick="navigateTo('applications')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Apps</button>
+                <button onclick="navigateTo('blog')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Blog</button>
+                <button onclick="navigateTo('contacts')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left">Contact</button>
+                <div class="flex gap-4 px-3 py-2 mt-2 border-t border-[var(--glass-border)] pt-4">
                     <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="text-[var(--text-muted)] hover:text-[var(--accent-color)] text-xl"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
@@ -939,9 +939,6 @@
                     <p class="text-sm text-[var(--text-muted)] mt-4">Questions cover Sets, Probability, Matrices, and Linear Programming.</p>
                 </div>
 
-                <!-- Note: Reusing similar IDs but scoped via JS to handle multiple quizzes would be cleaner, 
-                     but for simplicity in this single-file update, I'll use distinct IDs or a shared logic function. 
-                     I will use distinct IDs for the container to be safe. -->
                 <div id="mat-quiz-container" class="space-y-6 hidden">
                     <!-- Progress Bar -->
                     <div class="w-full bg-[var(--glass-border)] rounded-full h-1.5 mb-6">
@@ -1156,7 +1153,7 @@
                     </div>
                 </article>
 
-                <!-- Article 5: Haiti -->
+                <!-- Article 5: Haiti (NEW) -->
                 <article onclick="navigateTo('blog-post-5')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
                     <div class="h-48 relative overflow-hidden border-b border-[var(--glass-border)]">
                         <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti1.PNG?raw=true" alt="Toussaint Louverture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -1362,6 +1359,144 @@
 
         <!-- BLOG POST 5: HAITI (NEW) -->
         <section id="blog-post-5" class="page-section max-w-4xl mx-auto py-12">
+             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
+            <div class="glass-card p-8 rounded-2xl">
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">1er janvier 1804 - L'indépendance d'Haïti | Quand l'histoire fait dates</h1>
+                <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
+                    <span class="font-semibold">Frédéric Mirindi</span> | January 1, 2026 | Economic History
+                </p>
+                
+                <!-- Main Header Image -->
+                <div class="relative mb-8">
+                    <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti1.PNG?raw=true" alt="Toussaint Louverture and 1804 Date" class="w-full h-96 object-cover rounded-lg opacity-90 shadow-lg">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-lg"></div>
+                    <p class="absolute bottom-4 left-4 text-white text-sm italic">Toussaint Louverture: The architect of freedom who never saw it realized.</p>
+                </div>
+
+                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">O</p>
+                    <p>n January 1, 1804, Jean-Jacques Dessalines declared the independence of Haiti, marking the first time in history that a slave revolt led to the founding of a sovereign state. This event shattered the myth of white supremacy and sent shockwaves through the colonial powers of the Atlantic. However, as the <a href="https://www.youtube.com/watch?v=5XUJg3g3rqw" target="_blank" class="text-[var(--accent-color)] hover:underline">Arte documentary "Quand l'histoire fait dates"</a> vividly illustrates, this freedom came at an exorbitant price—a price that Haiti is, in many ways, still paying today.</p>
+                    
+                    <p>While the video provides a compelling narrative of the revolution, a rigorous economic critique reveals that Haiti's underdevelopment was not merely a result of isolation, but of active, calculated financial extraction by France and the United States.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Economic Strangulation: The "Double Debt"</h2>
+                    <p>The most critical economic event discussed is the indemnity of 1825. Under threat of war, France demanded 150 million gold francs—later reduced but still crushing—in exchange for diplomatic recognition. This was not aid; it was reverse reparations. Haiti was forced to compensate slaveholders for their lost "property" (human beings).</p>
+                    
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti6.PNG?raw=true" alt="Chart showing the 150 Million Franc Indemnity" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 1: The disparity between the crushing indemnity (150 million francs) and Haiti's economic capacity.</figcaption>
+                    </figure>
+                    
+                    <p>To pay this ransom, Haiti had to take out loans from French banks, creating a "double debt"—the indemnity itself and the interest on the loans to pay it. This siphoned off wealth for over a century. By 1900, 80% of Haiti's national budget was consumed by debt repayment. This capital flight prevented investment in infrastructure, education, or industrialization, effectively locking the nation into an agrarian trap.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Trap of Monoculture</h2>
+                    <p>The documentary rightly points out the colonial legacy of the "Pearl of the Antilles." Saint-Domingue was the world's most profitable colony, producing 60% of the world's coffee and 40% of its sugar. However, this wealth was built on a fragile monoculture system dependent on forced labor.</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti5.PNG?raw=true" alt="Production Statistics: Coffee, Cotton, Sugar" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 2: The colonial economy was an export machine: Coffee (37%), Cotton (60%), Sugar (56%).</figcaption>
+                    </figure>
+
+                    <p>Post-independence, Haitian leaders faced a dilemma: maintain the plantation system to generate export revenue (which required militarized labor, alienating the newly free peasantry) or break up the land into subsistence plots (which meant freedom but poverty). The lack of diversification and the reliance on volatile commodity markets left the economy vulnerable to external shocks.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">A Critique of the Narrative</h2>
+                    <p>From an economic history perspective, the video could be critiqued for not emphasizing enough the role of the <strong>United States occupation (1915-1934)</strong>. While it mentions isolation, the US actively seized Haiti's gold reserves and rewrote its constitution to allow foreign land ownership. This wasn't just "instability"; it was imperial resource extraction.</p>
+                    
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/haiti8.PNG?raw=true" alt="Jean-Bertrand Aristide and Economic Maps" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 3: Modern political instability is deeply rooted in these historical economic debts.</figcaption>
+                    </figure>
+
+                    <p>Furthermore, the "reparations" demanded by President Aristide in 2003 (estimated at $21 billion) were not charity, but a restitution of the capital stolen through the 1825 indemnity. The documentary touches on this, but the economic argument is stronger: without that initial capital drain, compound growth suggests Haiti's trajectory would have been radically different.</p>
+                    
+                    <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
+                        "Haiti's poverty is not a failure of governance alone; it is the mathematical result of a century of debt service paid to the very powers that enslaved it."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG POST 3: AFRICAN DEBT -->
+        <section id="blog-post-3" class="page-section max-w-4xl mx-auto py-12">
+             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
+            <div class="glass-card p-8 rounded-2xl">
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">The Other Debt Crisis: Africa's Domestic Borrowing Dilemma</h1>
+                <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
+                    <span class="font-semibold">Frédéric Mirindi</span> | November 22, 2025 | Sovereign Debt & Development
+                </p>
+                <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt2.jpeg?raw=true" alt="African City Street Scene" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90 shadow-lg">
+
+                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">W</p>
+                    <p>hile the global financial press remains fixated on Chinese infrastructure loans and Eurobond defaults, a more insidious structural shift is occurring within African capital markets. As highlighted in a recent briefing by <em>The Economist</em> ("The other debt crisis," Nov 22, 2025), the composition of African sovereign liabilities has undergone a "major transformation." Domestic borrowing has surged from $150bn in 2010 to nearly $500bn in 2024, now constituting roughly half of all government debt in sub-Saharan Africa.</p>
+                    
+                    <p>This pivots the conversation from external vulnerability to internal fragility. This article summarizes the key arguments presented by <em>The Economist</em> and offers a critical econometric perspective on the implications for long-run growth.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The "Original Sin" Trade-off</h2>
+                    <p>Historically, emerging markets suffered from "original sin"—the inability to borrow abroad in their own currency. This exposed them to catastrophic currency mismatches when the dollar strengthened. Domestic borrowing theoretically solves this; liabilities are denominated in the same currency as tax revenues.</p>
+                    <p>However, this safety comes at a steep price. The article notes that interest rates on domestic instruments are typically <strong>three to six percentage points higher</strong> than external concessional financing. Furthermore, maturities are dangerously short. This forces governments into a perpetual cycle of refinancing, diverting colossal sums from productive investment. In Kenya, for instance, one-third of financing needs are consumed by debt service, stifling public expenditure on health and education.</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/debt1.jpeg?raw=true" alt="Chart: Africa Sovereign Borrowing by Category" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 1: The shifting composition of African sovereign debt (Source: The Economist/Kiel Institute).</figcaption>
+                    </figure>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Domestic "Doom Loop"</h2>
+                    <p>The most alarming structural risk identified is the symbiotic fragility between sovereigns and local banks. In many sub-Saharan nations, banks hold over 20% of their assets in government debt. This creates a "doom loop": if sovereign creditworthiness falters, bank balance sheets collapse; if banks falter, the government loses its primary creditor. This dynamic crowds out the private sector, as banks find it safer and more lucrative to lend to the state than to innovative SMEs, effectively strangling the engine of future growth.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Critical Perspective: A Necessary Evil?</h2>
+                    <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
+                        "While the 'crowding out' critique is robust, it ignores the geopolitical utility of domestic debt. In a world of weaponized dollar diplomacy, deep local markets are a prerequisite for true monetary sovereignty."
+                    </div>
+                    <p>Critically, <em>The Economist</em> perhaps underplays the structural drivers of this shift. The surge in domestic borrowing is not merely a policy error but a rational response to the drying up of international capital flows and the volatility of the Eurobond market. While the costs are high, the alternative—a return to dependency on conditional multilateral loans—carries its own political economy risks.</p>
+                    
+                    <p>The path forward lies not in curbing domestic issuance, but in <strong>market deepening</strong>. As seen in Nigeria and Tanzania, extending the yield curve to longer maturities can mitigate rollover risk. The goal should be to transform this "crisis" into a catalyst for robust, liquid, and diverse African capital markets.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG POST 4: SUPERMARKETS (NEW) -->
+        <section id="blog-post-4" class="page-section max-w-4xl mx-auto py-12">
+             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
+            <div class="glass-card p-8 rounded-2xl">
+                <h1 class="text-4xl font-bold text-gradient-innovative mb-4">Aisle Be There For You: The Rise of Africa's Local Retail Giants</h1>
+                <p class="text-[var(--text-muted)] mb-6 border-b border-[var(--glass-border)] pb-4">
+                    <span class="font-semibold">Frédéric Mirindi</span> | November 18, 2025 | Development Economics
+                </p>
+                <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market1.jpeg?raw=true" alt="Inside a modern African supermarket" class="w-full h-96 object-cover rounded-lg mb-8 opacity-90 shadow-lg">
+
+                <div class="text-[var(--text-main)] space-y-6 text-lg leading-relaxed font-serif">
+                    <p class="first-letter:text-5xl first-letter:float-left first-letter:mr-3 first-letter:text-[var(--accent-color)]">T</p>
+                    <p>o walk along the main road in Ruaka, on the outskirts of Nairobi, is to witness a dichotomy that defines modern African commerce. On the street, informal market stalls overflow with vegetables and charcoal. In the distance stands a gleaming mall housing a Carrefour franchise. But bridging this gap is Quickmart, a local Kenyan chain that has rapidly expanded to nearly 60 branches. It represents a quiet revolution: the rise of homegrown retailers filling the "missing middle" where international giants have often stumbled.</p>
+                    
+                    <p>Historically, African retail has been bifurcated. Supermarkets catered to the affluent elite, while the vast majority of the population (purchasing over 70% of food and goods) relied on informal vendors. However, as noted in a recent analysis by <em>The Economist</em>, local chains like Quickmart (Kenya), Marketsquare (Nigeria), and Kazyon (Egypt) are proving that formal retail can successfully compete for the mass market.</p>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">The Failure of the "Cut-and-Paste" Model</h2>
+                    <p>The retreat of Shoprite from Nigeria in 2021 serves as a cautionary tale. The South African giant struggled with a business model that relied heavily on imported goods and leases priced in dollars. When the naira depreciated, their cost structure collapsed. Ebele Enunwa, CEO of Marketsquare, notes that international chains often sold products "that Nigerians did not know or care about."</p>
+                    
+                    <p>In contrast, local challengers are agile. They locate stores in secondary cities and satellite towns rather than just prestige capitals. They understand that the African consumer is not merely "rising" in a linear fashion but is a strategic shopper navigating high inflation. Quickmart, for example, operates 24-hour branches to serve informal workers and stocks hot takeaways for Nairobi's young professionals.</p>
+
+                    <figure class="my-8">
+                        <img src="https://github.com/fredericmirindi/frederic.mirindi/blob/main/images/market2.jpeg?raw=true" alt="Chart: Modern Retail Market Share Forecast" class="w-full h-auto rounded-lg border border-[var(--glass-border)] shadow-md">
+                        <figcaption class="text-center text-sm text-[var(--text-muted)] mt-2 italic">Figure 1: Forecasted growth of modern retail market share in key African economies (Source: Boston Consulting Group/The Economist).</figcaption>
+                    </figure>
+
+                    <h2 class="text-2xl font-bold pt-4 text-[var(--text-main)] border-t border-[var(--glass-border)] sans-serif">Redefining the "Consumer Class"</h2>
+                    <p>Investors have long obsessed over the African "middle class," a term that often obscures more than it reveals. Analytics firm Fraym estimates a "consumer class" of 330 million people, yet purchasing power parity (PPP) data shows average incomes in sub-Saharan Africa remain a fraction of those in other emerging markets.</p>
+                    
+                    <p>This reality has forced even e-commerce giants like Jumia to pivot. Moving away from the "Amazon of Africa" narrative targeting elites, Jumia is now delivering practical goods—weed-sprayers, shoes, and blenders—to customers in smaller towns ("up country"). This shift from aspirational luxury to practical utility is the new frontier of African retail.</p>
+
+                    <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
+                        "You can't just look at what Africans have to spend—but <em>how</em> they spend it. The notion of the 'rise of the African middle class' can give you a distorted strategy." — Charles Mwebeiha, Sango Capital.
+                    </div>
+
+                    <p>The success of these local chains suggests that the future of African retail isn't about replacing the informal market entirely, but upgrading it. By offering safety, consistency, and localized products at competitive price points, they are building a uniquely African model of modernity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG POST 5: HAITI -->
+        <section id="blog-post-5" class="page-section max-w-4xl mx-auto py-12">
              <!-- ... existing content ... -->
             <button onclick="navigateTo('blog')" class="text-[var(--accent-color)] text-sm mb-8 hover:text-[var(--accent-hover)] transition block"><i class="fas fa-arrow-left mr-2"></i> Back to Economic Insights</button>
             <div class="glass-card p-8 rounded-2xl">
@@ -1410,7 +1545,7 @@
                     <div class="my-6 p-6 bg-[var(--glass-bg)] border-l-4 border-[var(--accent-color)] text-[var(--text-muted)]">
                         "Haiti's poverty is not a failure of governance alone; it is the mathematical result of a century of debt service paid to the very powers that enslaved it."
                     </div>
-                </div>
+                 </div>
             </div>
         </section>
 
