@@ -217,7 +217,9 @@
                 <div class="flex-shrink-0 cursor-pointer" onclick="navigateTo('home')">
                     <h1 class="text-2xl font-bold tracking-wider text-gradient-innovative">Frédéric Mirindi</h1>
                 </div>
-                <div class="hidden md:flex items-center space-x-6">
+                
+                <!-- Desktop Menu (HIDDEN ALWAYS to force mobile menu) -->
+                <div class="hidden items-center space-x-6">
                     <div class="flex items-baseline space-x-6">
                         <button onclick="navigateTo('home')" class="nav-link active text-sm font-medium" id="nav-home">Home</button>
                         <button onclick="navigateTo('research')" class="nav-link text-sm font-medium" id="nav-research">Research</button>
@@ -240,7 +242,9 @@
                         <i class="fas fa-moon" id="theme-icon"></i>
                     </button>
                 </div>
-                <div class="-mr-2 flex md:hidden items-center gap-4">
+
+                <!-- Mobile Menu Button (Visible ALWAYS now) -->
+                <div class="-mr-2 flex items-center gap-4">
                     <button onclick="toggleTheme()" class="theme-toggle" aria-label="Toggle Dark/Light Mode">
                         <i class="fas fa-moon" id="theme-icon-mobile"></i>
                     </button>
@@ -250,8 +254,8 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)] absolute w-full left-0 top-20 z-40" id="mobile-menu">
+        <!-- Mobile Menu (Removed 'md:hidden' so it works on desktop) -->
+        <div class="hidden bg-[var(--bg-color)] border-b border-[var(--glass-border)] absolute w-full left-0 top-20 z-40" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[var(--bg-color)] shadow-lg">
                 <button onclick="navigateTo('home')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Home</button>
                 <button onclick="navigateTo('research')" class="block px-3 py-2 rounded-md text-base font-medium text-[var(--text-muted)] hover:text-[var(--text-main)] w-full text-left hover:bg-[var(--glass-bg)] transition-colors">Research</button>
@@ -2341,6 +2345,11 @@
             window.scrollTo(0,0);
         }
 
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
         // Initial Fetch & Intervals
         setInterval(renderStocks, 1500);
         setInterval(fetchCryptoData, 60000); 
@@ -2491,8 +2500,10 @@
             if (html.classList.contains('light')) {
                 html.classList.remove('light');
                 html.classList.add('dark');
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                if(icon) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
                 if(iconMobile) {
                     iconMobile.classList.remove('fa-sun');
                     iconMobile.classList.add('fa-moon');
@@ -2502,8 +2513,10 @@
             } else {
                 html.classList.remove('dark');
                 html.classList.add('light');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                if(icon) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                }
                  if(iconMobile) {
                     iconMobile.classList.remove('fa-moon');
                     iconMobile.classList.add('fa-sun');
@@ -2527,8 +2540,10 @@
              if (savedTheme === 'light') {
                  html.classList.remove('dark');
                  html.classList.add('light');
-                 icon.classList.remove('fa-moon');
-                 icon.classList.add('fa-sun');
+                 if(icon) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                 }
                  if(iconMobile) {
                      iconMobile.classList.remove('fa-moon');
                      iconMobile.classList.add('fa-sun');
@@ -2537,8 +2552,10 @@
              } else {
                  html.classList.remove('light');
                  html.classList.add('dark');
-                 icon.classList.remove('fa-sun');
-                 icon.classList.add('fa-moon');
+                 if(icon) {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                 }
                  if(iconMobile) {
                     iconMobile.classList.remove('fa-sun');
                     iconMobile.classList.add('fa-moon');
