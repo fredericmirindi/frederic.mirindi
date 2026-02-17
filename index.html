@@ -42,7 +42,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
+        :root, html.dark {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
             --text-primary: #e0e0e0;
@@ -62,6 +62,20 @@
             --scholar-blue: #4285f4;
             --researchgate-cyan: #00d0af;
             --linkedin-blue: #0077b5;
+        }
+
+                /* Light theme */
+        html.light {
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-white: #000000;
+            --text-muted: #6e6e73;
+            --accent-color: #0066cc;
+            --gradient-start: #0066cc;
+            --gradient-end: #0055aa;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -121,6 +135,29 @@
         /* Institution colors */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
+
+                /* Theme toggle button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.4rem;
+            border-radius: 0.4rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover {
+            color: var(--accent-color);
+            background: var(--glass-bg);
+        }
+        html.dark .theme-toggle .fa-sun { display: inline; }
+        html.dark .theme-toggle .fa-moon { display: none; }
+        html.light .theme-toggle .fa-sun { display: none; }
+        html.light .theme-toggle .fa-moon { display: inline; }
         .inst-aerc { color: var(--aerc-green); }
         .inst-aerc:hover { color: var(--aerc-green); opacity: 0.8; }
         .inst-usb { color: var(--usb-red); }
@@ -337,6 +374,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h2 class="hero-heading">
+                    Exploring the Frontiers of<br>
                     Game Theory,<br>
                     <span class="text-accent">Decision Theory &amp;<br>Mechanism Design.</span>
                 </h2>
