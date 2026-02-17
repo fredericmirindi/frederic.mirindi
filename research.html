@@ -7,7 +7,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
+        /* Dark theme (default) */
+        :root, html.dark {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
             --text-primary: #e0e0e0;
@@ -18,6 +19,8 @@
             --gradient-end: #00c8c8;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
+            --navbar-bg: rgba(10, 10, 15, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.03);
             --uofm-gold: #f2a900;
             --orcid-green: #a6ce39;
             --scholar-blue: #4285f4;
@@ -25,6 +28,26 @@
             --linkedin-blue: #0077b5;
             --usb-red: #c41230;
             --upenn-blue: #011f5b;
+            --canvas-line: rgba(200, 200, 200, 0.15);
+            --canvas-dot: rgba(200, 200, 200, 0.25);
+        }
+
+        /* Light theme */
+        html.light {
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-white: #000000;
+            --text-muted: #6e6e73;
+            --accent-color: #0066cc;
+            --gradient-start: #0066cc;
+            --gradient-end: #0055aa;
+            --glass-bg: rgba(0, 0, 0, 0.03);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --navbar-bg: rgba(255, 255, 255, 0.85);
+            --card-bg: rgba(255, 255, 255, 0.8);
+            --canvas-line: rgba(100, 100, 100, 0.1);
+            --canvas-dot: rgba(100, 100, 100, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,6 +59,7 @@
             line-height: 1.7;
             min-height: 100vh;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         a { color: var(--accent-color); text-decoration: none; }
@@ -43,13 +67,14 @@
 
         /* Navbar */
         .navbar {
-            background: rgba(10, 10, 15, 0.85);
+            background: var(--navbar-bg);
             border-bottom: 1px solid var(--glass-border);
             padding: 0.75rem 2rem;
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
             backdrop-filter: blur(12px);
+            transition: background 0.3s ease;
         }
         .navbar-container {
             max-width: 80rem; margin: 0 auto;
@@ -57,7 +82,6 @@
         }
         .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
         .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
-        .navbar-brand img { height: 1.75rem; opacity: 0.9; }
         .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
         .nav-links { display: flex; gap: 0.25rem; }
         .nav-link {
@@ -70,23 +94,41 @@
             background: var(--glass-bg); color: var(--text-white); text-decoration: none;
         }
         .nav-link.active { border-bottom: 2px solid var(--accent-color); }
-        .social-icons-nav { display: flex; gap: 0.75rem; }
+        .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
         .social-icon { font-size: 1.1rem; transition: transform 0.3s ease, color 0.3s ease; }
         .social-icon:hover { transform: translateY(-2px); }
         .icon-linkedin { color: var(--linkedin-blue); }
-        .icon-orcid { color: var(--orcid-green); }
-        .icon-scholar { color: var(--scholar-blue); }
-        .icon-researchgate { color: var(--researchgate-cyan); }
+
+        /* Theme toggle button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 0.4rem;
+            border-radius: 0.4rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-toggle:hover {
+            color: var(--accent-color);
+            background: var(--glass-bg);
+        }
+        html.dark .theme-toggle .fa-sun { display: inline; }
+        html.dark .theme-toggle .fa-moon { display: none; }
+        html.light .theme-toggle .fa-sun { display: none; }
+        html.light .theme-toggle .fa-moon { display: inline; }
 
         /* Institution */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
         .inst-usb { color: var(--usb-red); }
         .inst-usb:hover { color: var(--usb-red); opacity: 0.8; }
-        .inst-upenn { color: var(--upenn-blue); background: linear-gradient(135deg, #011f5b, #990000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .inst-upenn:hover { opacity: 0.8; }
 
-        /* Page section with geometric bg */
+        /* Page section */
         .page-section {
             min-height: 100vh;
             position: relative;
@@ -105,8 +147,6 @@
             max-width: 52rem;
             margin: 0 auto;
         }
-
-        /* Page heading */
         .page-heading {
             font-size: 2.5rem;
             font-weight: 700;
@@ -116,12 +156,13 @@
 
         /* Cards */
         .card {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--card-bg);
             border: 1px solid var(--glass-border);
             border-radius: 0.75rem;
             padding: 2rem;
             margin-bottom: 2rem;
             backdrop-filter: blur(5px);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
         .card h2 {
             font-size: 1.4rem;
@@ -129,14 +170,8 @@
             color: var(--text-white);
             margin-bottom: 1rem;
         }
-        .card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-        }
-        .card p {
-            color: var(--text-primary);
-            margin-bottom: 0.75rem;
-        }
+        .card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .card p { color: var(--text-primary); margin-bottom: 0.75rem; }
         .card p:last-child { margin-bottom: 0; }
 
         /* Button */
@@ -145,8 +180,8 @@
             align-items: center;
             gap: 0.5rem;
             padding: 0.7rem 1.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            background: var(--glass-bg);
+            border: 1.5px solid var(--glass-border);
             border-radius: 2rem;
             color: var(--text-white);
             font-size: 0.95rem;
@@ -155,7 +190,7 @@
             transition: all 0.3s ease;
         }
         .btn-back:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass-border);
             border-color: var(--accent-color);
             text-decoration: none;
         }
@@ -198,14 +233,11 @@
                 z-index: 100;
             }
             .navbar-menu.active { display: flex; }
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
+            .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
             .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
             .social-icons-nav { gap: 1.5rem; }
             .social-icon { font-size: 1.4rem; }
+            .theme-toggle { font-size: 1.4rem; }
             .page-section { padding: 5rem 1.5rem 2rem 1.5rem; }
             .page-heading { font-size: 2rem; }
             .card { padding: 1.25rem; }
@@ -240,6 +272,10 @@
                 </div>
                 <div class="social-icons-nav">
                     <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark mode">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -254,7 +290,8 @@
             <div class="card">
                 <h2>Current Research</h2>
                 <p>
-                                        My doctoral research is conducted at the <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
+                    My doctoral research is conducted at the 
+                    <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
                     <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
                 </p>
                 <p>
@@ -303,6 +340,29 @@
     </footer>
 
     <script>
+    // Theme toggle
+    function toggleTheme() {
+        const html = document.documentElement;
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            html.classList.add('light');
+            localStorage.setItem('theme', 'light');
+        } else {
+            html.classList.remove('light');
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // Load saved theme on page load
+    (function() {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.classList.remove('dark', 'light');
+            document.documentElement.classList.add(savedTheme);
+        }
+    })();
+
     // Mobile menu toggle
     function toggleMenu() {
         const menu = document.getElementById('navbar-menu');
@@ -326,11 +386,19 @@
         });
     });
 
-    // Geometric network background (same as homepage)
+    // Geometric network background
     (function() {
         const canvas = document.getElementById('geo-canvas');
         const ctx = canvas.getContext('2d');
         let w, h, points, maxDist;
+
+        function getThemeColors() {
+            const style = getComputedStyle(document.documentElement);
+            return {
+                line: style.getPropertyValue('--canvas-line').trim() || 'rgba(200, 200, 200, 0.15)',
+                dot: style.getPropertyValue('--canvas-dot').trim() || 'rgba(200, 200, 200, 0.25)'
+            };
+        }
 
         function resize() {
             w = canvas.width = canvas.offsetWidth;
@@ -353,6 +421,7 @@
         }
 
         function draw() {
+            const colors = getThemeColors();
             ctx.clearRect(0, 0, w, h);
             for (let p of points) {
                 p.x += p.vx;
@@ -366,8 +435,8 @@
                     const dy = points[i].y - points[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < maxDist) {
-                        const alpha = (1 - dist / maxDist) * 0.15;
-                        ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';
+                        const alpha = (1 - dist / maxDist);
+                        ctx.strokeStyle = colors.line.replace('0.15', (0.15 * alpha).toFixed(2)).replace('0.1', (0.1 * alpha).toFixed(2));
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(points[i].x, points[i].y);
@@ -377,7 +446,7 @@
                 }
             }
             for (let p of points) {
-                ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
+                ctx.fillStyle = colors.dot;
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
                 ctx.fill();
