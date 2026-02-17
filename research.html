@@ -23,6 +23,8 @@
             --scholar-blue: #4285f4;
             --researchgate-cyan: #00d0af;
             --linkedin-blue: #0077b5;
+            --usb-red: #c41230;
+            --upenn-blue: #011f5b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -64,7 +66,9 @@
             color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
             transition: all 0.3s ease; text-decoration: none;
         }
-        .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
+        .nav-link:hover, .nav-link.active {
+            background: var(--glass-bg); color: var(--text-white); text-decoration: none;
+        }
         .nav-link.active { border-bottom: 2px solid var(--accent-color); }
         .social-icons-nav { display: flex; gap: 0.75rem; }
         .social-icon { font-size: 1.1rem; transition: transform 0.3s ease, color 0.3s ease; }
@@ -77,6 +81,10 @@
         /* Institution */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
+        .inst-usb { color: var(--usb-red); }
+        .inst-usb:hover { color: var(--usb-red); opacity: 0.8; }
+        .inst-upenn { color: var(--upenn-blue); background: linear-gradient(135deg, #011f5b, #990000); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .inst-upenn:hover { opacity: 0.8; }
 
         /* Page section with geometric bg */
         .page-section {
@@ -179,14 +187,22 @@
             .menu-toggle { display: block; }
             .navbar { padding: 0.6rem 1rem; }
             .navbar-menu {
-                display: none; position: fixed;
+                display: none;
+                position: fixed;
                 top: 0; left: 0; right: 0; bottom: 0;
                 background: var(--bg-secondary);
-                flex-direction: column; align-items: center; justify-content: center;
-                gap: 2rem; z-index: 100;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 100;
             }
             .navbar-menu.active { display: flex; }
-            .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
             .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
             .social-icons-nav { gap: 1.5rem; }
             .social-icon { font-size: 1.4rem; }
@@ -208,19 +224,14 @@
     </style>
 </head>
 <body>
-
-    <!-- Navigation Bar (matches homepage) -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-brand">
-                <a href="index.html" style="text-decoration: none;">
-                    <h1>Frédéric Mirindi</h1>
-                </a>
-                <a href="https://umanitoba.ca" target="_blank" title="University of Manitoba">
-                    <img src="images/University-of-Manitoba.png" alt="University of Manitoba">
-                </a>
-            </div>
-            <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+            <a href="index.html" class="navbar-brand" style="text-decoration:none;">
+                <h1>Frédéric Mirindi</h1>
+            </a>
+            <a href="https://umanitoba.ca" target="_blank" class="inst-uofm" style="font-weight:600;">University of Manitoba</a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
                 <i class="fas fa-bars" id="menu-icon"></i>
             </button>
             <div class="navbar-menu" id="navbar-menu">
@@ -235,7 +246,7 @@
         </div>
     </nav>
 
-    <!-- Page Section with Geometric Background -->
+    <!-- Main Content -->
     <section class="page-section">
         <canvas id="geo-canvas"></canvas>
         <div class="page-content">
@@ -244,7 +255,7 @@
             <div class="card">
                 <h2>Current Research</h2>
                 <p>
-                    My doctoral research is conducted under the supervision of
+                    My doctoral research is conducted under the supervision of 
                     <a href="https://sites.google.com/view/edwardhonda/home" target="_blank"><strong>Professor Edward Honda</strong></a>
                     at the <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
                     <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
@@ -255,14 +266,30 @@
             </div>
 
             <div class="card">
-                <h2>Supervisor</h2>
-                <h3><a href="https://sites.google.com/view/edwardhonda/home" target="_blank">Edward Honda, PhD</a></h3>
-                <p style="color: var(--text-muted);">Assistant Professor</p>
+                <h2>Francophone Immigration Research</h2>
                 <p>
-                    <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
-                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>
+                    I am currently collaborating with 
+                    <a href="https://ustboniface.ca/fzellama" target="_blank"><strong>Professor Faïçal Zellama</strong></a>,
+                    Professeur titulaire d'économie et de gestion at the 
+                    <a href="https://ustboniface.ca" target="_blank" class="inst-usb">Université de Saint-Boniface</a>,
+                    on research examining francophone immigration in Manitoba.
                 </p>
-                <p><strong style="color: var(--text-white);">Research Areas:</strong> Microeconomic Theory, Decision Theory, Market Design</p>
+                <p>
+                    Our work investigates issues of <strong style="color: var(--text-white);">integration</strong> and <strong style="color: var(--text-white);">systemic barriers</strong> faced by francophone immigrants in the province.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>Working Paper: AI & Currency Detection</h2>
+                <p>
+                    I am currently developing a working paper with 
+                    <a href="https://www.morgan.edu/school-of-architecture-and-planning/architecture-urbanism-and-built-environments/phd-student-profiles/derrick-mirindi" target="_blank"><strong>Derrick Mirindi</strong></a>
+                    (<a href="https://www.upenn.edu" target="_blank" class="inst-upenn">University of Pennsylvania</a>)
+                    on the application of <strong style="color: var(--text-white);">YOLO Algorithm</strong> for <strong style="color: var(--text-white);">banknote detection and authentication</strong>.
+                </p>
+                <p>
+                    This research explores machine learning approaches to currency recognition and counterfeit detection systems.
+                </p>
             </div>
 
             <div style="text-align: center; margin-top: 2.5rem;">
@@ -278,94 +305,93 @@
         <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Mobile menu toggle
-        function toggleMenu() {
+    // Mobile menu toggle
+    function toggleMenu() {
+        const menu = document.getElementById('navbar-menu');
+        const icon = document.getElementById('menu-icon');
+        menu.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
             const menu = document.getElementById('navbar-menu');
             const icon = document.getElementById('menu-icon');
-            menu.classList.toggle('active');
-            if (menu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+            menu.classList.remove('active');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+
+    // Geometric network background (same as homepage)
+    (function() {
+        const canvas = document.getElementById('geo-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, points, maxDist;
+
+        function resize() {
+            w = canvas.width = canvas.offsetWidth;
+            h = canvas.height = canvas.offsetHeight;
+            maxDist = 160;
+            initPoints();
+        }
+
+        function initPoints() {
+            const count = Math.floor((w * h) / 12000);
+            points = [];
+            for (let i = 0; i < count; i++) {
+                points.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3
+                });
             }
         }
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('navbar-menu');
-                const icon = document.getElementById('menu-icon');
-                menu.classList.remove('active');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
 
-        // Geometric network background (same as homepage)
-        (function() {
-            const canvas = document.getElementById('geo-canvas');
-            const ctx = canvas.getContext('2d');
-            let w, h, points, maxDist;
-
-            function resize() {
-                w = canvas.width = canvas.offsetWidth;
-                h = canvas.height = canvas.offsetHeight;
-                maxDist = 160;
-                initPoints();
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            for (let p of points) {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > w) p.vx *= -1;
+                if (p.y < 0 || p.y > h) p.vy *= -1;
             }
-
-            function initPoints() {
-                const count = Math.floor((w * h) / 12000);
-                points = [];
-                for (let i = 0; i < count; i++) {
-                    points.push({
-                        x: Math.random() * w,
-                        y: Math.random() * h,
-                        vx: (Math.random() - 0.5) * 0.3,
-                        vy: (Math.random() - 0.5) * 0.3
-                    });
-                }
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, w, h);
-                for (let p of points) {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    if (p.x < 0 || p.x > w) p.vx *= -1;
-                    if (p.y < 0 || p.y > h) p.vy *= -1;
-                }
-                for (let i = 0; i < points.length; i++) {
-                    for (let j = i + 1; j < points.length; j++) {
-                        const dx = points[i].x - points[j].x;
-                        const dy = points[i].y - points[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < maxDist) {
-                            const alpha = (1 - dist / maxDist) * 0.15;
-                            ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';
-                            ctx.lineWidth = 0.5;
-                            ctx.beginPath();
-                            ctx.moveTo(points[i].x, points[i].y);
-                            ctx.lineTo(points[j].x, points[j].y);
-                            ctx.stroke();
-                        }
+            for (let i = 0; i < points.length; i++) {
+                for (let j = i + 1; j < points.length; j++) {
+                    const dx = points[i].x - points[j].x;
+                    const dy = points[i].y - points[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < maxDist) {
+                        const alpha = (1 - dist / maxDist) * 0.15;
+                        ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(points[i].x, points[i].y);
+                        ctx.lineTo(points[j].x, points[j].y);
+                        ctx.stroke();
                     }
                 }
-                for (let p of points) {
-                    ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                requestAnimationFrame(draw);
             }
+            for (let p of points) {
+                ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            requestAnimationFrame(draw);
+        }
 
-            window.addEventListener('resize', resize);
-            resize();
-            draw();
-        })();
+        window.addEventListener('resize', resize);
+        resize();
+        draw();
+    })();
     </script>
 </body>
 </html>
