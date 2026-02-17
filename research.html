@@ -73,15 +73,8 @@
             gap: 0.75rem;
         }
 
-        .navbar-brand h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .navbar-brand img {
-            height: 2rem;
-            opacity: 0.9;
-        }
+        .navbar-brand h1 { font-size: 1.5rem; font-weight: bold; }
+        .navbar-brand img { height: 2rem; opacity: 0.9; }
 
         .navbar-menu {
             display: flex;
@@ -112,13 +105,8 @@
             text-decoration: none;
         }
 
-        .nav-link.active {
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        .nav-link i {
-            font-size: 1rem;
-        }
+        .nav-link.active { border-bottom: 2px solid var(--accent-color); }
+        .nav-link i { font-size: 1rem; }
 
         .social-icons {
             display: flex;
@@ -130,9 +118,7 @@
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        .social-icon:hover {
-            transform: translateY(-2px);
-        }
+        .social-icon:hover { transform: translateY(-2px); }
 
         /* Colorful icons */
         .icon-orcid { color: var(--orcid-green); }
@@ -144,15 +130,8 @@
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
 
-        main {
-            flex: 1;
-            padding: 3rem 1.5rem;
-        }
-
-        .container {
-            max-width: 48rem;
-            margin: 0 auto;
-        }
+        main { flex: 1; padding: 3rem 1.5rem; }
+        .container { max-width: 48rem; margin: 0 auto; }
 
         .card {
             background: var(--glass-bg);
@@ -167,15 +146,137 @@
             text-align: center;
             border-top: 1px solid var(--glass-border);
         }
+        footer p { font-size: 0.875rem; color: var(--text-muted); }
 
-        footer p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        /* ========== RESPONSIVE: Tablet (768px and below) ========== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 100;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+                padding: 0.75rem 1.5rem;
+            }
+
+            .social-icons {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                font-size: 1.5rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.25rem;
+            }
+
+            .navbar-brand img {
+                height: 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            .card {
+                padding: 1rem;
+            }
+
+            h1.text-gradient {
+                font-size: 2rem;
+            }
+        }
+
+        /* ========== RESPONSIVE: Phone (480px and below) ========== */
+        @media (max-width: 480px) {
+            main {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .navbar {
+                padding: 0.5rem 0.75rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.1rem;
+            }
+
+            body {
+                font-size: 0.95rem;
+            }
+
+            .card {
+                padding: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            h1.text-gradient {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Professional Navigation Bar -->
+
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
@@ -186,15 +287,16 @@
                     <img src="images/University-of-Manitoba.png" alt="University of Manitoba">
                 </a>
             </div>
-            <div class="navbar-menu">
+            <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
                 <div class="nav-links">
                     <a href="index.html" class="nav-link">
-                        <i class="fas fa-home"></i>
-                        Home
+                        <i class="fas fa-home"></i> Home
                     </a>
                     <a href="research.html" class="nav-link active">
-                        <i class="fas fa-flask"></i>
-                        Research
+                        <i class="fas fa-flask"></i> Research
                     </a>
                 </div>
                 <div class="social-icons">
@@ -218,49 +320,36 @@
     <!-- Main Content -->
     <main>
         <div class="container">
-            <!-- Title -->
-            <h1 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 2rem;">
-                <span class="text-gradient">Research</span>
-            </h1>
+            <h1 class="text-gradient" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 2rem;"> Research </h1>
 
-            <!-- Current Research -->
-            <section style="margin-bottom: 3rem;">
-                <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Current Research</h2>
-                <div class="card">
-                    <p style="color: var(--text-muted); margin-bottom: 1rem;">
-                        My doctoral research is conducted under the supervision of 
-                        <a href="https://sites.google.com/view/edwardhonda/home" target="_blank"><strong>Professor Edward Honda</strong></a> 
-                        at the <a href="https://umanitoba.ca/arts/economics" target="_blank" class="inst-uofm">Department of Economics</a>, 
-                        <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
-                    </p>
-                    <p style="color: var(--text-muted);">
-                        My field paper focuses on <strong style="color: var(--text-primary);">Decision Theory</strong>, with particular emphasis on 
-                        <strong style="color: var(--text-primary);">Random Expected Utility</strong> models.
-                    </p>
-                </div>
-            </section>
+            <div class="card">
+                <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Current Research</h2>
+                <p style="margin-bottom: 1rem;">
+                    My doctoral research is conducted under the supervision of
+                    <a href="https://sites.google.com/view/edwardhonda/home" target="_blank"><strong>Professor Edward Honda</strong></a>
+                    at the <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
+                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
+                </p>
+                <p>
+                    My field paper focuses on <strong>Decision Theory</strong>, with particular emphasis on <strong>Random Expected Utility</strong> models.
+                </p>
+            </div>
 
-            <!-- Supervisor -->
-            <section style="margin-bottom: 3rem;">
-                <h2 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;">Supervisor</h2>
-                <div class="card">
-                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;">
-                        <a href="https://sites.google.com/view/edwardhonda/home" target="_blank">Edward Honda, PhD</a>
-                    </h3>
-                    <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Assistant Professor</p>
-                    <p style="color: var(--text-muted); margin-bottom: 0.5rem;">
-                        <a href="https://umanitoba.ca/arts/economics" target="_blank" class="inst-uofm">Department of Economics</a>, 
-                        <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>
-                    </p>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">
-                        <strong>Research Areas:</strong> Microeconomic Theory, Decision Theory, Market Design
-                    </p>
-                </div>
-            </section>
+            <div class="card">
+                <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Supervisor</h2>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    <a href="https://sites.google.com/view/edwardhonda/home" target="_blank">Edward Honda, PhD</a>
+                </h3>
+                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Assistant Professor</p>
+                <p style="margin-bottom: 0.75rem;">
+                    <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
+                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>
+                </p>
+                <p><strong>Research Areas:</strong> Microeconomic Theory, Decision Theory, Market Design</p>
+            </div>
 
-            <!-- Back to Home -->
             <div style="text-align: center; margin-top: 2rem;">
-                <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-muted); transition: all 0.3s ease; text-decoration: none;">
+                <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-primary); text-decoration: none; transition: all 0.3s ease;">
                     <i class="fas fa-arrow-left"></i>
                     Back to Home
                 </a>
@@ -272,5 +361,32 @@
     <footer>
         <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
     </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navbar-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Close menu when a nav link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('navbar-menu');
+                const icon = document.getElementById('menu-icon');
+                menu.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
 </body>
 </html>
