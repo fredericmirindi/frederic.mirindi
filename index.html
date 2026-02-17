@@ -45,11 +45,12 @@
         :root {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
-            --text-primary: #ffffff;
+            --text-primary: #e0e0e0;
+            --text-white: #ffffff;
             --text-muted: #9ca3af;
-            --accent-color: #4dd8d8;
-            --gradient-start: #4dd8d8;
-            --gradient-end: #5ce1e1;
+            --accent-color: #00e5e5;
+            --gradient-start: #00e5e5;
+            --gradient-end: #00c8c8;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --uofm-gold: #f2a900;
@@ -66,36 +67,29 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            overflow-x: hidden;
         }
 
         a { color: var(--accent-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* Navigation Bar */
+        /* Navbar */
         .navbar {
-            background: var(--bg-secondary);
+            background: rgba(10, 10, 15, 0.85);
             border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 1.5rem;
-            position: sticky;
+            padding: 0.75rem 2rem;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
-
         .navbar-container {
             max-width: 80rem;
             margin: 0 auto;
@@ -103,67 +97,28 @@
             align-items: center;
             justify-content: space-between;
         }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .navbar-brand h1 { font-size: 1.5rem; font-weight: bold; }
-        .navbar-brand img { height: 2rem; opacity: 0.9; }
-
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-        }
-
+        .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
+        .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
+        .navbar-brand img { height: 1.75rem; opacity: 0.9; }
+        .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links { display: flex; gap: 0.25rem; }
         .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding: 0.4rem 0.9rem; border-radius: 0.4rem;
+            color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
+            transition: all 0.3s ease; text-decoration: none;
         }
-
-        .nav-link:hover, .nav-link.active {
-            background: var(--glass-bg);
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
+        .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
         .nav-link.active { border-bottom: 2px solid var(--accent-color); }
-        .nav-link i { font-size: 1rem; }
-
-        .social-icons-nav {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            font-size: 1.25rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
+        .social-icons-nav { display: flex; gap: 0.75rem; }
+        .social-icon { font-size: 1.1rem; transition: transform 0.3s ease, color 0.3s ease; }
         .social-icon:hover { transform: translateY(-2px); }
-
-        /* Icon colors */
         .icon-linkedin { color: var(--linkedin-blue); }
         .icon-orcid { color: var(--orcid-green); }
         .icon-scholar { color: var(--scholar-blue); }
         .icon-researchgate { color: var(--researchgate-cyan); }
 
-        /* Institution link colors */
+        /* Institution colors */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
         .inst-aerc { color: var(--aerc-green); }
@@ -175,165 +130,176 @@
         .inst-canadalife { color: var(--canadalife-green); }
         .inst-canadalife:hover { color: var(--canadalife-green); opacity: 0.8; }
 
-        /* Profile picture */
-        .profile-section { display: flex; justify-content: center; margin-bottom: 2rem; }
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color);
-            box-shadow: 0 0 20px rgba(77, 216, 216, 0.3);
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 5rem 4rem 3rem 4rem;
         }
 
-        /* Academic icons below View Research */
+        /* Geometric background canvas */
+        #geo-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 80rem;
+            margin: 0 auto;
+            width: 100%;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(100, 100, 100, 0.4);
+            box-shadow: 0 0 40px rgba(0, 229, 229, 0.1), 0 0 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-heading {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 1.75rem;
+            color: var(--text-white);
+        }
+
+        .text-accent {
+            color: var(--accent-color);
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .research-quote {
+            border-left: 3px solid var(--accent-color);
+            padding-left: 1rem;
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Button */
+        .btn-research {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 2rem;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-research:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Academic icons */
         .academic-icons {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.25rem;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
         }
-        .academic-icons .social-icon { font-size: 1.5rem; }
+        .academic-icons .social-icon { font-size: 1.4rem; }
 
-        main { flex: 1; padding: 3rem 1.5rem; }
-        .container { max-width: 48rem; margin: 0 auto; }
-
+        /* Footer */
         footer {
             padding: 1.5rem;
             text-align: center;
             border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 1;
         }
-        footer p { font-size: 0.875rem; color: var(--text-muted); }
+        footer p { font-size: 0.8rem; color: var(--text-muted); }
 
-        /* Hamburger Menu Button */
+        /* Hamburger */
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
+            color: var(--text-white);
+            font-size: 1.4rem;
             cursor: pointer;
             padding: 0.5rem;
             z-index: 101;
         }
 
-        /* ========== RESPONSIVE: Tablet (768px and below) ========== */
+        /* ========== RESPONSIVE: Tablet ========== */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar {
-                padding: 0.75rem 1rem;
-            }
-
+            .menu-toggle { display: block; }
+            .navbar { padding: 0.6rem 1rem; }
             .navbar-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+                display: none; position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
                 background: var(--bg-secondary);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                flex-direction: column; align-items: center; justify-content: center;
+                gap: 2rem; z-index: 100;
+            }
+            .navbar-menu.active { display: flex; }
+            .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
+            .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
+            .social-icons-nav { gap: 1.5rem; }
+            .social-icon { font-size: 1.4rem; }
+            .hero {
+                padding: 5rem 1.5rem 2rem 1.5rem;
+            }
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
                 gap: 2rem;
-                z-index: 100;
             }
-
-            .navbar-menu.active {
-                display: flex;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .nav-link {
-                font-size: 1.25rem;
-                padding: 0.75rem 1.5rem;
-            }
-
-            .social-icons-nav {
-                gap: 1.5rem;
-            }
-
-            .social-icon {
-                font-size: 1.5rem;
-            }
-
-            .navbar-brand h1 {
-                font-size: 1.25rem;
-            }
-
-            .navbar-brand img {
-                height: 1.5rem;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            .container {
-                max-width: 100%;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
+            .hero-text { max-width: 100%; }
+            .hero-heading { font-size: 2.2rem; }
+            .profile-img { width: 220px; height: 220px; }
+            .research-quote { text-align: left; }
+            .btn-research { margin: 0 auto; }
+            .academic-icons { justify-content: center; }
         }
 
-        /* ========== RESPONSIVE: Phone (480px and below) ========== */
+        /* ========== RESPONSIVE: Phone ========== */
         @media (max-width: 480px) {
-            main {
-                padding: 1.5rem 0.75rem;
-            }
-
-            .navbar {
-                padding: 0.5rem 0.75rem;
-            }
-
-            .navbar-brand h1 {
-                font-size: 1.1rem;
-            }
-
-            h2 {
-                font-size: 1.4rem;
-            }
-
-            body {
-                font-size: 0.95rem;
-            }
-
-            .profile-img {
-                width: 100px;
-                height: 100px;
-            }
-
-            .academic-icons {
-                gap: 1rem;
-            }
-
-            .academic-icons .social-icon {
-                font-size: 1.25rem;
-            }
-
-            footer {
-                padding: 1rem;
-            }
-
-            footer p {
-                font-size: 0.75rem;
-            }
+            .hero { padding: 4.5rem 1rem 1.5rem 1rem; }
+            .hero-heading { font-size: 1.8rem; }
+            .hero-text p { font-size: 0.9rem; }
+            .profile-img { width: 180px; height: 180px; }
+            .navbar-brand h1 { font-size: 1.1rem; }
+            footer { padding: 1rem; }
+            footer p { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -343,7 +309,7 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
-                <a href="index.html" class="text-gradient" style="text-decoration: none;">
+                <a href="index.html" style="text-decoration: none;">
                     <h1>Frédéric Mirindi</h1>
                 </a>
                 <a href="https://umanitoba.ca" target="_blank" title="University of Manitoba">
@@ -355,81 +321,80 @@
             </button>
             <div class="navbar-menu" id="navbar-menu">
                 <div class="nav-links">
-                    <a href="index.html" class="nav-link active">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                    <a href="research.html" class="nav-link">
-                        <i class="fas fa-flask"></i> Research
-                    </a>
+                    <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                    <a href="research.html" class="nav-link"><i class="fas fa-flask"></i> Research</a>
                 </div>
                 <div class="social-icons-nav">
-                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <div class="container">
-            <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1.5rem; line-height: 1.2;">
-                Game Theory,<br>
-                <span class="text-gradient">Decision Theory & Mechanism Design.</span>
-            </h2>
+    <!-- Hero Section -->
+    <section class="hero">
+        <canvas id="geo-canvas"></canvas>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-heading">
+                    Game Theory,<br>
+                    <span class="text-accent">Decision Theory &amp;<br>Mechanism Design.</span>
+                </h2>
 
-            <p style="margin-bottom: 1.5rem;">
-                <strong>Frédéric Mirindi</strong> is a Canadian Economist and PhD Candidate in Economics and Econometrics at the
-                <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
-            </p>
+                <p>
+                    <strong style="color: var(--text-white);">Frédéric Mirindi</strong> is a Canadian Economist and PhD Candidate
+                    in Economics and Econometrics at the
+                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
+                </p>
 
-            <p style="margin-bottom: 1.5rem;">
-                He holds a Master's degree in Development Economics from the
-                <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a> and attended the
-                <a href="https://aercafrica.org" target="_blank" class="inst-aerc">African Economic Research Consortium (AERC)</a>.
-                He serves as a Lecturer at
-                <a href="https://ustboniface.ca" target="_blank" class="inst-usb">Université de Saint-Boniface</a> and
-                <a href="https://boothuc.ca" target="_blank" class="inst-booth">Booth University College</a>,
-                bringing industry experience from his previous role as a Data Scientist at
-                <a href="https://www.canadalife.com" target="_blank" class="inst-canadalife">Canada Life</a>.
-            </p>
+                <p>
+                    He holds a Master's degree in Development Economics from the
+                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>
+                    and attended the
+                    <a href="https://aercafrica.org" target="_blank" class="inst-aerc">African Economic Research Consortium (AERC)</a>.
+                    He serves as a Lecturer at
+                    <a href="https://ustboniface.ca" target="_blank" class="inst-usb">Université de Saint-Boniface</a> and
+                    <a href="https://boothuc.ca" target="_blank" class="inst-booth">Booth University College</a>,
+                    bringing industry experience from his previous role as a Data Scientist at
+                    <a href="https://www.canadalife.com" target="_blank" class="inst-canadalife">Canada Life</a>.
+                </p>
 
-            <p style="border-left: 2px solid var(--accent-color); padding-left: 1rem; font-style: italic;">
-                His research centers on game theory and decision theory, with particular emphasis on mechanism design,
-                information cascades, strategic interaction models, and the formal analysis of rational decision-making under uncertainty.
-            </p>
-        </div>
+                <p class="research-quote">
+                    His research centers on game theory and decision theory, with particular emphasis on mechanism design,
+                    information cascades, strategic interaction models, and the formal analysis of rational decision-making under uncertainty.
+                </p>
 
-        <!-- View Research Button -->
-        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
-            <a href="research.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-primary); text-decoration: none; transition: all 0.3s ease;">
-                <i class="fas fa-book-open"></i>
-                View Research
-            </a>
-
-            <!-- Academic Icons -->
-            <div class="academic-icons">
-                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
-                    <i class="fab fa-orcid"></i>
+                <a href="research.html" class="btn-research">
+                    <i class="fas fa-book-open"></i> View Research
                 </a>
-                <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
-                    <i class="fas fa-graduation-cap"></i>
-                </a>
-                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
-                    <i class="fab fa-researchgate"></i>
-                </a>
+
+                <div class="academic-icons">
+                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
+                        <i class="fab fa-orcid"></i>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
+                        <i class="fab fa-researchgate"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-photo">
+                <img src="images/fredericprofil.jpeg" alt="Frédéric Mirindi" class="profile-img">
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
     </footer>
 
-    <!-- Mobile Menu Toggle Script -->
+    <!-- Scripts -->
     <script>
+        // Mobile menu toggle
         function toggleMenu() {
             const menu = document.getElementById('navbar-menu');
             const icon = document.getElementById('menu-icon');
@@ -442,8 +407,6 @@
                 icon.classList.add('fa-bars');
             }
         }
-
-        // Close menu when a nav link is clicked
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 const menu = document.getElementById('navbar-menu');
@@ -453,6 +416,73 @@
                 icon.classList.add('fa-bars');
             });
         });
+
+        // Geometric network background
+        (function() {
+            const canvas = document.getElementById('geo-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, points, maxDist;
+
+            function resize() {
+                w = canvas.width = canvas.offsetWidth;
+                h = canvas.height = canvas.offsetHeight;
+                maxDist = 160;
+                initPoints();
+            }
+
+            function initPoints() {
+                const count = Math.floor((w * h) / 12000);
+                points = [];
+                for (let i = 0; i < count; i++) {
+                    points.push({
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                // Move points
+                for (let p of points) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                }
+                // Draw lines
+                for (let i = 0; i < points.length; i++) {
+                    for (let j = i + 1; j < points.length; j++) {
+                        const dx = points[i].x - points[j].x;
+                        const dy = points[i].y - points[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < maxDist) {
+                            const alpha = (1 - dist / maxDist) * 0.15;
+                            ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(points[i].x, points[i].y);
+                            ctx.lineTo(points[j].x, points[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                // Draw dots
+                for (let p of points) {
+                    ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            draw();
+        })();
     </script>
 </body>
 </html>
