@@ -363,6 +363,7 @@
                 </div>
                 <div class="social-icons-nav">
                     <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                                        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></button>
                 </div>
             </div>
         </div>
@@ -432,6 +433,29 @@
 
     <!-- Scripts -->
     <script>
+                // Theme toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Load saved theme on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.classList.remove('dark', 'light');
+                document.documentElement.classList.add(savedTheme);
+            }
+        })();
+
         // Mobile menu toggle
         function toggleMenu() {
             const menu = document.getElementById('navbar-menu');
