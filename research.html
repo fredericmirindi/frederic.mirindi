@@ -10,16 +10,15 @@
         :root {
             --bg-primary: #0a0a0f;
             --bg-secondary: #12121a;
-            --text-primary: #ffffff;
+            --text-primary: #e0e0e0;
+            --text-white: #ffffff;
             --text-muted: #9ca3af;
-            --accent-color: #60a5fa;
-            --gradient-start: #3b82f6;
-            --gradient-end: #8b5cf6;
+            --accent-color: #00e5e5;
+            --gradient-start: #00e5e5;
+            --gradient-end: #00c8c8;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
-            /* Institution colors */
             --uofm-gold: #f2a900;
-            /* Icon colors */
             --orcid-green: #a6ce39;
             --scholar-blue: #4285f4;
             --researchgate-cyan: #00d0af;
@@ -29,258 +28,192 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.7;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            overflow-x: hidden;
         }
 
         a { color: var(--accent-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* Professional Navigation Bar */
+        /* Navbar */
         .navbar {
-            background: var(--bg-secondary);
+            background: rgba(10, 10, 15, 0.85);
             border-bottom: 1px solid var(--glass-border);
-            padding: 1rem 1.5rem;
-            position: sticky;
-            top: 0;
+            padding: 0.75rem 2rem;
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
         }
-
         .navbar-container {
-            max-width: 80rem;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            max-width: 80rem; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
         }
-
-        .navbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .navbar-brand h1 { font-size: 1.5rem; font-weight: bold; }
-        .navbar-brand img { height: 2rem; opacity: 0.9; }
-
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-        }
-
+        .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
+        .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
+        .navbar-brand img { height: 1.75rem; opacity: 0.9; }
+        .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links { display: flex; gap: 0.25rem; }
         .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: flex; align-items: center; gap: 0.4rem;
+            padding: 0.4rem 0.9rem; border-radius: 0.4rem;
+            color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
+            transition: all 0.3s ease; text-decoration: none;
         }
-
-        .nav-link:hover, .nav-link.active {
-            background: var(--glass-bg);
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
+        .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
         .nav-link.active { border-bottom: 2px solid var(--accent-color); }
-        .nav-link i { font-size: 1rem; }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-icon {
-            font-size: 1.25rem;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
+        .social-icons-nav { display: flex; gap: 0.75rem; }
+        .social-icon { font-size: 1.1rem; transition: transform 0.3s ease, color 0.3s ease; }
         .social-icon:hover { transform: translateY(-2px); }
-
-        /* Colorful icons */
+        .icon-linkedin { color: var(--linkedin-blue); }
         .icon-orcid { color: var(--orcid-green); }
         .icon-scholar { color: var(--scholar-blue); }
         .icon-researchgate { color: var(--researchgate-cyan); }
-        .icon-linkedin { color: var(--linkedin-blue); }
 
-        /* Institution link colors */
+        /* Institution */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
 
-        main { flex: 1; padding: 3rem 1.5rem; }
-        .container { max-width: 48rem; margin: 0 auto; }
-
-        .card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+        /* Page section with geometric bg */
+        .page-section {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 4rem 3rem 4rem;
+        }
+        #geo-canvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+        .page-content {
+            position: relative;
+            z-index: 1;
+            max-width: 52rem;
+            margin: 0 auto;
         }
 
+        /* Page heading */
+        .page-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(5px);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+        .card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+        }
+        .card p {
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+        .card p:last-child { margin-bottom: 0; }
+
+        /* Button */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 2rem;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Footer */
         footer {
             padding: 1.5rem;
             text-align: center;
             border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 1;
         }
-        footer p { font-size: 0.875rem; color: var(--text-muted); }
+        footer p { font-size: 0.8rem; color: var(--text-muted); }
 
-        /* Hamburger Menu Button */
+        /* Hamburger */
         .menu-toggle {
             display: none;
             background: none;
             border: none;
-            color: var(--text-primary);
-            font-size: 1.5rem;
+            color: var(--text-white);
+            font-size: 1.4rem;
             cursor: pointer;
             padding: 0.5rem;
             z-index: 101;
         }
 
-        /* ========== RESPONSIVE: Tablet (768px and below) ========== */
+        /* ========== RESPONSIVE: Tablet ========== */
         @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .navbar {
-                padding: 0.75rem 1rem;
-            }
-
+            .menu-toggle { display: block; }
+            .navbar { padding: 0.6rem 1rem; }
             .navbar-menu {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+                display: none; position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
                 background: var(--bg-secondary);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                z-index: 100;
+                flex-direction: column; align-items: center; justify-content: center;
+                gap: 2rem; z-index: 100;
             }
-
-            .navbar-menu.active {
-                display: flex;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .nav-link {
-                font-size: 1.25rem;
-                padding: 0.75rem 1.5rem;
-            }
-
-            .social-icons {
-                gap: 1.5rem;
-            }
-
-            .social-icon {
-                font-size: 1.5rem;
-            }
-
-            .navbar-brand h1 {
-                font-size: 1.25rem;
-            }
-
-            .navbar-brand img {
-                height: 1.5rem;
-            }
-
-            main {
-                padding: 2rem 1rem;
-            }
-
-            .container {
-                max-width: 100%;
-            }
-
-            .card {
-                padding: 1rem;
-            }
-
-            h1.text-gradient {
-                font-size: 2rem;
-            }
+            .navbar-menu.active { display: flex; }
+            .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
+            .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
+            .social-icons-nav { gap: 1.5rem; }
+            .social-icon { font-size: 1.4rem; }
+            .page-section { padding: 5rem 1.5rem 2rem 1.5rem; }
+            .page-heading { font-size: 2rem; }
+            .card { padding: 1.25rem; }
         }
 
-        /* ========== RESPONSIVE: Phone (480px and below) ========== */
+        /* ========== RESPONSIVE: Phone ========== */
         @media (max-width: 480px) {
-            main {
-                padding: 1.5rem 0.75rem;
-            }
-
-            .navbar {
-                padding: 0.5rem 0.75rem;
-            }
-
-            .navbar-brand h1 {
-                font-size: 1.1rem;
-            }
-
-            body {
-                font-size: 0.95rem;
-            }
-
-            .card {
-                padding: 0.75rem;
-                margin-bottom: 1.5rem;
-            }
-
-            h1.text-gradient {
-                font-size: 1.6rem;
-            }
-
-            h2 {
-                font-size: 1.25rem;
-            }
-
-            footer {
-                padding: 1rem;
-            }
-
-            footer p {
-                font-size: 0.75rem;
-            }
+            .page-section { padding: 4.5rem 1rem 1.5rem 1rem; }
+            .page-heading { font-size: 1.6rem; }
+            .card { padding: 1rem; }
+            .card h2 { font-size: 1.2rem; }
+            .navbar-brand h1 { font-size: 1.1rem; }
+            footer { padding: 1rem; }
+            footer p { font-size: 0.7rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    <!-- Navigation Bar (matches homepage) -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
-                <a href="index.html" class="text-gradient" style="text-decoration: none;">
+                <a href="index.html" style="text-decoration: none;">
                     <h1>Frédéric Mirindi</h1>
                 </a>
                 <a href="https://umanitoba.ca" target="_blank" title="University of Manitoba">
@@ -292,78 +225,62 @@
             </button>
             <div class="navbar-menu" id="navbar-menu">
                 <div class="nav-links">
-                    <a href="index.html" class="nav-link">
-                        <i class="fas fa-home"></i> Home
-                    </a>
-                    <a href="research.html" class="nav-link active">
-                        <i class="fas fa-flask"></i> Research
-                    </a>
+                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="research.html" class="nav-link active"><i class="fas fa-flask"></i> Research</a>
                 </div>
-                <div class="social-icons">
-                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
-                        <i class="fab fa-orcid"></i>
-                    </a>
-                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
-                        <i class="fas fa-graduation-cap"></i>
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
-                        <i class="fab fa-researchgate"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
+                <div class="social-icons-nav">
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-        <div class="container">
-            <h1 class="text-gradient" style="font-size: 2.5rem; font-weight: bold; margin-bottom: 2rem;"> Research </h1>
+    <!-- Page Section with Geometric Background -->
+    <section class="page-section">
+        <canvas id="geo-canvas"></canvas>
+        <div class="page-content">
+            <h1 class="page-heading">Research</h1>
 
             <div class="card">
-                <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Current Research</h2>
-                <p style="margin-bottom: 1rem;">
+                <h2>Current Research</h2>
+                <p>
                     My doctoral research is conducted under the supervision of
                     <a href="https://sites.google.com/view/edwardhonda/home" target="_blank"><strong>Professor Edward Honda</strong></a>
                     at the <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
                     <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
                 </p>
                 <p>
-                    My field paper focuses on <strong>Decision Theory</strong>, with particular emphasis on <strong>Random Expected Utility</strong> models.
+                    My field paper focuses on <strong style="color: var(--text-white);">Decision Theory</strong>, with particular emphasis on <strong style="color: var(--text-white);">Random Expected Utility</strong> models.
                 </p>
             </div>
 
             <div class="card">
-                <h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Supervisor</h2>
-                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">
-                    <a href="https://sites.google.com/view/edwardhonda/home" target="_blank">Edward Honda, PhD</a>
-                </h3>
-                <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Assistant Professor</p>
-                <p style="margin-bottom: 0.75rem;">
+                <h2>Supervisor</h2>
+                <h3><a href="https://sites.google.com/view/edwardhonda/home" target="_blank">Edward Honda, PhD</a></h3>
+                <p style="color: var(--text-muted);">Assistant Professor</p>
+                <p>
                     <a href="https://umanitoba.ca/arts/economics" target="_blank">Department of Economics</a>,
                     <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>
                 </p>
-                <p><strong>Research Areas:</strong> Microeconomic Theory, Decision Theory, Market Design</p>
+                <p><strong style="color: var(--text-white);">Research Areas:</strong> Microeconomic Theory, Decision Theory, Market Design</p>
             </div>
 
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-primary); text-decoration: none; transition: all 0.3s ease;">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Home
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <a href="index.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Home
                 </a>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
     </footer>
 
-    <!-- Mobile Menu Toggle Script -->
+    <!-- Scripts -->
     <script>
+        // Mobile menu toggle
         function toggleMenu() {
             const menu = document.getElementById('navbar-menu');
             const icon = document.getElementById('menu-icon');
@@ -376,8 +293,6 @@
                 icon.classList.add('fa-bars');
             }
         }
-
-        // Close menu when a nav link is clicked
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 const menu = document.getElementById('navbar-menu');
@@ -387,6 +302,70 @@
                 icon.classList.add('fa-bars');
             });
         });
+
+        // Geometric network background (same as homepage)
+        (function() {
+            const canvas = document.getElementById('geo-canvas');
+            const ctx = canvas.getContext('2d');
+            let w, h, points, maxDist;
+
+            function resize() {
+                w = canvas.width = canvas.offsetWidth;
+                h = canvas.height = canvas.offsetHeight;
+                maxDist = 160;
+                initPoints();
+            }
+
+            function initPoints() {
+                const count = Math.floor((w * h) / 12000);
+                points = [];
+                for (let i = 0; i < count; i++) {
+                    points.push({
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, w, h);
+                for (let p of points) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                }
+                for (let i = 0; i < points.length; i++) {
+                    for (let j = i + 1; j < points.length; j++) {
+                        const dx = points[i].x - points[j].x;
+                        const dy = points[i].y - points[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < maxDist) {
+                            const alpha = (1 - dist / maxDist) * 0.15;
+                            ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(points[i].x, points[i].y);
+                            ctx.lineTo(points[j].x, points[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                for (let p of points) {
+                    ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            draw();
+        })();
     </script>
 </body>
 </html>
