@@ -85,6 +85,7 @@
         a { color: var(--accent-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
+        /* Navigation Bar */
         .navbar {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--glass-border);
@@ -94,6 +95,7 @@
             z-index: 100;
             backdrop-filter: blur(10px);
         }
+
         .navbar-container {
             max-width: 80rem;
             margin: 0 auto;
@@ -101,15 +103,27 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .navbar-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
+
         .navbar-brand h1 { font-size: 1.5rem; font-weight: bold; }
         .navbar-brand img { height: 2rem; opacity: 0.9; }
-        .navbar-menu { display: flex; align-items: center; gap: 2rem; }
-        .nav-links { display: flex; gap: 0.5rem; }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
         .nav-link {
             display: flex;
             align-items: center;
@@ -121,26 +135,35 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
+
         .nav-link:hover, .nav-link.active {
             background: var(--glass-bg);
             color: var(--text-primary);
             text-decoration: none;
         }
+
         .nav-link.active { border-bottom: 2px solid var(--accent-color); }
         .nav-link i { font-size: 1rem; }
 
-        .social-icons-nav { display: flex; gap: 1rem; }
+        .social-icons-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
         .social-icon {
             font-size: 1.25rem;
             transition: transform 0.3s ease, color 0.3s ease;
         }
-        .social-icon:hover { transform: translateY(-2px); }
-        .icon-linkedin { color: var(--linkedin-blue); }
 
+        .social-icon:hover { transform: translateY(-2px); }
+
+        /* Icon colors */
+        .icon-linkedin { color: var(--linkedin-blue); }
         .icon-orcid { color: var(--orcid-green); }
         .icon-scholar { color: var(--scholar-blue); }
         .icon-researchgate { color: var(--researchgate-cyan); }
 
+        /* Institution link colors */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
         .inst-aerc { color: var(--aerc-green); }
@@ -153,11 +176,7 @@
         .inst-canadalife:hover { color: var(--canadalife-green); opacity: 0.8; }
 
         /* Profile picture */
-        .profile-section {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
+        .profile-section { display: flex; justify-content: center; margin-bottom: 2rem; }
         .profile-img {
             width: 160px;
             height: 160px;
@@ -175,21 +194,151 @@
             gap: 1.5rem;
             margin-top: 1.25rem;
         }
-        .academic-icons .social-icon {
-            font-size: 1.5rem;
-        }
+        .academic-icons .social-icon { font-size: 1.5rem; }
 
         main { flex: 1; padding: 3rem 1.5rem; }
         .container { max-width: 48rem; margin: 0 auto; }
+
         footer {
             padding: 1.5rem;
             text-align: center;
             border-top: 1px solid var(--glass-border);
         }
         footer p { font-size: 0.875rem; color: var(--text-muted); }
+
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        /* ========== RESPONSIVE: Tablet (768px and below) ========== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .navbar {
+                padding: 0.75rem 1rem;
+            }
+
+            .navbar-menu {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--bg-secondary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 100;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 1.25rem;
+                padding: 0.75rem 1.5rem;
+            }
+
+            .social-icons-nav {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                font-size: 1.5rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.25rem;
+            }
+
+            .navbar-brand img {
+                height: 1.5rem;
+            }
+
+            main {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* ========== RESPONSIVE: Phone (480px and below) ========== */
+        @media (max-width: 480px) {
+            main {
+                padding: 1.5rem 0.75rem;
+            }
+
+            .navbar {
+                padding: 0.5rem 0.75rem;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            body {
+                font-size: 0.95rem;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .academic-icons {
+                gap: 1rem;
+            }
+
+            .academic-icons .social-icon {
+                font-size: 1.25rem;
+            }
+
+            footer {
+                padding: 1rem;
+            }
+
+            footer p {
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
+
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
@@ -201,7 +350,10 @@
                     <img src="images/University-of-Manitoba.png" alt="University of Manitoba">
                 </a>
             </div>
-            <div class="navbar-menu">
+            <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+                <i class="fas fa-bars" id="menu-icon"></i>
+            </button>
+            <div class="navbar-menu" id="navbar-menu">
                 <div class="nav-links">
                     <a href="index.html" class="nav-link active">
                         <i class="fas fa-home"></i> Home
@@ -222,55 +374,51 @@
     <!-- Main Content -->
     <main>
         <div class="container">
-            <!-- Profile Picture -->
-            <div class="profile-section">
-                <img src="images/fredericprofil.jpeg" alt="Frédéric Mirindi" class="profile-img">
-            </div>
-
-            <!-- Title -->
-            <h2 style="font-size: 2.5rem; font-weight: bold; line-height: 1.2; margin-bottom: 2rem;">
+            <h2 style="font-size: 2.5rem; font-weight: bold; margin-bottom: 1.5rem; line-height: 1.2;">
                 Game Theory,<br>
-                <span class="text-gradient">Decision Theory &amp; Mechanism Design.</span>
+                <span class="text-gradient">Decision Theory & Mechanism Design.</span>
             </h2>
 
-            <!-- Bio -->
-            <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 1.125rem; color: var(--text-muted); line-height: 1.8;">
-                <p>
-                    <strong style="color: var(--text-primary);">Frédéric Mirindi</strong> is a Canadian Economist and PhD Candidate in Economics and Econometrics at the
-                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
-                </p>
-                <p>
-                    He holds a Master's degree in Development Economics from the
-                    <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a> and attended the
-                    <a href="https://aercafrica.org" target="_blank" class="inst-aerc">African Economic Research Consortium (AERC)</a>.
-                    He serves as a Lecturer at <a href="https://ustboniface.ca" target="_blank" class="inst-usb">Université de Saint-Boniface</a>
-                    and <a href="https://boothuc.ca" target="_blank" class="inst-booth">Booth University College</a>, bringing industry experience
-                    from his previous role as a Data Scientist at <a href="https://www.canadalife.com" target="_blank" class="inst-canadalife">Canada Life</a>.
-                </p>
-                <p style="border-left: 2px solid var(--accent-color); padding-left: 1rem; font-style: italic;">
-                    His research centers on game theory and decision theory, with particular emphasis on mechanism design,
-                    information cascades, strategic interaction models, and the formal analysis of rational decision-making under uncertainty.
-                </p>
-            </div>
+            <p style="margin-bottom: 1.5rem;">
+                <strong>Frédéric Mirindi</strong> is a Canadian Economist and PhD Candidate in Economics and Econometrics at the
+                <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
+            </p>
 
-            <!-- View Research Button -->
-            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
-                <a href="research.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-muted); transition: all 0.3s ease; text-decoration: none;">
-                    <i class="fas fa-book-open"></i>
-                    View Research
+            <p style="margin-bottom: 1.5rem;">
+                He holds a Master's degree in Development Economics from the
+                <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a> and attended the
+                <a href="https://aercafrica.org" target="_blank" class="inst-aerc">African Economic Research Consortium (AERC)</a>.
+                He serves as a Lecturer at
+                <a href="https://ustboniface.ca" target="_blank" class="inst-usb">Université de Saint-Boniface</a> and
+                <a href="https://boothuc.ca" target="_blank" class="inst-booth">Booth University College</a>,
+                bringing industry experience from his previous role as a Data Scientist at
+                <a href="https://www.canadalife.com" target="_blank" class="inst-canadalife">Canada Life</a>.
+            </p>
+
+            <p style="border-left: 2px solid var(--accent-color); padding-left: 1rem; font-style: italic;">
+                His research centers on game theory and decision theory, with particular emphasis on mechanism design,
+                information cascades, strategic interaction models, and the formal analysis of rational decision-making under uncertainty.
+            </p>
+        </div>
+
+        <!-- View Research Button -->
+        <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
+            <a href="research.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-primary); text-decoration: none; transition: all 0.3s ease;">
+                <i class="fas fa-book-open"></i>
+                View Research
+            </a>
+
+            <!-- Academic Icons -->
+            <div class="academic-icons">
+                <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
+                    <i class="fab fa-orcid"></i>
                 </a>
-                <!-- Academic Icons -->
-                <div class="academic-icons">
-                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
-                        <i class="fab fa-orcid"></i>
-                    </a>
-                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
-                        <i class="fas fa-graduation-cap"></i>
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
-                        <i class="fab fa-researchgate"></i>
-                    </a>
-                </div>
+                <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
+                    <i class="fas fa-graduation-cap"></i>
+                </a>
+                <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
+                    <i class="fab fa-researchgate"></i>
+                </a>
             </div>
         </div>
     </main>
@@ -279,5 +427,32 @@
     <footer>
         <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
     </footer>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navbar-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Close menu when a nav link is clicked
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const menu = document.getElementById('navbar-menu');
+                const icon = document.getElementById('menu-icon');
+                menu.classList.remove('active');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
 </body>
 </html>
