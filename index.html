@@ -47,18 +47,16 @@
             --bg-secondary: #12121a;
             --text-primary: #ffffff;
             --text-muted: #9ca3af;
-            --accent-color: #60a5fa;
-            --gradient-start: #3b82f6;
-            --gradient-end: #8b5cf6;
+            --accent-color: #4dd8d8;
+            --gradient-start: #4dd8d8;
+            --gradient-end: #5ce1e1;
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
-            /* Institution colors */
             --uofm-gold: #f2a900;
             --aerc-green: #2ecc71;
             --usb-red: #e74c3c;
             --booth-blue: #3498db;
             --canadalife-green: #27ae60;
-            /* Icon colors */
             --orcid-green: #a6ce39;
             --scholar-blue: #4285f4;
             --researchgate-cyan: #00d0af;
@@ -87,7 +85,6 @@
         a { color: var(--accent-color); text-decoration: none; }
         a:hover { text-decoration: underline; }
 
-        /* Professional Navigation Bar */
         .navbar {
             background: var(--bg-secondary);
             border-bottom: 1px solid var(--glass-border);
@@ -97,7 +94,6 @@
             z-index: 100;
             backdrop-filter: blur(10px);
         }
-
         .navbar-container {
             max-width: 80rem;
             margin: 0 auto;
@@ -105,34 +101,15 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .navbar-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
-
-        .navbar-brand h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .navbar-brand img {
-            height: 2rem;
-            opacity: 0.9;
-        }
-
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 0.5rem;
-        }
-
+        .navbar-brand h1 { font-size: 1.5rem; font-weight: bold; }
+        .navbar-brand img { height: 2rem; opacity: 0.9; }
+        .navbar-menu { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; gap: 0.5rem; }
         .nav-link {
             display: flex;
             align-items: center;
@@ -144,42 +121,26 @@
             transition: all 0.3s ease;
             text-decoration: none;
         }
-
         .nav-link:hover, .nav-link.active {
             background: var(--glass-bg);
             color: var(--text-primary);
             text-decoration: none;
         }
+        .nav-link.active { border-bottom: 2px solid var(--accent-color); }
+        .nav-link i { font-size: 1rem; }
 
-        .nav-link.active {
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        .nav-link i {
-            font-size: 1rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-        }
-
+        .social-icons-nav { display: flex; gap: 1rem; }
         .social-icon {
             font-size: 1.25rem;
             transition: transform 0.3s ease, color 0.3s ease;
         }
+        .social-icon:hover { transform: translateY(-2px); }
+        .icon-linkedin { color: var(--linkedin-blue); }
 
-        .social-icon:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Colorful icons */
         .icon-orcid { color: var(--orcid-green); }
         .icon-scholar { color: var(--scholar-blue); }
         .icon-researchgate { color: var(--researchgate-cyan); }
-        .icon-linkedin { color: var(--linkedin-blue); }
 
-        /* Institution link colors */
         .inst-uofm { color: var(--uofm-gold); }
         .inst-uofm:hover { color: var(--uofm-gold); opacity: 0.8; }
         .inst-aerc { color: var(--aerc-green); }
@@ -191,30 +152,45 @@
         .inst-canadalife { color: var(--canadalife-green); }
         .inst-canadalife:hover { color: var(--canadalife-green); opacity: 0.8; }
 
-        main {
-            flex: 1;
-            padding: 3rem 1.5rem;
+        /* Profile picture */
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 0 20px rgba(77, 216, 216, 0.3);
         }
 
-        .container {
-            max-width: 48rem;
-            margin: 0 auto;
+        /* Academic icons below View Research */
+        .academic-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .academic-icons .social-icon {
+            font-size: 1.5rem;
         }
 
+        main { flex: 1; padding: 3rem 1.5rem; }
+        .container { max-width: 48rem; margin: 0 auto; }
         footer {
             padding: 1.5rem;
             text-align: center;
             border-top: 1px solid var(--glass-border);
         }
-
-        footer p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
+        footer p { font-size: 0.875rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
-    <!-- Professional Navigation Bar -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-brand">
@@ -228,24 +204,13 @@
             <div class="navbar-menu">
                 <div class="nav-links">
                     <a href="index.html" class="nav-link active">
-                        <i class="fas fa-home"></i>
-                        Home
+                        <i class="fas fa-home"></i> Home
                     </a>
                     <a href="research.html" class="nav-link">
-                        <i class="fas fa-flask"></i>
-                        Research
+                        <i class="fas fa-flask"></i> Research
                     </a>
                 </div>
-                <div class="social-icons">
-                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
-                        <i class="fab fa-orcid"></i>
-                    </a>
-                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
-                        <i class="fas fa-graduation-cap"></i>
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
-                        <i class="fab fa-researchgate"></i>
-                    </a>
+                <div class="social-icons-nav">
                     <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
@@ -257,6 +222,11 @@
     <!-- Main Content -->
     <main>
         <div class="container">
+            <!-- Profile Picture -->
+            <div class="profile-section">
+                <img src="images/fredericprofil.jpeg" alt="Frédéric Mirindi" class="profile-img">
+            </div>
+
             <!-- Title -->
             <h2 style="font-size: 2.5rem; font-weight: bold; line-height: 1.2; margin-bottom: 2rem;">
                 Game Theory,<br>
@@ -269,7 +239,6 @@
                     <strong style="color: var(--text-primary);">Frédéric Mirindi</strong> is a Canadian Economist and PhD Candidate in Economics and Econometrics at the
                     <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a>.
                 </p>
-
                 <p>
                     He holds a Master's degree in Development Economics from the
                     <a href="https://umanitoba.ca" target="_blank" class="inst-uofm">University of Manitoba</a> and attended the
@@ -278,7 +247,6 @@
                     and <a href="https://boothuc.ca" target="_blank" class="inst-booth">Booth University College</a>, bringing industry experience
                     from his previous role as a Data Scientist at <a href="https://www.canadalife.com" target="_blank" class="inst-canadalife">Canada Life</a>.
                 </p>
-
                 <p style="border-left: 2px solid var(--accent-color); padding-left: 1rem; font-style: italic;">
                     His research centers on game theory and decision theory, with particular emphasis on mechanism design,
                     information cascades, strategic interaction models, and the formal analysis of rational decision-making under uncertainty.
@@ -286,11 +254,23 @@
             </div>
 
             <!-- View Research Button -->
-            <div style="display: flex; justify-content: center; margin-top: 2rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
                 <a href="research.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-muted); transition: all 0.3s ease; text-decoration: none;">
                     <i class="fas fa-book-open"></i>
                     View Research
                 </a>
+                <!-- Academic Icons -->
+                <div class="academic-icons">
+                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
+                        <i class="fab fa-orcid"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
+                        <i class="fab fa-researchgate"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
