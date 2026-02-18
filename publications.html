@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications | Frédéric Mirindi</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root, html.dark {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --text-primary: #d1d5db;
+      --text-white: #ffffff;
+      --text-muted: #9ca3af;
+      --accent-color: #00e5e5;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --linkedin-blue: #0077b5;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent-color); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    /* Navbar */
+    .navbar { background: rgba(10, 10, 15, 0.85); border-bottom: 1px solid var(--glass-border); padding: 0.75rem 2rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); }
+    .navbar-container { max-width: 80rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
+    .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; gap: 0.25rem; }
+    .nav-link { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 0.4rem; color: var(--text-muted); font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
+    .nav-link.active { border-bottom: 2px solid var(--accent-color); }
+    .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
+    .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
+    .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
+    .icon-linkedin { color: var(--linkedin-blue) !important; }
+    /* Hero Banner */
+    .research-hero { position: relative; width: 100%; height: 320px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 20, 0.38); }
+    .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); }
+    .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); }
+    /* Main content */
+    .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
+    /* Cards */
+    .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); transition: border-color 0.3s ease; }
+    .card:hover { border-color: rgba(0,229,229,0.22); }
+    .card h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+    .card h2::before { content: ''; display: inline-block; width: 3px; height: 1.1em; background: var(--accent-color); border-radius: 2px; flex-shrink: 0; }
+    .card p { color: var(--text-primary); margin-bottom: 0.75rem; }
+    .card p:last-child { margin-bottom: 0; }
+    /* Publication entry */
+    .pub-entry { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); }
+    .pub-entry:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .pub-title { font-size: 1.05rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.35rem; }
+    .pub-title a { color: var(--accent-color); }
+    .pub-authors { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .pub-venue { color: var(--text-muted); font-size: 0.85rem; font-style: italic; margin-bottom: 0.25rem; }
+    .pub-details { color: var(--text-muted); font-size: 0.85rem; }
+    .pub-tag { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; margin-right: 0.4rem; margin-bottom: 0.3rem; }
+    .pub-tag-conference { background: rgba(0,229,229,0.12); color: var(--accent-color); }
+    .pub-tag-journal { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    /* Footer */
+    footer { padding: 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); }
+    footer p { font-size: 0.8rem; color: var(--text-muted); }
+    /* Hamburger */
+    .menu-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 1.4rem; cursor: pointer; padding: 0.5rem; z-index: 101; }
+    /* Tablet */
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .navbar { padding: 0.6rem 1rem; }
+      .navbar-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-secondary); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 100; }
+      .navbar-menu.active { display: flex; }
+      .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
+      .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
+      .social-icons-nav { gap: 1.5rem; }
+      .social-icon { font-size: 1.4rem; }
+      .research-hero { height: 240px; }
+      .research-hero-title { font-size: 2.2rem; }
+      .page-section { padding: 2rem 1.5rem 3rem 1.5rem; }
+      .card { padding: 1.25rem; }
+    }
+    /* Phone */
+    @media (max-width: 480px) {
+      .research-hero { height: 180px; }
+      .research-hero-title { font-size: 1.75rem; }
+      .page-section { padding: 1.5rem 1rem 2rem 1rem; }
+      .card { padding: 1rem; }
+      .card h2 { font-size: 1.1rem; }
+      .navbar-brand h1 { font-size: 1.1rem; }
+      footer { padding: 1rem; }
+      footer p { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand" style="text-decoration:none;">
+        <h1>Frédéric Mirindi</h1>
+      </a>
+      <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars" id="menu-icon"></i>
+      </button>
+      <div class="navbar-menu" id="navbar-menu">
+        <nav class="nav-links">
+          <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+          <a href="research.html" class="nav-link"><i class="fas fa-flask"></i> Research</a>
+          <a href="publications.html" class="nav-link active" aria-current="page"><i class="fas fa-book"></i> Publications</a>
+        </nav>
+        <div class="social-icons-nav">
+          <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank"
+            class="social-icon icon-linkedin" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <div class="research-hero">
+    <img src="images/publications_page.PNG" alt="Publications banner" class="research-hero-img">
+    <div class="research-hero-overlay"></div>
+    <h2 class="research-hero-title">
+      Publications
+      <span class="accent-bar"></span>
+    </h2>
+  </div>
+
+  <!-- Main Content -->
+  <section class="page-section">
+
+    <!-- Conference Papers -->
+    <div class="card">
+      <h2>Conference Papers</h2>
+      <div class="pub-entry">
+        <div style="margin-bottom:0.4rem;">
+          <span class="pub-tag pub-tag-conference">Conference Paper</span>
+          <span class="pub-tag" style="background:rgba(255,255,255,0.06); color:var(--text-muted);">2026</span>
+        </div>
+        <div class="pub-title">
+          <a href="https://link.springer.com/chapter/10.1007/978-3-032-13377-9_6" target="_blank">
+            Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms
+          </a>
+        </div>
+        <div class="pub-authors">
+          <strong>Frédéric Mirindi</strong> &amp; Derrick Mirindi
+        </div>
+        <div class="pub-venue">
+          Mathematical Research for Blockchain Economy (MARBLE 2025)
+        </div>
+        <div class="pub-details">
+          Lecture Notes in Operations Research (LNOR), pp. 121–144, Springer, 2026.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navbar-menu');
+      const icon = document.getElementById('menu-icon');
+      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById('navbar-menu');
+        const icon = document.getElementById('menu-icon');
+        menu.classList.remove('active');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+  </script>
+
+</body>
+</html>
