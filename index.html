@@ -251,6 +251,7 @@
             </div>
         </div>
     </nav>
+        <div class="mobile-overlay" id="mobile-overlay"></div>
     <!-- Hero Section -->
     <section class="hero">
         <canvas id="geo-canvas"></canvas>
@@ -308,29 +309,41 @@
     </footer>
     <!-- Scripts -->
     <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            const menu = document.getElementById('navbar-menu');
-            const icon = document.getElementById('menu-icon');
-            menu.classList.toggle('active');
-            if (menu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        }
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const menu = document.getElementById('navbar-menu');
-                const icon = document.getElementById('menu-icon');
-                menu.classList.remove('active');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            });
-        });
-        // Geometric network background
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('navbar-menu');
+      const icon = document.getElementById('menu-icon');
+      const overlay = document.getElementById('mobile-overlay');
+      const isOpen = menu.classList.contains('active');
+      if (isOpen) {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      } else {
+        menu.classList.add('active');
+        overlay.classList.add('active');
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    // Close menu on overlay click
+    document.getElementById('mobile-overlay').addEventListener('click', toggleMenu);
+    // Close menu on nav-link click
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById('navbar-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        const icon = document.getElementById('menu-icon');
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      });
+    });
         (function() {
             const canvas = document.getElementById('geo-canvas');
             const ctx = canvas.getContext('2d');
