@@ -154,7 +154,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        .btn-research:hover {
+   .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }     .btn-research:hover {
             background: var(--accent-color);
             color: var(--bg-primary);
             text-decoration: none;
@@ -180,7 +180,7 @@
             position: relative; z-index: 1;
         }
         footer p { font-size: 0.8rem; color: var(--text-muted); }
-        /* Hamburger */
+        .mobile-linkedin-nav { display: none; align-items: center; } .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; } /* Hamburger */
         .menu-toggle {
             display: none; background: none; border: none;
             color: var(--text-white); font-size: 1.4rem;
@@ -188,7 +188,7 @@
         }
         /* ========== RESPONSIVE: Tablet ========== */
         @media (max-width: 768px) {
-            .menu-toggle { display: block; }
+            .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }
             .navbar { padding: 0.6rem 1rem; }
             .navbar-menu {
                 display: none; position: fixed;
@@ -248,7 +248,7 @@
                             </div>
             <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
                 <i class="fas fa-bars" id="menu-icon"></i>
-            </button>
+            </button><div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
             <div class="navbar-menu" id="navbar-menu">
                 <div class="nav-links">
                     <a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a>
