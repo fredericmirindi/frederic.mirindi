@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teaching | Frédéric Mirindi</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root, html.dark {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --text-primary: #d1d5db;
+      --text-white: #ffffff;
+      --text-muted: #9ca3af;
+      --accent-color: #00e5e5;
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --linkedin-blue: #0077b5;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent-color); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    /* Navbar */
+    .navbar { background: rgba(10,10,15,0.85); border-bottom: 1px solid var(--glass-border); padding: 0.75rem 2rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); }
+    .navbar-container { max-width: 80rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
+    .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
+    .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; gap: 0.25rem; }
+    .nav-link { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 0.4rem; color: var(--text-muted); font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
+    .nav-link.active { border-bottom: 2px solid var(--accent-color); }
+    .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
+    .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
+    .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
+    .icon-linkedin { color: var(--linkedin-blue) !important; }
+    /* Hero Banner */
+    .research-hero { position: relative; width: 100%; height: 320px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,20,0.38); }
+    .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); }
+    .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); }
+    /* Main content */
+    .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
+    /* Cards */
+    .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); transition: border-color 0.3s ease; }
+    .card:hover { border-color: rgba(0,229,229,0.22); }
+    .card h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+    .card h2::before { content: ''; display: inline-block; width: 3px; height: 1.1em; background: var(--accent-color); border-radius: 2px; flex-shrink: 0; }
+    /* Teaching course entries */
+    .teaching-institution { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 1px solid var(--glass-border); }
+    .teaching-institution img { width: 52px; height: 52px; object-fit: contain; border-radius: 0.4rem; background: rgba(255,255,255,0.05); padding: 4px; flex-shrink: 0; }
+    .teaching-institution-info { flex: 1; }
+    .teaching-institution-name { font-size: 1rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.1rem; }
+    .teaching-institution-location { font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+    .course-list { list-style: none; padding: 0; }
+    .course-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--glass-border); }
+    .course-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .course-img { width: 44px; height: 44px; object-fit: contain; border-radius: 0.4rem; background: rgba(255,255,255,0.04); padding: 4px; flex-shrink: 0; margin-top: 0.1rem; }
+    .course-info { flex: 1; }
+    .course-code { font-size: 0.78rem; font-weight: 700; color: var(--accent-color); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.1rem; }
+    .course-title { font-size: 1rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.15rem; }
+    .course-meta { font-size: 0.82rem; color: var(--text-muted); }
+    .course-badge { display: inline-block; padding: 0.12rem 0.5rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 700; margin-right: 0.3rem; }
+    .badge-current { background: rgba(0,229,229,0.12); color: var(--accent-color); }
+    .badge-year { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+    .badge-semester { background: rgba(139,92,246,0.15); color: #a78bfa; }
+    .role-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0.7rem; border-radius: 2rem; font-size: 0.78rem; font-weight: 700; background: rgba(0,229,229,0.08); color: var(--accent-color); border: 1px solid rgba(0,229,229,0.18); margin-bottom: 1rem; }
+    .teaching-intro { font-size: 0.93rem; color: var(--text-primary); margin-bottom: 1.25rem; line-height: 1.7; }
+    /* Footer */
+    footer { padding: 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); }
+    footer p { font-size: 0.8rem; color: var(--text-muted); }
+    .mobile-linkedin-nav { display: none; align-items: center; }
+    .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; }
+    /* Hamburger */
+    .menu-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 1.4rem; cursor: pointer; padding: 0.5rem; z-index: 101; }
+    /* Tablet */
+    @media (max-width: 768px) {
+      .menu-toggle { display: none !important; }
+      .mobile-linkedin-nav { display: flex; align-items: center; }
+      .navbar { padding: 0.6rem 1rem; }
+      .navbar-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-secondary); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 100; }
+      .navbar-menu.active { display: flex; }
+      .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
+      .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
+      .social-icons-nav { gap: 1.5rem; }
+      .social-icon { font-size: 1.4rem; }
+      .research-hero { height: 240px; }
+      .research-hero-title { font-size: 2.2rem; }
+      .page-section { padding: 2rem 1.5rem 3rem 1.5rem; }
+      .card { padding: 1.25rem; }
+    }
+    /* Phone */
+    @media (max-width: 480px) {
+      .research-hero { height: 180px; }
+      .research-hero-title { font-size: 1.75rem; }
+      .page-section { padding: 1.5rem 1rem 2rem 1rem; }
+      .card { padding: 1rem; }
+      .card h2 { font-size: 1.1rem; }
+      .navbar-brand h1 { font-size: 1.1rem; }
+      footer { padding: 1rem; }
+      footer p { font-size: 0.7rem; }
+    }
+    /* Mobile Bottom Tab Bar */
+    .mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000; background:rgba(10,10,15,0.97); border-top:1px solid var(--glass-border); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); padding:0.35rem 0; padding-bottom:env(safe-area-inset-bottom,0); }
+    .mobile-bottom-nav-container { display:flex; justify-content:space-around; align-items:center; max-width:100%; }
+    .mobile-bottom-nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--text-muted); font-size:0.62rem; padding:0.25rem 0.5rem; border-radius:0.5rem; transition:color 0.2s ease; gap:0.12rem; flex:1; position:relative; }
+    .mobile-bottom-nav-item i { font-size:1.1rem; transition:transform 0.2s ease; }
+    .mobile-bottom-nav-item span { font-weight:500; letter-spacing:0.02em; }
+    .mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active { color:var(--accent-color); text-decoration:none; }
+    .mobile-bottom-nav-item.active i { transform:scale(1.1); }
+    .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
+    @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <a href="index.html"><h1>Frédéric Mirindi</h1></a>
+      </div>
+      <div class="mobile-linkedin-nav">
+        <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" style="color: var(--linkedin-blue); font-size: 1.4rem;"></i></a>
+      </div>
+      <div class="navbar-menu" id="navbar-menu">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link"><i class="fa fa-home"></i> Home</a></li>
+          <li><a href="research.html" class="nav-link"><i class="fa fa-flask"></i> Research</a></li>
+          <li><a href="publications.html" class="nav-link"><i class="fa fa-book"></i> Publications</a></li>
+          <li><a href="conferences.html" class="nav-link"><i class="fa fa-microphone"></i> Conferences</a></li>
+          <li><a href="teaching.html" class="nav-link active"><i class="fa fa-chalkboard-teacher"></i> Teaching</a></li>
+        </ul>
+        <div class="social-icons-nav">
+          <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="research-hero">
+    <img src="images/teaching_page.png" alt="Teaching banner" class="research-hero-img">
+    <div class="research-hero-overlay"></div>
+    <div class="research-hero-title">
+      Teaching
+      <span class="accent-bar"></span>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="page-section">
+
+    <!-- Booth University College -->
+    <div class="card">
+      <h2><i class="fa fa-chalkboard-teacher"></i> Booth University College</h2>
+
+      <div class="teaching-institution">
+        <img src="images/Booth_University_College.svg" alt="Booth University College logo">
+        <div class="teaching-institution-info">
+          <div class="teaching-institution-name">Booth University College</div>
+          <div class="teaching-institution-location">Winnipeg, Manitoba, Canada</div>
+        </div>
+      </div>
+
+      <div class="role-badge"><i class="fa fa-user-tie"></i> Lecturer</div>
+
+      <p class="teaching-intro">
+        The following courses are delivered at Booth University College, an accredited liberal arts institution in Winnipeg, Canada. These courses span economics, mathematics, and business disciplines, serving undergraduate students across multiple programs.
+      </p>
+
+      <ul class="course-list">
+        <li class="course-item">
+          <img src="images/micro.PNG" alt="Microeconomics icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">ECO110</div>
+            <div class="course-title">Introduction to Microeconomics</div>
+            <div class="course-meta">
+              <span class="course-badge badge-year">2024</span>
+              <span class="course-badge badge-year">2025</span>
+              <span class="course-badge badge-current">2026 &mdash; Currently</span>
+            </div>
+          </div>
+        </li>
+        <li class="course-item">
+          <img src="images/math.PNG" alt="Calculus icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">MAT110</div>
+            <div class="course-title">Calculus</div>
+            <div class="course-meta">
+              <span class="course-badge badge-year">2024</span>
+              <span class="course-badge badge-year">2025</span>
+              <span class="course-badge badge-current">2026 &mdash; Currently</span>
+            </div>
+          </div>
+        </li>
+        <li class="course-item">
+          <img src="images/math.PNG" alt="Applied Mathematics icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">MAT100</div>
+            <div class="course-title">Applied Finite Mathematics</div>
+            <div class="course-meta">
+              <span class="course-badge badge-year">2024</span>
+              <span class="course-badge badge-year">2025</span>
+              <span class="course-badge badge-current">2026 &mdash; Currently</span>
+            </div>
+          </div>
+        </li>
+        <li class="course-item">
+          <img src="images/resmeth.PNG" alt="Research Methods icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">BHS200</div>
+            <div class="course-title">Research Methods</div>
+            <div class="course-meta">
+              <span class="course-badge badge-year">2024</span>
+              <span class="course-badge badge-year">2025</span>
+              <span class="course-badge badge-current">2026 &mdash; Currently</span>
+            </div>
+          </div>
+        </li>
+        <li class="course-item">
+          <img src="images/bis.PNG" alt="Business Information Systems icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">BHS270</div>
+            <div class="course-title">Business Information Systems</div>
+            <div class="course-meta">
+              <span class="course-badge badge-year">2024</span>
+              <span class="course-badge badge-year">2025</span>
+              <span class="course-badge badge-current">2026 &mdash; Currently</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Universite de Saint-Boniface -->
+    <div class="card">
+      <h2><i class="fa fa-language"></i> Université de Saint-Boniface</h2>
+
+      <div class="teaching-institution">
+        <img src="images/université saint boniface.png" alt="Université de Saint-Boniface logo">
+        <div class="teaching-institution-info">
+          <div class="teaching-institution-name">Université de Saint-Boniface</div>
+          <div class="teaching-institution-location">Saint-Boniface, Manitoba, Canada</div>
+        </div>
+      </div>
+
+      <div class="role-badge"><i class="fa fa-user-tie"></i> Chargé de cours</div>
+
+      <p class="teaching-intro">
+        Ces cours sont donnés en français à l'Université de Saint-Boniface, la seule université francophone de l'Ouest canadien. Ils s'inscrivent dans le programme de sciences économiques destiné aux étudiants de premier cycle.
+      </p>
+
+      <ul class="course-list">
+        <li class="course-item">
+          <img src="images/micro.PNG" alt="Microeconomics icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">ECO &mdash; Micro</div>
+            <div class="course-title">Introduction à la Microéconomie</div>
+            <div class="course-meta">
+              <span class="course-badge badge-semester">Printemps 2025</span>
+            </div>
+          </div>
+        </li>
+        <li class="course-item">
+          <img src="images/macro.PNG" alt="Macroeconomics icon" class="course-img">
+          <div class="course-info">
+            <div class="course-code">ECO &mdash; Macro</div>
+            <div class="course-title">Introduction à la Macroéconomie</div>
+            <div class="course-meta">
+              <span class="course-badge badge-semester">Hiver 2026</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+    <div class="mobile-bottom-nav-container">
+      <a href="index.html" class="mobile-bottom-nav-item">
+        <i class="fa fa-home"></i><span>Home</span>
+      </a>
+      <a href="research.html" class="mobile-bottom-nav-item">
+        <i class="fa fa-flask"></i><span>Research</span>
+      </a>
+      <a href="publications.html" class="mobile-bottom-nav-item">
+        <i class="fa fa-book"></i><span>Publications</span>
+      </a>
+      <a href="conferences.html" class="mobile-bottom-nav-item">
+        <i class="fa fa-microphone"></i><span>Conferences</span>
+      </a>
+      <a href="teaching.html" class="mobile-bottom-nav-item active">
+        <i class="fa fa-chalkboard-teacher"></i><span>Teaching</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('navbar-menu');
+      const icon = document.getElementById('menu-icon');
+      menu.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        const menu = document.getElementById('navbar-menu');
+        const icon = document.getElementById('menu-icon');
+        menu.classList.remove('active');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+  </script>
+</body>
+</html>
