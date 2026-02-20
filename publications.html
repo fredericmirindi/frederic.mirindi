@@ -111,9 +111,9 @@
     .mobile-bottom-nav-item.active i { transform:scale(1.1); }
     .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
     @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
-  </style>
+      #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }   </style>
 </head>
-<body>
+<body>   <canvas id="geo-canvas"></canvas>
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -279,5 +279,5 @@
     });
   </script>
 
-</body>
+<script>   (function() {     const canvas = document.getElementById('geo-canvas');     const ctx = canvas.getContext('2d');     let w, h, points, maxDist;     function resize() {       w = canvas.width = canvas.offsetWidth;       h = canvas.height = canvas.offsetHeight;       maxDist = 160;       initPoints();     }     function initPoints() {       const count = Math.floor((w * h) / 12000);       points = [];       for (let i = 0; i < count; i++) {         points.push({           x: Math.random() * w,           y: Math.random() * h,           vx: (Math.random() - 0.5) * 0.3,           vy: (Math.random() - 0.5) * 0.3         });       }     }     function draw() {       ctx.clearRect(0, 0, w, h);       for (let p of points) {         p.x += p.vx;         p.y += p.vy;         if (p.x < 0 || p.x > w) p.vx *= -1;         if (p.y < 0 || p.y > h) p.vy *= -1;       }       for (let i = 0; i < points.length; i++) {         for (let j = i + 1; j < points.length; j++) {           const dx = points[i].x - points[j].x;           const dy = points[i].y - points[j].y;           const dist = Math.sqrt(dx * dx + dy * dy);           if (dist < maxDist) {             const alpha = (1 - dist / maxDist) * 0.15;             ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';             ctx.lineWidth = 0.5;             ctx.beginPath();             ctx.moveTo(points[i].x, points[i].y);             ctx.lineTo(points[j].x, points[j].y);             ctx.stroke();           }         }       }       for (let p of points) {         ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';         ctx.beginPath();         ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);         ctx.fill();       }       requestAnimationFrame(draw);     }     window.addEventListener('resize', resize);     resize();     draw();   })();   </script> </body>
 </html>
