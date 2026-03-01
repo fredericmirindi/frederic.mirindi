@@ -17,6 +17,23 @@
       --glass-bg: rgba(255, 255, 255, 0.03);
       --glass-border: rgba(255, 255, 255, 0.08);
       --linkedin-blue: #0077b5;
+      --navbar-bg: rgba(10, 10, 15, 0.85);
+      --theme-btn-bg: rgba(255,255,255,0.07);
+      --theme-btn-border: rgba(255,255,255,0.15);
+    }
+    html.light {
+      --bg-primary: #f5f6fa;
+      --bg-secondary: #ffffff;
+      --text-primary: #374151;
+      --text-white: #111827;
+      --text-muted: #6b7280;
+      --accent-color: #0891b2;
+      --glass-bg: rgba(0, 0, 0, 0.03);
+      --glass-border: rgba(0, 0, 0, 0.10);
+      --linkedin-blue: #0077b5;
+      --navbar-bg: rgba(245, 246, 250, 0.92);
+      --theme-btn-bg: rgba(0,0,0,0.06);
+      --theme-btn-border: rgba(0,0,0,0.12);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -26,11 +43,12 @@
       line-height: 1.7;
       min-height: 100vh;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     a { color: var(--accent-color); text-decoration: none; }
     a:hover { text-decoration: underline; }
     /* Navbar */
-    .navbar { background: rgba(10, 10, 15, 0.85); border-bottom: 1px solid var(--glass-border); padding: 0.75rem 2rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); }
+    .navbar { background: var(--navbar-bg); border-bottom: 1px solid var(--glass-border); padding: 0.75rem 2rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); transition: background 0.3s ease; }
     .navbar-container { max-width: 80rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
     .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
     .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
@@ -43,6 +61,13 @@
     .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
     .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
     .icon-linkedin { color: var(--linkedin-blue) !important; }
+    /* Appearance Toggle */
+    .appearance-toggle { display: flex; align-items: center; gap: 0.3rem; background: var(--theme-btn-bg); border: 1.5px solid var(--theme-btn-border); border-radius: 2rem; padding: 0.28rem 0.5rem; cursor: pointer; transition: all 0.3s ease; }
+    .appearance-toggle:hover { border-color: var(--accent-color); box-shadow: 0 0 10px rgba(0,229,229,0.12); }
+    .theme-option { display: flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.65rem; border-radius: 1.5rem; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: all 0.25s ease; user-select: none; letter-spacing: 0.02em; }
+    .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); }
+    html.light .theme-option.active { color: #fff; }
     /* Hero Banner */
     .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
     .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
@@ -72,11 +97,13 @@
     /* Footer */
     footer { padding: 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); }
     footer p { font-size: 0.8rem; color: var(--text-muted); }
-    .mobile-linkedin-nav { display: none; align-items: center; } .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; } /* Hamburger */
+    .mobile-linkedin-nav { display: none; align-items: center; }
+    .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; }
     .menu-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 1.4rem; cursor: pointer; padding: 0.5rem; z-index: 101; }
     /* Tablet */
     @media (max-width: 768px) {
-      .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }
+      .menu-toggle { display: none !important; }
+      .mobile-linkedin-nav { display: flex; align-items: center; }
       .navbar { padding: 0.6rem 1rem; }
       .navbar-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-secondary); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 100; }
       .navbar-menu.active { display: flex; }
@@ -88,6 +115,8 @@
       .research-hero-title { font-size: 2.2rem; }
       .page-section { padding: 2rem 1.5rem 3rem 1.5rem; }
       .card { padding: 1.25rem; }
+      .appearance-toggle { padding: 0.22rem 0.4rem; }
+      .theme-option { padding: 0.18rem 0.5rem; font-size: 0.72rem; }
     }
     /* Phone */
     @media (max-width: 480px) {
@@ -100,9 +129,9 @@
       footer { padding: 1rem; }
       footer p { font-size: 0.7rem; }
     }
-    
-    /* -- Mobile Bottom Tab Bar (Google Sites style) -- */
+    /* Mobile Bottom Tab Bar */
     .mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000; background:rgba(10,10,15,0.97); border-top:1px solid var(--glass-border); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); padding:0.35rem 0; padding-bottom:env(safe-area-inset-bottom,0); }
+    html.light .mobile-bottom-nav { background: rgba(245,246,250,0.97); }
     .mobile-bottom-nav-container { display:flex; justify-content:space-around; align-items:center; max-width:100%; }
     .mobile-bottom-nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--text-muted); font-size:0.62rem; padding:0.25rem 0.5rem; border-radius:0.5rem; transition:color 0.2s ease; gap:0.12rem; flex:1; position:relative; }
     .mobile-bottom-nav-item i { font-size:1.1rem; transition:transform 0.2s ease; }
@@ -111,166 +140,114 @@
     .mobile-bottom-nav-item.active i { transform:scale(1.1); }
     .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
     @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
-      #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }   </style>
+    #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+  </style>
 </head>
-<body>   <canvas id="geo-canvas"></canvas>
-
-  <!-- Navbar -->
+<body>
+  <canvas id="geo-canvas"></canvas>
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-brand" style="text-decoration:none;">
-        <h1>Frédéric Mirindi</h1>
+        <h1>Fr&eacute;d&eacute;ric Mirindi</h1>
       </a>
-      <button class="menu-toggle" onclick="toggleMenu()">
-        <i class="fas fa-bars" id="menu-icon"></i>
-      </button><div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
+      <div class="mobile-linkedin-nav">
+        <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
       <div class="navbar-menu" id="navbar-menu">
-        <nav class="nav-links">
-          <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-          <a href="research.html" class="nav-link"><i class="fas fa-flask"></i> Research</a>
-          <a href="publications.html" class="nav-link active" aria-current="page"><i class="fas fa-book"></i> Publications</a>
-                    <a href="conferences.html" class="nav-link"><i class="fas fa-microphone"></i> Conferences</a>
-                      <a href="teaching.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Teaching</a>           <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-        </nav>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="research.html" class="nav-link"><i class="fa-solid fa-flask"></i> Research</a>
+          <a href="publications.html" class="nav-link active"><i class="fa-solid fa-book"></i> Publications</a>
+          <a href="conferences.html" class="nav-link"><i class="fa-solid fa-users"></i> Conferences</a>
+          <a href="teaching.html" class="nav-link"><i class="fa-solid fa-chalkboard-user"></i> Teaching</a>
+          <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
         <div class="social-icons-nav">
-          <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank"
-            class="social-icon icon-linkedin" title="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
+          <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="appearance-toggle" role="group" aria-label="Appearance">
+          <button id="btn-light" class="theme-option" onclick="setTheme('light')" aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            L
+          </button>
+          <button id="btn-dark" class="theme-option active" onclick="setTheme('dark')" aria-pressed="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            D
+          </button>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Banner -->
   <div class="research-hero">
-    <img src="images/publications_page.PNG" alt="Publications banner" class="research-hero-img">
+    <img src="images/publications-banner.jpg" alt="Publications banner" class="research-hero-img">
     <div class="research-hero-overlay"></div>
-    <h2 class="research-hero-title">
-      Publications
-      <span class="accent-bar"></span>
-    </h2>
+    <div class="research-hero-title">Publications<span class="accent-bar"></span></div>
   </div>
 
-  <!-- Main Content -->
   <section class="page-section">
-
-    <!-- Conference Papers -->
     <div class="card">
       <h2>Conference Papers</h2>
       <div class="pub-entry">
-        <div style="margin-bottom:0.4rem;">
-          <span class="pub-tag pub-tag-conference">Conference Paper</span>
-          <span class="pub-tag" style="background:rgba(255,255,255,0.06); color:var(--text-muted);">2026</span>
-        </div>
-        <div class="pub-title">
-          <a href="https://link.springer.com/chapter/10.1007/978-3-032-13377-9_6" target="_blank">
-            Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms
-          </a>
-        </div>
-        <div class="pub-authors">
-          <strong>Frédéric Mirindi</strong> &amp; Derrick Mirindi
-        </div>
-        <div class="pub-venue">
-          Mathematical Research for Blockchain Economy (MARBLE 2025)
-        </div>
-        <div class="pub-details">
-          Lecture Notes in Operations Research (LNOR), pp. 121–144, Springer, 2026.
-        </div>
+        <div class="pub-details"><span class="pub-tag pub-tag-conference">Conference Paper</span> <span class="pub-tag pub-tag-journal">2026</span></div>
+        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-032-13377-9_6">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus Mechanisms</a></div>
+        <div class="pub-authors"><strong>Fr&eacute;d&eacute;ric Mirindi</strong> &amp; Derrick Mirindi</div>
+        <div class="pub-venue">Mathematical Research for Blockchain Economy (MARBLE 2025)</div>
+        <div class="pub-details">Lecture Notes in Operations Research (LNOR), pp. 121&ndash;144, Springer, 2026.</div>
       </div>
-
-            <div class="pub-entry">
-        <div style="margin-bottom:0.4rem;">
-          <span class="pub-tag pub-tag-conference">Conference Paper</span>
-          <span class="pub-tag" style="background:rgba(255,255,255,0.06); color:var(--text-muted);">2025</span>
-        </div>
-        <div class="pub-title">
-          <a href="https://ieeexplore.ieee.org/document/11300540/" target="_blank">
-            Learning Latent Trends: Artificial Intelligence-Augmented Difference-in-Differences Estimation
-          </a>
-        </div>
-        <div class="pub-authors">
-          <strong>Frédéric Mirindi</strong> &amp; Derrick Mirindi, David Sinkhonde, Tajebe Bezabih
-        </div>
-        <div class="pub-venue">
-          2025 International Conference on Big Data, Knowledge and Control Systems Engineering (BdKCSE)
-        </div>
-        <div class="pub-details">
-          IEEE, 2025.
-        </div>
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-conference">Conference Paper</span> <span class="pub-tag pub-tag-journal">2025</span></div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/11300540/">Learning Latent Trends: Artificial Intelligence-Augmented Difference-in-Differences Estimation</a></div>
+        <div class="pub-authors"><strong>Fr&eacute;d&eacute;ric Mirindi</strong> &amp; Derrick Mirindi, David Sinkhonde, Tajebe Bezabih</div>
+        <div class="pub-venue">2025 International Conference on Big Data, Knowledge and Control Systems Engineering (BdKCSE)</div>
+        <div class="pub-details">IEEE, 2025.</div>
       </div>
-
-            <div class="pub-entry">
-        <div style="margin-bottom:0.4rem;">
-          <span class="pub-tag pub-tag-conference">Conference Paper</span>
-          <span class="pub-tag" style="background:rgba(255,255,255,0.06); color:var(--text-muted);">2025</span>
-        </div>
-        <div class="pub-title">
-          <a href="https://ieeexplore.ieee.org/document/11077494/" target="_blank">
-            Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics
-          </a>
-        </div>
-        <div class="pub-authors">
-          Derrick Mirindi, David Sinkhonde, <strong>Frédéric Mirindi</strong>, Tajebe Bezabith
-        </div>
-        <div class="pub-venue">
-          2025 6th International Conference on Artificial Intelligence, Robotics and Control (AIRC)
-        </div>
-        <div class="pub-details">
-          IEEE, 2025.
-        </div>
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-conference">Conference Paper</span> <span class="pub-tag pub-tag-journal">2025</span></div>
+        <div class="pub-title"><a href="https://ieeexplore.ieee.org/document/11077494/">Advance Toward Artificial Superintelligence with OpenAI's O1 Reinforcement Learning and Ethics</a></div>
+        <div class="pub-authors">Derrick Mirindi, David Sinkhonde, <strong>Fr&eacute;d&eacute;ric Mirindi</strong>, Tajebe Bezabith</div>
+        <div class="pub-venue">2025 6th International Conference on Artificial Intelligence, Robotics and Control (AIRC)</div>
+        <div class="pub-details">IEEE, 2025.</div>
       </div>
     </div>
-
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
+    <p>&copy; 2018 Fr&eacute;d&eacute;ric Mirindi. All rights reserved.</p>
   </footer>
-  
-  <!-- Mobile Bottom Tab Bar -->
+
   <nav class="mobile-bottom-nav">
     <div class="mobile-bottom-nav-container">
-      <a href="index.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="research.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-flask"></i>
-        <span>Research</span>
-      </a>
-      <a href="publications.html" class="mobile-bottom-nav-item active">
-        <i class="fas fa-book"></i>
-        <span>Publications</span>
-      </a>
-      <a href="conferences.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-microphone"></i>
-        <span>Conferences</span>
-      </a>
-            <a href="teaching.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-graduation-cap"></i>
-        <span>Teaching</span>
-      </a>
-              <a href="contact.html" class="mobile-bottom-nav-item">
-            <i class="fas fa-envelope"></i>
-            <span>Contact</span>
-        </a>
+      <a href="index.html" class="mobile-bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="research.html" class="mobile-bottom-nav-item"><i class="fa-solid fa-flask"></i><span>Research</span></a>
+      <a href="publications.html" class="mobile-bottom-nav-item active"><i class="fa-solid fa-book"></i><span>Publications</span></a>
+      <a href="conferences.html" class="mobile-bottom-nav-item"><i class="fa-solid fa-users"></i><span>Conferences</span></a>
+      <a href="teaching.html" class="mobile-bottom-nav-item"><i class="fa-solid fa-chalkboard-user"></i><span>Teaching</span></a>
+      <a href="contact.html" class="mobile-bottom-nav-item"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
     </div>
   </nav>
 
   <script>
+    // Theme toggle
+    function setTheme(theme) {
+      const html = document.documentElement;
+      html.classList.remove('dark', 'light');
+      html.classList.add(theme);
+      localStorage.setItem('theme', theme);
+      document.getElementById('btn-light').classList.toggle('active', theme === 'light');
+      document.getElementById('btn-dark').classList.toggle('active', theme === 'dark');
+      document.getElementById('btn-light').setAttribute('aria-pressed', theme === 'light');
+      document.getElementById('btn-dark').setAttribute('aria-pressed', theme === 'dark');
+    }
+    (function() { const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })();
+
+    // Mobile menu
     function toggleMenu() {
       const menu = document.getElementById('navbar-menu');
       const icon = document.getElementById('menu-icon');
       menu.classList.toggle('active');
-      if (menu.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
+      if (menu.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+      else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
     }
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
@@ -281,7 +258,36 @@
         icon.classList.add('fa-bars');
       });
     });
-  </script>
 
-<script>   (function() {     const canvas = document.getElementById('geo-canvas');     const ctx = canvas.getContext('2d');     let w, h, points, maxDist;     function resize() {       w = canvas.width = canvas.offsetWidth;       h = canvas.height = canvas.offsetHeight;       maxDist = 160;       initPoints();     }     function initPoints() {       const count = Math.floor((w * h) / 12000);       points = [];       for (let i = 0; i < count; i++) {         points.push({           x: Math.random() * w,           y: Math.random() * h,           vx: (Math.random() - 0.5) * 0.3,           vy: (Math.random() - 0.5) * 0.3         });       }     }     function draw() {       ctx.clearRect(0, 0, w, h);       for (let p of points) {         p.x += p.vx;         p.y += p.vy;         if (p.x < 0 || p.x > w) p.vx *= -1;         if (p.y < 0 || p.y > h) p.vy *= -1;       }       for (let i = 0; i < points.length; i++) {         for (let j = i + 1; j < points.length; j++) {           const dx = points[i].x - points[j].x;           const dy = points[i].y - points[j].y;           const dist = Math.sqrt(dx * dx + dy * dy);           if (dist < maxDist) {             const alpha = (1 - dist / maxDist) * 0.15;             ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';             ctx.lineWidth = 0.5;             ctx.beginPath();             ctx.moveTo(points[i].x, points[i].y);             ctx.lineTo(points[j].x, points[j].y);             ctx.stroke();           }         }       }       for (let p of points) {         ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';         ctx.beginPath();         ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);         ctx.fill();       }       requestAnimationFrame(draw);     }     window.addEventListener('resize', resize);     resize();     draw();   })();   </script> </body>
+    // Canvas animation
+    (function() {
+      const canvas = document.getElementById('geo-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, points, maxDist;
+      function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; maxDist = 160; initPoints(); }
+      function initPoints() {
+        const count = Math.floor((w * h) / 12000);
+        points = [];
+        for (let i = 0; i < count; i++) { points.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3 }); }
+      }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        const isLight = document.documentElement.classList.contains('light');
+        const lineColor = isLight ? '80, 100, 120' : '200, 200, 200';
+        const dotColor = isLight ? '80, 100, 120' : '200, 200, 200';
+        for (let p of points) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1; }
+        for (let i = 0; i < points.length; i++) {
+          for (let j = i + 1; j < points.length; j++) {
+            const dx = points[i].x - points[j].x; const dy = points[i].y - points[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < maxDist) { const alpha = (1 - dist / maxDist) * 0.15; ctx.strokeStyle = 'rgba(' + lineColor + ', ' + alpha + ')'; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(points[i].x, points[i].y); ctx.lineTo(points[j].x, points[j].y); ctx.stroke(); }
+          }
+        }
+        for (let p of points) { ctx.fillStyle = 'rgba(' + dotColor + ', 0.25)'; ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); ctx.fill(); }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', resize); resize(); draw();
+    })();
+  </script>
+</body>
 </html>
