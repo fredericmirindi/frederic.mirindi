@@ -3,388 +3,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research | Frédéric Mirindi</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    :root, html.dark {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --text-primary: #d1d5db;
-      --text-white: #ffffff;
-      --text-muted: #9ca3af;
-      --accent-color: #00e5e5;
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --linkedin-blue: #0077b5;
-      --usb-red: #c41230;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.7;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-    a { color: var(--accent-color); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* ── Navbar ── */
-    .navbar {
-      background: rgba(10, 10, 15, 0.85);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 0.75rem 2rem;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-    }
-    .navbar-container {
-      max-width: 80rem;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
-    .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
-    .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links { display: flex; gap: 0.25rem; }
-    .nav-link {
-      display: flex; align-items: center; gap: 0.4rem;
-      padding: 0.4rem 0.9rem;
-      border-radius: 0.4rem;
-      color: var(--text-muted);
-      font-weight: 500; font-size: 0.9rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .nav-link:hover, .nav-link.active {
-      background: var(--glass-bg);
-      color: var(--text-white);
-      text-decoration: none;
-    }
-    .nav-link.active { border-bottom: 2px solid var(--accent-color); }
-    .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
-    .social-icon {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      transition: transform 0.3s ease, color 0.3s ease;
-    }
-    .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
-    .icon-linkedin { color: var(--linkedin-blue) !important; }
-
-    /* ── Hero Banner ── */
-    .research-hero {
-      position: relative;
-      width: 100%;
-      height: 420px;
-      margin-top: 56px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .research-hero-img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-    }
-    /* Light semi-transparent overlay so the image stays visible */
-    .research-hero-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 10, 20, 0.38);
-    }
-    .research-hero-title {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: #ffffff;
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.85),
-        0 0 40px rgba(0, 0, 0, 0.5);
-    }
-    .research-hero-title .accent-bar {
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--accent-color);
-      margin: 0.65rem auto 0 auto;
-      border-radius: 2px;
-      box-shadow: 0 0 10px rgba(0, 229, 229, 0.6);
-    }
-
-    /* ── Main content ── */
-    .page-section {
-      padding: 3rem 4rem 4rem 4rem;
-      max-width: 60rem;
-      margin: 0 auto;
-    }
-
-    /* ── Cards ── */
-    .card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 0.75rem;
-      padding: 2rem;
-      margin-bottom: 1.75rem;
-      backdrop-filter: blur(5px);
-      transition: border-color 0.3s ease;
-    }
-    .card:hover { border-color: rgba(0, 229, 229, 0.22); }
-    .card h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-white);
-      margin-bottom: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .card h2::before {
-      content: '';
-      display: inline-block;
-      width: 3px;
-      height: 1.1em;
-      background: var(--accent-color);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-    .card p { color: var(--text-primary); margin-bottom: 0.75rem; }
-    .card p:last-child { margin-bottom: 0; }
-
-    /* Institution link colours */
-    .inst-uofm { color: var(--accent-color); }
-    .inst-uofm:hover { color: var(--accent-color); opacity: 0.8; }
-    .inst-usb { color: var(--accent-color); }
-    .inst-usb:hover { color: var(--accent-color); opacity: 0.8; }
-
-    /* ── Footer ── */
-    footer {
-      padding: 1.5rem;
-      text-align: center;
-      border-top: 1px solid var(--glass-border);
-    }
-    footer p { font-size: 0.8rem; color: var(--text-muted); }
-
-    /* ── Hamburger ── */
-    .menu-toggle {
-      display: none;
-      background: none; border: none;
-      color: var(--text-white);
-      font-size: 1.4rem;
-      cursor: pointer;
-      padding: 0.5rem;
-      z-index: 101;
-    }
-        .mobile-linkedin-nav { display: none; align-items: center; } .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; }
-
-    /* ── Tablet ── */
-    @media (max-width: 768px) {
-      .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }
-      .navbar { padding: 0.6rem 1rem; }
-      .navbar-menu {
-        display: none;
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: var(--bg-secondary);
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        z-index: 100;
-      }
-      .navbar-menu.active { display: flex; }
-      .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
-      .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
-      .social-icons-nav { gap: 1.5rem; }
-      .social-icon { font-size: 1.4rem; }
-      .research-hero { height: 240px; }
-      .research-hero-title { font-size: 2.2rem; }
-      .page-section { padding: 2rem 1.5rem 3rem 1.5rem; }
-      .card { padding: 1.25rem; }
-    }
-
-    /* ── Phone ── */
-    @media (max-width: 480px) {
-      .research-hero { height: 180px; }
-      .research-hero-title { font-size: 1.75rem; }
-      .page-section { padding: 1.5rem 1rem 2rem 1rem; }
-      .card { padding: 1rem; }
-      .card h2 { font-size: 1.1rem; }
-      .navbar-brand h1 { font-size: 1.1rem; }
-      footer { padding: 1rem; }
-      footer p { font-size: 0.7rem; }
-    }
-    
-    /* -- Mobile Bottom Tab Bar (Google Sites style) -- */
-    .mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000; background:rgba(10,10,15,0.97); border-top:1px solid var(--glass-border); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); padding:0.35rem 0; padding-bottom:env(safe-area-inset-bottom,0); }
-    .mobile-bottom-nav-container { display:flex; justify-content:space-around; align-items:center; max-width:100%; }
-    .mobile-bottom-nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--text-muted); font-size:0.62rem; padding:0.25rem 0.5rem; border-radius:0.5rem; transition:color 0.2s ease; gap:0.12rem; flex:1; position:relative; }
-    .mobile-bottom-nav-item i { font-size:1.1rem; transition:transform 0.2s ease; }
-    .mobile-bottom-nav-item span { font-weight:500; letter-spacing:0.02em; }
-    .mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active { color:var(--accent-color); text-decoration:none; }
-    .mobile-bottom-nav-item.active i { transform:scale(1.1); }
-    .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
-    @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
-      #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }   </style>
+<title>Research | Frédéric Mirindi</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root, html.dark {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --text-primary: #d1d5db;
+    --text-white: #ffffff;
+    --text-muted: #9ca3af;
+    --accent-color: #00e5e5;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --linkedin-blue: #0077b5;
+    --usb-red: #c41230;
+    --navbar-bg: rgba(10, 10, 15, 0.85);
+    --theme-btn-bg: rgba(255,255,255,0.07);
+    --theme-btn-border: rgba(255,255,255,0.15);
+  }
+  html.light {
+    --bg-primary: #f5f6fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #374151;
+    --text-white: #111827;
+    --text-muted: #6b7280;
+    --accent-color: #0891b2;
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.10);
+    --linkedin-blue: #0077b5;
+    --usb-red: #c41230;
+    --navbar-bg: rgba(245, 246, 250, 0.92);
+    --theme-btn-bg: rgba(0,0,0,0.06);
+    --theme-btn-border: rgba(0,0,0,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; background-color: var(--bg-primary); color: var(--text-primary); line-height: 1.7; min-height: 100vh; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+  a { color: var(--accent-color); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .navbar { background: var(--navbar-bg); border-bottom: 1px solid var(--glass-border); padding: 0.75rem 2rem; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(12px); transition: background 0.3s ease; }
+  .navbar-container { max-width: 80rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
+  .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
+  .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links { display: flex; gap: 0.25rem; }
+  .nav-link { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 0.4rem; color: var(--text-muted); font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; text-decoration: none; }
+  .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
+  .nav-link.active { border-bottom: 2px solid var(--accent-color); }
+  .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
+  .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
+  .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
+  .icon-linkedin { color: var(--linkedin-blue) !important; }
+  /* Appearance Toggle */
+  .appearance-toggle { display: flex; align-items: center; gap: 0.3rem; background: var(--theme-btn-bg); border: 1.5px solid var(--theme-btn-border); border-radius: 2rem; padding: 0.28rem 0.5rem; cursor: pointer; transition: all 0.3s ease; }
+  .appearance-toggle:hover { border-color: var(--accent-color); }
+  .theme-option { display: flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.65rem; border-radius: 1.5rem; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: all 0.25s ease; user-select: none; letter-spacing: 0.02em; border: none; background: none; cursor: pointer; }
+  .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); }
+  html.light .theme-option.active { color: #fff; }
+  /* Hero Banner */
+  .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+  .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 20, 0.38); }
+  .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 0, 0, 0.5); }
+  .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0, 229, 229, 0.6); }
+  .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
+  .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); transition: border-color 0.3s ease; }
+  .card:hover { border-color: rgba(0, 229, 229, 0.22); }
+  .card h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+  .card h2::before { content: ''; display: inline-block; width: 3px; height: 1.1em; background: var(--accent-color); border-radius: 2px; flex-shrink: 0; }
+  .card p { color: var(--text-primary); margin-bottom: 0.75rem; }
+  .card p:last-child { margin-bottom: 0; }
+  .inst-uofm { color: var(--accent-color); } .inst-uofm:hover { color: var(--accent-color); opacity: 0.8; }
+  .inst-usb { color: var(--accent-color); } .inst-usb:hover { color: var(--accent-color); opacity: 0.8; }
+  footer { padding: 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); }
+  footer p { font-size: 0.8rem; color: var(--text-muted); }
+  .menu-toggle { display: none; background: none; border: none; color: var(--text-white); font-size: 1.4rem; cursor: pointer; padding: 0.5rem; z-index: 101; }
+  .mobile-linkedin-nav { display: none; align-items: center; } .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; }
+  @media (max-width: 768px) {
+    .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }
+    .navbar { padding: 0.6rem 1rem; }
+    .navbar-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg-secondary); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 100; }
+    .navbar-menu.active { display: flex; }
+    .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
+    .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
+    .social-icons-nav { gap: 1.5rem; } .social-icon { font-size: 1.4rem; }
+    .research-hero { height: 240px; } .research-hero-title { font-size: 2.2rem; }
+    .page-section { padding: 2rem 1.5rem 3rem 1.5rem; } .card { padding: 1.25rem; }
+    .appearance-toggle { padding: 0.22rem 0.4rem; } .theme-option { padding: 0.18rem 0.5rem; font-size: 0.72rem; }
+  }
+  @media (max-width: 480px) {
+    .research-hero { height: 180px; } .research-hero-title { font-size: 1.75rem; }
+    .page-section { padding: 1.5rem 1rem 2rem 1rem; } .card { padding: 1rem; } .card h2 { font-size: 1.1rem; }
+    .navbar-brand h1 { font-size: 1.1rem; } footer { padding: 1rem; } footer p { font-size: 0.7rem; }
+  }
+  .mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000; background:rgba(10,10,15,0.97); border-top:1px solid var(--glass-border); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); padding:0.35rem 0; padding-bottom:env(safe-area-inset-bottom,0); }
+  html.light .mobile-bottom-nav { background: rgba(245,246,250,0.97); }
+  .mobile-bottom-nav-container { display:flex; justify-content:space-around; align-items:center; max-width:100%; }
+  .mobile-bottom-nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--text-muted); font-size:0.62rem; padding:0.25rem 0.5rem; border-radius:0.5rem; transition:color 0.2s ease; gap:0.12rem; flex:1; position:relative; }
+  .mobile-bottom-nav-item i { font-size:1.1rem; transition:transform 0.2s ease; }
+  .mobile-bottom-nav-item span { font-weight:500; letter-spacing:0.02em; }
+  .mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active { color:var(--accent-color); text-decoration:none; }
+  .mobile-bottom-nav-item.active i { transform:scale(1.1); }
+  .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
+  @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
+  #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+</style>
 </head>
-<body>   <canvas id="geo-canvas"></canvas>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="navbar-container">
-      <div class="navbar-brand">
-        <a href="index.html"><h1>Frédéric Mirindi</h1></a>
+<body>
+<canvas id="geo-canvas"></canvas>
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand"><a href="index.html" style="text-decoration: none;"><h1>Frédéric Mirindi</h1></a></div>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()"><i class="fas fa-bars" id="menu-icon"></i></button>
+    <div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
+    <div class="navbar-menu" id="navbar-menu">
+      <div class="nav-links">
+        <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="research.html" class="nav-link active"><i class="fas fa-flask"></i> Research</a>
+        <a href="publications.html" class="nav-link"><i class="fas fa-book"></i> Publications</a>
+        <a href="conferences.html" class="nav-link"><i class="fas fa-microphone"></i> Conferences</a>
+        <a href="teaching.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Teaching</a>
+        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
       </div>
-      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-        <i class="fas fa-bars" id="menu-icon"></i>
-      </button><div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
-      <div class="navbar-menu" id="navbar-menu">
-        <nav class="nav-links">
-          <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-          <a href="research.html" class="nav-link active"><i class="fas fa-flask"></i> Research</a>
-                    <a href="publications.html" class="nav-link"><i class="fas fa-book"></i> Publications</a>
-                        <a href="conferences.html" class="nav-link"><i class="fas fa-microphone"></i> Conferences</a>
-                              <a href="teaching.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Teaching</a>           <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-        </nav>
-        <div class="social-icons-nav">
-          <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank"
-             class="social-icon icon-linkedin" title="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-        </div>
-      </div>
+      <div class="social-icons-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
     </div>
-  </nav>
-
-  <!-- Hero Banner -->
-  <div class="research-hero">
-    <img src="images/research.PNG" alt="Research banner" class="research-hero-img">
-    <div class="research-hero-overlay"></div>
-          <div class="mobile-overlay" id="mobile-overlay"></div>
-    <div class="research-hero-title">
-      Research
-      <span class="accent-bar"></span>
+    <!-- Appearance Toggle -->
+    <div class="appearance-toggle" id="appearanceToggle" role="group" aria-label="Appearance">
+      <button class="theme-option" id="btn-light" onclick="setTheme('light')" title="Light mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg> Light</button>
+      <button class="theme-option" id="btn-dark" onclick="setTheme('dark')" title="Dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg> Dark</button>
     </div>
   </div>
+</nav>
 
-  <!-- Main Content -->
-  <main class="page-section">
+<div class="research-hero">
+  <img src="images/research-banner.jpg" alt="Research banner" class="research-hero-img">
+  <div class="research-hero-overlay"></div>
+  <h1 class="research-hero-title">Research<span class="accent-bar"></span></h1>
+</div>
 
-    <div class="card">
-      <h2>Current Research</h2>
-                <img src="images/University-of-Manitoba.PNG" alt="University of Manitoba" style="width:140px; height:140px; object-fit:cover; float:left; margin:0.5rem 1.25rem 0.75rem 0; border-radius:0.5rem;">
-      <p>
-        My doctoral research is conducted at the
-        <a href="https://umanitoba.ca/arts/economics" class="inst-uofm">Department of Economics</a>,
-        <a href="https://umanitoba.ca" class="inst-uofm">University of Manitoba</a>.
-      </p>
-      <p>
-        My field paper focuses on <strong>Decision Theory</strong>, with particular emphasis on
-        <strong>Random Expected Utility</strong> models.
-      </p>
-                
-    </div>
+<section class="page-section">
+  <div class="card">
+    <h2>Current Research</h2>
+    <p><strong style="color:var(--text-white)">University of Manitoba</strong></p>
+    <p>My doctoral research is conducted at the <a href="https://umanitoba.ca/arts/economics" class="inst-uofm">Department of Economics</a>, <a href="https://umanitoba.ca" class="inst-uofm">University of Manitoba</a>.</p>
+    <p>My field paper focuses on <strong>Decision Theory</strong>, with particular emphasis on <strong>Random Expected Utility</strong> models.</p>
+  </div>
+  <div class="card">
+    <h2>Francophone Immigration Research</h2>
+    <p><strong style="color:var(--text-white)">Université de Saint-Boniface</strong></p>
+    <p>I am currently collaborating with <a href="https://ustboniface.ca/fzellama" class="inst-usb"><strong>Professor Faiçal Zellama</strong></a>, Professeur titulaire d'économie et de gestion at the <a href="https://ustboniface.ca" class="inst-usb">Université de Saint-Boniface</a>, on research examining francophone immigration in Manitoba.</p>
+    <p>Our work investigates issues of <strong>integration</strong> and <strong>systemic barriers</strong> faced by francophone immigrants in the province.</p>
+  </div>
+  <div class="card">
+    <h2>Working Paper: AI & Currency Detection</h2>
+    <p><strong style="color:var(--text-white)">YOLO Banknote Detection</strong></p>
+    <p>I am currently developing a working paper with <a href="https://www.morgan.edu/school-of-architecture-and-planning/architecture-urbanism-and-built-environments/phd-student-profiles/derrick-mirindi"><strong>Derrick Mirindi</strong></a> (<a href="https://www.upenn.edu">University of Pennsylvania</a>) on the application of <strong>YOLO Algorithm</strong> for <strong>banknote detection and authentication</strong>.</p>
+    <p>This research explores machine learning approaches to currency recognition and counterfeit detection systems.</p>
+  </div>
+</section>
 
-    <div class="card">
-      <h2>Francophone Immigration Research</h2><img src="images/université saint boniface.png" alt="Université de Saint-Boniface" style="width:140px; height:140px; object-fit:cover; float:left; margin:0.5rem 1.25rem 0.75rem 0; border-radius:0.5rem;">
-      <p>
-        I am currently collaborating with
-        <a href="https://ustboniface.ca/fzellama"><strong>Professor Faiçal Zellama</strong></a>,
-        Professeur titulaire d'économie et de gestion at the
-        <a href="https://ustboniface.ca" class="inst-usb">Université de Saint-Boniface</a>,
-        on research examining francophone immigration in Manitoba.
-      </p>
-      <p>
-        Our work investigates issues of <strong>integration</strong> and <strong>systemic barriers</strong>
-        faced by francophone immigrants in the province.
-      </p>
-    </div>
+<footer><p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p></footer>
 
-    <div class="card">
-      <h2>Working Paper: AI &amp; Currency Detection</h2><img src="images/YOLO-Banknotes.png" alt="YOLO Banknote Detection" style="width:140px; height:140px; object-fit:cover; float:left; margin:0.5rem 1.25rem 0.75rem 0; border-radius:0.5rem;">
-      <p>
-        I am currently developing a working paper with
-        <a href="https://www.morgan.edu/school-of-architecture-and-planning/architecture-urbanism-and-built-environments/phd-student-profiles/derrick-mirindi"><strong>Derrick Mirindi</strong></a>
-        (<a href="https://www.upenn.edu">University of Pennsylvania</a>) on the application of
-        <strong>YOLO Algorithm</strong> for <strong>banknote detection and authentication</strong>.
-      </p>
-      <p>
-        This research explores machine learning approaches to currency recognition and counterfeit detection systems.
-      </p>
-    </div>
+<nav class="mobile-bottom-nav"><div class="mobile-bottom-nav-container">
+  <a href="index.html" class="mobile-bottom-nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="research.html" class="mobile-bottom-nav-item active"><i class="fas fa-flask"></i><span>Research</span></a>
+  <a href="publications.html" class="mobile-bottom-nav-item"><i class="fas fa-book"></i><span>Publications</span></a>
+  <a href="conferences.html" class="mobile-bottom-nav-item"><i class="fas fa-microphone"></i><span>Conferences</span></a>
+  <a href="teaching.html" class="mobile-bottom-nav-item"><i class="fas fa-graduation-cap"></i><span>Teaching</span></a>
+  <a href="contact.html" class="mobile-bottom-nav-item"><i class="fas fa-envelope"></i><span>Contact</span></a>
+</div></nav>
 
-  </main>
+<script>
+function setTheme(theme) {
+  const html = document.documentElement;
+  html.classList.remove('dark', 'light');
+  html.classList.add(theme);
+  localStorage.setItem('theme', theme);
+  document.getElementById('btn-light').classList.toggle('active', theme === 'light');
+  document.getElementById('btn-dark').classList.toggle('active', theme === 'dark');
+}
+(function(){ const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })();
 
-  <footer>
-    <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
-  </footer>
-  
-  <!-- Mobile Bottom Tab Bar -->
-  <nav class="mobile-bottom-nav">
-    <div class="mobile-bottom-nav-container">
-      <a href="index.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="research.html" class="mobile-bottom-nav-item active">
-        <i class="fas fa-flask"></i>
-        <span>Research</span>
-      </a>
-      <a href="publications.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-book"></i>
-        <span>Publications</span>
-      </a>
-      <a href="conferences.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-microphone"></i>
-        <span>Conferences</span>
-      </a>
-            <a href="teaching.html" class="mobile-bottom-nav-item">
-        <i class="fas fa-graduation-cap"></i>
-        <span>Teaching</span>
-      </a>
-              <a href="contact.html" class="mobile-bottom-nav-item">
-            <i class="fas fa-envelope"></i>
-            <span>Contact</span>
-        </a>
-    </div>
-  </nav>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('navbar-menu');
-      const icon = document.getElementById('menu-icon');
-      menu.classList.toggle('active');
-      if (menu.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      }
-    }
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        const menu = document.getElementById('navbar-menu');
-        const icon = document.getElementById('menu-icon');
-        menu.classList.remove('active');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-      });
-    });
-  </script>
-
-<script>   (function() {     const canvas = document.getElementById('geo-canvas');     const ctx = canvas.getContext('2d');     let w, h, points, maxDist;     function resize() {       w = canvas.width = canvas.offsetWidth;       h = canvas.height = canvas.offsetHeight;       maxDist = 160;       initPoints();     }     function initPoints() {       const count = Math.floor((w * h) / 12000);       points = [];       for (let i = 0; i < count; i++) {         points.push({           x: Math.random() * w,           y: Math.random() * h,           vx: (Math.random() - 0.5) * 0.3,           vy: (Math.random() - 0.5) * 0.3         });       }     }     function draw() {       ctx.clearRect(0, 0, w, h);       for (let p of points) {         p.x += p.vx;         p.y += p.vy;         if (p.x < 0 || p.x > w) p.vx *= -1;         if (p.y < 0 || p.y > h) p.vy *= -1;       }       for (let i = 0; i < points.length; i++) {         for (let j = i + 1; j < points.length; j++) {           const dx = points[i].x - points[j].x;           const dy = points[i].y - points[j].y;           const dist = Math.sqrt(dx * dx + dy * dy);           if (dist < maxDist) {             const alpha = (1 - dist / maxDist) * 0.15;             ctx.strokeStyle = 'rgba(200, 200, 200, ' + alpha + ')';             ctx.lineWidth = 0.5;             ctx.beginPath();             ctx.moveTo(points[i].x, points[i].y);             ctx.lineTo(points[j].x, points[j].y);             ctx.stroke();           }         }       }       for (let p of points) {         ctx.fillStyle = 'rgba(200, 200, 200, 0.25)';         ctx.beginPath();         ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);         ctx.fill();       }       requestAnimationFrame(draw);     }     window.addEventListener('resize', resize);     resize();     draw();   })();   </script> </body>
+function toggleMenu() {
+  const menu = document.getElementById('navbar-menu');
+  const icon = document.getElementById('menu-icon');
+  menu.classList.toggle('active');
+  if (menu.classList.contains('active')) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+  else { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+}
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const menu = document.getElementById('navbar-menu');
+    const icon = document.getElementById('menu-icon');
+    menu.classList.remove('active');
+    icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+  });
+});
+(function() {
+  const canvas = document.getElementById('geo-canvas');
+  const ctx = canvas.getContext('2d');
+  let w, h, points, maxDist;
+  function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; maxDist = 160; initPoints(); }
+  function initPoints() { const count = Math.floor((w * h) / 12000); points = []; for (let i = 0; i < count; i++) { points.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3 }); } }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const isLight = document.documentElement.classList.contains('light');
+    const c = isLight ? '80, 100, 120' : '200, 200, 200';
+    for (let p of points) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1; }
+    for (let i = 0; i < points.length; i++) { for (let j = i + 1; j < points.length; j++) { const dx = points[i].x - points[j].x; const dy = points[i].y - points[j].y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < maxDist) { const alpha = (1 - dist / maxDist) * 0.15; ctx.strokeStyle = 'rgba(' + c + ', ' + alpha + ')'; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(points[i].x, points[i].y); ctx.lineTo(points[j].x, points[j].y); ctx.stroke(); } } }
+    for (let p of points) { ctx.fillStyle = 'rgba(' + c + ', 0.25)'; ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); ctx.fill(); }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize); resize(); draw();
+})();
+</script>
+</body>
 </html>
