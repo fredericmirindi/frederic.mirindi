@@ -32,9 +32,9 @@
     .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
     .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
     .icon-linkedin { color: var(--linkedin-blue) !important; }
-    .appearance-toggle { display: flex; align-items: center; gap: 0.3rem; background: var(--theme-btn-bg); border: 1.5px solid var(--theme-btn-border); border-radius: 2rem; padding: 0.28rem 0.5rem; cursor: pointer; transition: all 0.3s ease; }
+    .appearance-toggle { display: flex; align-items: center; gap: 0.3rem; background: var(--theme-btn-bg); border: 1.5px solid var(--theme-btn-border); border-radius: 2rem; padding: 0.28rem 0.5rem; cursor: pointer; transition: all 0.3s ease; position: relative; }
     .appearance-toggle:hover { border-color: var(--accent-color); box-shadow: 0 0 10px rgba(0,229,229,0.12); }
-    .theme-option { display: flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.65rem; border-radius: 1.5rem; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: all 0.25s ease; user-select: none; letter-spacing: 0.02em; }
+    .theme-option { display: flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.65rem; border-radius: 1.5rem; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: all 0.25s ease; user-select: none; letter-spacing: 0.02em; border: none; background: none; cursor: pointer; }
     .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; }
     .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); }
     html.light .theme-option.active { color: #fff; }
