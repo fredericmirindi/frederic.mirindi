@@ -372,187 +372,176 @@
     window.addEventListener('resize', resize); resize();
     const isDark = () => document.documentElement.classList.contains('dark');
 
-    // Head profile points (normalized 0-1, will be scaled)
-    const headProfile = [
-      [0.50,0.05],[0.58,0.06],[0.65,0.08],[0.72,0.12],[0.78,0.17],
-      [0.82,0.23],[0.85,0.30],[0.86,0.38],[0.85,0.45],[0.83,0.52],
-      [0.80,0.58],[0.76,0.63],[0.72,0.67],[0.68,0.70],[0.65,0.73],
-      [0.63,0.76],[0.62,0.80],[0.63,0.84],[0.65,0.87],[0.64,0.90],
-      [0.60,0.92],[0.55,0.93],[0.50,0.94],[0.46,0.93],[0.43,0.91],
-      [0.41,0.88],[0.40,0.85],[0.39,0.82],[0.37,0.79],[0.34,0.77],
-      [0.31,0.75],[0.29,0.73],[0.27,0.70],[0.26,0.67],[0.25,0.64],
-      [0.24,0.60],[0.23,0.56],[0.22,0.52],[0.22,0.48],[0.23,0.44],
-      [0.25,0.40],[0.28,0.36],[0.30,0.33],[0.32,0.30],[0.33,0.27],
-      [0.34,0.24],[0.35,0.20],[0.37,0.16],[0.40,0.12],[0.44,0.08],
-      [0.50,0.05]
+    // Precise human side-profile (facing right) — normalized coordinates
+    // Carefully crafted: skull top, forehead, brow, nose, lips, chin, jaw, neck, back of head
+    const headOutline = [
+      // Top of skull
+      [0.42,0.08],[0.46,0.06],[0.50,0.05],[0.54,0.05],[0.58,0.06],[0.62,0.08],
+      // Forehead slope down
+      [0.65,0.11],[0.67,0.15],[0.68,0.19],[0.685,0.23],
+      // Brow ridge
+      [0.69,0.27],[0.695,0.30],
+      // Eye socket indent
+      [0.69,0.33],[0.685,0.35],
+      // Bridge of nose
+      [0.69,0.37],[0.70,0.39],[0.71,0.41],[0.72,0.43],
+      // Nose tip and bottom
+      [0.74,0.45],[0.75,0.46],[0.745,0.475],[0.725,0.48],
+      // Upper lip
+      [0.70,0.485],[0.695,0.50],[0.70,0.51],
+      // Lower lip
+      [0.71,0.525],[0.705,0.54],[0.69,0.55],
+      // Chin
+      [0.68,0.57],[0.675,0.59],[0.67,0.62],[0.665,0.645],[0.66,0.67],
+      // Jaw line going back
+      [0.65,0.69],[0.63,0.71],[0.60,0.73],[0.57,0.745],[0.54,0.755],
+      // Under jaw / throat
+      [0.51,0.76],[0.48,0.765],[0.46,0.775],
+      // Neck
+      [0.45,0.80],[0.445,0.84],[0.44,0.88],[0.44,0.92],[0.445,0.95],
+      // Neck back bottom
+      [0.40,0.95],[0.38,0.92],[0.37,0.88],
+      // Back of neck up
+      [0.365,0.84],[0.36,0.80],[0.355,0.76],
+      // Back of skull
+      [0.35,0.72],[0.34,0.68],[0.335,0.64],[0.33,0.60],
+      [0.325,0.56],[0.32,0.52],[0.315,0.48],[0.315,0.44],
+      [0.32,0.40],[0.325,0.36],[0.33,0.32],[0.335,0.28],
+      [0.34,0.24],[0.35,0.20],[0.36,0.16],[0.37,0.13],
+      [0.39,0.10],[0.42,0.08]
     ];
 
-    // Generate nodes along head outline and interior
-    let nodes = [];
-    let edges = [];
-    let triangles = [];
+    let nodes = [], edges = [], tris = [];
 
-    function generateHead() {
-      nodes = []; edges = []; triangles = [];
-      const cx = W * 0.5, cy = H * 0.5;
-      const scale = Math.min(W, H) * 0.9;
-      const ox = cx - scale * 0.5, oy = cy - scale * 0.5;
-
-      // Outline nodes
-      for (let i = 0; i < headProfile.length; i++) {
-        const [px, py] = headProfile[i];
-        nodes.push({
-          x: ox + px * scale + (Math.random()-0.5)*4,
-          y: oy + py * scale + (Math.random()-0.5)*4,
-          ox: ox + px * scale,
-          oy: oy + py * scale,
-          r: 1.5 + Math.random()*2,
-          outline: true,
-          pulse: Math.random()*Math.PI*2,
-          pulseSpeed: 0.01 + Math.random()*0.02
-        });
-      }
-
-      // Interior nodes
-      for (let i = 0; i < 120; i++) {
-        const px = 0.22 + Math.random()*0.66;
-        const py = 0.05 + Math.random()*0.90;
-        const sx = ox + px * scale;
-        const sy = oy + py * scale;
-        if (isInsideHead(px, py)) {
-          nodes.push({
-            x: sx + (Math.random()-0.5)*3,
-            y: sy + (Math.random()-0.5)*3,
-            ox: sx, oy: sy,
-            r: 1 + Math.random()*1.8,
-            outline: false,
-            pulse: Math.random()*Math.PI*2,
-            pulseSpeed: 0.008 + Math.random()*0.015
-          });
-        }
-      }
-
-      // Create edges (Delaunay-like connections)
-      const maxDist = scale * 0.12;
-      for (let i = 0; i < nodes.length; i++) {
-        let connections = 0;
-        for (let j = i+1; j < nodes.length; j++) {
-          const dx = nodes[i].ox - nodes[j].ox;
-          const dy = nodes[i].oy - nodes[j].oy;
-          const d = Math.sqrt(dx*dx + dy*dy);
-          if (d < maxDist && connections < 6) {
-            edges.push([i, j, d]);
-            connections++;
-          }
-        }
-      }
-
-      // Create triangles from close triplets
-      for (let i = 0; i < edges.length; i++) {
-        for (let j = i+1; j < edges.length; j++) {
-          let shared = -1, a = -1, b = -1;
-          if (edges[i][0] === edges[j][0]) { shared = edges[i][0]; a = edges[i][1]; b = edges[j][1]; }
-          else if (edges[i][0] === edges[j][1]) { shared = edges[i][0]; a = edges[i][1]; b = edges[j][0]; }
-          else if (edges[i][1] === edges[j][0]) { shared = edges[i][1]; a = edges[i][0]; b = edges[j][1]; }
-          else if (edges[i][1] === edges[j][1]) { shared = edges[i][1]; a = edges[i][0]; b = edges[j][0]; }
-          if (shared >= 0 && a >= 0 && b >= 0) {
-            const dx = nodes[a].ox - nodes[b].ox;
-            const dy = nodes[a].oy - nodes[b].oy;
-            if (Math.sqrt(dx*dx+dy*dy) < maxDist && triangles.length < 200) {
-              triangles.push([shared, a, b]);
-            }
-          }
-        }
-      }
-    }
+    function lerp(a, b, t) { return a + (b - a) * t; }
 
     function isInsideHead(px, py) {
       let inside = false;
-      const n = headProfile.length;
-      for (let i = 0, j = n-1; i < n; j = i++) {
-        const [xi,yi] = headProfile[i];
-        const [xj,yj] = headProfile[j];
-        if (((yi > py) !== (yj > py)) && (px < (xj-xi)*(py-yi)/(yj-yi)+xi)) {
-          inside = !inside;
-        }
+      for (let i = 0, j = headOutline.length - 1; i < headOutline.length; j = i++) {
+        const [xi, yi] = headOutline[i], [xj, yj] = headOutline[j];
+        if (((yi > py) !== (yj > py)) && (px < (xj - xi) * (py - yi) / (yj - yi) + xi)) inside = !inside;
       }
       return inside;
     }
 
-    generateHead();
-    window.addEventListener('resize', () => { resize(); generateHead(); });
+    function dist(a, b) { return Math.sqrt((a.ox-b.ox)**2 + (a.oy-b.oy)**2); }
 
-    // Floating ambient particles
-    const ambientParticles = [];
-    for (let i = 0; i < 30; i++) {
-      ambientParticles.push({
-        x: Math.random()*2000, y: Math.random()*600,
-        vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.2,
-        r: 0.5 + Math.random()*1.5, alpha: 0.1 + Math.random()*0.2
+    function buildMesh() {
+      nodes = []; edges = []; tris = [];
+      const scale = Math.min(W, H) * 0.95;
+      const ox = W/2 - scale*0.52, oy = H/2 - scale*0.5;
+
+      // Outline nodes (subdivided for density)
+      for (let i = 0; i < headOutline.length; i++) {
+        const [x1,y1] = headOutline[i];
+        const [x2,y2] = headOutline[(i+1)%headOutline.length];
+        nodes.push({ ox: ox+x1*scale, oy: oy+y1*scale, r: 1.8, outline: true, pulse: Math.random()*6.28, ps: 0.012+Math.random()*0.018 });
+        // Add midpoint
+        nodes.push({ ox: ox+lerp(x1,x2,0.5)*scale, oy: oy+lerp(y1,y2,0.5)*scale, r: 1.2, outline: true, pulse: Math.random()*6.28, ps: 0.01+Math.random()*0.015 });
+      }
+
+      // Interior nodes — scattered inside the head with good density
+      const gridStep = 0.025;
+      for (let gx = 0.30; gx <= 0.76; gx += gridStep) {
+        for (let gy = 0.04; gy <= 0.96; gy += gridStep) {
+          const jx = gx + (Math.random()-0.5)*gridStep*0.6;
+          const jy = gy + (Math.random()-0.5)*gridStep*0.6;
+          if (isInsideHead(jx, jy)) {
+            nodes.push({ ox: ox+jx*scale, oy: oy+jy*scale, r: 0.8+Math.random()*1.2, outline: false, pulse: Math.random()*6.28, ps: 0.006+Math.random()*0.012 });
+          }
+        }
+      }
+
+      // Build edges: connect nearby nodes
+      const maxD = scale * 0.055;
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].x = nodes[i].ox; nodes[i].y = nodes[i].oy;
+        let cnt = 0;
+        for (let j = i+1; j < nodes.length && cnt < 5; j++) {
+          const d = dist(nodes[i], nodes[j]);
+          if (d < maxD) { edges.push([i,j,d]); cnt++; }
+        }
+      }
+
+      // Build triangles from shared-edge triplets
+      const adj = new Map();
+      edges.forEach(([a,b]) => {
+        if (!adj.has(a)) adj.set(a, new Set());
+        if (!adj.has(b)) adj.set(b, new Set());
+        adj.get(a).add(b); adj.get(b).add(a);
+      });
+      const triSet = new Set();
+      edges.forEach(([a,b]) => {
+        if (!adj.has(a) || !adj.has(b)) return;
+        adj.get(a).forEach(c => {
+          if (c > b && adj.get(b).has(c)) {
+            const key = [a,b,c].sort().join(',');
+            if (!triSet.has(key)) { triSet.add(key); tris.push([a,b,c]); }
+          }
+        });
       });
     }
 
-    function draw(t) {
-      ctx.clearRect(0, 0, W, H);
-      const dark = isDark();
+    buildMesh();
+    window.addEventListener('resize', () => { resize(); buildMesh(); });
 
-      // Draw triangles (filled with very subtle color)
-      triangles.forEach(tri => {
-        const [a,b,c] = tri;
+    // Ambient floating particles
+    const sparks = [];
+    for (let i = 0; i < 40; i++) sparks.push({ x:Math.random()*2000, y:Math.random()*600, vx:(Math.random()-0.5)*0.25, vy:(Math.random()-0.5)*0.15, r:0.4+Math.random()*1.2, a:0.08+Math.random()*0.15 });
+
+    function draw(t) {
+      ctx.clearRect(0,0,W,H);
+      const dk = isDark();
+      const ac = dk ? [0,229,229] : [8,145,178];
+      const nc = dk ? [180,220,255] : [8,145,178];
+
+      // Animate node positions (gentle float)
+      nodes.forEach((n,i) => {
+        n.pulse += n.ps;
+        n.x = n.ox + Math.sin(t*0.0006+i*0.7)*1.5;
+        n.y = n.oy + Math.cos(t*0.0008+i*0.5)*1.2;
+      });
+
+      // Draw filled triangles
+      tris.forEach(([a,b,c]) => {
+        const al = dk ? 0.025+Math.sin(t*0.0008+a*0.1)*0.012 : 0.035+Math.sin(t*0.0008+a*0.1)*0.015;
         ctx.beginPath();
         ctx.moveTo(nodes[a].x, nodes[a].y);
         ctx.lineTo(nodes[b].x, nodes[b].y);
         ctx.lineTo(nodes[c].x, nodes[c].y);
         ctx.closePath();
-        const alpha = dark ? 0.03 + Math.sin(t*0.001)*0.015 : 0.04 + Math.sin(t*0.001)*0.02;
-        ctx.fillStyle = dark ? 'rgba(77,208,225,'+alpha+')' : 'rgba(8,145,178,'+alpha+')';
+        ctx.fillStyle = 'rgba('+ac[0]+','+ac[1]+','+ac[2]+','+al+')';
         ctx.fill();
       });
 
       // Draw edges
-      edges.forEach(e => {
-        const [i, j, d] = e;
-        const maxD = Math.min(W,H)*0.9*0.12;
-        const alpha = (1 - d/maxD) * (dark ? 0.25 : 0.2);
-        ctx.beginPath();
-        ctx.moveTo(nodes[i].x, nodes[i].y);
-        ctx.lineTo(nodes[j].x, nodes[j].y);
-        ctx.strokeStyle = dark ? 'rgba(77,208,225,'+alpha+')' : 'rgba(8,145,178,'+alpha+')';
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+      const mxD = Math.min(W,H)*0.95*0.055;
+      edges.forEach(([i,j,d]) => {
+        const al = (1-d/mxD)*(dk?0.22:0.18);
+        ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.strokeStyle='rgba('+ac[0]+','+ac[1]+','+ac[2]+','+al+')'; ctx.lineWidth=0.6; ctx.stroke();
       });
 
       // Draw nodes
-      nodes.forEach((n, idx) => {
-        n.pulse += n.pulseSpeed;
-        n.x = n.ox + Math.sin(t*0.0008 + idx*0.5)*2;
-        n.y = n.oy + Math.cos(t*0.001 + idx*0.3)*1.5;
-        const glow = 0.5 + Math.sin(n.pulse)*0.3;
-        const r = n.r * (0.8 + glow*0.4);
-        const alpha = n.outline ? (dark ? 0.8 : 0.7) : (dark ? 0.5 + glow*0.3 : 0.4 + glow*0.25);
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, r, 0, Math.PI*2);
-        ctx.fillStyle = dark ? 'rgba(200,230,255,'+alpha+')' : 'rgba(8,145,178,'+alpha+')';
-        ctx.fill();
-        if (n.outline) {
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, r+2, 0, Math.PI*2);
-          ctx.fillStyle = dark ? 'rgba(77,208,225,'+(alpha*0.2)+')' : 'rgba(8,145,178,'+(alpha*0.15)+')';
-          ctx.fill();
+      nodes.forEach(n => {
+        const g = 0.5+Math.sin(n.pulse)*0.3;
+        const r = n.r*(0.85+g*0.3);
+        const al = n.outline ? (dk?0.85:0.7) : (dk?0.35+g*0.25:0.3+g*0.2);
+        ctx.beginPath(); ctx.arc(n.x,n.y,r,0,6.28);
+        ctx.fillStyle='rgba('+nc[0]+','+nc[1]+','+nc[2]+','+al+')'; ctx.fill();
+        if (n.outline && r > 1.4) {
+          ctx.beginPath(); ctx.arc(n.x,n.y,r+2.5,0,6.28);
+          ctx.fillStyle='rgba('+ac[0]+','+ac[1]+','+ac[2]+','+(al*0.15)+')'; ctx.fill();
         }
       });
 
-      // Ambient particles
-      ambientParticles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < -20) p.x = W+20;
-        if (p.x > W+20) p.x = -20;
-        if (p.y < -20) p.y = H+20;
-        if (p.y > H+20) p.y = -20;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-        ctx.fillStyle = dark ? 'rgba(77,208,225,'+p.alpha+')' : 'rgba(8,145,178,'+p.alpha+')';
-        ctx.fill();
+      // Ambient sparks
+      sparks.forEach(p => {
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20;
+        if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.28);
+        ctx.fillStyle='rgba('+ac[0]+','+ac[1]+','+ac[2]+','+p.a+')'; ctx.fill();
       });
 
       requestAnimationFrame(draw);
