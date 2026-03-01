@@ -43,12 +43,12 @@
     .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
     .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
     .icon-linkedin { color: var(--linkedin-blue) !important; }
-    /* Hero Banner */
-    .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
-    .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,10,20,0.38); }
-    .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); }
-    .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); }
+/* Hero Banner */
+      .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 30%, #80deea 60%, #4dd0e1 100%); }
+      html.dark .research-hero { background: linear-gradient(135deg, #0a1628 0%, #0d2137 30%, #0f2b4a 60%, #11365d 100%); }
+      .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+      .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.5rem auto 0; }
+      #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
     /* Main content */
     .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
     /* Cards */
@@ -120,9 +120,8 @@
     .mobile-bottom-nav-item.active i { transform:scale(1.1); }
     .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
     @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
-      #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; } .appearance-toggle { display: flex; align-items: center; gap: 0.3rem; background: var(--theme-btn-bg); border: 1.5px solid var(--theme-btn-border); border-radius: 2rem; padding: 0.28rem 0.5rem; cursor: pointer; transition: all 0.3s ease; } .appearance-toggle:hover { border-color: var(--accent-color); box-shadow: 0 0 10px rgba(0,229,229,0.12); } .theme-option { display: flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.65rem; border-radius: 1.5rem; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); transition: all 0.25s ease; user-select: none; letter-spacing: 0.02em; } .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; } .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); } html.light .theme-option.active { color: #fff; } html.light .mobile-bottom-nav { background: rgba(245,246,250,0.97); }   </style>
 </head>
-<body>   <canvas id="geo-canvas"></canvas>
+  <body>
   <!-- Navbar -->
   <nav class="navbar">
     <div class="navbar-container">
@@ -157,15 +156,14 @@
     </div>
   </nav>
 
-  <!-- Hero Banner -->
-  <section class="research-hero">
-    <img src="images/teaching_page.png" alt="Teaching banner" class="research-hero-img">
-    <div class="research-hero-overlay"></div>
-    <div class="research-hero-title">
-      Teaching
-      <span class="accent-bar"></span>
-    </div>
-  </section>
+      <!-- Hero Banner -->
+    <section class="research-hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="research-hero-title">
+        Teaching
+        <span class="accent-bar"></span>
+      </div>
+    </section>
 
   <!-- Main Content -->
   <main class="page-section">
@@ -348,5 +346,106 @@
       });
     });
   </script>
-<script>   (function() {     const canvas = document.getElementById('geo-canvas');     const ctx = canvas.getContext('2d');     let w, h, points, maxDist;     function resize() {       w = canvas.width = canvas.offsetWidth;       h = canvas.height = canvas.offsetHeight;       maxDist = 160;       initPoints();     }     function initPoints() {       const count = Math.floor((w * h) / 12000);       points = [];       for (let i = 0; i < count; i++) {         points.push({           x: Math.random() * w,           y: Math.random() * h,           vx: (Math.random() - 0.5) * 0.3,           vy: (Math.random() - 0.5) * 0.3         });       }     }     function draw() {       ctx.clearRect(0, 0, w, h);       for (let p of points) {         p.x += p.vx;         p.y += p.vy;         if (p.x < 0 || p.x > w) p.vx *= -1;         if (p.y < 0 || p.y > h) p.vy *= -1;       }       for (let i = 0; i < points.length; i++) {         for (let j = i + 1; j < points.length; j++) {           const dx = points[i].x - points[j].x;           const dy = points[i].y - points[j].y;           const dist = Math.sqrt(dx * dx + dy * dy);           if (dist < maxDist) {             const alpha = (1 - dist / maxDist) * 0.15;             ctx.strokeStyle = 'rgba(' + c + ', ' + alpha + ')';             ctx.lineWidth = 0.5;             ctx.beginPath();             ctx.moveTo(points[i].x, points[i].y);             ctx.lineTo(points[j].x, points[j].y);             ctx.stroke();           }         }       }       for (let p of points) {         ctx.fillStyle = 'rgba(' + c + ', 0.25)';         ctx.beginPath();         ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);         ctx.fill();       }       requestAnimationFrame(draw);     }     window.addEventListener('resize', resize);     resize();     draw();   })();   </script> </body>
+<script>
+  (function() {
+    const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H;
+    function resize() { W = canvas.width = canvas.parentElement.offsetWidth; H = canvas.height = canvas.parentElement.offsetHeight; }
+    window.addEventListener('resize', resize); resize();
+    const isDark = () => document.documentElement.classList.contains('dark');
+    // Chalkboard, books, graduation caps, math symbols, lightbulbs
+    const particles = [];
+    const symbols = ['+', '=', '\u03C0', '\u221A', '\u03A3', '\u222B', 'x\u00B2', '\u0394', '\u221E'];
+    for (let i = 0; i < 35; i++) {
+      particles.push({ x: Math.random()*2000, y: Math.random()*500, vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.3, type: Math.floor(Math.random()*4), sym: symbols[Math.floor(Math.random()*symbols.length)], size: 12+Math.random()*14, alpha: 0.15+Math.random()*0.35, rot: Math.random()*Math.PI*2, rotV: (Math.random()-0.5)*0.01 });
+    }
+    function drawBook(x, y, s, alpha, dark) {
+      ctx.save(); ctx.globalAlpha = alpha;
+      ctx.fillStyle = dark ? '#4dd0e1' : '#00796b';
+      ctx.fillRect(x-s*0.5, y-s*0.35, s, s*0.7);
+      ctx.fillStyle = dark ? '#80deea' : '#4db6ac';
+      ctx.fillRect(x-s*0.5, y-s*0.35, s*0.08, s*0.7);
+      ctx.strokeStyle = dark ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)';
+      ctx.lineWidth = 0.5;
+      for (let l = 0; l < 3; l++) { ctx.beginPath(); ctx.moveTo(x-s*0.3, y-s*0.15+l*s*0.2); ctx.lineTo(x+s*0.4, y-s*0.15+l*s*0.2); ctx.stroke(); }
+      ctx.restore();
+    }
+    function drawCap(x, y, s, alpha, dark) {
+      ctx.save(); ctx.globalAlpha = alpha;
+      ctx.fillStyle = dark ? '#1565c0' : '#0d47a1';
+      ctx.beginPath(); ctx.moveTo(x, y-s*0.4); ctx.lineTo(x+s*0.6, y); ctx.lineTo(x, y+s*0.15); ctx.lineTo(x-s*0.6, y); ctx.closePath(); ctx.fill();
+      ctx.fillRect(x-s*0.2, y+s*0.05, s*0.4, s*0.15);
+      ctx.strokeStyle = dark ? '#ffd54f' : '#f9a825'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(x+s*0.35, y); ctx.lineTo(x+s*0.35, y+s*0.35); ctx.stroke();
+      ctx.fillStyle = ctx.strokeStyle; ctx.beginPath(); ctx.arc(x+s*0.35, y+s*0.38, s*0.06, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
+    function drawBulb(x, y, s, alpha, dark) {
+      ctx.save(); ctx.globalAlpha = alpha;
+      ctx.fillStyle = dark ? 'rgba(255,213,79,0.6)' : 'rgba(255,179,0,0.5)';
+      ctx.beginPath(); ctx.arc(x, y-s*0.15, s*0.3, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = dark ? '#ffd54f' : '#ffb300';
+      ctx.beginPath(); ctx.arc(x, y-s*0.15, s*0.2, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = dark ? '#90a4ae' : '#78909c';
+      ctx.fillRect(x-s*0.08, y+s*0.1, s*0.16, s*0.12);
+      // Rays
+      ctx.strokeStyle = dark ? 'rgba(255,213,79,0.4)' : 'rgba(255,179,0,0.3)'; ctx.lineWidth = 1;
+      for (let r = 0; r < 6; r++) { const a = r*Math.PI/3; ctx.beginPath(); ctx.moveTo(x+Math.cos(a)*s*0.32, y-s*0.15+Math.sin(a)*s*0.32); ctx.lineTo(x+Math.cos(a)*s*0.45, y-s*0.15+Math.sin(a)*s*0.45); ctx.stroke(); }
+      ctx.restore();
+    }
+    // Draw chalkboard
+    function drawChalkboard(dark) {
+      const bw = W*0.22, bh = H*0.4, bx = W*0.78, by = H*0.3;
+      ctx.save();
+      ctx.fillStyle = dark ? '#1b3a2a' : '#2e7d32'; ctx.globalAlpha = 0.25;
+      ctx.fillRect(bx, by, bw, bh);
+      ctx.strokeStyle = dark ? '#a5d6a7' : '#81c784'; ctx.lineWidth = 2; ctx.globalAlpha = 0.3;
+      ctx.strokeRect(bx, by, bw, bh);
+      ctx.fillStyle = dark ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.2)'; ctx.font = (bh*0.12)+'px serif'; ctx.globalAlpha = 0.35;
+      ctx.fillText('E = mc\u00B2', bx+bw*0.15, by+bh*0.35);
+      ctx.fillText('\u222Bf(x)dx', bx+bw*0.1, by+bh*0.65);
+      ctx.restore();
+    }
+    // Draw teacher figure
+    function drawTeacher(t, dark) {
+      const tx = W*0.15, ty = H*0.55;
+      ctx.save(); ctx.globalAlpha = 0.3;
+      // Head
+      ctx.fillStyle = dark ? '#ffcc80' : '#ffb74d';
+      ctx.beginPath(); ctx.arc(tx, ty-50, 18, 0, Math.PI*2); ctx.fill();
+      // Body
+      ctx.fillStyle = dark ? '#42a5f5' : '#1976d2';
+      ctx.beginPath(); ctx.moveTo(tx-15, ty-32); ctx.lineTo(tx+15, ty-32); ctx.lineTo(tx+20, ty+25); ctx.lineTo(tx-20, ty+25); ctx.closePath(); ctx.fill();
+      // Pointer arm (animated)
+      ctx.strokeStyle = dark ? '#ffcc80' : '#ffb74d'; ctx.lineWidth = 3;
+      const armAngle = Math.sin(t*0.002)*0.3 - 0.5;
+      ctx.beginPath(); ctx.moveTo(tx+15, ty-20); ctx.lineTo(tx+45, ty-35+Math.sin(t*0.002)*8); ctx.stroke();
+      // Pointer stick
+      ctx.strokeStyle = dark ? '#bcaaa4' : '#8d6e63'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(tx+45, ty-35+Math.sin(t*0.002)*8); ctx.lineTo(tx+80, ty-55+Math.sin(t*0.002)*10); ctx.stroke();
+      ctx.restore();
+    }
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      const dark = isDark();
+      drawChalkboard(dark);
+      drawTeacher(t, dark);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.rot += p.rotV;
+        if (p.x < -50) p.x = W+50; if (p.x > W+50) p.x = -50;
+        if (p.y < -50) p.y = H+50; if (p.y > H+50) p.y = -50;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        if (p.type === 0) { drawBook(0, 0, p.size, p.alpha, dark); }
+        else if (p.type === 1) { drawCap(0, 0, p.size, p.alpha, dark); }
+        else if (p.type === 2) { drawBulb(0, 0, p.size, p.alpha, dark); }
+        else { ctx.fillStyle = dark ? 'rgba(77,208,225,'+p.alpha+')' : 'rgba(0,121,107,'+p.alpha+')'; ctx.font = p.size+'px serif'; ctx.fillText(p.sym, 0, 0); }
+        ctx.restore();
+      });
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+  </script>
 </html>
