@@ -108,7 +108,20 @@
   .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
   @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
   #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-</style>
+/* Research Results Gallery */
+        .results-gallery { margin-top: 1.75rem; }
+        .results-gallery-title { font-size: 0.95rem; font-weight: 700; color: var(--accent-color); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .results-gallery-title::before { content: ''; display: inline-block; width: 18px; height: 2px; background: var(--accent-color); border-radius: 1px; }
+        .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+        .results-grid-full { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .result-item { position: relative; border-radius: 0.6rem; overflow: hidden; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.15); transition: border-color 0.3s ease, transform 0.3s ease; }
+        .result-item:hover { border-color: rgba(0,229,229,0.35); transform: translateY(-2px); }
+        .result-item img { width: 100%; height: auto; display: block; }
+        .result-caption { padding: 0.6rem 0.85rem; font-size: 0.78rem; color: var(--text-muted); text-align: center; background: var(--glass-bg); border-top: 1px solid var(--glass-border); }
+        .result-caption strong { color: var(--text-white); font-weight: 600; }
+        html.light .result-item { background: rgba(0,0,0,0.03); }
+        @media (max-width: 600px) { .results-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
 <canvas id="geo-canvas"></canvas>
@@ -160,6 +173,25 @@
     <p><strong style="color:var(--text-white)">YOLO Banknote Detection</strong></p>
     <p>I am currently developing a working paper with <a href="https://www.morgan.edu/school-of-architecture-and-planning/architecture-urbanism-and-built-environments/phd-student-profiles/derrick-mirindi"><strong>Derrick Mirindi</strong></a> (<a href="https://www.upenn.edu">University of Pennsylvania</a>) on the application of <strong>YOLO Algorithm</strong> for <strong>banknote detection and authentication</strong>.</p>
     <p>This research explores machine learning approaches to currency recognition and counterfeit detection systems.</p>
+                    <div class="results-gallery">
+                    <p class="results-gallery-title">Preliminary Results</p>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <img src="images/20usd.jpg" alt="20 USD Banknote Detection">
+                            <div class="result-caption"><strong>20 USD</strong> — Detection Output</div>
+                        </div>
+                        <div class="result-item">
+                            <img src="images/100usd.jpg" alt="100 USD Banknote Detection">
+                            <div class="result-caption"><strong>100 USD</strong> — Detection Output</div>
+                        </div>
+                    </div>
+                    <div class="results-grid-full">
+                        <div class="result-item">
+                            <img src="images/yolov8s_eigencam.jpg" alt="YOLOv8s Eigen-CAM Visualization">
+                            <div class="result-caption"><strong>YOLOv8s Eigen-CAM</strong> — Model Attention Heatmap</div>
+                        </div>
+                    </div>
+                </div>
   </div>
 </section>
 
