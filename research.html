@@ -110,12 +110,12 @@
   #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
             /* Research Results Accordion */
         .results-accordion { margin-top: 1.75rem; border: 1px solid var(--glass-border); border-radius: 0.6rem; overflow: hidden; }
-        .results-toggle { cursor: pointer; padding: 1rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: var(--accent-color); background: var(--glass-bg); display: flex; align-items: center; gap: 0.6rem; transition: background 0.3s ease; list-style: none; }
+        .results-toggle { cursor: pointer; padding: 1rem 1.25rem; font-size: 0.95rem; font-weight: 600; color: var(--accent-color); background: var(--glass-bg); display: flex; align-items: center; gap: 0.6rem; transition: background 0.3s ease; width: 100%; font-family: inherit; outline: none; }
         .results-toggle::-webkit-details-marker { display: none; }
         .results-toggle::marker { display: none; content: ''; }
         .results-toggle:hover { background: rgba(0,229,229,0.08); }
         .toggle-icon { font-size: 0.7rem; transition: transform 0.3s ease; display: inline-block; }
-        details[open] .toggle-icon { transform: rotate(90deg); }
+        .results-toggle.open .toggle-icon { transform: rotate(90deg); }
         .results-content { padding: 1.25rem; border-top: 1px solid var(--glass-border); }
         .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
         .results-grid-full { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -180,11 +180,11 @@
     <p><strong style="color:var(--text-white)">YOLO Banknote Detection</strong></p>
     <p>I am currently developing a working paper with <a href="https://www.morgan.edu/school-of-architecture-and-planning/architecture-urbanism-and-built-environments/phd-student-profiles/derrick-mirindi"><strong>Derrick Mirindi</strong></a> (<a href="https://www.upenn.edu">University of Pennsylvania</a>) on the application of <strong>YOLO Algorithm</strong> for <strong>banknote detection and authentication</strong>.</p>
     <p>This research explores machine learning approaches to currency recognition and counterfeit detection systems.</p>
-                    <details class="results-accordion">
-                    <summary class="results-toggle">
+                    <div class="results-accordion">
+                    <button class="results-toggle" onclick="var c=this.nextElementSibling;var i=this.querySelector('.toggle-icon');if(c.style.display==='none'){c.style.display='block';i.textContent='\u25BC';this.classList.add('open')}else{c.style.display='none';i.textContent='\u25B6';this.classList.remove('open')}">
                         <span class="toggle-icon">&#9654;</span> Click here for <strong>Preliminary Results</strong>
-                    </summary>
-                    <div class="results-content">
+                    </button>
+                    <div class="results-content" style="display:none;">
                         <div class="results-grid">
                             <div class="result-item">
                                 <img src="images/20usd.jpg" alt="20 USD Banknote Detection">
@@ -204,7 +204,7 @@
                         </div>
                         <p class="result-interpretation">The Eigen-CAM activation maps reveal which regions of each banknote the model focuses on during inference. Warmer areas (red/yellow) indicate high attention zones, confirming that the model prioritizes security-relevant features such as watermarks, portraits, and denomination numerals rather than background textures.</p>
                     </div>
-                </details>
+                </div>
   </div>
 </section>
 
