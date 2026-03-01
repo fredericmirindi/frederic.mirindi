@@ -166,7 +166,7 @@
             <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
           </div>
           <div class="social-icons-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
-        </div>
+                  </div>
         <!-- Appearance Toggle -->
         <div class="appearance-toggle" id="appearanceToggle" role="group" aria-label="Appearance">
           <button class="theme-option" id="btn-light" onclick="setTheme('light')" title="Light mode">
@@ -350,7 +350,7 @@
   </nav>
 
   <script>
-    function setTheme(theme) { const html = document.documentElement; html.classList.remove('dark', 'light'); html.classList.add(theme); localStorage.setItem('theme', theme); document.getElementById('btn-light').classList.toggle('active', theme === 'light'); document.getElementById('btn-dark').classList.toggle('active', theme === 'dark'); document.getElementById('btn-light').setAttribute('aria-pressed', theme === 'light'); document.getElementById('btn-dark').setAttribute('aria-pressed', theme === 'dark'); } (function() { const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })(); function toggleMenu() {
+    function setTheme(theme) { const html = document.documentElement; html.classList.remove('dark', 'light'); html.classList.add(theme); localStorage.setItem('theme', theme); document.getElementById('btn-light').classList.toggle('active', theme === 'light'); document.getElementById('btn-dark').classList.toggle('active', theme === 'dark'); document.getElementById('btn-light').setAttribute('aria-pressed', theme === 'light'); document.getElementById('btn-dark').setAttribute('aria-pressed', theme === 'dark'); } (function() { const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })();
           // Mobile menu toggle
     function toggleMenu() {
       const menu = document.getElementById('navbar-menu');
