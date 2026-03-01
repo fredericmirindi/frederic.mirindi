@@ -69,12 +69,15 @@
     .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); }
     html.light .theme-option.active { color: #fff; }
     /* Hero Banner */
-    .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 20, 0.38); }
-    .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); }
-    .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); }
-    /* Main content */
+            .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a1a 0%, #120a2a 40%, #1a0a33 70%, #0d0820 100%); }
+        html.light .research-hero { background: linear-gradient(135deg, #f0e8f8 0%, #e5d0f5 40%, #d8b8f0 70%, #e0c5f0 100%); }
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; pointer-events: none; }
+        .research-hero-title { color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out; }
+        html.light .research-hero-title { color: #1a0a33; text-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); animation: expandBar 1.2s ease-out 0.3s both; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes expandBar { from { width: 0; opacity: 0; } to { width: 60px; opacity: 1; } }
     .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
     /* Cards */
     .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); transition: border-color 0.3s ease; }
@@ -179,11 +182,12 @@
     </div>
   </nav>
 
-  <div class="research-hero">
-    <img src="images/publications_page.PNG" alt="Publications banner" class="research-hero-img">
-    <div class="research-hero-overlay"></div>
-    <div class="research-hero-title">Publications<span class="accent-bar"></span></div>
-  </div>
+      <div class="research-hero" id="hero-banner">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-content">
+        <h1 class="research-hero-title">Publications<span class="accent-bar"></span></h1>
+      </div>
+    </div>
 
   <section class="page-section">
     <div class="card">
@@ -289,5 +293,140 @@
       window.addEventListener('resize', resize); resize(); draw();
     })();
   </script>
+<script>
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, papers = [], particles = [], t = 0, mouse = {x:-1000,y:-1000};
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width; h = canvas.height = rect.height;
+    initPapers(); initParticles();
+  }
+
+  function initPapers() {
+    papers = [];
+    for(let i = 0; i < 12; i++) {
+      papers.push({ x: Math.random()*w, y: Math.random()*h, w: 30+Math.random()*25, h: 38+Math.random()*20, rot: (Math.random()-0.5)*0.4, vx: (Math.random()-0.5)*0.3, vy: -0.15-Math.random()*0.25, phase: Math.random()*Math.PI*2, speed: 0.003+Math.random()*0.005 });
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    for(let i = 0; i < 50; i++) {
+      particles.push({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-0.5)*0.5, vy: (Math.random()-0.5)*0.5, r: 1+Math.random()*1.5, pulse: Math.random()*Math.PI*2 });
+    }
+  }
+
+  function drawPaper(x, y, pw, ph, rot, alpha, aR, aG, aB) {
+    ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+    ctx.fillStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.12)+')';
+    ctx.strokeStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.3)+')';
+    ctx.lineWidth = 1;
+    // Paper shape with folded corner
+    ctx.beginPath(); ctx.moveTo(-pw/2, -ph/2); ctx.lineTo(pw/2-8, -ph/2); ctx.lineTo(pw/2, -ph/2+8); ctx.lineTo(pw/2, ph/2); ctx.lineTo(-pw/2, ph/2); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Fold triangle
+    ctx.beginPath(); ctx.moveTo(pw/2-8, -ph/2); ctx.lineTo(pw/2-8, -ph/2+8); ctx.lineTo(pw/2, -ph/2+8); ctx.stroke();
+    // Text lines
+    ctx.strokeStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.2)+')'; ctx.lineWidth = 0.6;
+    for(let l=0; l<4; l++) { const ly = -ph/2+14+l*7; ctx.beginPath(); ctx.moveTo(-pw/2+5, ly); ctx.lineTo(pw/2-5-(l===2?10:0), ly); ctx.stroke(); }
+    ctx.restore();
+  }
+
+  function drawRobot(cx, cy, sc, alpha, aR, aG, aB) {
+    ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc);
+    const fs = 'rgba('+aR+','+aG+','+aB+','+alpha+')';
+    const ss = 'rgba('+aR+','+aG+','+aB+','+(alpha*2.5)+')';
+    ctx.fillStyle = fs; ctx.strokeStyle = ss; ctx.lineWidth = 1.5/sc;
+    // Head - rounded rectangle
+    const hw=40, hh=35, hr=8;
+    ctx.beginPath(); ctx.moveTo(-hw/2+hr, -65); ctx.lineTo(hw/2-hr, -65); ctx.quadraticCurveTo(hw/2, -65, hw/2, -65+hr); ctx.lineTo(hw/2, -65+hh-hr); ctx.quadraticCurveTo(hw/2, -65+hh, hw/2-hr, -65+hh); ctx.lineTo(-hw/2+hr, -65+hh); ctx.quadraticCurveTo(-hw/2, -65+hh, -hw/2, -65+hh-hr); ctx.lineTo(-hw/2, -65+hr); ctx.quadraticCurveTo(-hw/2, -65, -hw/2+hr, -65); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Eyes
+    ctx.fillStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*3)+')';
+    ctx.beginPath(); ctx.arc(-10, -50, 4, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(10, -50, 4, 0, Math.PI*2); ctx.fill();
+    // Eye glow
+    var eg = ctx.createRadialGradient(-10,-50,0,-10,-50,8); eg.addColorStop(0,'rgba('+aR+','+aG+','+aB+','+(alpha*1.5)+')'); eg.addColorStop(1,'rgba('+aR+','+aG+','+aB+',0)'); ctx.fillStyle=eg; ctx.beginPath(); ctx.arc(-10,-50,8,0,Math.PI*2); ctx.fill();
+    eg = ctx.createRadialGradient(10,-50,0,10,-50,8); eg.addColorStop(0,'rgba('+aR+','+aG+','+aB+','+(alpha*1.5)+')'); eg.addColorStop(1,'rgba('+aR+','+aG+','+aB+',0)'); ctx.fillStyle=eg; ctx.beginPath(); ctx.arc(10,-50,8,0,Math.PI*2); ctx.fill();
+    // Antenna
+    ctx.strokeStyle = ss; ctx.lineWidth = 1.5/sc;
+    ctx.beginPath(); ctx.moveTo(0, -65); ctx.lineTo(0, -80); ctx.stroke();
+    ctx.fillStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*3)+')';
+    ctx.beginPath(); ctx.arc(0, -82, 3, 0, Math.PI*2); ctx.fill();
+    // Antenna glow
+    var ag = ctx.createRadialGradient(0,-82,0,0,-82,10); ag.addColorStop(0,'rgba('+aR+','+aG+','+aB+','+(alpha*2)+')'); ag.addColorStop(1,'rgba('+aR+','+aG+','+aB+',0)'); ctx.fillStyle=ag; ctx.beginPath(); ctx.arc(0,-82,10,0,Math.PI*2); ctx.fill();
+    // Neck
+    ctx.fillStyle = fs; ctx.strokeStyle = ss;
+    ctx.fillRect(-5, -30, 10, 10); ctx.strokeRect(-5, -30, 10, 10);
+    // Body
+    ctx.beginPath(); ctx.moveTo(-30, -20); ctx.lineTo(30, -20); ctx.lineTo(25, 40); ctx.lineTo(-25, 40); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Chest panel
+    ctx.strokeStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*1.8)+')'; ctx.lineWidth = 0.8/sc;
+    ctx.strokeRect(-18, -12, 36, 25);
+    // Chest indicator lights
+    for(var ci=0;ci<3;ci++) { ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(alpha*(1.5+Math.sin(t*2+ci)*0.8))+')'; ctx.beginPath(); ctx.arc(-10+ci*10, -4, 2, 0, Math.PI*2); ctx.fill(); }
+    // Arms holding papers
+    ctx.fillStyle = fs; ctx.strokeStyle = ss; ctx.lineWidth = 1.5/sc;
+    // Left arm
+    ctx.beginPath(); ctx.moveTo(-30, -15); ctx.lineTo(-50, 5); ctx.lineTo(-45, 30); ctx.lineTo(-35, 28); ctx.lineTo(-38, 8); ctx.lineTo(-30, -5); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Right arm
+    ctx.beginPath(); ctx.moveTo(30, -15); ctx.lineTo(50, 5); ctx.lineTo(45, 30); ctx.lineTo(35, 28); ctx.lineTo(38, 8); ctx.lineTo(30, -5); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Paper in left hand
+    ctx.fillStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.4)+')';
+    ctx.save(); ctx.translate(-48, 28); ctx.rotate(0.2);
+    ctx.fillRect(-12, -16, 24, 32); ctx.strokeRect(-12, -16, 24, 32);
+    ctx.strokeStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.5)+')'; ctx.lineWidth=0.5/sc;
+    for(var pl=0;pl<4;pl++){ctx.beginPath();ctx.moveTo(-8,-10+pl*6);ctx.lineTo(8,-10+pl*6);ctx.stroke();}
+    ctx.restore();
+    // Paper in right hand
+    ctx.fillStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.4)+')';
+    ctx.save(); ctx.translate(48, 28); ctx.rotate(-0.15);
+    ctx.fillRect(-12, -16, 24, 32); ctx.strokeRect(-12, -16, 24, 32);
+    ctx.strokeStyle = 'rgba('+aR+','+aG+','+aB+','+(alpha*0.5)+')'; ctx.lineWidth=0.5/sc;
+    for(var pl=0;pl<4;pl++){ctx.beginPath();ctx.moveTo(-8,-10+pl*6);ctx.lineTo(8,-10+pl*6);ctx.stroke();}
+    ctx.restore();
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h); t += 0.016;
+    const isLight = document.documentElement.classList.contains('light');
+    const aR = isLight ? 8 : 0, aG = isLight ? 145 : 229, aB = isLight ? 178 : 229;
+
+    // Update and draw floating papers
+    for(let p of papers) {
+      p.phase += p.speed; p.x += p.vx + Math.sin(p.phase)*0.3; p.y += p.vy;
+      if(p.y < -50) { p.y = h+50; p.x = Math.random()*w; }
+      if(p.x < -50) p.x = w+50; if(p.x > w+50) p.x = -50;
+      const sway = Math.sin(p.phase)*0.15;
+      drawPaper(p.x, p.y, p.w, p.h, p.rot+sway, 1, aR, aG, aB);
+    }
+
+    // Update and draw particles + connections
+    for(let p of particles) {
+      p.x += p.vx; p.y += p.vy; p.pulse += 0.02;
+      if(p.x<0||p.x>w) p.vx*=-1; if(p.y<0||p.y>h) p.vy*=-1;
+      const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<150){p.vx+=dx/dist*0.03;p.vy+=dy/dist*0.03;} p.vx*=0.99;p.vy*=0.99;
+    }
+    for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120){const al=(1-dist/120)*0.2;ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+al+')';ctx.lineWidth=0.6;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}}
+    for(let p of particles){const gl=0.12+Math.sin(p.pulse)*0.08;const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,6);g.addColorStop(0,'rgba('+aR+','+aG+','+aB+','+(gl*2)+')');g.addColorStop(1,'rgba('+aR+','+aG+','+aB+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,6,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(0.5+Math.sin(p.pulse)*0.3)+')';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+
+    // Draw robot on left
+    drawRobot(w*0.16, h*0.52, Math.min(w,h)*0.003, isLight?0.06:0.055, aR, aG, aB);
+    // Draw smaller robot on right
+    drawRobot(w*0.84, h*0.48, Math.min(w,h)*0.0022, isLight?0.045:0.04, aR, aG, aB);
+
+    requestAnimationFrame(draw);
+  }
+
+  canvas.parentElement.addEventListener('mousemove', function(e){const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  canvas.parentElement.addEventListener('mouseleave', function(){mouse.x=-1000;mouse.y=-1000;});
+  window.addEventListener('resize', resize);
+  resize(); draw();
+})();
+</script>
 </body>
 </html>
