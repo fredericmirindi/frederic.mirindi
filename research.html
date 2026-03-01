@@ -61,12 +61,16 @@
   .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; }
   .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); }
   html.light .theme-option.active { color: #fff; }
-  /* Hero Banner */
-  .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
-  .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 20, 0.38); }
-  .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85), 0 0 40px rgba(0, 0, 0, 0.5); }
-  .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0, 229, 229, 0.6); }
+          /* Hero Banner */
+        .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 40%, #0a2233 70%, #081820 100%); }
+        html.light .research-hero { background: linear-gradient(135deg, #e8f4f8 0%, #d0eaf5 40%, #b8dff0 70%, #c5e8f0 100%); }
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; pointer-events: none; }
+        .research-hero-title { color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out; }
+        html.light .research-hero-title { color: #0a2233; text-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); animation: expandBar 1.2s ease-out 0.3s both; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes expandBar { from { width: 0; opacity: 0; } to { width: 60px; opacity: 1; } }
   .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
   .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); transition: border-color 0.3s ease; }
   .card:hover { border-color: rgba(0, 229, 229, 0.22); }
@@ -156,11 +160,12 @@
   </div>
 </nav>
 
-<div class="research-hero">
-  <img src="images/research.PNG" alt="Research banner" class="research-hero-img">
-  <div class="research-hero-overlay"></div>
-  <h1 class="research-hero-title">Research<span class="accent-bar"></span></h1>
-</div>
+    <div class="research-hero" id="hero-banner">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-content">
+        <h1 class="research-hero-title">Research<span class="accent-bar"></span></h1>
+      </div>
+    </div>
 
 <section class="page-section">
   <div class="card">
@@ -261,6 +266,115 @@ document.querySelectorAll('.nav-link').forEach(link => {
     requestAnimationFrame(draw);
   }
   window.addEventListener('resize', resize); resize(); draw();
+})();
+</script>
+<script>
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, nodes = [], edges = [], pulses = [], mouse = {x: -1000, y: -1000};
+  const nodeCount = 80, connectionDist = 150;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width;
+    h = canvas.height = rect.height;
+    initNodes();
+  }
+
+  function initNodes() {
+    nodes = [];
+    for(let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6,
+        r: Math.random() * 2 + 1, pulse: Math.random() * Math.PI * 2,
+        type: Math.random() > 0.85 ? 'hub' : 'node'
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    const isLight = document.documentElement.classList.contains('light');
+    const accentR = isLight ? 8 : 0, accentG = isLight ? 145 : 229, accentB = isLight ? 178 : 229;
+
+    // Update positions
+    for(let n of nodes) {
+      n.x += n.vx; n.y += n.vy; n.pulse += 0.02;
+      if(n.x < 0 || n.x > w) n.vx *= -1;
+      if(n.y < 0 || n.y > h) n.vy *= -1;
+      // Mouse interaction
+      const dx = n.x - mouse.x, dy = n.y - mouse.y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if(dist < 180) { n.vx += dx/dist * 0.05; n.vy += dy/dist * 0.05; }
+      n.vx *= 0.99; n.vy *= 0.99;
+    }
+
+    // Draw connections
+    for(let i = 0; i < nodes.length; i++) {
+      for(let j = i+1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < connectionDist) {
+          const alpha = (1 - dist/connectionDist) * 0.35;
+          ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+alpha+')';
+          ctx.lineWidth = 0.8;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
+        }
+      }
+    }
+
+    // Draw nodes with glow
+    for(let n of nodes) {
+      const glowSize = n.type === 'hub' ? 12 : 6;
+      const pulseAlpha = 0.15 + Math.sin(n.pulse) * 0.1;
+      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowSize);
+      grad.addColorStop(0, 'rgba('+accentR+','+accentG+','+accentB+','+pulseAlpha * 2+')');
+      grad.addColorStop(1, 'rgba('+accentR+','+accentG+','+accentB+',0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath(); ctx.arc(n.x, n.y, glowSize, 0, Math.PI*2); ctx.fill();
+
+      const coreR = n.type === 'hub' ? n.r * 2 : n.r;
+      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(0.7 + Math.sin(n.pulse)*0.3)+')';
+      ctx.beginPath(); ctx.arc(n.x, n.y, coreR, 0, Math.PI*2); ctx.fill();
+    }
+
+    // Travelling pulses along edges
+    if(Math.random() < 0.03 && nodes.length > 1) {
+      const a = Math.floor(Math.random()*nodes.length);
+      let b = Math.floor(Math.random()*nodes.length);
+      if(a !== b) {
+        const dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
+        if(Math.sqrt(dx*dx+dy*dy) < connectionDist) {
+          pulses.push({from: a, to: b, t: 0});
+        }
+      }
+    }
+    for(let i = pulses.length-1; i >= 0; i--) {
+      const p = pulses[i]; p.t += 0.025;
+      if(p.t > 1) { pulses.splice(i,1); continue; }
+      const x = nodes[p.from].x + (nodes[p.to].x - nodes[p.from].x) * p.t;
+      const y = nodes[p.from].y + (nodes[p.to].y - nodes[p.from].y) * p.t;
+      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+',0.9)';
+      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI*2); ctx.fill();
+      const pg = ctx.createRadialGradient(x, y, 0, x, y, 10);
+      pg.addColorStop(0, 'rgba('+accentR+','+accentG+','+accentB+',0.4)');
+      pg.addColorStop(1, 'rgba('+accentR+','+accentG+','+accentB+',0)');
+      ctx.fillStyle = pg; ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI*2); ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  canvas.parentElement.addEventListener('mousemove', function(e) {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
+  });
+  canvas.parentElement.addEventListener('mouseleave', function() { mouse.x = -1000; mouse.y = -1000; });
+  window.addEventListener('resize', resize);
+  resize(); draw();
 })();
 </script>
 </body>
