@@ -39,10 +39,17 @@
     .nav-link { display: flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: 0.4rem; color: var(--text-muted); font-weight: 500; font-size: 0.9rem; transition: all 0.3s ease; text-decoration: none; }
     .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
     .nav-link.active { border-bottom: 2px solid var(--accent-color); }
-    . { display: flex; align-items: center; gap: 0.75rem; }
+          .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
     .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
     .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
     .icon-linkedin { color: var(--linkedin-blue) !important; }
+          /* Appearance Toggle */
+      .appearance-toggle { display: flex; align-items: center; gap: 0.3rem; background: var(--theme-btn-bg); border: 1px solid var(--glass-border); border-radius: 2rem; padding: 0.15rem; }
+      .appearance-toggle:hover { border-color: var(--accent-color); }
+      .theme-option { display: flex; align-items: center; gap: 0.3rem; padding: 0.22rem 0.65rem; border-radius: 1.5rem; cursor: pointer; border: none; background: transparent; color: var(--text-muted); font-size: 0.8rem; font-weight: 500; transition: all 0.3s ease; }
+      .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; }
+      .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.3); }
+      html.light .theme-option.active { color: #fff; }
 /* Hero Banner */
       .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 30%, #80deea 60%, #4dd0e1 100%); }
       html.dark .research-hero { background: linear-gradient(135deg, #0a1628 0%, #0d2137 30%, #0f2b4a 60%, #11365d 100%); }
@@ -139,6 +146,7 @@
           <a href="publications.html" class="nav-link"><i class="fas fa-book"></i> Publications</a>
           <a href="conferences.html" class="nav-link"><i class="fas fa-microphone"></i> Conferences</a>
           <a href="teaching.html" class="nav-link active"><i class="fas fa-graduation-cap"></i> Teaching</a>           <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                        <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
         </nav>
         <div class="social-icons-nav">
           <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
@@ -405,8 +413,8 @@
       ctx.strokeStyle = dark ? '#a5d6a7' : '#81c784'; ctx.lineWidth = 2; ctx.globalAlpha = 0.3;
       ctx.strokeRect(bx, by, bw, bh);
       ctx.fillStyle = dark ? 'rgba(255,255,255,0.25)' : 'rgba(255,255,255,0.2)'; ctx.font = (bh*0.12)+'px serif'; ctx.globalAlpha = 0.35;
-      ctx.fillText('E = mc\u00B2', bx+bw*0.15, by+bh*0.35);
-      ctx.fillText('\u222Bf(x)dx', bx+bw*0.1, by+bh*0.65);
+            ctx.fillText('EU = \u03A3p\u1D62u(x\u1D62)', bx+bw*0.1, by+bh*0.35);
+            ctx.fillText('V(s)=max[u+\u03B2V(s\u2032)]', bx+bw*0.08, by+bh*0.65);
       ctx.restore();
     }
     // Draw teacher figure
