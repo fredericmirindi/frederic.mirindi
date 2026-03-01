@@ -113,12 +113,14 @@
       .navbar-menu.active { display: flex; }
       .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
       .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
-      . { gap: 1.5rem; }
+      .social-icons-nav { gap: 1.5rem; }
       .social-icon { font-size: 1.4rem; }
       .research-hero { height: 240px; }
       .research-hero-title { font-size: 2.2rem; }
       .page-section { padding: 2rem 1.5rem 3rem 1.5rem; }
       .card { padding: 1.25rem; }
+            .appearance-toggle { padding: 0.22rem 0.4rem; }
+      .theme-option { padding: 0.18rem 0.5rem; font-size: 0.72rem; }
     }
     /* Phone */
     @media (max-width: 480px) {
@@ -151,8 +153,9 @@
     <nav class="navbar">
       <div class="navbar-container">
         <div class="navbar-brand"><a href="index.html" style="text-decoration: none;"><h1>Frédéric Mirindi</h1></a></div>
-        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()"><i class="fas fa-bars" id="menu-icon"></i></button>
-        <div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></div>
+        <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
+          <i class="fas fa-bars" id="menu-icon"></i>
+        </button><div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin social-icon icon-linkedin"></i></a></div>
         <div class="navbar-menu" id="navbar-menu">
           <div class="nav-links">
             <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
@@ -162,16 +165,22 @@
             <a href="teaching.html" class="nav-link active"><i class="fas fa-graduation-cap"></i> Teaching</a>
             <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
           </div>
-          <div class="social-icons-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin"><i class="fa-brands fa-linkedin"></i></a></div>
-          </div>
-                      </div>
-            <!-- Appearance Toggle -->
-          <div class="appearance-toggle" id="appearanceToggle" role="group" aria-label="Appearance">
-            <button class="theme-option" id="btn-light" onclick="setTheme('light')" title="Light mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> L</button>
-            <button class="theme-option" id="btn-dark" onclick="setTheme('dark')" title="Dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> D</button>
-          </div>
+          <div class="social-icons-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a></div>
+        </div>
+        <!-- Appearance Toggle -->
+        <div class="appearance-toggle" id="appearanceToggle" role="group" aria-label="Appearance">
+          <button class="theme-option" id="btn-light" onclick="setTheme('light')" title="Light mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            L
+          </button>
+          <button class="theme-option" id="btn-dark" onclick="setTheme('dark')" title="Dark mode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            D
+          </button>
+        </div>
       </div>
     </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
 
       <!-- Hero Banner -->
     <section class="research-hero">
@@ -342,24 +351,38 @@
 
   <script>
     function setTheme(theme) { const html = document.documentElement; html.classList.remove('dark', 'light'); html.classList.add(theme); localStorage.setItem('theme', theme); document.getElementById('btn-light').classList.toggle('active', theme === 'light'); document.getElementById('btn-dark').classList.toggle('active', theme === 'dark'); document.getElementById('btn-light').setAttribute('aria-pressed', theme === 'light'); document.getElementById('btn-dark').setAttribute('aria-pressed', theme === 'dark'); } (function() { const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })(); function toggleMenu() {
+          // Mobile menu toggle
+    function toggleMenu() {
       const menu = document.getElementById('navbar-menu');
       const icon = document.getElementById('menu-icon');
-      menu.classList.toggle('active');
-      if (menu.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-      } else {
+      const overlay = document.getElementById('mobile-overlay');
+      const isOpen = menu.classList.contains('active');
+      if (isOpen) {
+        menu.classList.remove('active');
+        overlay.classList.remove('active');
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+        document.body.style.overflow = '';
+      } else {
+        menu.classList.add('active');
+        overlay.classList.add('active');
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+        document.body.style.overflow = 'hidden';
       }
     }
+    // Close menu on overlay click
+    document.getElementById('mobile-overlay').addEventListener('click', toggleMenu);
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         const menu = document.getElementById('navbar-menu');
         const icon = document.getElementById('menu-icon');
         menu.classList.remove('active');
+                const overlay = document.getElementById('mobile-overlay');
+        overlay.classList.remove('active');
         icon.classList.remove('fa-times');
         icon.classList.add('fa-bars');
+                document.body.style.overflow = '';
       });
     });
   </script>
