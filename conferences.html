@@ -38,11 +38,15 @@
     .theme-option svg { width: 14px; height: 14px; flex-shrink: 0; }
     .theme-option.active { background: var(--accent-color); color: #0a0a0f; box-shadow: 0 2px 8px rgba(0,229,229,0.25); }
     html.light .theme-option.active { color: #fff; }
-    .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-    .research-hero-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
-    .research-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 20, 0.38); }
-    .research-hero-title { position: relative; z-index: 2; text-align: center; color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); }
-    .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); }
+            .research-hero { position: relative; width: 100%; height: 420px; margin-top: 56px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 40%, #0a2233 70%, #081820 100%); }
+        html.light .research-hero { background: linear-gradient(135deg, #e8f4f8 0%, #d0eaf5 40%, #b8dff0 70%, #c5e8f0 100%); }
+        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; pointer-events: none; }
+        .research-hero-title { color: #ffffff; font-size: 3rem; font-weight: 700; letter-spacing: 0.05em; text-shadow: 0 2px 12px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5); animation: fadeInUp 1s ease-out; }
+        html.light .research-hero-title { color: #0a2233; text-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .research-hero-title .accent-bar { display: block; width: 60px; height: 3px; background: var(--accent-color); margin: 0.65rem auto 0 auto; border-radius: 2px; box-shadow: 0 0 10px rgba(0,229,229,0.6); animation: expandBar 1.2s ease-out 0.3s both; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes expandBar { from { width: 0; opacity: 0; } to { width: 60px; opacity: 1; } }
     .page-section { padding: 3rem 4rem 4rem 4rem; max-width: 60rem; margin: 0 auto; }
     .card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.75rem; padding: 2rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); transition: border-color 0.3s ease; }
     .card:hover { border-color: rgba(0,229,229,0.22); }
@@ -106,11 +110,12 @@
             </div>
   </nav>
 
-  <div class="research-hero">
-    <img src="images/conferences_page.PNG" alt="Conferences banner" class="research-hero-img">
-    <div class="research-hero-overlay"></div>
-    <div class="research-hero-title">Conferences<span class="accent-bar"></span></div>
-  </div>
+      <div class="research-hero" id="hero-banner">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-content">
+        <h1 class="research-hero-title">Conferences<span class="accent-bar"></span></h1>
+      </div>
+    </div>
 
   <section class="page-section">
     <div class="card">
@@ -175,5 +180,138 @@
     document.querySelectorAll('.nav-link').forEach(link => { link.addEventListener('click', () => { const menu = document.getElementById('navbar-menu'); const icon = document.getElementById('menu-icon'); menu.classList.remove('active'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }); });
     (function() { const canvas = document.getElementById('geo-canvas'); const ctx = canvas.getContext('2d'); let w, h, points, maxDist; function resize() { w = canvas.width = canvas.offsetWidth; h = canvas.height = canvas.offsetHeight; maxDist = 160; initPoints(); } function initPoints() { const count = Math.floor((w * h) / 12000); points = []; for (let i = 0; i < count; i++) { points.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3 }); } } function draw() { ctx.clearRect(0, 0, w, h); const isLight = document.documentElement.classList.contains('light'); const c = isLight ? '80, 100, 120' : '200, 200, 200'; for (let p of points) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > w) p.vx *= -1; if (p.y < 0 || p.y > h) p.vy *= -1; } for (let i = 0; i < points.length; i++) { for (let j = i + 1; j < points.length; j++) { const dx = points[i].x - points[j].x; const dy = points[i].y - points[j].y; const dist = Math.sqrt(dx * dx + dy * dy); if (dist < maxDist) { const alpha = (1 - dist / maxDist) * 0.15; ctx.strokeStyle = 'rgba(' + c + ', ' + alpha + ')'; ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(points[i].x, points[i].y); ctx.lineTo(points[j].x, points[j].y); ctx.stroke(); } } } for (let p of points) { ctx.fillStyle = 'rgba(' + c + ', 0.25)'; ctx.beginPath(); ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2); ctx.fill(); } requestAnimationFrame(draw); } window.addEventListener('resize', resize); resize(); draw(); })();
   </script>
+<script>
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let w, h, particles = [], bubbles = [], t = 0, mouse = {x:-1000,y:-1000};
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = rect.width; h = canvas.height = rect.height;
+    initParticles(); initBubbles();
+  }
+
+  function initParticles() {
+    particles = [];
+    for(let i = 0; i < 45; i++) particles.push({ x: Math.random()*w, y: Math.random()*h, vx: (Math.random()-0.5)*0.4, vy: (Math.random()-0.5)*0.4, r: 1+Math.random()*1.5, pulse: Math.random()*Math.PI*2 });
+  }
+
+  function initBubbles() {
+    bubbles = [];
+    for(let i = 0; i < 6; i++) bubbles.push({ x: w*(0.25+Math.random()*0.5), y: h*(0.15+Math.random()*0.4), r: 12+Math.random()*18, phase: Math.random()*Math.PI*2, vy: -0.08-Math.random()*0.12, vx: (Math.random()-0.5)*0.15 });
+  }
+
+  function drawPodium(cx, cy, sc, alpha, aR, aG, aB) {
+    ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc);
+    const fs='rgba('+aR+','+aG+','+aB+','+alpha+')', ss='rgba('+aR+','+aG+','+aB+','+(alpha*2.5)+')';
+    ctx.fillStyle=fs; ctx.strokeStyle=ss; ctx.lineWidth=1.5/sc;
+    // Podium body
+    ctx.beginPath(); ctx.moveTo(-25,-10); ctx.lineTo(25,-10); ctx.lineTo(22,50); ctx.lineTo(-22,50); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Podium top surface
+    ctx.beginPath(); ctx.moveTo(-30,-10); ctx.lineTo(30,-10); ctx.lineTo(28,-15); ctx.lineTo(-28,-15); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Microphone
+    ctx.strokeStyle=ss; ctx.lineWidth=1.2/sc;
+    ctx.beginPath(); ctx.moveTo(18,-15); ctx.quadraticCurveTo(22,-30,15,-40); ctx.stroke();
+    ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(alpha*3)+')';
+    ctx.beginPath(); ctx.arc(15,-42,4,0,Math.PI*2); ctx.fill();
+    // Mic glow
+    var mg=ctx.createRadialGradient(15,-42,0,15,-42,10); mg.addColorStop(0,'rgba('+aR+','+aG+','+aB+','+(alpha*1.5+Math.sin(t*3)*alpha*0.5)+')'); mg.addColorStop(1,'rgba('+aR+','+aG+','+aB+',0)'); ctx.fillStyle=mg; ctx.beginPath(); ctx.arc(15,-42,10,0,Math.PI*2); ctx.fill();
+    // Panel detail
+    ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+(alpha*1.5)+')'; ctx.lineWidth=0.6/sc;
+    ctx.strokeRect(-15,0,30,25);
+    ctx.restore();
+  }
+
+  function drawSpeaker(cx, cy, sc, alpha, aR, aG, aB) {
+    ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc);
+    const fs='rgba('+aR+','+aG+','+aB+','+alpha+')', ss='rgba('+aR+','+aG+','+aB+','+(alpha*2.5)+')';
+    ctx.fillStyle=fs; ctx.strokeStyle=ss; ctx.lineWidth=1.5/sc;
+    // Head
+    ctx.beginPath(); ctx.arc(0,-75,22,0,Math.PI*2); ctx.fill(); ctx.stroke();
+    // Body
+    ctx.beginPath(); ctx.moveTo(-8,-55); ctx.lineTo(-15,-10); ctx.lineTo(15,-10); ctx.lineTo(8,-55); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Left arm gesturing
+    ctx.beginPath(); ctx.moveTo(-15,-45); ctx.quadraticCurveTo(-40,-55,-35,-70); ctx.lineTo(-30,-68); ctx.quadraticCurveTo(-35,-50,-12,-42); ctx.closePath(); ctx.fill(); ctx.stroke();
+    // Right arm on podium
+    ctx.beginPath(); ctx.moveTo(15,-45); ctx.quadraticCurveTo(30,-35,28,-25); ctx.lineTo(23,-27); ctx.quadraticCurveTo(25,-38,12,-42); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawAudienceMember(cx, cy, sc, alpha, aR, aG, aB) {
+    ctx.save(); ctx.translate(cx, cy); ctx.scale(sc, sc);
+    const fs='rgba('+aR+','+aG+','+aB+','+alpha+')', ss='rgba('+aR+','+aG+','+aB+','+(alpha*2)+')';
+    ctx.fillStyle=fs; ctx.strokeStyle=ss; ctx.lineWidth=1/sc;
+    // Head
+    ctx.beginPath(); ctx.arc(0,-18,10,0,Math.PI*2); ctx.fill(); ctx.stroke();
+    // Shoulders
+    ctx.beginPath(); ctx.moveTo(-16,0); ctx.quadraticCurveTo(-5,-10,0,-8); ctx.quadraticCurveTo(5,-10,16,0); ctx.lineTo(14,15); ctx.lineTo(-14,15); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawScreen(cx, cy, sw, sh, alpha, aR, aG, aB) {
+    ctx.save(); ctx.translate(cx, cy);
+    ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(alpha*0.08)+')';
+    ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+(alpha*0.3)+')';
+    ctx.lineWidth=1.5;
+    ctx.fillRect(-sw/2,-sh/2,sw,sh); ctx.strokeRect(-sw/2,-sh/2,sw,sh);
+    // Chart bars on screen
+    ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(alpha*0.15)+')';
+    var bw=sw*0.08, gap=sw*0.04, startX=-sw/2+sw*0.15;
+    for(var i=0;i<5;i++) { var bh=(0.3+Math.sin(t*1.5+i*0.8)*0.15)*sh*0.6; ctx.fillRect(startX+i*(bw+gap), sh/2-bh-sh*0.1, bw, bh); }
+    // Title line on screen
+    ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+(alpha*0.2)+')'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(-sw/2+10,-sh/2+12); ctx.lineTo(sw/2-30,-sh/2+12); ctx.stroke();
+    // Stand
+    ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+(alpha*0.25)+')'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.moveTo(0,sh/2); ctx.lineTo(0,sh/2+20); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-15,sh/2+20); ctx.lineTo(15,sh/2+20); ctx.stroke();
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,w,h); t+=0.016;
+    const isLight = document.documentElement.classList.contains('light');
+    const aR=isLight?8:0, aG=isLight?145:229, aB=isLight?178:229;
+
+    // Particles + connections
+    for(let p of particles){p.x+=p.vx;p.y+=p.vy;p.pulse+=0.02;if(p.x<0||p.x>w)p.vx*=-1;if(p.y<0||p.y>h)p.vy*=-1;const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<150){p.vx+=dx/dist*0.03;p.vy+=dy/dist*0.03;}p.vx*=0.99;p.vy*=0.99;}
+    for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<130){const al=(1-dist/130)*0.2;ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+al+')';ctx.lineWidth=0.6;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();}}}
+    for(let p of particles){const gl=0.12+Math.sin(p.pulse)*0.08;const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,6);g.addColorStop(0,'rgba('+aR+','+aG+','+aB+','+(gl*2)+')');g.addColorStop(1,'rgba('+aR+','+aG+','+aB+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,6,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(0.5+Math.sin(p.pulse)*0.3)+')';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();}
+
+    // Speech/thought bubbles floating up
+    for(let b of bubbles) {
+      b.phase+=0.015; b.y+=b.vy; b.x+=b.vx+Math.sin(b.phase)*0.2;
+      if(b.y<-30){b.y=h*0.6;b.x=w*(0.25+Math.random()*0.5);}
+      const ba=0.06+Math.sin(b.phase)*0.02;
+      ctx.strokeStyle='rgba('+aR+','+aG+','+aB+','+ba+')'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,Math.PI*2); ctx.stroke();
+      // Dots inside bubble
+      ctx.fillStyle='rgba('+aR+','+aG+','+aB+','+(ba*0.8)+')';
+      for(var d=0;d<3;d++){ctx.beginPath();ctx.arc(b.x-6+d*6,b.y,1.5,0,Math.PI*2);ctx.fill();}
+    }
+
+    const sc=Math.min(w,h)*0.003;
+    // Presentation screen (top-right area)
+    drawScreen(w*0.72, h*0.32, 120*sc/1.2, 80*sc/1.2, 1, aR, aG, aB);
+    // Speaker at podium (left side)
+    drawSpeaker(w*0.18, h*0.5, sc*0.9, isLight?0.06:0.055, aR, aG, aB);
+    drawPodium(w*0.18, h*0.62, sc*0.8, isLight?0.06:0.055, aR, aG, aB);
+    // Audience row (bottom center-right)
+    const audY=h*0.78, audSc=sc*0.65, audAlpha=isLight?0.04:0.035;
+    for(var a=0;a<7;a++){drawAudienceMember(w*0.32+a*(w*0.08), audY+(a%2)*8, audSc, audAlpha, aR, aG, aB);}
+    // Second row audience (slightly above)
+    for(var a=0;a<5;a++){drawAudienceMember(w*0.38+a*(w*0.08), audY-25+(a%2)*6, audSc*0.85, audAlpha*0.7, aR, aG, aB);}
+
+    requestAnimationFrame(draw);
+  }
+
+  canvas.parentElement.addEventListener('mousemove',function(e){const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  canvas.parentElement.addEventListener('mouseleave',function(){mouse.x=-1000;mouse.y=-1000;});
+  window.addEventListener('resize',resize);
+  resize(); draw();
+})();
+</script>
 </body>
 </html>
