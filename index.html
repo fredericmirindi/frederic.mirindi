@@ -258,7 +258,47 @@
         footer {
             padding: 1.5rem; text-align: center;
             border-top: 1px solid var(--glass-border);
-            position: relative; z-index: 1;
+                    /* ===== CONTENT SECTIONS ===== */
+        .content-section { padding: 4rem 4rem; position: relative; z-index: 1; }
+        .content-section .section-inner { max-width: 80rem; margin: 0 auto; }
+        .section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-white); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
+        .section-title i { color: var(--accent-color); }
+        .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .pub-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .pub-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,229,229,0.08); }
+        .pub-card h3 { font-size: 1rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.5rem; line-height: 1.4; }
+        .pub-card .pub-authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+        .pub-card .pub-venue { font-size: 0.8rem; color: var(--accent-color); font-style: italic; }
+        .pub-card .pub-year { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; display: inline-block; padding: 0.15rem 0.5rem; background: rgba(0,229,229,0.1); border-radius: 1rem; }
+        /* News Section */
+        .news-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease; }
+        .news-card:hover { transform: translateY(-4px); }
+        .news-card-img { width: 100%; height: 250px; object-fit: cover; }
+        .news-card-body { padding: 1.5rem; }
+        .news-card-body h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; }
+        .news-card-body p { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.7; }
+        .news-card-body .news-date { font-size: 0.75rem; color: var(--text-muted); }
+        .news-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1rem 0; border-radius: 0.5rem; overflow: hidden; }
+        .news-gallery img { width: 100%; height: 120px; object-fit: cover; }
+        /* Newsletter */
+        .newsletter-section { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 2.5rem; text-align: center; max-width: 600px; margin: 0 auto; }
+        .newsletter-section h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.5rem; }
+        .newsletter-section p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .newsletter-form { display: flex; gap: 0.75rem; max-width: 450px; margin: 0 auto; }
+        .newsletter-form input { flex: 1; padding: 0.7rem 1rem; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 2rem; color: var(--text-white); font-size: 0.9rem; outline: none; transition: border-color 0.3s ease; }
+        .newsletter-form input:focus { border-color: var(--accent-color); }
+        .newsletter-form button { padding: 0.7rem 1.5rem; background: var(--accent-color); border: none; border-radius: 2rem; color: var(--bg-primary); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: opacity 0.3s ease; }
+        .newsletter-form button:hover { opacity: 0.85; }
+        /* Info badges */
+        .info-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; margin-bottom: 1.5rem; }
+        .info-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.85rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 2rem; font-size: 0.8rem; color: var(--text-muted); }
+        .info-badge i { color: var(--accent-color); font-size: 0.85rem; }
+        .academic-icons a { display: flex; align-items: center; gap: 0.35rem; text-decoration: none; }
+        .academic-icons .icon-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); transition: color 0.3s ease; }
+        .academic-icons a:hover .icon-label { color: var(--accent-color); }
+        .academic-icons .icon-github { color: var(--text-muted); }
+        .academic-icons .icon-github:hover { color: var(--accent-color); }
+position: relative; z-index: 1;
         }
         footer p { font-size: 0.8rem; color: var(--text-muted); }
         .mobile-linkedin-nav { display: none; align-items: center; } .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; } /* Hamburger */
@@ -298,6 +338,12 @@
             .theme-option { padding: 0.18rem 0.5rem; font-size: 0.72rem; }
         }
         /* ========== RESPONSIVE: Phone ========== */
+                    .content-section { padding: 2.5rem 1.5rem; }
+            .pub-grid { grid-template-columns: 1fr; }
+            .news-gallery { grid-template-columns: repeat(2, 1fr); }
+            .newsletter-form { flex-direction: column; }
+            .info-badges { justify-content: center; }
+            .academic-icons .icon-label { font-size: 0.65rem; }
         @media (max-width: 480px) {
             .hero { padding: 4.5rem 1rem 1.5rem 1rem; }
             .hero-heading { font-size: 1.65rem; }
@@ -392,15 +438,23 @@
                 <a href="research.html" class="btn-research">
                     <i class="fas fa-book-open"></i> View Research
                 </a>
+                                <div class="info-badges">
+                    <span class="info-badge"><i class="fas fa-graduation-cap"></i> PhD Expected: December 2027</span>
+                    <span class="info-badge"><i class="fas fa-file-alt"></i> CV/Resume: Upon request</span>
+                    <span class="info-badge"><i class="fas fa-map-marker-alt"></i> Université de Saint-Boniface, Winnipeg, MB</span>
+                </div>
                 <div class="academic-icons">
                     <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
-                        <i class="fab fa-orcid"></i>
+                        <i class="fab fa-orcid"></i><span class="icon-label">ORCID</span>
                     </a>
                     <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
-                        <i class="fab fa-researchgate"></i>
+                        <i class="fab fa-researchgate"></i><span class="icon-label">ResearchGate</span>
                     </a>
                     <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-graduation-cap"></i><span class="icon-label">Google Scholar</span>
+                    </a>
+                                        <a href="https://github.com/fredericmirindi" target="_blank" class="social-icon icon-github" title="GitHub">
+                        <i class="fab fa-github"></i><span class="icon-label">GitHub</span>
                     </a>
                 </div>
             </div>
@@ -409,9 +463,71 @@
             </div>
         </div>
     </section>
+
+        <!-- Recent Publications Section -->
+    <section class="content-section">
+        <div class="section-inner">
+            <h2 class="section-title"><i class="fas fa-book"></i> Recent Publications</h2>
+            <div class="pub-grid">
+                <div class="pub-card">
+                    <h3>Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus</h3>
+                    <p class="pub-authors">F. Mirindi, D. Mirindi</p>
+                    <p class="pub-venue">Mathematical Research for Blockchain Economy: 6th International Conference</p>
+                    <span class="pub-year">2026</span>
+                </div>
+                <div class="pub-card">
+                    <h3>Optimizing ML Algorithms for Real-Time Privacy-Preserving Patient Monitoring in Embedded Systems</h3>
+                    <p class="pub-authors">F. Mirindi, A. Khang, D. Mirindi</p>
+                    <p class="pub-venue">Revolutionizing Digital Healthcare Through Artificial Intelligence</p>
+                    <span class="pub-year">2026</span>
+                </div>
+                <div class="pub-card">
+                    <h3>Learning Latent Trends: AI-Augmented Difference-in-Differences Estimation</h3>
+                    <p class="pub-authors">F. Mirindi, D. Mirindi, D. Sinkhonde, T. Bezabih</p>
+                    <p class="pub-venue">2025 International Conference on Big Data, Knowledge and Control Systems</p>
+                    <span class="pub-year">2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- News Section -->
+    <section class="content-section">
+        <div class="section-inner">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> News</h2>
+            <div class="news-card">
+                <div class="news-card-body">
+                    <h3>The Hackers Are Using AI Too: Economic Implications of AI-Powered Cyber Threats</h3>
+                    <p class="news-date"><i class="far fa-calendar"></i> March/April 2026</p>
+                    <div class="news-gallery">
+                        <img src="images/march2026-1.png" alt="AI cybersecurity economic impact">
+                        <img src="images/march2026-2.png" alt="AI-powered hacking costs">
+                        <img src="images/march2026-3.png" alt="Cybersecurity market growth">
+                        <img src="images/march2026-4.png" alt="Economic defense spending on AI">
+                    </div>
+                    <p>The rapid adoption of artificial intelligence by malicious actors is reshaping the economic landscape of cybersecurity. As highlighted in recent analysis, AI-driven cyberattacks are driving up costs for businesses and governments worldwide, creating new market dynamics in the global cybersecurity industry. The economic burden of AI-enhanced phishing, deepfakes, and automated vulnerability exploitation is accelerating investment in defensive AI technologies, generating a growing demand for specialized talent and reshaping risk models across the financial and insurance sectors.</p>
+                    <p>From an economic perspective, the arms race between AI-powered offense and defense is producing significant externalities: rising compliance costs, increased cyber insurance premiums, and a widening gap between organizations that can afford advanced AI defenses and those that cannot. This asymmetry threatens to deepen economic inequality across industries and regions, while also spurring innovation and creating new opportunities in the rapidly expanding cybersecurity market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Newsletter Section -->
+    <section class="content-section">
+        <div class="section-inner">
+            <div class="newsletter-section">
+                <h3><i class="fas fa-envelope"></i> Stay Updated</h3>
+                <p>Subscribe to receive updates on new research, publications, and events.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/placeholder" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer>
-        <p>&copy; 2018 Frédéric Mirindi. All rights reserved.</p>
+        <p>&copy; 2026 Frédéric Mirindi. All rights reserved.</p>
     </footer>
     
     <!-- Mobile Bottom Tab Bar -->
