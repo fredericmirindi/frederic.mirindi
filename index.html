@@ -263,23 +263,50 @@
         .content-section .section-inner { max-width: 80rem; margin: 0 auto; }
         .section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-white); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
         .section-title i { color: var(--accent-color); }
-        .pub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .pub-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 1.5rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .pub-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,229,229,0.08); }
-        .pub-card h3 { font-size: 1rem; font-weight: 600; color: var(--text-white); margin-bottom: 0.5rem; line-height: 1.4; }
-        .pub-card .pub-authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem; }
-        .pub-card .pub-venue { font-size: 0.8rem; color: var(--accent-color); font-style: italic; }
-        .pub-card .pub-year { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; display: inline-block; padding: 0.15rem 0.5rem; background: rgba(0,229,229,0.1); border-radius: 1rem; }
-        /* News Section */
-        .news-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease; }
-        .news-card:hover { transform: translateY(-4px); }
-        .news-card-img { width: 100%; height: 250px; object-fit: cover; }
-        .news-card-body { padding: 1.5rem; }
-        .news-card-body h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.75rem; }
-        .news-card-body p { font-size: 0.9rem; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.7; }
-        .news-card-body .news-date { font-size: 0.75rem; color: var(--text-muted); }
-        .news-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1rem 0; border-radius: 0.5rem; overflow: hidden; }
-        .news-gallery img { width: 100%; height: 120px; object-fit: cover; }
+        /* Section Header Bar */
+        .section-header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--glass-border); }
+        .section-header-label { font-size: 1.5rem; font-weight: 700; color: var(--text-white); display: flex; align-items: center; gap: 0.6rem; letter-spacing: -0.02em; }
+        .section-header-label i { color: var(--accent-color); font-size: 1.1rem; }
+        .section-view-all { font-size: 0.85rem; font-weight: 600; color: var(--accent-color); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: gap 0.3s ease; }
+        .section-view-all:hover { gap: 0.7rem; text-decoration: none; }
+        /* Publication List */
+        .pub-list { display: flex; flex-direction: column; gap: 0; }
+        .pub-entry { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--glass-border); transition: background 0.3s ease; align-items: flex-start; }
+        .pub-entry:first-child { padding-top: 0; }
+        .pub-entry:last-child { border-bottom: none; }
+        .pub-entry:hover { background: var(--glass-bg); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; border-radius: 0.5rem; }
+        .pub-entry-number { font-size: 2rem; font-weight: 800; color: var(--glass-border); line-height: 1; min-width: 2.5rem; padding-top: 0.3rem; font-family: Georgia, 'Times New Roman', serif; }
+        .pub-entry-content { flex: 1; }
+        .pub-entry-tags { display: flex; gap: 0.4rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+        .pub-tag { font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 0.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
+        .pub-tag-type { background: rgba(0,229,229,0.1); color: var(--accent-color); }
+        .pub-tag-year { background: rgba(139,92,246,0.12); color: #a78bfa; }
+        .pub-entry-title { font-size: 1.05rem; font-weight: 700; color: var(--text-white); line-height: 1.4; margin-bottom: 0.4rem; }
+        .pub-entry-authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+        .pub-author-highlight { color: var(--accent-color); font-weight: 600; }
+        .pub-entry-venue { font-size: 0.8rem; color: var(--text-muted); font-style: italic; display: flex; align-items: center; gap: 0.4rem; }
+        .pub-entry-venue i { color: var(--glass-border); }
+        /* News Featured — Economist/CNN Style */
+        .news-featured { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.3s ease; }
+        .news-featured:hover { border-color: rgba(0,229,229,0.25); }
+        .news-featured-badge { position: absolute; top: 1.5rem; right: 1.5rem; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.35rem; box-shadow: 0 2px 8px rgba(231,76,60,0.3); }
+        .news-featured-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
+        .news-category-pill { background: rgba(0,229,229,0.1); color: var(--accent-color); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        .news-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-muted); }
+        .news-time { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.35rem; }
+        .news-featured-title { font-size: 1.75rem; font-weight: 800; color: var(--text-white); line-height: 1.25; margin-bottom: 0.75rem; letter-spacing: -0.02em; max-width: 80%; }
+        .news-featured-source { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.4rem; }
+        .news-featured-source i { color: var(--accent-color); font-size: 0.7rem; }
+        .news-featured-media { margin-bottom: 1.5rem; }
+        .news-media-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 0.5rem; border-radius: 0.75rem; overflow: hidden; }
+        .news-media-main img { width: 100%; height: 280px; object-fit: cover; border-radius: 0.5rem; }
+        .news-media-side { display: flex; flex-direction: column; gap: 0.5rem; }
+        .news-media-side img { width: 100%; height: calc((280px - 1rem) / 3); object-fit: cover; border-radius: 0.5rem; }
+        .news-featured-body { font-size: 0.92rem; color: var(--text-primary); line-height: 1.8; }
+        .news-featured-body p { margin-bottom: 1rem; }
+        .news-featured-body p:first-child::first-letter { font-size: 2.8rem; font-weight: 800; float: left; line-height: 1; margin-right: 0.5rem; margin-top: 0.1rem; color: var(--accent-color); font-family: Georgia, 'Times New Roman', serif; }
+        .news-read-more { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.6rem 1.25rem; background: transparent; border: 1.5px solid var(--accent-color); border-radius: 2rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+        .news-read-more:hover { background: var(--accent-color); color: var(--bg-primary); text-decoration: none; }
         /* Newsletter */
         .newsletter-section { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 2.5rem; text-align: center; max-width: 600px; margin: 0 auto; }
         .newsletter-section h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.5rem; }
@@ -339,8 +366,15 @@ position: relative; z-index: 1;
         }
         /* ========== RESPONSIVE: Phone ========== */
                     .content-section { padding: 2.5rem 1.5rem; }
-            .pub-grid { grid-template-columns: 1fr; }
-            .news-gallery { grid-template-columns: repeat(2, 1fr); }
+            .pub-entry-number { display: none; }
+        .news-media-grid { grid-template-columns: 1fr; }
+        .news-media-main img { height: 180px; }
+        .news-media-side { flex-direction: row; }
+        .news-media-side img { height: 80px; flex: 1; }
+        .news-featured-title { font-size: 1.3rem; max-width: 100%; }
+        .news-featured { padding: 1.25rem; }
+        .news-featured-badge { top: 1rem; right: 1rem; }
+        .news-featured-body p:first-child::first-letter { font-size: 2.2rem; }
             .newsletter-form { flex-direction: column; }
             .info-badges { justify-content: center; }
             .academic-icons .icon-label { font-size: 0.65rem; }
@@ -464,53 +498,81 @@ position: relative; z-index: 1;
         </div>
     </section>
 
-        <!-- Recent Publications Section -->
-    <section class="content-section">
-        <div class="section-inner">
-            <h2 class="section-title"><i class="fas fa-book"></i> Recent Publications</h2>
-            <div class="pub-grid">
-                <div class="pub-card">
-                    <h3>Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus</h3>
-                    <p class="pub-authors">F. Mirindi, D. Mirindi</p>
-                    <p class="pub-venue">Mathematical Research for Blockchain Economy: 6th International Conference</p>
-                    <span class="pub-year">2026</span>
+<!-- Recent Publications Section -->
+        <section class="content-section" style="padding-bottom: 0;">
+            <div class="section-inner">
+                <div class="section-header-bar">
+                    <div class="section-header-label"><i class="fas fa-book-open"></i> Recent Publications</div>
+                    <a href="publications.html" class="section-view-all">View all <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="pub-card">
-                    <h3>Optimizing ML Algorithms for Real-Time Privacy-Preserving Patient Monitoring in Embedded Systems</h3>
-                    <p class="pub-authors">F. Mirindi, A. Khang, D. Mirindi</p>
-                    <p class="pub-venue">Revolutionizing Digital Healthcare Through Artificial Intelligence</p>
-                    <span class="pub-year">2026</span>
-                </div>
-                <div class="pub-card">
-                    <h3>Learning Latent Trends: AI-Augmented Difference-in-Differences Estimation</h3>
-                    <p class="pub-authors">F. Mirindi, D. Mirindi, D. Sinkhonde, T. Bezabih</p>
-                    <p class="pub-venue">2025 International Conference on Big Data, Knowledge and Control Systems</p>
-                    <span class="pub-year">2025</span>
+                <div class="pub-list">
+                    <div class="pub-entry">
+                        <div class="pub-entry-number">01</div>
+                        <div class="pub-entry-content">
+                            <div class="pub-entry-tags"><span class="pub-tag pub-tag-type">Conference Paper</span><span class="pub-tag pub-tag-year">2026</span></div>
+                            <h3 class="pub-entry-title">Adaptive Proof-of-Stake Governance: A Game-Theoretic Approach to Consensus</h3>
+                            <p class="pub-entry-authors"><span class="pub-author-highlight">F. Mirindi</span>, D. Mirindi</p>
+                            <p class="pub-entry-venue"><i class="fas fa-university" style="font-size:0.75rem;"></i> Mathematical Research for Blockchain Economy: 6th International Conference</p>
+                        </div>
+                    </div>
+                    <div class="pub-entry">
+                        <div class="pub-entry-number">02</div>
+                        <div class="pub-entry-content">
+                            <div class="pub-entry-tags"><span class="pub-tag pub-tag-type">Book Chapter</span><span class="pub-tag pub-tag-year">2026</span></div>
+                            <h3 class="pub-entry-title">Optimizing ML Algorithms for Real-Time Privacy-Preserving Patient Monitoring in Embedded Systems</h3>
+                            <p class="pub-entry-authors"><span class="pub-author-highlight">F. Mirindi</span>, A. Khang, D. Mirindi</p>
+                            <p class="pub-entry-venue"><i class="fas fa-university" style="font-size:0.75rem;"></i> Revolutionizing Digital Healthcare Through Artificial Intelligence</p>
+                        </div>
+                    </div>
+                    <div class="pub-entry">
+                        <div class="pub-entry-number">03</div>
+                        <div class="pub-entry-content">
+                            <div class="pub-entry-tags"><span class="pub-tag pub-tag-type">Conference Paper</span><span class="pub-tag pub-tag-year">2025</span></div>
+                            <h3 class="pub-entry-title">Learning Latent Trends: AI-Augmented Difference-in-Differences Estimation</h3>
+                            <p class="pub-entry-authors"><span class="pub-author-highlight">F. Mirindi</span>, D. Mirindi, D. Sinkhonde, T. Bezabih</p>
+                            <p class="pub-entry-venue"><i class="fas fa-university" style="font-size:0.75rem;"></i> 2025 International Conference on Big Data, Knowledge and Control Systems</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
         <!-- News Section -->
-    <section class="content-section">
-        <div class="section-inner">
-            <h2 class="section-title"><i class="fas fa-newspaper"></i> News</h2>
-            <div class="news-card">
-                <div class="news-card-body">
-                    <h3>The Hackers Are Using AI Too: Economic Implications of AI-Powered Cyber Threats</h3>
-                    <p class="news-date"><i class="far fa-calendar"></i> March/April 2026</p>
-                    <div class="news-gallery">
-                        <img src="images/march2026-1.png" alt="AI cybersecurity economic impact">
-                        <img src="images/march2026-2.png" alt="AI-powered hacking costs">
-                        <img src="images/march2026-3.png" alt="Cybersecurity market growth">
-                        <img src="images/march2026-4.png" alt="Economic defense spending on AI">
-                    </div>
-                    <p>The rapid adoption of artificial intelligence by malicious actors is reshaping the economic landscape of cybersecurity. As highlighted in recent analysis, AI-driven cyberattacks are driving up costs for businesses and governments worldwide, creating new market dynamics in the global cybersecurity industry. The economic burden of AI-enhanced phishing, deepfakes, and automated vulnerability exploitation is accelerating investment in defensive AI technologies, generating a growing demand for specialized talent and reshaping risk models across the financial and insurance sectors.</p>
-                    <p>From an economic perspective, the arms race between AI-powered offense and defense is producing significant externalities: rising compliance costs, increased cyber insurance premiums, and a widening gap between organizations that can afford advanced AI defenses and those that cannot. This asymmetry threatens to deepen economic inequality across industries and regions, while also spurring innovation and creating new opportunities in the rapidly expanding cybersecurity market.</p>
+        <section class="content-section">
+            <div class="section-inner">
+                <div class="section-header-bar">
+                    <div class="section-header-label"><i class="fas fa-newspaper"></i> News</div>
                 </div>
+                <!-- Featured Article -->
+                <article class="news-featured">
+                    <div class="news-featured-badge"><i class="fas fa-bolt"></i> Featured</div>
+                    <div class="news-featured-meta">
+                        <span class="news-category-pill">Economics &amp; Technology</span>
+                        <span class="news-dot"></span>
+                        <time class="news-time"><i class="far fa-calendar-alt"></i> March/April 2026</time>
+                    </div>
+                    <h2 class="news-featured-title">The Hackers Are Using AI Too: Economic Implications of AI-Powered Cyber Threats</h2>
+                    <div class="news-featured-source"><i class="fas fa-link"></i> MIT Technology Review &mdash; March/April 2026</div>
+                    <div class="news-featured-media">
+                        <div class="news-media-grid">
+                            <div class="news-media-main">
+                                <img src="images/march2026-1.png" alt="AI cybersecurity economic impact" loading="lazy">
+                            </div>
+                            <div class="news-media-side">
+                                <img src="images/march2026-2.png" alt="AI-powered hacking costs" loading="lazy">
+                                <img src="images/march2026-3.png" alt="Cybersecurity market growth" loading="lazy">
+                                <img src="images/march2026-4.png" alt="Economic defense spending on AI" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-featured-body">
+                        <p>The rapid adoption of artificial intelligence by malicious actors is reshaping the economic landscape of cybersecurity. As highlighted in recent analysis, AI-driven cyberattacks are driving up costs for businesses and governments worldwide, creating new market dynamics in the global cybersecurity industry. The economic burden of AI-enhanced phishing, deepfakes, and automated vulnerability exploitation is accelerating investment in defensive AI technologies, generating a growing demand for specialized talent and reshaping risk models across the financial and insurance sectors.</p>
+                        <p>From an economic perspective, the arms race between AI-powered offense and defense is producing significant externalities: rising compliance costs, increased cyber insurance premiums, and a widening gap between organizations that can afford advanced AI defenses and those that cannot. This asymmetry threatens to deepen economic inequality across industries and regions, while also spurring innovation and creating new opportunities in the rapidly expanding cybersecurity market.</p>
+                    </div>
+                    <a href="news-ai-cybersecurity.html" class="news-read-more">Read full analysis <i class="fas fa-arrow-right"></i></a>
+                </article>
             </div>
-        </div>
-    </section>
+        </section>
 
         <!-- Newsletter Section -->
     <section class="content-section">
