@@ -109,6 +109,13 @@
     .pub-tag { display: inline-block; padding: 0.15rem 0.55rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; margin-right: 0.4rem; margin-bottom: 0.3rem; }
     .pub-tag-conference { background: rgba(0,229,229,0.12); color: var(--accent-color); }
     .pub-tag-journal { background: rgba(139,92,246,0.15); color: #a78bfa; }
+        .pub-abstract { display: none; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-top: 0.5rem; padding: 0.75rem; background: var(--glass-bg); border-left: 2px solid var(--accent-color); border-radius: 0 0.4rem 0.4rem 0; }
+    .pub-abstract.show { display: block; }
+    .read-more-btn { display: inline-flex; align-items: center; gap: 0.3rem; background: none; border: 1px solid var(--glass-border); color: var(--accent-color); font-size: 0.78rem; padding: 0.25rem 0.6rem; border-radius: 0.3rem; cursor: pointer; margin-top: 0.4rem; transition: all 0.3s ease; font-weight: 500; }
+    .read-more-btn:hover { background: rgba(0,229,229,0.08); border-color: var(--accent-color); }
+    .read-more-btn i { font-size: 0.65rem; transition: transform 0.3s ease; }
+    .read-more-btn.active i { transform: rotate(180deg); }
+    .pub-citations { display: inline-block; background: rgba(0,229,229,0.1); color: var(--accent-color); font-size: 0.75rem; font-weight: 600; padding: 0.1rem 0.45rem; border-radius: 0.2rem; margin-left: 0.4rem; }
     /* Footer */
     footer { padding: 1.5rem; text-align: center; border-top: 1px solid var(--glass-border); }
     footer p { font-size: 0.8rem; color: var(--text-muted); }
@@ -227,6 +234,101 @@
         <div class="pub-details">IEEE, 2025.</div>
       </div>
     </div>
+
+        <div class="card">
+      <h2>Journal Articles</h2>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 23</span></div>
+        <div class="pub-title"><a href="https://link.springer.com/chapter/10.1007/978-3-031-72617-0_1">Artificial Intelligence (AI) and Automation for Driving Green Transportation Systems: A Comprehensive Review</a></div>
+        <div class="pub-authors">Derrick Mirindi, Alex Khang, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Driving Green Transportation System Through Artificial Intelligence and Automation, Springer, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This study explores applications of AI, machine learning, and deep learning in green transportation. It examines algorithms including Genetic Algorithm, Support Vector Machine, Naive Bayes, k-means clustering, CNN, and RNN, highlighting their role in enabling greener, safer, and more efficient mobility solutions while combating climate change.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 22</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.clwas.2025.100236">Ensemble Machine Learning Algorithms for Efficient Prediction of Compressive Strength of Concrete Containing Tyre Rubber and Brick Powder</a></div>
+        <div class="pub-authors">David Sinkhonde, Tajebe Bezabih, Derrick Mirindi, Destine Mashava, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Cleaner Waste Systems 10, 100236, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This research applies ensemble machine learning algorithms to predict the compressive strength of concrete incorporating tyre rubber and brick powder as partial replacements. The study evaluates multiple ML models to identify the most accurate predictive framework for sustainable concrete design.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 9</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.wmb.2025.100212">Applications of Machine Learning Algorithms on the Compressive Strength of Laterite Blocks Made with Metakaolin-Based Geopolymer and Sugarcane Molasses</a></div>
+        <div class="pub-authors">David Sinkhonde, Derrick Mirindi, Innocent Dabakuyo, Tajebe Bezabih, Destine Mashava, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Waste Management Bulletin 3 (3), 100212, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This study applies machine learning algorithms to evaluate and predict the compressive strength of laterite blocks made with metakaolin-based geopolymer and sugarcane molasses, contributing to sustainable construction material development in resource-limited regions.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 9</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.clwas.2025.100352">Predicting the Compressive Strength of Laterite Blocks Stabilized with Metakaolin Geopolymer and Sugarcane Molasses via Machine Learning</a></div>
+        <div class="pub-authors">David Sinkhonde, Derrick Mirindi, Innocent Dabakuyo, Tajebe Bezabih, NDN Moffo, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Cleaner Waste Systems, 100352, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This paper uses machine learning techniques to predict compressive strength of laterite blocks stabilized with metakaolin geopolymer and sugarcane molasses, providing a data-driven approach to optimizing sustainable building materials.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2024</span> <span class="pub-citations">Cited 8</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1515/ntrev-2024-0119">Structural Performance of Boards Through Nanoparticle Reinforcement: An Advance Review</a></div>
+        <div class="pub-authors">Derrick Mirindi, James Hunter, <strong>Fr&eacute;d&eacute;ric Mirindi</strong>, David Sinkhonde, Fatemeh Yazdandoust</div>
+        <div class="pub-venue">Nanotechnology Reviews 13 (1), 20240119, 2024.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This review analyzes secondary data on nanoparticle integration in board production, evaluating relationships among physical properties (water absorption, thickness swelling) and mechanical properties (modulus of rupture, modulus of elasticity, internal bond strength) using machine learning algorithms.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 7</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.grets.2025.100275">Prediction of Flexural and Split Tensile Strength of Waste Glass-Concrete Composite Using Machine Learning Algorithms</a></div>
+        <div class="pub-authors">Derrick Mirindi, David Sinkhonde, Tajebe Bezabih, Patrick Mirindi, Oluwatobi Oshineye, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Green Technologies and Sustainability, 100275, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This research employs machine learning algorithms to predict the flexural and split tensile strength of waste glass-concrete composites, advancing sustainable construction through data-driven material optimization.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2024</span> <span class="pub-citations">Cited 7</span></div>
+        <div class="pub-title"><a href="https://dl.acm.org/doi/10.1145/3681777.3681781">An Advance Review of Urban-AI and Ethical Considerations</a></div>
+        <div class="pub-authors">Derrick Mirindi, David Sinkhonde, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Proceedings of the 2nd ACM SIGSPATIAL International Workshop on Advances in Urban-AI, 2024.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This paper reviews the integration of artificial intelligence in urban environments, examining current applications, challenges, and ethical considerations surrounding Urban-AI deployment in smart city development.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 6</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.grets.2025.100235">Performance of Machine Learning Algorithms to Evaluate the Physico-Mechanical Properties of Nanoparticle Panels</a></div>
+        <div class="pub-authors">Derrick Mirindi, James Hunter, David Sinkhonde, Tajebe Bezabih, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Green Technologies and Sustainability 3 (4), 100235, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This study evaluates the performance of machine learning algorithms including Pearson correlation, hierarchical clustering, and decision tree models to predict physical and mechanical properties of nanoparticle-enhanced panels, with results showing improved mechanical properties from nanoparticle integration.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 5</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.mfglet.2025.01.005">Application of Machine Learning to Predict the Properties of Wood-Composite Made from PET, HDPE, and PP Fibres</a></div>
+        <div class="pub-authors">Derrick Mirindi, David Sinkhonde, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Manufacturing Letters 44, 24&ndash;35, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This study reviews physical and mechanical properties of wood panels combined with three types of plastic (PET, PP, HDPE) and applies machine learning algorithms to predict material performance, contributing to eco-friendly construction material development.</div>
+      </div>
+
+      <div class="pub-entry">
+        <div class="pub-details"><span class="pub-tag pub-tag-journal">Journal Article</span> <span class="pub-tag pub-tag-conference">2025</span> <span class="pub-citations">Cited 5</span></div>
+        <div class="pub-title"><a href="https://doi.org/10.1016/j.mfglet.2025.06.001">Machine Learning-Driven Analysis of Nanoparticle Performance on Concrete Mechanical Properties</a></div>
+        <div class="pub-authors">Derrick Mirindi, James Hunter, David Sinkhonde, <strong>Fr&eacute;d&eacute;ric Mirindi</strong></div>
+        <div class="pub-venue">Manufacturing Letters 44, 1657&ndash;1668, 2025.</div>
+        <button class="read-more-btn" onclick="toggleAbstract(this)"><i class="fas fa-chevron-down"></i> Read More</button>
+        <div class="pub-abstract">This study analyzes nanoparticle effects on concrete mechanical properties using advanced machine learning algorithms, examining various nanoparticle types including MWCNTs, graphene nanoplatelets, nano-SiO2, and nano-TiO2, and their impact on flexural, compressive, and tensile strengths.</div>
+      </div>
+
+    </div>
   </section>
 
   <footer>
@@ -257,6 +359,14 @@
       document.getElementById('btn-dark').setAttribute('aria-pressed', theme === 'dark');
     }
     (function() { const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })();
+
+    // Toggle abstract
+    function toggleAbstract(btn) {
+      const abstract = btn.nextElementSibling;
+      abstract.classList.toggle('show');
+      btn.classList.toggle('active');
+      btn.innerHTML = btn.classList.contains('active') ? '<i class="fas fa-chevron-up"></i> Show Less' : '<i class="fas fa-chevron-down"></i> Read More';
+    }
 
     // Mobile menu
     function toggleMenu() {
