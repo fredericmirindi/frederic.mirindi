@@ -308,6 +308,32 @@
         .news-read-more { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.6rem 1.25rem; background: transparent; border: 1.5px solid var(--accent-color); border-radius: 2rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
         .news-read-more:hover { background: var(--accent-color); color: var(--bg-primary); text-decoration: none; }
         /* Newsletter */
+
+        /* News Layout - CNN Style Grid */
+.news-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; min-height: 500px; }
+.news-main { display: flex; flex-direction: column; }
+.news-main .news-featured { height: 100%; display: flex; flex-direction: column; }
+.news-main .news-featured-media { flex: 0 0 auto; }
+.news-main .news-featured-body { flex: 1; }
+.news-main .news-media-grid { grid-template-columns: 1.8fr 1fr; }
+.news-sidebar { display: flex; flex-direction: column; gap: 0; max-height: 620px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--accent-color) transparent; border-radius: 1rem; }
+.news-sidebar::-webkit-scrollbar { width: 4px; }
+.news-sidebar::-webkit-scrollbar-track { background: transparent; }
+.news-sidebar::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 4px; }
+.news-sidebar-card { display: flex; gap: 1rem; padding: 1.25rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-bottom: none; transition: all 0.3s ease; text-decoration: none; cursor: pointer; position: relative; }
+.news-sidebar-card:first-child { border-radius: 1rem 1rem 0 0; }
+.news-sidebar-card:last-child { border-bottom: 1px solid var(--glass-border); border-radius: 0 0 1rem 1rem; }
+.news-sidebar-card:only-child { border-radius: 1rem; border-bottom: 1px solid var(--glass-border); }
+.news-sidebar-card:hover { background: rgba(0,229,229,0.04); border-color: rgba(0,229,229,0.2); z-index: 1; }
+.news-sidebar-thumb { flex-shrink: 0; width: 130px; height: 90px; border-radius: 0.5rem; overflow: hidden; }
+.news-sidebar-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.news-sidebar-card:hover .news-sidebar-thumb img { transform: scale(1.05); }
+.news-sidebar-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.35rem; }
+.news-sidebar-category { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-color); }
+.news-sidebar-title { font-size: 0.92rem; font-weight: 700; color: var(--text-white); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.news-sidebar-meta { font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
+.news-sidebar-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
+@media (max-width: 768px) { .news-layout { grid-template-columns: 1fr; } .news-sidebar { max-height: none; overflow-y: visible; } .news-sidebar-thumb { width: 100px; height: 70px; } .news-sidebar-title { font-size: 0.85rem; -webkit-line-clamp: 2; } }
         .newsletter-section { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 2.5rem; text-align: center; max-width: 600px; margin: 0 auto; }
         .newsletter-section h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.5rem; }
         .newsletter-section p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
@@ -504,82 +530,81 @@
                 <div class="section-header-bar">
                     <div class="section-header-label"><i class="fas fa-newspaper"></i> News</div>
                 </div>
-                <!-- Featured Article -->
-                <article class="news-featured">
-                    <div class="news-featured-badge"><i class="fas fa-bolt"></i> Featured</div>
-                    <div class="news-featured-meta">
-                        <span class="news-category-pill">Economics &amp; Technology</span>
-                        <span class="news-dot"></span>
-                        <time class="news-time"><i class="far fa-calendar-alt"></i> March/April 2026</time>
-                    </div>
-                    <h2 class="news-featured-title">The Hackers Are Using AI Too: Economic Implications of AI-Powered Cyber Threats</h2>
-                    <div class="news-featured-source"><i class="fas fa-link"></i> MIT Technology Review &mdash; March/April 2026</div>
-                    <div class="news-featured-media">
-                        <div class="news-media-grid">
-                            <div class="news-media-main">
-                                <img src="images/march2026-1.png" alt="AI cybersecurity economic impact" loading="lazy">
-                            </div>
-                            <div class="news-media-side">
-                                <img src="images/march2026-2.png" alt="AI-powered hacking costs" loading="lazy">
-                                <img src="images/march2026-3.png" alt="Cybersecurity market growth" loading="lazy">
-                                <img src="images/march2026-4.png" alt="Economic defense spending on AI" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="news-featured-body">
-                        <p>The rapid adoption of artificial intelligence by malicious actors is reshaping the economic landscape of cybersecurity. As highlighted in recent analysis, AI-driven cyberattacks are driving up costs for businesses and governments worldwide, creating new market dynamics in the global cybersecurity industry. The economic burden of AI-enhanced phishing, deepfakes, and automated vulnerability exploitation is accelerating investment in defensive AI technologies, generating a growing demand for specialized talent and reshaping risk models across the financial and insurance sectors.</p>
-                        <p>From an economic perspective, the arms race between AI-powered offense and defense is producing significant externalities: rising compliance costs, increased cyber insurance premiums, and a widening gap between organizations that can afford advanced AI defenses and those that cannot. This asymmetry threatens to deepen economic inequality across industries and regions, while also spurring innovation and creating new opportunities in the rapidly expanding cybersecurity market.</p>
-                    </div>
-                    <a href="news-ai-cybersecurity.html" class="news-read-more">Read full analysis <i class="fas fa-arrow-right"></i></a>
-                </article>
 
-                                <!-- Second Article -->
-                <article class="news-featured" style="margin-top: 2.5rem;">
-                    <div class="news-featured-badge"><i class="fas fa-bolt"></i> New</div>
-                    <div class="news-featured-meta">
-                        <span class="news-category-pill">Science &amp; Education</span>
-                        <span class="news-dot"></span>
-                        <time class="news-time"><i class="far fa-calendar-alt"></i> March 9, 2026</time>
-                    </div>
-                    <h2 class="news-featured-title">The New Brain Drain: How U.S. Research Cuts Are Redirecting Global Scientific Talent to Europe</h2>
-                    <div class="news-featured-source"><i class="fas fa-link"></i> TIME (USA) &mdash; March 9, 2026</div>
-                    <div class="news-featured-media">
-                        <div class="news-media-grid" style="grid-template-columns: 1fr;">
-                            <div class="news-media-main">
-                                <img src="images/BD.png" alt="Brain drain - scientists leaving the U.S. for Europe" loading="lazy">
+                            <!-- News Grid Layout -->
+            <div class="news-layout">
+
+                <!-- LEFT: Main Featured Article -->
+                <div class="news-main">
+                    <article class="news-featured">
+                        <div class="news-featured-badge"><i class="fas fa-bolt"></i> Featured</div>
+                        <div class="news-featured-meta">
+                            <span class="news-category-pill">Economics &amp; Technology</span>
+                            <span class="news-dot"></span>
+                            <time class="news-time"><i class="far fa-calendar-alt"></i> March/April 2026</time>
+                        </div>
+                        <h2 class="news-featured-title">The Hackers Are Using AI Too: Economic Implications of AI-Powered Cyber Threats</h2>
+                        <div class="news-featured-source"><i class="fas fa-link"></i> MIT Technology Review &mdash; March/April 2026</div>
+                        <div class="news-featured-media">
+                            <div class="news-media-grid">
+                                <div class="news-media-main">
+                                    <img src="images/march2026-1.png" alt="AI cybersecurity economic impact" loading="eager">
+                                </div>
+                                <div class="news-media-side">
+                                    <img src="images/march2026-2.png" alt="AI-powered hacking costs" loading="lazy">
+                                    <img src="images/march2026-3.png" alt="Cybersecurity market growth" loading="lazy">
+                                    <img src="images/march2026-4.png" alt="Economic defense spending on AI" loading="lazy">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="news-featured-body">
-                        <p>For decades, the United States has served as the world's premier destination for scientific talent, attracting researchers with unmatched funding, institutional freedom, and a culture of innovation. However, sweeping cuts to federal research budgets and growing instability in the academic landscape are now pushing young scientists to seek opportunities abroad, marking a potential reversal of a migration pattern that has defined global research for over half a century.</p>
-                        <p>European nations are seizing the moment with targeted recruitment programs and new funding initiatives. Austria's APART-USA fellowship, the E.U.'s "Choose Europe" initiative, and similar efforts from Germany and France are drawing researchers away from American institutions. As nearly 8,000 research grants have been canceled or frozen and thousands of federal scientists have lost their jobs, the economic implications extend far beyond academia—threatening the innovation pipeline that has long fueled U.S. technological leadership and patent output.</p>
-                    </div>
-                    <a href="news-brain-drain.html" class="news-read-more">Read full analysis <i class="fas fa-arrow-right"></i></a>
-                </article>
-
-                            <!-- Third Article -->
-            <article class="news-featured" style="margin-top: 2.5rem;">
-                <div class="news-featured-badge"><i class="fas fa-bolt"></i> New</div>
-                <div class="news-featured-meta">
-                    <span class="news-category-pill">Housing &amp; Economics</span>
-                    <span class="news-dot"></span>
-                    <time class="news-time"><i class="far fa-calendar-alt"></i> March 9, 2026</time>
-                </div>
-                <h2 class="news-featured-title">Giving Up on Homeownership Can Hurt You in the Long Run</h2>
-                <div class="news-featured-source"><i class="fas fa-link"></i> Bloomberg Businessweek &mdash; March 2026</div>
-                <div class="news-featured-media">
-                                        <div class="news-media-grid" style="grid-template-columns: 1fr;">
-    <div class="news-media-main">
-                            <img src="images/home1.JPG" alt="Homeownership affordability crisis - rising housing costs in the US">
+                        <div class="news-featured-body">
+                            <p>The rapid adoption of artificial intelligence by malicious actors is reshaping the economic landscape of cybersecurity. AI-driven cyberattacks are driving up costs for businesses and governments worldwide, creating new market dynamics in the global cybersecurity industry.</p>
+                            <p>From an economic perspective, the arms race between AI-powered offense and defense is producing significant externalities: rising compliance costs, increased cyber insurance premiums, and a widening gap between organizations that can afford advanced AI defenses and those that cannot.</p>
                         </div>
-                    </div>
+                        <a href="news-ai-cybersecurity.html" class="news-read-more">Read full analysis <i class="fas fa-arrow-right"></i></a>
+                    </article>
                 </div>
-                <div class="news-featured-body">
-                    <p>As U.S. home prices continue to outpace wages, a growing number of Americans—particularly millennials and Gen Z—are abandoning the dream of homeownership altogether. A 2022 survey by Apartment List found that nearly 25% of millennial renters expected to rent forever, up from 13% in 2018. A 2024 Harris Poll revealed that 42% of U.S. adults agreed they would never afford a home they truly wanted.</p>
-                    <p>New research by University of Chicago economists Younggeun Yoo and Seung Hyeong Lee reveals the hidden costs of this shift. Using a mathematical model calibrated with Federal Reserve and Census data, they found that individuals who give up on homeownership systematically change their behavior: they consume more relative to their wealth, reduce their work effort, and turn to riskier investments like cryptocurrencies. These behavioral shifts can lead to dramatically different lifetime wealth trajectories, with discouraged renters accumulating virtually no assets over decades compared to those who remain on the path to ownership.</p>
+
+                <!-- RIGHT: Scrollable Sidebar Articles -->
+                <div class="news-sidebar">
+
+                    <!-- Sidebar Card: Brain Drain -->
+                    <a href="news-brain-drain.html" class="news-sidebar-card">
+                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
+                        <div class="news-sidebar-thumb">
+                            <img src="images/BD.png" alt="Brain drain - scientists leaving the U.S. for Europe">
+                        </div>
+                        <div class="news-sidebar-content">
+                            <span class="news-sidebar-category">Science &amp; Education</span>
+                            <h3 class="news-sidebar-title">The New Brain Drain: How U.S. Research Cuts Are Redirecting Global Scientific Talent to Europe</h3>
+                            <div class="news-sidebar-meta">
+                                <span><i class="far fa-calendar-alt"></i> March 9, 2026</span>
+                                <span>&bull; 5 min read</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Sidebar Card: Homeownership -->
+                    <a href="news-homeownership.html" class="news-sidebar-card">
+                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
+                        <div class="news-sidebar-thumb">
+                            <img src="images/home1.JPG" alt="Homeownership affordability crisis">
+                        </div>
+                        <div class="news-sidebar-content">
+                            <span class="news-sidebar-category">Housing &amp; Economics</span>
+                            <h3 class="news-sidebar-title">Giving Up on Homeownership Can Hurt You in the Long Run</h3>
+                            <div class="news-sidebar-meta">
+                                <span><i class="far fa-calendar-alt"></i> March 9, 2026</span>
+                                <span>&bull; 5 min read</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- More sidebar cards can be added here -->
+
                 </div>
-                                <a href="news-homeownership.html" class="news-read-more">Read full analysis <i class="fas fa-arrow-right"></i></a>
-            </article>
+
+            </div>
             </div>
         </section>
 
