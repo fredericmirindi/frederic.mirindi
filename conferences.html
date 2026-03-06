@@ -1,4 +1,4 @@
-<!DOCTYPEpadding-bottom:1.75rem<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html><!DOCTYPEpadding-bottom:1.75rem<!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
@@ -91,7 +91,7 @@
     .mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active { color:var(--accent-color); text-decoration:none; }
     .mobile-bottom-nav-item.active i { transform:scale(1.1); }
     .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
-    @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:1.75rem; } }
+    @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:1.75rem; } footer { margin-bottom:1.75rem; } }
     #geo-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
     .conf-presentation-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.2rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 0.5rem; color: var(--text-primary); font-size: 0.85rem; margin-top: 0.75rem; transition: all 0.3s ease; text-decoration: none; }
     .conf-presentation-link:hover { border-color: var(--accent-color); color: var(--accent-color); text-decoration: none; }
@@ -102,7 +102,7 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-brand" style="text-decoration:none;"><h1>Fr&eacute;d&eacute;ric Mirindi</h1></a>
-      <div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></div>
+      <div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-LinkedIn"></i></a><a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener noreferrer" aria-label="X" style="color:var(--text-muted);font-size:1.1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
       <div class="navbar-menu" id="navbar-menu">
         <div class="nav-links">
           <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
@@ -112,7 +112,7 @@
           <a href="teaching.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Teaching</a>
           <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i> Contact</a>
         </div>
-        <div class="social-icons-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></div>
+        <div class="social-icons-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" aria-label="LinkedIn"><i class="fa-brands fa-LinkedIn"></i></a><a href="https://x.com/MirindiFrederic" target="_blank" rel="noopener noreferrer" aria-label="X" style="color:var(--text-muted);font-size:1.1rem;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
             </div>
         <div class="appearance-toggle" role="group" aria-label="Appearance">
           <button id="btn-light" class="theme-option" onclick="setTheme('light')" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> L</button>
