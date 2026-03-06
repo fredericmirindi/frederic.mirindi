@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI and the Papal Election | Frédéric Mirindi</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <meta name="description" content="How artificial intelligence tried to predict the 2025 papal conclave, the rise of prediction markets, and Pope Leo XIV's embrace of AI as a defining issue of his papacy.">
+    <meta name="author" content="Frédéric Mirindi">
+    <link rel="canonical" href="https://fredericmirindi.com/news-pope-ai.html">
+    <meta property="og:title" content="AI and the Papal Election | Frédéric Mirindi">
+    <meta property="og:description" content="How AI algorithms, prediction markets, and machine learning shaped the 2025 papal conclave narrative.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fredericmirindi.com/news-pope-ai.html">
+    <meta property="og:image" content="https://fredericmirindi.com/images/pope2.PNG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI and the Papal Election | Frédéric Mirindi">
+    <meta name="twitter:description" content="How AI algorithms, prediction markets, and machine learning shaped the 2025 papal conclave narrative.">
+    <meta name="twitter:image" content="https://fredericmirindi.com/images/pope2.PNG">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <style>
+        :root, html.dark { --bg-primary: #0a0a0f; --bg-secondary: #12121a; --text-primary: #d1d5db; --text-white: #ffffff; --text-muted: #9ca3af; --accent-color: #00e5e5; --glass-bg: rgba(255,255,255,0.03); --glass-border: rgba(255,255,255,0.08); --linkedin-blue: #0077b5; --navbar-bg: rgba(10,10,15,0.85); --theme-btn-bg: rgba(255,255,255,0.07); --theme-btn-border: rgba(255,255,255,0.15); }
+        html.light { --bg-primary: #f5f6fa; --bg-secondary: #ffffff; --text-primary: #374151; --text-white: #111827; --text-muted: #6b7280; --accent-color: #0891b2; --glass-bg: rgba(0,0,0,0.03); --glass-border: rgba(0,0,0,0.10); --linkedin-blue: #0077b5; --navbar-bg: rgba(245,246,250,0.92); --theme-btn-bg: rgba(0,0,0,0.06); --theme-btn-border: rgba(0,0,0,0.12); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: Arial, 'Helvetica Neue', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height:1.8; min-height:100vh; transition: background 0.3s, color 0.3s; }
+        a { color: var(--accent-color); text-decoration:none; } a:hover { text-decoration:underline; }
+        .navbar { background: var(--navbar-bg); border-bottom:1px solid var(--glass-border); padding:0.75rem 2rem; position:fixed; top:0; left:0; right:0; z-index:100; backdrop-filter:blur(12px); }
+        .navbar-container { max-width:80rem; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+        .navbar-brand { display:flex; align-items:center; gap:0.75rem; } .navbar-brand h1 { font-size:1.35rem; font-weight:700; color:var(--text-white); }
+        .navbar-menu { display:flex; align-items:center; gap:1.5rem; } .nav-links { display:flex; gap:0.25rem; }
+        .nav-link { display:flex; align-items:center; gap:0.4rem; padding:0.4rem 0.9rem; border-radius:0.4rem; color:var(--text-muted); font-weight:500; font-size:0.9rem; transition:all 0.3s; text-decoration:none; }
+        .nav-link:hover, .nav-link.active { background:var(--glass-bg); color:var(--text-white); text-decoration:none; }
+        .social-icons-nav { display:flex; align-items:center; gap:0.75rem; }
+        .social-icon { font-size:1.1rem; color:var(--text-muted); transition:transform 0.3s, color 0.3s; } .social-icon:hover { transform:translateY(-2px); color:var(--accent-color); }
+        .icon-linkedin { color:var(--linkedin-blue) !important; }
+        .mobile-linkedin-nav { display:none; align-items:center; } .mobile-linkedin-nav a { color:var(--linkedin-blue); font-size:1.4rem; }
+        .appearance-toggle { display:flex; align-items:center; gap:0.3rem; background:var(--theme-btn-bg); border:1.5px solid var(--theme-btn-border); border-radius:2rem; padding:0.28rem 0.5rem; cursor:pointer; } .appearance-toggle:hover { border-color:var(--accent-color); }
+        .theme-option { display:flex; align-items:center; gap:0.3rem; padding:0.22rem 0.65rem; border-radius:1.5rem; font-size:0.78rem; font-weight:600; color:var(--text-muted); border:none; background:none; cursor:pointer; } .theme-option svg { width:14px; height:14px; }
+        .theme-option.active { background:var(--accent-color); color:#0a0a0f; box-shadow:0 2px 8px rgba(0,229,229,0.25); } html.light .theme-option.active { color:#fff; }
+                /* Hero */
+        .article-hero { position:relative; width:100%; height:420px; margin-top:56px; overflow:hidden; display:flex; align-items:flex-end; }
+        .article-hero img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; }
+        .article-hero-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.4) 50%, transparent 100%); z-index:1; }
+        .article-hero-content { position:relative; z-index:2; padding:2rem 4rem 2.5rem; max-width:80rem; margin:0 auto; width:100%; }
+        .article-hero-content .article-tag { display:inline-block; padding:0.25rem 0.75rem; background:var(--accent-color); color:#0a0a0f; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; border-radius:2rem; margin-bottom:0.75rem; }
+        .article-hero-content h1 { font-size:2.2rem; font-weight:700; color:#fff; line-height:1.3; text-shadow:0 2px 12px rgba(0,0,0,0.5); }
+        .article-hero-content .article-meta { margin-top:0.75rem; font-size:0.85rem; color:rgba(255,255,255,0.7); display:flex; align-items:center; gap:1rem; }
+        /* Article body */
+        .article-body { max-width:52rem; margin:0 auto; padding:3rem 4rem 4rem; }
+        .article-body p { margin-bottom:1.5rem; font-size:1.05rem; color:var(--text-primary); }
+        .article-body h2 { font-size:1.4rem; font-weight:700; color:var(--text-white); margin:2.5rem 0 1rem; padding-bottom:0.5rem; border-bottom:2px solid var(--accent-color); display:inline-block; }
+        .article-body blockquote { border-left:3px solid var(--accent-color); padding:1rem 1.5rem; margin:2rem 0; background:var(--glass-bg); border-radius:0 0.5rem 0.5rem 0; font-style:italic; color:var(--text-muted); }
+        .article-gallery { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:2rem 0; border-radius:0.75rem; overflow:hidden; }
+        .article-gallery img { width:100%; height:220px; object-fit:cover; border-radius:0.5rem; transition:transform 0.3s; } .article-gallery img:hover { transform:scale(1.03); }
+        .article-gallery.single { grid-template-columns:1fr; } .article-gallery.single img { height:auto; max-height:500px; }
+        .back-link { display:inline-flex; align-items:center; gap:0.5rem; margin-bottom:2rem; color:var(--accent-color); font-weight:600; font-size:0.9rem; }
+        footer { padding:1.5rem; text-align:center; border-top:1px solid var(--glass-border); } footer p { font-size:0.8rem; color:var(--text-muted); }
+        .menu-toggle { display:none !important; }
+        .mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000; background:rgba(10,10,15,0.97); border-top:1px solid var(--glass-border); backdrop-filter:blur(12px); padding:0.35rem 0; }
+        html.light .mobile-bottom-nav { background:rgba(245,246,250,0.97); }
+        .mobile-bottom-nav-container { display:flex; justify-content:space-around; align-items:center; }
+        .mobile-bottom-nav-item { display:flex; flex-direction:column; align-items:center; text-decoration:none; color:var(--text-muted); font-size:0.62rem; padding:0.25rem 0.5rem; border-radius:0.5rem; transition:color 0.2s; gap:0.12rem; flex:1; position:relative; }
+        .mobile-bottom-nav-item i { font-size:1.1rem; } .mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active { color:var(--accent-color); text-decoration:none; }
+        .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; }
+        @media (max-width:768px) { .mobile-linkedin-nav { display:flex; align-items:center; } .navbar { padding:0.6rem 1rem; } .navbar-menu { display:none; } .article-hero { height:280px; } .article-hero-content { padding:1.5rem; } .article-hero-content h1 { font-size:1.5rem; } .article-body { padding:2rem 1.5rem; } .article-gallery { grid-template-columns:1fr; } .article-gallery img { height:180px; } .mobile-bottom-nav { display:block; } body { padding-bottom:3.5rem; } footer { margin-bottom:3.5rem; } }
+    </style>
+</head>
+<body>
+    <div id="mobile-overlay"></div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand"><h1>Frédéric Mirindi</h1></a>
+            <div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank"><i class="fab fa-linkedin"></i></a></div>
+            <div class="navbar-menu" id="navbar-menu">
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                    <a href="research.html" class="nav-link"><i class="fas fa-flask"></i> Research</a>
+                    <a href="publications.html" class="nav-link"><i class="fas fa-book"></i> Publications</a>
+                    <a href="conferences.html" class="nav-link"><i class="fas fa-users"></i> Conferences</a>
+                    <a href="teaching.html" class="nav-link"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
+                    <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+                <div class="social-icons-nav">
+                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="appearance-toggle">
+                    <button class="theme-option" id="btn-light" onclick="setTheme('light')" aria-pressed="false"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> L</button>
+                    <button class="theme-option active" id="btn-dark" onclick="setTheme('dark')" aria-pressed="true"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg> D</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+        <!-- Hero -->
+    <section class="article-hero">
+        <img src="images/newpope.jpg" alt="Pope Leo XIV and AI - The 2025 Papal Conclave">
+        <div class="article-hero-overlay"></div>
+        <div class="article-hero-content">
+            <span class="article-tag">AI &amp; Society</span>
+            <h1>When Algorithms Met the Conclave: AI, Prediction Markets, and the Election of Pope Leo XIV</h1>
+            <div class="article-meta">
+                <span><i class="far fa-calendar-alt"></i> May 2025</span>
+                <span><i class="far fa-clock"></i> 7 min read</span>
+                <span><i class="far fa-user"></i> Frédéric Mirindi</span>
+            </div>
+        </div>
+    </section>
+
+        <!-- Article Body -->
+    <main class="article-body">
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+
+        <p>In May 2025, the College of Cardinals gathered in the Sistine Chapel to elect a successor to Pope Francis. But beyond the ancient walls of the Vatican, a parallel process was unfolding in the digital realm: artificial intelligence algorithms, prediction markets, and machine learning models were all attempting to forecast the outcome of one of the world's most secretive electoral processes.</p>
+
+        <p>The result surprised nearly everyone&mdash;both human and artificial. Cardinal Robert Prevost of Chicago was elected as Pope Leo XIV, becoming the first American-born pontiff in the Catholic Church's two-thousand-year history. Most AI models had predicted Italian Cardinal Pietro Parolin, the Vatican's Secretary of State, as the most likely winner.</p>
+
+        <div class="article-gallery">
+            <img src="images/pope.JPG" alt="Pope Leo XIV - first American pope">
+            <img src="images/pope2.PNG" alt="Pope Leo XIV greeting the faithful after his election">
+        </div>
+
+        <h2>The AI That Tried to Predict a Pope</h2>
+
+        <p>A team of researchers&mdash;physicist Michele Re Fiorentin of the Polytechnic University of Turin, mathematician Alberto Antonioni of the University of Madrid, and computational social scientist Javier Valdano&mdash;developed a machine learning algorithm trained on five centuries of episcopal records and the public statements of all 133 cardinal-electors.</p>
+
+        <p>Their model analyzed the ideological positioning of each cardinal across multiple dimensions, mapping them into a complex network of theological and political affinities. The algorithm then simulated the conclave voting process among these virtual cardinals, running thousands of iterations to identify the most likely consensus candidate.</p>
+
+        <div class="article-gallery">
+            <img src="images/pope3.PNG" alt="AI network analysis of cardinal connections and ideological clusters">
+            <img src="images/pope4.PNG" alt="Cardinal cluster map showing ideological groupings">
+        </div>
+
+        <p>The visualizations above show the network structure of the College of Cardinals as mapped by the AI model. Each node represents a cardinal, with connections indicating ideological proximity based on their public statements on key church issues. The clustering reveals distinct factions&mdash;progressive, moderate, and conservative&mdash;whose alignments would ultimately determine the conclave's outcome.</p>
+
+        <h2>Ideology, Factions, and the Network of Power</h2>
+
+        <p>One of the most striking outputs of the AI analysis was the ideological mapping of the entire College of Cardinals. Using natural language processing trained on cardinals' public speeches, pastoral letters, and media interviews, the model classified each elector along a spectrum from liberal to conservative across issues such as liturgical reform, social doctrine, and interfaith dialogue.</p>
+
+        <div class="article-gallery single">
+            <img src="images/pope6.PNG" alt="Cardinal ideological orientation map - Liberal to Conservative spectrum">
+        </div>
+
+        <p>The color-coded network above reveals the deep ideological divisions within the College: blue nodes represent liberal cardinals, red indicate conservatives, and intermediate shades capture the moderate and soft-leaning positions. The dense clustering around certain nodes&mdash;notably Parolin, Tagle, and Prevost&mdash;highlights the coalition-building dynamics that would prove decisive in the actual conclave.</p>
+
+        <div class="article-gallery single">
+            <img src="images/pope7.PNG" alt="Dense network visualization of cardinal interconnections">
+        </div>
+
+                <h2>Prediction Markets: When Money Meets the Sacred</h2>
+
+        <p>While AI researchers analyzed cardinal networks, prediction markets created a parallel betting ecosystem around the conclave. Platforms like Polymarket processed over $25 million in cryptocurrency wagers, while traditional bookmakers like William Hill offered odds on papal candidates. Parolin led at 28% likelihood, with Tagle of the Philippines as a close second.</p>
+
+        <p>The decentralized nature of these crypto prediction markets represented a new frontier: for the first time, blockchain-based platforms were used at scale to bet on a religious election. The economic dynamics were striking&mdash;Bitcoin's value dipped 5% during the conclave's final days, and the sudden election of the relatively unknown Prevost caused dramatic swings in real-time odds, with Parolin's probability surging to 70% on Kalshi immediately after white smoke appeared, before the actual name was announced.</p>
+
+        <div class="article-gallery single">
+            <img src="images/pope8.PNG" alt="AI ranking table of papal candidates by Status, Information Control, and Coalition Building">
+        </div>
+
+        <p>The table above, drawn from the researchers' analysis, ranks the top cardinal candidates across three strategic dimensions: Status (prominence and influence), Information Control (ability to shape narratives), and Coalition Building (skill at forging alliances). Prevost ranked first by status, validating one dimension of the AI model even though the overall prediction missed the final result.</p>
+
+        <h2>Why AI Got It Wrong&mdash;and What It Reveals</h2>
+
+        <p>The conclave's outcome offers a powerful lesson about the limits of algorithmic prediction in the face of genuine secrecy and human agency. Unlike political elections, where polling data, campaign finance records, and public endorsements provide rich signals, the papal conclave operates behind closed doors with no exit polls, no campaign trail, and no public deliberation.</p>
+
+        <blockquote>"As AI advances rapidly toward even greater achievements, it is critically important to consider its anthropological and ethical implications." &mdash; Vatican document <em>Antiqua et Nova</em>, January 2025</blockquote>
+
+        <p>The AI model's reliance on public statements may have missed the private conversations, personal relationships, and spiritual discernment that cardinals describe as central to their decision. The conclave's two-day duration&mdash;remarkably swift by historical standards&mdash;suggests a rapid convergence that the simulation's eight-to-nine rounds did not anticipate.</p>
+
+        <h2>Pope Leo XIV: Making AI a Signature Issue</h2>
+
+        <p>In a remarkable irony, the pope whose election AI failed to predict has made artificial intelligence one of the defining issues of his papacy. In his first address to the College of Cardinals, Pope Leo XIV identified AI as a critical challenge for human dignity and labor, pledging to build on the Vatican's existing engagement with technology ethics.</p>
+
+        <div class="article-gallery">
+            <img src="images/pope5.PNG" alt="AI analysis of the College of Cardinals">
+            <img src="images/newpope.jpg" alt="Pope Leo XIV">
+        </div>
+
+        <p>Pope Leo XIV was subsequently named among TIME magazine's 25 Most Influential Thinkers of 2025 for his emphasis on the moral dimensions of AI. He has urged Catholic technologists to develop AI systems that serve evangelization and human development, while warning against uses that create social inequalities or violate human dignity.</p>
+
+        <p>The Vatican's own guidelines on artificial intelligence&mdash;which took effect in January 2025, months before the conclave&mdash;prohibit uses that create social inequalities or violate human dignity. Under Pope Leo XIV, the Church is positioning itself as a moral voice in the global AI governance debate, advocating for regulatory frameworks that prioritize the common good over technological acceleration.</p>
+
+        <h2>Implications for Economics and Decision Theory</h2>
+
+        <p>From an economic perspective, the 2025 papal conclave represents a fascinating case study in information asymmetry, prediction market efficiency, and the boundaries of algorithmic decision-making. The $40 million ecosystem of papal bets demonstrated that prediction markets can emerge around virtually any uncertain event&mdash;but their accuracy depends fundamentally on the quality and availability of underlying information.</p>
+
+        <p>For decision theorists, the conclave illustrates the enduring gap between computational models and human deliberative processes. While AI can map ideological networks and simulate voting dynamics with impressive precision, it cannot replicate the spiritual discernment, personal relationships, and moral reasoning that ultimately shape consequential human decisions.</p>
+
+        <p><strong>Sources:</strong> Science/AAAS (May 2025); CNN (May 2025); Euronews (May 2025); AInvest (April&ndash;May 2025); Forbes (May 2025); Catholic Review (December 2025); Vatican News; arXiv preprint by Re Fiorentin, Antonioni &amp; Valdano.</p>
+
+    </main>
+
+        <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Frédéric Mirindi. All rights reserved.</p>
+    </footer>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-bottom-nav-container">
+            <a href="index.html" class="mobile-bottom-nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="research.html" class="mobile-bottom-nav-item"><i class="fas fa-flask"></i><span>Research</span></a>
+            <a href="publications.html" class="mobile-bottom-nav-item"><i class="fas fa-book"></i><span>Papers</span></a>
+            <a href="conferences.html" class="mobile-bottom-nav-item"><i class="fas fa-users"></i><span>Events</span></a>
+            <a href="teaching.html" class="mobile-bottom-nav-item"><i class="fas fa-chalkboard-teacher"></i><span>Teaching</span></a>
+            <a href="contact.html" class="mobile-bottom-nav-item"><i class="fas fa-envelope"></i><span>Contact</span></a>
+        </div>
+    </nav>
+
+    <script>
+    function setTheme(theme) { const html = document.documentElement; html.classList.remove('dark','light'); html.classList.add(theme); localStorage.setItem('theme',theme); document.getElementById('btn-light').classList.toggle('active',theme==='light'); document.getElementById('btn-dark').classList.toggle('active',theme==='dark'); }
+    (function(){ const saved = localStorage.getItem('theme') || 'dark'; setTheme(saved); })();
+    </script>
+</body>
+</html>
