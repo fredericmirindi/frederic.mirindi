@@ -314,175 +314,174 @@ document.querySelectorAll('.nav-link').forEach(link => {
 })();
 </script>
 <script>
-(function(){
+  (function(){
   const canvas = document.getElementById('hero-canvas');
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
-  let w, h, nodes = [], edges = [], pulses = [], mouse = {x: -1000, y: -1000};
-  const nodeCount = 80, connectionDist = 150;
+  let w, h, mouse = {x:-1000,y:-1000};
+
+  // Research-themed floating symbols
+  const symbols = ['E[U]','P(x)','\u03C0','\u03C3\u00B2','\u0394','\u2211','\u222B','YOLO','AI','ML','REU','GDP','\u03B1','\u03B2','\u03BB','f(x)','max','\u2200','\u2203','p\u2081','p\u2082','\u03BC','\u03B8','L(\u03B8)','H\u2080'];
+  let items = [], nodes = [], branches = [], pulses = [];
 
   function resize() {
-    const rect = canvas.parentElement.getBoundingClientRect();
-    w = canvas.width = rect.width;
-    h = canvas.height = rect.height;
-    initNodes();
+    const r = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = r.width; h = canvas.height = r.height;
+    init();
   }
 
-  function initNodes() {
-    nodes = [];
-    for(let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.6, vy: (Math.random() - 0.5) * 0.6,
-        r: Math.random() * 2 + 1, pulse: Math.random() * Math.PI * 2,
-        type: Math.random() > 0.85 ? 'hub' : 'node'
+  function init() {
+    items = []; nodes = []; branches = []; pulses = [];
+    // Floating research symbols
+    for(let i=0;i<35;i++) items.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-0.5)*0.25,vy:-0.1-Math.random()*0.2,sym:symbols[Math.floor(Math.random()*symbols.length)],size:9+Math.random()*13,alpha:0.06+Math.random()*0.18,rot:Math.random()*6.28,rotV:(Math.random()-0.5)*0.005,phase:Math.random()*6.28});
+    // Decision tree nodes
+    const treeX = w*0.18, treeY = h*0.3;
+    nodes.push({x:treeX,y:treeY,r:5,type:'root'});
+    for(let i=0;i<3;i++){const nx=treeX-60+i*60,ny=treeY+70;nodes.push({x:nx,y:ny,r:4,type:'branch',parent:0});}
+    for(let i=0;i<6;i++){const nx=treeX-90+i*36,ny=treeY+130;nodes.push({x:nx,y:ny,r:3,type:'leaf',parent:1+Math.floor(i/2)});}
+    // Neural network (right side)
+    const nnX = w*0.82, nnY = h*0.4;
+    const layers = [3,5,4,2];
+    let nnNodes = [];
+    for(let l=0;l<layers.length;l++){for(let n=0;n<layers[l];n++){const x=nnX-90+l*60,y=nnY-((layers[l]-1)*28)/2+n*28;nnNodes.push({x,y,layer:l,r:3.5});}}
+    // Neural network connections
+    let nnEdges = [];
+    let idx=0;
+    for(let l=0;l<layers.length-1;l++){const s=idx;idx+=layers[l];const e=idx;for(let a=s;a<s+layers[l];a++){for(let b=e;b<e+layers[l+1];b++){nnEdges.push({from:a,to:b});}}}
+    nodes.nnNodes = nnNodes;
+    nodes.nnEdges = nnEdges;
+  }
+
+  function draw(t) {
+    ctx.clearRect(0,0,w,h);
+    const dk = !document.documentElement.classList.contains('light');
+    const aR=dk?0:8, aG=dk?229:145, aB=dk?229:178;
+    const ac = 'rgba('+aR+','+aG+','+aB+',';
+
+    // Draw decision tree
+    const treeX=w*0.18, treeY=h*0.3;
+    ctx.save();
+    // Root to branches
+    for(let i=0;i<3;i++){const nx=treeX-60+i*60,ny=treeY+70;
+      ctx.beginPath();ctx.moveTo(treeX,treeY);ctx.lineTo(nx,ny);
+      ctx.strokeStyle=ac+(0.15+Math.sin(t*0.001+i)*0.05)+')';ctx.lineWidth=1.5;ctx.stroke();
+      // Branch labels
+      const mid={x:(treeX+nx)/2-5,y:(treeY+ny)/2};
+      ctx.fillStyle=ac+'0.25)';ctx.font='8px Arial';ctx.fillText('p'+(i+1),mid.x,mid.y);
+    }
+    // Branches to leaves
+    for(let i=0;i<6;i++){const px=treeX-60+Math.floor(i/2)*60,py=treeY+70,nx=treeX-90+i*36,ny=treeY+130;
+      ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(nx,ny);
+      ctx.strokeStyle=ac+'0.1)';ctx.lineWidth=1;ctx.stroke();
+    }
+    // Tree nodes
+    [{x:treeX,y:treeY,r:6}].concat(
+      [{x:treeX-60,y:treeY+70,r:4.5},{x:treeX,y:treeY+70,r:4.5},{x:treeX+60,y:treeY+70,r:4.5}]
+    ).forEach(function(n,i){
+      const glow=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*3);
+      glow.addColorStop(0,ac+(0.3+Math.sin(t*0.002+i)*0.1)+')');
+      glow.addColorStop(1,ac+'0)');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(n.x,n.y,n.r*3,0,6.28);ctx.fill();
+      ctx.fillStyle=ac+(0.5+Math.sin(t*0.002+i)*0.2)+')';ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.28);ctx.fill();
+    });
+    // Leaf utility values
+    for(let i=0;i<6;i++){const nx=treeX-90+i*36,ny=treeY+130;
+      ctx.fillStyle=ac+'0.35)';ctx.beginPath();ctx.arc(nx,ny,3,0,6.28);ctx.fill();
+      ctx.fillStyle=ac+'0.2)';ctx.font='7px Arial';ctx.textAlign='center';ctx.fillText('u'+(i+1),nx,ny+12);
+    }
+    // Decision tree label
+    ctx.fillStyle=ac+'0.12)';ctx.font='bold 10px Arial';ctx.textAlign='center';
+    ctx.fillText('Decision Theory',treeX,treeY-20);
+    ctx.restore();
+
+    // Draw neural network
+    const nn = nodes.nnNodes, ne = nodes.nnEdges;
+    if(nn && nn.length){
+      ctx.save();
+      // Edges with pulse
+      ne.forEach(function(e,i){
+        const a=nn[e.from],b=nn[e.to];
+        const pulse=0.08+Math.sin(t*0.003+i*0.5)*0.04;
+        ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+        ctx.strokeStyle=ac+pulse+')';ctx.lineWidth=0.6;ctx.stroke();
       });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    const isLight = document.documentElement.classList.contains('light');
-    const accentR = isLight ? 8 : 0, accentG = isLight ? 145 : 229, accentB = isLight ? 178 : 229;
-
-    // Update positions
-    for(let n of nodes) {
-      n.x += n.vx; n.y += n.vy; n.pulse += 0.02;
-      if(n.x < 0 || n.x > w) n.vx *= -1;
-      if(n.y < 0 || n.y > h) n.vy *= -1;
-      // Mouse interaction
-      const dx = n.x - mouse.x, dy = n.y - mouse.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if(dist < 180) { n.vx += dx/dist * 0.05; n.vy += dy/dist * 0.05; }
-      n.vx *= 0.99; n.vy *= 0.99;
-    }
-
-    // Draw connections
-    for(let i = 0; i < nodes.length; i++) {
-      for(let j = i+1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < connectionDist) {
-          const alpha = (1 - dist/connectionDist) * 0.35;
-          ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+alpha+')';
-          ctx.lineWidth = 0.8;
-          ctx.beginPath(); ctx.moveTo(nodes[i].x, nodes[i].y); ctx.lineTo(nodes[j].x, nodes[j].y); ctx.stroke();
-        }
+      // Nodes
+      nn.forEach(function(n,i){
+        const pulse=0.4+Math.sin(t*0.002+i*0.7)*0.2;
+        const glow=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*2.5);
+        glow.addColorStop(0,ac+(pulse*0.5)+')');glow.addColorStop(1,ac+'0)');
+        ctx.fillStyle=glow;ctx.beginPath();ctx.arc(n.x,n.y,n.r*2.5,0,6.28);ctx.fill();
+        ctx.fillStyle=ac+pulse+')';ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,6.28);ctx.fill();
+      });
+      // NN Label
+      ctx.fillStyle=ac+'0.12)';ctx.font='bold 10px Arial';ctx.textAlign='center';
+      ctx.fillText('Neural Networks & AI',nn[0].x+90,nn[0].y-50);
+      // Travelling signal pulses
+      if(Math.random()<0.04 && ne.length>0){
+        const e=ne[Math.floor(Math.random()*ne.length)];
+        pulses.push({from:e.from,to:e.to,t:0});
       }
-    }
-
-    // Draw nodes with glow
-    for(let n of nodes) {
-      const glowSize = n.type === 'hub' ? 12 : 6;
-      const pulseAlpha = 0.15 + Math.sin(n.pulse) * 0.1;
-      const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, glowSize);
-      grad.addColorStop(0, 'rgba('+accentR+','+accentG+','+accentB+','+pulseAlpha * 2+')');
-      grad.addColorStop(1, 'rgba('+accentR+','+accentG+','+accentB+',0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(n.x, n.y, glowSize, 0, Math.PI*2); ctx.fill();
-
-      const coreR = n.type === 'hub' ? n.r * 2 : n.r;
-      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(0.7 + Math.sin(n.pulse)*0.3)+')';
-      ctx.beginPath(); ctx.arc(n.x, n.y, coreR, 0, Math.PI*2); ctx.fill();
-    }
-
-    // Travelling pulses along edges
-    if(Math.random() < 0.03 && nodes.length > 1) {
-      const a = Math.floor(Math.random()*nodes.length);
-      let b = Math.floor(Math.random()*nodes.length);
-      if(a !== b) {
-        const dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
-        if(Math.sqrt(dx*dx+dy*dy) < connectionDist) {
-          pulses.push({from: a, to: b, t: 0});
-        }
+      for(let i=pulses.length-1;i>=0;i--){
+        const p=pulses[i];p.t+=0.03;
+        if(p.t>1){pulses.splice(i,1);continue;}
+        const a=nn[p.from],b=nn[p.to];
+        const x=a.x+(b.x-a.x)*p.t,y=a.y+(b.y-a.y)*p.t;
+        ctx.fillStyle=ac+'0.8)';ctx.beginPath();ctx.arc(x,y,2,0,6.28);ctx.fill();
+        const pg=ctx.createRadialGradient(x,y,0,x,y,8);
+        pg.addColorStop(0,ac+'0.3)');pg.addColorStop(1,ac+'0)');
+        ctx.fillStyle=pg;ctx.beginPath();ctx.arc(x,y,8,0,6.28);ctx.fill();
       }
-    }
-    for(let i = pulses.length-1; i >= 0; i--) {
-      const p = pulses[i]; p.t += 0.025;
-      if(p.t > 1) { pulses.splice(i,1); continue; }
-      const x = nodes[p.from].x + (nodes[p.to].x - nodes[p.from].x) * p.t;
-      const y = nodes[p.from].y + (nodes[p.to].y - nodes[p.from].y) * p.t;
-      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+',0.9)';
-      ctx.beginPath(); ctx.arc(x, y, 2.5, 0, Math.PI*2); ctx.fill();
-      const pg = ctx.createRadialGradient(x, y, 0, x, y, 10);
-      pg.addColorStop(0, 'rgba('+accentR+','+accentG+','+accentB+',0.4)');
-      pg.addColorStop(1, 'rgba('+accentR+','+accentG+','+accentB+',0)');
-      ctx.fillStyle = pg; ctx.beginPath(); ctx.arc(x, y, 10, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
     }
 
-    // Draw scholar silhouette (person head + book)
-    (function drawScholar() {
-      const cx = w * 0.15, cy = h * 0.55, sc = Math.min(w, h) * 0.0028;
-      const alpha = isLight ? 0.07 : 0.06;
-      ctx.save();
-      ctx.translate(cx, cy); ctx.scale(sc, sc);
-      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+','+alpha+')';
-      ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*2.5)+')';
-      ctx.lineWidth = 1.5/sc;
-      // Head
-      ctx.beginPath(); ctx.arc(0, -55, 35, 0, Math.PI*2); ctx.fill(); ctx.stroke();
-      // Neck
-      ctx.beginPath(); ctx.moveTo(-10, -22); ctx.lineTo(-12, 5); ctx.lineTo(12, 5); ctx.lineTo(10, -22); ctx.fill(); ctx.stroke();
-      // Shoulders & upper body
-      ctx.beginPath(); ctx.moveTo(-12, 5); ctx.quadraticCurveTo(-55, 10, -65, 50); ctx.lineTo(-60, 95); ctx.lineTo(60, 95); ctx.lineTo(65, 50); ctx.quadraticCurveTo(55, 10, 12, 5); ctx.fill(); ctx.stroke();
-      // Book held open in front
-      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*1.5)+')';
-      // Left page
-      ctx.beginPath(); ctx.moveTo(-5, 40); ctx.lineTo(-48, 30); ctx.lineTo(-50, 72); ctx.lineTo(-5, 78); ctx.closePath(); ctx.fill(); ctx.stroke();
-      // Right page
-      ctx.beginPath(); ctx.moveTo(5, 40); ctx.lineTo(48, 30); ctx.lineTo(50, 72); ctx.lineTo(5, 78); ctx.closePath(); ctx.fill(); ctx.stroke();
-      // Book spine
-      ctx.beginPath(); ctx.moveTo(-5, 38); ctx.lineTo(-5, 80); ctx.moveTo(5, 38); ctx.lineTo(5, 80); ctx.stroke();
-      // Page lines on left
-      ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*1.8)+')';
-      ctx.lineWidth = 0.8/sc;
-      for(var li=0; li<4; li++) { var ly=44+li*8; ctx.beginPath(); ctx.moveTo(-42, ly); ctx.lineTo(-10, ly+2); ctx.stroke(); }
-      // Page lines on right
-      for(var li=0; li<4; li++) { var ly=44+li*8; ctx.beginPath(); ctx.moveTo(42, ly); ctx.lineTo(10, ly+2); ctx.stroke(); }
-      // Hair suggestion
-      ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*2)+')';
-      ctx.lineWidth = 2/sc;
-      ctx.beginPath(); ctx.arc(0, -60, 33, -Math.PI*0.85, -Math.PI*0.15); ctx.stroke();
-      ctx.restore();
-    })();
+    // Draw probability distribution curve (center-bottom)
+    ctx.save();
+    const cx=w*0.5, cy=h*0.75;
+    ctx.beginPath();
+    for(let i=-80;i<=80;i++){
+      const x=cx+i*1.5;
+      const gauss=Math.exp(-(i*i)/(2*800));
+      const y=cy-gauss*60-Math.sin(t*0.001+i*0.05)*3;
+      if(i===-80)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle=ac+'0.2)';ctx.lineWidth=1.5;ctx.stroke();
+    // Area fill
+    ctx.lineTo(cx+120,cy);ctx.lineTo(cx-120,cy);ctx.closePath();
+    ctx.fillStyle=ac+'0.03)';ctx.fill();
+    // mu marker
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx,cy-60-Math.sin(t*0.001)*3);
+    ctx.strokeStyle=ac+'0.15)';ctx.lineWidth=0.8;ctx.setLineDash([3,3]);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle=ac+'0.2)';ctx.font='9px Arial';ctx.textAlign='center';ctx.fillText('\u03BC',cx,cy+12);
+    ctx.fillText('Random Expected Utility',cx,cy+24);
+    ctx.restore();
 
-    // Draw second scholar on right side
-    (function drawScholar2() {
-      const cx = w * 0.85, cy = h * 0.52, sc = Math.min(w, h) * 0.0024;
-      const alpha = isLight ? 0.05 : 0.045;
-      ctx.save();
-      ctx.translate(cx, cy); ctx.scale(sc, sc);
-      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+','+alpha+')';
-      ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*2.5)+')';
-      ctx.lineWidth = 1.5/sc;
-      // Head
-      ctx.beginPath(); ctx.arc(0, -55, 35, 0, Math.PI*2); ctx.fill(); ctx.stroke();
-      // Neck
-      ctx.beginPath(); ctx.moveTo(-10, -22); ctx.lineTo(-12, 5); ctx.lineTo(12, 5); ctx.lineTo(10, -22); ctx.fill(); ctx.stroke();
-      // Shoulders
-      ctx.beginPath(); ctx.moveTo(-12, 5); ctx.quadraticCurveTo(-55, 10, -65, 50); ctx.lineTo(-60, 95); ctx.lineTo(60, 95); ctx.lineTo(65, 50); ctx.quadraticCurveTo(55, 10, 12, 5); ctx.fill(); ctx.stroke();
-      // Book - tilted slightly
-      ctx.rotate(-0.15);
-      ctx.fillStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*1.5)+')';
-      ctx.beginPath(); ctx.moveTo(-5, 40); ctx.lineTo(-48, 30); ctx.lineTo(-50, 72); ctx.lineTo(-5, 78); ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(5, 40); ctx.lineTo(48, 30); ctx.lineTo(50, 72); ctx.lineTo(5, 78); ctx.closePath(); ctx.fill(); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(-5, 38); ctx.lineTo(-5, 80); ctx.moveTo(5, 38); ctx.lineTo(5, 80); ctx.stroke();
-      ctx.strokeStyle = 'rgba('+accentR+','+accentG+','+accentB+','+(alpha*1.8)+')';
-      ctx.lineWidth = 0.8/sc;
-      for(var li=0; li<4; li++) { var ly=44+li*8; ctx.beginPath(); ctx.moveTo(-42, ly); ctx.lineTo(-10, ly+2); ctx.stroke(); }
-      for(var li=0; li<4; li++) { var ly=44+li*8; ctx.beginPath(); ctx.moveTo(42, ly); ctx.lineTo(10, ly+2); ctx.stroke(); }
+    // Floating symbols
+    items.forEach(function(p){
+      p.x+=p.vx+Math.sin(t*0.0008+p.phase)*0.12;
+      p.y+=p.vy;
+      p.rot+=p.rotV;
+      if(p.y<-40){p.y=h+40;p.x=Math.random()*w;}
+      if(p.x<-40)p.x=w+40;if(p.x>w+40)p.x=-40;
+      // Mouse repulsion
+      const dx=p.x-mouse.x,dy=p.y-mouse.y,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){p.x+=dx/dist*1.5;p.y+=dy/dist*1.5;}
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      ctx.font=p.size+'px Georgia,serif';ctx.fillStyle=ac+p.alpha+')';
+      ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(p.sym,0,0);
       ctx.restore();
-    })();
+    });
+
+    // Center glow
+    const grd=ctx.createRadialGradient(w*0.5,h*0.5,0,w*0.5,h*0.5,w*0.35);
+    grd.addColorStop(0,ac+'0.025)');grd.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=grd;ctx.fillRect(0,0,w,h);
+
     requestAnimationFrame(draw);
   }
 
-  canvas.parentElement.addEventListener('mousemove', function(e) {
-    const rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
-  });
-  canvas.parentElement.addEventListener('mouseleave', function() { mouse.x = -1000; mouse.y = -1000; });
-  window.addEventListener('resize', resize);
-  resize(); draw();
+  canvas.parentElement.addEventListener('mousemove',function(e){const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+  canvas.parentElement.addEventListener('mouseleave',function(){mouse.x=-1000;mouse.y=-1000;});
+  window.addEventListener('resize',resize);
+  resize(); draw(0);
 })();
 </script>
 </body>
