@@ -398,226 +398,143 @@
       });
     });
   </script>
-<script>
-  (function() {
-    const canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H;
-    function resize() { W = canvas.width = canvas.parentElement.offsetWidth; H = canvas.height = canvas.parentElement.offsetHeight; }
-    window.addEventListener('resize', resize); resize();
-    const isDark = () => document.documentElement.classList.contains('dark');
+    <script>
+    (function() {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let W, H;
+      function resize() { W = canvas.width = canvas.parentElement.offsetWidth; H = canvas.height = canvas.parentElement.offsetHeight; }
+      window.addEventListener('resize', resize); resize();
+      const isDark = () => document.documentElement.classList.contains('dark');
 
-    const symbols = ['\u03C0','\u2211','\u222B','\u221A','\u0394','\u221E','\u2202','\u03B1','\u03B2','\u03BB','x\u00B2','dy/dx','E=mc','f(x)','\u2200','\u2203','\u2208','\u2265','log','lim','Qd=a-bP','Qs=c+dP','Y=C+I+G+NX','U(x,y)','MU/P','GDP','MV=PY','IS-LM','δY/δK','MPL','MC=MR','P=MC','εd','C+S=Y','L=f(Y,r)','max U(x)','s.t.'];
-
-    // Floating teaching elements
-    const items = [];
-    for (let i = 0; i < 45; i++) {
-      items.push({
-        x: Math.random()*2000, y: Math.random()*600,
-        vx: (Math.random()-0.5)*0.3, vy: -0.15 - Math.random()*0.25,
-        type: Math.floor(Math.random()*5),
-        sym: symbols[Math.floor(Math.random()*symbols.length)],
-        size: 10 + Math.random()*16,
-        alpha: 0.08 + Math.random()*0.22,
-        rot: Math.random()*6.28,
-        rotV: (Math.random()-0.5)*0.008,
-        phase: Math.random()*6.28
-      });
-    }
-
-    // Connection network nodes (knowledge network)
-    const nodes = [];
-    for (let i = 0; i < 30; i++) {
-      nodes.push({
-        x: Math.random()*2000, y: Math.random()*600,
-        vx: (Math.random()-0.5)*0.2, vy: (Math.random()-0.5)*0.15,
-        r: 1.5 + Math.random()*2
-      });
-    }
-
-    function drawBook(x, y, s, alpha, dk) {
-      ctx.save(); ctx.globalAlpha = alpha;
-      // Book body
-      ctx.fillStyle = dk ? '#4dd0e1' : '#00897b';
-      ctx.beginPath();
-      ctx.moveTo(x-s*0.45, y+s*0.3);
-      ctx.lineTo(x-s*0.45, y-s*0.25);
-      ctx.quadraticCurveTo(x, y-s*0.4, x+s*0.45, y-s*0.25);
-      ctx.lineTo(x+s*0.45, y+s*0.3);
-      ctx.quadraticCurveTo(x, y+s*0.15, x-s*0.45, y+s*0.3);
-      ctx.fill();
-      // Spine
-      ctx.strokeStyle = dk ? '#80deea' : '#4db6ac';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(x, y-s*0.35);
-      ctx.quadraticCurveTo(x+s*0.02, y, x, y+s*0.25);
-      ctx.stroke();
-      // Page lines
-      ctx.strokeStyle = dk ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.15)';
-      ctx.lineWidth = 0.5;
-      for (let l = 0; l < 3; l++) {
-        const ly = y - s*0.15 + l*s*0.15;
-        ctx.beginPath();
-        ctx.moveTo(x+s*0.08, ly);
-        ctx.lineTo(x+s*0.35, ly);
-        ctx.stroke();
+      // Chalkboard grid lines
+      const gridLines = [];
+      for (let i = 0; i < 12; i++) {
+        gridLines.push({ y: Math.random(), alpha: 0.02 + Math.random() * 0.04 });
       }
-      ctx.restore();
-    }
-
-    function drawGradCap(x, y, s, alpha, dk) {
-      ctx.save(); ctx.globalAlpha = alpha;
-      // Board
-      ctx.fillStyle = dk ? '#1e88e5' : '#0d47a1';
-      ctx.beginPath();
-      ctx.moveTo(x, y-s*0.35);
-      ctx.lineTo(x+s*0.55, y-s*0.1);
-      ctx.lineTo(x, y+s*0.05);
-      ctx.lineTo(x-s*0.55, y-s*0.1);
-      ctx.closePath(); ctx.fill();
-      // Base
-      ctx.fillStyle = dk ? '#1565c0' : '#0d47a1';
-      ctx.fillRect(x-s*0.18, y+s*0.05, s*0.36, s*0.12);
-      // Tassel
-      ctx.strokeStyle = dk ? '#ffd54f' : '#f9a825';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(x+s*0.3, y-s*0.1);
-      ctx.lineTo(x+s*0.3, y+s*0.25);
-      ctx.stroke();
-      ctx.fillStyle = ctx.strokeStyle;
-      ctx.beginPath(); ctx.arc(x+s*0.3, y+s*0.28, s*0.05, 0, 6.28); ctx.fill();
-      ctx.restore();
-    }
-
-    function drawLightbulb(x, y, s, alpha, dk, t) {
-      ctx.save(); ctx.globalAlpha = alpha;
-      const glow = 0.6 + Math.sin(t*0.003)*0.3;
-      // Glow
-      const grad = ctx.createRadialGradient(x, y-s*0.1, 0, x, y-s*0.1, s*0.5);
-      grad.addColorStop(0, dk ? 'rgba(255,213,79,'+(0.2*glow)+')' : 'rgba(255,179,0,'+(0.15*glow)+')');
-      grad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(x, y-s*0.1, s*0.5, 0, 6.28); ctx.fill();
-      // Bulb
-      ctx.fillStyle = dk ? 'rgba(255,213,79,'+(0.7*glow)+')' : 'rgba(255,179,0,'+(0.6*glow)+')';
-      ctx.beginPath(); ctx.arc(x, y-s*0.15, s*0.22, 0, 6.28); ctx.fill();
-      // Base
-      ctx.fillStyle = dk ? '#90a4ae' : '#78909c';
-      ctx.fillRect(x-s*0.08, y+s*0.08, s*0.16, s*0.12);
-      // Rays
-      ctx.strokeStyle = dk ? 'rgba(255,213,79,'+(0.35*glow)+')' : 'rgba(255,179,0,'+(0.25*glow)+')';
-      ctx.lineWidth = 1;
-      for (let r = 0; r < 8; r++) {
-        const a = r*Math.PI/4 + t*0.0005;
-        ctx.beginPath();
-        ctx.moveTo(x+Math.cos(a)*s*0.28, y-s*0.15+Math.sin(a)*s*0.28);
-        ctx.lineTo(x+Math.cos(a)*s*0.42, y-s*0.15+Math.sin(a)*s*0.42);
-        ctx.stroke();
+      for (let i = 0; i < 8; i++) {
+        gridLines.push({ x: Math.random(), alpha: 0.02 + Math.random() * 0.04 });
       }
-      ctx.restore();
-    }
 
-    function drawAtom(x, y, s, alpha, dk, t) {
-      ctx.save(); ctx.globalAlpha = alpha;
-      // Nucleus
-      ctx.fillStyle = dk ? '#4dd0e1' : '#00897b';
-      ctx.beginPath(); ctx.arc(x, y, s*0.08, 0, 6.28); ctx.fill();
-      // Orbits
-      ctx.strokeStyle = dk ? 'rgba(77,208,225,0.4)' : 'rgba(0,137,123,0.3)';
-      ctx.lineWidth = 0.8;
-      for (let o = 0; o < 3; o++) {
-        ctx.save();
-        ctx.translate(x, y);
-        ctx.rotate(o*Math.PI/3 + t*0.0003);
-        ctx.beginPath();
-        ctx.ellipse(0, 0, s*0.38, s*0.12, 0, 0, 6.28);
-        ctx.stroke();
-        // Electron
-        const ea = t*0.002 + o*2.1;
-        const ex = Math.cos(ea)*s*0.38;
-        const ey = Math.sin(ea)*s*0.12;
-        ctx.fillStyle = dk ? '#80deea' : '#26a69a';
-        ctx.beginPath(); ctx.arc(ex, ey, s*0.04, 0, 6.28); ctx.fill();
-        ctx.restore();
+      // Floating chalk equations & teaching symbols
+      const chalks = [];
+      const eqs = ['E=mc\u00B2','\u222Bf(x)dx','\u2211\u03B1\u1D62','\u2202y/\u2202x','lim','\u0394Q/\u0394P','MV=PY','Y=C+I+G','MC=MR','GDP','\u03C0r\u00B2','IS-LM','MPL','\u03B1+\u03B2','log(x)','P(A|B)','\u221A','dy/dx','s.t.','max U','Qd=a-bP','f\'(x)=0','\u03BB','\u2200x','\u2203y'];
+      for (let i = 0; i < 35; i++) {
+        chalks.push({
+          x: Math.random() * 2000, y: Math.random() * 600,
+          vx: (Math.random() - 0.5) * 0.2, vy: (Math.random() - 0.5) * 0.15,
+          eq: eqs[Math.floor(Math.random() * eqs.length)],
+          size: 11 + Math.random() * 13,
+          alpha: 0.06 + Math.random() * 0.18,
+          rot: (Math.random() - 0.5) * 0.4,
+          phase: Math.random() * 6.28
+        });
       }
-      ctx.restore();
-    }
 
-    function draw(t) {
-      ctx.clearRect(0, 0, W, H);
-      const dk = isDark();
+      // Classroom pointer / laser dots
+      const dots = [];
+      for (let i = 0; i < 6; i++) {
+        dots.push({
+          cx: 0.15 + Math.random() * 0.7, cy: 0.2 + Math.random() * 0.6,
+          r: 2 + Math.random() * 3, speed: 0.3 + Math.random() * 0.5,
+          angle: Math.random() * 6.28, drift: 30 + Math.random() * 50
+        });
+      }
 
-      // Draw knowledge network connections
-      const maxD = 200;
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i+1; j < nodes.length; j++) {
-          const dx = nodes[i].x-nodes[j].x, dy = nodes[i].y-nodes[j].y;
-          const d = Math.sqrt(dx*dx+dy*dy);
-          if (d < maxD) {
-            const al = (1-d/maxD)*(dk?0.08:0.06);
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = dk?'rgba(0,229,229,'+al+')':'rgba(8,145,178,'+al+')';
-            ctx.lineWidth = 0.5; ctx.stroke();
+      // Knowledge network nodes
+      const nodes = [];
+      for (let i = 0; i < 25; i++) {
+        nodes.push({
+          x: Math.random() * 2000, y: Math.random() * 600,
+          vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.2,
+          r: 2 + Math.random() * 2.5
+        });
+      }
+
+      function draw(t) {
+        t = t || 0;
+        const dk = isDark();
+        ctx.clearRect(0, 0, W, H);
+
+        // Subtle chalkboard grid
+        gridLines.forEach(g => {
+          ctx.strokeStyle = dk ? 'rgba(0,229,229,' + g.alpha + ')' : 'rgba(8,145,178,' + g.alpha + ')';
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          if (g.y !== undefined) { const yy = g.y * H; ctx.moveTo(0, yy); ctx.lineTo(W, yy); }
+          if (g.x !== undefined) { const xx = g.x * W; ctx.moveTo(xx, 0); ctx.lineTo(xx, H); }
+          ctx.stroke();
+        });
+
+        // Knowledge network connections
+        const maxD = 180;
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            if (d < maxD) {
+              const al = (1 - d / maxD) * (dk ? 0.08 : 0.06);
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.strokeStyle = dk ? 'rgba(0,229,229,' + al + ')' : 'rgba(8,145,178,' + al + ')';
+              ctx.lineWidth = 0.5; ctx.stroke();
+            }
           }
         }
-      }
 
-      // Update and draw network nodes
-      nodes.forEach(n => {
-        n.x += n.vx; n.y += n.vy;
-        if (n.x<-20) n.x=W+20; if (n.x>W+20) n.x=-20;
-        if (n.y<-20) n.y=H+20; if (n.y>H+20) n.y=-20;
-        ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 6.28);
-        ctx.fillStyle = dk?'rgba(0,229,229,0.15)':'rgba(8,145,178,0.12)';
-        ctx.fill();
-      });
+        // Draw & move nodes
+        nodes.forEach(n => {
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0) n.x = W; if (n.x > W) n.x = 0;
+          if (n.y < 0) n.y = H; if (n.y > H) n.y = 0;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, 6.28);
+          ctx.fillStyle = dk ? 'rgba(0,229,229,0.15)' : 'rgba(8,145,178,0.12)';
+          ctx.fill();
+        });
 
-      // Draw teaching items
-      items.forEach(p => {
-        p.x += p.vx + Math.sin(t*0.0008+p.phase)*0.15;
-        p.y += p.vy;
-        p.rot += p.rotV;
-        if (p.y < -60) { p.y = H+60; p.x = Math.random()*W; }
-        if (p.x < -60) p.x = W+60;
-        if (p.x > W+60) p.x = -60;
-
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-
-        if (p.type === 0) {
-          drawBook(0, 0, p.size, p.alpha, dk);
-        } else if (p.type === 1) {
-          drawGradCap(0, 0, p.size, p.alpha, dk);
-        } else if (p.type === 2) {
-          drawLightbulb(0, 0, p.size, p.alpha, dk, t);
-        } else if (p.type === 3) {
-          drawAtom(0, 0, p.size, p.alpha*0.8, dk, t);
-        } else {
-          // Math symbols
-          ctx.font = (p.size*1.1)+'px Georgia, serif';
-          ctx.fillStyle = dk ? 'rgba(0,229,229,'+p.alpha+')' : 'rgba(8,145,178,'+p.alpha+')';
+        // Floating chalk equations
+        chalks.forEach(c => {
+          c.x += c.vx + Math.sin(t * 0.0005 + c.phase) * 0.1;
+          c.y += c.vy;
+          if (c.y < -40) { c.y = H + 40; c.x = Math.random() * W; }
+          if (c.y > H + 40) { c.y = -40; c.x = Math.random() * W; }
+          if (c.x < -60) c.x = W + 60;
+          if (c.x > W + 60) c.x = -60;
+          ctx.save();
+          ctx.translate(c.x, c.y);
+          ctx.rotate(c.rot);
+          ctx.font = c.size + 'px Georgia, serif';
+          ctx.fillStyle = dk ? 'rgba(0,229,229,' + c.alpha + ')' : 'rgba(8,145,178,' + c.alpha + ')';
           ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.fillText(p.sym, 0, 0);
-        }
-        ctx.restore();
-      });
+          ctx.fillText(c.eq, 0, 0);
+          ctx.restore();
+        });
 
-      // Central chalkboard glow
-      const grd = ctx.createRadialGradient(W*0.5, H*0.5, 0, W*0.5, H*0.5, W*0.35);
-      grd.addColorStop(0, dk?'rgba(0,229,229,0.03)':'rgba(8,145,178,0.04)');
-      grd.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = grd;
-      ctx.fillRect(0, 0, W, H);
+        // Laser pointer dots
+        dots.forEach(d => {
+          d.angle += d.speed * 0.01;
+          const dx = d.cx * W + Math.cos(d.angle) * d.drift;
+          const dy = d.cy * H + Math.sin(d.angle * 0.7) * d.drift;
+          const grd = ctx.createRadialGradient(dx, dy, 0, dx, dy, d.r * 3);
+          grd.addColorStop(0, dk ? 'rgba(255,100,100,0.25)' : 'rgba(220,50,50,0.2)');
+          grd.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grd;
+          ctx.beginPath(); ctx.arc(dx, dy, d.r * 3, 0, 6.28); ctx.fill();
+        });
 
+        // Central radial glow
+        const grd = ctx.createRadialGradient(W * 0.5, H * 0.5, 0, W * 0.5, H * 0.5, W * 0.35);
+        grd.addColorStop(0, dk ? 'rgba(0,229,229,0.03)' : 'rgba(8,145,178,0.04)');
+        grd.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, W, H);
+
+        requestAnimationFrame(draw);
+      }
       requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
-  })();
+    })();
   </script>
 </html>
