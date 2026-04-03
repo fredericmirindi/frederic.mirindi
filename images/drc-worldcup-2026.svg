@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <!-- DRC Flag background -->
+  <rect width="400" height="280" fill="#007FFF"/>
+  <!-- Red diagonal stripe with yellow borders -->
+  <polygon points="0,280 0,200 320,0 400,0 400,80 80,280" fill="#F7D618"/>
+  <polygon points="0,260 0,220 300,0 360,0 400,20 400,60 100,280" fill="#CE1021"/>
+  <!-- Yellow star -->
+  <polygon points="60,10 68,35 95,35 73,50 82,75 60,60 38,75 47,50 25,35 52,35" fill="#F7D618"/>
+  <!-- Soccer ball icon -->
+  <circle cx="310" cy="200" r="45" fill="white" stroke="#333" stroke-width="2"/>
+  <path d="M310,155 L322,175 L345,175 L330,190 L337,215 L310,200 L283,215 L290,190 L275,175 L298,175 Z" fill="#333" opacity="0.15"/>
+  <!-- Text overlay -->
+  <rect x="10" y="230" width="380" height="45" rx="6" fill="rgba(0,0,0,0.65)"/>
+  <text x="200" y="258" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-size="16" font-weight="bold">RDC - Coupe du Monde 2026</text>
+</svg>
