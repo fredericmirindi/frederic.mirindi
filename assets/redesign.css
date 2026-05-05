@@ -1,0 +1,236 @@
+/* =============================================================
+   redesign.css — Academic / sober refresh
+   Author: redesign PR
+   Goal: tone down the "AI-generated" look (neon cyan, constellation
+   background, emoji-heavy nav, glow buttons, colored badges) and
+   move toward a classic, professional academic style suitable for a
+   PhD Candidate in Economics.
+
+   This stylesheet is intended to be loaded LAST so it overrides the
+   inline / existing styles. Add this to every page just before
+   </head>:
+     <link rel="stylesheet" href="/assets/redesign.css">
+
+   It can be toggled off simply by removing that line.
+   ============================================================= */
+
+/* ---------- 1. Typography (academic serif/sans pairing) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root{
+  --bg:           #ffffff;
+  --bg-alt:       #f7f5f0;   /* warm off-white, paper feel */
+  --text:         #1c1c1c;
+  --text-muted:   #555555;
+  --rule:         #e3e1dc;
+  --accent:       #1a3a6c;   /* navy — academic */
+  --accent-soft:  #eef2f8;
+  --serif: 'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html, html.dark, body, body.dark{
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  font-family: var(--sans) !important;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: var(--serif) !important;
+  color: var(--text) !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  text-shadow: none !important;
+}
+h1{ font-size: 2.1rem; line-height: 1.2; }
+h2{ font-size: 1.55rem; margin-top: 2rem; padding-bottom: .35rem; border-bottom: 1px solid var(--rule); }
+h3{ font-size: 1.2rem; }
+
+p, li, span, blockquote, label, td, th{
+  color: var(--text) !important;
+}
+
+a{
+  color: var(--accent) !important;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+a:hover{ text-decoration-thickness: 2px; }
+
+/* ---------- 2. Kill the "AI" backgrounds & glows ---------- */
+body::before, body::after,
+.bg-stars, .stars, .constellation, #constellation,
+canvas#bg, canvas.bg, canvas[id*='star'], canvas[class*='star'],
+.particles, #particles, #particles-js, .network-bg{
+  display: none !important;
+  background: none !important;
+}
+
+*{
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Remove neon cyan accent everywhere */
+[style*='#00e5d1' i], [style*='#0ff' i], [style*='cyan' i]{
+  color: inherit !important;
+  background: transparent !important;
+  border-color: var(--rule) !important;
+}
+
+/* ---------- 3. Navigation ---------- */
+nav, header nav, .navbar, .nav, .site-nav{
+  background: var(--bg) !important;
+  border-bottom: 1px solid var(--rule);
+  padding: .75rem 1.25rem;
+}
+nav a, .navbar a, .nav a, .site-nav a{
+  color: var(--text) !important;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: .35rem .15rem !important;
+  margin: 0 .9rem;
+  border: none !important;
+}
+nav a.active, nav a[aria-current='page'], .nav a.active{
+  color: var(--accent) !important;
+  border-bottom: 2px solid var(--accent) !important;
+}
+
+/* Hide decorative emoji/icon characters in nav and chips */
+nav i, nav svg, .navbar i, .navbar svg{
+  display: none !important;
+}
+nav a::before, .nav a::before{ content: none !important; }
+
+/* ---------- 4. Hero / header section ---------- */
+.hero, #hero, header.hero, section.hero{
+  background: var(--bg) !important;
+  padding: 3rem 1.25rem 2rem !important;
+}
+
+/* Profile photo: square with subtle border, no halo */
+.hero img, .profile-img, img.profile, img[alt*='Frédéric' i], img[alt*='Mirindi' i]{
+  border-radius: 4px !important;
+  border: 1px solid var(--rule) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  max-width: 240px !important;
+  height: auto !important;
+}
+
+/* Italic blockquote with cyan bar -> sober paragraph */
+blockquote, .hero blockquote, .quote{
+  font-style: normal !important;
+  border-left: 3px solid var(--rule) !important;
+  padding: .25rem 0 .25rem 1rem !important;
+  margin: 1rem 0 !important;
+  color: var(--text-muted) !important;
+  background: transparent !important;
+}
+
+/* ---------- 5. Buttons & chips: flat, sober ---------- */
+button, .btn, a.btn, .button, input[type=submit]{
+  background: var(--bg) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--accent) !important;
+  border-radius: 3px !important;
+  padding: .5rem 1rem !important;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+button:hover, .btn:hover, a.btn:hover{
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.btn-primary, .button-primary{
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+.chip, .pill, .tag, .badge{
+  background: var(--accent-soft) !important;
+  color: var(--accent) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 3px !important;
+  padding: .15rem .5rem !important;
+  font-size: .8rem !important;
+  font-weight: 500;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+/* Remove the colored FEATURED / NEW ribbons */
+.featured, .badge-featured, .badge-new, .ribbon, [class*='featured' i][class*='badge' i]{
+  background: transparent !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--rule) !important;
+  text-transform: none !important;
+  font-size: .75rem !important;
+  font-weight: 500 !important;
+}
+
+/* ---------- 6. Cards (news, publications) ---------- */
+.card, .news-card, .post-card, article.card{
+  background: var(--bg) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 4px !important;
+  padding: 1.25rem !important;
+  transition: border-color .15s ease;
+}
+.card:hover, .news-card:hover{
+  border-color: var(--accent) !important;
+  transform: none !important;
+}
+
+/* ---------- 7. Footer ---------- */
+footer, .site-footer{
+  background: var(--bg-alt) !important;
+  color: var(--text-muted) !important;
+  border-top: 1px solid var(--rule);
+  padding: 1.5rem 1.25rem;
+  font-size: .9rem;
+}
+footer a{ color: var(--accent) !important; }
+
+/* ---------- 8. Misc cleanup ---------- */
+/* Disable wobbly animations / scaling on hover */
+*, *::before, *::after{
+  animation: none !important;
+  transition: color .15s ease, background-color .15s ease, border-color .15s ease !important;
+}
+
+/* Ensure dark-mode toggle still works visually but defaults to light */
+html.dark{
+  --bg: #14181f;
+  --bg-alt: #1b2029;
+  --text: #e8e6df;
+  --text-muted: #a8a59c;
+  --rule: #2a3140;
+  --accent: #9fb6dc;
+  --accent-soft: #1f2632;
+}
+
+/* Container widths for readability (academic line length) */
+main, .container, .content, section{
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Lists & publications */
+ol.publications li, ul.publications li, .pub-list li{
+  margin-bottom: .9rem;
+  line-height: 1.55;
+}
+
+/* Tables (CV-style) */
+table{ border-collapse: collapse; width: 100%; }
+th, td{ border-bottom: 1px solid var(--rule); padding: .5rem .4rem; text-align: left; }
+th{ font-family: var(--serif); font-weight: 600; }
