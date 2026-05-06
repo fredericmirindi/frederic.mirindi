@@ -1,844 +1,103 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-REQNTPLBJK"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-REQNTPLBJK');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frédéric Mirindi | PhD Candidate Economics</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <meta name="description" content="Frédéric Mirindi — Canadian Economist and PhD Candidate in Economics and Econometrics at the University of Manitoba. Research in decision theory, Game Theory, and AI.">
-    <meta name="keywords" content="Frédéric Mirindi, economist, PhD candidate, University of Manitoba, decision theory, Game Theory, artificial intelligence, econometrics">
-    <meta name="author" content="Frédéric Mirindi">
-    <link rel="canonical" href="https://fredericmirindi.com/">
-    <!-- Open Graph -->
-    <meta property="og:title" content="Frédéric Mirindi | PhD Candidate in Economics">
-    <meta property="og:description" content="Canadian Economist and PhD Candidate at the University of Manitoba. Research in decision theory, Game Theory, and AI.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fredericmirindi.com/">
-    <meta property="og:image" content="https://fredericmirindi.com/images/fredericprofil.jpeg">
-    <meta property="og:site_name" content="Frédéric Mirindi">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Frédéric Mirindi | PhD Candidate in Economics">
-    <meta name="twitter:description" content="Canadian Economist and PhD Candidate at the University of Manitoba. Research in decision theory, Game Theory, and AI.">
-    <meta name="twitter:image" content="https://fredericmirindi.com/images/fredericprofil.jpeg">
-
-    <!-- Schema.org Structured Data for SEO -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Frédéric Mirindi",
-        "givenName": "Frédéric",
-        "familyName": "Mirindi",
-        "jobTitle": "Economist",
-        "description": "Canadian Economist and PhD Candidate in Economics and Econometrics at the University of Manitoba",
-        "nationality": "Canadian",
-        "url": "https://fredericmirindi.com",
-        "image": "https://fredericmirindi.com/images/fredericprofil.jpeg",
-        "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "University of Manitoba"
-        },
-        "sameAs": [
-            "https://www.linkedin.com/in/fredericmirindi",
-            "https://scholar.google.com/citations?user=K5--CxAAAAAJ",
-            "https://www.researchgate.net/profile/Frederic-Mirindi",
-            "https://orcid.org/0009-0001-1798-9914"
-        ]
-    }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* ===== THEME VARIABLES ===== */
-        :root, html.dark {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --text-primary: #d1d5db;
-            --text-white: #ffffff;
-            --text-muted: #9ca3af;
-            --accent-color: #00e5e5;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --linkedin-blue: #0077b5;
-            --navbar-bg: rgba(10, 10, 15, 0.85);
-            --theme-btn-bg: rgba(255,255,255,0.07);
-            --theme-btn-border: rgba(255,255,255,0.15);
-        }
-        html.light {
-            --bg-primary: #f5f6fa;
-            --bg-secondary: #ffffff;
-            --text-primary: #374151;
-            --text-white: #111827;
-            --text-muted: #6b7280;
-            --accent-color: #0891b2;
-            --glass-bg: rgba(0, 0, 0, 0.03);
-            --glass-border: rgba(0, 0, 0, 0.10);
-            --linkedin-blue: #0077b5;
-            --navbar-bg: rgba(245, 246, 250, 0.92);
-            --theme-btn-bg: rgba(0,0,0,0.06);
-            --theme-btn-border: rgba(0,0,0,0.12);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.7;
-            min-height: 100vh;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        a { color: var(--accent-color); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        /* Navbar */
-        .navbar {
-            background: var(--navbar-bg);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 0.75rem 2rem;
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            backdrop-filter: blur(12px);
-            transition: background 0.3s ease;
-        }
-        .navbar-container {
-            max-width: 80rem; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .navbar-brand { display: flex; align-items: center; gap: 0.75rem; }
-        .navbar-brand h1 { font-size: 1.35rem; font-weight: 700; color: var(--text-white); }
-        .navbar-brand img { height: 1.75rem; opacity: 0.9; }
-        .navbar-menu { display: flex; align-items: center; gap: 1.5rem; }
-        .nav-links { display: flex; gap: 0.25rem; }
-        .nav-link {
-            display: flex; align-items: center; gap: 0.4rem;
-            padding: 0.4rem 0.9rem; border-radius: 0.4rem;
-            color: var(--text-muted); font-weight: 500; font-size: 0.9rem;
-            transition: all 0.3s ease; text-decoration: none;
-        }
-        .nav-link:hover, .nav-link.active { background: var(--glass-bg); color: var(--text-white); text-decoration: none; }
-        .nav-link.active { border-bottom: 2px solid var(--accent-color); }
-        .social-icons-nav { display: flex; align-items: center; gap: 0.75rem; }
-        .social-icon { font-size: 1.1rem; color: var(--text-muted); transition: transform 0.3s ease, color 0.3s ease; }
-        .social-icon:hover { transform: translateY(-2px); color: var(--accent-color); }
-        .icon-linkedin { color: var(--linkedin-blue); }
-        /* ===== APPEARANCE TOGGLE BUTTON ===== */
-        .appearance-toggle {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: var(--theme-btn-bg);
-            border: 1.5px solid var(--theme-btn-border);
-            border-radius: 2rem;
-            padding: 0.28rem 0.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .appearance-toggle:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 10px rgba(0,229,229,0.12);
-        }
-        .theme-option {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.22rem 0.65rem;
-            border-radius: 1.5rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            transition: all 0.25s ease;
-            user-select: none;
-            letter-spacing: 0.02em;
-                                    border: none;
-            background: none;
-            cursor: pointer;
-        }
-        .theme-option svg {
-            width: 14px;
-            height: 14px;
-            flex-shrink: 0;
-        }
-        .theme-option.active {
-            background: var(--accent-color);
-            color: #0a0a0f;
-            box-shadow: 0 2px 8px rgba(0,229,229,0.25);
-        }
-        html.light .theme-option.active {
-            color: #fff;
-        }
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            position: relative; overflow: hidden;
-            padding: 5rem 4rem 3rem 4rem;
-        }
-        #geo-canvas {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; z-index: 0;
-        }
-        .hero-content {
-            position: relative; z-index: 1;
-            display: flex; align-items: center; justify-content: space-between;
-            max-width: 80rem; margin: 0 auto; width: 100%; gap: 4rem;
-        }
-        .hero-text { flex: 1; max-width: 620px; }
-        .hero-photo { flex-shrink: 0; }
-        .profile-img {
-            width: 300px; height: 300px;
-            border-radius: 50%; object-fit: cover;
-            border: 3px solid rgba(0, 229, 229, 0.2);
-            box-shadow: 0 0 50px rgba(0, 229, 229, 0.08), 0 0 100px rgba(0, 0, 0, 0.4);
-        }
-        html.light .profile-img {
-            box-shadow: 0 0 40px rgba(8,145,178,0.10), 0 4px 32px rgba(0,0,0,0.12);
-        }
-        .hero-heading {
-            font-size: 2.75rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.75rem;
-            color: var(--text-white);
-        }
-        .text-accent { color: var(--accent-color); }
-        .hero-text p {
-            font-size: 1rem;
-            margin-bottom: 1.25rem;
-            color: var(--text-primary);
-        }
-        .hero-text p a { color: var(--accent-color); }
-        .research-quote {
-            border-left: 3px solid var(--accent-color);
-            padding-left: 1rem;
-            font-style: italic;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-        }
-        /* Button */
-        .btn-research {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.7rem 1.75rem;
-            background: transparent;
-            border: 1.5px solid var(--accent-color);
-            border-radius: 2rem;
-            color: var(--accent-color);
-            font-size: 0.95rem; font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }     .btn-research:hover {
-            background: var(--accent-color);
-            color: var(--bg-primary);
-            text-decoration: none;
-        }
-        /* Academic icons */
-        .academic-icons {
-            display: flex; align-items: center;
-            gap: 1.25rem; margin-top: 1.5rem;
-        }
-        .academic-icons .social-icon { font-size: 1.4rem; }
-        .academic-icons .icon-orcid { color: #a6ce39; }
-        .academic-icons .icon-orcid:hover { color: #8ab52e; }
-        .academic-icons .icon-researchgate { color: #00ccbb; }
-        .academic-icons .icon-researchgate:hover { color: #00b3a3; }
-        .academic-icons .icon-scholar { color: #4285f4; }
-        .academic-icons .icon-scholar:hover { color: #3367d6; }
-        /* Footer */
-        footer {
-            padding: 1.5rem; text-align: center;
-            border-top: 1px solid var(--glass-border); }
-                    /* ===== CONTENT SECTIONS ===== */
-        .content-section { padding: 4rem 4rem; position: relative; z-index: 1; }
-        .content-section .section-inner { max-width: 80rem; margin: 0 auto; }
-        .section-title { font-size: 1.75rem; font-weight: 700; color: var(--text-white); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.75rem; }
-        .section-title i { color: var(--accent-color); }
-        /* Section Header Bar */
-        .section-header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid var(--glass-border); }
-        .section-header-label { font-size: 1.5rem; font-weight: 700; color: var(--text-white); display: flex; align-items: center; gap: 0.6rem; letter-spacing: -0.02em; }
-        .section-header-label i { color: var(--accent-color); font-size: 1.1rem; }
-        .section-view-all { font-size: 0.85rem; font-weight: 600; color: var(--accent-color); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: gap 0.3s ease; }
-        .section-view-all:hover { gap: 0.7rem; text-decoration: none; }
-        /* Publication List */
-        .pub-list { display: flex; flex-direction: column; gap: 0; }
-        .pub-entry { display: flex; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--glass-border); transition: background 0.3s ease; align-items: flex-start; }
-        .pub-entry:first-child { padding-top: 0; }
-        .pub-entry:last-child { border-bottom: none; }
-        .pub-entry:hover { background: var(--glass-bg); margin: 0 -1rem; padding-left: 1rem; padding-right: 1rem; border-radius: 0.5rem; }
-        .pub-entry-number { font-size: 2rem; font-weight: 800; color: var(--glass-border); line-height: 1; min-width: 2.5rem; padding-top: 0.3rem; font-family: Georgia, 'Times New Roman', serif; }
-        .pub-entry-content { flex: 1; }
-        .pub-entry-tags { display: flex; gap: 0.4rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
-        .pub-tag { font-size: 0.68rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 0.25rem; text-transform: uppercase; letter-spacing: 0.06em; }
-        .pub-tag-type { background: rgba(0,229,229,0.1); color: var(--accent-color); }
-        .pub-tag-year { background: rgba(139,92,246,0.12); color: #a78bfa; }
-        .pub-entry-title { font-size: 1.05rem; font-weight: 700; color: var(--text-white); line-height: 1.4; margin-bottom: 0.4rem; }
-        .pub-entry-authors { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.3rem; }
-        .pub-author-highlight { color: var(--accent-color); font-weight: 600; }
-        .pub-entry-venue { font-size: 0.8rem; color: var(--text-muted); font-style: italic; display: flex; align-items: center; gap: 0.4rem; }
-        .pub-entry-venue i { color: var(--glass-border); }
-        /* News Featured — Economist/CNN Style */
-        .news-featured { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.3s ease; }
-        .news-featured:hover { border-color: rgba(0,229,229,0.25); }
-        .news-featured-badge { position: absolute; top: 1.5rem; right: 1.5rem; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 0.3rem 0.75rem; border-radius: 0.3rem; text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; gap: 0.35rem; box-shadow: 0 2px 8px rgba(231,76,60,0.3); }
-        .news-featured-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; }
-        .news-category-pill { background: rgba(0,229,229,0.1); color: var(--accent-color); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: 2rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .news-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--text-muted); }
-        .news-time { font-size: 0.82rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.35rem; }
-        .news-featured-title { font-size: 1.75rem; font-weight: 800; color: var(--text-white); line-height: 1.25; margin-bottom: 0.75rem; letter-spacing: -0.02em; max-width: 80%; }
-        .news-featured-source { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.4rem; }
-        .news-featured-source i { color: var(--accent-color); font-size: 0.7rem; }
-        .news-featured-media { margin-bottom: 1.5rem; }
-        .news-media-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 0.5rem; border-radius: 0.75rem; overflow: hidden; }
-        .news-media-main img { width: 100%; height: 280px; object-fit: cover; border-radius: 0.5rem; }
-        .news-media-side { display: flex; flex-direction: column; gap: 0.5rem; }
-        .news-media-side img { width: 100%; height: calc((280px - 1rem) / 3); object-fit: cover; border-radius: 0.5rem; }
-        .news-featured-body { font-size: 0.92rem; color: var(--text-primary); line-height: 1.8; }
-        .news-featured-body p { margin-bottom: 1rem; }
-        .news-featured-body p:first-child::first-letter { font-size: 2.8rem; font-weight: 800; float: left; line-height: 1; margin-right: 0.5rem; margin-top: 0.1rem; color: var(--accent-color); font-family: Georgia, 'Times New Roman', serif; }
-        .news-read-more { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.6rem 1.25rem; background: transparent; border: 1.5px solid var(--accent-color); border-radius: 2rem; color: var(--accent-color); font-size: 0.85rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
-        .news-read-more:hover { background: var(--accent-color); color: var(--bg-primary); text-decoration: none; }
-        /* Newsletter */
-
-        /* News Layout - CNN Style Grid */
-.news-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.5rem; min-height: 500px; }
-.news-main { display: flex; flex-direction: column; }
-.news-main .news-featured { height: 100%; display: flex; flex-direction: column; }
-.news-main .news-featured-media { flex: 0 0 auto; }
-.news-main .news-featured-body { flex: 1; }
-.news-main .news-media-grid { grid-template-columns: 1.8fr 1fr; }
-.news-sidebar { display: flex; flex-direction: column; gap: 0; max-height: 620px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--accent-color) transparent; border-radius: 1rem; }
-.news-sidebar::-webkit-scrollbar { width: 4px; }
-.news-sidebar::-webkit-scrollbar-track { background: transparent; }
-.news-sidebar::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 4px; }
-.news-sidebar-card { display: flex; gap: 1rem; padding: 1.25rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-bottom: none; transition: all 0.3s ease; text-decoration: none; cursor: pointer; position: relative; }
-.news-sidebar-card:first-child { border-radius: 1rem 1rem 0 0; }
-.news-sidebar-card:last-child { border-bottom: 1px solid var(--glass-border); border-radius: 0 0 1rem 1rem; }
-.news-sidebar-card:only-child { border-radius: 1rem; border-bottom: 1px solid var(--glass-border); }
-.news-sidebar-card:hover { background: rgba(0,229,229,0.04); border-color: rgba(0,229,229,0.2); z-index: 1; }
-.news-sidebar-thumb { flex-shrink: 0; width: 130px; height: 90px; border-radius: 0.5rem; overflow: hidden; }
-.news-sidebar-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.news-sidebar-card:hover .news-sidebar-thumb img { transform: scale(1.05); }
-.news-sidebar-content { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.35rem; }
-.news-sidebar-category { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent-color); }
-.news-sidebar-title { font-size: 0.92rem; font-weight: 700; color: var(--text-white); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.news-sidebar-meta { font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem; }
-.news-sidebar-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: linear-gradient(135deg, #e74c3c, #c0392b); color: #fff; font-size: 0.6rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
-@media (max-width: 768px) { .news-layout { grid-template-columns: 1fr; } .news-sidebar { max-height: none; overflow-y: visible; } .news-sidebar-thumb { width: 100px; height: 70px; } .news-sidebar-title { font-size: 0.85rem; -webkit-line-clamp: 2; } }
-        .newsletter-section { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 1rem; padding: 2.5rem; text-align: center; max-width: 600px; margin: 0 auto; }
-        .newsletter-section h3 { font-size: 1.3rem; font-weight: 700; color: var(--text-white); margin-bottom: 0.5rem; }
-        .newsletter-section p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
-        .newsletter-form { display: flex; gap: 0.75rem; max-width: 450px; margin: 0 auto; }
-        .newsletter-form input { flex: 1; padding: 0.7rem 1rem; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 2rem; color: var(--text-white); font-size: 0.9rem; outline: none; transition: border-color 0.3s ease; }
-        .newsletter-form input:focus { border-color: var(--accent-color); }
-        .newsletter-form button { padding: 0.7rem 1.5rem; background: var(--accent-color); border: none; border-radius: 2rem; color: var(--bg-primary); font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: opacity 0.3s ease; }
-        .newsletter-form button:hover { opacity: 0.85; }
-        /* Info badges */
-        .info-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; margin-bottom: 1.5rem; }
-        .info-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.85rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 2rem; font-size: 0.8rem; color: var(--text-muted); }
-        .info-badge i { color: var(--accent-color); font-size: 0.85rem; }
-        .academic-icons a { display: flex; align-items: center; gap: 0.35rem; text-decoration: none; }
-        .academic-icons .icon-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); transition: color 0.3s ease; }
-        .academic-icons a:hover .icon-label { color: var(--accent-color); }
-        .academic-icons .icon-github { color: var(--text-muted); }
-        .academic-icons .icon-github:hover { color: var(--accent-color); }
-                footer p { font-size: 0.8rem; color: var(--text-muted); }
-        .mobile-linkedin-nav { display: none; align-items: center; } .mobile-linkedin-nav a { color: var(--linkedin-blue); font-size: 1.4rem; } /* Hamburger */
-        .menu-toggle {
-            display: none; background: none; border: none;
-            color: var(--text-white); font-size: 1.4rem;
-            cursor: pointer; padding: 0.5rem; z-index: 101;
-        }
-        /* ========== RESPONSIVE: Tablet ========== */
-        @media (max-width: 768px) {
-            .menu-toggle { display: none !important; } .mobile-linkedin-nav { display: flex; align-items: center; }
-            .navbar { padding: 0.6rem 1rem; }
-            .navbar-menu {
-                display: none; position: fixed;
-                top: 0; left: 0; right: 0; bottom: 0;
-                background: var(--bg-secondary);
-                flex-direction: column; align-items: center; justify-content: center;
-                gap: 2rem; z-index: 100;
-            }
-            .navbar-menu.active { display: flex; }
-            .nav-links { flex-direction: column; align-items: center; gap: 1rem; }
-            .nav-link { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
-            .social-icons-nav { gap: 1.5rem; }
-            .social-icon { font-size: 1.4rem; }
-            .hero { padding: 5rem 1.5rem 2rem 1.5rem; }
-            .hero-content {
-                flex-direction: column-reverse;
-                text-align: center; gap: 2rem;
-            }
-            .hero-text { max-width: 100%; }
-            .hero-heading { font-size: 2rem; }
-            .profile-img { width: 220px; height: 220px; }
-            .research-quote { text-align: left; }
-            .btn-research { margin: 0 auto; }
-            .academic-icons { justify-content: center; }
-            .appearance-toggle { padding: 0.22rem 0.4rem; }
-            .theme-option { padding: 0.18rem 0.5rem; font-size: 0.72rem; }
-        }
-        /* ========== RESPONSIVE: Phone ========== */
-                @media (max-width: 768px) {
-                    .content-section { padding: 2.5rem 1.5rem; }
-            .pub-entry-number { display: none; }
-        .news-media-grid { grid-template-columns: 1fr; }
-        .news-media-main img { height: 180px; }
-        .news-media-side { flex-direction: row; }
-        .news-media-side img { height: 80px; flex: 1; }
-        .news-featured-title { font-size: 1.3rem; max-width: 100%; }
-        .news-featured { padding: 1.25rem; }
-        .news-featured-badge { top: 1rem; right: 1rem; }
-        .news-featured-body p:first-child::first-letter { font-size: 2.2rem; }
-            .newsletter-form { flex-direction: column; }
-            .info-badges { justify-content: center; }
-            .academic-icons .icon-label { font-size: 0.65rem; }
-                            }
-        @media (max-width: 480px) {
-            .hero { padding: 4.5rem 1rem 1.5rem 1rem; }
-            .hero-heading { font-size: 1.65rem; }
-            .hero-text p { font-size: 0.9rem; }
-            .profile-img { width: 180px; height: 180px; }
-            .navbar-brand h1 { font-size: 1.1rem; }
-            footer { padding: 1rem; }
-            footer p { font-size: 0.7rem; }
-        }
-
-    /* -- Mobile Bottom Tab Bar (Google Sites style) -- */
-    .mobile-bottom-nav { display:none; position:fixed; bottom:0; left:0; right:0; z-index:1000; background:rgba(10,10,15,0.97); border-top:1px solid var(--glass-border); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); padding:0.35rem 0; padding-bottom:env(safe-area-inset-bottom,0); }
-    html.light .mobile-bottom-nav { background: rgba(245,246,250,0.97); }
-    .mobile-bottom-nav-container { display:flex; justify-content:space-around; align-items:center; max-width:100%; }
-    .mobile-bottom-nav-item { display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--text-muted); font-size:0.62rem; padding:0.25rem 0.5rem; border-radius:0.5rem; transition:color 0.2s ease; gap:0.12rem; flex:1; position:relative; }
-    .mobile-bottom-nav-item i { font-size:1.1rem; transition:transform 0.2s ease; }
-    .mobile-bottom-nav-item span { font-weight:500; letter-spacing:0.02em; }
-    .mobile-bottom-nav-item:hover, .mobile-bottom-nav-item.active { color:var(--accent-color); text-decoration:none; }
-    .mobile-bottom-nav-item.active i { transform:scale(1.1); }
-    .mobile-bottom-nav-item.active::before { content:''; position:absolute; top:-0.35rem; left:50%; transform:translateX(-50%); width:1.8rem; height:2px; background:var(--accent-color); border-radius:2px; box-shadow:0 0 6px rgba(0,229,229,0.4); }
-    @media (max-width:768px) { .mobile-bottom-nav { display:block; } body { padding-bottom:1.75rem; } footer { margin-bottom:1.75rem; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frédéric Mirindi</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="canonical" href="https://fredericmirindi.com/">
+<meta name="description" content="Frédéric Mirindi — Economist and PhD Candidate at the University of Manitoba. Research in decision theory, game theory, econometrics, and AI.">
+<meta name="author" content="Frédéric Mirindi">
+<meta property="og:title" content="Frédéric Mirindi | PhD Candidate in Economics">
+<meta property="og:description" content="Canadian Economist and PhD Candidate at the University of Manitoba.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fredericmirindi.com/">
+<meta property="og:image" content="https://fredericmirindi.com/images/fredericprofil.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:#0a0a0a;color:#e8e8e8;font-family:'Inter',system-ui,-apple-system,sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;font-size:16px;overflow-x:hidden}
+a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(232,232,232,.25);transition:border-color .25s ease,color .25s ease}
+a:hover{border-color:#e8e8e8}
+.wrap{max-width:1100px;margin:0 auto;padding:48px 40px 80px;min-height:100vh;display:flex;flex-direction:column}
+header{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;color:#9a9a9a}
+header .brand{color:#e8e8e8;border:none}
+header nav a{margin-left:28px;border:none;color:#9a9a9a}
+header nav a:hover{color:#e8e8e8}
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:80px 0 40px}
+.eyebrow{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:#7a7a7a;margin-bottom:28px}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:300;font-size:clamp(2.5rem,7vw,5.5rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:32px}
+h1 em{font-style:italic;color:#bdbdbd}
+.lede{max-width:680px;font-size:1.05rem;color:#bdbdbd;margin-bottom:48px}
+.lede a{color:#e8e8e8}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;margin-top:32px;border-top:1px solid #1f1f1f;padding-top:40px}
+.grid h3{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#7a7a7a;font-weight:400;margin-bottom:14px}
+.grid p,.grid li{font-size:.95rem;color:#cfcfcf}
+.grid ul{list-style:none}
+.grid li{margin-bottom:8px}
+footer{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;font-size:.85rem;color:#7a7a7a;margin-top:80px;padding-top:32px;border-top:1px solid #1f1f1f}
+footer .social a{margin-right:20px;border:none;color:#9a9a9a}
+footer .social a:hover{color:#e8e8e8}
+@media (max-width:640px){.wrap{padding:32px 24px 48px}header nav a{margin-left:16px}main{padding:48px 0 24px}}
+</style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <a href="/" style="text-decoration: none;">
-                    <h1>Frédéric Mirindi</h1>
-                </a>
-            </div>
-            <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">
-                <i class="fas fa-bars" id="menu-icon"></i>
-            </button><div class="mobile-linkedin-nav"><a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a><a href="https://x.com/MirindiFrederic" target="_blank" class="social-icon" style="color:var(--text-muted);"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
-            <div class="navbar-menu" id="navbar-menu">
-                <div class="nav-links">
-                    <a href="/" class="nav-link active"><i class="fas fa-home"></i> Home</a>
-                    <a href="research.html" class="nav-link"><i class="fas fa-flask"></i> Research</a>
-                    <a href="publications.html" class="nav-link"><i class="fas fa-book"></i> Publications</a>
-                    <a href="conferences.html" class="nav-link"><i class="fas fa-microphone"></i> Conferences</a>
-                    <a href="teaching.html" class="nav-link"><i class="fas fa-graduation-cap"></i> Teaching</a>
-                    <a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-                </div>
-                <div class="social-icons-nav">
-                    <a href="https://www.linkedin.com/in/fredericmirindi" target="_blank" class="social-icon icon-linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://x.com/MirindiFrederic" target="_blank" class="social-icon" aria-label="X"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-                </div>
-            </div>
-            <!-- Appearance Toggle -->
-            <div class="appearance-toggle" id="appearanceToggle" role="group" aria-label="Appearance">
-                <button class="theme-option" id="btn-light" onclick="setTheme('light')" title="Light mode" aria-pressed="false">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-                                            L
-                </button>
-                <button class="theme-option" id="btn-dark" onclick="setTheme('dark')" title="Dark mode" aria-pressed="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-                        D
-                </button>
-            </div>
-        </div>
-    </nav>
-    <div class="mobile-overlay" id="mobile-overlay"></div>
-    <!-- Hero Section -->
-    <section class="hero">
-        <canvas id="geo-canvas"></canvas>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2 class="hero-heading">
-                    Research Interests:<br>
-                    <span class="text-accent">Decision Theory,<br>
-                                    Game Theory &amp; Artificial Intelligence.</span>
-                </h2>
-                <p>
-                    <strong style="color: var(--text-white);">Frédéric Mirindi</strong> is a Canadian Economist and PhD Candidate
-                    in Economics and Econometrics at the
-                    <a href="https://umanitoba.ca" target="_blank">University of Manitoba</a>.
-                </p>
-                <p>
-                    He holds a Master's degree in Development Economics from the
-                    <a href="https://www.uantwerpen.be" target="_blank">University of Antwerp</a>
-                    and attended the
-                    <a href="https://aercafrica.org" target="_blank">African Economic Research Consortium (AERC)</a>.
-                    He serves as a Lecturer at
-                    <a href="https://ustboniface.ca" target="_blank">Université de Saint-Boniface</a> and
-                    <a href="https://boothuc.ca" target="_blank">Booth University College</a>,
-                    bringing industry experience from his previous role as a Data Scientist at
-                    <a href="https://www.canadalife.com" target="_blank">Canada Life</a>.
-                </p>
-                <p class="research-quote">
-                                        His research centers on decision theory, Game Theory, and artificial intelligence, with particular emphasis on rational decision-making under uncertainty, blockchain-based financial systems, and machine learning applications in economics.
-                </p>
-                <a href="research.html" class="btn-research">
-                    <i class="fas fa-book-open"></i> View Research
-                </a>
-                                <div class="info-badges">
-                    <span class="info-badge"><i class="fas fa-graduation-cap"></i> PhD Expected: December 2027</span>
-                    <span class="info-badge"><i class="fas fa-file-alt"></i> CV/Resume: Upon request</span>
-                    <span class="info-badge"><i class="fas fa-map-marker-alt"></i> Université de Saint-Boniface, Winnipeg, MB</span>
-                </div>
-                <div class="academic-icons">
-                    <a href="https://orcid.org/0009-0001-1798-9914" target="_blank" class="social-icon icon-orcid" title="ORCID">
-                        <i class="fab fa-orcid"></i><span class="icon-label">ORCID</span>
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Frederic-Mirindi" target="_blank" class="social-icon icon-researchgate" title="ResearchGate">
-                        <i class="fab fa-researchgate"></i><span class="icon-label">ResearchGate</span>
-                    </a>
-                    <a href="https://scholar.google.com/citations?hl=fr&user=K5--CxAAAAAJ&view_op=list_works&sortby=pubdate" target="_blank" class="social-icon icon-scholar" title="Google Scholar">
-                        <i class="fas fa-graduation-cap"></i><span class="icon-label">Google Scholar</span>
-                    </a>
-                                        <a href="https://github.com/fredericmirindi" target="_blank" class="social-icon icon-github" title="GitHub">
-                        <i class="fab fa-github"></i><span class="icon-label">GitHub</span>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-photo">
-                <img src="images/fredericprofil.jpeg" alt="Frédéric Mirindi" class="profile-img">
-            </div>
-        </div>
-    </section>
-
-        <!-- News Section -->
-        <section class="content-section">
-            <div class="section-inner">
-                <div class="section-header-bar">
-                    <div class="section-header-label"><i class="fas fa-newspaper"></i> News</div>
-                </div>
-
-                            <!-- News Grid Layout -->
-            <div class="news-layout">
-
-                <!-- LEFT: Main Featured Article -->
-                <div class="news-main">
-                    <article class="news-featured">
-                        <div class="news-featured-badge"><i class="fas fa-bolt"></i> Featured</div>
-                        <div class="news-featured-meta">
-                            <span class="news-category-pill">Sports &amp; Society</span>
-                            <span class="news-dot"></span>
-                            <time class="news-time"><i class="far fa-calendar-alt"></i> April 2026</time>
-                        </div>
-                        <h2 class="news-featured-title">Qualification tant attendue de la RDC &agrave; la Coupe du monde 2026 &mdash; Mon intervention &agrave; Radio-Canada</h2>
-                        <div class="news-featured-source"><i class="fas fa-link"></i> Radio-Canada &mdash; April 1, 2026</div>
-                        <div class="news-featured-media">
-                            <div class="news-media-grid">
-                                <div class="news-media-main">
-                                    <img src="images/Flag_of_the_Democratic_Republic_of_the_Congo.svg" alt="DR Congo qualifies for 2026 FIFA World Cup" loading="eager">
-                                </div>
-                                <div class="news-media-side">
-                                    <img src="images/Flag_of_the_Democratic_Republic_of_the_Congo.svg" alt="DRC World Cup 2026" loading="lazy">
-                                    <img src="images/Flag_of_the_Democratic_Republic_of_the_Congo.svg" alt="DRC flag" loading="lazy">
-                                    <img src="images/Flag_of_the_Democratic_Republic_of_the_Congo.svg" alt="DRC celebration" loading="lazy">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="news-featured-body">
-                            <p>La R&eacute;publique d&eacute;mocratique du Congo s'est qualifi&eacute;e pour la premi&egrave;re fois de son histoire &agrave; la Coupe du monde de football 2026. Ce moment historique repr&eacute;sente bien plus qu'un accomplissement sportif &mdash; il incarne l'espoir et la fiert&eacute; d'une nation tout enti&egrave;re.</p>
-                            <p>Fr&eacute;d&eacute;ric Mirindi a &eacute;t&eacute; invit&eacute; &agrave; Radio-Canada pour commenter cette qualification historique et son impact &eacute;conomique et social pour la diaspora congolaise au Canada.</p>
-                        </div>
-                        <a href="https://ici.radio-canada.ca/ohdio/premiere/emissions/le-6-a-9/segments/rattrapage/2338618/qualification-tant-attendue-rdcongo-au-mondial-2026" class="news-read-more" target="_blank" rel="noopener noreferrer">&Eacute;couter l'entrevue <i class="fas fa-arrow-right"></i></a>
-                    </article>
-                </div>
-
-                <!-- RIGHT: Scrollable Sidebar Articles -->
-                <div class="news-sidebar">
-
-
-
-                                        <!-- Sidebar Card: DRC World Cup Qualification - Radio-Canada Interview -->
-                    <a href="news-ai-cybersecurity.html" class="news-sidebar-card">
-                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
-                        <div class="news-sidebar-thumb">
-                            <img src="images/march2026-1.png" alt="AI cybersecurity economic impact" loading="lazy">
-                        </div>
-                        <div class="news-sidebar-content">
-                            <span class="news-sidebar-category">Economics &amp; Technology</span>
-                            <h3 class="news-sidebar-title">The Hackers Are Using AI Too: Economic Implications of AI-Powered Cyber Threats</h3>
-                            <div class="news-sidebar-meta">
-                                <span><i class="far fa-calendar-alt"></i> March/April 2026</span>
-                                <span>&bull; 5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-                                        <!-- Sidebar Card: Electricity and AI -->
-                    <a href="news-ai-electricity.html" class="news-sidebar-card">
-                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
-                        <div class="news-sidebar-thumb">
-                            <img src="images/ai-electricity-economist3.JPG" alt="AI and electricity - power bills in America" loading="lazy">
-                        </div>
-                        <div class="news-sidebar-content">
-                            <span class="news-sidebar-category">Economics &amp; Technology</span>
-                            <h3 class="news-sidebar-title">Electricity in America: Why AI Is Not to Blame for Rising Power Bills</h3>
-                            <div class="news-sidebar-meta">
-                                <span><i class="far fa-calendar-alt"></i> March 7, 2026</span>
-                                <span>&bull; 5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Sidebar Card: Brain Drain -->
-                    <a href="news-brain-drain.html" class="news-sidebar-card">
-                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
-                        <div class="news-sidebar-thumb">
-                            <img src="images/BD.png" alt="Brain drain - scientists leaving the U.S. for Europe">
-                        </div>
-                        <div class="news-sidebar-content">
-                            <span class="news-sidebar-category">Science &amp; Education</span>
-                            <h3 class="news-sidebar-title">The New Brain Drain: How U.S. Research Cuts Are Redirecting Global Scientific Talent to Europe</h3>
-                            <div class="news-sidebar-meta">
-                                <span><i class="far fa-calendar-alt"></i> March 9, 2026</span>
-                                <span>&bull; 5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Sidebar Card: Homeownership -->
-                    <a href="news-homeownership.html" class="news-sidebar-card">
-                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
-                        <div class="news-sidebar-thumb">
-                            <img src="images/home1.JPG" alt="Homeownership affordability crisis">
-                        </div>
-                        <div class="news-sidebar-content">
-                            <span class="news-sidebar-category">Housing &amp; Economics</span>
-                            <h3 class="news-sidebar-title">Giving Up on Homeownership Can Hurt You in the Long Run</h3>
-                            <div class="news-sidebar-meta">
-                                <span><i class="far fa-calendar-alt"></i> March 9, 2026</span>
-                                <span>&bull; 5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-
-                                        <!-- Sidebar Card: Pope AI -->
-                    <a href="news-pope-ai.html" class="news-sidebar-card">
-                        <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
-                        <div class="news-sidebar-thumb">
-                            <img src="images/newpope.jpg" alt="AI and the Papal Election">
-                        </div>
-                        <div class="news-sidebar-content">
-                            <span class="news-sidebar-category">AI &amp; Society</span>
-                            <h3 class="news-sidebar-title">When Algorithms Met the Conclave: AI, Prediction Markets, and the Election of Pope Leo XIV</h3>
-                            <div class="news-sidebar-meta">
-                                <span><i class="far fa-calendar-alt"></i> May 2025</span>
-                                <span>&bull; 7 min read</span>
-                            </div>
-                        </div>
-                    </a>
-
-
-                        <!-- Sidebar Card: Haiti Slavery -->
-                        <a href="news-haiti-slavery.html" class="news-sidebar-card">
-                            <div class="news-sidebar-badge"><i class="fas fa-bolt"></i> New</div>
-                            <div class="news-sidebar-thumb">
-                                <img src="images/haiti1.PNG" alt="Haiti: From Slavery to Independence">
-                            </div>
-                            <div class="news-sidebar-content">
-                                <span class="news-sidebar-category">History &amp; Economics</span>
-                                <h3 class="news-sidebar-title">Haiti: From the Richest Colony to the Poorest Nation &mdash; A History of Slavery, Revolution, and Debt</h3>
-                                <div class="news-sidebar-meta">
-                                    <span><i class="far fa-calendar-alt"></i> June 2025</span>
-                                    <span>&bull; 8 min read</span>
-                                </div>
-                            </div>
-                        </a>
-                    <!-- More sidebar cards can be added here -->
-
-                </div>
-
-            </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-    <section class="content-section">
-        <div class="section-inner">
-            <div class="newsletter-section">
-                <h3><i class="fas fa-envelope"></i> Stay Updated</h3>
-                <p>Subscribe to receive updates on new research, publications, and events.</p>
-                <form class="newsletter-form" action="https://formsubmit.co/mirindifrederic@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Newsletter Subscription!">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="https://fredericmirindi.com/">
-<input type="email" name="email" placeholder="Enter your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Frédéric Mirindi. All rights reserved.</p>
-    </footer>
-    
-    <!-- Mobile Bottom Tab Bar -->
-    <nav class="mobile-bottom-nav">
-        <div class="mobile-bottom-nav-container">
-            <a href="/" class="mobile-bottom-nav-item active">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="research.html" class="mobile-bottom-nav-item">
-                <i class="fas fa-flask"></i>
-                <span>Research</span>
-            </a>
-            <a href="publications.html" class="mobile-bottom-nav-item">
-                <i class="fas fa-book"></i>
-                <span>Publications</span>
-            </a>
-            <a href="conferences.html" class="mobile-bottom-nav-item">
-                <i class="fas fa-microphone"></i>
-                <span>Conferences</span>
-            </a>
-            <a href="teaching.html" class="mobile-bottom-nav-item">
-                <i class="fas fa-graduation-cap"></i>
-                <span>Teaching</span>
-            </a>
-            <a href="contact.html" class="mobile-bottom-nav-item">
-                <i class="fas fa-envelope"></i>
-                <span>Contact</span>
-            </a>
-        </div>
-    </nav>
-    <!-- Scripts -->
-    <script>
-    // ===== THEME / APPEARANCE TOGGLE =====
-    function setTheme(theme) {
-        const html = document.documentElement;
-        html.classList.remove('dark', 'light');
-        html.classList.add(theme);
-        localStorage.setItem('theme', theme);
-        document.getElementById('btn-light').classList.toggle('active', theme === 'light');
-        document.getElementById('btn-dark').classList.toggle('active', theme === 'dark');
-        document.getElementById('btn-light').setAttribute('aria-pressed', theme === 'light');
-        document.getElementById('btn-dark').setAttribute('aria-pressed', theme === 'dark');
-    }
-    // Load saved theme on page load
-    (function() {
-        const saved = localStorage.getItem('theme') || 'dark';
-        setTheme(saved);
-    })();
-
-    // Mobile menu toggle
-    function toggleMenu() {
-      const menu = document.getElementById('navbar-menu');
-      const icon = document.getElementById('menu-icon');
-      const overlay = document.getElementById('mobile-overlay');
-      const isOpen = menu.classList.contains('active');
-      if (isOpen) {
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        document.body.style.overflow = '';
-      } else {
-        menu.classList.add('active');
-        overlay.classList.add('active');
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    // Close menu on overlay click
-    document.getElementById('mobile-overlay').addEventListener('click', toggleMenu);
-    // Close menu on nav-link click
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        const menu = document.getElementById('navbar-menu');
-        const overlay = document.getElementById('mobile-overlay');
-        const icon = document.getElementById('menu-icon');
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        document.body.style.overflow = '';
-      });
-    });
-        (function() {
-            const canvas = document.getElementById('geo-canvas');
-            const ctx = canvas.getContext('2d');
-            let w, h, points, maxDist;
-            function resize() {
-                w = canvas.width = canvas.offsetWidth;
-                h = canvas.height = canvas.offsetHeight;
-                maxDist = 160;
-                initPoints();
-            }
-            function initPoints() {
-                const count = Math.floor((w * h) / 12000);
-                points = [];
-                for (let i = 0; i < count; i++) {
-                    points.push({
-                        x: Math.random() * w,
-                        y: Math.random() * h,
-                        vx: (Math.random() - 0.5) * 0.3,
-                        vy: (Math.random() - 0.5) * 0.3
-                    });
-                }
-            }
-            function draw() {
-                ctx.clearRect(0, 0, w, h);
-                const isLight = document.documentElement.classList.contains('light');
-                const lineColor = isLight ? '80, 100, 120' : '200, 200, 200';
-                const dotColor = isLight ? '80, 100, 120' : '200, 200, 200';
-                for (let p of points) {
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    if (p.x < 0 || p.x > w) p.vx *= -1;
-                    if (p.y < 0 || p.y > h) p.vy *= -1;
-                }
-                for (let i = 0; i < points.length; i++) {
-                    for (let j = i + 1; j < points.length; j++) {
-                        const dx = points[i].x - points[j].x;
-                        const dy = points[i].y - points[j].y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        if (dist < maxDist) {
-                            const alpha = (1 - dist / maxDist) * 0.15;
-                            ctx.strokeStyle = 'rgba(' + lineColor + ', ' + alpha + ')';
-                            ctx.lineWidth = 0.5;
-                            ctx.beginPath();
-                            ctx.moveTo(points[i].x, points[i].y);
-                            ctx.lineTo(points[j].x, points[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                for (let p of points) {
-                    ctx.fillStyle = 'rgba(' + dotColor + ', 0.25)';
-                    ctx.beginPath();
-                    ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-                requestAnimationFrame(draw);
-            }
-            window.addEventListener('resize', resize);
-            resize();
-            draw();
-        })();
-    </script>
+<div class="wrap">
+<header>
+  <a class="brand" href="/">Frédéric Mirindi</a>
+  <nav>
+    <a href="research.html">Research</a>
+    <a href="publications.html">Publications</a>
+    <a href="conferences.html">Conferences</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+<main>
+  <div class="eyebrow">Economist · PhD Candidate</div>
+  <h1>Studying decisions,<br>markets, and <em>uncertainty</em>.</h1>
+  <p class="lede">I am a Canadian economist and PhD candidate in Economics and Econometrics at the <a href="https://umanitoba.ca/">University of Manitoba</a>. My research sits at the intersection of decision theory, game theory, development economics, and artificial intelligence.</p>
+  <div class="grid">
+    <div>
+      <h3>Focus</h3>
+      <ul>
+        <li>Decision theory</li>
+        <li>Game theory</li>
+        <li>Development economics</li>
+        <li>Econometrics & AI</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Affiliation</h3>
+      <p>University of Manitoba<br>Winnipeg, Canada</p>
+    </div>
+    <div>
+      <h3>Currently</h3>
+      <p>Preparing dissertation proposal; writing on debt crises and IMF programs.</p>
+    </div>
+    <div>
+      <h3>Elsewhere</h3>
+      <ul>
+        <li><a href="https://scholar.google.com/citations?user=K5--CxAAAAAJ">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0009-0001-1798-9914">ORCID</a></li>
+        <li><a href="https://www.researchgate.net/profile/Frederic-Mirindi">ResearchGate</a></li>
+      </ul>
+    </div>
+  </div>
+</main>
+<footer>
+  <div>© <span id="y"></span> Frédéric Mirindi</div>
+  <div class="social">
+    <a href="https://www.linkedin.com/in/fredericmirindi">LinkedIn</a>
+    <a href="https://scholar.google.com/citations?user=K5--CxAAAAAJ">Scholar</a>
+    <a href="mailto:contact@fredericmirindi.com">Email</a>
+  </div>
+</footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
